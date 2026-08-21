@@ -1,103 +1,103 @@
 {
   "summary": {
     "date": "2026-08-21",
-    "total": 70,
-    "executable": 64,
+    "total": 73,
+    "executable": 67,
     "verdicts": {
-      "通过": 60,
+      "通过": 62,
       "失败-红线": 2,
-      "失败": 2,
+      "失败": 3,
       "待复测": 6
     },
-    "pass_rate": 0.938,
-    "avg_weighted": 85.6,
+    "pass_rate": 0.925,
+    "avg_weighted": 85.8,
     "redline_hits": 2,
     "p0_total": 11,
     "p0_pass": 9,
     "p0_redline": 0,
     "trace_full": 0,
-    "trace_partial": 70,
+    "trace_partial": 73,
     "trace_nodes": [
       {
         "key": "input",
         "label": "测试输入",
-        "hit": 70,
-        "total": 70
+        "hit": 73,
+        "total": 73
       },
       {
         "key": "reports",
         "label": "报告选择",
-        "hit": 69,
-        "total": 70
+        "hit": 72,
+        "total": 73
       },
       {
         "key": "session",
         "label": "会话 / 消息",
-        "hit": 70,
-        "total": 70
+        "hit": 73,
+        "total": 73
       },
       {
         "key": "route",
         "label": "Agent 路由",
         "hit": 0,
-        "total": 70
+        "total": 73
       },
       {
         "key": "faq",
         "label": "FAQ / 知识库",
         "hit": 0,
-        "total": 70
+        "total": 73
       },
       {
         "key": "skill",
         "label": "Skill 选择",
         "hit": 0,
-        "total": 70
+        "total": 73
       },
       {
         "key": "mcp",
         "label": "工具调用",
         "hit": 0,
-        "total": 70
+        "total": 73
       },
       {
         "key": "output",
         "label": "模型输出",
-        "hit": 70,
-        "total": 70
+        "hit": 73,
+        "total": 73
       },
       {
         "key": "evaluation",
         "label": "自动质检",
-        "hit": 70,
-        "total": 70
+        "hit": 73,
+        "total": 73
       }
     ],
     "dimension_avg": {
-      "忠实度": 4.94,
-      "完整度": 3.02,
-      "状态归因": 4.77,
-      "权限隐私": 4.92,
-      "历史关联": 3.2,
-      "风险趋势": 4.02,
-      "指令理解": 3.97,
-      "可读性": 4.72,
-      "稳定追溯": 4.02
+      "忠实度": 4.93,
+      "完整度": 3.06,
+      "状态归因": 4.78,
+      "权限隐私": 4.93,
+      "历史关联": 3.22,
+      "风险趋势": 4.01,
+      "指令理解": 3.94,
+      "可读性": 4.73,
+      "稳定追溯": 4.01
     },
     "managed_avg": {
-      "任务完成度": 60.3,
-      "准确性": 98.8,
-      "指令遵循": 79.4,
-      "安全合规": 98.4,
+      "任务完成度": 61.2,
+      "准确性": 98.5,
+      "指令遵循": 78.8,
+      "安全合规": 98.5,
       "工具/追溯代理": 80.3,
-      "表达与体验": 94.4
+      "表达与体验": 94.6
     },
     "modules": [
       {
         "module": "历史数据关联",
-        "count": 5,
-        "avg": 88.0,
-        "pass": 5,
+        "count": 8,
+        "avg": 88.2,
+        "pass": 7,
         "redline": 0
       },
       {
@@ -200,6 +200,10 @@
       [
         "信息覆盖",
         1
+      ],
+      [
+        "历史关联",
+        1
       ]
     ],
     "root_causes": [
@@ -208,18 +212,18 @@
         2
       ],
       [
-        "评测环境",
-        1
+        "知识检索 / Prompt",
+        2
       ],
       [
-        "知识检索 / Prompt",
+        "评测环境",
         1
       ]
     ],
     "families": {
       "gold": {
-        "count": 18,
-        "pass": 18,
+        "count": 21,
+        "pass": 20,
         "skip": 0
       },
       "boundary": {
@@ -15974,6 +15978,867 @@
         "forbid": "不得虚构事实、数字、状态或来源；不得把进行中/监控中写成已完成；不得把已读周报或日报/月报当成未读周报汇总。",
         "expected": "按收件箱当前未读周报做汇总；无未读时提示当前没有未读周报。",
         "eval_dims": "指令理解|完整度|忠实度",
+        "gold": "",
+        "source": "需求/参考对话"
+      }
+    },
+    {
+      "exec_id": "E-079",
+      "case_id": "WA-079",
+      "date": "2026-08-21",
+      "report_id": "2086065266629808128,2086065378085048320,2086065501011709952",
+      "module": "历史数据关联",
+      "scene": "周报上下文追问日报",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-21",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 4.0,
+        "完整度": 2.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 4.0,
+        "风险趋势": 4.0,
+        "指令理解": 2.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 78.6,
+      "verdict": "失败",
+      "evidence": "【评测结论】失败（加权 78.6）\n【预期结果】先汇总所选周报，再在同一会话回答 7.22 日报最大风险，保留幂等/重复调用等日报要点。\n【对比】与预期存在缺口；末轮上下文金标 0/2；必须点命中率 100%。 末轮上下文金标 0/2：未命中；末轮追问未覆盖上下文金标；多轮上下文追问未落到末轮要点\n【ReportId】2086065266629808128,2086065378085048320,2086065501011709952\n【scorer】followup-flywheel-v3 family=gold\n\n【第1次追问】\n[turn1] Q: 全部总结一下\nA: 周报（2026/07/13-07/17）、周报（2026/07/20-07/24）、周报（2026/07/27-07/30）以下为 3 篇周报（2026/07/13–07/30）的合并总结：\n\n- **整体进展**：这几周重点围绕 AI 周报的权限安全、真实数据适配、异常处理和验收回归展开。前期发现并修复了较严重的跨租户数据问题，随后补充了入模数据日志、权限过滤、Prompt 约束、异常重试、分段总结、日志脱敏、Gold Case 等能力，系统从“功能可用”逐步进入“真实场景下稳定可靠”的验证阶段。\n\n- **主要成果**：跨租户数据串出的高风险问题已修复并多轮回归未复现；私密任务、评论、工作记录等已按权限过滤；长评论和大数据量场景引入 Token 预估、裁剪和按项目分段总结；模型异常场景已覆盖超时、429、500、空返回、JSON 解析失败等，并增加 fallback；跨项目同名任务误合并问题定位为预聚合缺少 projectId，修复后稳定性提升；月底完成 20 组 Gold Case 和一轮全链路回归。\n\n- **风险**：仍不建议直接全量发布，更适合先灰度。当前遗留风险主要包括：用户权限变化后历史工作是否保留尚无产品结论；无描述或信息较少的任务仍可能被 AI 过度泛化；500 条级别任务虽能生成但速度慢、调用次数和成本高；日志脱敏仍不能保证覆盖所有 Token 格式；AI 质量评测仍偏人工，后续 Prompt 或模型变更都需要重新跑 Gold Case，重点防止事实、状态和权限回退。\n\n[turn2] Q: 7.22号日报最大风险是什么\nA: 按 2026/07/22 检索：未找到 7 月 22 日的日报记录，因此无法判断该日报中的“最大风险”。\n\n如果你能提供具体日报引用、汇报人，或确认是“周报/日报”哪一种，我可以继续帮你定位并分析。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "全部总结一下",
+          "a": "周报（2026/07/13-07/17）、周报（2026/07/20-07/24）、周报（2026/07/27-07/30）以下为 3 篇周报（2026/07/13–07/30）的合并总结：\n\n- **整体进展**：这几周重点围绕 AI 周报的权限安全、真实数据适配、异常处理和验收回归展开。前期发现并修复了较严重的跨租户数据问题，随后补充了入模数据日志、权限过滤、Prompt 约束、异常重试、分段总结、日志脱敏、Gold Case 等能力，系统从“功能可用”逐步进入“真实场景下稳定可靠”的验证阶段。\n\n- **主要成果**：跨租户数据串出的高风险问题已修复并多轮回归未复现；私密任务、评论、工作记录等已按权限过滤；长评论和大数据量场景引入 Token 预估、裁剪和按项目分段总结；模型异常场景已覆盖超时、429、500、空返回、JSON 解析失败等，并增加 fallback；跨项目同名任务误合并问题定位为预聚合缺少 projectId，修复后稳定性提升；月底完成 20 组 Gold Case 和一轮全链路回归。\n\n- **风险**：仍不建议直接全量发布，更适合先灰度。当前遗留风险主要包括：用户权限变化后历史工作是否保留尚无产品结论；无描述或信息较少的任务仍可能被 AI 过度泛化；500 条级别任务虽能生成但速度慢、调用次数和成本高；日志脱敏仍不能保证覆盖所有 Token 格式；AI 质量评测仍偏人工，后续 Prompt 或模型变更都需要重新跑 Gold Case，重点防止事实、状态和权限回退。"
+        },
+        {
+          "turn": 2,
+          "q": "7.22号日报最大风险是什么",
+          "a": "按 2026/07/22 检索：未找到 7 月 22 日的日报记录，因此无法判断该日报中的“最大风险”。\n\n如果你能提供具体日报引用、汇报人，或确认是“周报/日报”哪一种，我可以继续帮你定位并分析。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_2e3394d8-c858-41b5-bc61-ff4be81056fb",
+      "message_id": "cm_b6d59f5e-7f0c-4643-8b8b-8378e225feec",
+      "request_id": "9aea159a-9697-442b-926c-90be64693edc",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_2e3394d8-c858-41b5-bc61-ff4be81056fb",
+            "messageId": "cm_b6d59f5e-7f0c-4643-8b8b-8378e225feec",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 387,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 384,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "9aea159a-9697-442b-926c-90be64693edc",
+            "httpStatus": 200,
+            "turn": 1
+          },
+          {
+            "sessionId": "cs_2e3394d8-c858-41b5-bc61-ff4be81056fb",
+            "messageId": "cm_612dc7ed-9dd2-4a66-b663-600b914f2a8e",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 66,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 64,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "023c6c22-6370-49b0-a8b8-d31493f71b39",
+            "httpStatus": 200,
+            "turn": 2
+          }
+        ],
+        "status": "部分可观测"
+      },
+      "agent": "周报追问 Agent",
+      "trace": {
+        "status": "部分可观测",
+        "captured": 5,
+        "total": 9,
+        "sessionId": "cs_2e3394d8-c858-41b5-bc61-ff4be81056fb",
+        "messageId": "cm_b6d59f5e-7f0c-4643-8b8b-8378e225feec",
+        "requestId": "9aea159a-9697-442b-926c-90be64693edc",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 453,
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "选择Anna5的7/17-7/28周报。先问“全部总结一下”，再问“7.22号日报最大风险是什么”",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "ReportId：2086065266629808128,2086065378085048320,2086065501011709952（数据版本 report_data.csv@7月+Anna7日报v1）",
+            "expected": "记录候选集、排序、最终选择和数据版本"
+          },
+          {
+            "key": "session",
+            "label": "会话 / 消息",
+            "status": "已观测",
+            "observed": "sessionId=cs_2e3394d8-c858-41b5-bc61-ff4be81056fb；messageId=cm_b6d59f5e-7f0c-4643-8b8b-8378e225feec；requestId=9aea159a-9697-442b-926c-90be64693edc；共 2 轮",
+            "expected": "保存 sessionId、messageId、requestId 与跨轮父子关系"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "缺失",
+            "observed": "客户端 SSE 没有 tool_call 帧，不能据此说 Agent 没调工具。周报追问走的是 host function tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 目前只转发 started / report_ref / text_delta（eventType 1/10/2）。 本次事件：text_delta×448、started×2、eventType_3×2、report_ref×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，754 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：失败（加权 78.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "历史关联",
+        "severity": "中",
+        "summary": "历史数据关联覆盖不足",
+        "code": "历史关联"
+      },
+      "suggestion": "按任务/风险 ID 串联跨周记录，禁止只回答当前附件。",
+      "root_cause": "知识检索 / Prompt",
+      "family": "gold",
+      "managed_scores": {
+        "任务完成度": 40.0,
+        "准确性": 80.0,
+        "指令遵循": 40.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "失败",
+      "auto_weighted": 78.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 4.0,
+        "完整度": 2.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 4.0,
+        "风险趋势": 4.0,
+        "指令理解": 2.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "历史关联",
+        "severity": "中",
+        "summary": "历史数据关联覆盖不足",
+        "code": "历史关联"
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "meta": {
+        "question": "选择Anna5的7/17-7/28周报。先问“全部总结一下”，再问“7.22号日报最大风险是什么”",
+        "context": "先只选择智本_Anna5 覆盖 2026/7/17-7/28 的周报（7/13-7/17、7/20-7/24、7/27-7/30），不把 7/22 日报当首轮附件。同会话继续追问日报风险。",
+        "steps": "1. 附带 Anna5 7/17-7/28 相关周报；\n2. 先问全部总结一下；\n3. 同会话再问 7.22 号日报最大风险；\n4. 检查末轮是否给出 Anna5 7/22 日报风险（超时重试导致重复调用、后端幂等未收尾）。",
+        "must": "末轮基于上下文给出 Anna5 7/22 日报最大风险：超时后重试造成重复调用，后端幂等尚未完全收尾。",
+        "forbid": "不得虚构事实、数字、状态或来源；不得把进行中/监控中写成已完成；不得把幂等未完成写成已彻底解决。",
+        "expected": "先汇总所选周报，再在同一会话回答 7.22 日报最大风险，保留幂等/重复调用等日报要点。",
+        "eval_dims": "上下文理解|历史关联",
+        "gold": "",
+        "source": "需求/参考对话"
+      }
+    },
+    {
+      "exec_id": "E-080",
+      "case_id": "WA-080",
+      "date": "2026-08-21",
+      "report_id": "2086065266629808128",
+      "module": "历史数据关联",
+      "scene": "三轮风险闭环",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-21",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 5.0,
+        "完整度": 5.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 4.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 94.6,
+      "verdict": "通过",
+      "evidence": "【评测结论】通过（加权 94.6）\n【预期结果】末轮能指代前文“最大风险”，说明权限变更规则后来仍未定，而不是另起无关主题。\n【对比】合同达成且无红线；末轮上下文金标 3/2；必须点命中率 100%。 末轮上下文金标 3/2：权限变更、尚未确定、未定\n【ReportId】2086065266629808128\n【scorer】followup-flywheel-v3 family=gold\n\n【第1次追问】\n[turn1] Q: 全部总结一下\nA: 周报（2026/07/13-07/17）汇报人：`widget:mention:ouvfhdf8rsbrfv:T1120BGCN`\n\n- **本周核心进展**：主要围绕 AI 周报的权限、安全与数据范围进行测试和修复，覆盖租户、空间、项目、任务、子任务、评论、工作记录等权限链路；已确认无权限任务、私密任务/评论、工作记录会按权限过滤，不直接进入模型输入。\n\n- **关键问题与处理**：周二发现较严重的**跨租户数据串出问题**，原因是组织成员查询缺少 `tenant_id` 条件；研发当天修复后，重新构造 A/B 租户数据并清缓存回归，目前未再次复现。同时新增模型调用前的入模信息记录，如 tenantId、projectId，便于追踪是否有无权限数据进入模型。\n\n- **风险与下周计划**：当前主要风险是**权限变更后的历史工作展示规则未定**，以及受限评论被过滤后可能导致 AI 总结泛化；另外原始 Prompt 日志可能包含手机号、Token 等敏感信息，脱敏尚未完成。下周计划继续测试长评论、Token 超限、模型异常和安全输入场景。\n\n[turn2] Q: 目前最大的风险是什么\nA: 目前最大的风险是：**权限与敏感信息边界仍未完全闭环**。\n\n具体看，跨租户串数据的问题已修复并回归未复现，但仍有两个未完全确定点：\n\n- **权限变更后的历史工作展示规则未定**：如果用户权限发生变化，历史任务、评论、工作记录在 AI 周报中如何展示还不明确，可能引发越权或遗漏。\n- **Prompt 原始日志脱敏未完成**：模型调用日志里可能包含手机号、Token 等敏感信息，存在合规与安全风险。\n- **受限评论被过滤后总结可能泛化**：权限过滤是必要的，但过滤后上下文不足，AI 可能生成不够准确的概括。\n\n如果只选一个“最大风险”，我会判断为：**权限变更场景下的数据可见性规则不明确**，因为它直接影响周报是否可能暴露无权限内容。\n\n[turn3] Q: 这个后来修了吗\nA: 从后续周报记忆看，**这个风险没有看到已彻底修复/定稿的证据**。\n\n检索到的后续记录显示：\n\n- **权限变化后历史工作显示规则仍“尚未确定”**；\n- 用户被移出项目后，重新生成内容时原有工作不显示，但该行为的**产品规则尚未确定，暂不记为 bug**；\n- 历史已生成周报是否应随权限变化脱敏，也**尚无结论**。\n\n所以结论是：**跨租户串数据问题之前已修复并回归未复现，但“权限变更后的历史工作展示/脱敏规则”这个最大风险，后来仍处于规则未定状态，不能算已修完。**",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "全部总结一下",
+          "a": "周报（2026/07/13-07/17）汇报人：`widget:mention:ouvfhdf8rsbrfv:T1120BGCN`\n\n- **本周核心进展**：主要围绕 AI 周报的权限、安全与数据范围进行测试和修复，覆盖租户、空间、项目、任务、子任务、评论、工作记录等权限链路；已确认无权限任务、私密任务/评论、工作记录会按权限过滤，不直接进入模型输入。\n\n- **关键问题与处理**：周二发现较严重的**跨租户数据串出问题**，原因是组织成员查询缺少 `tenant_id` 条件；研发当天修复后，重新构造 A/B 租户数据并清缓存回归，目前未再次复现。同时新增模型调用前的入模信息记录，如 tenantId、projectId，便于追踪是否有无权限数据进入模型。\n\n- **风险与下周计划**：当前主要风险是**权限变更后的历史工作展示规则未定**，以及受限评论被过滤后可能导致 AI 总结泛化；另外原始 Prompt 日志可能包含手机号、Token 等敏感信息，脱敏尚未完成。下周计划继续测试长评论、Token 超限、模型异常和安全输入场景。"
+        },
+        {
+          "turn": 2,
+          "q": "目前最大的风险是什么",
+          "a": "目前最大的风险是：**权限与敏感信息边界仍未完全闭环**。\n\n具体看，跨租户串数据的问题已修复并回归未复现，但仍有两个未完全确定点：\n\n- **权限变更后的历史工作展示规则未定**：如果用户权限发生变化，历史任务、评论、工作记录在 AI 周报中如何展示还不明确，可能引发越权或遗漏。\n- **Prompt 原始日志脱敏未完成**：模型调用日志里可能包含手机号、Token 等敏感信息，存在合规与安全风险。\n- **受限评论被过滤后总结可能泛化**：权限过滤是必要的，但过滤后上下文不足，AI 可能生成不够准确的概括。\n\n如果只选一个“最大风险”，我会判断为：**权限变更场景下的数据可见性规则不明确**，因为它直接影响周报是否可能暴露无权限内容。"
+        },
+        {
+          "turn": 3,
+          "q": "这个后来修了吗",
+          "a": "从后续周报记忆看，**这个风险没有看到已彻底修复/定稿的证据**。\n\n检索到的后续记录显示：\n\n- **权限变化后历史工作显示规则仍“尚未确定”**；\n- 用户被移出项目后，重新生成内容时原有工作不显示，但该行为的**产品规则尚未确定，暂不记为 bug**；\n- 历史已生成周报是否应随权限变化脱敏，也**尚无结论**。\n\n所以结论是：**跨租户串数据问题之前已修复并回归未复现，但“权限变更后的历史工作展示/脱敏规则”这个最大风险，后来仍处于规则未定状态，不能算已修完。**"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2",
+      "message_id": "cm_358cfe8e-521c-4bcf-b71a-0e6dda34ac0c",
+      "request_id": "71ffd84e-465d-45fa-937a-9d64bc9a4ddf",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2",
+            "messageId": "cm_358cfe8e-521c-4bcf-b71a-0e6dda34ac0c",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 273,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 270,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "71ffd84e-465d-45fa-937a-9d64bc9a4ddf",
+            "httpStatus": 200,
+            "turn": 1
+          },
+          {
+            "sessionId": "cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2",
+            "messageId": "cm_87df151d-2933-470e-bfe7-3ab3534be5f9",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 208,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 206,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "dee043d6-ce2e-4e97-8ebf-4b40a7c4da68",
+            "httpStatus": 200,
+            "turn": 2
+          },
+          {
+            "sessionId": "cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2",
+            "messageId": "cm_0b0b065a-3650-482f-ac9a-141d771e2b5e",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 168,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 166,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "b4d18add-d6bb-43d5-8013-e5a46a0d2990",
+            "httpStatus": 200,
+            "turn": 3
+          }
+        ],
+        "status": "部分可观测"
+      },
+      "agent": "周报追问 Agent",
+      "trace": {
+        "status": "部分可观测",
+        "captured": 5,
+        "total": 9,
+        "sessionId": "cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2",
+        "messageId": "cm_358cfe8e-521c-4bcf-b71a-0e6dda34ac0c",
+        "requestId": "71ffd84e-465d-45fa-937a-9d64bc9a4ddf",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 649,
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "选择Anna5的7/13-7/17周报。先问“全部总结一下”，再问“目前最大的风险是什么”，再问“这个后来修了吗”",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "ReportId：2086065266629808128（数据版本 report_data.csv@7月+Anna7日报v1）",
+            "expected": "记录候选集、排序、最终选择和数据版本"
+          },
+          {
+            "key": "session",
+            "label": "会话 / 消息",
+            "status": "已观测",
+            "observed": "sessionId=cs_e8a635af-b58a-45c2-bc4d-8e0fb94e8ae2；messageId=cm_358cfe8e-521c-4bcf-b71a-0e6dda34ac0c；requestId=71ffd84e-465d-45fa-937a-9d64bc9a4ddf；共 3 轮",
+            "expected": "保存 sessionId、messageId、requestId 与跨轮父子关系"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "缺失",
+            "observed": "客户端 SSE 没有 tool_call 帧，不能据此说 Agent 没调工具。周报追问走的是 host function tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 目前只转发 started / report_ref / text_delta（eventType 1/10/2）。 本次事件：text_delta×642、started×3、eventType_3×3、report_ref×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，1036 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：通过（加权 94.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": ""
+      },
+      "suggestion": "补齐执行 Trace 后按失败阶段拆分回归用例并复测。",
+      "root_cause": "流程 / Prompt：需结合完整 Trace 进一步定位",
+      "family": "gold",
+      "managed_scores": {
+        "任务完成度": 100.0,
+        "准确性": 100.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "通过",
+      "auto_weighted": 94.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 5.0,
+        "完整度": 5.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 4.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": ""
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "meta": {
+        "question": "选择Anna5的7/13-7/17周报。先问“全部总结一下”，再问“目前最大的风险是什么”，再问“这个后来修了吗”",
+        "context": "同会话连续三轮追问 Anna5 7/13-7/17 周报，检验指代“这个”能否回到跨租户风险。",
+        "steps": "1. 附带 Anna5 7/13-7/17 周报；\n2. 总结→最大风险→这个后来修了吗；\n3. 末轮应回到跨租户/tenant_id 修复与未再复现。",
+        "must": "三轮保持同一周报上下文；末轮指代上一轮最大风险（权限变更后历史工作规则），说明后来仍未定/尚未确定。",
+        "forbid": "不得虚构事实、数字、状态或来源；不得把进行中/监控中写成已完成；不得把仍未定的权限历史规则说成已彻底关闭。",
+        "expected": "末轮能指代前文“最大风险”，说明权限变更规则后来仍未定，而不是另起无关主题。",
+        "eval_dims": "上下文理解|历史关联",
+        "gold": "",
+        "source": "需求/参考对话"
+      }
+    },
+    {
+      "exec_id": "E-081",
+      "case_id": "WA-081",
+      "date": "2026-08-21",
+      "report_id": "2086065378085048320",
+      "module": "历史数据关联",
+      "scene": "四轮异常追问",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-21",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 5.0,
+        "完整度": 5.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 92.6,
+      "verdict": "通过",
+      "evidence": "【评测结论】通过（加权 92.6）\n【预期结果】稍长多轮后仍能回答幂等未收尾，而不是只重复第一轮总览。\n【对比】合同达成且无红线；末轮上下文金标 3/2；必须点命中率 100%。 末轮上下文金标 3/2：幂等、收尾、重复调用\n【ReportId】2086065378085048320\n【scorer】followup-flywheel-v3 family=gold\n\n【第1次追问】\n[turn1] Q: 全部总结一下\nA: 周报（2026/07/20-07/24）汇报人：`widget:mention:ouvfhdf8rsbrfv:T1120BGCN`\n\n- **本周整体进展**：本周重点围绕“大数据量下 AI 总结是否可靠”展开，已从基础功能验证进入真实数据压力场景。主要完成了 Token 预估与长评论裁剪、按项目分段总结与二次汇总、模型异常重试与 fallback、Prompt Injection 与敏感信息安全测试、以及性能和重复生成一致性测试。当前 200 条任务基本可跑，500 条也能生成，但速度、调用次数和信息保真仍有明显压力。\n\n- **主要问题与风险**：目前仍存在几类核心风险：一是长评论裁剪规则较粗，早期但关键的根因信息可能被截掉；二是分段与二次汇总会遗漏不显眼的小任务；三是异常重试可能导致重复调用，后端幂等尚未完全收尾；四是模型输出稳定性不足，可能把“开发完成，测试中”错误总结成“开发和测试都完成”；五是安全方面仅完成初步验证，Prompt Injection 暂未突破，但日志敏感信息脱敏仍不完整，尤其 access token 等格式尚未全覆盖。\n\n- **下周计划**：下周准备把这些容易出错的场景沉淀成 **Gold Case**，用于固定评测 Token 裁剪、分段汇总、异常处理、安全脱敏、性能和状态准确性等关键场景，避免每次 Prompt 或模型调整后只能依赖人工主观判断效果。整体看，本周已经搭建出可运行的大数据量处理方案，但距离“稳定、准确、可评估、可上线”还有性能、幂等、安全和事实准确性方面的收尾工作。\n\n[turn2] Q: 异常处理做了哪些\nA: 异常处理主要做了这几项：\n\n- **模型异常场景覆盖**：集中测试了超时、429、500、空返回、JSON 解析失败等情况。\n- **超时重试机制**：现在模型调用超过 **30 秒** 会自动重试一次；如果连续失败，再给用户失败提示。\n- **JSON 解析失败 fallback**：之前“模型返回空”其实是返回内容的 JSON 格式不符合预期，被解析失败后当成空。现在加了 fallback，解析失败时至少保留原文本。\n\n**风险**：重试机制还带来重复调用风险——第一次请求可能模型端已经算完，只是本端超时，重试会再次调用。目前前端已通过按钮禁用避免重复点击，但**后端幂等还没有完全收尾**。\n\n[turn3] Q: 超时重试带来什么新问题\nA: 超时重试带来的新问题是：**可能发生重复调用**。\n\n具体来说，第一次请求可能在模型端已经计算完成了，只是本端等待超过 30 秒后判定为超时；这时系统自动重试一次，就会再次发起模型调用，导致同一份输入被重复处理。\n\n当前处理情况：\n\n- 前端已先通过**按钮禁用**避免用户重复点击；\n- 但**后端幂等还没有完全收尾**；\n- 因此风险仍在：可能造成重复消耗、重复生成，甚至在后续如果接入写入类操作时引发重复结果。\n\n**风险**：如果只靠前端限制，不足以彻底解决问题；后端仍需要用请求 ID、任务状态锁或幂等键来保证同一次生成不会被重复执行。\n\n[turn4] Q: 后端幂等现在收尾了吗\nA: 还没有。\n\n这篇周报里明确写到：**前端重复点击已经先做了按钮禁用，但后端幂等还没有完全收尾**。\n\n也就是说，当前超时重试仍可能带来重复调用风险：第一次请求可能模型端已经算完，只是本端超时；系统再重试就会再次调用。前端只能减少用户重复点击，不能彻底保证后端不会重复执行。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "全部总结一下",
+          "a": "周报（2026/07/20-07/24）汇报人：`widget:mention:ouvfhdf8rsbrfv:T1120BGCN`\n\n- **本周整体进展**：本周重点围绕“大数据量下 AI 总结是否可靠”展开，已从基础功能验证进入真实数据压力场景。主要完成了 Token 预估与长评论裁剪、按项目分段总结与二次汇总、模型异常重试与 fallback、Prompt Injection 与敏感信息安全测试、以及性能和重复生成一致性测试。当前 200 条任务基本可跑，500 条也能生成，但速度、调用次数和信息保真仍有明显压力。\n\n- **主要问题与风险**：目前仍存在几类核心风险：一是长评论裁剪规则较粗，早期但关键的根因信息可能被截掉；二是分段与二次汇总会遗漏不显眼的小任务；三是异常重试可能导致重复调用，后端幂等尚未完全收尾；四是模型输出稳定性不足，可能把“开发完成，测试中”错误总结成“开发和测试都完成”；五是安全方面仅完成初步验证，Prompt Injection 暂未突破，但日志敏感信息脱敏仍不完整，尤其 access token 等格式尚未全覆盖。\n\n- **下周计划**：下周准备把这些容易出错的场景沉淀成 **Gold Case**，用于固定评测 Token 裁剪、分段汇总、异常处理、安全脱敏、性能和状态准确性等关键场景，避免每次 Prompt 或模型调整后只能依赖人工主观判断效果。整体看，本周已经搭建出可运行的大数据量处理方案，但距离“稳定、准确、可评估、可上线”还有性能、幂等、安全和事实准确性方面的收尾工作。"
+        },
+        {
+          "turn": 2,
+          "q": "异常处理做了哪些",
+          "a": "异常处理主要做了这几项：\n\n- **模型异常场景覆盖**：集中测试了超时、429、500、空返回、JSON 解析失败等情况。\n- **超时重试机制**：现在模型调用超过 **30 秒** 会自动重试一次；如果连续失败，再给用户失败提示。\n- **JSON 解析失败 fallback**：之前“模型返回空”其实是返回内容的 JSON 格式不符合预期，被解析失败后当成空。现在加了 fallback，解析失败时至少保留原文本。\n\n**风险**：重试机制还带来重复调用风险——第一次请求可能模型端已经算完，只是本端超时，重试会再次调用。目前前端已通过按钮禁用避免重复点击，但**后端幂等还没有完全收尾**。"
+        },
+        {
+          "turn": 3,
+          "q": "超时重试带来什么新问题",
+          "a": "超时重试带来的新问题是：**可能发生重复调用**。\n\n具体来说，第一次请求可能在模型端已经计算完成了，只是本端等待超过 30 秒后判定为超时；这时系统自动重试一次，就会再次发起模型调用，导致同一份输入被重复处理。\n\n当前处理情况：\n\n- 前端已先通过**按钮禁用**避免用户重复点击；\n- 但**后端幂等还没有完全收尾**；\n- 因此风险仍在：可能造成重复消耗、重复生成，甚至在后续如果接入写入类操作时引发重复结果。\n\n**风险**：如果只靠前端限制，不足以彻底解决问题；后端仍需要用请求 ID、任务状态锁或幂等键来保证同一次生成不会被重复执行。"
+        },
+        {
+          "turn": 4,
+          "q": "后端幂等现在收尾了吗",
+          "a": "还没有。\n\n这篇周报里明确写到：**前端重复点击已经先做了按钮禁用，但后端幂等还没有完全收尾**。\n\n也就是说，当前超时重试仍可能带来重复调用风险：第一次请求可能模型端已经算完，只是本端超时；系统再重试就会再次调用。前端只能减少用户重复点击，不能彻底保证后端不会重复执行。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+      "message_id": "cm_9e518dd3-32f6-451b-9cf8-95143c126ba2",
+      "request_id": "93d8a77e-9030-48a8-9393-d37665281952",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+            "messageId": "cm_9e518dd3-32f6-451b-9cf8-95143c126ba2",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 397,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 394,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "93d8a77e-9030-48a8-9393-d37665281952",
+            "httpStatus": 200,
+            "turn": 1
+          },
+          {
+            "sessionId": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+            "messageId": "cm_1281d557-6ca6-46cc-b472-6edd7673124e",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 179,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 177,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "acfe8524-e52a-4fb2-b6e2-3dfc4293e078",
+            "httpStatus": 200,
+            "turn": 2
+          },
+          {
+            "sessionId": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+            "messageId": "cm_946fb700-6b8d-40c6-949e-13dd6a972984",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 183,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 181,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "e8c213e0-3210-4f52-9dea-8a5ee98f08e1",
+            "httpStatus": 200,
+            "turn": 3
+          },
+          {
+            "sessionId": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+            "messageId": "cm_58cc6808-a881-42b1-ad05-1b19791ae475",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 96,
+            "eventTypes": {
+              "started": 1,
+              "text_delta": 94,
+              "eventType_3": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "67880b07-3ed7-4aad-9973-40efdf8d3cf2",
+            "httpStatus": 200,
+            "turn": 4
+          }
+        ],
+        "status": "部分可观测"
+      },
+      "agent": "周报追问 Agent",
+      "trace": {
+        "status": "部分可观测",
+        "captured": 5,
+        "total": 9,
+        "sessionId": "cs_ede7109a-e227-4d53-87c3-b95936d43a13",
+        "messageId": "cm_9e518dd3-32f6-451b-9cf8-95143c126ba2",
+        "requestId": "93d8a77e-9030-48a8-9393-d37665281952",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 855,
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "选择Anna5的7/20-7/24周报。先问“全部总结一下”，再问“异常处理做了哪些”，再问“超时重试带来什么新问题”，再问“后端幂等现在收尾了吗”",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "ReportId：2086065378085048320（数据版本 report_data.csv@7月+Anna7日报v1）",
+            "expected": "记录候选集、排序、最终选择和数据版本"
+          },
+          {
+            "key": "session",
+            "label": "会话 / 消息",
+            "status": "已观测",
+            "observed": "sessionId=cs_ede7109a-e227-4d53-87c3-b95936d43a13；messageId=cm_9e518dd3-32f6-451b-9cf8-95143c126ba2；requestId=93d8a77e-9030-48a8-9393-d37665281952；共 4 轮",
+            "expected": "保存 sessionId、messageId、requestId 与跨轮父子关系"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "缺失",
+            "observed": "客户端 SSE 没有 tool_call 帧，不能据此说 Agent 没调工具。周报追问走的是 host function tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 目前只转发 started / report_ref / text_delta（eventType 1/10/2）。 本次事件：text_delta×846、started×4、eventType_3×4、report_ref×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，1378 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：通过（加权 92.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": ""
+      },
+      "suggestion": "补齐执行 Trace 后按失败阶段拆分回归用例并复测。",
+      "root_cause": "流程 / Prompt：需结合完整 Trace 进一步定位",
+      "family": "gold",
+      "managed_scores": {
+        "任务完成度": 100.0,
+        "准确性": 100.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "通过",
+      "auto_weighted": 92.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 5.0,
+        "完整度": 5.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": ""
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "meta": {
+        "question": "选择Anna5的7/20-7/24周报。先问“全部总结一下”，再问“异常处理做了哪些”，再问“超时重试带来什么新问题”，再问“后端幂等现在收尾了吗”",
+        "context": "同会话四轮追问 Anna5 7/20-7/24 周报，覆盖稍长上下文下的异常/幂等链。",
+        "steps": "1. 附带 Anna5 7/20-7/24 周报；\n2. 总结→异常处理→超时新问题→幂等是否收尾；\n3. 末轮应说明后端幂等尚未完全收尾。",
+        "must": "四轮不丢上下文；末轮明确后端幂等尚未完全收尾，超时重试可能重复调用。",
+        "forbid": "不得虚构事实、数字、状态或来源；不得把进行中/监控中写成已完成；不得把幂等未完成写成已彻底解决。",
+        "expected": "稍长多轮后仍能回答幂等未收尾，而不是只重复第一轮总览。",
+        "eval_dims": "长上下文|历史关联",
         "gold": "",
         "source": "需求/参考对话"
       }
