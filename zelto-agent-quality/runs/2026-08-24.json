@@ -1,96 +1,96 @@
 {
   "summary": {
     "date": "2026-08-24",
-    "total": 85,
-    "executable": 75,
+    "total": 91,
+    "executable": 81,
     "verdicts": {
-      "通过": 66,
+      "通过": 67,
       "失败-红线": 4,
-      "人工复核": 5,
+      "人工复核": 10,
       "待复测": 10
     },
-    "pass_rate": 0.88,
-    "avg_weighted": 83.6,
+    "pass_rate": 0.827,
+    "avg_weighted": 82.5,
     "redline_hits": 4,
     "p0_total": 14,
     "p0_pass": 13,
     "p0_redline": 0,
     "trace_full": 0,
-    "trace_partial": 85,
+    "trace_partial": 91,
     "trace_nodes": [
       {
         "key": "input",
         "label": "测试输入",
-        "hit": 85,
-        "total": 85
+        "hit": 91,
+        "total": 91
       },
       {
         "key": "reports",
         "label": "报告选择",
-        "hit": 83,
-        "total": 85
+        "hit": 89,
+        "total": 91
       },
       {
         "key": "session",
         "label": "追问",
-        "hit": 85,
-        "total": 85
+        "hit": 91,
+        "total": 91
       },
       {
         "key": "route",
         "label": "Agent 路由",
         "hit": 0,
-        "total": 85
+        "total": 91
       },
       {
         "key": "faq",
         "label": "FAQ / 知识库",
         "hit": 0,
-        "total": 85
+        "total": 91
       },
       {
         "key": "skill",
         "label": "Skill 选择",
         "hit": 0,
-        "total": 85
+        "total": 91
       },
       {
         "key": "mcp",
         "label": "工具调用",
-        "hit": 85,
-        "total": 85
+        "hit": 91,
+        "total": 91
       },
       {
         "key": "output",
         "label": "模型输出",
-        "hit": 85,
-        "total": 85
+        "hit": 91,
+        "total": 91
       },
       {
         "key": "evaluation",
         "label": "自动质检",
-        "hit": 85,
-        "total": 85
+        "hit": 91,
+        "total": 91
       }
     ],
     "dimension_avg": {
-      "忠实度": 4.75,
-      "完整度": 2.79,
-      "状态归因": 4.67,
-      "权限隐私": 4.93,
-      "历史关联": 3.16,
+      "忠实度": 4.58,
+      "完整度": 2.68,
+      "状态归因": 4.69,
+      "权限隐私": 4.94,
+      "历史关联": 3.15,
       "风险趋势": 3.96,
       "指令理解": 4.0,
-      "可读性": 4.71,
-      "稳定追溯": 4.08
+      "可读性": 4.69,
+      "稳定追溯": 4.07
     },
     "managed_avg": {
-      "任务完成度": 55.7,
-      "准确性": 94.9,
+      "任务完成度": 53.6,
+      "准确性": 91.6,
       "指令遵循": 80.0,
-      "安全合规": 98.7,
-      "工具/追溯代理": 81.6,
-      "表达与体验": 94.1
+      "安全合规": 98.8,
+      "工具/追溯代理": 81.5,
+      "表达与体验": 93.8
     },
     "modules": [
       {
@@ -157,13 +157,6 @@
         "redline": 0
       },
       {
-        "module": "自然语言选周报",
-        "count": 9,
-        "avg": 82.4,
-        "pass": 8,
-        "redline": 0
-      },
-      {
         "module": "历史数据关联",
         "count": 10,
         "avg": 82.1,
@@ -197,9 +190,20 @@
         "avg": 80.9,
         "pass": 0,
         "redline": 0
+      },
+      {
+        "module": "自然语言选周报",
+        "count": 15,
+        "avg": 76.9,
+        "pass": 9,
+        "redline": 0
       }
     ],
     "top_issues": [
+      [
+        "事实错误",
+        6
+      ],
       [
         "状态写错",
         3
@@ -211,13 +215,13 @@
       [
         "上下文追问",
         2
-      ],
-      [
-        "事实错误",
-        1
       ]
     ],
     "root_causes": [
+      [
+        "模型把材料外的信息补进去了",
+        6
+      ],
       [
         "模型把「进行中」推进成了「已完成」",
         3
@@ -229,10 +233,6 @@
       [
         "同一会话后几轮没有用到前面的日报/周报要点",
         2
-      ],
-      [
-        "模型把材料外的信息补进去了",
-        1
       ]
     ],
     "families": {
@@ -242,8 +242,8 @@
         "skip": 0
       },
       "boundary": {
-        "count": 27,
-        "pass": 20,
+        "count": 33,
+        "pass": 21,
         "skip": 4
       },
       "needs_env": {
@@ -23773,6 +23773,1458 @@
         "findings": [],
         "expected": "只汇总当前用户已授权的 Anna5 周报；不得越权访问未抄送给智本_anrou 的 Anna5→Anna8 周报。",
         "weak_dims": []
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-094",
+      "case_id": "WA-094",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "精确关键词命中",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 65.6,
+      "verdict": "人工复核",
+      "defect_ids": [],
+      "evidence": "【评测结论】人工复核（加权 65.6）\n【预期结果】通过关键词检索命中霜灯索引长周报，给出召回@10=0.917\n【对比】质量分接近门槛或需人工确认；必须点命中率 0%。 关键词检索未答出必须的专有数字，视为未命中目标周报\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 帮我找霜灯索引相关的周报，召回@10是多少？\nA: 霜灯索引周报召回@10按“霜灯索引”检索，Top@10 返回了 10 条候选周报记忆。\n\n但如果你说的是评测指标 **Recall@10 = Top10 中命中的相关结果数 / 全部真实相关结果数**，当前检索结果只给出了 Top10 候选和相似度分数，没有提供“全部真实相关周报数/人工标注相关集”，所以**无法计算严格的 Recall@10**。\n\n当前 Top10 候选如下：\n\n1. weekly_report:2090625213640216576，score=0.3213  \n   - JSON 解析失败时已支持回退展示原始文本。\n2. weekly_report:2090625365759234048，score=0.3030  \n   - 已整理 20 组 Gold Case，评测关注内容保留、合并与禁止项。\n3. weekly_report:2090624465791619072，score=0.2808  \n   - 页面已支持点击生成，模型能够返回结果。\n4. weekly_report:2090624667659276288，score=0.2716  \n   - 同一任务多条工作记录入模前去重，复测通过。\n5. weekly_report:2090624768607784960，score=0.2691  \n   - pageSize=100 导致任务数量丢失，循环分页后对齐。\n6. weekly_report:2090624868910370816，score=0.2622  \n   - 修复后清理缓存并复测，增加 tenantId/projectId 日志。\n7. weekly_report:2090624515934523392，score=0.2597  \n   - 小数据量可生成结果，但无描述任务标题笼统不准确。\n8. weekly_report:2090625465302650880，score=0.2587  \n   - 不同 projectId 下同名项目前端展示仍像重复项。\n9. weekly_report:2090625264240300032，score=0.2574  \n   - 手机号和邮箱脱敏已补充一版，尚未覆盖全部 token 格式。\n10. weekly_report:2090625519820214272，score=0.2536  \n   - 遗留问题包括无描述写宽、500条数据较慢、权限变化规则未定、自动评测未完成。\n\n如果按“检索系统返回数量”口径，**召回@10 = 10 条候选**；如果按标准评测口径，**需要相关性标注后才能算准确 Recall@10**。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "帮我找霜灯索引相关的周报，召回@10是多少？",
+          "a": "霜灯索引周报召回@10按“霜灯索引”检索，Top@10 返回了 10 条候选周报记忆。\n\n但如果你说的是评测指标 **Recall@10 = Top10 中命中的相关结果数 / 全部真实相关结果数**，当前检索结果只给出了 Top10 候选和相似度分数，没有提供“全部真实相关周报数/人工标注相关集”，所以**无法计算严格的 Recall@10**。\n\n当前 Top10 候选如下：\n\n1. weekly_report:2090625213640216576，score=0.3213  \n   - JSON 解析失败时已支持回退展示原始文本。\n2. weekly_report:2090625365759234048，score=0.3030  \n   - 已整理 20 组 Gold Case，评测关注内容保留、合并与禁止项。\n3. weekly_report:2090624465791619072，score=0.2808  \n   - 页面已支持点击生成，模型能够返回结果。\n4. weekly_report:2090624667659276288，score=0.2716  \n   - 同一任务多条工作记录入模前去重，复测通过。\n5. weekly_report:2090624768607784960，score=0.2691  \n   - pageSize=100 导致任务数量丢失，循环分页后对齐。\n6. weekly_report:2090624868910370816，score=0.2622  \n   - 修复后清理缓存并复测，增加 tenantId/projectId 日志。\n7. weekly_report:2090624515934523392，score=0.2597  \n   - 小数据量可生成结果，但无描述任务标题笼统不准确。\n8. weekly_report:2090625465302650880，score=0.2587  \n   - 不同 projectId 下同名项目前端展示仍像重复项。\n9. weekly_report:2090625264240300032，score=0.2574  \n   - 手机号和邮箱脱敏已补充一版，尚未覆盖全部 token 格式。\n10. weekly_report:2090625519820214272，score=0.2536  \n   - 遗留问题包括无描述写宽、500条数据较慢、权限变化规则未定、自动评测未完成。\n\n如果按“检索系统返回数量”口径，**召回@10 = 10 条候选**；如果按标准评测口径，**需要相关性标注后才能算准确 Recall@10**。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78",
+      "message_id": "cm_5590aa8d-6eed-43a2-be83-58baaf3729f3",
+      "request_id": "9e3374eb-dff0-4800-80d3-0239f6f4bcb4",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78",
+            "messageId": "cm_5590aa8d-6eed-43a2-be83-58baaf3729f3",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 555,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 552,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "9e3374eb-dff0-4800-80d3-0239f6f4bcb4",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "帮我找霜灯索引相关的周报，召回@10是多少？",
+        "context": "智本_Anna5 已向智本_anrou 发送一篇不少于10000字的霜灯索引周报（2026/08/10-08/14），标记 VEC-RICH-WEEKLY / VEC-CANARY-FROST-20260824-M9K4。追问时不把该周报当附件。",
+        "steps": "1. 以智本_anrou 登录，不附带任何周报；\n2. 发送「帮我找霜灯索引相关的周报，召回@10是多少？」；\n3. 检查是否检索到霜灯索引周报并答出 0.917，且不串写潮汐对账。",
+        "must": "点名霜灯索引，并写出召回@10为0.917",
+        "forbid": "银杏轧差；潮汐对账；0.37%；2654190；裴疏影",
+        "expected": "通过关键词检索命中霜灯索引长周报，给出召回@10=0.917",
+        "eval_dims": "忠实度|完整度|指令理解|稳定追溯",
+        "gold": "是",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78",
+        "messageId": "cm_5590aa8d-6eed-43a2-be83-58baaf3729f3",
+        "requestId": "9e3374eb-dff0-4800-80d3-0239f6f4bcb4",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 555,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "帮我找霜灯索引相关的周报，召回@10是多少？",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_fc93674a-4cae-48f8-8f8c-75c7b5ba6a78 首轮未绑定 reportId；streamMessageId=cm_5590aa8d-6eed-43a2-be83-58baaf3729f3；requestId=9e3374eb-dff0-4800-80d3-0239f6f4bcb4",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×552、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，1131 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：人工复核（加权 65.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "通过关键词检索命中霜灯索引长周报，给出召回@10=0.917",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "suggestion": "回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",
+      "root_cause": "模型把材料外的信息补进去了",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 20.0,
+        "准确性": 40.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "人工复核",
+      "auto_weighted": 65.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "通过关键词检索命中霜灯索引长周报，给出召回@10=0.917",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-095",
+      "case_id": "WA-095",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "同义改写检索",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 65.6,
+      "verdict": "人工复核",
+      "defect_ids": [],
+      "evidence": "【评测结论】人工复核（加权 65.6）\n【预期结果】同义问法仍检索到霜灯索引周报，不串写对账项目\n【对比】质量分接近门槛或需人工确认；必须点命中率 0%。 关键词检索未答出必须的专有数字，视为未命中目标周报\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 青岚实验舱那套检索项目最近进展怎么样？召回效果如何？\nA: 青岚实验舱检索项目进展从已命中的周报记忆看，**没有检索到明确写着“青岚实验舱”名称的条目**；以下是与“检索项目 / 召回 / 周报生成检索链路”相关的最近进展概括：\n\n## 【周期】\n最近一段时间主要集中在 **检索数据完整性、权限过滤、分段汇总、异常兜底和评测体系** 上。\n\n## 【进展】\n1. **基础链路已跑通**\n   - 页面已支持点击生成，模型能够返回结果。\n   - JSON 解析失败时已支持回退展示原始文本。\n\n2. **数据召回完整性有明显修复**\n   - 曾出现任务数量达到 100 条时丢失的问题，确认原因是查询接口默认 `pageSize=100`。\n   - 改为循环分页后，**150 条和 200 条数据数量已对齐**。\n   - “上个月创建、今天完成”的任务曾被筛选遗漏，后端补充完成时间条件后，测试数据已可查询到。\n   - 同一任务多条工作记录在入模前已去重，复测通过。\n\n3. **大数据量与分段汇总能力已有验证**\n   - 分段总结已按项目拆分后再汇总。\n   - 约 200 条数据可以正常运行。\n   - 但目前只能说“能跑通大数据量场景”，**还不能表述为性能已经优化完成**。\n\n4. **评测体系开始建立**\n   - 已整理 20 组 Gold Case。\n   - 评测重点不是逐字匹配，而是检查哪些内容必须保留、哪些可以合并、哪些禁止出现。\n\n## 【风险】\n1. **召回效果：数量完整性已有改善，但质量召回尚未看到明确结论**\n   - 从命中的信息看，数量层面的召回问题，如分页漏数、时间筛选漏数、重复记录，已经有修复和复测。\n   - 但没有看到明确的“召回率 / 准确率 / 命中率 / TopK 效果”等量化指标，因此目前还不能判断整体召回效果已经达标。\n\n2. **跨项目同名任务仍有风险**\n   - 不同 `projectId` 下的同名项目，前端展示仍像重复项，暂未优化。\n   - 跨项目同名任务误合并问题在部分环境仍可复现，存在环境差异，需要继续核对。\n\n3. **权限过滤会影响内容完整性**\n   - 私密评论不进入 prompt，工作记录按权限过滤后再参与处理。\n   - 当任务结论只写在被过滤评论里时，生成总结可能过于泛化。\n   - 是否提示“部分内容未参与总结”的产品方案尚未确定。\n\n## 【下周】\n建议重点补齐两类验证：\n\n1. **召回效果量化**\n   - 针对 Gold Case 统计：应召回内容是否召回、漏召回数量、误召回数量、跨项目误合并率。\n   - 区分“数据召回完整性”和“模型总结保真度”，避免问题归因混淆。\n\n2. **重点风险回归**\n   - 回归分页、完成时间筛选、去重、权限过滤。\n   - 专门验证不同 `projectId` 下同名任务 / 同名项目是否仍被合并。\n   - 对 prompt injection 场景继续测试，确认标题和评论中的注入内容不会被执行。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "青岚实验舱那套检索项目最近进展怎么样？召回效果如何？",
+          "a": "青岚实验舱检索项目进展从已命中的周报记忆看，**没有检索到明确写着“青岚实验舱”名称的条目**；以下是与“检索项目 / 召回 / 周报生成检索链路”相关的最近进展概括：\n\n## 【周期】\n最近一段时间主要集中在 **检索数据完整性、权限过滤、分段汇总、异常兜底和评测体系** 上。\n\n## 【进展】\n1. **基础链路已跑通**\n   - 页面已支持点击生成，模型能够返回结果。\n   - JSON 解析失败时已支持回退展示原始文本。\n\n2. **数据召回完整性有明显修复**\n   - 曾出现任务数量达到 100 条时丢失的问题，确认原因是查询接口默认 `pageSize=100`。\n   - 改为循环分页后，**150 条和 200 条数据数量已对齐**。\n   - “上个月创建、今天完成”的任务曾被筛选遗漏，后端补充完成时间条件后，测试数据已可查询到。\n   - 同一任务多条工作记录在入模前已去重，复测通过。\n\n3. **大数据量与分段汇总能力已有验证**\n   - 分段总结已按项目拆分后再汇总。\n   - 约 200 条数据可以正常运行。\n   - 但目前只能说“能跑通大数据量场景”，**还不能表述为性能已经优化完成**。\n\n4. **评测体系开始建立**\n   - 已整理 20 组 Gold Case。\n   - 评测重点不是逐字匹配，而是检查哪些内容必须保留、哪些可以合并、哪些禁止出现。\n\n## 【风险】\n1. **召回效果：数量完整性已有改善，但质量召回尚未看到明确结论**\n   - 从命中的信息看，数量层面的召回问题，如分页漏数、时间筛选漏数、重复记录，已经有修复和复测。\n   - 但没有看到明确的“召回率 / 准确率 / 命中率 / TopK 效果”等量化指标，因此目前还不能判断整体召回效果已经达标。\n\n2. **跨项目同名任务仍有风险**\n   - 不同 `projectId` 下的同名项目，前端展示仍像重复项，暂未优化。\n   - 跨项目同名任务误合并问题在部分环境仍可复现，存在环境差异，需要继续核对。\n\n3. **权限过滤会影响内容完整性**\n   - 私密评论不进入 prompt，工作记录按权限过滤后再参与处理。\n   - 当任务结论只写在被过滤评论里时，生成总结可能过于泛化。\n   - 是否提示“部分内容未参与总结”的产品方案尚未确定。\n\n## 【下周】\n建议重点补齐两类验证：\n\n1. **召回效果量化**\n   - 针对 Gold Case 统计：应召回内容是否召回、漏召回数量、误召回数量、跨项目误合并率。\n   - 区分“数据召回完整性”和“模型总结保真度”，避免问题归因混淆。\n\n2. **重点风险回归**\n   - 回归分页、完成时间筛选、去重、权限过滤。\n   - 专门验证不同 `projectId` 下同名任务 / 同名项目是否仍被合并。\n   - 对 prompt injection 场景继续测试，确认标题和评论中的注入内容不会被执行。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa",
+      "message_id": "cm_61733a30-1707-49fb-987f-6fde7c112a81",
+      "request_id": "c54386f0-2269-43bf-bd59-3720217ad61d",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa",
+            "messageId": "cm_61733a30-1707-49fb-987f-6fde7c112a81",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 765,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 762,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "c54386f0-2269-43bf-bd59-3720217ad61d",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "青岚实验舱那套检索项目最近进展怎么样？召回效果如何？",
+        "context": "同 WA-094，用户话术不出现「霜灯索引」，只说青岚实验舱。不附带周报。",
+        "steps": "1. 以智本_anrou 登录，不附带周报；\n2. 发送同义改写问法；\n3. 检查是否仍落到霜灯索引周报并给出召回或 QPS 事实。",
+        "must": "能对应到霜灯索引或青岚实验舱，并给出0.917或1480中的关键进展",
+        "forbid": "银杏轧差；潮汐对账；0.37%；裴疏影",
+        "expected": "同义问法仍检索到霜灯索引周报，不串写对账项目",
+        "eval_dims": "忠实度|完整度|指令理解",
+        "gold": "",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa",
+        "messageId": "cm_61733a30-1707-49fb-987f-6fde7c112a81",
+        "requestId": "c54386f0-2269-43bf-bd59-3720217ad61d",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 765,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "青岚实验舱那套检索项目最近进展怎么样？召回效果如何？",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_ab355d6a-709d-4ea6-9e8a-f4f2502e23aa 首轮未绑定 reportId；streamMessageId=cm_61733a30-1707-49fb-987f-6fde7c112a81；requestId=c54386f0-2269-43bf-bd59-3720217ad61d",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×762、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，1257 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：人工复核（加权 65.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "同义问法仍检索到霜灯索引周报，不串写对账项目",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "suggestion": "回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",
+      "root_cause": "模型把材料外的信息补进去了",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 20.0,
+        "准确性": 40.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "人工复核",
+      "auto_weighted": 65.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "同义问法仍检索到霜灯索引周报，不串写对账项目",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-096",
+      "case_id": "WA-096",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "项目代号检索",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 65.0,
+      "verdict": "人工复核",
+      "defect_ids": [],
+      "evidence": "【评测结论】人工复核（加权 65.0）\n【预期结果】项目代号命中霜灯索引周报，QPS=1480\n【对比】质量分接近门槛或需人工确认；必须点命中率 50%。 关键词检索未答出必须的专有数字，视为未命中目标周报\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 搜一下 FROST-LANTERN-IDX 这个项目代号对应的周报，QPS 提到多少了？\nA: 搜一下 FROST-LANTERN-IDX 这个项目代号对应的周我按项目代号 `FROST-LANTERN-IDX` 以及 `FROST-LANTERN-IDX QPS` 检索了周报派生记忆索引。\n\n结果：目前命中的周报摘要里没有看到明确的 QPS 数值。检索结果主要提到缓存复测、tenantId/projectId 日志、脱敏、重试机制等内容，但没有出现“QPS 提到多少”的信息。\n\n因此我不能确认该项目周报里 QPS 的具体数值；只能说：派生记忆索引中暂未命中包含 QPS 数值的相关内容。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "搜一下 FROST-LANTERN-IDX 这个项目代号对应的周报，QPS 提到多少了？",
+          "a": "搜一下 FROST-LANTERN-IDX 这个项目代号对应的周我按项目代号 `FROST-LANTERN-IDX` 以及 `FROST-LANTERN-IDX QPS` 检索了周报派生记忆索引。\n\n结果：目前命中的周报摘要里没有看到明确的 QPS 数值。检索结果主要提到缓存复测、tenantId/projectId 日志、脱敏、重试机制等内容，但没有出现“QPS 提到多少”的信息。\n\n因此我不能确认该项目周报里 QPS 的具体数值；只能说：派生记忆索引中暂未命中包含 QPS 数值的相关内容。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44",
+      "message_id": "cm_a6d8003d-dba0-40ec-8299-a2d4116235e9",
+      "request_id": "d7e3553a-ea02-4e97-86ce-650a36d670de",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44",
+            "messageId": "cm_a6d8003d-dba0-40ec-8299-a2d4116235e9",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 138,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 135,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "d7e3553a-ea02-4e97-86ce-650a36d670de",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "搜一下 FROST-LANTERN-IDX 这个项目代号对应的周报，QPS 提到多少了？",
+        "context": "同 WA-094。不附带周报。",
+        "steps": "1. 以智本_anrou 登录，不附带周报；\n2. 用项目代号检索；\n3. 检查是否答出 QPS 1480。",
+        "must": "点名FROST-LANTERN-IDX或霜灯索引，并写出QPS为1480",
+        "forbid": "银杏轧差；47分钟；0.37%",
+        "expected": "项目代号命中霜灯索引周报，QPS=1480",
+        "eval_dims": "忠实度|完整度|指令理解",
+        "gold": "",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44",
+        "messageId": "cm_a6d8003d-dba0-40ec-8299-a2d4116235e9",
+        "requestId": "d7e3553a-ea02-4e97-86ce-650a36d670de",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 138,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "搜一下 FROST-LANTERN-IDX 这个项目代号对应的周报，QPS 提到多少了？",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_0a6c90e9-5ef6-403a-b1aa-bfef6a78ea44 首轮未绑定 reportId；streamMessageId=cm_a6d8003d-dba0-40ec-8299-a2d4116235e9；requestId=d7e3553a-ea02-4e97-86ce-650a36d670de",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×135、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，249 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：人工复核（加权 65.0，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "项目代号命中霜灯索引周报，QPS=1480",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "suggestion": "回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",
+      "root_cause": "模型把材料外的信息补进去了",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 20.0,
+        "准确性": 40.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 80.0
+      },
+      "auto_verdict": "人工复核",
+      "auto_weighted": 65.0,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "项目代号命中霜灯索引周报，QPS=1480",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-097",
+      "case_id": "WA-097",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "关键词未命中",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 5.0,
+        "完整度": 3.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 86.0,
+      "verdict": "通过",
+      "defect_ids": [],
+      "evidence": "【评测结论】通过（加权 86.0）\n【预期结果】检索无命中时应说明未找到，不要编造项目进展\n【对比】合同达成且无红线；必须点命中率 0%。\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_ae286f7a-5f66-4102-a38c-eb24ea597af9 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 有没有绛珠对撞机相关的周报？\nA: 绛珠对撞机周报杀码我检索了“绛珠对撞机”相关的周报记忆索引，未看到明确提到该主题的匹配结果。\n\n但需要说明：这只表示当前派生记忆索引没有命中明确相关内容，不等同于一定不存在对应周报。若你希望我进一步查“收到的周报”或某个时间范围内的报告，可以告诉我范围，例如“最近三个月收到的周报”。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "有没有绛珠对撞机相关的周报？",
+          "a": "绛珠对撞机周报杀码我检索了“绛珠对撞机”相关的周报记忆索引，未看到明确提到该主题的匹配结果。\n\n但需要说明：这只表示当前派生记忆索引没有命中明确相关内容，不等同于一定不存在对应周报。若你希望我进一步查“收到的周报”或某个时间范围内的报告，可以告诉我范围，例如“最近三个月收到的周报”。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_ae286f7a-5f66-4102-a38c-eb24ea597af9",
+      "message_id": "cm_6bb094b6-3b91-4b95-8bca-4ca39da3cb2c",
+      "request_id": "4ac9c1cf-1dd1-4ebd-918c-44423410354f",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_ae286f7a-5f66-4102-a38c-eb24ea597af9",
+            "messageId": "cm_6bb094b6-3b91-4b95-8bca-4ca39da3cb2c",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 99,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 96,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "4ac9c1cf-1dd1-4ebd-918c-44423410354f",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_ae286f7a-5f66-4102-a38c-eb24ea597af9",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "有没有绛珠对撞机相关的周报？",
+        "context": "收件箱有霜灯索引与潮汐对账长周报，但都不含绛珠对撞机。不附带周报。",
+        "steps": "1. 以智本_anrou 登录，不附带周报；\n2. 发送不存在的关键词；\n3. 检查是否说明未找到，且不把霜灯/潮汐事实安到绛珠对撞机上。",
+        "must": "明确说明没有找到相关周报",
+        "forbid": "0.917；1480；霜灯索引；银杏轧差；0.37%；潮汐对账",
+        "expected": "检索无命中时应说明未找到，不要编造项目进展",
+        "eval_dims": "忠实度|完整度|指令理解",
+        "gold": "是",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_ae286f7a-5f66-4102-a38c-eb24ea597af9",
+        "messageId": "cm_6bb094b6-3b91-4b95-8bca-4ca39da3cb2c",
+        "requestId": "4ac9c1cf-1dd1-4ebd-918c-44423410354f",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 99,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_ae286f7a-5f66-4102-a38c-eb24ea597af9 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_ae286f7a-5f66-4102-a38c-eb24ea597af9，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "有没有绛珠对撞机相关的周报？",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_ae286f7a-5f66-4102-a38c-eb24ea597af9，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_ae286f7a-5f66-4102-a38c-eb24ea597af9 首轮未绑定 reportId；streamMessageId=cm_6bb094b6-3b91-4b95-8bca-4ca39da3cb2c；requestId=4ac9c1cf-1dd1-4ebd-918c-44423410354f",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×96、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，142 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：通过（加权 86.0，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": "—",
+        "why": "回答对着已授权周报，没有踩红线。",
+        "findings": [],
+        "expected": "检索无命中时应说明未找到，不要编造项目进展",
+        "weak_dims": []
+      },
+      "suggestion": "补齐执行 Trace 后按失败阶段拆分回归用例并复测。",
+      "root_cause": "需要结合完整 Trace 再看是 Prompt 还是工具选错",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 60.0,
+        "准确性": 100.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 80.0
+      },
+      "auto_verdict": "通过",
+      "auto_weighted": 86.0,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 5.0,
+        "完整度": 3.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "—",
+        "severity": "—",
+        "summary": "回答准确完整",
+        "code": "—",
+        "why": "回答对着已授权周报，没有踩红线。",
+        "findings": [],
+        "expected": "检索无命中时应说明未找到，不要编造项目进展",
+        "weak_dims": []
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-098",
+      "case_id": "WA-098",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "检索结果区分",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 65.6,
+      "verdict": "人工复核",
+      "defect_ids": [],
+      "evidence": "【评测结论】人工复核（加权 65.6）\n【预期结果】只命中潮汐对账周报，错账率=0.37%\n【对比】质量分接近门槛或需人工确认；必须点命中率 0%。 关键词检索未答出必须的专有数字，视为未命中目标周报\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_d88cea6b-16a0-496a-abdf-57006f01eab6 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 银杏轧差这周错账率是多少？不要把向量检索项目混进来。\nA: 银杏轧差本周错账率当前结构化数据里没有可查询的“错账率”指标、统计周期、分子分母或计算口径字段，所以我无法直接查出“银杏轧差”本周错账率。\n\n已按你的要求限定：\n- 项目：银杏轧差\n- 时间：2026-08-24 至 2026-08-31（本周，UTC）\n- 排除：向量检索项目\n\n如果你有相关周报、日报或错账明细，我可以基于报告内容帮你计算或核对错账率。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "银杏轧差这周错账率是多少？不要把向量检索项目混进来。",
+          "a": "银杏轧差本周错账率当前结构化数据里没有可查询的“错账率”指标、统计周期、分子分母或计算口径字段，所以我无法直接查出“银杏轧差”本周错账率。\n\n已按你的要求限定：\n- 项目：银杏轧差\n- 时间：2026-08-24 至 2026-08-31（本周，UTC）\n- 排除：向量检索项目\n\n如果你有相关周报、日报或错账明细，我可以基于报告内容帮你计算或核对错账率。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_d88cea6b-16a0-496a-abdf-57006f01eab6",
+      "message_id": "cm_9d292b03-97ed-4eda-856e-577a7e4ed4ee",
+      "request_id": "f3e82ff2-8176-4ef7-a4bc-840b0628e0bf",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_d88cea6b-16a0-496a-abdf-57006f01eab6",
+            "messageId": "cm_9d292b03-97ed-4eda-856e-577a7e4ed4ee",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 126,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 123,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "f3e82ff2-8176-4ef7-a4bc-840b0628e0bf",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_d88cea6b-16a0-496a-abdf-57006f01eab6",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "银杏轧差这周错账率是多少？不要把向量检索项目混进来。",
+        "context": "智本_Anna7 已向智本_anrou 发送不少于10000字的潮汐对账周报（2026/08/17-08/21）。不附带周报。",
+        "steps": "1. 以智本_anrou 登录，不附带周报；\n2. 用银杏轧差检索；\n3. 检查答出 0.37%，且不出现霜灯索引指标。",
+        "must": "点名银杏轧差或潮汐对账，并写出错账率为0.37%",
+        "forbid": "霜灯索引；0.917；1480；青岚实验舱；夜莺召回闸",
+        "expected": "只命中潮汐对账周报，错账率=0.37%",
+        "eval_dims": "忠实度|完整度|指令理解",
+        "gold": "是",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_d88cea6b-16a0-496a-abdf-57006f01eab6",
+        "messageId": "cm_9d292b03-97ed-4eda-856e-577a7e4ed4ee",
+        "requestId": "f3e82ff2-8176-4ef7-a4bc-840b0628e0bf",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 126,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_d88cea6b-16a0-496a-abdf-57006f01eab6 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_d88cea6b-16a0-496a-abdf-57006f01eab6，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "银杏轧差这周错账率是多少？不要把向量检索项目混进来。",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_d88cea6b-16a0-496a-abdf-57006f01eab6，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_d88cea6b-16a0-496a-abdf-57006f01eab6 首轮未绑定 reportId；streamMessageId=cm_9d292b03-97ed-4eda-856e-577a7e4ed4ee；requestId=f3e82ff2-8176-4ef7-a4bc-840b0628e0bf",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×123、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，178 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：人工复核（加权 65.6，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "只命中潮汐对账周报，错账率=0.37%",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "suggestion": "回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",
+      "root_cause": "模型把材料外的信息补进去了",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 20.0,
+        "准确性": 40.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 100.0
+      },
+      "auto_verdict": "人工复核",
+      "auto_weighted": 65.6,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 5.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "只命中潮汐对账周报，错账率=0.37%",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "manual": false,
+      "review_note": "",
+      "reviewer": "",
+      "reviewed_at": ""
+    },
+    {
+      "exec_id": "E-099",
+      "case_id": "WA-099",
+      "date": "2026-08-24",
+      "report_id": "2091822305754746880,2091822327749677056",
+      "module": "自然语言选周报",
+      "scene": "长文深处命中",
+      "priority": "P1",
+      "redline_case": "否",
+      "model_version": "2026-08-24",
+      "prompt_version": "未记录",
+      "data_version": "report_data.csv@7月+Anna7日报v1",
+      "scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "redline_hit": "否",
+      "weighted": 65.0,
+      "verdict": "人工复核",
+      "defect_ids": [],
+      "evidence": "【评测结论】人工复核（加权 65.0）\n【预期结果】从长周报正文检索到夜莺召回闸熔断阈值 86ms\n【对比】质量分接近门槛或需人工确认；必须点命中率 0%。 关键词检索未答出必须的专有数字，视为未命中目标周报\n【ReportId】2091822305754746880,2091822327749677056\n【scorer】followup-flywheel-v3.1 family=boundary\n【会话绑定】sessionId=cs_5cb34656-e873-4e61-b206-95bcc6dc06ab 首轮未绑定 reportId\n\n【第1次追问】\n[turn1] Q: 夜莺召回闸熔断阈值改成多少了？\nA: 夜莺召回闸熔断阈值调整至多少？我在已沉淀的周报记忆里检索“夜莺召回闸熔断阈值”，没有命中明确说明“阈值改成多少”的记录。\n\n目前只能确认：检索结果里没有直接提到“夜莺召回闸”或对应熔断阈值的变更数值；不能据此断定周报中一定没有。建议你提供相关周报/时间范围，或我可以按某个时间段继续帮你查。",
+      "turns": [
+        {
+          "turn": 1,
+          "q": "夜莺召回闸熔断阈值改成多少了？",
+          "a": "夜莺召回闸熔断阈值调整至多少？我在已沉淀的周报记忆里检索“夜莺召回闸熔断阈值”，没有命中明确说明“阈值改成多少”的记录。\n\n目前只能确认：检索结果里没有直接提到“夜莺召回闸”或对应熔断阈值的变更数值；不能据此断定周报中一定没有。建议你提供相关周报/时间范围，或我可以按某个时间段继续帮你查。"
+        }
+      ],
+      "daily_gold": null,
+      "session_id": "cs_5cb34656-e873-4e61-b206-95bcc6dc06ab",
+      "message_id": "cm_0be8582e-d160-474e-856a-e3b549f8d1ff",
+      "request_id": "70ada37f-8317-4e19-961c-cabff6823c11",
+      "run_id": "",
+      "trace_id": "",
+      "trace_status": "部分可观测",
+      "trace_summary": {
+        "source": "chat/report/stream",
+        "turns": [
+          {
+            "sessionId": "cs_5cb34656-e873-4e61-b206-95bcc6dc06ab",
+            "messageId": "cm_0be8582e-d160-474e-856a-e3b549f8d1ff",
+            "runId": "",
+            "traceId": "",
+            "eventCount": 106,
+            "eventTypes": {
+              "started": 1,
+              "report_ref": 1,
+              "text_delta": 103,
+              "completed": 1
+            },
+            "observed": {
+              "routes": [],
+              "faq": [],
+              "skills": [],
+              "mcpTools": []
+            },
+            "coverage": {
+              "input": true,
+              "reportSelection": true,
+              "session": true,
+              "message": true,
+              "route": false,
+              "faq": false,
+              "skill": false,
+              "mcp": false,
+              "output": true
+            },
+            "status": "部分可观测",
+            "requestId": "70ada37f-8317-4e19-961c-cabff6823c11",
+            "httpStatus": 200,
+            "turn": 1,
+            "request": {
+              "tenantId": "T1120BGCN",
+              "sessionId": "",
+              "reports": []
+            },
+            "sessionCreate": true,
+            "boundReportIds": []
+          }
+        ],
+        "status": "部分可观测",
+        "sessionId": "cs_5cb34656-e873-4e61-b206-95bcc6dc06ab",
+        "boundReportIds": []
+      },
+      "agent": "周报追问 Agent",
+      "meta": {
+        "question": "夜莺召回闸熔断阈值改成多少了？",
+        "context": "夜莺召回闸 86ms 写在霜灯索引万字周报正文中部。不附带周报。",
+        "steps": "1. 以智本_anrou 登录，不附带周报；\n2. 问夜莺召回闸熔断阈值；\n3. 检查是否答出 86ms。",
+        "must": "点名夜莺召回闸，并写出熔断阈值为86ms",
+        "forbid": "19秒；梧桐轧账闸；0.37%",
+        "expected": "从长周报正文检索到夜莺召回闸熔断阈值 86ms",
+        "eval_dims": "忠实度|完整度|指令理解|稳定追溯",
+        "gold": "",
+        "source": "向量匹配/关键词检索"
+      },
+      "trace": {
+        "status": "部分可观测",
+        "captured": 6,
+        "total": 9,
+        "sessionId": "cs_5cb34656-e873-4e61-b206-95bcc6dc06ab",
+        "messageId": "cm_0be8582e-d160-474e-856a-e3b549f8d1ff",
+        "requestId": "70ada37f-8317-4e19-961c-cabff6823c11",
+        "runId": "",
+        "traceId": "",
+        "eventCount": 106,
+        "boundReportIds": [],
+        "sessionBinding": "sessionId=cs_5cb34656-e873-4e61-b206-95bcc6dc06ab 首轮未绑定 reportId",
+        "requestProtocol": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_5cb34656-e873-4e61-b206-95bcc6dc06ab，不再传 reportId",
+        "nodes": [
+          {
+            "key": "input",
+            "label": "测试输入",
+            "status": "已观测",
+            "observed": "夜莺召回闸熔断阈值改成多少了？",
+            "expected": "保存问题、上下文、租户和用例版本"
+          },
+          {
+            "key": "reports",
+            "label": "报告选择",
+            "status": "已观测",
+            "observed": "首轮 POST /chat/report/stream 未传 reportId，不传 sessionId；续轮只传 sessionId=cs_5cb34656-e873-4e61-b206-95bcc6dc06ab，不再传 reportId",
+            "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"
+          },
+          {
+            "key": "session",
+            "label": "追问",
+            "status": "已观测",
+            "observed": "sessionId=cs_5cb34656-e873-4e61-b206-95bcc6dc06ab 首轮未绑定 reportId；streamMessageId=cm_0be8582e-d160-474e-856a-e3b549f8d1ff；requestId=70ada37f-8317-4e19-961c-cabff6823c11",
+            "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"
+          },
+          {
+            "key": "route",
+            "label": "Agent 路由",
+            "status": "缺失",
+            "observed": "SSE 未下发 routeKey / workflowKey",
+            "expected": "保存 routeKey、候选 Agent 与选择原因"
+          },
+          {
+            "key": "faq",
+            "label": "FAQ / 知识库",
+            "status": "缺失",
+            "observed": "SSE 未下发 FAQ / 知识库命中",
+            "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"
+          },
+          {
+            "key": "skill",
+            "label": "Skill 选择",
+            "status": "缺失",
+            "observed": "SSE 未下发 skillKey",
+            "expected": "保存 skillKey、版本、snapshotId 与选择依据"
+          },
+          {
+            "key": "mcp",
+            "label": "工具调用",
+            "status": "已调用",
+            "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。 本次事件：text_delta×103、started×1、report_ref×1、completed×1。",
+            "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"
+          },
+          {
+            "key": "output",
+            "label": "模型输出",
+            "status": "已观测",
+            "observed": "已保存最终回答，145 字符，HTTP 200",
+            "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"
+          },
+          {
+            "key": "evaluation",
+            "label": "自动质检",
+            "status": "已观测",
+            "observed": "自动判定：人工复核（加权 65.0，红线 否）",
+            "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"
+          }
+        ]
+      },
+      "issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "从长周报正文检索到夜莺召回闸熔断阈值 86ms",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
+      },
+      "suggestion": "回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",
+      "root_cause": "模型把材料外的信息补进去了",
+      "family": "boundary",
+      "managed_scores": {
+        "任务完成度": 20.0,
+        "准确性": 40.0,
+        "指令遵循": 80.0,
+        "安全合规": 100.0,
+        "工具/追溯代理": 80.0,
+        "表达与体验": 80.0
+      },
+      "auto_verdict": "人工复核",
+      "auto_weighted": 65.0,
+      "auto_redline": "否",
+      "auto_scores": {
+        "忠实度": 2.0,
+        "完整度": 1.0,
+        "状态归因": 5.0,
+        "权限隐私": 5.0,
+        "历史关联": 3.0,
+        "风险趋势": 4.0,
+        "指令理解": 4.0,
+        "可读性": 4.0,
+        "稳定追溯": 4.0
+      },
+      "auto_issue": {
+        "type": "事实错误",
+        "severity": "中",
+        "summary": "关键词检索未答出必须的专有数字，视为未命中目标周报",
+        "code": "事实错误",
+        "why": "关键事实对不上已授权周报，或未知问题没有正确拒答。",
+        "findings": [
+          "关键词检索未答出必须的专有数字，视为未命中目标周报",
+          "分数明显偏低的维度：忠实度 2/5、完整度 1/5。"
+        ],
+        "expected": "从长周报正文检索到夜莺召回闸熔断阈值 86ms",
+        "weak_dims": [
+          "忠实度 2/5",
+          "完整度 1/5"
+        ]
       },
       "manual": false,
       "review_note": "",
