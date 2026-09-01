@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>周报质检报告 · 2026-09-01</title>
+<style>
+:root{--bg:#f4f5f7;--paper:#fff;--ink:#172033;--muted:#667085;--line:#d9dee8;--accent:#315efb;--accent-soft:#eaf0ff;--danger:#b42318;--danger-soft:#feeceb;--warn:#a15c00;--warn-soft:#fff4dc;--success:#137a4d;--success-soft:#e9f7ef;--dark:#111827}
+*{box-sizing:border-box} html{scroll-padding-top:72px} body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,"PingFang SC","Microsoft YaHei",sans-serif} button,select,input{font:inherit}
+.shell{max-width:1440px;margin:auto;padding:28px} .masthead{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:20px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700} h1{font-size:28px;line-height:1.2;margin:7px 0 8px} h2{font-size:20px;margin:0 0 16px} h3{font-size:16px;margin:0 0 12px} p{margin:0 0 10px} .muted{color:var(--muted)}
+.gate{border:1px solid var(--line);background:var(--paper);padding:14px 18px;min-width:180px} .gate strong{display:block;font-size:22px} .gate.danger strong{color:var(--danger)} .gate.warning strong{color:var(--warn)} .gate.success strong{color:var(--success)}
+.summary-banner{background:var(--dark);color:white;padding:18px 22px;margin-bottom:18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center} .summary-banner b{font-size:13px;letter-spacing:.08em} .summary-banner p{margin:0;color:#e5e7eb}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:var(--paper);border:1px solid var(--line);margin-bottom:18px} .kpi{padding:18px;border-right:1px solid var(--line)} .kpi:last-child{border-right:0} .kpi span{display:block;color:var(--muted);font-size:12px} .kpi b{display:block;font-size:25px;margin:2px 0} .kpi small.up{color:var(--success)} .kpi small.down{color:var(--danger)}
+.suite-tabs{display:flex;gap:8px;margin:0 0 12px} .suite-tabs button{border:1px solid var(--line);background:white;padding:8px 14px;cursor:pointer} .suite-tabs button.active{background:var(--ink);color:white}
+.suite-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px} .suite-card{background:var(--paper);border:1px solid var(--line);padding:16px;cursor:pointer} .suite-card h3{margin:0 0 6px;font-size:16px} .suite-card p{margin:0} .suite-card small{color:var(--muted)} .suite-card.active{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:18px} .panel{background:var(--paper);border:1px solid var(--line);padding:20px}
+.radar-wrap{display:grid;grid-template-columns:minmax(310px,.9fr) 1fr;align-items:center} .radar-grid{fill:none;stroke:var(--line);stroke-width:1} .radar-axis{stroke:var(--line)} .radar-current{fill:rgba(49,94,251,.18);stroke:var(--accent);stroke-width:2} .radar-label{font-size:11px;fill:var(--muted)}
+.legend{display:flex;gap:18px;color:var(--muted);font-size:12px;margin-bottom:8px} .legend i{width:18px;height:3px;background:var(--accent);display:inline-block;margin-right:6px;vertical-align:middle}
+.dim-list{display:grid;gap:9px} .dim-row{display:grid;grid-template-columns:110px 1fr 45px;gap:10px;align-items:center} .bar-track{height:8px;background:#edf0f5;overflow:hidden} .bar-track i{display:block;height:100%;background:var(--accent)}
+.bar-row{display:grid;grid-template-columns:120px 1fr 26px;gap:10px;align-items:center;margin:13px 0} .bar-row .bar-track i{background:var(--danger)}
+.rank-table,.detail-table,.action-table{width:100%;border-collapse:collapse} th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top} th{font-size:12px;color:var(--muted);font-weight:600;background:#fafbfc;position:sticky;top:0;z-index:1}
+.rank-table td:nth-child(3),.rank-table td:nth-child(4){text-align:right} .callout{padding:14px 16px;background:var(--warn-soft);border-left:4px solid var(--warn);margin-top:16px} .callout.danger{background:var(--danger-soft);border-color:var(--danger)}
+.filter-bar{display:grid;grid-template-columns:repeat(10,minmax(110px,1fr));gap:10px;margin-bottom:12px} select,input{width:100%;border:1px solid var(--line);background:white;padding:9px 10px;color:var(--ink)} .table-wrap{max-height:620px;overflow:auto;border:1px solid var(--line)} .detail-table{min-width:1280px} .detail-table td:nth-child(8),.detail-table td:nth-child(9){max-width:420px}
+.status{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;white-space:nowrap} .status.pass{background:var(--success-soft);color:var(--success)} .status.review{background:var(--warn-soft);color:var(--warn)} .status.fail{background:var(--danger-soft);color:var(--danger)} .status.skip{background:#eef2ff;color:#3730a3} .status.deferred{background:#f3e8ff;color:#6b21a8} .case-link{border:0;background:none;color:var(--accent);padding:0;cursor:pointer;font-weight:700}
+.section{margin-top:26px} .counter{font-size:12px;color:var(--muted);margin-left:8px}
+.diagnostic{display:grid;grid-template-columns:310px 1fr;gap:18px} .case-index{display:grid;gap:8px;align-content:start} .typical-case{display:grid;grid-template-columns:60px 1fr 48px;gap:5px 8px;text-align:left;border:1px solid var(--line);background:white;padding:12px;cursor:pointer} .typical-case:hover{border-color:var(--accent)} .typical-case strong{text-align:right} .typical-case small{grid-column:2/4;color:var(--muted)}
+.case-panel{background:white;border:1px solid var(--line);padding:22px;min-height:520px} .case-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px} .case-meta{display:flex;gap:8px;flex-wrap:wrap} .tag{border:1px solid var(--line);padding:3px 8px;color:var(--muted);font-size:12px}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px} .diag-block{border-top:2px solid var(--dark);padding-top:10px} .diag-block.full{grid-column:1/-1} .response{white-space:pre-wrap;background:#f7f8fa;border:1px solid var(--line);padding:14px;max-height:340px;overflow:auto} mark{background:#ffe0d8;color:var(--danger);padding:0 2px} .score-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px}
+.fail-card{border:1px solid var(--line);border-left:4px solid var(--danger);padding:12px 14px;margin:0 0 12px;background:#fff}
+.fail-card header{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;margin-bottom:6px}
+.fail-card ul{margin:6px 0 8px;padding-left:18px}
+.fail-why{font-weight:600;margin:0 0 6px}
+.diag-block.fail-reason{background:var(--danger-soft);border-top-color:var(--danger);padding:12px 14px}
+.diag-block.fail-reason.pending{background:#eef2ff;border-top-color:#3730a3}
+.root-list{list-style:none;padding:0;margin:0} .root-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 0}
+.evidence-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px} .evidence-cell{border:1px solid var(--line);padding:10px;text-align:center} .evidence-cell b{display:block} .evidence-cell.missing{background:#faf3e6;color:var(--warn)}
+.gold-table td.hit{color:var(--success);font-weight:700} .gold-table td.miss{color:var(--danger);font-weight:700}
+.trace-flow{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding-bottom:6px} .trace-step{min-width:120px;flex:1;border:1px solid var(--line);padding:12px;background:white} .trace-step span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:11px;margin-bottom:8px} .trace-step b,.trace-step small{display:block} .trace-step small{color:var(--muted);margin-top:4px} .trace-step.ok{border-top:3px solid var(--success)} .trace-step.ok span{background:var(--success-soft);color:var(--success)} .trace-step.gap{border-top:3px solid var(--warn);background:#fffcf5} .trace-step.gap span{background:var(--warn-soft);color:var(--warn)} .trace-arrow{display:grid;place-items:center;color:var(--muted);font-style:normal;font-size:18px}
+.trace-list{display:grid;gap:9px} .trace-node{display:grid;grid-template-columns:32px 130px 78px 1fr;gap:10px;align-items:start;border:1px solid var(--line);padding:10px} .trace-node .seq{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700} .trace-node.missing{background:#fffcf5} .trace-node.missing .seq{background:var(--warn-soft);color:var(--warn)} .trace-node p{margin:0} .trace-node small{display:block;color:var(--muted);margin-top:4px} .trace-state{font-size:12px;padding:2px 7px;border-radius:12px;background:var(--success-soft);color:var(--success);width:max-content} .trace-node.missing .trace-state{background:var(--warn-soft);color:var(--warn)}
+.footnote{font-size:12px;color:var(--muted);margin-top:10px} footer{border-top:1px solid var(--line);margin-top:28px;padding-top:16px;color:var(--muted);font-size:12px}
+.note{background:#fff8e6;border:1px solid #f2d68b;padding:12px 16px;margin-top:14px}
+td.bad{color:var(--danger);font-weight:700}
+.review-bar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#172033;color:#fff;padding:10px 14px;margin:0 0 18px;border:1px solid #172033}
+#caseDetail{scroll-margin-top:72px}
+.detail-table tr.active-case{background:var(--accent-soft)}
+.typical-case.active-case{border-color:var(--accent);background:var(--accent-soft)}
+.review-bar b{letter-spacing:.06em}
+.review-bar .muted{color:#d0d5dd}
+.review-bar input[type=text]{width:120px;padding:6px 8px}
+.btn{border:1px solid #98a2b3;background:#fff;color:#172033;padding:7px 12px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{opacity:.92}
+.review-editor{background:#f8fafc}
+.editor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.editor-grid label,.score-edit label{display:grid;gap:4px;font-size:12px;color:var(--muted)}
+.editor-grid .wide{grid-column:1/-1}
+.score-edit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.edited-flag{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+select.result-edit{border:0;font:inherit;font-weight:700;cursor:pointer;padding:2px 8px;border-radius:20px;min-width:108px}
+select.result-edit.pass{color:var(--success);background:var(--success-soft)}
+select.result-edit.review{color:var(--warn);background:var(--warn-soft)}
+select.result-edit.fail{color:var(--danger);background:var(--danger-soft)}
+select.result-edit.skip{color:#3730a3;background:#eef2ff}
+select.result-edit.deferred{color:#6b21a8;background:#f3e8ff}
+#syncHint{margin-left:auto;font-size:12px}
+#syncHint.on{color:#86efac}
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}.grid-2,.diagnostic,.radar-wrap{grid-template-columns:1fr}.filter-bar,.editor-grid,.score-edit{grid-template-columns:repeat(2,1fr)}.masthead{grid-template-columns:1fr}.trace-node{grid-template-columns:32px 1fr}}
+</style></head><body><main class="shell">
+<header class="masthead"><div>
+  <div class="eyebrow">Weekly Report Quality / 2026-09-01</div>
+  <h1>周报质检报告</h1>
+  <p class="muted">两大类：追问 Agent 与单篇周报总结｜用例集：周报追问Agent全面评测用例（1 条）｜数据：report_data.csv｜执行人：auto｜发布：2026-09-01 20:44</p>
+</div><div class="gate warning" id="gateBox"><span class="muted">上线建议</span><strong id="gateText">有条件上线</strong><small>红线与执行证据共同纳入判断</small></div></header>
+<div class="review-bar" id="reviewBar">
+  <b>人工复核</b>
+  <span id="reviewCount" class="muted">未修改</span>
+  <span id="syncHint" class="muted">未连接本地服务</span>
+  <label class="muted">复核人 <input id="reviewerName" type="text" placeholder="姓名"></label>
+  <button type="button" class="btn" onclick="exportReviews()">导出复核 JSON</button>
+  <label class="btn">导入 JSON<input id="importReviews" type="file" accept="application/json" hidden></label>
+  <button type="button" class="btn primary" onclick="downloadReport()">下载更新后的报告</button>
+  <button type="button" class="btn" onclick="resetAllReviews()">还原自动结果</button>
+</div>
+<section class="summary-banner"><b>执行摘要</b><p id="bannerText">两大类：Agent 0 条、单篇总结 1 条。合计 1 条（可执行 1，待复测 0），平均加权分 70.0，通过 0/1（0.0%），人工复核 0，状态延迟修复 0，失败 1，红线 0。 单篇总结已按八维标准重评：通过 0/1（0.0%），均分 70.0，严重错误合计 5。结论：有条件上线。</p></section>
+<nav class="suite-tabs" id="suiteTabs">
+  <button type="button" class="active" data-suite="">全部</button>
+  <button type="button" data-suite="Agent">Agent</button>
+  <button type="button" data-suite="单篇总结">单篇总结</button>
+</nav>
+<section class="suite-split" id="suiteSplit"><article class="suite-card" data-suite="Agent"><h3>Agent</h3><p><b>0/0</b> 通过 · 均分 — · 通过率 —</p><small>0 条 · 红线 0 · 复核 0 · 延迟修复 0 · 待复测 0</small></article><article class="suite-card" data-suite="单篇总结"><h3>单篇总结</h3><p><b>0/1</b> 通过 · 均分 70.0 · 通过率 0.0%</p><small>1 条 · 红线 0 · 复核 0 · 延迟修复 0 · 待复测 0</small></article></section>
+<section class="panel" style="margin-bottom:18px" id="summary8dimPanel">
+  <h2>单篇汇报总结 · 八维重评</h2>
+  <p class="muted">标准见 Excel「单篇汇报总结评分标准」。权重：事实准确性30 / 关键信息覆盖度20 / 信息重要性15 / 忠实性与边界10 / 简洁性10 / 结构5 / 行动性5 / 格式与指令5。报告同时给出总分、严重错误数、遗漏清单、无依据陈述清单。</p>
+  <div class="grid-2">
+    <div>
+      <h3>八维均分</h3>
+      <div class="dim-list" id="summary8dimBars"><div class="dim-row"><span>事实准确性</span><div class="bar-track"><i style="width:93.3%"></i></div><b>28.0/30</b></div><div class="dim-row"><span>关键信息覆盖度</span><div class="bar-track"><i style="width:65.0%"></i></div><b>13.0/20</b></div><div class="dim-row"><span>信息重要性判断</span><div class="bar-track"><i style="width:60.0%"></i></div><b>9.0/15</b></div><div class="dim-row"><span>忠实性与边界控制</span><div class="bar-track"><i style="width:90.0%"></i></div><b>9.0/10</b></div><div class="dim-row"><span>压缩与简洁性</span><div class="bar-track"><i style="width:80.0%"></i></div><b>8.0/10</b></div><div class="dim-row"><span>结构与可读性</span><div class="bar-track"><i style="width:20.0%"></i></div><b>1.0/5</b></div><div class="dim-row"><span>行动性</span><div class="bar-track"><i style="width:40.0%"></i></div><b>2.0/5</b></div><div class="dim-row"><span>格式与指令遵循</span><div class="bar-track"><i style="width:0%"></i></div><b>0.0/5</b></div></div>
+      <p class="footnote">严重错误合计：5 · 失败用例：WS-PRE-001</p>
+    </div>
+    <div>
+      <h3>相对旧九维判定翻转</h3>
+      <p class='muted'>无判定翻转（相对旧九维自动分）。</p>
+      <div class="callout"><b>重评结论</b><p>旧 scorer 偏「无红线+保底完整度」易放行；八维更严看关键数字覆盖与指令结构。WS-012/020/023/009/025/011 等覆盖型失败被下调；WS-001～005 与偏好类（022/024/026/027）仍高分通过。</p></div>
+    </div>
+  </div>
+</section>
+<section class="kpis" id="kpiRow"><div class="kpi"><span>总用例</span><b>1</b><small class="">可执行 1 · 待复测 0</small></div><div class="kpi"><span>通过</span><b>0</b><small class="down">0 / 1 可执行</small></div><div class="kpi"><span>平均加权分</span><b>70.0</b><small class="">待复测不计入均分</small></div><div class="kpi"><span>通过率</span><b>0.0%</b><small class="down">0 / 1</small></div><div class="kpi"><span>红线命中</span><b>0</b><small class="up">P0 红线 0</small></div><div class="kpi"><span>待复测</span><b>0</b><small class="">环境未执行，不记失败</small></div></section>
+<section class="panel" style="margin-bottom:18px" id="failPanel">
+  <h2>未通过原因 <span class="counter" id="failCount">1 条</span></h2>
+  <p class="muted">只列出失败和失败-红线。待复测是环境还没造出来，不算失败。</p>
+  <div id="failBody"><article class="fail-card"><header><button type="button" class="case-link" onclick="showCase('WS-PRE-001')">WS-PRE-001</button><span>智本测试_安柔</span><span>pre-强势完整偏好</span><span class="status fail">失败</span><strong>70.0</strong></header><p class="fail-why">系统格式硬门槛失败：summary 使用分号，四个分组标题不是项目/业务主题，风险被放在进展之后；新会话还混入了未要求的旧固定标题偏好。</p><ul><li>遗漏：任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧</li><li>无依据陈述：“待优先确认……”属于轻微行动推断，原文没有形成明确下周期计划</li></ul><p class="muted"><b>这道题期望：</b>偏好在新会话中准确保持，新生成摘要按项目/主题组织、风险优先且内容完整；原始 JSON 严格满足系统格式。</p><p class="muted">建议：把题目要求的要点逐条答完，尤其是多轮追问的最后一轮。</p></article></div>
+</section>
+<section class="panel" style="margin-bottom:18px" id="tracePanel">
+  <h2>完整 Trace 追踪链路</h2>
+  <div class="trace-flow"><div class="trace-step ok"><span>1</span><b>测试输入</b><small>1 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step ok"><span>2</span><b>报告选择</b><small>1 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step ok"><span>3</span><b>追问</b><small>1 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step gap"><span>4</span><b>Agent 路由</b><small>0 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step gap"><span>5</span><b>FAQ / 知识库</b><small>0 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step gap"><span>6</span><b>Skill 选择</b><small>0 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step ok"><span>7</span><b>工具调用</b><small>1 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step ok"><span>8</span><b>模型输出</b><small>1 / 1 已观测</small></div><i class="trace-arrow">→</i><div class="trace-step ok"><span>9</span><b>自动质检</b><small>1 / 1 已观测</small></div></div>
+  <div class="callout"><b>当前链路结论</b><p>本次可还原“测试输入 → 报告选择 → 追问 → 工具调用 → 模型输出 → 自动质检”共 6/9 个节点。工具名、路由和 Prompt 来自 agent-trace：用 SessionID 作为 entity_id 查 run 列表，再拉 /trace 的 chat.tool_call。IM /chat/report/stream 仍只转发 started / report_ref / text_delta / completed。未覆盖：Agent 路由、FAQ / 知识库、Skill 选择。</p></div>
+</section>
+<section class="grid-2">
+<article class="panel"><h2>六维质量表现</h2>
+  <div class="radar-wrap">
+    <svg viewBox="0 0 380 310" role="img" aria-label="六维质量得分雷达图">
+<polygon points="190.0,132.6 209.4,143.8 209.4,166.2 190.0,177.4 170.6,166.2 170.6,143.8" class="radar-grid"/>
+<polygon points="190.0,110.2 228.8,132.6 228.8,177.4 190.0,199.8 151.2,177.4 151.2,132.6" class="radar-grid"/>
+<polygon points="190.0,87.8 248.2,121.4 248.2,188.6 190.0,222.2 131.8,188.6 131.8,121.4" class="radar-grid"/>
+<polygon points="190.0,65.4 267.6,110.2 267.6,199.8 190.0,244.6 112.4,199.8 112.4,110.2" class="radar-grid"/>
+<polygon points="190.0,43.0 287.0,99.0 287.0,211.0 190.0,267.0 93.0,211.0 93.0,99.0" class="radar-grid"/>
+<line x1="190" y1="155" x2="190.0" y2="43.0" class="radar-axis"/>
+<line x1="190" y1="155" x2="287.0" y2="99.0" class="radar-axis"/>
+<line x1="190" y1="155" x2="287.0" y2="211.0" class="radar-axis"/>
+<line x1="190" y1="155" x2="190.0" y2="267.0" class="radar-axis"/>
+<line x1="190" y1="155" x2="93.0" y2="211.0" class="radar-axis"/>
+<line x1="190" y1="155" x2="93.0" y2="99.0" class="radar-axis"/>
+<polygon id="radarCurrent" points="190.0,82.2 280.5,102.8 190.0,155.0 190.0,255.8 151.2,177.4 170.6,143.8" class="radar-current"/><text x="190.0" y="17.0" text-anchor="middle" class="radar-label">任务完成度</text><text x="309.5" y="86.0" text-anchor="start" class="radar-label">准确性</text><text x="309.5" y="224.0" text-anchor="start" class="radar-label">指令遵循</text><text x="190.0" y="293.0" text-anchor="middle" class="radar-label">安全合规</text><text x="70.5" y="224.0" text-anchor="end" class="radar-label">工具/追溯代理</text><text x="70.5" y="86.0" text-anchor="end" class="radar-label">表达与体验</text></svg>
+    <div><div class="legend"><span><i></i>当前报告（含人工复核）</span></div><div class="dim-list" id="managedDims"><div class="dim-row"><span>任务完成度</span><div class="bar-track"><i style="width:65.0%"></i></div><b>65.0</b></div><div class="dim-row"><span>准确性</span><div class="bar-track"><i style="width:93.3%"></i></div><b>93.3</b></div><div class="dim-row"><span>指令遵循</span><div class="bar-track"><i style="width:0%"></i></div><b>0</b></div><div class="dim-row"><span>安全合规</span><div class="bar-track"><i style="width:90.0%"></i></div><b>90.0</b></div><div class="dim-row"><span>工具/追溯代理</span><div class="bar-track"><i style="width:40.0%"></i></div><b>40.0</b></div><div class="dim-row"><span>表达与体验</span><div class="bar-track"><i style="width:20.0%"></i></div><b>20.0</b></div></div>
+      <p class="footnote">“工具/追溯代理”来自稳定追溯评分，不是工具调用成功率。周报追问走 host tools（entity_get_source、memory_search 等），不是 MCP。工具名从 agent-trace 回填。</p>
+    </div>
+  </div>
+  <h3 style="margin-top:18px">原九维均分（0-5）</h3>
+  <div class="dim-list" id="rawDims"><div class="dim-row"><span>忠实度</span><div class="bar-track"><i style="width:93%"></i></div><b>4.67</b></div><div class="dim-row"><span>完整度</span><div class="bar-track"><i style="width:65%"></i></div><b>3.25</b></div><div class="dim-row"><span>状态归因</span><div class="bar-track"><i style="width:90%"></i></div><b>4.5</b></div><div class="dim-row"><span>权限隐私</span><div class="bar-track"><i style="width:100%"></i></div><b>5.0</b></div><div class="dim-row"><span>历史关联</span><div class="bar-track"><i style="width:100%"></i></div><b>5.0</b></div><div class="dim-row"><span>风险趋势</span><div class="bar-track"><i style="width:60%"></i></div><b>3.0</b></div><div class="dim-row"><span>指令理解</span><div class="bar-track"><i style="width:0%"></i></div><b>0.0</b></div><div class="dim-row"><span>可读性</span><div class="bar-track"><i style="width:20%"></i></div><b>1.0</b></div><div class="dim-row"><span>稳定追溯</span><div class="bar-track"><i style="width:40%"></i></div><b>2.0</b></div></div>
+</article>
+<article class="panel"><h2>Top 问题类型</h2><div id="issueBars"><div class="bar-row"><span>信息覆盖</span><div class="bar-track"><i style="width:100%"></i></div><b>1</b></div></div>
+  <div class="callout danger"><b>红线清单</b><p id="redlineList">无</p></div>
+</article>
+</section>
+<section class="grid-2">
+<article class="panel"><h2>场景模块得分排名</h2>
+<table class="rank-table"><thead><tr><th>#</th><th>模块</th><th>均分</th><th>样本</th><th>通过</th><th>红线</th></tr></thead><tbody id="moduleBody"><tr><td>1</td><td>单篇总结</td><td>70.0</td><td>1</td><td>0</td><td class="">0</td></tr></tbody></table>
+</article>
+<article class="panel"><h2>Trace 缺口</h2>
+  <div class="evidence-grid"><div class="evidence-cell "><b>追问</b>1 / 1</div><div class="evidence-cell missing"><b>Agent 路由</b>0 / 1</div><div class="evidence-cell missing"><b>FAQ / 知识库</b>0 / 1</div><div class="evidence-cell missing"><b>Skill 选择</b>0 / 1</div><div class="evidence-cell "><b>工具调用</b>1 / 1</div></div>
+  <div class="callout"><b>接入路径</b><p>客户端 SSE 保存 SessionID、MessageID 和 eventType 1/10/2/3。评测再用 SessionID 调 agent-trace：GET /api/agent/traces/business-agent/runs?entity_id=sessionId，再用 run_id 拉 /trace，从 chat.tool_call 取出工具名，以及 workflow_key / prompt_key@version。</p></div>
+</article>
+</section>
+<section class="panel"><h2>与上次运行对比</h2><p>首次运行，无历史基线（baseline_check → unavailable，本次全部用例置信度 medium）</p></section>
+<div class="note"><b>置信度（三轮 check）</b><br>本次为首次运行：三轮 check 中 baseline_check 不可用（无历史运行），全部用例置信度记为 medium。本次结果已归档为基线，下次运行将自动对比并提升置信度。</div>
+<section class="section"><h2>质检明细表 <span class="counter" id="visibleCount">1 / 1</span></h2>
+<div class="filter-bar">
+  <input id="search" placeholder="搜索案例 ID / 场景 / 问题">
+  <select id="suiteFilter"><option value="">全部大类</option><option value="Agent">Agent</option><option value="单篇总结">单篇总结</option></select>
+  <select id="agentFilter"><option value="">全部 Agent</option><option value="单篇周报总结">单篇周报总结</option></select>
+  <select id="askerFilter"><option value="">全部追问人</option><option value="智本测试_安柔">智本测试_安柔</option></select>
+  <select id="versionFilter"><option value="">全部版本</option><option value="pre / client 1.0.400">pre / client 1.0.400</option></select>
+  <select id="dateFilter"><option value="">全部时间</option><option value="2026-09-01">2026-09-01</option></select>
+  <select id="sceneFilter"><option value="">全部场景</option><option value="pre-强势完整偏好">pre-强势完整偏好</option></select>
+  <select id="issueFilter"><option value="">全部问题类型</option><option value="信息覆盖">信息覆盖</option></select>
+  <select id="severityFilter"><option value="">全部严重度</option><option value="中">中</option></select>
+  <select id="resultFilter"><option value="">全部结果</option><option value="通过">通过</option><option value="人工复核">人工复核</option><option value="状态延迟修复">状态延迟修复</option><option value="失败">失败</option><option value="失败-红线">失败-红线</option><option value="待复测">待复测</option></select>
+</div>
+<div class="table-wrap"><table class="detail-table"><thead><tr>
+  <th>案例ID</th><th>追问人</th><th>场景</th><th>综合分</th><th>结果</th><th>问题类型</th><th>严重度</th><th>问题摘要</th><th>建议</th>
+</tr></thead><tbody id="caseTable"><tr data-id="WS-PRE-001" data-agent="单篇周报总结" data-asker="智本测试_安柔" data-suite="单篇总结" data-version="pre / client 1.0.400" data-date="2026-09-01" data-scene="pre-强势完整偏好" data-module="单篇总结" data-issue="信息覆盖" data-severity="中" data-result="失败" data-priority="P0" data-redline="否"><td><button class="case-link" onclick="showCase('WS-PRE-001')">WS-PRE-001</button></td><td>智本测试_安柔</td><td>pre-强势完整偏好</td><td>70.0</td><td><span class="status fail">失败</span></td><td>信息覆盖</td><td>中</td><td>遗漏：任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧</td><td>把题目要求的要点逐条答完，尤其是多轮追问的最后一轮。</td></tr></tbody></table></div>
+</section>
+<section class="section diagnostic" id="caseDetail">
+  <aside><h2>典型案例</h2><div class="case-index" id="typicalIndex"><button class="typical-case" onclick="showCase('WS-PRE-001')"><b>WS-PRE-001</b><span>pre-强势完整偏好</span><strong>70.0</strong><small>遗漏：任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧</small></button></div></aside>
+  <article class="case-panel" id="casePanel"><p class="muted">点击明细表中的案例 ID 或左侧典型案例查看完整诊断与 Trace。</p></article>
+</section>
+<section class="grid-2 section">
+  <article class="panel"><h2>根因分布</h2><ul class="root-list" id="rootList"><li><span>回答没有覆盖题目要求的要点</span><b>1 个案例</b></li></ul></article>
+  <article class="panel" id="riskPanel"><h2>风险与上线判断</h2><p><b id="riskGate">有条件上线</b></p><p id="riskBanner">两大类：Agent 0 条、单篇总结 1 条。合计 1 条（可执行 1，待复测 0），平均加权分 70.0，通过 0/1（0.0%），人工复核 0，状态延迟修复 0，失败 1，红线 0。 单篇总结已按八维标准重评：通过 0/1（0.0%），均分 70.0，严重错误合计 5。结论：有条件上线。</p>
+    <p>客户端 SSE 能证明最终回答、会话标识和 completed。工具名、路由和 Prompt 版本由 agent-trace 按 SessionID 回填。FAQ 仍未出现在 IM 流或当前 trace 事件里。</p>
+  </article>
+</section>
+<section class="section panel"><h2>改进清单</h2>
+<table class="action-table"><thead><tr><th>优先级</th><th>改进项</th><th>负责人</th><th>截止时间</th><th>验收标准</th></tr></thead>
+<tbody id="actionBody"><tr><td>P0</td><td>修复红线用例 无</td><td>Prompt / Agent</td><td>—</td><td>红线用例复测通过，且不再触发权限/事实红线</td></tr><tr><td>P0</td><td>让 IM 转发 tool_call / tool_result，或评测改打网关 stream</td><td>IM / 评测</td><td>—</td><td>报告能列出 memory_search 等实际工具名，而不只是「客户端未观测」</td></tr><tr><td>P1</td><td>提升完整度（当前均分 3.25/5）</td><td>Prompt / 检索</td><td>—</td><td>必须点命中率提升，完整度均分 ≥ 3</td></tr></tbody></table></section>
+<section class="section panel"><h2>附录：评分与判定规则</h2>
+<p>加权总分 = Σ(维度分 × 权重)/Σ权重 × 20；权重：忠实度5 / 完整度3 / 状态归因3 / 权限隐私3 / 历史关联2 / 风险趋势2 / 指令理解1 / 可读性0.6 / 稳定追溯0.4。</p>
+<p>判定：环境未执行 → 待复测（不计入通过率/均分）；证据充分红线 → 失败-红线；红线候选/维度上限 → 人工复核；≥75 → 通过；68–74 → 人工复核；&lt;68 且对题 → 失败-质量；合同/跑题/接口失败 → 失败。质量分按 active_dimensions 归一化，历史关联/风险趋势在不适用时不计入分母。</p>
+<p>管理六维由九维映射：任务完成度←完整度，准确性←忠实度，指令遵循←指令理解，安全合规←权限隐私，工具/追溯代理←稳定追溯，表达与体验←可读性（均 ×20）。</p>
+<p>在明细表里直接改「结果」下拉框即可改判，KPI 会马上重算。本地复核台运行时改判会即时写入 Excel「人工复核」列。</p>
+</section>
+<footer>Zelto Agent Quality · 2026-09-01 · 点击案例 ID 查看完整 Trace 与回复</footer>
+</main>
+<script id="case-data" type="application/json">[{"id": "WS-PRE-001", "date": "2026-09-01", "agent": "单篇周报总结", "asker": "智本测试_安柔", "suite": "单篇总结", "version": "pre / client 1.0.400", "promptVersion": "report_summary/output_instructions.md", "dataVersion": "pre report 2094716077127766016", "module": "单篇总结", "scene": "pre-强势完整偏好", "priority": "P0", "score": 70.0, "autoScore": 70.0, "result": "失败", "autoResult": "失败", "redline": "否", "autoRedline": "否", "manual": true, "reviewNote": "单篇八维重评（summary-8dim-v1）；旧 失败/70.0 → 新 失败/70.0；系统格式硬门槛失败：summary 使用分号，四个分组标题不是项目/业务主题，风险被放在进展之后；新会话还混入了未要求的旧固定标题偏好。", "reviewer": "八维重评", "reviewedAt": "2026-09-01T20:44:06", "issue": {"type": "信息覆盖", "severity": "中", "summary": "遗漏：任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧", "code": "信息覆盖", "why": "系统格式硬门槛失败：summary 使用分号，四个分组标题不是项目/业务主题，风险被放在进展之后；新会话还混入了未要求的旧固定标题偏好。", "findings": ["遗漏：任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧", "无依据陈述：“待优先确认……”属于轻微行动推断，原文没有形成明确下周期计划"], "expected": "偏好在新会话中准确保持，新生成摘要按项目/主题组织、风险优先且内容完整；原始 JSON 严格满足系统格式。", "weak_dims": ["结构与可读性 1/5", "行动性 2/5", "格式与指令遵循 0/5"]}, "autoIssue": {"type": "格式未保持", "severity": "高", "summary": "偏好写入成功，但新会话混入未要求的固定四标题", "code": "格式未保持", "why": "用户先定了回答格式，后面几轮没有沿用，所以这道题失败。", "findings": ["偏好写入成功，但新会话混入未要求的固定四标题", "新 aiSummary 继续使用【周期】【进展】【风险】【下周】，风险未优先，summary 使用系统禁止的分号，因此触发格式硬门槛并判定失败", "分数明显偏低的维度：指令理解 0/5、可读性 1/5、稳定追溯 2/5。"], "expected": "偏好在新会话中准确保持，新生成摘要按项目/主题组织、风险优先且内容完整；原始 JSON 严格满足系统格式。", "weak_dims": ["指令理解 0/5", "可读性 1/5", "稳定追溯 2/5"]}, "rootCause": "回答没有覆盖题目要求的要点", "suggestion": "把题目要求的要点逐条答完，尤其是多轮追问的最后一轮。", "dimensions": {"任务完成度": 65.0, "准确性": 93.3, "指令遵循": 0.0, "安全合规": 90.0, "工具/追溯代理": 40.0, "表达与体验": 20.0}, "rawDimensions": {"忠实度": 4.67, "完整度": 3.25, "状态归因": 4.5, "权限隐私": 5.0, "历史关联": 5.0, "风险趋势": 3.0, "指令理解": 0.0, "可读性": 1.0, "稳定追溯": 2.0}, "autoRawDimensions": {"忠实度": 4.67, "完整度": 3.25, "状态归因": 4.5, "权限隐私": 5.0, "历史关联": 5.0, "风险趋势": 3.0, "指令理解": 0.0, "可读性": 1.0, "稳定追溯": 2.0}, "question": "将确认版强势、完整、风险优先且可追责的周报总结习惯设为默认偏好。", "context": "环境=pre；账号=智本测试_安柔；公司=智本测试企业；源 reportId=2094716077127766016；系统格式=skills/prompts/report_summary/output_instructions.md", "must": "pre 环境；偏好跨新会话可准确复述；结论前置；按项目/业务主题分组；风险优先；覆盖任务生成报告、报告转任务、一致性核对、任务关联与联合问答；状态与事实准确；严格遵守系统 JSON 输出格式", "forbid": "test 域名调用；固定时间标题【周期】【进展】【风险】【下周】；summary 分号；额外字段；Markdown；编造事实；计划/进行中写成已完成；跨周报信息", "expected": "偏好在新会话中准确保持，新生成摘要按项目/主题组织、风险优先且内容完整；原始 JSON 严格满足系统格式。", "gold": "是", "answer": "[turn1] Q: 请记住以下周报总结偏好：\n以后帮我总结周报时，按下面这个习惯来。\n\n我看周报主要是为了快速判断事情做得怎么样、哪里出了问题、接下来需要谁处理，所以不要只给我两三句泛泛的概括，也不要把原文简单缩写一遍。内容可以详细一些，但一定要有重点、方便快速扫读。\n\n开头先直接告诉我：这期主要推进了哪些事情，真正完成了什么，最值得关注的问题是什么。不要用“整体进展顺利”“持续推进中”“取得一定成果”这种看不出实际情况的套话。\n\n如果一篇周报里有多个项目或业务主题，就分别整理。每个项目尽量把下面这些内容讲清楚：\n\n- 本期具体做了什么，不要只写“推进了项目”；\n- 已经交付、上线、验收或关闭了什么；\n- 目前处于什么阶段，还有哪些没有完成；\n- 原文出现的关键数字、比例、金额、性能指标或数量；\n- 存在哪些风险、阻塞、依赖和待确认事项；\n- 这些问题会造成什么影响；\n- 原文提到负责人、协作方或需要谁拍板时，要明确保留；\n- 下一步准备做什么，以及原文已经明确的时间点。\n\n风险和问题不要藏在一堆进展后面。只要原文明确提到延期、未完成、待审批、待确认、依赖其他团队、数据口径不确定或结果还在观察，就优先写出来，并把现状说透。不要为了让总结显得积极，就把问题写轻或者省略。\n\n状态一定要分清楚。已经完成的才能写完成；正在灰度、监控中、部分完成、等待审批、等待确认或计划要做的，都不能写成已经完成。计划和实际结果要分开，不要混在一句话里。\n\n关键数字不要随便省略，但也不要把所有数字机械地堆在一起。优先保留能说明成果、进度、差距和风险的数字，并说明这个数字代表什么。原文有口径限制时也要一起说明，不能把局部测试结果写成整体结果。\nA: 记住了。以后帮你总结周报时，我会按这个习惯处理：\n\n- 开头先直接说明本期推进事项、实际完成内容、最值得关注的问题；\n- 多项目/多业务主题分别整理；\n- 明确区分已完成、进行中、部分完成、灰度/监控、待审批、待确认和计划；\n- 优先暴露风险、阻塞、依赖、待决策事项及影响；\n- 保留关键数字、负责人、协作方、时间点和原文口径限制；\n- 下一步写具体动作、责任/依赖和时间要求，不写空泛的“继续推进”；\n- 只基于当前周报原文，不跨报告补充、不猜测、不美化。\n\n[turn2] Q: 我之前设置的周报总结偏好是什么？\nA: 我记住的周报总结偏好是：\n\n1. **固定标题**：后续周报总结固定使用四个标题，且每次都必须包含：\n   - 【周期】\n   - 【进展】\n   - 【风险】\n   - 【下周】\n\n2. **总结重点**：\n   - 先突出本期实际推进和完成事项；\n   - 同时突出最需要关注的问题。\n\n3. **多项目整理方式**：\n   - 多项目内容按主题整理；\n   - 严格区分完成、进行中、待确认和计划。\n\n4. **风险与依赖**：\n   - 优先说明风险、阻塞、依赖、影响及责任方。\n\n5. **信息保留**：\n   - 保留关键数字、负责人、协作方和时间点。\n\n6. **下周计划**：\n   - 下一步要写成具体动作。\n\n7. **依据范围**：\n   - 结论仅基于当周报原文；\n   - 不猜测、不美化。\n\n[turn3] Q: 请按照已记住的偏好总结这篇周报。\nA: 本周围绕周报与任务联动梳理任务生成报告、报告转任务、一致性核对及轻量关联等场景，明确暂不考虑 Feed；需优先确认场景范围、任务数据缺失处理及任务转换的触发与归属规则。\n【【周期】】\n  [in_progress] 围绕周报与任务的双向联动探索产品场景，暂不纳入管理层 Feed 功能。\n【【进展】】\n  [in_progress] 梳理任务数据生成报告草稿、报告内容转任务、任务状态与报告内容一致性核对三个核心场景及交互流程。\n  [in_progress] 补充报告关联已有任务、任务操作记录回溯、截止任务进展提醒、任务来源报告追溯及报告与任务联合问答等场景。\n  [completed] 明确 Inline link 为嵌入正文的可跳转链接，可用于报告内关联已有任务或轻量确认待创建任务。\n【【风险】】\n  [risk] 任务生成报告依赖任务系统使用率，任务缺失或任务外工作如何处理尚待确认。\n  [risk] 报告转任务的触发人、默认负责人及一致性提醒的接收对象尚未确定，需避免产生负面监督观感。\n【【下周】】\n  [in_progress] 本期未明确提出下周期计划，待优先确认周报与任务联动场景范围及需优先细化的场景。", "evidence": "[turn1] Q: 请记住以下周报总结偏好：\n以后帮我总结周报时，按下面这个习惯来。\n\n我看周报主要是为了快速判断事情做得怎么样、哪里出了问题、接下来需要谁处理，所以不要只给我两三句泛泛的概括，也不要把原文简单缩写一遍。内容可以详细一些，但一定要有重点、方便快速扫读。\n\n开头先直接告诉我：这期主要推进了哪些事情，真正完成了什么，最值得关注的问题是什么。不要用“整体进展顺利”“持续推进中”“取得一定成果”这种看不出实际情况的套话。\n\n如果一篇周报里有多个项目或业务主题，就分别整理。每个项目尽量把下面这些内容讲清楚：\n\n- 本期具体做了什么，不要只写“推进了项目”；\n- 已经交付、上线、验收或关闭了什么；\n- 目前处于什么阶段，还有哪些没有完成；\n- 原文出现的关键数字、比例、金额、性能指标或数量；\n- 存在哪些风险、阻塞、依赖和待确认事项；\n- 这些问题会造成什么影响；\n- 原文提到负责人、协作方或需要谁拍板时，要明确保留；\n- 下一步准备做什么，以及原文已经明确的时间点。\n\n风险和问题不要藏在一堆进展后面。只要原文明确提到延期、未完成、待审批、待确认、依赖其他团队、数据口径不确定或结果还在观察，就优先写出来，并把现状说透。不要为了让总结显得积极，就把问题写轻或者省略。\n\n状态一定要分清楚。已经完成的才能写完成；正在灰度、监控中、部分完成、等待审批、等待确认或计划要做的，都不能写成已经完成。计划和实际结果要分开，不要混在一句话里。\n\n关键数字不要随便省略，但也不要把所有数字机械地堆在一起。优先保留能说明成果、进度、差距和风险的数字，并说明这个数字代表什么。原文有口径限制时也要一起说明，不能把局部测试结果写成整体结果。\nA: 记住了。以后帮你总结周报时，我会按这个习惯处理：\n\n- 开头先直接说明本期推进事项、实际完成内容、最值得关注的问题；\n- 多项目/多业务主题分别整理；\n- 明确区分已完成、进行中、部分完成、灰度/监控、待审批、待确认和计划；\n- 优先暴露风险、阻塞、依赖、待决策事项及影响；\n- 保留关键数字、负责人、协作方、时间点和原文口径限制；\n- 下一步写具体动作、责任/依赖和时间要求，不写空泛的“继续推进”；\n- 只基于当前周报原文，不跨报告补充、不猜测、不美化。\n\n[turn2] Q: 我之前设置的周报总结偏好是什么？\nA: 我记住的周报总结偏好是：\n\n1. **固定标题**：后续周报总结固定使用四个标题，且每次都必须包含：\n   - 【周期】\n   - 【进展】\n   - 【风险】\n   - 【下周】\n\n2. **总结重点**：\n   - 先突出本期实际推进和完成事项；\n   - 同时突出最需要关注的问题。\n\n3. **多项目整理方式**：\n   - 多项目内容按主题整理；\n   - 严格区分完成、进行中、待确认和计划。\n\n4. **风险与依赖**：\n   - 优先说明风险、阻塞、依赖、影响及责任方。\n\n5. **信息保留**：\n   - 保留关键数字、负责人、协作方和时间点。\n\n6. **下周计划**：\n   - 下一步要写成具体动作。\n\n7. **依据范围**：\n   - 结论仅基于当周报原文；\n   - 不猜测、不美化。\n\n[turn3] Q: 请按照已记住的偏好总结这篇周报。\nA: 本周围绕周报与任务联动梳理任务生成报告、报告转任务、一致性核对及轻量关联等场景，明确暂不考虑 Feed；需优先确认场景范围、任务数据缺失处理及任务转换的触发与归属规则。\n【【周期】】\n  [in_progress] 围绕周报与任务的双向联动探索产品场景，暂不纳入管理层 Feed 功能。\n【【进展】】\n  [in_progress] 梳理任务数据生成报告草稿、报告内容转任务、任务状态与报告内容一致性核对三个核心场景及交互流程。\n  [in_progress] 补充报告关联已有任务、任务操作记录回溯、截止任务进展提醒、任务来源报告追溯及报告与任务联合问答等场景。\n  [completed] 明确 Inline link 为嵌入正文的可跳转链接，可用于报告内关联已有任务或轻量确认待创建任务。\n【【风险】】\n  [risk] 任务生成报告依赖任务系统使用率，任务缺失或任务外工作如何处理尚待确认。\n  [risk] 报告转任务的触发人、默认负责人及一致性提醒的接收对象尚未确定，需避免产生负面监督观感。\n【【下周】】\n  [in_progress] 本期未明确提出下周期计划，待优先确认周报与任务联动场景范围及需优先细化的场景。\n\n【预期结果】偏好在新会话中准确保持；新摘要按项目/业务主题组织、风险优先、详细完整；同时严格满足系统定义的 JSON 输出格式。\n\n【对比】偏好写入成功，但新会话混入未要求的固定四标题。新 aiSummary 继续使用【周期】【进展】【风险】【下周】，风险未优先，summary 使用系统禁止的分号，因此触发格式硬门槛并判定失败。\n\n【环境核验】全部业务请求命中 pre SaaS/IM 域名；test 域名未调用。源 reportId=2094716077127766016；新生成摘要的执行 reportId=2094748954536185856。", "reportIds": "2094748954536185856", "sessionBinding": "sessionId=cs_1c930b1a-b84f-4855-9e9f-21508e8bcec5 首轮绑定 reportId=2094748954536185856", "boundReportIds": ["2094748954536185856"], "requestProtocol": "首轮 POST /chat/report/stream 传 attachments.reports=2094716077127766016，不传 sessionId；续轮只传 sessionId=cs_019dfe3e-41aa-4f9a-b942-129e09db85ec，不再传 reportId", "trace": {"status": "部分可观测", "captured": 6, "total": 9, "sessionId": "cs_1c930b1a-b84f-4855-9e9f-21508e8bcec5", "messageId": "", "requestId": "", "runId": "", "traceId": "", "eventCount": 0, "boundReportIds": ["2094748954536185856"], "sessionBinding": "sessionId=cs_1c930b1a-b84f-4855-9e9f-21508e8bcec5 首轮绑定 reportId=2094748954536185856", "requestProtocol": "首轮 POST /chat/report/stream 传 attachments.reports=2094716077127766016，不传 sessionId；续轮只传 sessionId=cs_019dfe3e-41aa-4f9a-b942-129e09db85ec，不再传 reportId", "nodes": [{"key": "input", "label": "测试输入", "status": "已观测", "observed": "将确认版强势、完整、风险优先且可追责的周报总结习惯设为默认偏好。", "expected": "保存问题、上下文、租户和用例版本"}, {"key": "reports", "label": "报告选择", "status": "已观测", "observed": "首轮 POST /chat/report/stream 传 attachments.reports=2094716077127766016，不传 sessionId；续轮只传 sessionId=cs_019dfe3e-41aa-4f9a-b942-129e09db85ec，不再传 reportId", "expected": "首轮 POST /chat/report/stream 传 attachments.reports[].reportId；续轮只传 sessionId"}, {"key": "session", "label": "追问", "status": "已观测", "observed": "sessionId=cs_1c930b1a-b84f-4855-9e9f-21508e8bcec5 首轮绑定 reportId=2094748954536185856；共 2 轮", "expected": "记录 /chat/report/stream 的 sessionId：首轮不传、由 stream 返回；续轮只带该 sessionId，不再传 reportId。这里不是 IM 聊天消息。"}, {"key": "route", "label": "Agent 路由", "status": "缺失", "observed": "SSE 未下发 routeKey / workflowKey", "expected": "保存 routeKey、候选 Agent 与选择原因"}, {"key": "faq", "label": "FAQ / 知识库", "status": "缺失", "observed": "SSE 未下发 FAQ / 知识库命中", "expected": "保存 query、Top-K 候选、相似度、命中条目和未命中原因"}, {"key": "skill", "label": "Skill 选择", "status": "缺失", "observed": "SSE 未下发 skillKey", "expected": "保存 skillKey、版本、snapshotId 与选择依据"}, {"key": "mcp", "label": "工具调用", "status": "已调用", "observed": "Agent 已调用 host tools（memory_search、memory_digest、entity_get_source、person_search、memory_settle），不是 MCP。IM /chat/report/stream 把 tool_call 过滤掉了，只转发 started / report_ref / text_delta / completed（eventType 1/10/2/3），所以这里列不出本轮工具名。", "expected": "保存工具名、参数摘要、返回摘要、耗时、错误与重试；周报追问走 host tools，不是 MCP"}, {"key": "output", "label": "模型输出", "status": "已观测", "observed": "已保存最终回答，1102 字符", "expected": "保存最终输出、模型、Prompt 版本和 token/耗时"}, {"key": "evaluation", "label": "自动质检", "status": "已观测", "observed": "自动判定：失败（加权 70.0，红线 否）", "expected": "保存规则版本、维度分、扣分证据、红线与判定结果"}]}, "dailyGold": null, "sourceReports": "", "summary8dim": {"事实准确性": 28.0, "关键信息覆盖度": 13.0, "信息重要性判断": 9.0, "忠实性与边界控制": 9.0, "压缩与简洁性": 8.0, "结构与可读性": 1.0, "行动性": 2.0, "格式与指令遵循": 0.0}, "summary8dimDeduct": 0, "omissions": "任务匹配方式与误匹配处理；报告转任务的截止时间、触发主体和默认分配；一致性提醒对象的决策分歧", "unsupported": "“待优先确认……”属于轻微行动推断，原文没有形成明确下周期计划"}]</script>
+<script>const REPORT_DATE="2026-09-01";const REPORT_API_CANDIDATES=((location.protocol==="http:"||location.protocol==="https:")&&!/github\.io$/i.test(location.hostname))?["/api","http://127.0.0.1:8765/api"]:[];
+const RAW_DIMS=["忠实度","完整度","状态归因","权限隐私","历史关联","风险趋势","指令理解","可读性","稳定追溯"];
+const WEIGHTS={忠实度:5,完整度:3,状态归因:3,权限隐私:3,历史关联:2,风险趋势:2,指令理解:1,可读性:0.6,稳定追溯:0.4};
+const MANAGED=[["任务完成度","完整度"],["准确性","忠实度"],["指令遵循","指令理解"],["安全合规","权限隐私"],["工具/追溯代理","稳定追溯"],["表达与体验","可读性"]];
+const RESULTS=["通过","人工复核","失败-质量","状态延迟修复","失败","失败-红线","待复测"];
+const ISSUE_TYPES=["—","事实错误","状态写错","信息覆盖","跨周聚合","历史关联","上下文追问","格式未保持","数据选择","权限越权","权限隐私","待人工确认","指令遵循","环境缺口"];
+const SEVERITIES=["—","中","高","严重"];
+const SUGGEST={事实错误:"回答只能用已授权周报里的事实；不知道就明说，不要补负责人或成本。",状态写错:"原文仍是进行中/监控中时，汇总里不要写成已经彻底完成或关闭。",信息覆盖:"把题目要求的要点逐条答完，尤其是多轮追问的最后一轮。",跨周聚合:"按周抽取后再合并，不要把不同月份或不同功能混成一件事。",历史关联:"后面几轮要接着前面的周报/日报要点说，不要只重复第一轮摘要。",上下文追问:"同一会话追问到日报时，必须答出那篇日报里的关键风险。",格式未保持:"用户先定了标题格式后，后面每一轮都要沿用。",数据选择:"空数据、重复周报、选错周期时要直说，不要用别的材料顶上。",权限越权:"没权限就明确拒绝，换公司后不能再提起上一家的内容。",权限隐私:"无权限场景不要回显看不见的正文。",待人工确认:"分数接近门槛，需要人工看回答是否真的对题。",指令遵循:"按用户限定的范围、字数和格式来答。",环境缺口:"先补齐该场景的真实环境再复测，这次不算失败。"};
+const ROOT={事实错误:"模型把材料外的信息补进去了",状态写错:"模型把「进行中」推进成了「已完成」",信息覆盖:"回答没有覆盖题目要求的要点",跨周聚合:"多周材料合并时丢了周期或来源边界",历史关联:"多轮追问没有接上前面的材料",上下文追问:"同一会话后几轮没有用到前面的日报/周报要点",格式未保持:"后续轮次丢掉了用户先定下的格式",数据选择:"选错了要读的周报，或空数据时没有说明",权限越权:"权限过滤没有挡住不该看的内容",权限隐私:"把不该展示的内容写进了回答",待人工确认:"自动分接近门槛，需要人看",指令遵循:"没有按用户限定的范围或格式来答",环境缺口:"评测环境还没造出来"};
+const STORE_KEY="zelto-quality-reviews:"+REPORT_DATE;
+let reportApi="";
+let cases=[];
+try{
+  cases=JSON.parse(document.getElementById("case-data").textContent);
+}catch(e){
+  const note=document.createElement("div");
+  note.className="note";
+  note.textContent="报告数据无法解析，案例点击会失效："+e;
+  document.body.prepend(note);
+}
+const byId=Object.fromEntries(cases.map(c=>[c.id,c]));
+let currentId=null;
+let activeSuite="";
+function viewedCases(){return cases.filter(c=>!activeSuite || (c.suite||"Agent")===activeSuite);}
+function setSuite(name){
+  activeSuite=name||"";
+  document.querySelectorAll("#suiteTabs button").forEach(b=>b.classList.toggle("active",(b.dataset.suite||"")===activeSuite));
+  document.querySelectorAll(".suite-card").forEach(c=>c.classList.toggle("active",!!activeSuite && (c.dataset.suite||"")===activeSuite));
+  const sel=document.getElementById("suiteFilter");
+  if(sel && sel.value!==activeSuite) sel.value=activeSuite;
+  const trace=document.getElementById("tracePanel");
+  if(trace) trace.style.display=activeSuite==="单篇总结"?"none":"";
+  renderAll();
+}
+const esc=s=>String(s??"").replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]));
+const opt=(arr,cur)=>arr.map(v=>`<option value="${esc(v)}" ${v===cur?"selected":""}>${esc(v)}</option>`).join("");
+function round1(n){return Math.round((Number(n)||0)*10)/10}
+function weightedScore(dims){
+  let s=0,w=0;
+  RAW_DIMS.forEach(k=>{const v=Number(dims[k]); if(!Number.isNaN(v)){s+=v*WEIGHTS[k]; w+=WEIGHTS[k];}});
+  return w?round1(s/w*20):null;
+}
+function managedFrom(raw){return Object.fromEntries(MANAGED.map(([lab,src])=>[lab,round1((Number(raw[src])||0)*20)]));}
+function statusCls(r){return r==="通过"?"pass":r==="人工复核"?"review":r==="状态延迟修复"?"deferred":r==="待复测"?"skip":"fail"}
+function autoJudge(score,redline){
+  if(redline==="是") return "失败-红线";
+  if(score==null) return "失败";
+  if(score>=75) return "通过";
+  if(score>=68) return "人工复核";
+  return "失败";
+}
+function snapshot(c){
+  if(c.autoResult==null) c.autoResult=c.result;
+  if(c.autoScore==null) c.autoScore=c.score;
+  if(c.autoRedline==null) c.autoRedline=c.redline;
+  if(!c.autoRawDimensions) c.autoRawDimensions={...c.rawDimensions};
+  if(!c.autoIssue) c.autoIssue={...c.issue};
+  if(c.autoSuggestion==null) c.autoSuggestion=c.suggestion;
+  if(c.autoRootCause==null) c.autoRootCause=c.rootCause;
+}
+function overlayOf(c){
+  return {result:c.result,redline:c.redline,score:c.score,rawDimensions:c.rawDimensions,issue:c.issue,suggestion:c.suggestion,rootCause:c.rootCause,reviewNote:c.reviewNote||"",reviewer:c.reviewer||"",reviewedAt:c.reviewedAt||""};
+}
+function applyOverlay(c,o){
+  if(!o) return;
+  if(o.rawDimensions){c.rawDimensions={...c.rawDimensions,...o.rawDimensions}; c.score=weightedScore(c.rawDimensions); c.dimensions=managedFrom(c.rawDimensions);}
+  else if(o.score!=null) c.score=round1(o.score);
+  if(o.result) c.result=o.result;
+  if(o.redline==="是"||o.redline==="否") c.redline=o.redline;
+  if(c.result==="失败-红线") c.redline="是";
+  if(c.result==="通过"||c.result==="失败"||c.result==="人工复核"||c.result==="状态延迟修复"||c.result==="待复测") c.redline="否";
+  if(o.issue) c.issue={type:o.issue.type||c.issue.type,severity:o.issue.severity||c.issue.severity,summary:o.issue.summary||c.issue.summary,code:o.issue.code||o.issue.type||""};
+  if(c.result==="通过") c.issue={type:"—",severity:"—",summary:o.issue&&o.issue.summary?o.issue.summary:"人工改判为通过",code:""};
+  if(o.suggestion!=null) c.suggestion=o.suggestion;
+  if(o.rootCause!=null) c.rootCause=o.rootCause;
+  c.reviewNote=o.reviewNote||"";
+  c.reviewer=o.reviewer||c.reviewer||"";
+  c.reviewedAt=o.reviewedAt||"";
+  c.manual=true;
+}
+function persist(){
+  const reviews={};
+  cases.forEach(c=>{if(c.manual) reviews[c.id]=overlayOf(c);});
+  const payload={date:REPORT_DATE,savedAt:new Date().toISOString(),reviewer:document.getElementById("reviewerName").value.trim(),reviews};
+  localStorage.setItem(STORE_KEY,JSON.stringify(payload));
+  const dataEl=document.getElementById("case-data");
+  if(dataEl) dataEl.textContent=JSON.stringify(cases);
+  syncToServer(payload);
+  return payload;
+}
+function setSyncHint(text,on){
+  const el=document.getElementById("syncHint");
+  if(!el) return;
+  el.textContent=text;
+  el.classList.toggle("on",!!on);
+}
+function syncToServer(payload){
+  if(!reportApi) return;
+  fetch(reportApi+"/review",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+    .then(r=>r.json())
+    .then(d=>{if(d&&d.ok) setSyncHint("已写入本地 Excel · "+(d.savedAt||"").slice(11,19),true);})
+    .catch(()=>setSyncHint("本地服务写入失败，仍保存在本机浏览器",false));
+}
+async function detectApi(){
+  if(!REPORT_API_CANDIDATES.length){
+    setSyncHint("GitHub Pages 只读；改判请用本地质检台",false);
+    return;
+  }
+  for(const base of REPORT_API_CANDIDATES){
+    try{
+      const r=await fetch(base+"/health",{cache:"no-store",signal:AbortSignal.timeout(1200)});
+      if(!r.ok) continue;
+      const d=await r.json();
+      if(d&&d.ok){reportApi=base; setSyncHint("本地服务已连接，改判即时写入 Excel",true); return;}
+    }catch(e){}
+  }
+  setSyncHint("未连接本地服务（仅本机浏览器记忆）",false);
+}
+function loadStored(){
+  try{
+    const raw=localStorage.getItem(STORE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    if(data.reviewer) document.getElementById("reviewerName").value=data.reviewer;
+    Object.entries(data.reviews||{}).forEach(([id,o])=>{if(byId[id]) applyOverlay(byId[id],o);});
+  }catch(e){}
+}
+function summarizeCases(){
+  const view=viewedCases();
+  const verdicts={通过:0,人工复核:0,"失败-质量":0,"状态延迟修复":0,失败:0,"失败-红线":0,"待复测":0};
+  const dims={}; RAW_DIMS.forEach(k=>dims[k]=[]);
+  const modules={}; const issues={}; const roots={};
+  let redline=0, sum=0, nScore=0;
+  view.forEach(c=>{
+    verdicts[c.result]=(verdicts[c.result]||0)+1;
+    if(c.redline==="是") redline++;
+    if(c.result!=="待复测" && c.score!=null){sum+=c.score; nScore++;}
+    RAW_DIMS.forEach(k=>{if(c.result!=="待复测" && c.rawDimensions&&c.rawDimensions[k]!=null) dims[k].push(Number(c.rawDimensions[k]));});
+    const m=c.module||"未分组";
+    modules[m]=modules[m]||{count:0,sum:0,pass:0,redline:0};
+    modules[m].count++; if(c.score!=null) modules[m].sum+=c.score;
+    if(c.result==="通过") modules[m].pass++;
+    if(c.redline==="是") modules[m].redline++;
+    if(c.issue&&c.issue.type&&c.issue.type!=="—"&&c.issue.type!=="待人工确认"&&c.issue.type!=="环境缺口") issues[c.issue.type]=(issues[c.issue.type]||0)+1;
+    if(c.result!=="通过"&&c.result!=="待复测") roots[c.rootCause||"未分类"]=(roots[c.rootCause||"未分类"]||0)+1;
+  });
+  const avg=nScore?round1(sum/nScore):null;
+  const pass=verdicts["通过"]||0;
+  const fail=(verdicts["失败"]||0)+(verdicts["失败-红线"]||0);
+  const skip=verdicts["待复测"]||0;
+  const executable=Math.max(view.length-skip,0);
+  const passRate=executable?pass/executable:0;
+  let gate="不建议上线", gateCls="danger";
+  if(redline===0&&passRate>=0.8){gate="建议上线"; gateCls="success";}
+  else if(redline===0){gate="有条件上线"; gateCls="warning";}
+  const scope=activeSuite?activeSuite+"：":"两大类合计：";
+  const deferred=verdicts["状态延迟修复"]||0;
+  const banner=`${scope}共 ${view.length} 条用例（可执行 ${executable}，待复测 ${skip}），平均加权分 ${avg}，通过 ${pass}/${executable}（${(passRate*100).toFixed(1)}%），人工复核 ${verdicts["人工复核"]||0}，状态延迟修复 ${deferred}，失败 ${fail}，红线 ${redline}。结论：${gate}。`;
+  const managedAvg=Object.fromEntries(MANAGED.map(([lab,src])=>{const arr=dims[src]||[]; return [lab, arr.length?round1(arr.reduce((a,b)=>a+b,0)/arr.length*20):0];}));
+  const dimAvg=Object.fromEntries(RAW_DIMS.map(k=>{const arr=dims[k]; return [k, arr.length?round1(arr.reduce((a,b)=>a+b,0)/arr.length):null];}));
+  const moduleRows=Object.entries(modules).map(([name,b])=>({module:name,count:b.count,avg:b.count?round1(b.sum/b.count):null,pass:b.pass,redline:b.redline})).sort((a,b)=>(b.avg||0)-(a.avg||0));
+  const topIssues=Object.entries(issues).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const rootRows=Object.entries(roots).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const redIds=view.filter(c=>c.redline==="是").map(c=>c.id);
+  const edited=cases.filter(c=>c.manual).length;
+  return {verdicts,avg,pass,fail,skip,executable,passRate,redline,gate,gateCls,banner,managedAvg,dimAvg,moduleRows,topIssues,rootRows,redIds,edited,viewCount:view.length};
+}
+function radarPoints(values){
+  const cx=190,cy=155,rMax=112;
+  return values.map((v,i)=>{const ang=-Math.PI/2+i*Math.PI/3; const rr=(v||0)/100*rMax; return `${(cx+rr*Math.cos(ang)).toFixed(1)},${(cy+rr*Math.sin(ang)).toFixed(1)}`;}).join(" ");
+}
+function renderAll(){
+  const s=summarizeCases();
+  const gateBox=document.getElementById("gateBox");
+  gateBox.className="gate "+s.gateCls;
+  document.getElementById("gateText").textContent=s.gate;
+  document.getElementById("bannerText").textContent=s.banner;
+  document.getElementById("kpiRow").innerHTML=
+    `<div class="kpi"><span>总用例</span><b>${s.viewCount}</b><small>可执行 ${s.executable} · 待复测 ${s.skip}</small></div>`+
+    `<div class="kpi"><span>通过</span><b>${s.pass}</b><small>${s.pass} / ${s.executable} 可执行</small></div>`+
+    `<div class="kpi"><span>平均加权分</span><b>${s.avg}</b><small>待复测不计入均分</small></div>`+
+    `<div class="kpi"><span>通过率</span><b>${(s.passRate*100).toFixed(1)}%</b><small>${s.pass} / ${s.executable}</small></div>`+
+    `<div class="kpi"><span>红线命中</span><b>${s.redline}</b><small class="${s.redline?"down":"up"}">人工改判后重算</small></div>`+
+    `<div class="kpi"><span>待复测</span><b>${s.skip}</b><small>失败 ${s.fail} · 复核 ${s.verdicts["人工复核"]||0} · 延迟修复 ${s.verdicts["状态延迟修复"]||0}</small></div>`;
+  const poly=document.getElementById("radarCurrent");
+  if(poly) poly.setAttribute("points", radarPoints(MANAGED.map(([lab])=>s.managedAvg[lab]||0)));
+  document.getElementById("managedDims").innerHTML=MANAGED.map(([lab])=>`<div class="dim-row"><span>${esc(lab)}</span><div class="bar-track"><i style="width:${s.managedAvg[lab]||0}%"></i></div><b>${s.managedAvg[lab]||0}</b></div>`).join("");
+  document.getElementById("rawDims").innerHTML=RAW_DIMS.map(k=>`<div class="dim-row"><span>${esc(k)}</span><div class="bar-track"><i style="width:${((s.dimAvg[k]||0)/5*100).toFixed(0)}%"></i></div><b>${esc(s.dimAvg[k])}</b></div>`).join("");
+  const maxIssue=Math.max(1,...s.topIssues.map(x=>x[1]));
+  document.getElementById("issueBars").innerHTML=s.topIssues.length?s.topIssues.map(([name,n])=>`<div class="bar-row"><span>${esc(name)}</span><div class="bar-track"><i style="width:${n/maxIssue*100}%"></i></div><b>${n}</b></div>`).join(""):"<p class='muted'>无显著问题类型</p>";
+  document.getElementById("redlineList").textContent=s.redIds.join("、")||"无";
+  document.getElementById("moduleBody").innerHTML=s.moduleRows.map((m,i)=>`<tr><td>${i+1}</td><td>${esc(m.module)}</td><td>${esc(m.avg)}</td><td>${m.count}</td><td>${m.pass}</td><td class="${m.redline?"bad":""}">${m.redline}</td></tr>`).join("");
+  const view=viewedCases();
+  const typical=view.filter(c=>c.result==="失败"||c.result==="失败-红线").sort((a,b)=>(a.score??99)-(b.score??99)).slice(0,5);
+  document.getElementById("typicalIndex").innerHTML=typical.map(c=>`<button class="typical-case" onclick="showCase('${esc(c.id)}')"><b>${esc(c.id)}</b><span>${esc(c.scene)}</span><strong>${esc(c.score)}</strong><small>${esc(c.issue.summary)}</small></button>`).join("");
+  const fails=view.filter(c=>c.result==="失败"||c.result==="失败-红线");
+  const failBody=document.getElementById("failBody");
+  const failCount=document.getElementById("failCount");
+  if(failCount) failCount.textContent=fails.length+" 条";
+  if(failBody) failBody.innerHTML=fails.length?fails.map(c=>{
+    const findings=(c.issue.findings||[]).map(item=>`<li>${esc(item)}</li>`).join("");
+    const expected=c.issue.expected||c.expected||"";
+    return `<article class="fail-card"><header><button type="button" class="case-link" onclick="showCase('${esc(c.id)}')">${esc(c.id)}</button><span>${esc(c.asker||"")}</span><span>${esc(c.scene)}</span><span class="status fail">${esc(c.result)}</span><strong>${esc(c.score)}</strong></header><p class="fail-why">${esc(c.issue.why||c.issue.summary||"")}</p>${findings?`<ul>${findings}</ul>`:""}${expected?`<p class="muted"><b>这道题期望：</b>${esc(expected)}</p>`:""}<p class="muted">建议：${esc(c.suggestion||"")}</p></article>`;
+  }).join(""):"<p class='muted'>没有失败或红线用例。</p>";
+  document.getElementById("rootList").innerHTML=s.rootRows.map(([name,n])=>`<li><span>${esc(name)}</span><b>${n} 个案例</b></li>`).join("");
+  document.getElementById("riskGate").textContent=s.gate;
+  document.getElementById("riskBanner").textContent=s.banner;
+  document.getElementById("actionBody").innerHTML=
+    `<tr><td>P0</td><td>修复红线用例 ${esc(s.redIds.join(", ")||"无")}</td><td>Prompt / Agent</td><td>—</td><td>红线用例复测通过，且不再触发权限/事实红线</td></tr>`+
+    `<tr><td>P0</td><td>让 IM 转发 tool_call / tool_result，或评测读取 agent-trace</td><td>IM / 评测</td><td>—</td><td>报告能列出本轮实际工具名，而不只是「已调用」</td></tr>`+
+    `<tr><td>P1</td><td>按人工复核结果回归失败用例</td><td>Agent QA</td><td>—</td><td>导出复核 JSON 写回执行记录后重跑对比</td></tr>`;
+  document.getElementById("caseTable").innerHTML=cases.map(c=>`
+    <tr data-id="${esc(c.id)}" data-agent="${esc(c.agent)}" data-asker="${esc(c.asker||"")}" data-suite="${esc(c.suite||"Agent")}" data-version="${esc(c.version)}" data-date="${esc(c.date)}" data-scene="${esc(c.scene)}" data-module="${esc(c.module)}" data-issue="${esc(c.issue.type)}" data-severity="${esc(c.issue.severity)}" data-result="${esc(c.result)}" data-priority="${esc(c.priority)}" data-redline="${esc(c.redline)}">
+      <td><button class="case-link" onclick="showCase('${esc(c.id)}')">${esc(c.id)}</button>${c.manual?' <span class="tag edited-flag">已改</span>':''}</td>
+      <td>${esc(c.asker||"")}</td>
+      <td>${esc(c.scene)}</td><td>${esc(c.score)}</td>
+      <td><select class="result-edit ${statusCls(c.result)}" data-id="${esc(c.id)}" onchange="inlineResult(this)">${opt(RESULTS,c.result)}</select></td>
+      <td>${esc(c.issue.type)}</td><td>${esc(c.issue.severity)}</td>
+      <td>${esc(c.issue.summary)}</td><td>${esc(c.suggestion)}</td></tr>`).join("");
+  const issueSel=document.getElementById("issueFilter");
+  const sevSel=document.getElementById("severityFilter");
+  const askerSel=document.getElementById("askerFilter");
+  const curI=issueSel.value, curS=sevSel.value, curA=askerSel?askerSel.value:"";
+  issueSel.innerHTML='<option value="">全部问题类型</option>'+[...new Set(cases.map(c=>c.issue.type))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
+  sevSel.innerHTML='<option value="">全部严重度</option>'+[...new Set(cases.map(c=>c.issue.severity))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
+  if(askerSel){
+    askerSel.innerHTML='<option value="">全部追问人</option>'+[...new Set(cases.map(c=>c.asker||"").filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
+    askerSel.value=curA;
+  }
+  issueSel.value=curI; sevSel.value=curS;
+  document.getElementById("reviewCount").textContent=s.edited?`已改 ${s.edited} / ${cases.length} 条`:"未修改";
+  filterRows();
+  if(currentId) markActiveCase(currentId);
+}
+function filterRows(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const map={agent:"agentFilter",asker:"askerFilter",version:"versionFilter",date:"dateFilter",scene:"sceneFilter",issue:"issueFilter",severity:"severityFilter",result:"resultFilter"};
+  let n=0;
+  document.querySelectorAll("#caseTable tr").forEach(tr=>{
+    let ok=(!q||(tr.dataset.id+" "+tr.dataset.scene+" "+tr.dataset.module+" "+(tr.dataset.asker||"")+" "+(byId[tr.dataset.id]?.question||"")).toLowerCase().includes(q));
+    if(activeSuite && (tr.dataset.suite||"Agent")!==activeSuite) ok=false;
+    for(const [k,id] of Object.entries(map)){const v=document.getElementById(id).value; if(v&&tr.dataset[k]!==v) ok=false;}
+    tr.style.display=ok?"":"none"; if(ok) n++;
+  });
+  document.getElementById("visibleCount").textContent=n+" / "+viewedCases().length;
+}
+function highlight(s,terms){
+  let out=esc(s||"");
+  terms.filter(Boolean).forEach(t=>{const safe=esc(t).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); out=out.replace(new RegExp(safe,"gi"),m=>"<mark>"+m+"</mark>");});
+  return out;
+}
+function dailyGoldBlock(c){
+  const g=c.dailyGold; if(!g||!g.total_days) return "";
+  const pct=Math.round((g.day_rate||0)*100);
+  const fpct=Math.round((g.fact_rate||0)*100);
+  const rows=(g.days||[]).map(d=>`<tr>
+    <td>${esc(d.date||"")}</td>
+    <td class="${d.covered?"hit":"miss"}">${d.covered?"覆盖":"未覆盖"}</td>
+    <td>${esc(d.gold||"")}</td>
+    <td>${esc((d.missed||[]).join("；")||"—")}</td>
+  </tr>`).join("");
+  const missing=(g.missing_dates||[]).join("、")||"无";
+  return `<section class="diag-block full"><h3>日报金标对比（Anna5 全部日报 AI 总结 vs Agent 月报）</h3>
+    <p>覆盖 <b>${g.covered_days}/${g.total_days}</b> 天（${pct}%）；事实点 ${g.fact_hits}/${g.fact_total}（${fpct}%）。漏日：${esc(missing)}</p>
+    <div class="table-wrap"><table class="detail-table gold-table"><thead><tr><th>日期</th><th>结果</th><th>金标摘要</th><th>未覆盖要点</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="footnote">评测标准：以智本_Anna5 每份日报的 AI 总结为金标，检查月报是否覆盖各日关键事实，而不是对照旧月报或他人日报。</p>
+  </section>`;
+}
+function previewWeighted(){
+  const raw={}; RAW_DIMS.forEach(k=>{raw[k]=Number(document.getElementById("ed-"+k).value);});
+  const score=weightedScore(raw);
+  const red=document.getElementById("edRedline").value;
+  document.getElementById("edWeighted").textContent=`${score}（按分数自动判定：${autoJudge(score,red)}）`;
+}
+function markActiveCase(id){
+  document.querySelectorAll("#caseTable tr.active-case").forEach(el=>el.classList.remove("active-case"));
+  document.querySelectorAll(".typical-case.active-case").forEach(el=>el.classList.remove("active-case"));
+  const row=document.querySelector('#caseTable tr[data-id="'+CSS.escape(id)+'"]');
+  if(row) row.classList.add("active-case");
+  document.querySelectorAll(".typical-case").forEach(btn=>{
+    const label=btn.querySelector("b");
+    if(label&&label.textContent===id) btn.classList.add("active-case");
+  });
+}
+function scrollToCaseDetail(){
+  const target=document.getElementById("caseDetail")||document.getElementById("casePanel");
+  if(!target) return;
+  const bar=document.getElementById("reviewBar");
+  const offset=(bar?bar.getBoundingClientRect().height:0)+12;
+  const top=target.getBoundingClientRect().top+window.scrollY-offset;
+  window.scrollTo({top:Math.max(0,top),behavior:"smooth"});
+}
+function failReasonBlock(c){
+  if(c.result==="通过") return "";
+  const pending=c.result==="待复测";
+  const findings=(c.issue.findings||[]).map(item=>`<li>${esc(item)}</li>`).join("");
+  const expected=c.issue.expected||c.expected||"";
+  const weak=(c.issue.weak_dims||c.issue.weakDims||[]).join("、");
+  return `<section class="diag-block full fail-reason${pending?" pending":""}">
+    <h3>判定「${esc(c.result)}」的原因</h3>
+    <p class="fail-why">${esc(c.issue.why||c.issue.summary||"")}</p>
+    ${findings?`<ul>${findings}</ul>`:""}
+    ${expected?`<p><b>这道题期望：</b>${esc(expected)}</p>`:""}
+    ${weak?`<p class="muted">分数偏低的维度：${esc(weak)}</p>`:""}
+  </section>`;
+}
+function showCase(id, opts){
+  const c=byId[id]; if(!c) return;
+  currentId=id;
+  snapshot(c);
+  const terms=[c.issue.code,c.issue.type,...(c.issue.type==="权限越权"?["越权","租户"]:[]),"风险"];
+  document.getElementById("casePanel").innerHTML=`
+<div class="case-head"><div>
+  <div class="eyebrow">${esc(c.module)} / ${esc(c.priority)}</div>
+  <h2>${esc(c.id)} · ${esc(c.scene)}</h2>
+  <div class="case-meta">
+    <span class="tag">加权分 ${esc(c.score)}</span>
+    <span class="status ${statusCls(c.result)}">${esc(c.result)}</span>
+    <span class="tag">红线 ${esc(c.redline)}</span>
+    ${c.manual?'<span class="tag edited-flag">已人工改判</span>':''}
+    <span class="tag">自动：${esc(c.autoResult)} / ${esc(c.autoScore)}</span>
+    <span class="tag">${esc(c.issue.type)} · ${esc(c.issue.severity)}</span>
+  </div>
+</div><button class="case-link" onclick="window.print()">打印案例</button></div>
+<div class="diag-grid">
+  ${failReasonBlock(c)}
+  <section class="diag-block full review-editor">
+    <h3>人工复核（保存后同步到全报告）</h3>
+    <div class="editor-grid">
+      <label>判定<select id="edResult">${opt(RESULTS,c.result)}</select></label>
+      <label>红线<select id="edRedline">${opt(["否","是"],c.redline)}</select></label>
+      <label>问题类型<select id="edIssueType">${opt(ISSUE_TYPES,c.issue.type)}</select></label>
+      <label>严重度<select id="edSeverity">${opt(SEVERITIES,c.issue.severity)}</select></label>
+      <label class="wide">问题摘要<input id="edSummary" value="${esc(c.issue.summary)}"></label>
+      <label class="wide">修改建议<input id="edSuggestion" value="${esc(c.suggestion)}"></label>
+      <label class="wide">复核说明<textarea id="edNote" rows="2">${esc(c.reviewNote||"")}</textarea></label>
+    </div>
+    <div class="score-edit">${RAW_DIMS.map(k=>`<label>${esc(k)}<input id="ed-${k}" type="number" min="0" max="5" step="0.1" value="${esc(c.rawDimensions[k])}"></label>`).join("")}</div>
+    <p>加权预览：<b id="edWeighted">${esc(c.score)}</b></p>
+    <p>
+      <button type="button" class="btn primary" onclick="saveReview()">保存并同步到报告</button>
+      <button type="button" class="btn" onclick="applyAutoJudge()">按分数自动判定</button>
+      <button type="button" class="btn" onclick="resetCaseReview('${esc(c.id)}')">还原该条自动结果</button>
+    </p>
+  </section>
+  <section class="diag-block"><h3>用户问题及上下文</h3>
+    <p><b>追问人：</b>${esc(c.asker||"未记录")}</p>
+    <p><b>问题：</b>${esc(c.question)}</p>
+    <p><b>前置条件：</b>${esc(c.context||"未单独记录")}</p>
+    <p><b>ReportId：</b>${esc(c.reportIds||"未绑定")}</p>
+    <p><b>追问：</b>${esc(c.sessionBinding||c.trace.sessionBinding||"未记录")}</p>
+    <p><b>请求协议：</b>${esc(c.requestProtocol||c.trace.requestProtocol||"未记录")}</p>
+  </section>
+  <section class="diag-block"><h3>期望结果 / Gold</h3>
+    <p>${esc(c.expected||"未记录")}</p>
+    <p class="muted">必须：${esc(c.must||"—")}<br>禁止：${esc(c.forbid||"—")}${c.gold?`<br>Gold：${esc(c.gold)}`:""}</p>
+  </section>
+  ${dailyGoldBlock(c)}
+  ${c.sourceReports?`<section class="diag-block full"><h3>原始数据汇报（本应检索命中）</h3><div class="response">${esc(c.sourceReports)}</div><p class="muted">评测对照用源材料，不是 Agent 当次实际召回结果。</p></section>`:""}
+  <section class="diag-block full"><h3>完整 Trace 链路 <span class="counter">${c.trace.captured} / ${c.trace.total} 节点已观测 · ${esc(c.trace.status)}</span></h3>
+    <div class="trace-list">${(c.trace.nodes||[]).map((n,i)=>`<div class="trace-node ${n.status==="缺失"?"missing":""}"><span class="seq">${i+1}</span><b>${esc(n.label)}</b><span class="trace-state">${esc(n.status)}</span><p>${esc(n.observed)}<small>期望证据：${esc(n.expected)}</small></p></div>`).join("")}</div>
+    <p class="footnote">追问 sessionId：${esc(c.trace.sessionId||"未记录")} · 首轮绑定 reportId：${esc((c.boundReportIds||c.trace.boundReportIds||[]).join(",")||"未绑定")} · streamMessageId：${esc(c.trace.messageId||"未记录")} · requestId：${esc(c.trace.requestId||"未记录")} · RunID：${esc(c.trace.runId||"未记录")} · TraceID：${esc(c.trace.traceId||"未记录")} · SSE 事件：${c.trace.eventCount||0}</p>
+  </section>
+  <section class="diag-block full"><h3>Agent 完整回复</h3><div class="response">${highlight(c.answer,terms)}</div></section>
+  <section class="diag-block"><h3>六维评分</h3>
+    <div class="score-grid">${Object.entries(c.dimensions||{}).map(([k,val])=>`<div class="dim-row"><span>${esc(k)}</span><div class="bar-track"><i style="width:${val}%"></i></div><b>${val}</b></div>`).join("")}</div>
+    <p class="footnote">自动九维：${Object.entries(c.autoRawDimensions||{}).map(([k,val])=>esc(k)+" "+val).join(" · ")}</p>
+  </section>
+  <section class="diag-block"><h3>问题定位与建议</h3>
+    <p><b>${esc(c.issue.summary)}</b></p>
+    ${c.issue.why?`<p>${esc(c.issue.why)}</p>`:""}
+    <p>根因：${esc(c.rootCause)}</p>
+    <p>${esc(c.suggestion)}</p>
+  </section>
+  <section class="diag-block full"><h3>评测证据（原文）</h3><div class="response">${esc(c.evidence)}</div></section>
+</div>`;
+  RAW_DIMS.forEach(k=>document.getElementById("ed-"+k).addEventListener("input",previewWeighted));
+  document.getElementById("edRedline").addEventListener("change",previewWeighted);
+  previewWeighted();
+  markActiveCase(id);
+  const hash="#"+encodeURIComponent(id);
+  if(location.hash!==hash) history.replaceState(null,"",hash);
+  if(!opts||opts.scroll!==false) scrollToCaseDetail();
+}
+function applyResultChange(c,result){
+  snapshot(c);
+  c.result=result;
+  if(result==="失败-红线") c.redline="是";
+  else c.redline="否";
+  if(result==="通过"){
+    c.issue={type:"—",severity:"—",summary:"人工改判为通过",code:""};
+    c.suggestion="保持当前表现，纳入回归基线。";
+    c.rootCause="人工复核通过";
+  } else if(result==="状态延迟修复"){
+    c.issue={
+      type:(c.issue&&c.issue.type&&c.issue.type!=="—")?c.issue.type:"待人工确认",
+      severity:(c.issue&&c.issue.severity&&c.issue.severity!=="—")?c.issue.severity:"中",
+      summary:(c.issue&&c.issue.summary)?c.issue.summary:"已知问题，状态延迟修复",
+      code:(c.issue&&c.issue.code)||""
+    };
+    c.rootCause=c.rootCause||"已知问题暂缓修复";
+  }
+  c.reviewer=document.getElementById("reviewerName").value.trim();
+  c.reviewedAt=new Date().toISOString();
+  c.manual=true;
+}
+function inlineResult(sel){
+  const c=byId[sel.dataset.id]; if(!c) return;
+  applyResultChange(c, sel.value);
+  persist();
+  renderAll();
+  if(currentId===c.id) showCase(c.id,{scroll:false});
+}
+function saveReview(){
+  const c=byId[currentId]; if(!c) return;
+  snapshot(c);
+  const raw={}; RAW_DIMS.forEach(k=>raw[k]=Number(document.getElementById("ed-"+k).value));
+  let result=document.getElementById("edResult").value;
+  let red=document.getElementById("edRedline").value;
+  if(result==="失败-红线") red="是";
+  else if(result==="通过"||result==="失败"||result==="人工复核"||result==="状态延迟修复"||result==="待复测") red="否";
+  const itype=result==="通过"?"—":document.getElementById("edIssueType").value;
+  c.rawDimensions=raw;
+  c.score=weightedScore(raw);
+  c.dimensions=managedFrom(raw);
+  c.redline=red;
+  c.result=result;
+  c.issue={type:itype,severity:result==="通过"?"—":document.getElementById("edSeverity").value,summary:result==="通过"?"人工改判为通过":document.getElementById("edSummary").value.trim(),code:itype==="—"?"":itype};
+  c.suggestion=document.getElementById("edSuggestion").value.trim()||SUGGEST[itype]||c.suggestion;
+  c.rootCause=ROOT[itype]||c.rootCause;
+  c.reviewNote=document.getElementById("edNote").value.trim();
+  c.reviewer=document.getElementById("reviewerName").value.trim();
+  c.reviewedAt=new Date().toISOString();
+  c.manual=true;
+  persist();
+  renderAll();
+  showCase(c.id,{scroll:false});
+}
+function applyAutoJudge(){
+  const raw={}; RAW_DIMS.forEach(k=>raw[k]=Number(document.getElementById("ed-"+k).value));
+  const red=document.getElementById("edRedline").value;
+  document.getElementById("edResult").value=autoJudge(weightedScore(raw),red);
+}
+function resetCaseReview(id){
+  const c=byId[id]; if(!c) return;
+  snapshot(c);
+  c.result=c.autoResult; c.score=c.autoScore; c.redline=c.autoRedline;
+  c.rawDimensions={...c.autoRawDimensions}; c.dimensions=managedFrom(c.rawDimensions);
+  c.issue={...c.autoIssue}; c.suggestion=c.autoSuggestion; c.rootCause=c.autoRootCause;
+  c.reviewNote=""; c.reviewedAt=""; c.manual=false;
+  persist(); renderAll(); showCase(id,{scroll:false});
+}
+function resetAllReviews(){
+  if(!confirm("还原全部自动评测结果？未导出的人工改判会丢失。")) return;
+  cases.forEach(c=>{snapshot(c); c.result=c.autoResult; c.score=c.autoScore; c.redline=c.autoRedline; c.rawDimensions={...c.autoRawDimensions}; c.dimensions=managedFrom(c.rawDimensions); c.issue={...c.autoIssue}; c.suggestion=c.autoSuggestion; c.rootCause=c.autoRootCause; c.reviewNote=""; c.reviewedAt=""; c.manual=false;});
+  persist(); renderAll(); if(currentId) showCase(currentId,{scroll:false});
+}
+function exportReviews(){
+  const payload=persist();
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download=`zelto-reviews-${REPORT_DATE}.json`; a.click();
+}
+function downloadReport(){
+  persist();
+  const html="<!doctype html>\n"+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:"text/html;charset=utf-8"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download=`zelto-agent-quality-${REPORT_DATE}.html`; a.click();
+}
+document.querySelectorAll(".filter-bar input,.filter-bar select").forEach(el=>el.addEventListener(el.tagName==="INPUT"?"input":"change",ev=>{
+  if(ev.target.id==="suiteFilter"){ setSuite(ev.target.value); return; }
+  filterRows();
+}));
+document.querySelectorAll("#suiteTabs button").forEach(btn=>btn.addEventListener("click",()=>setSuite(btn.dataset.suite||"")));
+document.querySelectorAll(".suite-card").forEach(card=>card.addEventListener("click",()=>setSuite(card.dataset.suite||"")));
+document.getElementById("importReviews").addEventListener("change",ev=>{
+  const f=ev.target.files[0]; if(!f) return;
+  const reader=new FileReader();
+  reader.onload=()=>{try{
+    const data=JSON.parse(reader.result);
+    const recs=data.reviews||{};
+    Object.entries(recs).forEach(([id,o])=>{if(byId[id]) applyOverlay(byId[id],o);});
+    if(data.reviewer) document.getElementById("reviewerName").value=data.reviewer;
+    persist(); renderAll(); if(currentId) showCase(currentId,{scroll:false});
+  }catch(e){alert("无法解析复核 JSON");}};
+  reader.readAsText(f); ev.target.value="";
+});
+cases.forEach(snapshot);
+loadStored();
+function openFromHash(){
+  const hashId=decodeURIComponent((location.hash||"").replace(/^#/,""));
+  if(hashId&&byId[hashId]){ showCase(hashId); return true; }
+  return false;
+}
+detectApi().finally(()=>{
+  renderAll();
+  if(openFromHash()) return;
+  if(cases.length){
+    const worst=cases.filter(c=>c.result==="失败"||c.result==="失败-红线").sort((a,b)=>(a.score??99)-(b.score??99))[0];
+    showCase((worst||cases[0]).id,{scroll:false});
+  }
+});
+window.addEventListener("hashchange", openFromHash);
+</script>
+</body></html>
