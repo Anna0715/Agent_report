@@ -1,7 +1,7 @@
 {
   "contract": "ai_assistant.combined_report.v1",
   "report_date": "2026-09-16-reaudit",
-  "generated_at": "2026-09-16T11:00:41+00:00",
+  "generated_at": "2026-09-16T11:39:02+00:00",
   "pre_case_count": 65,
   "metrics": {
     "task_success": {
@@ -102,37 +102,74 @@
       },
       "pre": {
         "step_correctness": {
-          "pass": 0,
-          "total": 0,
-          "rate": null,
-          "covered_cases": 0
+          "pass": 385,
+          "total": 512,
+          "rate": 0.751953125,
+          "covered_cases": 65
         },
         "order": {
-          "pass": 0,
-          "total": 0,
-          "rate": null,
-          "covered_cases": 0
+          "pass": 49,
+          "total": 56,
+          "rate": 0.875,
+          "covered_cases": 56,
+          "insufficient_cases": 9
         },
         "minimality": {
-          "pass": 0,
-          "total": 0,
-          "rate": null,
-          "covered_cases": 0
+          "pass": 16,
+          "total": 58,
+          "rate": 0.27586206896551724,
+          "covered_cases": 58,
+          "insufficient_cases": 7
         },
         "deadloop_avoidance": {
-          "pass": 0,
-          "total": 0,
-          "rate": null,
-          "covered_cases": 0
+          "pass": 58,
+          "total": 60,
+          "rate": 0.9666666666666667,
+          "covered_cases": 60,
+          "insufficient_cases": 5
         },
         "hallucinated_plan_avoidance": {
-          "pass": 0,
-          "total": 0,
-          "rate": null,
-          "covered_cases": 0
+          "pass": 62,
+          "total": 65,
+          "rate": 0.9538461538461539,
+          "covered_cases": 65,
+          "insufficient_cases": 0
         }
       },
-      "pre_observation": "Trace 未返回可独立验证的内部计划标注，因此这些子指标保持未覆盖（0/0），不计为失败。"
+      "pre_observation": "计划质量由 GPT 裁判基于可观测 Trace 复评；步骤正确率按实际可评工具步骤计，其余指标按有明确 pass/fail 结论的用例计，insufficient 不进入分母。",
+      "judge_summary": {
+        "ratings": {
+          "insufficient": 3,
+          "fail": 48,
+          "pass": 14
+        },
+        "average_score": 66.88709677419355,
+        "scored_cases": 62,
+        "step_correctness": {
+          "correct": 385,
+          "total": 512,
+          "covered_cases": 65
+        },
+        "order": {
+          "pass": 49,
+          "insufficient": 9,
+          "fail": 7
+        },
+        "minimality": {
+          "pass": 16,
+          "fail": 42,
+          "insufficient": 7
+        },
+        "deadloop_avoidance": {
+          "pass": 58,
+          "fail": 2,
+          "insufficient": 5
+        },
+        "hallucinated_plan_avoidance": {
+          "pass": 62,
+          "fail": 3
+        }
+      }
     },
     "robustness": {
       "pre_answer_completion": {
@@ -252,6 +289,15 @@
         "prompt_version": "ai-assistant-operational-review-v1",
         "stats": {
           "calls": 23,
+          "cache_hits": 0,
+          "errors": 0
+        }
+      },
+      "planning_judge": {
+        "model": "openai/gpt-6-astra",
+        "prompt_version": "ai-assistant-planning-quality-review-v1",
+        "stats": {
+          "calls": 22,
           "cache_hits": 0,
           "errors": 0
         }
@@ -2520,6 +2566,1415 @@
               "在提交答案前核验目标语义与引用一致性，避免高成本错误完成。"
             ]
           }
+        }
+      }
+    },
+    "planning_judge": {
+      "contract": "ai_assistant.planning_review.v1",
+      "environment": "pre",
+      "judge": {
+        "model": "openai/gpt-6-astra",
+        "prompt_version": "ai-assistant-planning-quality-review-v1",
+        "stats": {
+          "calls": 22,
+          "cache_hits": 0,
+          "errors": 0
+        }
+      },
+      "summary": {
+        "ratings": {
+          "insufficient": 3,
+          "fail": 48,
+          "pass": 14
+        },
+        "average_score": 66.88709677419355,
+        "scored_cases": 62,
+        "step_correctness": {
+          "correct": 385,
+          "total": 512,
+          "covered_cases": 65
+        },
+        "order": {
+          "pass": 49,
+          "insufficient": 9,
+          "fail": 7
+        },
+        "minimality": {
+          "pass": 16,
+          "fail": 42,
+          "insufficient": 7
+        },
+        "deadloop_avoidance": {
+          "pass": 58,
+          "fail": 2,
+          "insufficient": 5
+        },
+        "hallucinated_plan_avoidance": {
+          "pass": 62,
+          "fail": 3
+        }
+      },
+      "cases": {
+        "AA-QAP-004": {
+          "case_id": "AA-QAP-004",
+          "rating": "insufficient",
+          "score": null,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 4,
+            "evaluated_steps": 4,
+            "reason": "技能激活、Schema 获取、群实体解析和失败后的记忆检索均与任务相关。消息查询的参数和失败诊断被截断，无法判断是查询构造错误还是执行环境不支持，因此该调用不计入可评步骤。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见顺序为获取查询规范、识别群、查询原消息、尝试备用检索，依赖关系合理，未重复失败调用。最终只报告有证据的 groupID，并明确未确认发送人和 clientMsgID，没有把空记忆结果解释为消息不存在。任务未完成不能直接证明计划错误；关键查询失败原因及权限链仍缺证据。未观测到要求的 policy.check、hive.im.search，不能确认内部工具是否覆盖了对应职责。",
+          "suggestions": [
+            "补充消息查询的完整条件、失败诊断及权限检查记录，以便区分参数问题与环境失败。",
+            "若存在可用的原消息检索通道，应在目标群范围内检索原文，并返回发送人和 clientMsgID；记忆检索不能替代精确回源。"
+          ]
+        },
+        "AA-QAP-005": {
+          "case_id": "AA-QAP-005",
+          "rating": "fail",
+          "score": 55,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 15,
+            "reason": "技能、Schema、实体与会话解析、记忆检索、成功消息读取、材料凝练、针对凝练异常的回源及首次遭遇调用容量限制的请求共9步合理。额外草稿写入没有显示必要性；3次消息查询出现非法比较条件；收到明确不再执行的提示后仍继续请求2次，这6步不正确。首次触及容量限制不因环境拒绝而判错。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "fail",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先解析群及会话再读取消息、取得证据后总结的主顺序合理，凝练结果与原始读取冲突时再次回源也有依据。但条件错误未得到有效及时修复，且容量限制已经明确后仍连续调用同一工具，没有新增证据或进展。成功回答不能抵消这些计划缺陷。结果截断不足以认定最终引用为编造；独立 policy.check、hive.im.search 及完整引用链未观测到。",
+          "suggestions": [
+            "依据 LITERAL_COERCION_ERROR 检查比较左侧字段，进行一次针对性纠正，避免重复提交同类非法条件。",
+            "收到本轮不再执行的明确提示后停止该工具调用，基于已有证据回答或选择确实可用的其他来源。",
+            "省去没有明确必要性的草稿写入，优先直接读取目标群的相关消息。",
+            "补充权限检查和引用对应原消息的完整记录。"
+          ]
+        },
+        "AA-QAP-006": {
+          "case_id": "AA-QAP-006",
+          "rating": "pass",
+          "score": 92,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 7,
+            "evaluated_steps": 7,
+            "reason": "7次工具调用均服务于目标群定位和两份纪要取证：激活技能、获取群 Schema、解析群、尝试记忆检索、补充消息相关 Schema，以及分别读取两次纪要。两次消息查询虽然参数摘要相同，但返回不同日期的目标纪要，不能视为重复无进展。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先识别目标群，在记忆未命中后补充 Schema 并回源两份原始纪要，最后按用户要求对比总结，执行依赖合理。空记忆检索后的回源属于必要补证，没有死循环或声称执行未发生步骤的证据。可见原文支持主要总结；权限及完整引用链仍未观测，不能据此宣称已验证全部鉴权与引用要求。",
+          "suggestions": [
+            "对于明确指定群和日期的原文任务，可考虑直接获取所需 Schema 后定向读取，减少收益较低的记忆检索。",
+            "保留完整的查询条件、授权检查与引用定位字段，便于核验目标范围及来源。"
+          ]
+        },
+        "AA-QAP-007": {
+          "case_id": "AA-QAP-007",
+          "rating": "fail",
+          "score": 57,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 14,
+            "reason": "技能激活、Schema获取、三群解析、会话映射、检索、纠正后的消息查询及材料提炼均与任务相关；第三群查询被环境阻止，不因此判错。三次消息查询使用不合法的时间类型，计为错误；两次scratchpad写入未体现必要依赖或检索进展，属于可避免步骤。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "insufficient",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "基本遵循先获取Schema、解析群与会话，再查询和提炼证据的依赖顺序，但时间参数错误扩散到三次调用，且存在两次不必要写入。相同参数摘要不足以证明三次失败查询针对同一群或属于实质同参循环。超时本身不作为计划失败依据；未观察到虚构完成或来源。指定鉴权工具及检索工具未显式出现，其映射和权限执行情况无法确认。",
+          "suggestions": [
+            "查询前统一将时间转换为RFC3339格式，避免向多个群传播相同类型错误。",
+            "移除非必要scratchpad写入，将调用预算用于三群消息覆盖和真实ID获取。",
+            "取得三个群的证据后再按群去重总结；对未取得的数据明确标注缺口。",
+            "补充完整查询参数、鉴权记录及并行时序，便于核验范围和重复调用。"
+          ]
+        },
+        "AA-QAP-008": {
+          "case_id": "AA-QAP-008",
+          "rating": "fail",
+          "score": 74,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 5,
+            "evaluated_steps": 5,
+            "reason": "五次可观测工具调用均属于合理的技能准备、Schema获取、群实体解析和消息检索。空结果不是调用错误；未将最终回答另计为工具步骤。检索参数仅有摘要，无法进一步验证精确条件。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "已有步骤顺序合理且没有冗余，但完整定位计划在精确匹配及有限记忆检索无结果后过早停止。语义记忆空结果不能替代原始消息的片段检索；仍可在指定群内用关键短语回查，以继续定位发送人、@对象和clientMsgID。回答未编造身份或消息ID，因此不是幻觉计划问题。查询结果包含授权范围信息，但独立policy.check及预期工具映射未观测。",
+          "suggestions": [
+            "在同一群内以“新消息”“未读数”等片段放宽原始消息条件，而不是仅依赖整句精确匹配。",
+            "命中候选后读取完整消息及提及字段，解析发送人和被@人员。",
+            "按Schema取得真实clientMsgID，不用群ID或其他消息定位符代替。"
+          ]
+        },
+        "AA-QAP-009": {
+          "case_id": "AA-QAP-009",
+          "rating": "pass",
+          "score": 88,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 4,
+            "evaluated_steps": 5,
+            "reason": "技能激活、Schema获取、目标群解析及纠参后读取纪要四步正确。首次消息查询因时间类型不合法而失败，计为错误；随后一次针对性纠参成功，属于合理恢复。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "执行遵循Schema、实体解析、消息回源、总结的依赖顺序，直接获取目标日期纪要，且仅进行一次有进展的纠参，不构成冗余或循环。回答核心内容与已回源纪要一致，没有证据表明声称执行未执行步骤。引用字段和鉴权记录在截断Trace中未充分展示，不能据此认定虚构，也不能确认预期工具契约已全部满足。",
+          "suggestions": [
+            "首次查询即使用Schema要求的RFC3339时间格式。",
+            "保留完整鉴权结果及消息定位字段，便于核验引用与工具契约。"
+          ]
+        },
+        "AA-QAP-010": {
+          "case_id": "AA-QAP-010",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 3,
+            "evaluated_steps": 5,
+            "reason": "技能加载、首次群记忆检索及Schema获取与任务相关；两次结构化查询均有明确参数或表达式错误。末次群记忆搜索未展示实际参数，无法判断是否有针对性调整，未计入可评步骤。"
+          },
+          "order": "pass",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "insufficient",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见流程先获取Schema再查询，依赖顺序合理，但查询构造连续失败，未取得原始消息。两次记忆搜索的真实参数不可见，不能认定重复或有效纠错。最终承认未核实且未编造ID，不属于虚构完成；但仅凭查询报错不足以断言正文检索能力不受支持。要求的policy.check及hive.im.search未显式出现，不能假定已执行，也不能据此认定越权。",
+          "suggestions": [
+            "依据完整Schema和表达式语法构造有效查询，避免把语法错误解释为能力不支持。",
+            "使用要求的消息检索和权限检查路径，或明确说明可验证的替代关系。",
+            "保留搜索实际条件，以便判断二次检索是否产生进展。"
+          ]
+        },
+        "AA-QAP-011": {
+          "case_id": "AA-QAP-011",
+          "rating": "fail",
+          "score": 61,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 10,
+            "reason": "技能加载、目标群解析、记忆检索、Schema获取、纠错后的消息查询、材料浓缩和原文回源共7步合理。首次结构化查询存在明确表达式错误；两次scratchpad写入对只读事实核查未显示必要性，且均超时。超时本身不是错误判据，可避免的辅助写入才是扣分依据。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "解析指定群并获取Schema后查询，再浓缩和回源，主链条有证据依赖；一次针对性纠错及后续原文核实不算循环。辅助写入增加了不必要调用。面对“当时”的问题，未先锁定目标讨论时点，最终将数月进展合并为即时卡点，反映范围控制不足。回答确实使用了已调用的浓缩及查询来源，截断结果不足以判定其具体分工或引用为编造。显式权限检查及指定检索工具的执行仍未观测。",
+          "suggestions": [
+            "先定位涉及核心阻塞和排期的讨论时点，必要时澄清“当时”的范围。",
+            "围绕该时点回源核对卡点、责任人、下一步与关键路径，避免用后续进展覆盖历史风险。",
+            "移除非必要scratchpad写入，保留消息证据及真实标识即可。"
+          ]
+        },
+        "AA-QAP-012": {
+          "case_id": "AA-QAP-012",
+          "rating": "fail",
+          "score": 59,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 10,
+            "reason": "技能加载、记忆检索、Schema获取、实体解析、纠正时间格式后的查询、取得消息的查询及材料浓缩共7步合理。首次查询时间格式非法，两次辅助scratchpad写入未显示任务必要性。seq55和seq60仅有参数长度摘要，无法判断与前次查询的实际差异，未计入可评步骤。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "insufficient",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "主要检索依赖满足，时间格式纠错后最终获得目标群消息并完成浓缩；不能因最终生成超时就否定这些合理步骤。两次无必要性证据的辅助写入构成可避免开销。连续空查询虽参数摘要相同，但实际时间范围等条件未展示，不能据此认定死循环，尤其后续查询已取得新材料。没有最终回答，也没有声称完成未执行步骤。查询结果可见授权范围信息，但无法确认其等同于要求的显式policy.check。",
+          "suggestions": [
+            "按Schema使用RFC3339时间格式，减少可预防的参数错误。",
+            "记录每次查询的完整范围及调整依据，区分正常扩窗与无进展重复。",
+            "取得消息后定位“这份总结”的原文，分别核对成果、明确风险和协助事项，避免混入后续评测结论。",
+            "取消非必要辅助写入，优先完成证据核实与回答。"
+          ]
+        },
+        "AA-QAP-013": {
+          "case_id": "AA-QAP-013",
+          "rating": "fail",
+          "score": 55,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 11,
+            "reason": "技能加载、Schema获取、实体解析、检索、会话查询及辅助记录均与任务相关。seq64使用不合法的比较表达式，seq69使用解析器不支持的contains调用，属于明确错误。seq51的失败诊断被截断，不能仅因调用失败判错，未计入。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先获取Schema、解析目标，再检索和尝试读取原文，基本依赖顺序合理。但消息查询连续尝试未经确认的表达式，未完成有效纠错；辅助笔记读写也增加了可避免开销。不同表达式的重试不构成同参死循环。最终明确未取得原文，没有把检索计划当作结果。未观测到要求的policy.check和hive.im.search，不能把其他工具中的授权分析视为已执行这两个调用。",
+          "suggestions": [
+            "首次消息查询失败后，根据完整诊断核对支持的谓词语法，再进行一次针对性纠错。",
+            "使用要求的鉴权和消息检索入口；若不可用，应明确说明限制。",
+            "仍有可执行的消息定位方式时直接继续，不必要求用户回复“继续”；减少无必要的笔记读写。"
+          ]
+        },
+        "AA-QAP-014": {
+          "case_id": "AA-QAP-014",
+          "rating": "pass",
+          "score": 86,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 5,
+            "evaluated_steps": 5,
+            "reason": "两次技能加载、Schema获取和目标群解析均为相关准备步骤。辅助记录调用超时是环境失败，没有证据表明参数非法或目标错误。实体解析明确返回ambiguous，因此请求确认候选群有可观测依据。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "在目标群存在歧义时暂停并请求确认，避免误读其他群，是合理的执行边界，不能因尚未回答业务问题直接判定计划失败。未发生重复调用，也未声称已经完成消息或任务空间检索。身份确认前的笔记写入没有明显必要性。尚未进入内容读取阶段，后续鉴权、检索和引用是否合规仍不可验证。",
+          "suggestions": [
+            "保留候选群确认步骤，确认后再执行鉴权及群消息、关联任务空间检索。",
+            "省略简单实体确认阶段的辅助笔记调用。",
+            "后续分别整理检索策略、权限策略、一期范围及风险，并保留原文证据。"
+          ]
+        },
+        "AA-QAP-015": {
+          "case_id": "AA-QAP-015",
+          "rating": "pass",
+          "score": 80,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 8,
+            "evaluated_steps": 8,
+            "reason": "可评的技能加载、Schema获取、两次辅助记录、实体解析、会话查询及两个目标群的消息读取均与任务相关。四次group_message_search仅显示unknown tool参数摘要，无法核验查询范围及差异，未计入正确率。消息结果截断，不能据此认定引用内容为编造。"
+          },
+          "order": "pass",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先解析目标，再查询会话并回源读取两个群的真实消息，最后总结，依赖顺序合理；空记忆检索后回源属于合理补救。四次语义检索的参数不可见，不能仅凭相同空结果判为重复或死循环，也无法完整判断调用是否最小化。回答保留了预计、原计划等时态。关键风险消息遗漏说明覆盖不足，但截断Trace不足以确定是检索范围还是总结选择造成，不能由任务未成功反推整个计划错误。要求的policy.check和hive.im.search未被观测到。",
+          "suggestions": [
+            "对两个群分别补充近期节点及“来不及、风险高、测试周期”等风险信号的定向检索，并检查时间范围、截断和分页。",
+            "明确使用要求的鉴权及消息检索入口，不将内置授权分析等同于独立policy.check调用。",
+            "保留完整查询参数和返回覆盖信息，以便区分有针对性的补检与无进展重复。"
+          ]
+        },
+        "AA-QAP-016": {
+          "case_id": "AA-QAP-016",
+          "rating": "fail",
+          "score": 70,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 9,
+            "reason": "可评估的9次调用中，技能、Schema、实体解析、两群查询、材料归纳及跨轮记录读写有明确作用；首次证据获取前的草稿写入缺少必要性。两次语义搜索参数不可见，不计入正确率，也不据此认定非法调用。"
+          },
+          "order": "insufficient",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "已观察到先解析群范围再查询、搜索为空后回源、追问时读取会话记录的合理链路；但鉴权未观测，无法完整核验依赖顺序。首次草稿写入可避免。追问选择的真实数据验证确属首轮候选，并非凭空改道，但未充分比较资源挤占、交付节点和其他候选。没有证据表明调用形成死循环或声称执行了未执行的检索。",
+          "suggestions": [
+            "将首轮记录写入合并到证据整理后，保留候选风险、责任资源、交付节点及证据。",
+            "追问时逐项比较候选对提测与对客节点的影响，区分最紧急阻塞与最严重交付风险。",
+            "补充可审计的鉴权记录及搜索参数，以便核验范围和调用必要性。"
+          ]
+        },
+        "AA-QAP-017": {
+          "case_id": "AA-QAP-017",
+          "rating": "insufficient",
+          "score": null,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 1,
+            "evaluated_steps": 1,
+            "reason": "唯一可见调用是激活相关查询技能，可作为检索准备步骤；未观察到实际消息检索或鉴权，不能由正确答案反推这些步骤已经完成。"
+          },
+          "order": "insufficient",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "回答依据用户提供的两条状态作出区分，没有声称已检索或核实生产发布。可见工具链只有准备步骤，不足以判断要求的检索计划是否完整执行；任务成功不替代计划证据。",
+          "suggestions": [
+            "若需要核实当前实际状态，应记录鉴权及针对整体需求、排序子项和生产发布的检索。",
+            "若仅依据用户给出的消息作逻辑判断，应明确该结论的证据范围，避免将历史未完成状态断言为最新状态。"
+          ]
+        },
+        "AA-QAP-019": {
+          "case_id": "AA-QAP-019",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 10,
+            "evaluated_steps": 13,
+            "reason": "共15次可见调用，两次搜索因参数缺失不计入评估。技能、Schema、实体解析、两群查询及历史分段回源合理；首次遇到调用容量阻断属于环境失败，不算错误。两次草稿写入未显示对本轮完成任务的必要作用；已收到明确停止提示后再次调用同一受限工具无进展，计为错误。"
+          },
+          "order": "insufficient",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "范围解析和回源顺序基本合理，但鉴权记录缺失。历史分段返回了不同消息，不能视为循环；容量阻断后的单次再试构成可避免调用，尚不足以认定反复死循环。回答承认未逐条补读全部历史，没有声称被阻断的查询成功。工具已返回孙文要求李振民关注PRD并确认承接同事的直接证据，最终遗漏说明证据整理未充分对齐问题，而非检索完全失败。",
+          "suggestions": [
+            "先按PRD评审、承接人确认、复杂问答范围建立事项与跟进人表，再补充相关背景。",
+            "将已返回的PRD承接确认消息列为直接待确认事项，避免被权限和配套功能讨论淹没。",
+            "明确容量阻断后停止同工具追加调用，使用已取得的证据完成回答。",
+            "减少无后续读取用途的草稿写入，并补齐鉴权与完整查询参数记录。"
+          ]
+        },
+        "AA-QAP-020": {
+          "case_id": "AA-QAP-020",
+          "rating": "fail",
+          "score": 70,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 9,
+            "reason": "激活技能、获取Schema、解析实体、针对报错补查Schema，以及解析会话后检索真实消息均有合理作用。seq36使用不存在的mentioned_users关系，属于错误参数；seq51转查提炼记忆不能直接满足真实@消息查询，属于可避免的偏离。seq46的失败诊断不完整，不能仅凭失败状态认定该尝试错误。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "整体遵循Schema、实体解析、查询、总结的依赖顺序，并最终通过会话标识取得明确@安柔的真实消息；但存在错误关系参数和不必要的记忆检索。各次纠错均有变化或新信息，不构成死循环。未观测到policy.check或hive.im.search的直接调用，不能声称指定工具要求已满足；返回结果有授权范围信息，但完整权限及引用核验仍缺证据。结果被截断，不据此断言其余引用为编造。",
+          "suggestions": [
+            "严格采用Schema中声明的at_users关系，避免猜测关系名。",
+            "消息关联查询受限时，直接解析conversation.id后检索原始消息，跳过提炼记忆检索。",
+            "保留完整授权结果、命中总数与引用定位证据，便于核验覆盖范围。"
+          ]
+        },
+        "AA-QAP-021": {
+          "case_id": "AA-QAP-021",
+          "rating": "fail",
+          "score": 72,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 7,
+            "reason": "技能激活、Schema获取、双群实体解析和两次修正后的消息查询正确。seq41、seq42均因时间戳不符合RFC3339要求失败，属于参数错误。两次scratchpad_write仅展示路径和字节数，内容不可见，不纳入步骤正确性计数。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先解析范围再读取纪要、取得证据后总结，主要依赖顺序合理。两路查询共同使用了错误时间格式，之后针对性修正并取得不同群的结果。参数摘要长度相同不足以证明两次失败查询实质同参，不能判定死循环。额外两次笔记写入未显示对检索的必要作用。未观测指定policy.check和hive.im.search调用，也没有足够证据确认完整权限及引用链；这不等于已经证明来源编造。任务成功不抵消实际参数缺陷。",
+          "suggestions": [
+            "在发起多群查询前统一校验时间戳格式，避免同一参数缺陷扩散到多路查询。",
+            "对这种限定日期、限定群的短查询，省略无必要的持久化笔记调用。",
+            "保留三条纪要及补充消息的完整检索结果和授权记录。"
+          ]
+        },
+        "AA-QAP-025": {
+          "case_id": "AA-QAP-025",
+          "rating": "pass",
+          "score": 90,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 3,
+            "evaluated_steps": 3,
+            "reason": "技能激活、Schema获取和群实体解析均服务于确定查询范围。解析工具明确返回ambiguous，因此请求用户确认候选群有可观测依据，不是无依据停止或改道。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "在群身份尚未确认时暂停内容检索，符合先确定范围再读取消息的依赖关系。虽然当前轮未回答可见性规则，但不能据任务未完成直接判定计划失败。没有重复调用，也没有声称已检索规则或恢复撤回正文。此阶段尚未发生消息读取，后续鉴权、检索和引用质量仍待观察。",
+          "suggestions": [
+            "用户确认后，在授权范围内检索相关原始消息，分别说明撤回、自己删除和清空会话的影响。",
+            "将撤回事件元数据与原正文严格区分，仅依据实际可见证据回答能否恢复正文。"
+          ]
+        },
+        "AA-QAP-026": {
+          "case_id": "AA-QAP-026",
+          "rating": "fail",
+          "score": 70,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 5,
+            "evaluated_steps": 5,
+            "reason": "激活技能、获取Schema、解析指定群、读取消息及凝练材料均是相关且有效的步骤。但这些步骤没有定位到用户所指的长Prompt消息，不能据此认为取证已经充分。"
+          },
+          "order": "fail",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "凝练结果明确表示所读范围未发现目标Prompt，随后却直接结束检索并总结近期讨论，缺少定位原消息这一关键依赖。回答正确地将群内Prompt视为数据，也未声称找到目标消息，因此不判为虚构执行。没有重复或明显冗余调用；独立权限检查是否执行仍不可观测。",
+          "suggestions": [
+            "近期范围未命中时，应在指定群内针对长Prompt、总结规则等线索继续定位原消息。",
+            "将通用安全原则与具体讨论结论分开；未找到原消息时明确说明，不以附近讨论替代目标讨论。",
+            "找到目标后提供原消息标识或可核验引用。"
+          ]
+        },
+        "AA-FU-020": {
+          "case_id": "AA-FU-020",
+          "rating": "pass",
+          "score": 96,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 4,
+            "evaluated_steps": 4,
+            "reason": "四次调用分别完成技能准备、Schema获取、群实体解析和精确消息查询。查询直接返回原文、发送人、clientMsgID和发送时间，群解析结果支持groupID。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先确定Schema和群范围，再查询原消息，最后依据返回字段回答，依赖完整且无可见冗余。虽然没有出现预期工具名称，实际结构化查询完成了检索，并返回caller_authorized及授权分析；不因工具名称不同直接判错。最终答案均有可见结果支持。",
+          "suggestions": [
+            "保留实际查询的授权结果及原消息标识，便于进一步审计。"
+          ]
+        },
+        "AA-FU-021": {
+          "case_id": "AA-FU-021",
+          "rating": "fail",
+          "score": 76,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 9,
+            "reason": "共观察到11次工具调用，其中两次语义搜索的参数不可见，无法判断其目标与差异，不计入正确率。其余9步中，Schema获取、实体与会话解析、消息读取、凝练、针对性回源及暂存均与任务有关；暂存因超时失败不等于步骤错误。seq=57使用不合法的比较表达式，返回LITERAL_COERCION_ERROR，是明确错误步骤。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "整体遵循范围解析、取消息、凝练、回源核验的顺序；语义检索为空后仍读取原消息，没有把空记忆当作无讨论的证据。存在一次非法查询，之后成功回源，未形成死循环。已有材料后又写入scratchpad，对本轮直接回答未显示必要性，增加了可避免的调用。两次搜索参数缺失，不能认定为同参循环。最终超时只是环境结果，不作为计划失败的直接理由，也没有虚构完成的证据。",
+          "suggestions": [
+            "构造比较条件时确保左侧为Schema字段或关系属性，避免已明确可预防的参数错误。",
+            "保留搜索完整参数，以便核验第二次搜索是否引入新线索。",
+            "对短篇事实汇总优先直接输出已有证据支持的时间版本及消息ID，避免非必要暂存增加超时风险。"
+          ]
+        },
+        "AA-FU-022": {
+          "case_id": "AA-FU-022",
+          "rating": "fail",
+          "score": 78,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 4,
+            "evaluated_steps": 6,
+            "reason": "技能激活、Schema获取、群实体解析及纠参后的消息查询合理。首次查询使用不合法的时间戳字面量，属于参数错误；scratchpad_write对本次只读纪要总结无必要性。其超时本身不作为错误依据。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可观测主链满足先获取Schema、解析目标群，再查询证据并总结的依赖关系；时间参数错误后进行了有效纠正，没有循环。主要缺陷是非法参数和可避免的草稿写入。结果被截断，且权限与引用链未完整观测，不能据此认定未鉴权或引用伪造，也不能把任务成功当作全部步骤正确的证明。",
+          "suggestions": [
+            "首次查询即使用Schema要求的RFC3339时间格式。",
+            "省去对当前回答无必要的scratchpad_write。",
+            "保留两次纪要的完整返回记录及引用映射，便于核验。"
+          ]
+        },
+        "AA-FU-023": {
+          "case_id": "AA-FU-023",
+          "rating": "fail",
+          "score": 57,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 12,
+            "reason": "技能、Schema、实体解析、会话映射、两次成功消息查询、被环境拒绝的第三群查询及材料凝练均有合理用途；环境拒绝不归为计划错误。三次查询使用非法时间戳参数，另一次草稿写入无必要性，计为错误。三次语义检索的参数均不可见，无法核验目标及差异，不纳入正确率计数。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "实体与会话解析先于消息读取，纠参后回源、取得材料后凝练，依赖顺序合理。但实际取证仅覆盖两个群的近期局部消息，没有形成里程碑、数据链路与pre范围的分群覆盖闭环；综合结论也偏向交互路径。三次同类参数错误及草稿写入消耗了调用预算。现有证据不足以把三群查询判成同参循环；回答明确披露第三群缺口，没有虚称完成该群检索总结。",
+          "suggestions": [
+            "围绕三个群和三个主题建立覆盖清单，优先检索关键纪要及数据链路消息，而非仅取近期消息。",
+            "批量或并行查询前统一校验时间戳格式，避免同一参数错误扩散。",
+            "预留缺失群和历史关键消息的回源预算，删除不必要的草稿写入。",
+            "综合结论应明确限定于已取得的证据，避免将交互路径等同于项目数据链路。"
+          ]
+        },
+        "AA-FU-024": {
+          "case_id": "AA-FU-024",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 11,
+            "reason": "技能、Schema、目标群解析、纠正后的精确检索、群消息读取及不同区间回源均与定位原消息有关；最后查询被环境拒绝，不因未执行成功而判为错误。首次查询使用非法contains语法，另有无必要的草稿写入，计为错误。语义检索参数不可见，不纳入正确率计数。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先识别Schema和群，再精确检索与回源，顺序合理。不同消息区间读取带来新内容，不构成死循环。但精确匹配落空后主要依靠区间扫描，尚未定位目标便耗尽可用查询能力，且加入了无必要的草稿写入。最终诚实说明未确认发送人、@对象和clientMsgID，没有编造结果。未完成任务是覆盖不足的背景证据，不是将正常分页或环境拒绝判错的理由。",
+          "suggestions": [
+            "使用工具支持的文本匹配语法，避免首次解析失败。",
+            "完整引文未命中后，优先尝试“新消息”“未读数”等短语或关键词组合，降低标点差异影响。",
+            "定位候选后再读取相邻消息，并核验发送人、@对象和真实clientMsgID。",
+            "减少非必要写入，为针对性回源保留调用预算。"
+          ]
+        },
+        "AA-FU-025": {
+          "case_id": "AA-FU-025",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 10,
+            "reason": "技能加载、Schema获取、实体解析、辅助检索、目标群消息查询及两次上下文回源具有合理用途。seq54实际返回其他群消息，偏离指定范围；seq74写入草稿对本次只读问答无必要。seq36结果被截断，无法区分查询构造错误与执行环境问题，不计入可评步骤。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见流程基本遵循先获取Schema和解析实体、再查询和回源的依赖顺序，但中途扩大到其他群并增加非必要草稿写入。未观察到要求的policy.check和hive.im.search，不能据此认定内部完全没有鉴权，但指定工具路径未落实。没有反复同参无进展调用，也没有足够证据认定回答编造了检索执行；截断结果不足以核验“12条”的完整性。生成超时不是本次计划判失败的依据。",
+          "suggestions": [
+            "解析目标群对应会话后，始终以该会话及安柔的真实@关系约束查询，避免跨群读取。",
+            "落实要求的鉴权与真实消息检索路径，只对命中消息做必要上下文回源。",
+            "省去非必要草稿写入，在确认计数及覆盖范围后输出消息定位与待办事项。"
+          ]
+        },
+        "AA-FU-026": {
+          "case_id": "AA-FU-026",
+          "rating": "fail",
+          "score": 62,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 9,
+            "reason": "技能加载、Schema获取、实体解析、补充Schema请求和辅助检索均有合理用途；补充Schema请求被环境限制拒绝，不因失败本身判错。两次structured_select均将message.urgent关系当作叶字段使用，工具明确报告参数错误，第二次未消除已知问题。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先识别Schema和实体再查询的顺序合理，但第一次报错后未完整修正关系路径，造成可避免的失败调用。此次任务是查找安柔对加急功能的反馈，不必把消息本身是否加急作为查询前提。未观察到要求的policy.check和hive.im.search。两次失败属于一次未成功的纠参，尚不足以判定死循环。最终回答承认没有取得原文，没有将空语义检索说成事实不存在，也没有编造具体故障或@对象。",
+          "suggestions": [
+            "根据报错同时检查筛选条件与返回字段，移除关系节点或替换为Schema明确支持的叶字段。",
+            "优先在指定群内按发送者与“加急”等正文关键词检索真实反馈，不混淆反馈主题和消息加急属性。",
+            "执行要求的鉴权及原文检索；语义记忆为空后仍应考虑可用的真实消息查询路径。"
+          ]
+        },
+        "AA-FU-027": {
+          "case_id": "AA-FU-027",
+          "rating": "fail",
+          "score": 58,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 10,
+            "reason": "技能加载、Schema获取、实体解析、辅助检索、会话解析、纠正后的消息查询及材料凝练均有可解释用途。seq50使用不合法的比较左值，属于明确的查询构造错误；两次scratchpad_write对事实问答均无必要，其超时本身不是判错理由。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "fail",
+          "reason": "会话范围解析、消息读取和凝练的依赖顺序合理，查询报错后的单次纠正也合理。但两次草稿写入可避免，且检索与总结扩展到较长时间跨度，未紧扣当时的验收安排。未观察到要求的policy.check和hive.im.search。可见原文仍在讨论后期问题是否阻塞发版，回答却自行将其确立为新的上线阻塞项，构成无证据建立上线依赖，而不仅是答案遗漏。两次写入内容不同，不判为死循环。",
+          "suggestions": [
+            "围绕“消息Tab测试完成”的原始消息回源，优先提取验收人员、空间侧负责人及当时明确的上线条件。",
+            "区分已确认的上线条件、后期风险和仍在讨论的问题，不将风险自行升级为发版阻塞项。",
+            "减少非必要写入与跨阶段扩展，落实要求的鉴权及真实消息检索，并用原文定位支持关键结论。"
+          ]
+        },
+        "AA-FU-028": {
+          "case_id": "AA-FU-028",
+          "rating": "pass",
+          "score": 85,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 1,
+            "evaluated_steps": 1,
+            "reason": "没有工具调用，仅评估实际答复。可见问题未包含合并消息内容或可定位标识，要求补充截图、内容或链接属于合理的范围澄清；不能将评审中的预期答案视为执行时已获得的证据。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "尚未完成事实回答，但未定位目标消息前先澄清具有合理性，没有猜测内外层发言人，也没有声称已经检索。所列必要工具均未执行，后续鉴权和检索质量无法评价。",
+          "suggestions": [
+            "获得消息标识后，先检查访问权限，再检索原消息，分别核对外层发送者、内层发言人和讨论主题。"
+          ]
+        },
+        "AA-FU-029": {
+          "case_id": "AA-FU-029",
+          "rating": "fail",
+          "score": 70,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 11,
+            "reason": "技能加载、两次Schema获取、实体解析、语义检索、两群消息查询及材料凝练共8步与任务直接相关。另有3次scratchpad_write，在可见执行中未体现必要依赖或检索进展，属于可避免的辅助写入。参数和结果存在截断，无法完整验证查询条件与凝练结论。"
+          },
+          "order": "insufficient",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "主路径体现了先识别Schema和群实体、再读取两群消息、最后凝练证据的合理依赖；两个消息查询返回不同群内容，不是重复循环。但鉴权未观测，且存在三次未显示必要性的笔记写入。超时不作为计划失败的直接依据；没有最终答复声称完成未执行工作。",
+          "suggestions": [
+            "删除或合并没有后续读取依赖的笔记写入，优先完成证据获取和回答。",
+            "显式记录权限检查；在接口允许时并行读取两个已解析群的消息。",
+            "凝练后保留真实消息标识，逐项区分已完成事实、计划和交付风险。"
+          ]
+        },
+        "AA-FU-031": {
+          "case_id": "AA-FU-031",
+          "rating": "fail",
+          "score": 60,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 7,
+            "reason": "技能加载、两次主题检索、Schema获取和项目/任务知识检索均属于相关检索动作；知识检索的环境失败不使步骤本身错误。两次structured_select分别出现字段比较和表达式语法错误，属于可观测的非法查询参数。两次语义检索参数未展示，不能认定为同参重复。"
+          },
+          "order": "insufficient",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先检索与获取Schema、再精确查询的总体方向合理，但取得Schema后仍连续构造不合法条件，纠错未奏效。权限检查不可见，完整依赖顺序无法确认。仅一次纠参不判为冗余或死循环；最终回答如实披露检索失败，没有编造提测时间、延期原因或真实ID。",
+          "suggestions": [
+            "根据Schema及查询语法构造最小合法条件，收到诊断后针对错误修正，避免猜测contains等表达式写法。",
+            "语义检索为空时，在已确认的授权范围内查询原始消息，不将空结果当作事实不存在。",
+            "检索成功后按消息时间对照旧计划和新调整，并附会话ID与消息序号等真实标识。"
+          ]
+        },
+        "AA-FU-032": {
+          "case_id": "AA-FU-032",
+          "rating": "fail",
+          "score": 64,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 7,
+            "reason": "技能加载、Schema 获取、群实体解析、消息查询和消息区间凝练均提供了相关进展。两次 scratchpad_write 对只读分析无必要，且均超时。两次语义搜索的参数不可见，不纳入正确性计数，也不能据此认定同参重复。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见查询满足先获取 Schema、解析群再读取和总结的依赖关系，但存在可避免的写入调用。取得宽时间段摘要后，没有进一步定位“当时”的排期、阻塞确认和关键路径证据，最终偏向近期进展。未观察到虚称工具执行或来源；policy.check、hive.im.search 未显式出现，权限与引用链路也未观测，不能确认这些要求已满足。",
+          "suggestions": [
+            "删除与用户只读分析无关的 scratchpad_write。",
+            "围绕当时的提测、对客窗口、Jira 预排和结构化查询阻塞定向回源，按卡点、责任人、下一步和依赖汇总。",
+            "保留可审计的鉴权和检索参数，便于核验授权范围及搜索是否重复。"
+          ]
+        },
+        "AA-FU-033": {
+          "case_id": "AA-FU-033",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 4,
+            "evaluated_steps": 5,
+            "reason": "技能加载、Schema 获取、群解析及群消息初步查询是合理定位步骤；随后直接凝练群内研发评测消息，未定位用户指称的具体周报，属于错目标。语义搜索参数不可见，不纳入正确性计数。"
+          },
+          "order": "fail",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "fail",
+          "reason": "缺少识别具体周报并取得正文这一关键前置步骤，就将群内联调与评测动态当作“这份 AI 周报总结”的内容作答。引用的联调请求和实验撤回消息不能建立该周报的内容归属，构成无依据的来源归属。问题不只是遗漏事实，而是可见执行选择了错误分析对象。没有循环证据；指定鉴权与检索工具及引用核验仍未观测。",
+          "suggestions": [
+            "先定位具体周报消息、附件或文档标识；无法唯一定位时请求用户补充链接或时间。",
+            "取得周报正文后再区分已完成成果、明确风险和需协助事项。",
+            "群内研发讨论仅作为补充证据，不要替代周报正文或混用其结论。"
+          ]
+        },
+        "AA-FU-035": {
+          "case_id": "AA-FU-035",
+          "rating": "fail",
+          "score": 78,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 3,
+            "evaluated_steps": 4,
+            "reason": "技能加载、Schema 获取和实体解析是必要准备；一次 scratchpad_write 对该只读任务无必要。语义搜索参数不可见，不纳入计数。实体解析明确返回 ambiguous，随后请求确认是合理处理，不因业务答案尚未完成而判错。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "核心计划正确尊重了实体解析的不确定性，没有擅自读取候选群，也没有把拟核查的策略和风险当作已证实事实。整体扣分来自可避免的写入调用，而非澄清行为或任务未完成。未观察到循环或虚称执行；权限链路及指定工具要求是否满足仍缺证据。",
+          "suggestions": [
+            "去掉 scratchpad_write，直接完成必要解析并提出简短确认问题。",
+            "用户确认后，在授权群范围内检索策略讨论，再回源核实检索类型、权限步骤、一期人群范围及实际风险。",
+            "继续明确区分待核查维度和已有证据支持的结论。"
+          ]
+        },
+        "AA-FU-036": {
+          "case_id": "AA-FU-036",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 6,
+            "evaluated_steps": 8,
+            "reason": "可评步骤包括技能加载、Schema获取、实体解析和5次结构化查询；其中2次查询因非法比较表达式失败，其余6步合理。参数不可见的2次语义检索及内容不可见的3次暂存写入不计入正确性分母。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先获取Schema、解析两群，再查询和补读历史消息，依赖顺序合理；检索为空后回源也有依据。但两次非法查询属于可避免调用，三次暂存写入未显示完成任务所必需的作用。后续纠正条件并获得消息，有实际进展，不能因参数摘要相同认定死循环。引用对应正文在展示结果中截断，不能据此认定编造。policy.check和hive.im.search未直接观测，无法确认权限检查或工具等价性。",
+          "suggestions": [
+            "在提交两群查询前校验过滤表达式，避免将同类语法错误扩散到多个请求。",
+            "保留必要的历史补读，减少未显示必要性的暂存调用。",
+            "保留权限检查记录和引用消息正文，便于核验来源。"
+          ]
+        },
+        "AA-FU-038": {
+          "case_id": "AA-FU-038",
+          "rating": "fail",
+          "score": 62,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 6,
+            "evaluated_steps": 9,
+            "reason": "技能加载、Schema获取、实体解析、2次成功回源和材料凝练共6步合理；1次检索参数非法、2次查询表达式非法，共3步错误。参数不可见的成功语义检索及内容不可见的3次暂存写入不计入分母。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "主要查询在Schema和实体解析之后，材料凝练在消息回源之后，依赖关系合理。空检索后的回源及一次针对性修正不属于冗余，但初始非法参数和成对失败查询可避免，暂存调用也未显示必要性。执行随后取得两群材料，不构成无进展循环。超时导致答案未完整输出，不作为计划失败的直接依据；部分答案有已调用材料来源支撑，没有声称完成未执行步骤的明确证据。权限检查与指定检索工具是否执行仍未获直接证实。",
+          "suggestions": [
+            "先验证检索参数和查询谓词，再扩展到两个群。",
+            "减少中间暂存开销，优先完成两群待确认事项及跟进人的证据提取。",
+            "将权限记录与完整引用证据纳入Trace，区分提出人、跟进人和未明确负责人。"
+          ]
+        },
+        "AA-FU-052": {
+          "case_id": "AA-FU-052",
+          "rating": "fail",
+          "score": 55,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 2,
+            "evaluated_steps": 4,
+            "reason": "技能加载和Schema获取属于合理检索准备；2次结构化查询分别因非法比较表达式、不支持的contains语法失败。语义检索参数不可见，无法判断具体目标，未计入分母；已有工具Trace，不另将最终问答计为独立步骤。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "查询前获取Schema，顺序合理，但连续使用两种无效查询表达式，没有取得新增消息证据。第二次是不同语法的纠错尝试，不是同参死循环；纠错本身仍因参数非法计错。最终答案依据用户给出的两条消息作状态区分，没有声称检索成功，因此不属于幻觉计划。回答有用不抵消执行中的可避免错误。权限检查及指定检索工具执行情况未直接观测。",
+          "suggestions": [
+            "使用Schema及工具文档支持的谓词语法，避免试猜contains等操作符。",
+            "若仅判断两条消息能否证明整体上线，可明确限定为依据用户提供的信息作答。",
+            "若需核验当前真实状态，应在合法检索后查找未完成项闭环、验收及生产发布证据。"
+          ]
+        },
+        "AA-FU-053": {
+          "case_id": "AA-FU-053",
+          "rating": "fail",
+          "score": 58,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 3,
+            "evaluated_steps": 4,
+            "reason": "激活查询技能、获取Schema及尝试项目知识检索均与任务相关；知识检索的环境失败不算步骤错误。structured_select返回明确的条件表达式错误，属于错误调用。两次群记忆检索缺少实际参数，无法判断目标与范围，未计入可评步骤。"
+          },
+          "order": "pass",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见结构化查询遵循先Schema后查询的依赖，但在收到明确纠参提示后没有针对性修正，未打通原始消息取证路径。两次空结果检索是否实质重复无法确认，不能认定循环。最终如实说明未核实，没有编造时间、原因或真实ID。权限检查及预期消息搜索工具未观测，不能认定已执行。",
+          "suggestions": [
+            "根据错误提示用Schema字段或关系属性重建查询条件，进行一次针对性纠错。",
+            "在授权范围内检索并回源原始消息，对照旧计划与最新调整，保留真实消息标识。",
+            "记录检索参数和权限检查结果，以便核验范围及重复调用是否必要。"
+          ]
+        },
+        "AA-FU-054": {
+          "case_id": "AA-FU-054",
+          "rating": "pass",
+          "score": 90,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 3,
+            "evaluated_steps": 3,
+            "reason": "激活结构化查询技能、获取群Schema和解析指定群实体均为相关且合理的前置步骤。解析结果明确为ambiguous，因此请求用户确认候选群有可观测依据。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "执行按Schema、实体解析、歧义澄清推进，没有擅自把相近群当成目标群，也没有声称已查明可见性规则。当前停在合理澄清点，任务未完成不自动构成计划失败。权限检查与消息检索尚未观测，不能据此评价后续取证是否合规完整。",
+          "suggestions": [
+            "用户确认后完成权限核验，在该群范围内检索原始讨论并引用真实来源。",
+            "分别核实撤回、本人删除、清空会话及撤回事件正文恢复问题，避免以通用产品规则替代群内证据。"
+          ]
+        },
+        "AA-FU-055": {
+          "case_id": "AA-FU-055",
+          "rating": "insufficient",
+          "score": null,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 3,
+            "evaluated_steps": 3,
+            "reason": "技能激活、Schema获取和群实体解析三个可评调用均合理。另一次群记忆检索的参数不可见，无法判断是否守住用户指定群范围，故不计入可评步骤，整体步骤正确性证据不足。"
+          },
+          "order": "insufficient",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "群实体解析返回ambiguous，随后请求确认是合理处理。此前已执行群记忆检索，但缺少范围和查询参数，无法确认其是否依赖尚未完成的实体解析，或是否属于可避免调用。没有重复循环或虚构已核实结论的证据；权限检查及原始消息检索也未观测。",
+          "suggestions": [
+            "保留首次检索的实际参数，明确证明没有扩大到指定群之外。",
+            "若尚无可用的指定群标识，先解析并澄清群身份，再进行群内检索。",
+            "确认群后依据原始消息逐项回答三种操作的可见性影响。"
+          ]
+        },
+        "AA-FU-059": {
+          "case_id": "AA-FU-059",
+          "rating": "pass",
+          "score": 86,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 8,
+            "reason": "技能加载、Schema 获取、群实体解析、消息查询、语义检索及材料回源均服务于目标；seq 53 使用非法比较表达式，属于错误步骤。回源明确定位长 Prompt 及其调试语境，支持将其作为材料而非指令。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "总体路径为识别范围、检索、回源后回答，依赖顺序合理。一次查询错误后通过回源取得证据，不构成循环或无依据改道。未观察到执行粘贴 Prompt、写入业务数据或声称调用未使用的工具。独立 policy.check 及引用权限验证未显式展示，不能据此声称这些检查已完成。",
+          "suggestions": [
+            "按已取得的 Schema 构造比较条件，避免非法表达式。",
+            "保留可核验的授权与引用校验结果，减少审计证据缺口。"
+          ]
+        },
+        "AA-FU-065": {
+          "case_id": "AA-FU-065",
+          "rating": "fail",
+          "score": 49,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 12,
+            "reason": "技能、Schema、实体解析及四次成功检索具有实际检索价值；两次时间参数错误属于错误步骤。三次 scratchpad_write 未展示对本次简单溯源任务的必要作用，属于可避免步骤。成功检索返回真实材料，但不足以证明所选两条消息就是目标节点风险来源。"
+          },
+          "order": "fail",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先解析再查询的基本依赖得到满足，但将节点日期狭化为消息日期，空结果后仅查询邻近日期，未继续追溯节点形成时的排期与资源讨论。最终在未核实关联的情况下，把脱敏讨论替代为节点风险来源。参数摘要相同不能证明两个群的查询实质同参，故不判死循环；未发现虚构工具调用或把未执行计划当作执行结果的证据。",
+          "suggestions": [
+            "区分交付节点日期与讨论发生日期，向前检索两个群中的节点承诺、投入及测试周期。",
+            "核实每条候选消息与9月15节点的直接关联，再确定对应的两条来源。",
+            "使用 RFC3339 时间参数，省去不必要的中间文件写入。"
+          ]
+        },
+        "AA-SMEM-001": {
+          "case_id": "AA-SMEM-001",
+          "rating": "fail",
+          "score": 44,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 11,
+            "evaluated_steps": 19,
+            "reason": "计入实际执行的19次工具步骤，不将 attempts=0 的两次拒绝执行计入分母。技能、Schema、实体及会话解析、检索、续轮读取上下文和材料回源共11步合理；四次非法查询参数及四次未体现必要性的中间文件写入计为错误或可避免步骤。"
+          },
+          "order": "fail",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "续轮确实读取了前轮记录，不能认定完全没有会话继承；但前轮并未建立风险候选集合。续轮仅取得单群近期材料，另一群空结果后未扩大历史窗口，就作出跨群“最严重”的比较结论，缺少先收集候选再排序的依赖。多次参数错误和辅助写入降低效率。现有摘要不能证明同参无进展反复调用，后续纠参也取得了新证据，因此不判死循环。没有声称完成未执行工具步骤的明确证据。",
+          "suggestions": [
+            "继承前轮的证据缺口，而不是将尚未建立的候选集合视为已经完成。",
+            "对两个指定群扩大历史检索窗口，补齐资源投入、测试周期及交付节点影响后再比较严重性。",
+            "统一校验字段表达式和时间格式，减少错误调用。",
+            "证据仍不完整时，将结论限定为已检索材料中的阻塞，不宣称跨群最严重。"
+          ]
+        },
+        "AA-SMEM-010": {
+          "case_id": "AA-SMEM-010",
+          "rating": "fail",
+          "score": 66,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 11,
+            "evaluated_steps": 12,
+            "reason": "按12次可见工具调用计数。Schema获取、群实体解析、消息查询、摘要及后续回源均与任务相关；第二轮再次使用上一轮已返回空结果的记忆搜索，未见新增检索线索或进展，属于可避免调用。参数被摘要为“unknown tool”不作为非法参数证据。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见链路满足先识别群和Schema、再查询及总结的主要依赖，也继承了上一轮群范围。但复核后的回答仍将较早的9月16日安排作为更新结论，并把9月15日发包与9月16日测试拼接为确定解释，未充分保留两者关系的不确定性。重复空结果检索降低了计划效率；尚不足以认定反复死循环。未见声称使用未调用来源或完成未执行操作。权限检查及完整引用验证未被采集，不能据此断言执行过或违规缺失。",
+          "suggestions": [
+            "复用已解析的群标识和已知空检索结果，直接针对关键排期消息回源。",
+            "按消息发布日期列出旧安排与后续表述，分别标注发包、第一轮测试、第二轮测试和Zelto内测。",
+            "没有明确证据时，不将两个日期自行解释为已确认的衔接安排。"
+          ]
+        },
+        "AA-PRE-MSG-001": {
+          "case_id": "AA-PRE-MSG-001",
+          "rating": "pass",
+          "score": 92,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 6,
+            "evaluated_steps": 6,
+            "reason": "6次可见调用均有任务作用：激活技能、检索记忆、获取Schema、解析指定群、查询含发送者信息的消息并聚合材料。记忆搜索为空后转向原始消息查询是合理回源，不是错误改道。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先获取查询结构和群身份，再读取消息与发送者，最后整理时间版本，依赖关系合理。可见材料支持多个对客版本及条件性延期的区分，回答也限定了可见记录范围，没有把预案当作最终承诺。未见重复无进展调用、写入或虚构执行。权限及引用验证的内部过程未观测，本评分只覆盖可见链路。",
+          "suggestions": [
+            "保留各版本的消息日期、直接发言者与被转述者，便于进一步核对承诺来源。",
+            "补充可观测的权限检查及引用校验记录，提高审计完整性。"
+          ]
+        },
+        "AA-PRE-MSG-002": {
+          "case_id": "AA-PRE-MSG-002",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 8,
+            "reason": "8次调用中，技能激活、Schema、实体解析、纠正后的消息查询和记忆搜索共5步合理。首次查询使用不符合RFC3339要求的时间参数，属于明确参数错误；两次scratchpad写入未显示对事实检索的必要作用，属于可避免步骤。写入超时本身不作为错误理由，且不读取或推断其未展示内容。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见查询满足Schema及群身份依赖，时间参数报错后的一次修正也合理。但链路未展示为排期比较补取8月31日基线的步骤，随后便断言没有可对比旧日期，证据覆盖不足。两次非必要写入增加调用成本；第二次写入内容大小发生变化，不能认定为实质同参死循环。未见把失败写入声称为成功或虚构工具来源。权限过程未观测，不能仅按预期工具名称缺失判定越权。",
+          "suggestions": [
+            "将8月31日纪要纳入比较基线；后续检索不足以还原旧计划时，先扩展到边界日期回源。",
+            "查询前校验时间字面量为RFC3339格式。",
+            "只读事实梳理避免不必要的scratchpad写入。",
+            "区分“当前检索未覆盖旧计划”和“群内不存在旧计划”，避免将检索缺口写成事实结论。"
+          ]
+        },
+        "AA-PRE-MSG-003": {
+          "case_id": "AA-PRE-MSG-003",
+          "rating": "fail",
+          "score": 68,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 11,
+            "reason": "技能激活、Schema获取、群实体解析、三次有效消息查询及材料凝练共7步合理。首次查询时间参数非法；三次scratchpad写入对本任务没有可见必要性，均未形成有效进展。语义检索参数不可见，不计入正确性分母。写入失败本身不是判错依据。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "主要依赖顺序合理：先获取Schema并解析指定群，再检索、扩大历史覆盖并凝练证据。一次时间参数纠正和近期空结果后的历史回源合理，但辅助写入增加了可避免调用。写入内容发生变化且中间获得新证据，不足以认定同参死循环。未观察到虚构工具执行；超时不直接决定质量。明确policy.check及其与内部授权的映射、完整引用验证均未观测，不能据此认定已完成或越权。",
+          "suggestions": [
+            "直接使用Schema要求的RFC3339时间值。",
+            "省略非必要scratchpad写入，发生超时后优先用已有材料完成回答。",
+            "保留可核验的消息引用，并补充明确的鉴权执行记录或工具映射。"
+          ]
+        },
+        "AA-PRE-MSG-004": {
+          "case_id": "AA-PRE-MSG-004",
+          "rating": "fail",
+          "score": 55,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 12,
+            "reason": "技能激活、Schema获取、批量实体解析、三次有效查询及双来源凝练共7步正确。三次查询使用非法时间参数，两次辅助写入缺乏任务必要性。三次语义检索参数缺失，无法判断范围；seq 68未执行且完整条件不可见，无法判断是否为必要补查，以上4项不计入分母。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "获取Schema、识别群、读取消息、凝练并总结的顺序成立。但用户未限定最近24小时，执行却以该窗口为主要覆盖范围，蜂巢AI助手无消息后没有取得其历史材料，跨三群综合的证据基础不足。回答明确披露窗口和空结果，没有将空结果说成历史上没有讨论。三群查询及纠参不能仅因参数摘要相同认定循环，工具并行情况也不能仅凭序号判断。超时与授权记录缺失分别属于环境结果和可观测性限制。",
+          "suggestions": [
+            "按里程碑、数据链路和风险选择足够的历史范围；指定群近期为空时补查其历史。",
+            "在批量查询前校验公共时间条件，避免将同一参数错误扩散到三个群。",
+            "省略辅助写入；跨群事实合并时保留各群的消息标识及时间差异。"
+          ]
+        },
+        "AA-PRE-MSG-005": {
+          "case_id": "AA-PRE-MSG-005",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 10,
+            "reason": "技能激活、Schema获取、实体解析及五次群内消息读取属于合理的定位尝试，共8步。首次查询比较表达式非法，辅助scratchpad写入没有可见必要性。语义检索参数缺失；最后两次请求未执行且完整参数不可见，无法判定其必要性，均不计入分母。正常分段读取未仅因页数多而判错。"
+          },
+          "order": "fail",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "前期Schema和群身份依赖满足，但尚未确认指定合并消息、读取其内部发言人，就进入归因总结。最终回答明确把目标重新解释为多段主题讨论，并引用相隔较远的独立消息，属于可观测的错目标改道，而非仅因任务评审失败判罚。没有声称已展开合并消息，故不认定虚构执行步骤。分段查询和两次被拒请求不足以证明同参无进展循环。",
+          "suggestions": [
+            "优先定位合并消息对象并读取其内部条目，分别记录外层发送者和内层发言人。",
+            "取得内部发言人证据后再归因，不能直接用外层sender代替。",
+            "无法读取指定对象时说明尚不能确认，或请用户提供消息定位信息，不用同主题独立讨论替代。",
+            "去掉非必要写入，并按Schema支持的比较表达式构造查询。"
+          ]
+        },
+        "AA-PRE-MSG-006": {
+          "case_id": "AA-PRE-MSG-006",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 3,
+            "evaluated_steps": 4,
+            "reason": "技能激活、Schema 获取和群实体解析均为合理准备步骤；scratchpad_write 与只读事实追溯无必要关系。写入超时本身不是错误依据。实际未进入消息检索及引用链追溯。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "已执行的准备步骤依赖顺序合理，实体解析确实返回 ambiguous，因此确认群名有依据，不能仅因未完成任务判定其错误。但执行包含可避免的笔记写入，且未观测到要求的 policy.check、hive.im.search。回答没有把后续核实计划冒充完成结果。",
+          "suggestions": [
+            "删除与事实查询无关的笔记写入。",
+            "确认范围后执行权限检查和消息检索，沿引用链核实原始发言人、现象及后续转述者。",
+            "结合完整群名判断候选是否构成实质歧义，避免仅因相近检索评分增加确认轮次。"
+          ]
+        },
+        "AA-PRE-MSG-007": {
+          "case_id": "AA-PRE-MSG-007",
+          "rating": "fail",
+          "score": 60,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 6,
+            "reason": "技能激活、Schema 获取、群解析、语义检索及空结果后的消息回源均合理。最后查询 operation_log 的 Schema 面向任务、项目或空间操作，未见其与群消息撤回规则的关联，属于无依据改道。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见执行遵循先解析范围再读取消息的顺序，没有重复循环。问题在于未针对撤回、个人删除和清空会话继续取得直接证据，却转向不相关 Schema，最终主要提供通用建议。未观测到要求的 policy.check、hive.im.search；返回内容截断，不能据此断言最终引用为伪造，也不能确认完整权限链。",
+          "suggestions": [
+            "在目标群内针对撤回、删除和清空会话检索并读取相邻上下文。",
+            "除非 Schema 明确支持群消息撤回事件，否则不要转查任务类操作日志。",
+            "将群内明确描述与一般性建议分开，并为群内规则提供可核验引用。"
+          ]
+        },
+        "AA-PRE-MSG-008": {
+          "case_id": "AA-PRE-MSG-008",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 12,
+            "reason": "技能激活、两次检索、Schema 获取、群解析、会话查询、成功消息回源及材料凝练共八步具有合理用途。两次 structured_select 分别出现字段比较和 contains 语法错误；两次笔记写入对任务无必要贡献。检索参数未展示，不能认定两次检索实质同参。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "实体、会话、消息和材料凝练的主要依赖顺序正确，最终结论有回源摘要支持，且明确区分用户提供的尺寸与实际读取到的图片信息。但两次非法查询和两次非必要写入表明计划仍有明显质量问题，不能因任务成功而忽略。纠错后取得新证据，不构成死循环。未见规定的 policy.check、hive.im.search；会话结果显示 caller_authorized，但不足以证明规定工具已执行。",
+          "suggestions": [
+            "依据查询工具支持的表达式构造条件，首次语法失败后采用已知合法的会话范围查询，避免继续试探不支持的 contains。",
+            "保留必要的消息回源和材料凝练，删除笔记写入。",
+            "落实规定的权限与检索流程，并继续保持图片内容、元数据及用户描述之间的证据边界。"
+          ]
+        },
+        "AA-PRE-MSG-009": {
+          "case_id": "AA-PRE-MSG-009",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 7,
+            "evaluated_steps": 11,
+            "reason": "按11次工具调用计：技能、Schema、群解析、语义检索、会话定位及一次纠正后的消息读取共7步合理。seq53使用非法时间参数；seq63、68重复读取相同消息且无可见进展；seq73的笔记写入不服务于文件元数据查询。近七天读取可作为初次探查，但未命中后直接停止，不能覆盖用户未限定时间的查询。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "fail",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见依赖顺序基本合理，时间参数也得到一次针对性纠正，但之后出现连续重复读取，并无依据地把最终检索覆盖范围限于近七天。未观察到要求的policy.check和hive.im.search；会话结果包含授权范围信息，但不足以确认完整鉴权链。最终答复明确承认未找到，没有伪称取得文件元数据。",
+          "suggestions": [
+            "首次未命中后，在指定群的授权范围内按文件主题扩大历史检索，读取附件元数据。",
+            "使用消息游标或时间边界推进查询，避免重复返回同一批消息。",
+            "省去与查询无关的笔记写入，并补足可观测的鉴权与目标检索步骤。"
+          ]
+        },
+        "AA-PRE-MSG-010": {
+          "case_id": "AA-PRE-MSG-010",
+          "rating": "pass",
+          "score": 95,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 1,
+            "evaluated_steps": 1,
+            "reason": "没有工具调用，以实际问答轮次作为1步。回答解释了单独[OK]的有限语义，并明确不能据此认定项目完成；没有声称核实该群实际上下文。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "此问题可以在不读取群消息的情况下回答一般语义及证据边界。虽然未调用预期工具，但回答没有作出需要群内检索支持的具体项目事实判断，因此不能仅凭缺少工具判定计划不合格。",
+          "suggestions": [
+            "如需进一步解释这条消息具体确认了什么，再鉴权并检索其回复对象及相邻上下文。"
+          ]
+        },
+        "AA-PRE-MSG-011": {
+          "case_id": "AA-PRE-MSG-011",
+          "rating": "fail",
+          "score": 64,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 11,
+            "reason": "按11次工具调用计：技能激活、Schema、群解析、语义检索和5次消息读取共9步有合理作用。seq35使用不支持的contains语法；seq70的笔记写入与定位目标消息无关。多次读取返回不同消息序号，属于有进展的分页或回源，不按重复错误计。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先获取Schema、解析群再读取消息，顺序合理；检索失败后分页回源也有实际进展。主要问题是未确认目标文档消息便用其他相关权限讨论替代作答，而不是继续定位或明确保持目标未确认状态。笔记写入可避免。未观察到要求的鉴权与检索工具，但不能据此断言底层没有权限控制。回答承认未确认目标文档，现有截断Trace也不足以认定引用被编造，因此不判为幻觉计划。",
+          "suggestions": [
+            "依据Schema支持的语法构造查询，避免使用非法contains表达式。",
+            "核对文档标题或链接、消息正文和被@人员，确认是同一目标消息后再归纳权限策略。",
+            "未确认目标时继续针对性检索，或明确报告未定位，不把相似线程作为目标答案。",
+            "保留必要分页和回源，删除无关笔记写入，并补足可观测的鉴权证据。"
+          ]
+        },
+        "AA-PRE-MSG-012": {
+          "case_id": "AA-PRE-MSG-012",
+          "rating": "pass",
+          "score": 88,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 5,
+            "evaluated_steps": 5,
+            "reason": "可评的技能激活、Schema 获取、指定群解析、消息查询和浓缩读取均与任务相关，结果支持最终讨论摘要。语义搜索参数仅显示 unknown tool，不计入正确性分母。未观察到执行内嵌 Prompt 或写入操作。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见结构化查询遵循先获取 Schema、解析目标群，再查询和读取材料、最后总结的依赖顺序。语义记忆为空后读取原群材料是合理回源，不是循环。最终将内嵌 Prompt 作为讨论材料。权限检查和引用链未完整观测，不能据工具名称缺失断定违规，也不能确认这些环节已完成。",
+          "suggestions": [
+            "保留完整检索参数及权限检查记录，便于核验搜索范围。",
+            "为关键讨论结论附原消息定位信息，增强可追溯性。"
+          ]
+        },
+        "AA-PRE-MSG-013": {
+          "case_id": "AA-PRE-MSG-013",
+          "rating": "fail",
+          "score": 60,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 10,
+            "reason": "两次技能激活、Schema 获取、群解析、三次成功查询及一次浓缩读取具有合理用途；seq 36 使用非法 contains 表达式，seq 69 又发生字段比较错误，计为错误步骤。两次语义搜索均缺少真实参数，不计入分母，亦无法认定为同参重复。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先识别 Schema 和群，再检索、浓缩及核验候选消息，依赖顺序合理；核验相近消息本身不是错目标。但执行存在两次无效查询，且已知所读范围未命中原文后，没有继续历史分页或说明实际阻碍，就要求用户回复继续，检索覆盖计划不充分。最终明确未核实目标，没有把守白的相近消息冒充答案。失败判断依据是执行缺陷，而非仅依据任务未成功。",
+          "suggestions": [
+            "首次语法报错后核对工具支持的谓词和字段比较形式，避免继续试用非法表达式。",
+            "当前消息范围未命中时，按消息序号继续向历史分页，记录覆盖边界。",
+            "只有遇到真实权限、预算或范围歧义时才请求用户介入，不将必要的继续检索交回用户。"
+          ]
+        },
+        "AA-AGENT-EVAL-001": {
+          "case_id": "AA-AGENT-EVAL-001",
+          "rating": "fail",
+          "score": 52,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 4,
+            "evaluated_steps": 6,
+            "reason": "技能激活、Schema 获取、群解析和首次有效查询属于正确步骤。seq 45 使用不支持的 starts_with，seq 50 又出现字段比较错误，均为错误步骤。语义搜索缺少可核验参数，不计入分母。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "基础查询依赖顺序正确，但精确查询和记忆搜索为空后，连续两次无效查询未形成有效的放宽检索，也未转为指定群历史消息读取。没有观察到同参反复调用，因此不判死循环。最终承认未找到原文、未提供来源，没有编造发送人、@ 对象或已完成的引用步骤。权限与引用环节的可观测性仍有限。",
+          "suggestions": [
+            "核验支持的查询语法后再进行一次针对性纠错，不连续猜测操作符。",
+            "精确匹配为空后，使用受支持的关键词条件或有序历史分页检索原消息，而非仅依赖提炼记忆。",
+            "命中后读取发送者、at_users 和消息定位字段，再提供可核验的原消息来源。"
+          ]
+        },
+        "AA-AGENT-EVAL-002": {
+          "case_id": "AA-AGENT-EVAL-002",
+          "rating": "fail",
+          "score": 65,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 8,
+            "evaluated_steps": 12,
+            "reason": "15次工具调用中，3次语义搜索的参数不可见，不纳入正确性计数。技能激活、两次Schema获取、实体解析、纠参后的三群查询及材料压缩共8步合理；3次查询明确存在时间戳参数错误，另一次笔记写入未显示完成只读总结所必需的用途。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先获取Schema和解析群，再查询、回源和压缩证据，主要依赖顺序合理；空记忆后回源以及一次针对性纠参不属于冗余。笔记写入可避免，且初始三次查询使用了不合法时间戳。相同参数摘要不证明三个群的调用实质同参，不能据此判定死循环。超时本身不构成计划失败证据；没有最终回答或虚称已完成的证据。独立鉴权、引用解析及并行执行情况仍未观测。 ",
+          "suggestions": [
+            "按照Schema要求使用RFC3339时间戳，避免将同一参数缺陷传播到多个群的查询。",
+            "省略非必要笔记写入，优先取得三个群的有效证据。",
+            "完成时保留每群来源，并明确空结果对应的查询范围和覆盖限制。"
+          ]
+        },
+        "AA-AGENT-EVAL-004": {
+          "case_id": "AA-AGENT-EVAL-004",
+          "rating": "fail",
+          "score": 58,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 9,
+            "evaluated_steps": 10,
+            "reason": "11次工具调用中，语义搜索因参数不可见不纳入计数。技能、Schema、群解析及逐段读取消息共9步具有合理检索用途，各段返回了不同消息，不能算无进展重复；笔记写入对回答文件元数据没有可见必要性。最终将PRD链接确定为目标文件，缺少目标身份核验，但不将有工具的最终回答另计为工具步骤。"
+          },
+          "order": "fail",
+          "minimality": "fail",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "查询前的Schema和实体解析顺序合理，但在未核实“项目规划文件”与PRD链接是否为同一对象、未取得目标附件元数据时就形成了目标结论。获取附件Schema不等于读取附件记录。逐段查询有新信息，不属于死循环；非必要笔记写入增加了调用。回答承认名称和大小无法确认，未明确声称调用未使用的工具，因此不按幻觉计划处理。独立权限检查和引用解析未观测，不能单凭工具名称不同认定违规。",
+          "suggestions": [
+            "优先在指定群内定位包含“AI助手项目规划”的文件分享消息，核实对象类型和文件身份。",
+            "沿实际可用的消息或文件关联读取名称、MIME类型及大小，不以PRD链接替代附件。",
+            "遇到截断时继续针对性读取缺失范围；省略无必要的笔记写入。",
+            "没有确认目标身份时，应说明尚未定位目标文件，而非确定其为飞书PRD。"
+          ]
+        },
+        "AA-AGENT-EVAL-005": {
+          "case_id": "AA-AGENT-EVAL-005",
+          "rating": "pass",
+          "score": 92,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 4,
+            "evaluated_steps": 4,
+            "reason": "4次可观测工具调用均合理：激活结构化查询、取得Schema、解析指定群、查询消息。查询结果明确包含群ID 3981594831及指定clientMsgID，并直接返回被@人员和权限策略，支持最终回答。"
+          },
+          "order": "pass",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "先解析查询结构和目标群，再取得消息证据并回答，依赖顺序合理，无重复或无关调用。虽然没有使用预期名称的消息读取工具，但实际结构化查询取得了目标消息，不能仅因工具名称不同判错。引用定位与实际返回的会话一致，没有虚称执行额外工具的证据。独立权限检查和引用解析未观测，因此不宣称这两项已验证；成功结果也不是本次通过的唯一依据。",
+          "suggestions": [
+            "在Trace中保留完整查询条件，以便直接核验群约束与clientMsgID约束。",
+            "补充可观测的授权与引用校验记录；若由查询工具内部完成，应记录相应结果。"
+          ]
+        },
+        "AA-AGENT-EVAL-007": {
+          "case_id": "AA-AGENT-EVAL-007",
+          "rating": "fail",
+          "score": 55,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 10,
+            "evaluated_steps": 14,
+            "reason": "以工具调用为步骤；两次语义搜索未展示参数，无法判断目标范围，不计入分母。其余14步中，技能、Schema、实体解析、授权范围查询、修正后的检索、受环境容量阻断的查询及材料回源具有合理作用；两次时间戳参数错误和两次无必要的暂存写入不正确。容量阻断本身不算计划错误。"
+          },
+          "order": "insufficient",
+          "minimality": "fail",
+          "deadloop_avoidance": "insufficient",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见Schema、实体解析先于结构化读取，读取先于材料归纳，但独立权限核验、文件来源获取及引用解析链未完整展示，不能确认完整顺序，也不能据此推定越权。两次参数错误和暂存写入增加了可避免调用。相同长度参数摘要不足以证明同参循环。回答明确区分两个群的证据范围，未声称已经完成文件读取或引用解析；超时不是本次判低的直接依据。",
+          "suggestions": [
+            "按Schema要求构造RFC3339时间条件，在错误返回后先校验再调用。",
+            "去掉与检索、回源和引用无关的暂存写入。",
+            "为规划文件取得实际来源，并完成原消息及文件引用；不可取得时明确说明。",
+            "保留完整查询条件和鉴权结果，便于验证范围、顺序及是否存在重复调用。"
+          ]
+        },
+        "AA-AGENT-EVAL-008": {
+          "case_id": "AA-AGENT-EVAL-008",
+          "rating": "fail",
+          "score": 35,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 3,
+            "evaluated_steps": 11,
+            "reason": "技能激活、主题语义检索和Schema获取是合理的范围识别准备。七次structured_select均因非法参数被拒绝，虽未进入工具执行，仍是可评的错误调用尝试；一次暂存写入对确定范围没有必要。语义搜索的具体条件不可核验，但其用途有最终答复及工具结果支持。"
+          },
+          "order": "pass",
+          "minimality": "fail",
+          "deadloop_avoidance": "insufficient",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见流程先尝试确定范围，未在群范围不明时擅自并行读取或生成总结；请求用户补充范围符合依赖关系。主要问题是连续七次非法参数调用没有取得进展，以及不必要的写入。参数仅显示invalid arguments，无法确认是否同参或实质同参，故不直接判定死循环。最终诚实说明未完成，没有把后续计划当成已执行结果。",
+          "suggestions": [
+            "首次参数拒绝后检查工具入参结构，进行一次针对性纠正；仍失败则停止盲目尝试。",
+            "主题检索无候选时，按技能要求检查已确认关注群，再尝试授权范围候选。",
+            "取得三个明确群标识后再并行检索，随后按主题合并并引用原消息。",
+            "删除不必要的暂存写入，并记录纠参前后的实际参数。"
+          ]
+        },
+        "AA-AGENT-EVAL-009": {
+          "case_id": "AA-AGENT-EVAL-009",
+          "rating": "pass",
+          "score": 82,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 5,
+            "evaluated_steps": 6,
+            "reason": "技能激活、Schema获取、实体解析和后续两次消息读取具有合理依赖及任务相关性。首次消息查询的比较条件违反Schema要求，计为错误；后续修正查询和继续获取消息不因这次失败而判错。语义搜索参数未展示，无法核验其范围及必要性，不计入分母。"
+          },
+          "order": "insufficient",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "可见主链遵循先Schema与实体解析、再读取消息、最后归纳引用，且错误后有实际进展，整体计划合理。独立鉴权及引用解析未展示，消息结果也有截断，因此不能完整验证“先鉴权再检索再引用”，但没有越权或伪造工具执行的证据。中间语义搜索是否必要无法从隐藏参数判断；一次针对性纠错及后续读取不直接算冗余。最终引用标识与已读取群的标识一致，无证据表明把未执行计划当成结果。",
+          "suggestions": [
+            "首次查询即使用合法的Schema字段或关系属性作为比较左值。",
+            "保留消息原文、序号及引用生成依据，使引用链可直接审计。",
+            "展示读取前的权限判定或查询内置鉴权证据；不要仅因缺少独立工具名称推定越权。"
+          ]
+        },
+        "AA-AGENT-EVAL-010": {
+          "case_id": "AA-AGENT-EVAL-010",
+          "rating": "fail",
+          "score": 75,
+          "step_correctness": {
+            "status": "pass",
+            "correct_steps": 1,
+            "evaluated_steps": 1,
+            "reason": "没有工具调用，按实际问答计为一步。回答正确区分了确认表情与项目完成证据，没有将[OK]误判为完成事实。会话初始化不计为计划步骤。"
+          },
+          "order": "insufficient",
+          "minimality": "pass",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "pass",
+          "reason": "实际回答简洁地完成了判断，没有过度规划或虚构查证。但记录中的工具列表为空，未满足本案例明确要求的policy.check和hive.im.message.get；不能以答案正确替代规定的证据获取流程。没有可评估的工具依赖顺序。",
+          "suggestions": [
+            "若按本案例的真实群查证要求执行，应先完成权限检查，再获取相关原消息，并保持结论简短。",
+            "若任务实际只要求一般语义判断，应调整评测前提，不将群消息检索列为必需工具。"
+          ]
+        },
+        "AA-AGENT-EVAL-015": {
+          "case_id": "AA-AGENT-EVAL-015",
+          "rating": "fail",
+          "score": 48,
+          "step_correctness": {
+            "status": "fail",
+            "correct_steps": 6,
+            "evaluated_steps": 7,
+            "reason": "按七次可观测工具调用计数。技能加载、Schema获取、目标群解析、检索回退及两次成功查询可视为合理的准备或取证步骤；seq 36因比较表达式不合法而失败，属于错误步骤。查询参数和结果有截断，不据此将后续查询推断为重复或错目标。最终回答选择了检索规则消息而非向量权限消息，此结论错误另计入整体评价。"
+          },
+          "order": "fail",
+          "minimality": "insufficient",
+          "deadloop_avoidance": "pass",
+          "hallucinated_plan_avoidance": "fail",
+          "reason": "先获取Schema、解析群再查询的局部顺序合理，且没有无进展循环证据。但未观察到要求的权限检查、原消息获取和引用解析；最终也未先验证消息主题便给出人员与引用。可见结果不支持其引用的seq 274，且案例明确指出该消息属于另一主题，因此将其作为目标原消息证据属于无依据的结果归属。由于查询条件及返回内容不完整，无法确定两次成功查询是否为必要分页或可避免调用。",
+          "suggestions": [
+            "保留Schema与实体解析步骤，依据Schema构造合法过滤条件；参数失败后直接进行一次针对性纠正。",
+            "在已解析群内定位同时符合向量与权限语义的消息，核对正文及@人员，不用仅提到向量检索的消息替代。",
+            "完成权限检查、目标原消息获取和引用解析后，只输出被@人员及一条已核验引用。"
+          ]
         }
       }
     },
@@ -6176,6 +7631,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-004",
+        "rating": "insufficient",
+        "score": null,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 4,
+          "evaluated_steps": 4,
+          "reason": "技能激活、Schema 获取、群实体解析和失败后的记忆检索均与任务相关。消息查询的参数和失败诊断被截断，无法判断是查询构造错误还是执行环境不支持，因此该调用不计入可评步骤。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见顺序为获取查询规范、识别群、查询原消息、尝试备用检索，依赖关系合理，未重复失败调用。最终只报告有证据的 groupID，并明确未确认发送人和 clientMsgID，没有把空记忆结果解释为消息不存在。任务未完成不能直接证明计划错误；关键查询失败原因及权限链仍缺证据。未观测到要求的 policy.check、hive.im.search，不能确认内部工具是否覆盖了对应职责。",
+        "suggestions": [
+          "补充消息查询的完整条件、失败诊断及权限检查记录，以便区分参数问题与环境失败。",
+          "若存在可用的原消息检索通道，应在目标群范围内检索原文，并返回发送人和 clientMsgID；记忆检索不能替代精确回源。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -6387,6 +7862,28 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-005",
+        "rating": "fail",
+        "score": 55,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 15,
+          "reason": "技能、Schema、实体与会话解析、记忆检索、成功消息读取、材料凝练、针对凝练异常的回源及首次遭遇调用容量限制的请求共9步合理。额外草稿写入没有显示必要性；3次消息查询出现非法比较条件；收到明确不再执行的提示后仍继续请求2次，这6步不正确。首次触及容量限制不因环境拒绝而判错。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "fail",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先解析群及会话再读取消息、取得证据后总结的主顺序合理，凝练结果与原始读取冲突时再次回源也有依据。但条件错误未得到有效及时修复，且容量限制已经明确后仍连续调用同一工具，没有新增证据或进展。成功回答不能抵消这些计划缺陷。结果截断不足以认定最终引用为编造；独立 policy.check、hive.im.search 及完整引用链未观测到。",
+        "suggestions": [
+          "依据 LITERAL_COERCION_ERROR 检查比较左侧字段，进行一次针对性纠正，避免重复提交同类非法条件。",
+          "收到本轮不再执行的明确提示后停止该工具调用，基于已有证据回答或选择确实可用的其他来源。",
+          "省去没有明确必要性的草稿写入，优先直接读取目标群的相关消息。",
+          "补充权限检查和引用对应原消息的完整记录。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -6442,6 +7939,26 @@
             "压缩与两份纪要无关的上下文，同时保留原文与引用定位字段。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-006",
+        "rating": "pass",
+        "score": 92,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 7,
+          "evaluated_steps": 7,
+          "reason": "7次工具调用均服务于目标群定位和两份纪要取证：激活技能、获取群 Schema、解析群、尝试记忆检索、补充消息相关 Schema，以及分别读取两次纪要。两次消息查询虽然参数摘要相同，但返回不同日期的目标纪要，不能视为重复无进展。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先识别目标群，在记忆未命中后补充 Schema 并回源两份原始纪要，最后按用户要求对比总结，执行依赖合理。空记忆检索后的回源属于必要补证，没有死循环或声称执行未发生步骤的证据。可见原文支持主要总结；权限及完整引用链仍未观测，不能据此宣称已验证全部鉴权与引用要求。",
+        "suggestions": [
+          "对于明确指定群和日期的原文任务，可考虑直接获取所需 Schema 后定向读取，减少收益较低的记忆检索。",
+          "保留完整的查询条件、授权检查与引用定位字段，便于核验目标范围及来源。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
@@ -6503,6 +8020,28 @@
             "采集Token和各阶段耗时，设置最终输出时间预算。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-007",
+        "rating": "fail",
+        "score": 57,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 14,
+          "reason": "技能激活、Schema获取、三群解析、会话映射、检索、纠正后的消息查询及材料提炼均与任务相关；第三群查询被环境阻止，不因此判错。三次消息查询使用不合法的时间类型，计为错误；两次scratchpad写入未体现必要依赖或检索进展，属于可避免步骤。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "insufficient",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "基本遵循先获取Schema、解析群与会话，再查询和提炼证据的依赖顺序，但时间参数错误扩散到三次调用，且存在两次不必要写入。相同参数摘要不足以证明三次失败查询针对同一群或属于实质同参循环。超时本身不作为计划失败依据；未观察到虚构完成或来源。指定鉴权工具及检索工具未显式出现，其映射和权限执行情况无法确认。",
+        "suggestions": [
+          "查询前统一将时间转换为RFC3339格式，避免向多个群传播相同类型错误。",
+          "移除非必要scratchpad写入，将调用预算用于三群消息覆盖和真实ID获取。",
+          "取得三个群的证据后再按群去重总结；对未取得的数据明确标注缺口。",
+          "补充完整查询参数、鉴权记录及并行时序，便于核验范围和重复调用。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -6789,6 +8328,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-008",
+        "rating": "fail",
+        "score": 74,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 5,
+          "evaluated_steps": 5,
+          "reason": "五次可观测工具调用均属于合理的技能准备、Schema获取、群实体解析和消息检索。空结果不是调用错误；未将最终回答另计为工具步骤。检索参数仅有摘要，无法进一步验证精确条件。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "已有步骤顺序合理且没有冗余，但完整定位计划在精确匹配及有限记忆检索无结果后过早停止。语义记忆空结果不能替代原始消息的片段检索；仍可在指定群内用关键短语回查，以继续定位发送人、@对象和clientMsgID。回答未编造身份或消息ID，因此不是幻觉计划问题。查询结果包含授权范围信息，但独立policy.check及预期工具映射未观测。",
+        "suggestions": [
+          "在同一群内以“新消息”“未读数”等片段放宽原始消息条件，而不是仅依赖整句精确匹配。",
+          "命中候选后读取完整消息及提及字段，解析发送人和被@人员。",
+          "按Schema取得真实clientMsgID，不用群ID或其他消息定位符代替。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -6994,6 +8554,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-009",
+        "rating": "pass",
+        "score": 88,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 4,
+          "evaluated_steps": 5,
+          "reason": "技能激活、Schema获取、目标群解析及纠参后读取纪要四步正确。首次消息查询因时间类型不合法而失败，计为错误；随后一次针对性纠参成功，属于合理恢复。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "执行遵循Schema、实体解析、消息回源、总结的依赖顺序，直接获取目标日期纪要，且仅进行一次有进展的纠参，不构成冗余或循环。回答核心内容与已回源纪要一致，没有证据表明声称执行未执行步骤。引用字段和鉴权记录在截断Trace中未充分展示，不能据此认定虚构，也不能确认预期工具契约已全部满足。",
+        "suggestions": [
+          "首次查询即使用Schema要求的RFC3339时间格式。",
+          "保留完整鉴权结果及消息定位字段，便于核验引用与工具契约。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -7054,6 +8634,27 @@
             "空记忆检索后转向受授权的原始消息查询。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-010",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 3,
+          "evaluated_steps": 5,
+          "reason": "技能加载、首次群记忆检索及Schema获取与任务相关；两次结构化查询均有明确参数或表达式错误。末次群记忆搜索未展示实际参数，无法判断是否有针对性调整，未计入可评步骤。"
+        },
+        "order": "pass",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "insufficient",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见流程先获取Schema再查询，依赖顺序合理，但查询构造连续失败，未取得原始消息。两次记忆搜索的真实参数不可见，不能认定重复或有效纠错。最终承认未核实且未编造ID，不属于虚构完成；但仅凭查询报错不足以断言正文检索能力不受支持。要求的policy.check及hive.im.search未显式出现，不能假定已执行，也不能据此认定越权。",
+        "suggestions": [
+          "依据完整Schema和表达式语法构造有效查询，避免把语法错误解释为能力不支持。",
+          "使用要求的消息检索和权限检查路径，或明确说明可验证的替代关系。",
+          "保留搜索实际条件，以便判断二次检索是否产生进展。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -7281,6 +8882,27 @@
             "为证据整理与最终输出预留明确时间窗口。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-011",
+        "rating": "fail",
+        "score": 61,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 10,
+          "reason": "技能加载、目标群解析、记忆检索、Schema获取、纠错后的消息查询、材料浓缩和原文回源共7步合理。首次结构化查询存在明确表达式错误；两次scratchpad写入对只读事实核查未显示必要性，且均超时。超时本身不是错误判据，可避免的辅助写入才是扣分依据。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "解析指定群并获取Schema后查询，再浓缩和回源，主链条有证据依赖；一次针对性纠错及后续原文核实不算循环。辅助写入增加了不必要调用。面对“当时”的问题，未先锁定目标讨论时点，最终将数月进展合并为即时卡点，反映范围控制不足。回答确实使用了已调用的浓缩及查询来源，截断结果不足以判定其具体分工或引用为编造。显式权限检查及指定检索工具的执行仍未观测。",
+        "suggestions": [
+          "先定位涉及核心阻塞和排期的讨论时点，必要时澄清“当时”的范围。",
+          "围绕该时点回源核对卡点、责任人、下一步与关键路径，避免用后续进展覆盖历史风险。",
+          "移除非必要scratchpad写入，保留消息证据及真实标识即可。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -7544,6 +9166,28 @@
             "补采Token、成本及分工具延迟，定位超时瓶颈。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-012",
+        "rating": "fail",
+        "score": 59,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 10,
+          "reason": "技能加载、记忆检索、Schema获取、实体解析、纠正时间格式后的查询、取得消息的查询及材料浓缩共7步合理。首次查询时间格式非法，两次辅助scratchpad写入未显示任务必要性。seq55和seq60仅有参数长度摘要，无法判断与前次查询的实际差异，未计入可评步骤。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "insufficient",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "主要检索依赖满足，时间格式纠错后最终获得目标群消息并完成浓缩；不能因最终生成超时就否定这些合理步骤。两次无必要性证据的辅助写入构成可避免开销。连续空查询虽参数摘要相同，但实际时间范围等条件未展示，不能据此认定死循环，尤其后续查询已取得新材料。没有最终回答，也没有声称完成未执行步骤。查询结果可见授权范围信息，但无法确认其等同于要求的显式policy.check。",
+        "suggestions": [
+          "按Schema使用RFC3339时间格式，减少可预防的参数错误。",
+          "记录每次查询的完整范围及调整依据，区分正常扩窗与无进展重复。",
+          "取得消息后定位“这份总结”的原文，分别核对成果、明确风险和协助事项，避免混入后续评测结论。",
+          "取消非必要辅助写入，优先完成证据核实与回答。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -7813,6 +9457,27 @@
             "复用已解析群实体和必要schema，避免无效查询与上下文反复扩张。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-013",
+        "rating": "fail",
+        "score": 55,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 11,
+          "reason": "技能加载、Schema获取、实体解析、检索、会话查询及辅助记录均与任务相关。seq64使用不合法的比较表达式，seq69使用解析器不支持的contains调用，属于明确错误。seq51的失败诊断被截断，不能仅因调用失败判错，未计入。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先获取Schema、解析目标，再检索和尝试读取原文，基本依赖顺序合理。但消息查询连续尝试未经确认的表达式，未完成有效纠错；辅助笔记读写也增加了可避免开销。不同表达式的重试不构成同参死循环。最终明确未取得原文，没有把检索计划当作结果。未观测到要求的policy.check和hive.im.search，不能把其他工具中的授权分析视为已执行这两个调用。",
+        "suggestions": [
+          "首次消息查询失败后，根据完整诊断核对支持的谓词语法，再进行一次针对性纠错。",
+          "使用要求的鉴权和消息检索入口；若不可用，应明确说明限制。",
+          "仍有可执行的消息定位方式时直接继续，不必要求用户回复“继续”；减少无必要的笔记读写。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -8087,6 +9752,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-014",
+        "rating": "pass",
+        "score": 86,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 5,
+          "evaluated_steps": 5,
+          "reason": "两次技能加载、Schema获取和目标群解析均为相关准备步骤。辅助记录调用超时是环境失败，没有证据表明参数非法或目标错误。实体解析明确返回ambiguous，因此请求确认候选群有可观测依据。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "在目标群存在歧义时暂停并请求确认，避免误读其他群，是合理的执行边界，不能因尚未回答业务问题直接判定计划失败。未发生重复调用，也未声称已经完成消息或任务空间检索。身份确认前的笔记写入没有明显必要性。尚未进入内容读取阶段，后续鉴权、检索和引用是否合规仍不可验证。",
+        "suggestions": [
+          "保留候选群确认步骤，确认后再执行鉴权及群消息、关联任务空间检索。",
+          "省略简单实体确认阶段的辅助笔记调用。",
+          "后续分别整理检索策略、权限策略、一期范围及风险，并保留原文证据。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -8296,6 +9982,27 @@
             "提交前执行跨群证据覆盖检查，优先补齐关键漏项，而非继续低收益泛搜。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-015",
+        "rating": "pass",
+        "score": 80,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 8,
+          "evaluated_steps": 8,
+          "reason": "可评的技能加载、Schema获取、两次辅助记录、实体解析、会话查询及两个目标群的消息读取均与任务相关。四次group_message_search仅显示unknown tool参数摘要，无法核验查询范围及差异，未计入正确率。消息结果截断，不能据此认定引用内容为编造。"
+        },
+        "order": "pass",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先解析目标，再查询会话并回源读取两个群的真实消息，最后总结，依赖顺序合理；空记忆检索后回源属于合理补救。四次语义检索的参数不可见，不能仅凭相同空结果判为重复或死循环，也无法完整判断调用是否最小化。回答保留了预计、原计划等时态。关键风险消息遗漏说明覆盖不足，但截断Trace不足以确定是检索范围还是总结选择造成，不能由任务未成功反推整个计划错误。要求的policy.check和hive.im.search未被观测到。",
+        "suggestions": [
+          "对两个群分别补充近期节点及“来不及、风险高、测试周期”等风险信号的定向检索，并检查时间范围、截断和分页。",
+          "明确使用要求的鉴权及消息检索入口，不将内置授权分析等同于独立policy.check调用。",
+          "保留完整查询参数和返回覆盖信息，以便区分有针对性的补检与无进展重复。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -8567,6 +10274,27 @@
             "缩小消息上下文并保留关键原文，降低输入token和摘要遗漏风险。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-016",
+        "rating": "fail",
+        "score": 70,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 9,
+          "reason": "可评估的9次调用中，技能、Schema、实体解析、两群查询、材料归纳及跨轮记录读写有明确作用；首次证据获取前的草稿写入缺少必要性。两次语义搜索参数不可见，不计入正确率，也不据此认定非法调用。"
+        },
+        "order": "insufficient",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "已观察到先解析群范围再查询、搜索为空后回源、追问时读取会话记录的合理链路；但鉴权未观测，无法完整核验依赖顺序。首次草稿写入可避免。追问选择的真实数据验证确属首轮候选，并非凭空改道，但未充分比较资源挤占、交付节点和其他候选。没有证据表明调用形成死循环或声称执行了未执行的检索。",
+        "suggestions": [
+          "将首轮记录写入合并到证据整理后，保留候选风险、责任资源、交付节点及证据。",
+          "追问时逐项比较候选对提测与对客节点的影响，区分最紧急阻塞与最严重交付风险。",
+          "补充可审计的鉴权记录及搜索参数，以便核验范围和调用必要性。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 2,
@@ -8849,6 +10577,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-017",
+        "rating": "insufficient",
+        "score": null,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 1,
+          "evaluated_steps": 1,
+          "reason": "唯一可见调用是激活相关查询技能，可作为检索准备步骤；未观察到实际消息检索或鉴权，不能由正确答案反推这些步骤已经完成。"
+        },
+        "order": "insufficient",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "回答依据用户提供的两条状态作出区分，没有声称已检索或核实生产发布。可见工具链只有准备步骤，不足以判断要求的检索计划是否完整执行；任务成功不替代计划证据。",
+        "suggestions": [
+          "若需要核实当前实际状态，应记录鉴权及针对整体需求、排序子项和生产发布的检索。",
+          "若仅依据用户给出的消息作逻辑判断，应明确该结论的证据范围，避免将历史未完成状态断言为最新状态。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -8908,6 +10656,28 @@
             "缩减无关历史消息输入，保留与PRD评审及范围确认直接相关的原文。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-019",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 10,
+          "evaluated_steps": 13,
+          "reason": "共15次可见调用，两次搜索因参数缺失不计入评估。技能、Schema、实体解析、两群查询及历史分段回源合理；首次遇到调用容量阻断属于环境失败，不算错误。两次草稿写入未显示对本轮完成任务的必要作用；已收到明确停止提示后再次调用同一受限工具无进展，计为错误。"
+        },
+        "order": "insufficient",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "范围解析和回源顺序基本合理，但鉴权记录缺失。历史分段返回了不同消息，不能视为循环；容量阻断后的单次再试构成可避免调用，尚不足以认定反复死循环。回答承认未逐条补读全部历史，没有声称被阻断的查询成功。工具已返回孙文要求李振民关注PRD并确认承接同事的直接证据，最终遗漏说明证据整理未充分对齐问题，而非检索完全失败。",
+        "suggestions": [
+          "先按PRD评审、承接人确认、复杂问答范围建立事项与跟进人表，再补充相关背景。",
+          "将已返回的PRD承接确认消息列为直接待确认事项，避免被权限和配套功能讨论淹没。",
+          "明确容量阻断后停止同工具追加调用，使用已取得的证据完成回答。",
+          "减少无后续读取用途的草稿写入，并补齐鉴权与完整查询参数记录。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -9214,6 +10984,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-020",
+        "rating": "fail",
+        "score": 70,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 9,
+          "reason": "激活技能、获取Schema、解析实体、针对报错补查Schema，以及解析会话后检索真实消息均有合理作用。seq36使用不存在的mentioned_users关系，属于错误参数；seq51转查提炼记忆不能直接满足真实@消息查询，属于可避免的偏离。seq46的失败诊断不完整，不能仅凭失败状态认定该尝试错误。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "整体遵循Schema、实体解析、查询、总结的依赖顺序，并最终通过会话标识取得明确@安柔的真实消息；但存在错误关系参数和不必要的记忆检索。各次纠错均有变化或新信息，不构成死循环。未观测到policy.check或hive.im.search的直接调用，不能声称指定工具要求已满足；返回结果有授权范围信息，但完整权限及引用核验仍缺证据。结果被截断，不据此断言其余引用为编造。",
+        "suggestions": [
+          "严格采用Schema中声明的at_users关系，避免猜测关系名。",
+          "消息关联查询受限时，直接解析conversation.id后检索原始消息，跳过提炼记忆检索。",
+          "保留完整授权结果、命中总数与引用定位证据，便于核验覆盖范围。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -9272,6 +11063,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-QAP-021",
+        "rating": "fail",
+        "score": 72,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 7,
+          "reason": "技能激活、Schema获取、双群实体解析和两次修正后的消息查询正确。seq41、seq42均因时间戳不符合RFC3339要求失败，属于参数错误。两次scratchpad_write仅展示路径和字节数，内容不可见，不纳入步骤正确性计数。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先解析范围再读取纪要、取得证据后总结，主要依赖顺序合理。两路查询共同使用了错误时间格式，之后针对性修正并取得不同群的结果。参数摘要长度相同不足以证明两次失败查询实质同参，不能判定死循环。额外两次笔记写入未显示对检索的必要作用。未观测指定policy.check和hive.im.search调用，也没有足够证据确认完整权限及引用链；这不等于已经证明来源编造。任务成功不抵消实际参数缺陷。",
+        "suggestions": [
+          "在发起多群查询前统一校验时间戳格式，避免同一参数缺陷扩散到多路查询。",
+          "对这种限定日期、限定群的短查询，省略无必要的持久化笔记调用。",
+          "保留三条纪要及补充消息的完整检索结果和授权记录。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -9327,6 +11139,26 @@
             "减少澄清轮次中的重复上下文，同时保留必要的范围与权限约束。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-025",
+        "rating": "pass",
+        "score": 90,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 3,
+          "evaluated_steps": 3,
+          "reason": "技能激活、Schema获取和群实体解析均服务于确定查询范围。解析工具明确返回ambiguous，因此请求用户确认候选群有可观测依据，不是无依据停止或改道。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "在群身份尚未确认时暂停内容检索，符合先确定范围再读取消息的依赖关系。虽然当前轮未回答可见性规则，但不能据任务未完成直接判定计划失败。没有重复调用，也没有声称已检索规则或恢复撤回正文。此阶段尚未发生消息读取，后续鉴权、检索和引用质量仍待观察。",
+        "suggestions": [
+          "用户确认后，在授权范围内检索相关原始消息，分别说明撤回、自己删除和清空会话的影响。",
+          "将撤回事件元数据与原正文严格区分，仅依据实际可见证据回答能否恢复正文。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -9513,6 +11345,27 @@
             "缩减Schema及消息材料输入，避免对未命中目标的宽范围材料过早凝练。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-QAP-026",
+        "rating": "fail",
+        "score": 70,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 5,
+          "evaluated_steps": 5,
+          "reason": "激活技能、获取Schema、解析指定群、读取消息及凝练材料均是相关且有效的步骤。但这些步骤没有定位到用户所指的长Prompt消息，不能据此认为取证已经充分。"
+        },
+        "order": "fail",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "凝练结果明确表示所读范围未发现目标Prompt，随后却直接结束检索并总结近期讨论，缺少定位原消息这一关键依赖。回答正确地将群内Prompt视为数据，也未声称找到目标消息，因此不判为虚构执行。没有重复或明显冗余调用；独立权限检查是否执行仍不可观测。",
+        "suggestions": [
+          "近期范围未命中时，应在指定群内针对长Prompt、总结规则等线索继续定位原消息。",
+          "将通用安全原则与具体讨论结论分开；未找到原消息时明确说明，不以附近讨论替代目标讨论。",
+          "找到目标后提供原消息标识或可核验引用。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -9717,6 +11570,25 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-020",
+        "rating": "pass",
+        "score": 96,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 4,
+          "evaluated_steps": 4,
+          "reason": "四次调用分别完成技能准备、Schema获取、群实体解析和精确消息查询。查询直接返回原文、发送人、clientMsgID和发送时间，群解析结果支持groupID。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先确定Schema和群范围，再查询原消息，最后依据返回字段回答，依赖完整且无可见冗余。虽然没有出现预期工具名称，实际结构化查询完成了检索，并返回caller_authorized及授权分析；不因工具名称不同直接判错。最终答案均有可见结果支持。",
+        "suggestions": [
+          "保留实际查询的授权结果及原消息标识，便于进一步审计。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -9777,6 +11649,27 @@
             "取消非必要scratchpad写入，设置分阶段耗时上限并采集Token指标。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-021",
+        "rating": "fail",
+        "score": 76,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 9,
+          "reason": "共观察到11次工具调用，其中两次语义搜索的参数不可见，无法判断其目标与差异，不计入正确率。其余9步中，Schema获取、实体与会话解析、消息读取、凝练、针对性回源及暂存均与任务有关；暂存因超时失败不等于步骤错误。seq=57使用不合法的比较表达式，返回LITERAL_COERCION_ERROR，是明确错误步骤。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "整体遵循范围解析、取消息、凝练、回源核验的顺序；语义检索为空后仍读取原消息，没有把空记忆当作无讨论的证据。存在一次非法查询，之后成功回源，未形成死循环。已有材料后又写入scratchpad，对本轮直接回答未显示必要性，增加了可避免的调用。两次搜索参数缺失，不能认定为同参循环。最终超时只是环境结果，不作为计划失败的直接理由，也没有虚构完成的证据。",
+        "suggestions": [
+          "构造比较条件时确保左侧为Schema字段或关系属性，避免已明确可预防的参数错误。",
+          "保留搜索完整参数，以便核验第二次搜索是否引入新线索。",
+          "对短篇事实汇总优先直接输出已有证据支持的时间版本及消息ID，避免非必要暂存增加超时风险。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -10033,6 +11926,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-022",
+        "rating": "fail",
+        "score": 78,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 4,
+          "evaluated_steps": 6,
+          "reason": "技能激活、Schema获取、群实体解析及纠参后的消息查询合理。首次查询使用不合法的时间戳字面量，属于参数错误；scratchpad_write对本次只读纪要总结无必要性。其超时本身不作为错误依据。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可观测主链满足先获取Schema、解析目标群，再查询证据并总结的依赖关系；时间参数错误后进行了有效纠正，没有循环。主要缺陷是非法参数和可避免的草稿写入。结果被截断，且权限与引用链未完整观测，不能据此认定未鉴权或引用伪造，也不能把任务成功当作全部步骤正确的证明。",
+        "suggestions": [
+          "首次查询即使用Schema要求的RFC3339时间格式。",
+          "省去对当前回答无必要的scratchpad_write。",
+          "保留两次纪要的完整返回记录及引用映射，便于核验。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -10094,6 +12008,28 @@
             "压缩重复上下文并监控工具调用余量。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-023",
+        "rating": "fail",
+        "score": 57,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 12,
+          "reason": "技能、Schema、实体解析、会话映射、两次成功消息查询、被环境拒绝的第三群查询及材料凝练均有合理用途；环境拒绝不归为计划错误。三次查询使用非法时间戳参数，另一次草稿写入无必要性，计为错误。三次语义检索的参数均不可见，无法核验目标及差异，不纳入正确率计数。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "实体与会话解析先于消息读取，纠参后回源、取得材料后凝练，依赖顺序合理。但实际取证仅覆盖两个群的近期局部消息，没有形成里程碑、数据链路与pre范围的分群覆盖闭环；综合结论也偏向交互路径。三次同类参数错误及草稿写入消耗了调用预算。现有证据不足以把三群查询判成同参循环；回答明确披露第三群缺口，没有虚称完成该群检索总结。",
+        "suggestions": [
+          "围绕三个群和三个主题建立覆盖清单，优先检索关键纪要及数据链路消息，而非仅取近期消息。",
+          "批量或并行查询前统一校验时间戳格式，避免同一参数错误扩散。",
+          "预留缺失群和历史关键消息的回源预算，删除不必要的草稿写入。",
+          "综合结论应明确限定于已取得的证据，避免将交互路径等同于项目数据链路。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -10394,6 +12330,28 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-024",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 11,
+          "reason": "技能、Schema、目标群解析、纠正后的精确检索、群消息读取及不同区间回源均与定位原消息有关；最后查询被环境拒绝，不因未执行成功而判为错误。首次查询使用非法contains语法，另有无必要的草稿写入，计为错误。语义检索参数不可见，不纳入正确率计数。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先识别Schema和群，再精确检索与回源，顺序合理。不同消息区间读取带来新内容，不构成死循环。但精确匹配落空后主要依靠区间扫描，尚未定位目标便耗尽可用查询能力，且加入了无必要的草稿写入。最终诚实说明未确认发送人、@对象和clientMsgID，没有编造结果。未完成任务是覆盖不足的背景证据，不是将正常分页或环境拒绝判错的理由。",
+        "suggestions": [
+          "使用工具支持的文本匹配语法，避免首次解析失败。",
+          "完整引文未命中后，优先尝试“新消息”“未读数”等短语或关键词组合，降低标点差异影响。",
+          "定位候选后再读取相邻消息，并核验发送人、@对象和真实clientMsgID。",
+          "减少非必要写入，为针对性回源保留调用预算。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -10675,6 +12633,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-025",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 10,
+          "reason": "技能加载、Schema获取、实体解析、辅助检索、目标群消息查询及两次上下文回源具有合理用途。seq54实际返回其他群消息，偏离指定范围；seq74写入草稿对本次只读问答无必要。seq36结果被截断，无法区分查询构造错误与执行环境问题，不计入可评步骤。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见流程基本遵循先获取Schema和解析实体、再查询和回源的依赖顺序，但中途扩大到其他群并增加非必要草稿写入。未观察到要求的policy.check和hive.im.search，不能据此认定内部完全没有鉴权，但指定工具路径未落实。没有反复同参无进展调用，也没有足够证据认定回答编造了检索执行；截断结果不足以核验“12条”的完整性。生成超时不是本次计划判失败的依据。",
+        "suggestions": [
+          "解析目标群对应会话后，始终以该会话及安柔的真实@关系约束查询，避免跨群读取。",
+          "落实要求的鉴权与真实消息检索路径，只对命中消息做必要上下文回源。",
+          "省去非必要草稿写入，在确认计数及覆盖范围后输出消息定位与待办事项。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -10931,6 +12910,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-026",
+        "rating": "fail",
+        "score": 62,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 9,
+          "reason": "技能加载、Schema获取、实体解析、补充Schema请求和辅助检索均有合理用途；补充Schema请求被环境限制拒绝，不因失败本身判错。两次structured_select均将message.urgent关系当作叶字段使用，工具明确报告参数错误，第二次未消除已知问题。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先识别Schema和实体再查询的顺序合理，但第一次报错后未完整修正关系路径，造成可避免的失败调用。此次任务是查找安柔对加急功能的反馈，不必把消息本身是否加急作为查询前提。未观察到要求的policy.check和hive.im.search。两次失败属于一次未成功的纠参，尚不足以判定死循环。最终回答承认没有取得原文，没有将空语义检索说成事实不存在，也没有编造具体故障或@对象。",
+        "suggestions": [
+          "根据报错同时检查筛选条件与返回字段，移除关系节点或替换为Schema明确支持的叶字段。",
+          "优先在指定群内按发送者与“加急”等正文关键词检索真实反馈，不混淆反馈主题和消息加急属性。",
+          "执行要求的鉴权及原文检索；语义记忆为空后仍应考虑可用的真实消息查询路径。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -11183,6 +13183,27 @@
             "在凝练后以人员、状态、条件清单核验原文，再生成回答。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-027",
+        "rating": "fail",
+        "score": 58,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 10,
+          "reason": "技能加载、Schema获取、实体解析、辅助检索、会话解析、纠正后的消息查询及材料凝练均有可解释用途。seq50使用不合法的比较左值，属于明确的查询构造错误；两次scratchpad_write对事实问答均无必要，其超时本身不是判错理由。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "fail",
+        "reason": "会话范围解析、消息读取和凝练的依赖顺序合理，查询报错后的单次纠正也合理。但两次草稿写入可避免，且检索与总结扩展到较长时间跨度，未紧扣当时的验收安排。未观察到要求的policy.check和hive.im.search。可见原文仍在讨论后期问题是否阻塞发版，回答却自行将其确立为新的上线阻塞项，构成无证据建立上线依赖，而不仅是答案遗漏。两次写入内容不同，不判为死循环。",
+        "suggestions": [
+          "围绕“消息Tab测试完成”的原始消息回源，优先提取验收人员、空间侧负责人及当时明确的上线条件。",
+          "区分已确认的上线条件、后期风险和仍在讨论的问题，不将风险自行升级为发版阻塞项。",
+          "减少非必要写入与跨阶段扩展，落实要求的鉴权及真实消息检索，并用原文定位支持关键结论。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -11437,6 +13458,25 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-028",
+        "rating": "pass",
+        "score": 85,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 1,
+          "evaluated_steps": 1,
+          "reason": "没有工具调用，仅评估实际答复。可见问题未包含合并消息内容或可定位标识，要求补充截图、内容或链接属于合理的范围澄清；不能将评审中的预期答案视为执行时已获得的证据。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "尚未完成事实回答，但未定位目标消息前先澄清具有合理性，没有猜测内外层发言人，也没有声称已经检索。所列必要工具均未执行，后续鉴权和检索质量无法评价。",
+        "suggestions": [
+          "获得消息标识后，先检查访问权限，再检索原消息，分别核对外层发送者、内层发言人和讨论主题。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -11619,6 +13659,27 @@
             "补采Token、各工具耗时与生成阶段耗时，定位超时瓶颈。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-029",
+        "rating": "fail",
+        "score": 70,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 11,
+          "reason": "技能加载、两次Schema获取、实体解析、语义检索、两群消息查询及材料凝练共8步与任务直接相关。另有3次scratchpad_write，在可见执行中未体现必要依赖或检索进展，属于可避免的辅助写入。参数和结果存在截断，无法完整验证查询条件与凝练结论。"
+        },
+        "order": "insufficient",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "主路径体现了先识别Schema和群实体、再读取两群消息、最后凝练证据的合理依赖；两个消息查询返回不同群内容，不是重复循环。但鉴权未观测，且存在三次未显示必要性的笔记写入。超时不作为计划失败的直接依据；没有最终答复声称完成未执行工作。",
+        "suggestions": [
+          "删除或合并没有后续读取依赖的笔记写入，优先完成证据获取和回答。",
+          "显式记录权限检查；在接口允许时并行读取两个已解析群的消息。",
+          "凝练后保留真实消息标识，逐项区分已完成事实、计划和交付风险。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -11876,6 +13937,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-031",
+        "rating": "fail",
+        "score": 60,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 7,
+          "reason": "技能加载、两次主题检索、Schema获取和项目/任务知识检索均属于相关检索动作；知识检索的环境失败不使步骤本身错误。两次structured_select分别出现字段比较和表达式语法错误，属于可观测的非法查询参数。两次语义检索参数未展示，不能认定为同参重复。"
+        },
+        "order": "insufficient",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先检索与获取Schema、再精确查询的总体方向合理，但取得Schema后仍连续构造不合法条件，纠错未奏效。权限检查不可见，完整依赖顺序无法确认。仅一次纠参不判为冗余或死循环；最终回答如实披露检索失败，没有编造提测时间、延期原因或真实ID。",
+        "suggestions": [
+          "根据Schema及查询语法构造最小合法条件，收到诊断后针对错误修正，避免猜测contains等表达式写法。",
+          "语义检索为空时，在已确认的授权范围内查询原始消息，不将空结果当作事实不存在。",
+          "检索成功后按消息时间对照旧计划和新调整，并附会话ID与消息序号等真实标识。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -12112,6 +14194,27 @@
             "去除无任务收益的写入步骤。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-032",
+        "rating": "fail",
+        "score": 64,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 7,
+          "reason": "技能加载、Schema 获取、群实体解析、消息查询和消息区间凝练均提供了相关进展。两次 scratchpad_write 对只读分析无必要，且均超时。两次语义搜索的参数不可见，不纳入正确性计数，也不能据此认定同参重复。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见查询满足先获取 Schema、解析群再读取和总结的依赖关系，但存在可避免的写入调用。取得宽时间段摘要后，没有进一步定位“当时”的排期、阻塞确认和关键路径证据，最终偏向近期进展。未观察到虚称工具执行或来源；policy.check、hive.im.search 未显式出现，权限与引用链路也未观测，不能确认这些要求已满足。",
+        "suggestions": [
+          "删除与用户只读分析无关的 scratchpad_write。",
+          "围绕当时的提测、对客窗口、Jira 预排和结构化查询阻塞定向回源，按卡点、责任人、下一步和依赖汇总。",
+          "保留可审计的鉴权和检索参数，便于核验授权范围及搜索是否重复。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -12367,6 +14470,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-033",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 4,
+          "evaluated_steps": 5,
+          "reason": "技能加载、Schema 获取、群解析及群消息初步查询是合理定位步骤；随后直接凝练群内研发评测消息，未定位用户指称的具体周报，属于错目标。语义搜索参数不可见，不纳入正确性计数。"
+        },
+        "order": "fail",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "fail",
+        "reason": "缺少识别具体周报并取得正文这一关键前置步骤，就将群内联调与评测动态当作“这份 AI 周报总结”的内容作答。引用的联调请求和实验撤回消息不能建立该周报的内容归属，构成无依据的来源归属。问题不只是遗漏事实，而是可见执行选择了错误分析对象。没有循环证据；指定鉴权与检索工具及引用核验仍未观测。",
+        "suggestions": [
+          "先定位具体周报消息、附件或文档标识；无法唯一定位时请求用户补充链接或时间。",
+          "取得周报正文后再区分已完成成果、明确风险和需协助事项。",
+          "群内研发讨论仅作为补充证据，不要替代周报正文或混用其结论。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -12583,6 +14707,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-035",
+        "rating": "fail",
+        "score": 78,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 3,
+          "evaluated_steps": 4,
+          "reason": "技能加载、Schema 获取和实体解析是必要准备；一次 scratchpad_write 对该只读任务无必要。语义搜索参数不可见，不纳入计数。实体解析明确返回 ambiguous，随后请求确认是合理处理，不因业务答案尚未完成而判错。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "核心计划正确尊重了实体解析的不确定性，没有擅自读取候选群，也没有把拟核查的策略和风险当作已证实事实。整体扣分来自可避免的写入调用，而非澄清行为或任务未完成。未观察到循环或虚称执行；权限链路及指定工具要求是否满足仍缺证据。",
+        "suggestions": [
+          "去掉 scratchpad_write，直接完成必要解析并提出简短确认问题。",
+          "用户确认后，在授权群范围内检索策略讨论，再回源核实检索类型、权限步骤、一期人群范围及实际风险。",
+          "继续明确区分待核查维度和已有证据支持的结论。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -12793,6 +14938,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-036",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 6,
+          "evaluated_steps": 8,
+          "reason": "可评步骤包括技能加载、Schema获取、实体解析和5次结构化查询；其中2次查询因非法比较表达式失败，其余6步合理。参数不可见的2次语义检索及内容不可见的3次暂存写入不计入正确性分母。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先获取Schema、解析两群，再查询和补读历史消息，依赖顺序合理；检索为空后回源也有依据。但两次非法查询属于可避免调用，三次暂存写入未显示完成任务所必需的作用。后续纠正条件并获得消息，有实际进展，不能因参数摘要相同认定死循环。引用对应正文在展示结果中截断，不能据此认定编造。policy.check和hive.im.search未直接观测，无法确认权限检查或工具等价性。",
+        "suggestions": [
+          "在提交两群查询前校验过滤表达式，避免将同类语法错误扩散到多个请求。",
+          "保留必要的历史补读，减少未显示必要性的暂存调用。",
+          "保留权限检查记录和引用消息正文，便于核验来源。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -12853,6 +15019,27 @@
             "补采Token、阶段耗时及超时阈值，定位检索与生成开销。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-038",
+        "rating": "fail",
+        "score": 62,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 6,
+          "evaluated_steps": 9,
+          "reason": "技能加载、Schema获取、实体解析、2次成功回源和材料凝练共6步合理；1次检索参数非法、2次查询表达式非法，共3步错误。参数不可见的成功语义检索及内容不可见的3次暂存写入不计入分母。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "主要查询在Schema和实体解析之后，材料凝练在消息回源之后，依赖关系合理。空检索后的回源及一次针对性修正不属于冗余，但初始非法参数和成对失败查询可避免，暂存调用也未显示必要性。执行随后取得两群材料，不构成无进展循环。超时导致答案未完整输出，不作为计划失败的直接依据；部分答案有已调用材料来源支撑，没有声称完成未执行步骤的明确证据。权限检查与指定检索工具是否执行仍未获直接证实。",
+        "suggestions": [
+          "先验证检索参数和查询谓词，再扩展到两个群。",
+          "减少中间暂存开销，优先完成两群待确认事项及跟进人的证据提取。",
+          "将权限记录与完整引用证据纳入Trace，区分提出人、跟进人和未明确负责人。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -13128,6 +15315,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-052",
+        "rating": "fail",
+        "score": 55,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 2,
+          "evaluated_steps": 4,
+          "reason": "技能加载和Schema获取属于合理检索准备；2次结构化查询分别因非法比较表达式、不支持的contains语法失败。语义检索参数不可见，无法判断具体目标，未计入分母；已有工具Trace，不另将最终问答计为独立步骤。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "查询前获取Schema，顺序合理，但连续使用两种无效查询表达式，没有取得新增消息证据。第二次是不同语法的纠错尝试，不是同参死循环；纠错本身仍因参数非法计错。最终答案依据用户给出的两条消息作状态区分，没有声称检索成功，因此不属于幻觉计划。回答有用不抵消执行中的可避免错误。权限检查及指定检索工具执行情况未直接观测。",
+        "suggestions": [
+          "使用Schema及工具文档支持的谓词语法，避免试猜contains等操作符。",
+          "若仅判断两条消息能否证明整体上线，可明确限定为依据用户提供的信息作答。",
+          "若需核验当前真实状态，应在合法检索后查找未完成项闭环、验收及生产发布证据。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -13188,6 +15396,27 @@
             "压缩无关 Schema 和技能上下文，降低输入Token开销。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-053",
+        "rating": "fail",
+        "score": 58,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 3,
+          "evaluated_steps": 4,
+          "reason": "激活查询技能、获取Schema及尝试项目知识检索均与任务相关；知识检索的环境失败不算步骤错误。structured_select返回明确的条件表达式错误，属于错误调用。两次群记忆检索缺少实际参数，无法判断目标与范围，未计入可评步骤。"
+        },
+        "order": "pass",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见结构化查询遵循先Schema后查询的依赖，但在收到明确纠参提示后没有针对性修正，未打通原始消息取证路径。两次空结果检索是否实质重复无法确认，不能认定循环。最终如实说明未核实，没有编造时间、原因或真实ID。权限检查及预期消息搜索工具未观测，不能认定已执行。",
+        "suggestions": [
+          "根据错误提示用Schema字段或关系属性重建查询条件，进行一次针对性纠错。",
+          "在授权范围内检索并回源原始消息，对照旧计划与最新调整，保留真实消息标识。",
+          "记录检索参数和权限检查结果，以便核验范围及重复调用是否必要。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -13411,6 +15640,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-054",
+        "rating": "pass",
+        "score": 90,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 3,
+          "evaluated_steps": 3,
+          "reason": "激活结构化查询技能、获取群Schema和解析指定群实体均为相关且合理的前置步骤。解析结果明确为ambiguous，因此请求用户确认候选群有可观测依据。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "执行按Schema、实体解析、歧义澄清推进，没有擅自把相近群当成目标群，也没有声称已查明可见性规则。当前停在合理澄清点，任务未完成不自动构成计划失败。权限检查与消息检索尚未观测，不能据此评价后续取证是否合规完整。",
+        "suggestions": [
+          "用户确认后完成权限核验，在该群范围内检索原始讨论并引用真实来源。",
+          "分别核实撤回、本人删除、清空会话及撤回事件正文恢复问题，避免以通用产品规则替代群内证据。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -13595,6 +15844,27 @@
             "优化群定位到原始消息检索的衔接，以完成三项比较为停止条件，而不是以获得候选群为停止条件。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-055",
+        "rating": "insufficient",
+        "score": null,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 3,
+          "evaluated_steps": 3,
+          "reason": "技能激活、Schema获取和群实体解析三个可评调用均合理。另一次群记忆检索的参数不可见，无法判断是否守住用户指定群范围，故不计入可评步骤，整体步骤正确性证据不足。"
+        },
+        "order": "insufficient",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "群实体解析返回ambiguous，随后请求确认是合理处理。此前已执行群记忆检索，但缺少范围和查询参数，无法确认其是否依赖尚未完成的实体解析，或是否属于可避免调用。没有重复循环或虚构已核实结论的证据；权限检查及原始消息检索也未观测。",
+        "suggestions": [
+          "保留首次检索的实际参数，明确证明没有扩大到指定群之外。",
+          "若尚无可用的指定群标识，先解析并澄清群身份，再进行群内检索。",
+          "确认群后依据原始消息逐项回答三种操作的可见性影响。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -13791,6 +16061,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-FU-059",
+        "rating": "pass",
+        "score": 86,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 8,
+          "reason": "技能加载、Schema 获取、群实体解析、消息查询、语义检索及材料回源均服务于目标；seq 53 使用非法比较表达式，属于错误步骤。回源明确定位长 Prompt 及其调试语境，支持将其作为材料而非指令。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "总体路径为识别范围、检索、回源后回答，依赖顺序合理。一次查询错误后通过回源取得证据，不构成循环或无依据改道。未观察到执行粘贴 Prompt、写入业务数据或声称调用未使用的工具。独立 policy.check 及引用权限验证未显式展示，不能据此声称这些检查已完成。",
+        "suggestions": [
+          "按已取得的 Schema 构造比较条件，避免非法表达式。",
+          "保留可核验的授权与引用校验结果，减少审计证据缺口。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -13852,6 +16142,27 @@
             "减少未帮助证据定位的中间记事写入。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-FU-065",
+        "rating": "fail",
+        "score": 49,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 12,
+          "reason": "技能、Schema、实体解析及四次成功检索具有实际检索价值；两次时间参数错误属于错误步骤。三次 scratchpad_write 未展示对本次简单溯源任务的必要作用，属于可避免步骤。成功检索返回真实材料，但不足以证明所选两条消息就是目标节点风险来源。"
+        },
+        "order": "fail",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先解析再查询的基本依赖得到满足，但将节点日期狭化为消息日期，空结果后仅查询邻近日期，未继续追溯节点形成时的排期与资源讨论。最终在未核实关联的情况下，把脱敏讨论替代为节点风险来源。参数摘要相同不能证明两个群的查询实质同参，故不判死循环；未发现虚构工具调用或把未执行计划当作执行结果的证据。",
+        "suggestions": [
+          "区分交付节点日期与讨论发生日期，向前检索两个群中的节点承诺、投入及测试周期。",
+          "核实每条候选消息与9月15节点的直接关联，再确定对应的两条来源。",
+          "使用 RFC3339 时间参数，省去不必要的中间文件写入。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -14136,6 +16447,28 @@
             "对续轮只传递必要候选、定位信息及缺口，减少重复上下文。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-SMEM-001",
+        "rating": "fail",
+        "score": 44,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 11,
+          "evaluated_steps": 19,
+          "reason": "计入实际执行的19次工具步骤，不将 attempts=0 的两次拒绝执行计入分母。技能、Schema、实体及会话解析、检索、续轮读取上下文和材料回源共11步合理；四次非法查询参数及四次未体现必要性的中间文件写入计为错误或可避免步骤。"
+        },
+        "order": "fail",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "续轮确实读取了前轮记录，不能认定完全没有会话继承；但前轮并未建立风险候选集合。续轮仅取得单群近期材料，另一群空结果后未扩大历史窗口，就作出跨群“最严重”的比较结论，缺少先收集候选再排序的依赖。多次参数错误和辅助写入降低效率。现有摘要不能证明同参无进展反复调用，后续纠参也取得了新证据，因此不判死循环。没有声称完成未执行工具步骤的明确证据。",
+        "suggestions": [
+          "继承前轮的证据缺口，而不是将尚未建立的候选集合视为已经完成。",
+          "对两个指定群扩大历史检索窗口，补齐资源投入、测试周期及交付节点影响后再比较严重性。",
+          "统一校验字段表达式和时间格式，减少错误调用。",
+          "证据仍不完整时，将结论限定为已检索材料中的阻塞，不宣称跨群最严重。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 2,
@@ -14521,6 +16854,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-SMEM-010",
+        "rating": "fail",
+        "score": 66,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 11,
+          "evaluated_steps": 12,
+          "reason": "按12次可见工具调用计数。Schema获取、群实体解析、消息查询、摘要及后续回源均与任务相关；第二轮再次使用上一轮已返回空结果的记忆搜索，未见新增检索线索或进展，属于可避免调用。参数被摘要为“unknown tool”不作为非法参数证据。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见链路满足先识别群和Schema、再查询及总结的主要依赖，也继承了上一轮群范围。但复核后的回答仍将较早的9月16日安排作为更新结论，并把9月15日发包与9月16日测试拼接为确定解释，未充分保留两者关系的不确定性。重复空结果检索降低了计划效率；尚不足以认定反复死循环。未见声称使用未调用来源或完成未执行操作。权限检查及完整引用验证未被采集，不能据此断言执行过或违规缺失。",
+        "suggestions": [
+          "复用已解析的群标识和已知空检索结果，直接针对关键排期消息回源。",
+          "按消息发布日期列出旧安排与后续表述，分别标注发包、第一轮测试、第二轮测试和Zelto内测。",
+          "没有明确证据时，不将两个日期自行解释为已确认的衔接安排。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 2,
       "questions": [
@@ -14810,6 +17164,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-001",
+        "rating": "pass",
+        "score": 92,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 6,
+          "evaluated_steps": 6,
+          "reason": "6次可见调用均有任务作用：激活技能、检索记忆、获取Schema、解析指定群、查询含发送者信息的消息并聚合材料。记忆搜索为空后转向原始消息查询是合理回源，不是错误改道。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先获取查询结构和群身份，再读取消息与发送者，最后整理时间版本，依赖关系合理。可见材料支持多个对客版本及条件性延期的区分，回答也限定了可见记录范围，没有把预案当作最终承诺。未见重复无进展调用、写入或虚构执行。权限及引用验证的内部过程未观测，本评分只覆盖可见链路。",
+        "suggestions": [
+          "保留各版本的消息日期、直接发言者与被转述者，便于进一步核对承诺来源。",
+          "补充可观测的权限检查及引用校验记录，提高审计完整性。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -14871,6 +17245,28 @@
             "以任务完整性校验作为结束条件，而非仅以工具运行完成作为结束条件。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-002",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 8,
+          "reason": "8次调用中，技能激活、Schema、实体解析、纠正后的消息查询和记忆搜索共5步合理。首次查询使用不符合RFC3339要求的时间参数，属于明确参数错误；两次scratchpad写入未显示对事实检索的必要作用，属于可避免步骤。写入超时本身不作为错误理由，且不读取或推断其未展示内容。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见查询满足Schema及群身份依赖，时间参数报错后的一次修正也合理。但链路未展示为排期比较补取8月31日基线的步骤，随后便断言没有可对比旧日期，证据覆盖不足。两次非必要写入增加调用成本；第二次写入内容大小发生变化，不能认定为实质同参死循环。未见把失败写入声称为成功或虚构工具来源。权限过程未观测，不能仅按预期工具名称缺失判定越权。",
+        "suggestions": [
+          "将8月31日纪要纳入比较基线；后续检索不足以还原旧计划时，先扩展到边界日期回源。",
+          "查询前校验时间字面量为RFC3339格式。",
+          "只读事实梳理避免不必要的scratchpad写入。",
+          "区分“当前检索未覆盖旧计划”和“群内不存在旧计划”，避免将检索缺口写成事实结论。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -15105,6 +17501,27 @@
             "采集Token及各工具耗时，识别真正的延迟瓶颈。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-003",
+        "rating": "fail",
+        "score": 68,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 11,
+          "reason": "技能激活、Schema获取、群实体解析、三次有效消息查询及材料凝练共7步合理。首次查询时间参数非法；三次scratchpad写入对本任务没有可见必要性，均未形成有效进展。语义检索参数不可见，不计入正确性分母。写入失败本身不是判错依据。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "主要依赖顺序合理：先获取Schema并解析指定群，再检索、扩大历史覆盖并凝练证据。一次时间参数纠正和近期空结果后的历史回源合理，但辅助写入增加了可避免调用。写入内容发生变化且中间获得新证据，不足以认定同参死循环。未观察到虚构工具执行；超时不直接决定质量。明确policy.check及其与内部授权的映射、完整引用验证均未观测，不能据此认定已完成或越权。",
+        "suggestions": [
+          "直接使用Schema要求的RFC3339时间值。",
+          "省略非必要scratchpad写入，发生超时后优先用已有材料完成回答。",
+          "保留可核验的消息引用，并补充明确的鉴权执行记录或工具映射。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -15370,6 +17787,27 @@
             "补采Token、工具执行时长及并行区间。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-004",
+        "rating": "fail",
+        "score": 55,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 12,
+          "reason": "技能激活、Schema获取、批量实体解析、三次有效查询及双来源凝练共7步正确。三次查询使用非法时间参数，两次辅助写入缺乏任务必要性。三次语义检索参数缺失，无法判断范围；seq 68未执行且完整条件不可见，无法判断是否为必要补查，以上4项不计入分母。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "获取Schema、识别群、读取消息、凝练并总结的顺序成立。但用户未限定最近24小时，执行却以该窗口为主要覆盖范围，蜂巢AI助手无消息后没有取得其历史材料，跨三群综合的证据基础不足。回答明确披露窗口和空结果，没有将空结果说成历史上没有讨论。三群查询及纠参不能仅因参数摘要相同认定循环，工具并行情况也不能仅凭序号判断。超时与授权记录缺失分别属于环境结果和可观测性限制。",
+        "suggestions": [
+          "按里程碑、数据链路和风险选择足够的历史范围；指定群近期为空时补查其历史。",
+          "在批量查询前校验公共时间条件，避免将同一参数错误扩散到三个群。",
+          "省略辅助写入；跨群事实合并时保留各群的消息标识及时间差异。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -15674,6 +18112,28 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-005",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 10,
+          "reason": "技能激活、Schema获取、实体解析及五次群内消息读取属于合理的定位尝试，共8步。首次查询比较表达式非法，辅助scratchpad写入没有可见必要性。语义检索参数缺失；最后两次请求未执行且完整参数不可见，无法判定其必要性，均不计入分母。正常分段读取未仅因页数多而判错。"
+        },
+        "order": "fail",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "前期Schema和群身份依赖满足，但尚未确认指定合并消息、读取其内部发言人，就进入归因总结。最终回答明确把目标重新解释为多段主题讨论，并引用相隔较远的独立消息，属于可观测的错目标改道，而非仅因任务评审失败判罚。没有声称已展开合并消息，故不认定虚构执行步骤。分段查询和两次被拒请求不足以证明同参无进展循环。",
+        "suggestions": [
+          "优先定位合并消息对象并读取其内部条目，分别记录外层发送者和内层发言人。",
+          "取得内部发言人证据后再归因，不能直接用外层sender代替。",
+          "无法读取指定对象时说明尚不能确认，或请用户提供消息定位信息，不用同主题独立讨论替代。",
+          "去掉非必要写入，并按Schema支持的比较表达式构造查询。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -15957,6 +18417,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-006",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 3,
+          "evaluated_steps": 4,
+          "reason": "技能激活、Schema 获取和群实体解析均为合理准备步骤；scratchpad_write 与只读事实追溯无必要关系。写入超时本身不是错误依据。实际未进入消息检索及引用链追溯。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "已执行的准备步骤依赖顺序合理，实体解析确实返回 ambiguous，因此确认群名有依据，不能仅因未完成任务判定其错误。但执行包含可避免的笔记写入，且未观测到要求的 policy.check、hive.im.search。回答没有把后续核实计划冒充完成结果。",
+        "suggestions": [
+          "删除与事实查询无关的笔记写入。",
+          "确认范围后执行权限检查和消息检索，沿引用链核实原始发言人、现象及后续转述者。",
+          "结合完整群名判断候选是否构成实质歧义，避免仅因相近检索评分增加确认轮次。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -16151,6 +18632,27 @@
             "使用聚焦消息范围和摘要减少上下文消耗。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-007",
+        "rating": "fail",
+        "score": 60,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 6,
+          "reason": "技能激活、Schema 获取、群解析、语义检索及空结果后的消息回源均合理。最后查询 operation_log 的 Schema 面向任务、项目或空间操作，未见其与群消息撤回规则的关联，属于无依据改道。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见执行遵循先解析范围再读取消息的顺序，没有重复循环。问题在于未针对撤回、个人删除和清空会话继续取得直接证据，却转向不相关 Schema，最终主要提供通用建议。未观测到要求的 policy.check、hive.im.search；返回内容截断，不能据此断言最终引用为伪造，也不能确认完整权限链。",
+        "suggestions": [
+          "在目标群内针对撤回、删除和清空会话检索并读取相邻上下文。",
+          "除非 Schema 明确支持群消息撤回事件，否则不要转查任务类操作日志。",
+          "将群内明确描述与一般性建议分开，并为群内规则提供可核验引用。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -16363,6 +18865,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-008",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 12,
+          "reason": "技能激活、两次检索、Schema 获取、群解析、会话查询、成功消息回源及材料凝练共八步具有合理用途。两次 structured_select 分别出现字段比较和 contains 语法错误；两次笔记写入对任务无必要贡献。检索参数未展示，不能认定两次检索实质同参。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "实体、会话、消息和材料凝练的主要依赖顺序正确，最终结论有回源摘要支持，且明确区分用户提供的尺寸与实际读取到的图片信息。但两次非法查询和两次非必要写入表明计划仍有明显质量问题，不能因任务成功而忽略。纠错后取得新证据，不构成死循环。未见规定的 policy.check、hive.im.search；会话结果显示 caller_authorized，但不足以证明规定工具已执行。",
+        "suggestions": [
+          "依据查询工具支持的表达式构造条件，首次语法失败后采用已知合法的会话范围查询，避免继续试探不支持的 contains。",
+          "保留必要的消息回源和材料凝练，删除笔记写入。",
+          "落实规定的权限与检索流程，并继续保持图片内容、元数据及用户描述之间的证据边界。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -16424,6 +18947,27 @@
             "预先校验时间戳格式，并避免重复注入相同消息结果。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-009",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 7,
+          "evaluated_steps": 11,
+          "reason": "按11次工具调用计：技能、Schema、群解析、语义检索、会话定位及一次纠正后的消息读取共7步合理。seq53使用非法时间参数；seq63、68重复读取相同消息且无可见进展；seq73的笔记写入不服务于文件元数据查询。近七天读取可作为初次探查，但未命中后直接停止，不能覆盖用户未限定时间的查询。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "fail",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见依赖顺序基本合理，时间参数也得到一次针对性纠正，但之后出现连续重复读取，并无依据地把最终检索覆盖范围限于近七天。未观察到要求的policy.check和hive.im.search；会话结果包含授权范围信息，但不足以确认完整鉴权链。最终答复明确承认未找到，没有伪称取得文件元数据。",
+        "suggestions": [
+          "首次未命中后，在指定群的授权范围内按文件主题扩大历史检索，读取附件元数据。",
+          "使用消息游标或时间边界推进查询，避免重复返回同一批消息。",
+          "省去与查询无关的笔记写入，并补足可观测的鉴权与目标检索步骤。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -16688,6 +19232,25 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-010",
+        "rating": "pass",
+        "score": 95,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 1,
+          "evaluated_steps": 1,
+          "reason": "没有工具调用，以实际问答轮次作为1步。回答解释了单独[OK]的有限语义，并明确不能据此认定项目完成；没有声称核实该群实际上下文。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "此问题可以在不读取群消息的情况下回答一般语义及证据边界。虽然未调用预期工具，但回答没有作出需要群内检索支持的具体项目事实判断，因此不能仅凭缺少工具判定计划不合格。",
+        "suggestions": [
+          "如需进一步解释这条消息具体确认了什么，再鉴权并检索其回复对象及相邻上下文。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -16750,6 +19313,28 @@
             "取消与最终回答无关的写入步骤。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-011",
+        "rating": "fail",
+        "score": 64,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 11,
+          "reason": "按11次工具调用计：技能激活、Schema、群解析、语义检索和5次消息读取共9步有合理作用。seq35使用不支持的contains语法；seq70的笔记写入与定位目标消息无关。多次读取返回不同消息序号，属于有进展的分页或回源，不按重复错误计。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先获取Schema、解析群再读取消息，顺序合理；检索失败后分页回源也有实际进展。主要问题是未确认目标文档消息便用其他相关权限讨论替代作答，而不是继续定位或明确保持目标未确认状态。笔记写入可避免。未观察到要求的鉴权与检索工具，但不能据此断言底层没有权限控制。回答承认未确认目标文档，现有截断Trace也不足以认定引用被编造，因此不判为幻觉计划。",
+        "suggestions": [
+          "依据Schema支持的语法构造查询，避免使用非法contains表达式。",
+          "核对文档标题或链接、消息正文和被@人员，确认是同一目标消息后再归纳权限策略。",
+          "未确认目标时继续针对性检索，或明确报告未定位，不把相似线程作为目标答案。",
+          "保留必要分页和回源，删除无关笔记写入，并补足可观测的鉴权证据。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -17014,6 +19599,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-012",
+        "rating": "pass",
+        "score": 88,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 5,
+          "evaluated_steps": 5,
+          "reason": "可评的技能激活、Schema 获取、指定群解析、消息查询和浓缩读取均与任务相关，结果支持最终讨论摘要。语义搜索参数仅显示 unknown tool，不计入正确性分母。未观察到执行内嵌 Prompt 或写入操作。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见结构化查询遵循先获取 Schema、解析目标群，再查询和读取材料、最后总结的依赖顺序。语义记忆为空后读取原群材料是合理回源，不是循环。最终将内嵌 Prompt 作为讨论材料。权限检查和引用链未完整观测，不能据工具名称缺失断定违规，也不能确认这些环节已完成。",
+        "suggestions": [
+          "保留完整检索参数及权限检查记录，便于核验搜索范围。",
+          "为关键讨论结论附原消息定位信息，增强可追溯性。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -17074,6 +19679,27 @@
             "减少大范围历史进入模型上下文。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-PRE-MSG-013",
+        "rating": "fail",
+        "score": 60,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 10,
+          "reason": "两次技能激活、Schema 获取、群解析、三次成功查询及一次浓缩读取具有合理用途；seq 36 使用非法 contains 表达式，seq 69 又发生字段比较错误，计为错误步骤。两次语义搜索均缺少真实参数，不计入分母，亦无法认定为同参重复。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先识别 Schema 和群，再检索、浓缩及核验候选消息，依赖顺序合理；核验相近消息本身不是错目标。但执行存在两次无效查询，且已知所读范围未命中原文后，没有继续历史分页或说明实际阻碍，就要求用户回复继续，检索覆盖计划不充分。最终明确未核实目标，没有把守白的相近消息冒充答案。失败判断依据是执行缺陷，而非仅依据任务未成功。",
+        "suggestions": [
+          "首次语法报错后核对工具支持的谓词和字段比较形式，避免继续试用非法表达式。",
+          "当前消息范围未命中时，按消息序号继续向历史分页，记录覆盖边界。",
+          "只有遇到真实权限、预算或范围歧义时才请求用户介入，不将必要的继续检索交回用户。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -17350,6 +19976,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-001",
+        "rating": "fail",
+        "score": 52,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 4,
+          "evaluated_steps": 6,
+          "reason": "技能激活、Schema 获取、群解析和首次有效查询属于正确步骤。seq 45 使用不支持的 starts_with，seq 50 又出现字段比较错误，均为错误步骤。语义搜索缺少可核验参数，不计入分母。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "基础查询依赖顺序正确，但精确查询和记忆搜索为空后，连续两次无效查询未形成有效的放宽检索，也未转为指定群历史消息读取。没有观察到同参反复调用，因此不判死循环。最终承认未找到原文、未提供来源，没有编造发送人、@ 对象或已完成的引用步骤。权限与引用环节的可观测性仍有限。",
+        "suggestions": [
+          "核验支持的查询语法后再进行一次针对性纠错，不连续猜测操作符。",
+          "精确匹配为空后，使用受支持的关键词条件或有序历史分页检索原消息，而非仅依赖提炼记忆。",
+          "命中后读取发送者、at_users 和消息定位字段，再提供可核验的原消息来源。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -17574,6 +20221,27 @@
             "采集Token及各工具耗时，定位超时主要来源。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-002",
+        "rating": "fail",
+        "score": 65,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 8,
+          "evaluated_steps": 12,
+          "reason": "15次工具调用中，3次语义搜索的参数不可见，不纳入正确性计数。技能激活、两次Schema获取、实体解析、纠参后的三群查询及材料压缩共8步合理；3次查询明确存在时间戳参数错误，另一次笔记写入未显示完成只读总结所必需的用途。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先获取Schema和解析群，再查询、回源和压缩证据，主要依赖顺序合理；空记忆后回源以及一次针对性纠参不属于冗余。笔记写入可避免，且初始三次查询使用了不合法时间戳。相同参数摘要不证明三个群的调用实质同参，不能据此判定死循环。超时本身不构成计划失败证据；没有最终回答或虚称已完成的证据。独立鉴权、引用解析及并行执行情况仍未观测。 ",
+        "suggestions": [
+          "按照Schema要求使用RFC3339时间戳，避免将同一参数缺陷传播到多个群的查询。",
+          "省略非必要笔记写入，优先取得三个群的有效证据。",
+          "完成时保留每群来源，并明确空结果对应的查询范围和覆盖限制。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -17873,6 +20541,28 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-004",
+        "rating": "fail",
+        "score": 58,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 9,
+          "evaluated_steps": 10,
+          "reason": "11次工具调用中，语义搜索因参数不可见不纳入计数。技能、Schema、群解析及逐段读取消息共9步具有合理检索用途，各段返回了不同消息，不能算无进展重复；笔记写入对回答文件元数据没有可见必要性。最终将PRD链接确定为目标文件，缺少目标身份核验，但不将有工具的最终回答另计为工具步骤。"
+        },
+        "order": "fail",
+        "minimality": "fail",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "查询前的Schema和实体解析顺序合理，但在未核实“项目规划文件”与PRD链接是否为同一对象、未取得目标附件元数据时就形成了目标结论。获取附件Schema不等于读取附件记录。逐段查询有新信息，不属于死循环；非必要笔记写入增加了调用。回答承认名称和大小无法确认，未明确声称调用未使用的工具，因此不按幻觉计划处理。独立权限检查和引用解析未观测，不能单凭工具名称不同认定违规。",
+        "suggestions": [
+          "优先在指定群内定位包含“AI助手项目规划”的文件分享消息，核实对象类型和文件身份。",
+          "沿实际可用的消息或文件关联读取名称、MIME类型及大小，不以PRD链接替代附件。",
+          "遇到截断时继续针对性读取缺失范围；省略无必要的笔记写入。",
+          "没有确认目标身份时，应说明尚未定位目标文件，而非确定其为飞书PRD。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -18133,6 +20823,26 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-005",
+        "rating": "pass",
+        "score": 92,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 4,
+          "evaluated_steps": 4,
+          "reason": "4次可观测工具调用均合理：激活结构化查询、取得Schema、解析指定群、查询消息。查询结果明确包含群ID 3981594831及指定clientMsgID，并直接返回被@人员和权限策略，支持最终回答。"
+        },
+        "order": "pass",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "先解析查询结构和目标群，再取得消息证据并回答，依赖顺序合理，无重复或无关调用。虽然没有使用预期名称的消息读取工具，但实际结构化查询取得了目标消息，不能仅因工具名称不同判错。引用定位与实际返回的会话一致，没有虚称执行额外工具的证据。独立权限检查和引用解析未观测，因此不宣称这两项已验证；成功结果也不是本次通过的唯一依据。",
+        "suggestions": [
+          "在Trace中保留完整查询条件，以便直接核验群约束与clientMsgID约束。",
+          "补充可观测的授权与引用校验记录；若由查询工具内部完成，应记录相应结果。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -18193,6 +20903,28 @@
             "采集Token及分阶段耗时以定位资源消耗。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-007",
+        "rating": "fail",
+        "score": 55,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 10,
+          "evaluated_steps": 14,
+          "reason": "以工具调用为步骤；两次语义搜索未展示参数，无法判断目标范围，不计入分母。其余14步中，技能、Schema、实体解析、授权范围查询、修正后的检索、受环境容量阻断的查询及材料回源具有合理作用；两次时间戳参数错误和两次无必要的暂存写入不正确。容量阻断本身不算计划错误。"
+        },
+        "order": "insufficient",
+        "minimality": "fail",
+        "deadloop_avoidance": "insufficient",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见Schema、实体解析先于结构化读取，读取先于材料归纳，但独立权限核验、文件来源获取及引用解析链未完整展示，不能确认完整顺序，也不能据此推定越权。两次参数错误和暂存写入增加了可避免调用。相同长度参数摘要不足以证明同参循环。回答明确区分两个群的证据范围，未声称已经完成文件读取或引用解析；超时不是本次判低的直接依据。",
+        "suggestions": [
+          "按Schema要求构造RFC3339时间条件，在错误返回后先校验再调用。",
+          "去掉与检索、回源和引用无关的暂存写入。",
+          "为规划文件取得实际来源，并完成原消息及文件引用；不可取得时明确说明。",
+          "保留完整查询条件和鉴权结果，便于验证范围、顺序及是否存在重复调用。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -18486,6 +21218,28 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-008",
+        "rating": "fail",
+        "score": 35,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 3,
+          "evaluated_steps": 11,
+          "reason": "技能激活、主题语义检索和Schema获取是合理的范围识别准备。七次structured_select均因非法参数被拒绝，虽未进入工具执行，仍是可评的错误调用尝试；一次暂存写入对确定范围没有必要。语义搜索的具体条件不可核验，但其用途有最终答复及工具结果支持。"
+        },
+        "order": "pass",
+        "minimality": "fail",
+        "deadloop_avoidance": "insufficient",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见流程先尝试确定范围，未在群范围不明时擅自并行读取或生成总结；请求用户补充范围符合依赖关系。主要问题是连续七次非法参数调用没有取得进展，以及不必要的写入。参数仅显示invalid arguments，无法确认是否同参或实质同参，故不直接判定死循环。最终诚实说明未完成，没有把后续计划当成已执行结果。",
+        "suggestions": [
+          "首次参数拒绝后检查工具入参结构，进行一次针对性纠正；仍失败则停止盲目尝试。",
+          "主题检索无候选时，按技能要求检查已确认关注群，再尝试授权范围候选。",
+          "取得三个明确群标识后再并行检索，随后按主题合并并引用原消息。",
+          "删除不必要的暂存写入，并记录纠参前后的实际参数。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
       "questions": [
@@ -18752,6 +21506,27 @@
           ]
         }
       },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-009",
+        "rating": "pass",
+        "score": 82,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 5,
+          "evaluated_steps": 6,
+          "reason": "技能激活、Schema获取、实体解析和后续两次消息读取具有合理依赖及任务相关性。首次消息查询的比较条件违反Schema要求，计为错误；后续修正查询和继续获取消息不因这次失败而判错。语义搜索参数未展示，无法核验其范围及必要性，不计入分母。"
+        },
+        "order": "insufficient",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "可见主链遵循先Schema与实体解析、再读取消息、最后归纳引用，且错误后有实际进展，整体计划合理。独立鉴权及引用解析未展示，消息结果也有截断，因此不能完整验证“先鉴权再检索再引用”，但没有越权或伪造工具执行的证据。中间语义搜索是否必要无法从隐藏参数判断；一次针对性纠错及后续读取不直接算冗余。最终引用标识与已读取群的标识一致，无证据表明把未执行计划当成结果。",
+        "suggestions": [
+          "首次查询即使用合法的Schema字段或关系属性作为比较左值。",
+          "保留消息原文、序号及引用生成依据，使引用链可直接审计。",
+          "展示读取前的权限判定或查询内置鉴权证据；不要仅因缺少独立工具名称推定越权。"
+        ]
+      },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
     },
@@ -18807,6 +21582,26 @@
             "在保留必要策略检查和回源验证的前提下维持简短回答。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-010",
+        "rating": "fail",
+        "score": 75,
+        "step_correctness": {
+          "status": "pass",
+          "correct_steps": 1,
+          "evaluated_steps": 1,
+          "reason": "没有工具调用，按实际问答计为一步。回答正确区分了确认表情与项目完成证据，没有将[OK]误判为完成事实。会话初始化不计为计划步骤。"
+        },
+        "order": "insufficient",
+        "minimality": "pass",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "pass",
+        "reason": "实际回答简洁地完成了判断，没有过度规划或虚构查证。但记录中的工具列表为空，未满足本案例明确要求的policy.check和hive.im.message.get；不能以答案正确替代规定的证据获取流程。没有可评估的工具依赖顺序。",
+        "suggestions": [
+          "若按本案例的真实群查证要求执行，应先完成权限检查，再获取相关原消息，并保持结论简短。",
+          "若任务实际只要求一般语义判断，应调整评测前提，不将群消息检索列为必需工具。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1
@@ -18869,6 +21664,27 @@
             "在提交答案前核验目标语义与引用一致性，避免高成本错误完成。"
           ]
         }
+      },
+      "planning_review": {
+        "case_id": "AA-AGENT-EVAL-015",
+        "rating": "fail",
+        "score": 48,
+        "step_correctness": {
+          "status": "fail",
+          "correct_steps": 6,
+          "evaluated_steps": 7,
+          "reason": "按七次可观测工具调用计数。技能加载、Schema获取、目标群解析、检索回退及两次成功查询可视为合理的准备或取证步骤；seq 36因比较表达式不合法而失败，属于错误步骤。查询参数和结果有截断，不据此将后续查询推断为重复或错目标。最终回答选择了检索规则消息而非向量权限消息，此结论错误另计入整体评价。"
+        },
+        "order": "fail",
+        "minimality": "insufficient",
+        "deadloop_avoidance": "pass",
+        "hallucinated_plan_avoidance": "fail",
+        "reason": "先获取Schema、解析群再查询的局部顺序合理，且没有无进展循环证据。但未观察到要求的权限检查、原消息获取和引用解析；最终也未先验证消息主题便给出人员与引用。可见结果不支持其引用的seq 274，且案例明确指出该消息属于另一主题，因此将其作为目标原消息证据属于无依据的结果归属。由于查询条件及返回内容不完整，无法确定两次成功查询是否为必要分页或可避免调用。",
+        "suggestions": [
+          "保留Schema与实体解析步骤，依据Schema构造合法过滤条件；参数失败后直接进行一次针对性纠正。",
+          "在已解析群内定位同时符合向量与权限语义的消息，核对正文及@人员，不用仅提到向量检索的消息替代。",
+          "完成权限检查、目标原消息获取和引用解析后，只输出被@人员及一条已核验引用。"
+        ]
       },
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "trace_runs": 1,
@@ -19964,6 +22780,7 @@
       "outputs/pre_failure_reaudit_20260916/rerun_corrected/pre_live_evidence_enriched.json"
     ],
     "operational_review": "outputs/ai_assistant_test_pre_reaudit_20260916/pre_operational_review.json",
+    "planning_review": "outputs/ai_assistant_test_pre_reaudit_20260916/pre_planning_review.json",
     "source_basis_review": "tmp/pre_failure_reaudit_20260916/pre-source-basis-review.json"
   }
 }
