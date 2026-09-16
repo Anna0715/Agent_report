@@ -4542,6 +4542,10 @@
     "cases": {
       "AA-QAP-028": {
         "business_status": "fail",
+        "failure_categories": [
+          "结构化查询失败",
+          "实体识别错误"
+        ],
         "business_reason": "把已给出的项目名称错置为另一个名称，未定位到目标项目，也未回答负责人自动化_Anna2。",
         "tool_chain": "Skill structured_query 激活正常；依次调用 activate_skills、structured_schema、entity_resolve，均成功且无重复，但没有 structured_select，未完成项目事实查询。",
         "assertions": {
@@ -4552,6 +4556,7 @@
       },
       "AA-FU-002": {
         "business_status": "pass",
+        "failure_categories": [],
         "business_reason": "答对创建人CFO、负责人自动化_Anna2，并明确两人不同；用户没有要求展示项目ID。",
         "tool_chain": "Skill structured_query 激活正常；activate_skills→structured_schema→entity_resolve→structured_select 全部成功，顺序正确，无重复或异常调用。",
         "presentation_gap": "未附项目ID或可验证来源；来源/权限的内部核验仍缺证据。",
@@ -4561,6 +4566,7 @@
       },
       "AA-FU-008": {
         "business_status": "pass",
+        "failure_categories": [],
         "business_reason": "分别给出项目执行人专项=自动化_Anna2、项目管理员专项=自动化_Anna7，满足谁负责的核心问题。",
         "tool_chain": "Skill structured_query 激活正常；activate_skills→structured_schema→entity_resolve→structured_select 全部成功，顺序正确，无重复或异常调用。",
         "presentation_gap": "两项目ID和来源未展示；第二个项目以管理员身份表述，应在来源中澄清其负责人角色。",
@@ -4571,6 +4577,11 @@
       },
       "AA-FU-009": {
         "business_status": "fail",
+        "failure_categories": [
+          "结构化查询失败",
+          "工具调用异常",
+          "召回不完整"
+        ],
         "business_reason": "没有列出任何目标AI评测项目，也没有给出项目来源；已知Gold的8个目标项目匹配0个。",
         "tool_chain": "Skill structured_query 激活正常；structured_select 返回 failed，随后 space_knowledge_search 成功但未召回 Gold 项目。没有重复或顺序异常，存在明确工具结果异常。",
         "uncertainty": "公开回答不足以证明公司项目全集或内部接口失败原因；这里只判用户请求未完成。",
@@ -4581,6 +4592,7 @@
       },
       "AA-FU-061": {
         "business_status": "pass",
+        "failure_categories": [],
         "business_reason": "按用户提供的ID核实项目存在、可访问，给出项目名称、ID和来源信息，并明确搜索为空不等于项目不存在。",
         "tool_chain": "Skill structured_query 激活正常；activate_skills→structured_schema→structured_select 全部成功，顺序正确，无重复或异常调用。",
         "presentation_gap": "未补充负责人自动化_Anna2；但本轮用户只要求再核实项目存在，不是询问负责人。",
@@ -4591,6 +4603,11 @@
       },
       "AA-SMEM-003": {
         "business_status": "fail",
+        "failure_categories": [
+          "短期记忆问题",
+          "实体类型错误",
+          "重复工具调用"
+        ],
         "business_reason": "两轮都把项目当成任务查询，首轮未答负责人，续轮未答创建人，也没有正确继承‘那’指向的项目。",
         "tool_chain": "两轮均执行 activate_skills→structured_schema→entity_resolve；单轮结果均成功、顺序正确，但同一 Session 跨轮重复激活 Skill 并重复读取 Schema，判为重复初始化。",
         "assertions": {
@@ -4601,6 +4618,10 @@
       },
       "AA-SMEM-011": {
         "business_status": "fail",
+        "failure_categories": [
+          "短期记忆问题",
+          "缺少工具调用"
+        ],
         "business_reason": "首轮已明确项目名称，三轮都要求重新提供名称或链接，未完成负责人→创建人→负责人的切换。",
         "tool_chain": "首轮激活 structured_query 并读取 Schema；后两轮没有业务查询工具调用。没有重复或失败调用，但续轮缺少完成用户问题所需的查询动作。",
         "assertions": {
