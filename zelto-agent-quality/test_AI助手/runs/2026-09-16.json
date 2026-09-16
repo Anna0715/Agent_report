@@ -3419,5 +3419,930 @@
       "known_faults": [],
       "checks": []
     }
-  ]
+  ],
+  "business_review": {
+    "contract": "ai_assistant.business_review.v1",
+    "environment": "test",
+    "source_run": "run.json",
+    "source_evidence": "live_evidence.json",
+    "review_scope": "95 cases: 7 visible answers regraded, 88 data-gated cases remain skip",
+    "summary": {
+      "total": 95,
+      "executed": 7,
+      "business_pass": 3,
+      "business_fail": 4,
+      "skip": 88,
+      "automatic_pass": 0,
+      "automatic_fail": 7,
+      "full_internal_trace": 0,
+      "score_available": false
+    },
+    "cases": {
+      "AA-QAP-028": {
+        "business_status": "fail",
+        "business_reason": "把已给出的项目名称错置为另一个名称，未定位到目标项目，也未回答负责人自动化_Anna2。",
+        "assertions": {
+          "answer.turn.2.must_include": "有效失败：负责人未答出；项目ID虽不在问题中，但项目本身也未定位。",
+          "entity.detail.project": "有效失败：目标项目名称或ID均未出现在回答中。",
+          "entity.detail.owner_literal": "有效失败：未给出负责人自动化_Anna2。"
+        }
+      },
+      "AA-FU-002": {
+        "business_status": "pass",
+        "business_reason": "答对创建人CFO、负责人自动化_Anna2，并明确两人不同；用户没有要求展示项目ID。",
+        "presentation_gap": "未附项目ID或可验证来源；来源/权限的内部核验仍缺证据。",
+        "assertions": {
+          "answer.turn.2.must_include": "断言过严：仅缺项目ID pro_4230587368，而这个ID不是本轮用户提问的必要答案；核心三项事实已答对。"
+        }
+      },
+      "AA-FU-008": {
+        "business_status": "pass",
+        "business_reason": "分别给出项目执行人专项=自动化_Anna2、项目管理员专项=自动化_Anna7，满足谁负责的核心问题。",
+        "presentation_gap": "两项目ID和来源未展示；第二个项目以管理员身份表述，应在来源中澄清其负责人角色。",
+        "assertions": {
+          "answer.must_include": "断言过严：只缺两个项目ID，已给出两个项目名称与对应人员。",
+          "answer.turn.2.must_include": "同一ID缺失被重复记为第二条失败；不应双重扣分。"
+        }
+      },
+      "AA-FU-009": {
+        "business_status": "fail",
+        "business_reason": "没有列出任何目标AI评测项目，也没有给出项目来源；已知Gold的8个目标项目匹配0个。",
+        "uncertainty": "公开回答不足以证明公司项目全集或内部接口失败原因；这里只判用户请求未完成。",
+        "assertions": {
+          "answer.turn.2.must_include": "有效失败：8个已知目标项目标题均未回答。",
+          "entity.recall": "有效失败：8个Gold项目ID匹配0个；公司全量边界仍需独立分页清单核实。"
+        }
+      },
+      "AA-FU-061": {
+        "business_status": "pass",
+        "business_reason": "按用户提供的ID核实项目存在、可访问，给出项目名称、ID和来源信息，并明确搜索为空不等于项目不存在。",
+        "presentation_gap": "未补充负责人自动化_Anna2；但本轮用户只要求再核实项目存在，不是询问负责人。",
+        "assertions": {
+          "answer.turn.2.must_include": "断言与话术不一致：负责人姓名被设为必答，但用户只要求按ID核实项目。",
+          "entity.detail.owner_literal": "同一非必答负责人字段被第二次计为失败；不应双重扣分。"
+        }
+      },
+      "AA-SMEM-003": {
+        "business_status": "fail",
+        "business_reason": "两轮都把项目当成任务查询，首轮未答负责人，续轮未答创建人，也没有正确继承‘那’指向的项目。",
+        "assertions": {
+          "answer.must_include": "有效失败：续轮没有创建人CFO。",
+          "answer.turn.2.must_include": "有效失败：首轮没有负责人自动化_Anna2。",
+          "answer.turn.3.must_include": "有效失败：续轮没有创建人CFO；与整体答案缺CFO是同一事实，不应重复扣分。"
+        }
+      },
+      "AA-SMEM-011": {
+        "business_status": "fail",
+        "business_reason": "首轮已明确项目名称，三轮都要求重新提供名称或链接，未完成负责人→创建人→负责人的切换。",
+        "assertions": {
+          "answer.must_include": "有效失败：末轮仍没有负责人自动化_Anna2；与末轮逐轮断言重复。",
+          "answer.turn.2.must_include": "有效失败：首轮未答负责人自动化_Anna2。",
+          "answer.turn.3.must_include": "有效失败：纠正问题后未答创建人CFO。",
+          "answer.turn.4.must_include": "有效失败：末轮未恢复回答负责人自动化_Anna2。"
+        }
+      }
+    },
+    "common_assertion_review": {
+      "contract.identity": "通过代表用例ID与test环境匹配；原reason文字是通用模板，不代表实际不匹配。",
+      "output.non_empty": "通过代表收到非空最终回答；原reason文字是通用模板，不代表回答为空。",
+      "unobserved": "语义评分、内部路由、真实工具调用、权限判定、引用校验、模型与Prompt版本、Token和成本均未由本轮公开SSE提供；保持未评，不作为通过或失败。",
+      "data_gate": "88条只因测试数据尚未满足在线执行条件而跳过，未收到AI回答，不能复评模型。"
+    }
+  },
+  "live_evidence": {
+    "AA-QAP-028": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-QAP-028",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:52:36+00:00",
+      "output": {
+        "text": "未找到名称为“执行人专项项目”的项目，因此无法确认其项目执行人。请确认项目名称是否完整或提供项目链接。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_ec8414a1-3203-412a-9c10-699e073f09d2",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_ec8414a1-3203-412a-9c10-699e073f09d2",
+            "message_id": "",
+            "request_id": "f287a988-96ac-4f58-9419-706d71ead333",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_ec8414a1-3203-412a-9c10-699e073f09d2",
+            "message_id": "cm_e8259f44-79a3-45c5-96ef-8a8dfd0cfbd7",
+            "request_id": "28c53faf-a44a-4d7d-a036-020a76d8920d",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 8654
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_ec8414a1-3203-412a-9c10-699e073f09d2",
+            "request_id": "f287a988-96ac-4f58-9419-706d71ead333",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_ec8414a1-3203-412a-9c10-699e073f09d2",
+            "message_id": "cm_e8259f44-79a3-45c5-96ef-8a8dfd0cfbd7",
+            "request_id": "28c53faf-a44a-4d7d-a036-020a76d8920d",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "未找到名称为“执行人专项项目”的项目，因此无法确认其项目执行人。请确认项目名称是否完整或提供项目链接。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-FU-002": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-FU-002",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:52:46+00:00",
+      "output": {
+        "text": "“项目执行人专项”的创建人是 **CFO**，项目执行人（负责人）是 **自动化_Anna2**。\n\n两者不是同一个人。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_059d3a81-fe01-4af1-8bdd-9dfe5bdca2e4",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_059d3a81-fe01-4af1-8bdd-9dfe5bdca2e4",
+            "message_id": "",
+            "request_id": "42d382d0-1bd7-4b61-91fb-4fe24bdeb964",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_059d3a81-fe01-4af1-8bdd-9dfe5bdca2e4",
+            "message_id": "cm_b75e703b-6a4e-4efb-ac5d-9a15b0b6a91a",
+            "request_id": "2e769e32-f817-4381-a2a7-c371c59dffed",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 9759
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_059d3a81-fe01-4af1-8bdd-9dfe5bdca2e4",
+            "request_id": "42d382d0-1bd7-4b61-91fb-4fe24bdeb964",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_059d3a81-fe01-4af1-8bdd-9dfe5bdca2e4",
+            "message_id": "cm_b75e703b-6a4e-4efb-ac5d-9a15b0b6a91a",
+            "request_id": "2e769e32-f817-4381-a2a7-c371c59dffed",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "“项目执行人专项”的创建人是 **CFO**，项目执行人（负责人）是 **自动化_Anna2**。\n\n两者不是同一个人。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-FU-008": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-FU-008",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:52:58+00:00",
+      "output": {
+        "text": "- **项目执行人专项**：执行人为 **自动化_Anna2**。  \n- **项目管理员专项**：管理员为 **自动化_Anna7**。  \n\n注：项目管理员专项当前未查询到项目执行人。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_c3fc6ffb-acf6-4097-9f27-ba302e392e24",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_c3fc6ffb-acf6-4097-9f27-ba302e392e24",
+            "message_id": "",
+            "request_id": "b4e6233e-25e4-4020-acf7-4f0f2584de76",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_c3fc6ffb-acf6-4097-9f27-ba302e392e24",
+            "message_id": "cm_54febca9-342b-47d1-80f6-608cf6627897",
+            "request_id": "47e5812e-0791-4302-b0cd-27842512d574",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 11860
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_c3fc6ffb-acf6-4097-9f27-ba302e392e24",
+            "request_id": "b4e6233e-25e4-4020-acf7-4f0f2584de76",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_c3fc6ffb-acf6-4097-9f27-ba302e392e24",
+            "message_id": "cm_54febca9-342b-47d1-80f6-608cf6627897",
+            "request_id": "47e5812e-0791-4302-b0cd-27842512d574",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "- **项目执行人专项**：执行人为 **自动化_Anna2**。  \n- **项目管理员专项**：管理员为 **自动化_Anna7**。  \n\n注：项目管理员专项当前未查询到项目执行人。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-FU-009": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-FU-009",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:53:19+00:00",
+      "output": {
+        "text": "未能列出项目：在当前可访问范围内，未检索到名称或描述涉及“AI评测”的项目。\n\n**已尝试的来源**\n- 项目知识检索：以“AI评测”检索项目标题与描述，结果为空。\n- 项目结构化查询：尝试按你所在公司筛选并读取项目来源信息，但当前数据接口不支持该查询组合，无法完成全量核对。\n\n因此，目前不能确认是否不存在相关项目，只能说明当前可查询来源未返回结果。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_9e1cd82e-53f5-499e-8b1c-93a9743f0a1a",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_9e1cd82e-53f5-499e-8b1c-93a9743f0a1a",
+            "message_id": "",
+            "request_id": "8e6aa11b-36ca-4a87-9cdb-b5fad8acca80",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_9e1cd82e-53f5-499e-8b1c-93a9743f0a1a",
+            "message_id": "cm_6f5c9469-be59-4970-9c34-d2c3f911d9a8",
+            "request_id": "2accf9cb-18de-400e-92f7-7ff410054656",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 21477
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_9e1cd82e-53f5-499e-8b1c-93a9743f0a1a",
+            "request_id": "8e6aa11b-36ca-4a87-9cdb-b5fad8acca80",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_9e1cd82e-53f5-499e-8b1c-93a9743f0a1a",
+            "message_id": "cm_6f5c9469-be59-4970-9c34-d2c3f911d9a8",
+            "request_id": "2accf9cb-18de-400e-92f7-7ff410054656",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "未能列出项目：在当前可访问范围内，未检索到名称或描述涉及“AI评测”的项目。\n\n**已尝试的来源**\n- 项目知识检索：以“AI评测”检索项目标题与描述，结果为空。\n- 项目结构化查询：尝试按你所在公司筛选并读取项目来源信息，但当前数据接口不支持该查询组合，无法完成全量核对。\n\n因此，目前不能确认是否不存在相关项目，只能说明当前可查询来源未返回结果。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-FU-061": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-FU-061",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:53:29+00:00",
+      "output": {
+        "text": "已按项目 ID 直接核实，项目存在且当前可访问：\n\n- **项目**：项目执行人专项 [AEFIX:P-A-EXECUTED:v1]\n- **项目 ID**：`pro_4230587368`\n- **创建/更新时间**：2026-09-15 06:41 UTC\n- **所属空间 ID**：3197660864\n- **关联群 ID**：4230587368\n- **描述**：AI助手权限评测数据\n\n本次按 ID 的精确查询完整执行并返回 1 条结果；先前搜索为空，可能是搜索索引或关键词匹配未命中。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_3bb660d6-d400-4165-8f97-d01a48562ea3",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_3bb660d6-d400-4165-8f97-d01a48562ea3",
+            "message_id": "",
+            "request_id": "73c36be1-91c4-4bd4-84b3-2b96d9c77e3a",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_3bb660d6-d400-4165-8f97-d01a48562ea3",
+            "message_id": "cm_05346be3-6d05-4225-99b6-7f043466deb9",
+            "request_id": "287b475a-ea31-436d-a58a-3f538a9b40bd",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 9984
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_3bb660d6-d400-4165-8f97-d01a48562ea3",
+            "request_id": "73c36be1-91c4-4bd4-84b3-2b96d9c77e3a",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_3bb660d6-d400-4165-8f97-d01a48562ea3",
+            "message_id": "cm_05346be3-6d05-4225-99b6-7f043466deb9",
+            "request_id": "287b475a-ea31-436d-a58a-3f538a9b40bd",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "已按项目 ID 直接核实，项目存在且当前可访问：\n\n- **项目**：项目执行人专项 [AEFIX:P-A-EXECUTED:v1]\n- **项目 ID**：`pro_4230587368`\n- **创建/更新时间**：2026-09-15 06:41 UTC\n- **所属空间 ID**：3197660864\n- **关联群 ID**：4230587368\n- **描述**：AI助手权限评测数据\n\n本次按 ID 的精确查询完整执行并返回 1 条结果；先前搜索为空，可能是搜索索引或关键词匹配未命中。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-SMEM-003": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-SMEM-003",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:53:50+00:00",
+      "output": {
+        "text": "仍未找到名称为“项目执行人专项”的任务，因此无法确认创建人。请提供准确任务标题、项目名称或任务链接。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "message_id": "",
+            "request_id": "224910f1-2043-4e57-a821-51d7516119b8",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "message_id": "cm_b082d05a-fc63-4177-a216-60121cd0cd02",
+            "request_id": "3b1fb8c1-4383-4fec-8c47-537a7d8594c4",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          },
+          {
+            "step": 3,
+            "op": "continue",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "message_id": "cm_e1e7dc5e-559c-4dd4-9381-a1f2114aa863",
+            "request_id": "a1a2c450-bde6-4e5d-9889-39ab40822ec1",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 21088
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "request_id": "224910f1-2043-4e57-a821-51d7516119b8",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "message_id": "cm_b082d05a-fc63-4177-a216-60121cd0cd02",
+            "request_id": "3b1fb8c1-4383-4fec-8c47-537a7d8594c4",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "未找到标题为“项目执行人专项”的任务，因此暂时无法确认执行人。请确认任务名称是否完整或提供项目/任务链接。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          },
+          {
+            "step": 3,
+            "op": "continue",
+            "actor_ref": "CFO",
+            "session_id": "cs_fbe3195c-6e7a-4c34-8975-a8928f35b8a6",
+            "message_id": "cm_e1e7dc5e-559c-4dd4-9381-a1f2114aa863",
+            "request_id": "a1a2c450-bde6-4e5d-9889-39ab40822ec1",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "仍未找到名称为“项目执行人专项”的任务，因此无法确认创建人。请提供准确任务标题、项目名称或任务链接。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    },
+    "AA-SMEM-011": {
+      "contract": "agent_evaluation.evidence.v2",
+      "case_id": "AA-SMEM-011",
+      "environment": "test",
+      "generated_at": "2026-09-16T01:54:06+00:00",
+      "output": {
+        "text": "请提供具体项目名称或链接。当前没有明确项目范围，我才能查询该项目现在的负责人。"
+      },
+      "trace": {
+        "contract": "ai_assistant.trace.v1",
+        "status": "部分可观测",
+        "source": "chat/assistant/stream",
+        "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+        "events": [],
+        "coverage": {
+          "input": true,
+          "session": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false,
+          "memory": false
+        },
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "",
+            "request_id": "0459ba15-b264-43ba-abec-da2a7b45bb4e",
+            "coverage": {}
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_4c00c3d7-fdaa-45d4-9849-39c9f31c0f2c",
+            "request_id": "8f6b7eab-d959-4b68-bc94-2a4242e04645",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          },
+          {
+            "step": 3,
+            "op": "continue",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_211c377a-eb4d-4862-afa8-71e7448a0b1d",
+            "request_id": "cf966728-5892-4d1e-9164-458a962bbc0d",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          },
+          {
+            "step": 4,
+            "op": "continue",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_bba8ffb5-5e2b-45ea-86f0-b4ab2ed7d1e0",
+            "request_id": "7a0234c0-e619-4571-b20d-b2f64de7d1dc",
+            "coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            }
+          }
+        ]
+      },
+      "citations": [],
+      "side_effects": [],
+      "versions": {
+        "harness": "assistant-chat-live"
+      },
+      "metrics": {
+        "e2e_ms": 15545
+      },
+      "semantic_verdict": null,
+      "errors": [],
+      "metadata": {
+        "turns": [
+          {
+            "step": 1,
+            "op": "new_session",
+            "actor_ref": "CFO",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "request_id": "0459ba15-b264-43ba-abec-da2a7b45bb4e",
+            "status": "prepared",
+            "reused": false,
+            "error": ""
+          },
+          {
+            "step": 2,
+            "op": "ask",
+            "actor_ref": "CFO",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_4c00c3d7-fdaa-45d4-9849-39c9f31c0f2c",
+            "request_id": "8f6b7eab-d959-4b68-bc94-2a4242e04645",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "请告诉我具体是哪个项目（名称或链接）。我可以查询该项目的执行人/专项负责人名单。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          },
+          {
+            "step": 3,
+            "op": "continue",
+            "actor_ref": "CFO",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_211c377a-eb4d-4862-afa8-71e7448a0b1d",
+            "request_id": "cf966728-5892-4d1e-9164-458a962bbc0d",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "请告诉我具体项目名称或链接，我来查询该项目的创建人。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          },
+          {
+            "step": 4,
+            "op": "continue",
+            "actor_ref": "CFO",
+            "session_id": "cs_31c9596b-331c-4c38-b3c5-b4096b0a2f5c",
+            "message_id": "cm_bba8ffb5-5e2b-45ea-86f0-b4ab2ed7d1e0",
+            "request_id": "7a0234c0-e619-4571-b20d-b2f64de7d1dc",
+            "status": "completed",
+            "http_status": 200,
+            "terminal_event": "completed",
+            "answer": "请提供具体项目名称或链接。当前没有明确项目范围，我才能查询该项目现在的负责人。",
+            "credential_redacted": false,
+            "error": "",
+            "trace_coverage": {
+              "input": true,
+              "session": true,
+              "message": true,
+              "output": true,
+              "route": false,
+              "skill": false,
+              "mcp": false
+            },
+            "trace_status": "部分可观测"
+          }
+        ],
+        "data_state": "LIVE_VERIFIED",
+        "credential_redacted_turns": [],
+        "live_trace_scope": "public_sse_only"
+      }
+    }
+  }
 }
