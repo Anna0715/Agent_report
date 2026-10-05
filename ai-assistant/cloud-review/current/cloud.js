@@ -34,7 +34,7 @@
   function validateBase(value) {
     if (!plain(value) || !plain(value.identity) || !Array.isArray(value.rows) || !value.rows.length) throw Error('原始报告格式不正确，已停止连接。');
     const i = value.identity;
-    if (!/^review-[a-f0-9]{24}$/.test(i.report_id) || !text(i.run_id,200) || !i.run_id || !['test','pre','prod'].includes(i.environment) || !/^[a-f0-9]{64}$/.test(i.source_digest)) throw Error('原始报告身份无效，已停止连接。');
+    if (!/^review-[a-f0-9]{24}$/.test(i.report_id) || !text(i.run_id,200) || !i.run_id || !['test','pre','prod','combined'].includes(i.environment) || !/^[a-f0-9]{64}$/.test(i.source_digest)) throw Error('原始报告身份无效，已停止连接。');
     const ids = new Set();
     for (const row of value.rows) {
       if (!plain(row) || !text(row.case_id,100) || !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$/.test(row.case_id) || ids.has(row.case_id) || !Object.hasOwn(labels,row.status) || !text(row.title,12000,true) || !text(row.reason,100000,true) || !text(row.module,1000,true) || !text(row.scenario,2000,true) || !Array.isArray(row.failure_categories) || !row.failure_categories.every(x=>text(x,1000)) || !(row.latency_ms === null || (Number.isFinite(row.latency_ms) && row.latency_ms >= 0))) throw Error('原始用例数据无效或编号重复，已停止连接。');
