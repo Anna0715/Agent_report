@@ -1,9 +1,9 @@
 {
   "identity": {
-    "report_id": "review-735c188b6efc367cc0d19d85",
+    "report_id": "review-123b7046ade52696c5104ae0",
     "run_id": "AI助手-2026-10-06-combined",
     "environment": "combined",
-    "source_digest": "0bca1f28f1f6bcc97e6d1e7af98d82b90341f0da0fdb579d042badc0fc9c0ec7"
+    "source_digest": "e4d5073b1e3d7c2a0591459305c5767c55311f4c3f75e3eae85fcf0db0b2d9b1"
   },
   "rows": [
     {
@@ -156,7 +156,7 @@
       "latency_ms": 1850,
       "trace_runs": 0,
       "trace_status": "本地fixture",
-      "task_completion_rate": 100,
+      "task_completion_rate": 1.0,
       "model": "eval-model-v1",
       "prompt_version": "assistant-system-2026.09",
       "resource_coverage": {
@@ -220,7 +220,7 @@
       "latency_ms": 1963,
       "trace_runs": 0,
       "trace_status": "本地fixture",
-      "task_completion_rate": 100,
+      "task_completion_rate": 1.0,
       "model": "eval-model-v1",
       "prompt_version": "assistant-system-2026.09",
       "resource_coverage": {
@@ -866,6 +866,40 @@
       ]
     },
     {
+      "case_id": "AA-FU-018",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "这个项目的父任务和子任务各有哪些？",
+      "module": "任务事实",
+      "scenario": "这个项目的父任务和子任务各有哪些",
+      "gate_class": "quality",
+      "ability": "任务事实",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P1",
+      "status": "fail",
+      "reason": "回答仅要求补充项目标识，未检索或列出Gold要求的项目内父任务与子任务关系，任务未完成。",
+      "failure_categories": [],
+      "latency_ms": 2658,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 0,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.12.5",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": false,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": [
+        "信息缺失"
+      ]
+    },
+    {
       "case_id": "AA-FU-019",
       "source_environment": "test",
       "suite": "assistant_agent_followup",
@@ -1245,7 +1279,7 @@
       "latency_ms": 2076,
       "trace_runs": 0,
       "trace_status": "本地fixture",
-      "task_completion_rate": 100,
+      "task_completion_rate": 1.0,
       "model": "eval-model-v1",
       "prompt_version": "assistant-system-2026.09",
       "resource_coverage": {
@@ -1437,7 +1471,7 @@
       "latency_ms": 2189,
       "trace_runs": 0,
       "trace_status": "本地fixture",
-      "task_completion_rate": 100,
+      "task_completion_rate": 1.0,
       "model": "eval-model-v1",
       "prompt_version": "assistant-system-2026.09",
       "resource_coverage": {
@@ -1469,7 +1503,7 @@
       "latency_ms": 2302,
       "trace_runs": 0,
       "trace_status": "本地fixture",
-      "task_completion_rate": 100,
+      "task_completion_rate": 1.0,
       "model": "eval-model-v1",
       "prompt_version": "assistant-system-2026.09",
       "resource_coverage": {
@@ -3315,40 +3349,6 @@
       },
       "display_failure_categories": [
         "事实正确"
-      ]
-    },
-    {
-      "case_id": "AA-FU-018",
-      "source_environment": "pre",
-      "suite": "assistant_agent_followup",
-      "title": "这个项目的父任务和子任务各有哪些？",
-      "module": "任务事实",
-      "scenario": "这个项目的父任务和子任务各有哪些（项目卡片追问）",
-      "gate_class": "quality",
-      "ability": "任务事实",
-      "kind": "business_review",
-      "confidence": "high",
-      "priority": "P1",
-      "status": "fail",
-      "reason": "回答未给出项目“PRE仅任务关系父项目”下的三个平级任务，也未说明没有已登记的父子任务关系，缺少项目名称、任务名称和关系结论等关键事实。",
-      "failure_categories": [],
-      "latency_ms": 35921,
-      "trace_runs": 2,
-      "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
-      "model": "openrouter/openai/gpt-5.6-terra",
-      "prompt_version": "assistant_chat_agent@0.12.6",
-      "resource_coverage": {
-        "e2e_ms": true,
-        "steps": true,
-        "tool_calls": true,
-        "tokens": true,
-        "cache_token_ratio": true,
-        "cost_usd": true,
-        "retries": true
-      },
-      "display_failure_categories": [
-        "信息缺失"
       ]
     },
     {
@@ -7305,11 +7305,11 @@
   ],
   "summary": {
     "report_display": {
-      "suppressed_test_failure_attempts": 1
+      "suppressed_test_failure_attempts": 0
     },
     "report_date": "2026-10-06",
-    "generated_at": "2026-10-06T08:01:31+00:00",
-    "pre_case_count": 69,
+    "generated_at": "2026-10-06T05:42:15+00:00",
+    "pre_case_count": 68,
     "test_scope": {
       "active_total": 82,
       "online_executed": 60,
@@ -7326,8 +7326,8 @@
       }
     },
     "pre_scope": {
-      "active_total": 140,
-      "executed": 69,
+      "active_total": 139,
+      "executed": 68,
       "not_executed": 71,
       "not_executed_by_state": {
         "CONTROLLED_SETUP": 21,
@@ -7354,18 +7354,18 @@
       "error": 0
     },
     "reaudit": {
-      "previous_pre_failures": 33,
+      "previous_pre_failures": 0,
       "old_fail_to_pass": [],
       "old_failure_gated": [],
-      "still_failed": 33,
+      "still_failed": 0,
       "source_ids_found": "-",
       "source_in_scope": 0,
       "source_backed": 0,
       "source_gated": 0,
       "source_excluded": 0,
       "context_removed": 0,
-      "previous_test_failures": 33,
-      "test_still_failed": 33
+      "previous_test_failures": 0,
+      "test_still_failed": 0
     },
     "source_basis": {
       "summary": {},
@@ -7373,8 +7373,8 @@
     },
     "trace_gate": {
       "required": true,
-      "executed": 129,
-      "captured": 129,
+      "executed": 128,
+      "captured": 128,
       "complete": true,
       "missing": {}
     },
@@ -7404,10 +7404,10 @@
         },
         "pre": {
           "selection": {
-            "pass": 214,
-            "total": 214,
+            "pass": 209,
+            "total": 209,
             "rate": 1.0,
-            "covered_cases": 49
+            "covered_cases": 48
           },
           "parameters": {
             "pass": 0,
@@ -7422,13 +7422,13 @@
             "covered_cases": 0
           },
           "chain_completeness": {
-            "pass": 105,
-            "total": 214,
-            "rate": 0.49065420560747663,
-            "covered_cases": 49
+            "pass": 102,
+            "total": 209,
+            "rate": 0.4880382775119617,
+            "covered_cases": 48
           }
         },
-        "pre_observation": "69/69 条已关联 Trace；工具选择与调用链按可验证数据计分，参数和输出理解缺断言时保持未覆盖。"
+        "pre_observation": "68/68 条已关联 Trace；工具选择与调用链按可验证数据计分，参数和输出理解缺断言时保持未覆盖。"
       },
       "planning_quality": {
         "test": {
@@ -7469,37 +7469,37 @@
         },
         "pre": {
           "step_correctness": {
-            "pass": 137,
-            "total": 180,
-            "rate": 0.7611111111111111,
-            "covered_cases": 53
+            "pass": 134,
+            "total": 175,
+            "rate": 0.7657142857142857,
+            "covered_cases": 52
           },
           "order": {
-            "pass": 13,
-            "total": 19,
-            "rate": 0.6842105263157895,
-            "covered_cases": 19,
+            "pass": 12,
+            "total": 18,
+            "rate": 0.6666666666666666,
+            "covered_cases": 18,
             "insufficient_cases": 50
           },
           "minimality": {
             "pass": 16,
-            "total": 35,
-            "rate": 0.45714285714285713,
-            "covered_cases": 35,
+            "total": 34,
+            "rate": 0.47058823529411764,
+            "covered_cases": 34,
             "insufficient_cases": 34
           },
           "deadloop_avoidance": {
-            "pass": 64,
-            "total": 67,
-            "rate": 0.9552238805970149,
-            "covered_cases": 67,
+            "pass": 63,
+            "total": 66,
+            "rate": 0.9545454545454546,
+            "covered_cases": 66,
             "insufficient_cases": 2
           },
           "hallucinated_plan_avoidance": {
-            "pass": 60,
-            "total": 62,
-            "rate": 0.967741935483871,
-            "covered_cases": 62,
+            "pass": 59,
+            "total": 61,
+            "rate": 0.9672131147540983,
+            "covered_cases": 61,
             "insufficient_cases": 7
           }
         },
@@ -7508,34 +7508,34 @@
         "judge_environment": "combined",
         "judge_summary": {
           "ratings": {
-            "fail": 29,
+            "fail": 28,
             "insufficient": 92,
             "pass": 8
           },
-          "average_score": 64.1891891891892,
-          "scored_cases": 37,
+          "average_score": 64.36111111111111,
+          "scored_cases": 36,
           "step_correctness": {
-            "correct": 207,
-            "total": 254,
-            "covered_cases": 73
+            "correct": 204,
+            "total": 249,
+            "covered_cases": 72
           },
           "order": {
             "insufficient": 98,
-            "pass": 24,
+            "pass": 23,
             "fail": 7
           },
           "minimality": {
-            "fail": 26,
+            "fail": 25,
             "pass": 20,
             "insufficient": 83
           },
           "deadloop_avoidance": {
-            "pass": 84,
+            "pass": 83,
             "insufficient": 42,
             "fail": 3
           },
           "hallucinated_plan_avoidance": {
-            "pass": 81,
+            "pass": 80,
             "insufficient": 46,
             "fail": 2
           }
@@ -7543,8 +7543,8 @@
       },
       "robustness": {
         "pre_answer_completion": {
-          "pass": 69,
-          "total": 69,
+          "pass": 68,
+          "total": 68,
           "rate": 1.0
         },
         "pre_error_recovery": {
@@ -7553,13 +7553,13 @@
           "rate": null
         },
         "pre_loop_avoidance": {
-          "pass": 69,
-          "total": 69,
+          "pass": 68,
+          "total": 68,
           "rate": 1.0
         },
         "pre_step_robustness": {
-          "pass": 69,
-          "total": 69,
+          "pass": 68,
+          "total": 68,
           "rate": 1.0
         },
         "survived_10_steps": {
@@ -7575,21 +7575,21 @@
         "trace_pre": {
           "error_recovery": {
             "pass": 0,
-            "total": 109,
+            "total": 107,
             "rate": 0.0,
-            "covered_cases": 28
+            "covered_cases": 27
           },
           "loop_avoidance": {
-            "pass": 69,
-            "total": 69,
+            "pass": 68,
+            "total": 68,
             "rate": 1.0,
             "covered_cases": 0
           },
           "step_robustness": {
-            "pass": 105,
-            "total": 214,
-            "rate": 0.49065420560747663,
-            "covered_cases": 49
+            "pass": 102,
+            "total": 209,
+            "rate": 0.4880382775119617,
+            "covered_cases": 48
           },
           "survived_10_steps": {
             "pass": 0,
@@ -7610,16 +7610,16 @@
           "avg_tokens": null
         },
         "pre": {
-          "covered": 69,
-          "avg_latency_ms": 19904.594202898552,
-          "p50_latency_ms": 14355.0,
-          "p95_latency_ms": 48220.39999999999,
-          "avg_steps": 4.36734693877551,
-          "avg_tool_calls": 3.101449275362319,
-          "avg_tokens": 89702.62318840579,
-          "avg_cost_usd": 0.46015471014492754,
-          "total_cost_usd": 31.750675,
-          "cache_token_ratio": 0.5661741380230388
+          "covered": 68,
+          "avg_latency_ms": 19669.058823529413,
+          "p50_latency_ms": 13503.0,
+          "p95_latency_ms": 48327.09999999999,
+          "avg_steps": 4.354166666666667,
+          "avg_tool_calls": 3.073529411764706,
+          "avg_tokens": 89093.07352941176,
+          "avg_cost_usd": 0.45720757352941177,
+          "total_cost_usd": 31.090115,
+          "cache_token_ratio": 0.56197961288501
         },
         "resource_cost": {
           "test": {
@@ -7712,82 +7712,82 @@
             "definition": "单条成功用例成本=本轮所有已观测资源消耗÷业务成功用例数；包含失败尝试消耗。覆盖不全时为观测下限。",
             "metrics": {
               "e2e_ms": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 1373417.0,
-                "average": 19904.594202898552,
-                "p50": 14355.0,
-                "p95": 48220.39999999999,
+                "total": 1337496.0,
+                "average": 19669.058823529413,
+                "p50": 13503.0,
+                "p95": 48327.09999999999,
                 "per_success_is_lower_bound": false
               },
               "steps": {
-                "valid_n": 49,
-                "attempted_n": 69,
-                "coverage_rate": 0.7101449275362319,
+                "valid_n": 48,
+                "attempted_n": 68,
+                "coverage_rate": 0.7058823529411765,
                 "successful_valid_n": 19,
                 "successful_n": 35,
-                "total": 214.0,
-                "average": 4.36734693877551,
+                "total": 209.0,
+                "average": 4.354166666666667,
                 "p50": 3.0,
-                "p95": 12.799999999999983,
+                "p95": 12.949999999999996,
                 "per_success_is_lower_bound": true
               },
               "tool_calls": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 214.0,
-                "average": 3.101449275362319,
+                "total": 209.0,
+                "average": 3.073529411764706,
                 "p50": 1.0,
                 "p95": 11.0,
                 "per_success_is_lower_bound": false
               },
               "tokens": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 6189481.0,
-                "average": 89702.62318840579,
-                "p50": 40045.0,
-                "p95": 306110.0,
+                "total": 6058329.0,
+                "average": 89093.07352941176,
+                "p50": 39927.5,
+                "p95": 306113.75,
                 "per_success_is_lower_bound": false
               },
               "cache_token_ratio": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "ratio": 0.5661741380230388,
+                "ratio": 0.56197961288501,
                 "per_success_is_lower_bound": false
               },
               "cost_usd": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 31.750675,
-                "average": 0.46015471014492754,
-                "p50": 0.211545,
-                "p95": 1.5460019999999999,
+                "total": 31.090115,
+                "average": 0.45720757352941177,
+                "p50": 0.20939750000000001,
+                "p95": 1.54644175,
                 "per_success_is_lower_bound": false
               },
               "retries": {
-                "valid_n": 69,
-                "attempted_n": 69,
+                "valid_n": 68,
+                "attempted_n": 68,
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
                 "total": 2.0,
-                "average": 0.028985507246376812,
+                "average": 0.029411764705882353,
                 "p50": 0.0,
                 "p95": 0.0,
                 "per_success_is_lower_bound": false
@@ -7817,29 +7817,28 @@
             "openrouter/openai/gpt-5.6-terra"
           ],
           "prompts": [
-            "assistant_chat_agent@0.12.5",
-            "assistant_chat_agent@0.12.6"
+            "assistant_chat_agent@0.12.5"
           ],
-          "model_covered_cases": 69,
-          "prompt_covered_cases": 69,
-          "total_cases": 69
+          "model_covered_cases": 68,
+          "prompt_covered_cases": 68,
+          "total_cases": 68
         },
         "judge": {
-          "model": "历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
+          "model": "openai/gpt-6-astra",
           "prompt_version": "ai-assistant-business-review-v3-session-and-access"
         },
         "planning_judge": {
-          "model": "test: openai/gpt-6-astra；pre: 历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
+          "model": "test: openai/gpt-6-astra；pre: openai/gpt-6-astra",
           "prompt_version": "test: ai-assistant-planning-quality-review-v1 / ai-assistant-planning-quality-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-planning-quality-review-v1"
         },
         "operational_judge": {
-          "model": "test: openai/gpt-6-astra；pre: 历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
-          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-operational-review-v1.1"
+          "model": "test: openai/gpt-6-astra；pre: openai/gpt-6-astra",
+          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-operational-review-v1"
         }
       },
       "automatic_pre": {
         "pass": 0,
-        "fail": 51,
+        "fail": 50,
         "skip": 18,
         "error": 0
       },
@@ -7847,34 +7846,34 @@
         "environment": "combined",
         "summary": {
           "ratings": {
-            "fail": 29,
+            "fail": 28,
             "insufficient": 92,
             "pass": 8
           },
-          "average_score": 64.1891891891892,
-          "scored_cases": 37,
+          "average_score": 64.36111111111111,
+          "scored_cases": 36,
           "step_correctness": {
-            "correct": 207,
-            "total": 254,
-            "covered_cases": 73
+            "correct": 204,
+            "total": 249,
+            "covered_cases": 72
           },
           "order": {
             "insufficient": 98,
-            "pass": 24,
+            "pass": 23,
             "fail": 7
           },
           "minimality": {
-            "fail": 26,
+            "fail": 25,
             "pass": 20,
             "insufficient": 83
           },
           "deadloop_avoidance": {
-            "pass": 84,
+            "pass": 83,
             "insufficient": 42,
             "fail": 3
           },
           "hallucinated_plan_avoidance": {
-            "pass": 81,
+            "pass": 80,
             "insufficient": 46,
             "fail": 2
           }
@@ -7924,39 +7923,39 @@
             "summary": {
               "ratings": {
                 "insufficient": 39,
-                "fail": 23,
+                "fail": 22,
                 "pass": 7
               },
-              "average_score": 62.46666666666667,
-              "scored_cases": 30,
+              "average_score": 62.62068965517241,
+              "scored_cases": 29,
               "step_correctness": {
-                "correct": 137,
-                "total": 180,
-                "covered_cases": 53
+                "correct": 134,
+                "total": 175,
+                "covered_cases": 52
               },
               "order": {
                 "insufficient": 50,
-                "pass": 13,
+                "pass": 12,
                 "fail": 6
               },
               "minimality": {
                 "insufficient": 34,
-                "fail": 19,
+                "fail": 18,
                 "pass": 16
               },
               "deadloop_avoidance": {
-                "pass": 64,
+                "pass": 63,
                 "fail": 3,
                 "insufficient": 2
               },
               "hallucinated_plan_avoidance": {
-                "pass": 60,
+                "pass": 59,
                 "insufficient": 7,
                 "fail": 2
               }
             },
             "judge": {
-              "model": "历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
+              "model": "openai/gpt-6-astra",
               "prompt_version": "ai-assistant-planning-quality-review-v1"
             }
           }
@@ -7969,38 +7968,38 @@
           "robustness": {
             "ratings": {
               "insufficient": 91,
-              "fail": 38
+              "fail": 37
             },
-            "average_score": 15.434782608695652,
-            "scored_cases": 23,
+            "average_score": 15.454545454545455,
+            "scored_cases": 22,
             "error_recovery": {
               "insufficient": 72,
-              "fail": 17,
+              "fail": 16,
               "no_error_observed": 39,
               "pass": 1
             },
             "loop_avoidance": {
               "insufficient": 74,
-              "pass": 51,
+              "pass": 50,
               "fail": 4
             },
             "step_robustness": {
-              "insufficient": 119,
+              "insufficient": 118,
               "fail": 10
             },
             "continuous_completion": {
-              "insufficient": 129
+              "insufficient": 128
             }
           },
           "efficiency": {
             "ratings": {
               "insufficient": 62,
-              "poor": 36,
+              "poor": 35,
               "fair": 13,
               "good": 18
             },
-            "average_score": 51.34782608695652,
-            "scored_cases": 46
+            "average_score": 52.22222222222222,
+            "scored_cases": 45
           }
         },
         "by_environment": {
@@ -8051,97 +8050,54 @@
               "robustness": {
                 "ratings": {
                   "insufficient": 33,
-                  "fail": 36
+                  "fail": 35
                 },
                 "average_score": 15.0,
-                "scored_cases": 21,
+                "scored_cases": 20,
                 "error_recovery": {
                   "no_error_observed": 38,
-                  "fail": 15,
+                  "fail": 14,
                   "insufficient": 15,
                   "pass": 1
                 },
                 "loop_avoidance": {
                   "insufficient": 17,
-                  "pass": 48,
+                  "pass": 47,
                   "fail": 4
                 },
                 "step_robustness": {
-                  "insufficient": 59,
+                  "insufficient": 58,
                   "fail": 10
                 },
                 "continuous_completion": {
-                  "insufficient": 69
+                  "insufficient": 68
                 }
               },
               "efficiency": {
                 "ratings": {
                   "good": 18,
                   "fair": 12,
-                  "poor": 34,
+                  "poor": 33,
                   "insufficient": 5
                 },
-                "average_score": 52.372093023255815,
-                "scored_cases": 43
+                "average_score": 53.333333333333336,
+                "scored_cases": 42
               }
             },
             "judge": {
-              "model": "历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
-              "prompt_version": "ai-assistant-operational-review-v1.1"
+              "model": "openai/gpt-6-astra",
+              "prompt_version": "ai-assistant-operational-review-v1"
             }
           }
         },
-        "assessment": "本轮新增 pre AA-FU-018：内部查询失败，资源指标按实际证据补入。",
-        "recommendations": [
-          {
-            "priority": "P0",
-            "area": "错误恢复与业务完成",
-            "action": "为structured_select的EXECUTION_ERROR建立分级降级策略：首次失败后读取retryable/rewriteable标记；若均为false，禁止原样或近似重复，依次尝试最小字段查询、去除复杂过滤、单独查询任务关系实体或可用的替代数据源；全部失败时明确说明无法取证，不得推断关系结论。",
-            "verification": "新增故障注入测试：structured_select返回retryable=false且rewriteable=false时，不出现近似重复调用；至少执行一种预定义替代路径，成功时完整输出项目名称、三个平级任务和关系结论，失败时明确披露缺失证据。"
-          },
-          {
-            "priority": "P0",
-            "area": "结果完整性",
-            "action": "将回答合同固化为四项必填内容：项目名称、父任务、三个平级/子任务名称、是否存在已登记父子关系及其数据依据；工具成功取数后逐项校验，缺项则继续定向查询或声明无法完成。",
-            "verification": "对AA-FU-018及至少5个同类用例运行字段级断言，四项内容全部存在且与工具返回一致；禁止在无关系实体证据时给出确定性“不存在”结论。"
-          },
-          {
-            "priority": "P1",
-            "area": "Schema复用与调用控制",
-            "action": "在同一会话缓存并复用已取得的structured_schema；仅当实体类型变化、schema版本变化或字段缺失被确认时才重新请求。为相同错误签名设置去重保护。",
-            "verification": "复测时同一schema版本最多调用一次structured_schema；相同错误签名的近似structured_select最多一次，且工具调用日志能显示触发了去重或降级分支。"
-          },
-          {
-            "priority": "P1",
-            "area": "上下文与Token治理",
-            "action": "裁剪历史上下文和schema，仅保留项目名、任务名、任务ID、父任务ID或关系实体等必要字段；对大schema采用字段白名单和摘要，而非每轮完整注入。",
-            "verification": "在业务成功率不下降且答案合同全部满足的前提下，对同类成功样例统计输入Token；相较当前基线130672至少下降50%，并分别报告非缓存输入、缓存Token和总Token的valid_n。"
-          },
-          {
-            "priority": "P1",
-            "area": "资源效率度量",
-            "action": "扩大成功与失败样本，并按定义用全部已观测成功和失败消耗作为分子计算cost_per_business_success；业务成功数为0时保持不可计算，不以平均步骤、缓存率或单次低成本替代。",
-            "verification": "至少运行20个代表性样例并报告业务成功率、每项指标valid_n、缺失率及cost_per_business_success；核算公式可从逐例日志复算，且失败尝试消耗全部计入分子。"
-          },
-          {
-            "priority": "P2",
-            "area": "Trace与连续性覆盖",
-            "action": "补充长链路和多次独立运行评测，包括至少10步任务、跨回合恢复及同任务重复运行；记录每步决策、错误分类、替代路径和最终状态。",
-            "verification": "至少10个长链路样例达到每例10步以上，并对关键任务进行至少3次独立运行；据此重新判定step_robustness和continuous_completion，不再标记为insufficient。"
-          }
-        ],
+        "assessment": "",
+        "recommendations": [],
         "unavailable": 62,
         "resource_efficiency_review": {
           "rating": "insufficient",
-          "assessment": "原有68例沿用历史裁判；本轮 AA-FU-018 已用 GPT-5.6 Sol 补评。两次任务查询失败，单例耗时与资源消耗已计入 pre 指标。",
-          "findings": [
-            "业务成功率为0/1，cost_per_business_success无定义，当前无法证明任何单位成功成本优势。",
-            "单次失败已消耗35921毫秒、5次工具调用和0.66056美元，且没有获得有效实体数据。",
-            "输入Token为130672，总Token为131152，远高于输出480；即使缓存Token占比约75.8%，高缓存率也没有转化为业务成功。",
-            "重复调用structured_schema并近似重复structured_select，产生额外延迟和Token消耗但没有任务进展。",
-            "资源指标Token覆盖本次尝试，但有效样本数均仅为1；Trace仅见3个顶层步骤，长链路鲁棒性和连续完成覆盖不足。"
-          ],
-          "model": "历史68例: openai/gpt-6-astra；本轮AA-FU-018: openai/gpt-5.6-sol",
+          "assessment": "",
+          "findings": [],
+          "model": "test: openai/gpt-6-astra；pre: openai/gpt-6-astra",
           "prompt_version": "ai-assistant-resource-efficiency-summary-v2"
         }
       }
