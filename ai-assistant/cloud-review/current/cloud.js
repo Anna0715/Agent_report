@@ -99,7 +99,8 @@
     return base.rows.map(original => {
       const remote = byId.get(original.case_id), override = remote?.override;
       const status = override?.business_status || original.status;
-      return {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:status==='fail'?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
+      const qa_status = ['not_executed','local_fixture_pass'].includes(original.kind) ? 'not_applicable' : override ? 'reviewed' : 'pending';
+      return {...original,original_status:original.status,original_reason:original.reason,status,qa_status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:status==='fail'?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
     });
   }
   const canWrite = () => connected && !stale && session && state?.current_actor.role === 'reviewer' && document.body.dataset.reviewMode !== 'read';
@@ -361,8 +362,8 @@
   document.addEventListener('click', event => {const button=event.target.closest('[data-edit-case]');if(button)openEdit(button.dataset.editCase);});
   $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
   const filterChanged=()=>{full?.resetPage();renderCases();};
-  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
-  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
+  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-qa-status').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
+  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-qa-status').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
   $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}，并更新本页报告总结。`);});
   $('export-snapshot').onclick = () => operation(async()=>{
     accept(await snapshot());
