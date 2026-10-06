@@ -32,12 +32,12 @@
     return left.business_status === right.business_status && left.business_reason === right.business_reason && JSON.stringify(left.failure_categories) === JSON.stringify(right.failure_categories);
   }
   function validateBase(value) {
-    if (!plain(value) || !plain(value.identity) || !Array.isArray(value.rows) || !value.rows.length) throw Error('原始报告格式不正确，已停止连接。');
+    if (!plain(value) || !plain(value.identity) || !Array.isArray(value.rows) || !value.rows.length || !plain(value.summary)) throw Error('原始报告格式不正确，已停止连接。');
     const i = value.identity;
     if (!/^review-[a-f0-9]{24}$/.test(i.report_id) || !text(i.run_id,200) || !i.run_id || !['test','pre','prod','combined'].includes(i.environment) || !/^[a-f0-9]{64}$/.test(i.source_digest)) throw Error('原始报告身份无效，已停止连接。');
     const ids = new Set();
     for (const row of value.rows) {
-      if (!plain(row) || !text(row.case_id,100) || !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$/.test(row.case_id) || ids.has(row.case_id) || !Object.hasOwn(labels,row.status) || !text(row.title,12000,true) || !text(row.reason,100000,true) || !text(row.module,1000,true) || !text(row.scenario,2000,true) || !Array.isArray(row.failure_categories) || !row.failure_categories.every(x=>text(x,1000)) || !(row.latency_ms === null || (Number.isFinite(row.latency_ms) && row.latency_ms >= 0))) throw Error('原始用例数据无效或编号重复，已停止连接。');
+      if (!plain(row) || !text(row.case_id,100) || !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$/.test(row.case_id) || ids.has(row.case_id) || !['test','pre'].includes(row.source_environment) || !Object.hasOwn(labels,row.status) || !text(row.title,12000,true) || !text(row.reason,100000,true) || !text(row.module,1000,true) || !text(row.scenario,2000,true) || !Array.isArray(row.failure_categories) || !row.failure_categories.every(x=>text(x,1000)) || !(row.latency_ms === null || (Number.isFinite(row.latency_ms) && row.latency_ms >= 0)) || !plain(row.resource_coverage) || !Object.values(row.resource_coverage).every(x=>typeof x==='boolean')) throw Error('原始用例数据无效或编号重复，已停止连接。');
       ids.add(row.case_id);
     }
     return value;
@@ -161,26 +161,91 @@
     state = validated; connected = true; render();
   }
   const snapshot = () => request('/rest/v1/rpc/ai_review_snapshot',{p_report_id:base.identity.report_id,p_source_digest:base.identity.source_digest});
+  const fmtNumber = (value, digits=1) => value === null || value === undefined || !Number.isFinite(Number(value)) ? '—' : Number(value).toLocaleString('zh-CN',{maximumFractionDigits:digits,minimumFractionDigits:digits});
+  const rateText = metric => metric && Number(metric.total)>0 ? `${(100*Number(metric.pass)/Number(metric.total)).toFixed(1)}%` : '—';
+  const rateCard = (name, metric) => `<div class="metric"><span>${esc(name)}</span><b>${esc(rateText(metric))}</b><small>${metric&&Number(metric.total)>0?`${esc(metric.pass)}/${esc(metric.total)}`:'未覆盖'}</small></div>`;
+  const metricCard = (name, value, note='') => `<div class="metric"><span>${esc(name)}</span><b>${esc(value)}</b><small>${esc(note)}</small></div>`;
+  const onlineCase = row => ['test','pre'].includes(row.source_environment) && !['not_executed','local_fixture_pass'].includes(row.kind);
+  function resourceValue(key, metric) {
+    if (!metric) return '未采集';
+    if (key==='e2e_ms') return metric.average==null?'未采集':`平均 ${fmtNumber(metric.average/1000,1)}s / P50 ${fmtNumber((metric.p50||0)/1000,1)}s / P95 ${fmtNumber((metric.p95||0)/1000,1)}s`;
+    if (key==='cache_token_ratio') return metric.ratio==null?'未采集':`${(100*Number(metric.ratio)).toFixed(1)}%`;
+    if (key==='cost_usd') return metric.total==null?'未采集':`总计 $${fmtNumber(metric.total,4)} / 平均 $${fmtNumber(metric.average,4)}`;
+    if (metric.average==null) return '未采集';
+    if (['tokens','input_tokens','output_tokens','cached_tokens'].includes(key)) return `平均 ${fmtNumber(metric.average,0)}`;
+    return `平均 ${fmtNumber(metric.average,1)}`;
+  }
+  function renderReportSummary(rows) {
+    const s=base.summary,m=s.metrics,scope=s.test_scope||{},preScope=s.pre_scope||{},local=s.local_fixture||{},reaudit=s.reaudit||{},trace=s.trace_gate||{};
+    const online=rows.filter(onlineCase), counts=Object.fromEntries(['test','pre'].map(env=>[env,{pass:online.filter(r=>r.source_environment===env&&r.status==='pass').length,fail:online.filter(r=>r.source_environment===env&&r.status==='fail').length,pending:online.filter(r=>r.source_environment===env&&r.status==='skip').length}]));
+    for(const env of ['test','pre'])counts[env].assessed=counts[env].pass+counts[env].fail;
+    const combined={pass:counts.test.pass+counts.pre.pass,assessed:counts.test.assessed+counts.pre.assessed};
+    const combinedRate=combined.assessed?`${(100*combined.pass/combined.assessed).toFixed(1)}%`:'未评估';
+    const eff=m.efficiency||{},rob=m.robustness||{},versions=m.versions||{},plan=m.planning_quality||{},planJudge=m.planning_judge||{},op=m.operational_judge||{};
+    const testAssistant=versions.test_assistant||{},preAssistant=versions.pre_assistant||{},testJudge=versions.test_judge||{},businessJudge=versions.judge||{},planVersion=versions.planning_judge||{},opVersion=versions.operational_judge||{};
+    const preDone=rob.pre_answer_completion||{},blocked=scope.blocked_breakdown||{},source=s.source_basis||{},sourceStatus=source.summary?.status||{};
+    const testModel=(testAssistant.models||[]).join('、')||'未观测',preModel=(preAssistant.models||[]).join('、')||'未观测',testPrompt=(testAssistant.prompts||[]).join('、')||'未观测',prePrompt=(preAssistant.prompts||[]).join('、')||'未观测';
+    const labelMap={selection:'工具选择',parameters:'参数填写',output_understanding:'输出理解',chain_completeness:'调用链完整'};
+    const renderToolMetrics=env=>Object.keys(labelMap).map(k=>rateCard(labelMap[k],m.tool_accuracy?.[env]?.[k]||{})).join('');
+    const planLabels={step_correctness:'步骤正确',order:'顺序合理',minimality:'步数最小化',deadloop_avoidance:'Deadloop 避免',hallucinated_plan_avoidance:'幻觉计划避免'};
+    const renderPlanMetrics=env=>Object.keys(planLabels).map(k=>rateCard(planLabels[k],plan[env]?.[k]||{})).join('');
+    const ratings=op.summary?.robustness?.ratings||{},effRatings=op.summary?.efficiency?.ratings||{},robustScored=Number(ratings.pass||0)+Number(ratings.fail||0),efficiencyScored=['excellent','good','fair','poor'].reduce((n,k)=>n+Number(effRatings[k]||0),0),efficiencyGood=Number(effRatings.excellent||0)+Number(effRatings.good||0);
+    const finding=op.resource_efficiency_review||{},resources=eff.resource_cost||{};
+    const resourceLabels=[['e2e_ms','E2E 耗时'],['steps','可观测步骤'],['tool_calls','工具调用'],['tokens','总 Token'],['cache_token_ratio','缓存 Token 比例'],['cost_usd','推理成本'],['retries','重试次数']];
+    const resourceRows=resourceLabels.map(([key,label])=>{
+      const cells=['test','pre'].map(env=>{
+        const metric=resources[env]?.metrics?.[key]||{},successes=rows.filter(r=>r.source_environment===env&&onlineCase(r)&&r.status==='pass'),covered=successes.filter(r=>r.resource_coverage?.[key]).length;
+        const cost=key==='cache_token_ratio'?'—<br><small>比例指标不摊销</small>':!successes.length||metric.total==null?'未采集':`${metric.per_success_is_lower_bound?'≥':''}${key==='e2e_ms'?`${fmtNumber(Number(metric.total)/successes.length/1000,1)}s`:key==='cost_usd'?`$${fmtNumber(Number(metric.total)/successes.length,4)}`:['tokens','input_tokens','output_tokens','cached_tokens'].includes(key)?fmtNumber(Number(metric.total)/successes.length,0):fmtNumber(Number(metric.total)/successes.length,1)}<br><small>全量已观测消耗÷当前业务成功数</small>`;
+        return `<td>${esc(resourceValue(key,metric))}</td><td>${Number(metric.valid_n||0)}/${Number(metric.attempted_n||0)}<br><small>成功样本覆盖 ${covered}/${successes.length}</small></td><td>${cost}</td>`;
+      });
+      return `<tr><td><b>${esc(label)}</b></td>${cells.join('')}</tr>`;
+    }).join('');
+    const planJudgeLabel=planJudge.environment?`${esc(planVersion.model||'未执行')} / ${esc(planVersion.prompt_version||'未执行')}`:'未执行',opJudgeLabel=op.environment?`${esc(opVersion.model||'未执行')} / ${esc(opVersion.prompt_version||'未执行')}`:'未执行';
+    const recommendations=(op.recommendations||[]).map(x=>`<tr><td>${esc(x.priority||'-')}</td><td>${esc(x.area||'-')}</td><td>${esc(x.action||'-')}</td><td>${esc(x.verification||'-')}</td></tr>`).join('')||'<tr><td colspan="4">GPT 裁判未返回可展示建议。</td></tr>';
+    const planSummary=planJudge.summary||{},unavailablePlan=Number(planJudge.unavailable||0),unavailableOps=Number(op.unavailable||0);
+    const reportKpi=(name,value,note)=>`<div class="kpi"><span>${esc(name)}</span><b>${esc(value)}</b><small>${esc(note)}</small></div>`;
+    const envRate=env=>counts[env].assessed?(100*counts[env].pass/counts[env].assessed).toFixed(1)+'%':'—';
+    $('report-summary').innerHTML=`
+      <section class="banner"><b>本轮结论</b><p>test 当前有效范围 ${esc(scope.active_total||0)} 条：线上已发起 ${esc(scope.online_executed||0)} 条，其中当前 ${counts.test.assessed} 条可业务判定、${counts.test.pending+Number(scope.online_pending_retest||0)} 条待复核；本地 fixture ${esc(local.pass||0)}/${esc(local.executed||0)} 通过；另有 ${esc(scope.not_executed||0)} 条未具备执行条件。pre 数据集共 ${esc(preScope.active_total||0)} 条，本轮实跑 ${esc(preScope.executed||0)} 条，其中当前 ${counts.pre.assessed} 条可业务判定、${counts.pre.pending} 条待复核，另有 ${esc(preScope.not_executed||0)} 条未执行。内部 Trace ${esc(trace.captured||0)}/${esc(trace.executed||0)} 条。当前综合 Task Success Rate 为 <b>${esc(combinedRate)}</b>（${combined.pass}/${combined.assessed}）。</p></section>
+      <section class="kpis">${reportKpi('报告结果行',rows.length,'含 test / pre 用例及本地 fixture')}${reportKpi('实际判定',combined.assessed,`test ${counts.test.assessed} + pre ${counts.pre.assessed}`)}${reportKpi('任务成功',combined.pass,'按当前云端复核结果')}${reportKpi('综合成功率',combinedRate,'待复核与未执行不进入分母')}${reportKpi('pre 回答完成',preDone.pass??'—',preDone.total?`${(100*preDone.pass/preDone.total).toFixed(1)}%`:'未覆盖')}${reportKpi('pre E2E P95',eff.pre?.p95_latency_ms==null?'—':`${fmtNumber(eff.pre.p95_latency_ms/1000,1)}s`,`${eff.pre?.covered??0} 条有耗时`)}</section>
+      <section class="grid2"><article class="panel env-card"><span class="badge test">test</span><h2>本次全量可执行范围</h2><p><b>Task Success Rate ${envRate('test')}（${counts.test.pass}/${counts.test.assessed}）</b></p><p>有效用例 ${esc(scope.active_total||0)} 条；线上已发起 ${esc(scope.online_executed||0)} 条（当前可判定 ${counts.test.assessed}、待复核 ${counts.test.pending+Number(scope.online_pending_retest||0)}）；本地 fixture ${esc(scope.local_executed||0)} 条；未执行 ${esc(scope.not_executed||0)} 条。</p><p class="muted">未执行原因：合成账号/Gold 未映射 ${esc(blocked.synthetic_actor_or_gold_mismatch||0)}、ACL fixture 失效 ${esc(blocked.invalid_acl_fixture||0)}、规范待定 ${esc(blocked.spec_pending||0)}、连接器/自动化受控 ${esc(blocked.connector_or_automation_controlled||0)}、SRE 受控 ${esc(blocked.sre_controlled||0)}。<br>助手模型：${esc(testModel)}<br>助手 Prompt：${esc(testPrompt)}</p></article><article class="panel env-card pre"><span class="badge pre">pre</span><h2>本次群聊实跑</h2><p><b>Task Success Rate ${envRate('pre')}（${counts.pre.pass}/${counts.pre.assessed}）</b></p><p>数据集 ${esc(preScope.active_total||0)} 条：本轮实跑 ${esc(preScope.executed||0)} 条，其中 ${esc(preDone.pass||0)} 条取得完整可评回答；当前待复核 ${counts.pre.pending} 条，未执行 ${esc(preScope.not_executed||0)} 条，原因逐条列于用例表。</p><p class="muted">助手模型：${esc(preModel)}<br>助手 Prompt：${esc(prePrompt)}</p></article></section>
+      <section class="panel"><h2>失败用例重新核对与修正</h2><div class="metrics">${metricCard('上轮 pre 失败',reaudit.previous_pre_failures??'—','重新核对范围')}${metricCard('复核后转通过',(reaudit.old_fail_to_pass||[]).length,'纠正误判/修正用例后')}${metricCard('仍失败',reaudit.still_failed??'—','保留真实失败')}${metricCard('LIVE 消息依据命中',reaudit.source_ids_found??'—','真实 groupID / clientMsgID')}${metricCard('已移除非法会话 context',reaudit.context_removed??'—','原 ArgsError 根因')}</div><p class="report-gap-sm"><b>由失败转为通过：</b>${esc((reaudit.old_fail_to_pass||[]).join('、')||'无')}<br><b>因数据依据不足转为门禁：</b>${esc((reaudit.old_failure_gated||[]).join('、')||'无')}</p><div class="note">人工复核只改业务判定，不覆盖原始证据断言。当前证据断言状态：通过 ${esc(m.automatic_pre?.pass??0)}、失败 ${esc(m.automatic_pre?.fail??0)}、复核 ${esc(m.automatic_pre?.skip??0)}、执行错误 ${esc(m.automatic_pre?.error??0)}。68/75 与 active_dimensions 百分制用于有九维质量分的追问评分器；本报告不伪造缺失评分。</div></section>
+      <section class="panel"><h2>全部 pre 用例数据依据审计</h2><div class="metrics">${metricCard('pre 评测范围',reaudit.source_in_scope??'—','不含无固定真值推荐题')}${metricCard('具备具体消息依据',reaudit.source_backed??'—','原始快照结构校验')}${metricCard('GPT 语义支持',sourceStatus.supported??'—','Gold 与原消息一致')}${metricCard('需要修正',sourceStatus.needs_correction??'—','未修正前不得执行')}${metricCard('受控/运行时依赖',reaudit.source_gated??'—','不伪装成离线已具备')}</div><p class="muted report-gap-sm">数据依据裁判：${esc(source.judge?.model||'未执行')} / ${esc(source.judge?.prompt_version||'未执行')}。结构校验覆盖群名、groupID、clientMsgID、发送人、原文与跨群归属；语义校验复核 Gold 是否由原消息直接支持。另有 ${esc(sourceStatus.insufficient??0)} 条受控故障用例只能由真实注入执行证明。</p></section>
+      <section class="panel"><h2>执行版本</h2><div class="table-wrap"><table><thead><tr><th>环境</th><th>助手运行模型</th><th>助手 Prompt</th><th>业务裁判模型 / Prompt</th><th>计划质量裁判模型 / Prompt</th><th>稳定性与效率裁判模型 / Prompt</th></tr></thead><tbody><tr><td><span class="badge test">test</span></td><td>${esc(testModel)}</td><td>${esc(testPrompt)}</td><td>${esc(testJudge.model||'未执行')} / ${esc(testJudge.prompt_version||'未执行')}</td><td>${planJudge.environment==='test'?planJudgeLabel:'未执行'}</td><td>${op.environment==='test'?opJudgeLabel:'未执行'}</td></tr><tr><td><span class="badge pre">pre</span></td><td>${esc(preModel)}</td><td>${esc(prePrompt)}</td><td>${esc(businessJudge.model||'未执行')} / ${esc(businessJudge.prompt_version||'未执行')}</td><td>${planJudge.environment==='pre'?planJudgeLabel:'未执行'}</td><td>${op.environment==='pre'?opJudgeLabel:'未执行'}</td></tr></tbody></table></div><div class="note">业务裁判与 Trace 复核结果来自原始运行快照；pre 助手模型与 Prompt 覆盖 ${esc(preAssistant.model_covered_cases||0)}/${esc(preAssistant.total_cases||0)} 条。未观测数据保持空缺。</div></section>
+      <section class="panel"><h2>① 任务成功率（唯一硬指标）</h2><div class="metrics">${metricCard('test',envRate('test'),`${counts.test.pass}/${counts.test.assessed}`)}${metricCard('pre',envRate('pre'),`${counts.pre.pass}/${counts.pre.assessed}`)}${metricCard('综合',combinedRate,`${combined.pass}/${combined.assessed}`)}</div><p class="muted report-gap-sm">待复核与未执行用例、本地 fixture 均单列，不进入线上硬指标分母；保存云端改判后本指标立即重算。</p></section>
+      <section class="panel"><h2>② 工具调用正确率</h2><h3><span class="badge test">test</span> ${esc(scope.online_assessed||0)} 条业务样本</h3><div class="metrics">${renderToolMetrics('test')}</div><h3 class="report-gap-md"><span class="badge pre">pre</span> Trace 实测</h3><div class="metrics">${renderToolMetrics('pre')}</div><p class="muted report-gap-sm">内部 Trace 覆盖 ${esc(trace.captured||0)}/${esc(trace.executed||0)}；${esc(m.tool_accuracy?.pre_observation||'参数和输出理解缺断言时保持未覆盖。')}</p></section>
+      <section class="panel"><h2>③ 计划质量</h2><h3><span class="badge test">test</span> ${planJudge.environment==='test'?'GPT + Trace 复评':'Trace 实测'}</h3><div class="metrics">${renderPlanMetrics('test')}</div><h3 class="report-gap-md"><span class="badge pre">pre</span> ${planJudge.environment==='pre'?'GPT + Trace 复评':'Trace 实测'}</h3><div class="metrics">${renderPlanMetrics('pre')}</div><p class="muted report-gap-sm">${esc(plan.judge_observation||plan.pre_observation||'未执行计划质量裁判。')} 裁判有分 ${esc(planSummary.scored_cases||0)} 条，平均分 ${esc(fmtNumber(planSummary.average_score,1))}；${unavailablePlan} 条因裁判服务错误未完成，按未评测排除。</p></section>
+      <section class="panel"><h2>④ 执行稳定性</h2><div class="metrics">${rateCard('回答完成率',rob.pre_answer_completion||{})}${rateCard('Trace 错误恢复',rob.trace_pre?.error_recovery||{})}${rateCard('Trace Loop Avoidance',rob.trace_pre?.loop_avoidance||{})}${rateCard('Trace Step Robustness',rob.trace_pre?.step_robustness||{})}${rateCard('连续 10 步',rob.trace_pre?.survived_10_steps||{})}</div><p class="muted report-gap-sm">pre 连续任务完成率：${esc(rateText(rob.continuous_completion||{}))}。回答完成率按 case 统计；错误恢复与步骤稳定性按 Trace 中可验证的调用/步骤事件统计。</p></section>
+      <section class="panel"><h2>⑤ 资源效率</h2><div class="table-wrap"><table><thead><tr><th>指标</th><th><span class="badge test">test</span> 指标值</th><th>test 有效样本数</th><th>test 单条成功用例成本</th><th><span class="badge pre">pre</span> 指标值</th><th>pre 有效样本数</th><th>pre 单条成功用例成本</th></tr></thead><tbody>${resourceRows}</tbody></table></div><div class="note">${esc(resources.pre?.definition||'单条成功用例成本按本轮全部已观测资源消耗除以业务成功数计算。')} 成功样本覆盖与成功成本随人工改判动态重算；“≥”表示资源观测下限，缺失字段不会补 0。</div><h3 class="report-gap-md">GPT 资源效率结论（原始执行复评）：${esc(finding.rating||'未评测')}</h3><p>${esc(finding.assessment||'未取得独立的资源效率汇总结论。')}</p><ul>${(finding.findings||[]).map(x=>`<li>${esc(x)}</li>`).join('')||'<li>GPT 未返回单独的资源效率发现。</li>'}</ul><p class="muted">GPT 汇总裁判：${esc(finding.model||opVersion.model||'未执行')} / ${esc(finding.prompt_version||opVersion.prompt_version||'未执行')}。</p></section>
+      <section class="panel"><h2>GPT 执行稳定性与资源效率复评（${esc(op.environment||'未执行')}）</h2><div class="metrics">${metricCard('稳定性通过',`${ratings.pass||0}/${robustScored}`,'原始稳定性复评')}${metricCard('效率优秀/良好',`${efficiencyGood}/${efficiencyScored}`,'原始效率复评')}${metricCard('稳定性平均分',fmtNumber(op.summary?.robustness?.average_score),`${op.summary?.robustness?.scored_cases||0} 条有分`)}${metricCard('效率平均分',fmtNumber(op.summary?.efficiency?.average_score),`${op.summary?.efficiency?.scored_cases||0} 条有分`)}${metricCard('证据不足',`${ratings.insufficient||0}/${effRatings.insufficient||0}`,'稳定性 / 效率')}</div><p class="report-gap-sm"><b>综合评估：</b>${esc(op.assessment||'未取得 GPT 复评结论')}</p><div class="table-wrap"><table><thead><tr><th>优先级</th><th>领域</th><th>建议</th><th>验收方式</th></tr></thead><tbody>${recommendations}</tbody></table></div><p class="muted report-gap-sm">连续完成只认多次独立运行证据；Token 未采集保持证据不足，不补 0。其中 ${unavailableOps} 条因裁判服务错误未完成，按未评测排除。</p></section>
+      <p class="muted">报告生成时间：${esc(s.generated_at||'未记录')}。Trace、计划、稳定性和效率是本批次原始执行指标；人工改判即时更新业务状态、任务成功率、失败索引和成功样本成本。</p>`;
+  }
   function render() {
     if (!base) { controls(); return; }
-    const rows = effectiveRows(), passed = rows.filter(row=>row.status==='pass').length, failed = rows.filter(row=>row.status==='fail').length, pending = rows.length-passed-failed;
-    const metrics = [['用例总数',rows.length,base.identity.environment+' 环境'],['通过',passed,'业务结果'],['失败',failed,'业务结果'],['待复核',pending,'不计通过率分母'],['任务完成率',passed+failed?(100*passed/(passed+failed)).toFixed(1)+'%':'未评估',`${passed} / ${passed+failed} 条可判定`]];
-    $('summary').innerHTML = metrics.map(([name,value,note],i)=>`<div class="metric ${i===4?'primary-metric':''}"><span>${name}</span><b>${esc(value)}</b><small>${esc(note)}</small></div>`).join('');
+    const rows = effectiveRows();
+    renderReportSummary(rows);
     $('cloud-version').textContent = state ? `云端 r${state.revision}${connected?'':' · 上次读取，当前未连接'}` : '未连接';
-    $('results-source').textContent = state ? connected ? `已读取云端 r${state.revision}。原始裁判保留；未提交草稿不计入汇总。` : `以下含上次读取的云端 r${state.revision}，不是当前实时结果。请重新登录。` : '以下为报告原始结果，尚未读取云端复核。';
-    $('run-label').textContent = base.identity.run_id;
+    $('results-source').textContent = state ? connected ? `已读取云端 r${state.revision}。总结基于已保存改判实时重算；未提交草稿不计入汇总。` : `以下含上次读取的云端 r${state.revision}，不是当前最新结果。请重新登录或拉取云端结果。` : '以下为报告原始结果，尚未读取云端复核。';
+    $('run-label').textContent = `${base.identity.run_id} · ${base.identity.report_id}`;
     $('actor-label').textContent = state ? `${state.current_actor.name} · ${state.current_actor.role==='reviewer'?'复核员（可修改）':'只读账号'}` : '';
     $('audit-count').textContent = state ? `${state.history.length} 条记录` : '';
     $('audit-list').innerHTML = !state ? '<li>登录并获得报告访问授权后，可读取云端修改记录。</li>' : state.history.length ? [...state.history].reverse().map(item=>`<li><strong>${esc(item.actor_name)}</strong> · ${esc(item.case_id)} · ${esc(labels[item.before?.business_status] || '原始裁判')} → ${esc(labels[item.after?.business_status] || '恢复原判')} <time>${esc(time(item.at))}</time><small>云端 r${item.revision} · ${esc(item.after?.business_reason || '移除人工覆盖；原始裁判恢复，历史记录保留。')}</small></li>`).join('') : '<li>尚无人工复核修改。</li>';
     renderCases(); controls();
   }
   function renderCases() {
-    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, priority = $('filter-priority').value, all = effectiveRows();
-    const select = $('filter-priority'), previous = select.value; while(select.options.length>1)select.remove(1); for(const value of [...new Set(all.map(row=>row.priority).filter(Boolean))].sort())select.add(new Option(value,value)); select.value=previous; if(select.selectedIndex<0)select.selectedIndex=0;
-    const rows = all.filter(row=>(!status || row.status===status) && (!priority || row.priority===priority) && (!q || [row.case_id,row.title,row.module,row.scenario,row.reason].join(' ').toLowerCase().includes(q)));
+    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, environment=$('filter-environment').value, priority=$('filter-priority').value, all = effectiveRows();
+    const prioritySelect=$('filter-priority'), previous=prioritySelect.value;
+    while(prioritySelect.options.length>1) prioritySelect.remove(1);
+    for(const value of [...new Set(all.map(row=>row.priority||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) prioritySelect.add(new Option(value,value));
+    prioritySelect.value=previous; if(prioritySelect.selectedIndex<0) prioritySelect.selectedIndex=0;
+    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!priority||(row.priority||'未标注')===priority) && (!q || [row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(q)));
     const names = new Map((state?.history || []).map(item=>[item.actor,item.actor_name]));
     $('result-count').textContent = `显示 ${rows.length} / ${all.length} 条`;
-    $('case-table').querySelector('tbody').innerHTML = rows.map(row=>`<tr data-case-id="${esc(row.case_id)}"><td><span class="case-id">${esc(row.case_id)}</span><small>${esc(row.module)}</small><small>${esc(row.scenario)}</small></td><td><p class="case-question">${esc(row.title)}</p><p class="case-reason">${esc(row.reason)}</p><details><summary>原始结果：${esc(labels[row.original_status])}</summary><p>${esc(row.original_reason)}</p></details></td><td>${esc(row.priority||'未标注')}</td><td><span data-case-status class="badge ${esc(row.status)}">${esc(labels[row.status])}</span><small>${row.override?'人工复核':row.updated_by?'已恢复原判':'原始裁判'}</small>${row.failure_categories.length?`<small>${esc(row.failure_categories.join('、'))}</small>`:''}</td><td>${row.latency_ms===null?'未观测':(row.latency_ms/1000).toFixed(1)+'s'}</td><td>${esc(names.get(row.updated_by) || (row.updated_by?'已授权复核员':'—'))}<small>${esc(time(row.updated_at))}</small><small>${state?'用例版本 v'+row.version:'未读取云端版本'}</small></td><td><button data-edit-case="${esc(row.case_id)}" ${busy||!canWrite()?'disabled':''}>修改结果</button></td></tr>`).join('');
+    const statusText=row=>row.status==='skip'?(row.kind==='not_executed'?'未执行':'待复核'):labels[row.status];
+    $('case-table').querySelector('tbody').innerHTML = rows.map(row=>`<tr id="${esc(row.case_id)}" data-case-id="${esc(row.case_id)}"><td><span class="badge ${esc(row.source_environment)}">${esc(row.source_environment)}</span></td><td><b>${esc(row.case_id)}</b></td><td>${esc(row.priority||'未标注')}</td><td>${esc(row.module)}</td><td>${esc(row.scenario)}</td><td>${esc(row.suite||'—')}</td><td>${esc(row.gate_class||'—')}</td><td><span data-case-status class="status ${esc(row.status)}">${esc(statusText(row))}</span><br><small>${row.override?'云端人工复核':row.kind==='not_executed'?'未执行':row.updated_by?'已恢复原判':'原始裁判'}</small>${row.failure_categories.length?`<br><small>${esc(row.failure_categories.join('、'))}</small>`:''}</td><td>${row.task_completion_rate==null?'—':`${esc(row.task_completion_rate)}%`}</td><td>${row.trace_runs?`${esc(row.trace_runs)} Run<br>`:''}<small>${esc(row.trace_status||'未观测')}</small></td><td>${esc(row.model||'未观测')}<br><small>${esc(row.prompt_version||'未观测')}</small></td><td>${row.latency_ms===null?'—':`${(row.latency_ms/1000).toFixed(1)}s`}</td><td><p>${esc(row.title)}</p><p class="case-reason">${esc(row.reason)}</p>${row.override||row.original_status!==row.status?`<details><summary>原始判定：${esc(labels[row.original_status])}</summary><p>${esc(row.original_reason)}</p></details>`:''}</td><td>${esc(names.get(row.updated_by) || (row.updated_by?'已授权复核员':'—'))}<small>${esc(time(row.updated_at))}</small><small>${state?'用例版本 v'+row.version:'未读取云端版本'}</small></td><td><button data-edit-case="${esc(row.case_id)}" ${busy||!canWrite()?'disabled':''}>修改结果</button></td></tr>`).join('');
+    const failures=all.filter(row=>row.status==='fail');
+    $('failure-count').textContent=String(failures.length);
+    $('failure-table-body').innerHTML=failures.map(row=>`<tr><td><span class="badge ${esc(row.source_environment)}">${esc(row.source_environment)}</span></td><td><a class="case-link" href="#${esc(row.case_id)}" data-failure-jump="${esc(row.case_id)}">${esc(row.case_id)}</a></td><td>${esc(row.priority||'未标注')}</td><td>${esc(row.module)}</td><td>${esc(row.scenario)}</td><td>${esc(row.ability||row.title)}</td><td>${esc(row.failure_categories.join('、')||'未分类')}</td><td>${row.latency_ms===null?'—':`${(row.latency_ms/1000).toFixed(1)}s`}</td><td>${row.task_completion_rate==null?'—':`${esc(row.task_completion_rate)}%`}</td></tr>`).join('');
   }
   function originalAndCurrent(row) {
     $('edit-original').textContent = `${labels[row.original_status]}：${row.original_reason}`;
@@ -250,7 +315,7 @@
         accept(result);
         drafts.delete(`${edit.actor_id}:${edit.case_id}`);
         $('edit-dialog').close(); currentEdit = null;
-        notice(`已保存到真实云端 r${state.revision}。本地尚未同步；请在本机运行同步工具，再生成新报告。`);
+        notice(`已保存到真实云端 r${state.revision}。本页报告总结、通过率、失败索引与资源摊销成本已立即更新；主综合报告仍保留原始执行快照。`);
       } catch(error) {
         const message = error.message;
         $('edit-feedback').textContent = message;
@@ -273,8 +338,10 @@
   $('edit-status').onchange = () => {formMode();preserveDraft();};
   for (const id of ['edit-reason','edit-categories']) $(id).oninput = preserveDraft;
   $('case-table').onclick = event => {const button=event.target.closest('[data-edit-case]');if(button)openEdit(button.dataset.editCase);};
-  $('search').oninput = renderCases; $('filter-status').onchange = renderCases; $('filter-priority').onchange = renderCases;
-  $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}。这不代表已同步到本地。`);});
+  $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
+  $('search').oninput = renderCases; $('filter-status').onchange = renderCases; $('filter-environment').onchange=renderCases; $('filter-priority').onchange=renderCases;
+  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-priority').value='';renderCases();};
+  $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}，并更新本页报告总结。`);});
   $('export-snapshot').onclick = () => operation(async()=>{
     accept(await snapshot());
     const blob = new Blob([JSON.stringify(state,null,2)+'\n'],{type:'application/json'}), url=URL.createObjectURL(blob), link=document.createElement('a');
@@ -291,4 +358,9 @@
     catch(error){configured=false;configError=error.message;$('config-state').textContent=configError;}
     render();notice(configured?'原始报告已加载。尚未登录，也没有读取或修改云端数据。':configError,!configured);
   });
+  window.setInterval(async()=>{
+    if(!connected||busy||drafts.size||document.hidden||$('edit-dialog').open) return;
+    try { const latest=await snapshot(); if(latest.revision!==state?.revision) accept(latest); }
+    catch { /* Keep the last validated snapshot visible; the user can explicitly refresh. */ }
+  },30000);
 })();
