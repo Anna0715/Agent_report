@@ -18,6 +18,9 @@
       const group=rows.filter(r=>r.source_environment===env&&online(r));
       return [env,{attempted:group.length,pass:group.filter(r=>r.status==='pass').length,fail:group.filter(r=>r.status==='fail').length,pending:group.filter(r=>r.status==='skip').length}];
     }));
+    const hiddenTestFailures=Number(base.summary.report_display?.suppressed_test_failure_attempts||0);
+    counts.test.attempted+=hiddenTestFailures;
+    counts.test.fail+=hiddenTestFailures;
     counts.combined=Object.fromEntries(['attempted','pass','fail','pending'].map(k=>[k,counts.test[k]+counts.pre[k]]));
     for(const c of Object.values(counts))c.assessed=c.pass+c.fail;
     const total=counts.combined, trace=base.summary.trace_gate||{};
@@ -39,7 +42,7 @@
     }
     const failures=rows.filter(r=>r.status==='fail'), changed=rows.filter(r=>r.override), distribution=new Map();
     for(const row of failures)for(const category of row.failure_categories.length?row.failure_categories:['未分类'])distribution.set(category,(distribution.get(category)||0)+1);
-    $('current-issues-body').innerHTML=`<p>当前失败 <b>${failures.length}</b> 条；人工覆盖 ${changed.length} 条，其中失败→通过 ${changed.filter(r=>r.original_status==='fail'&&r.status==='pass').length} 条、通过→失败 ${changed.filter(r=>r.original_status==='pass'&&r.status==='fail').length} 条。${state?'按已保存的云端改判汇总。':'尚未加载云端复核，不代表最新人工结论。'}</p><p>${[...distribution].sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${esc(k)}：${n} 条`).join('；')||'当前没有失败用例。'}${distribution.size?'（一条用例可有多个问题分类）':''}</p><ul>${failures.map(r=>`<li><a href="#${anchor(r)}">${esc(r.case_id)}</a> · ${esc(r.priority)} · ${esc(r.reason)}</li>`).join('')}</ul>`;
+    $('current-issues-body').innerHTML=`<p>当前展示失败 <b>${failures.length}</b> 条${hiddenTestFailures?`；另有 ${hiddenTestFailures} 条重复 test 失败仅计入原始执行指标，不重复展示`:''}；人工覆盖 ${changed.length} 条，其中失败→通过 ${changed.filter(r=>r.original_status==='fail'&&r.status==='pass').length} 条、通过→失败 ${changed.filter(r=>r.original_status==='pass'&&r.status==='fail').length} 条。${state?'按已保存的云端改判汇总。':'尚未加载云端复核，不代表最新人工结论。'}</p><p>${[...distribution].sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${esc(k)}：${n} 条`).join('；')||'当前没有失败用例。'}${distribution.size?'（一条用例可有多个问题分类）':''}</p><ul>${failures.map(r=>`<li><a href="#${anchor(r)}">${esc(r.case_id)}</a> · ${esc(r.priority)} · ${esc(r.reason)}</li>`).join('')}</ul>`;
     const resource=$('resource-efficiency');
     const keys=['e2e_ms','steps','tool_calls','tokens','cache_token_ratio','cost_usd','retries'];
     resource.querySelectorAll('tbody tr').forEach((tr,i)=>{
