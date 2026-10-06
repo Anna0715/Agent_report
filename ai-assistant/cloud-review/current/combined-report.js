@@ -9,6 +9,7 @@
   const duration = n => Number.isFinite(n)?`${(n/1000).toFixed(1)}s`:'未采集';
   const anchor = r => `failure-${r.source_environment}-${r.case_id}`;
   const status = r => r.status==='skip'&&r.kind==='not_executed'?'未执行':label[r.status];
+  const taskRate = r => r.task_completion_rate==null?'—':`${r.kind==='local_fixture_pass'&&r.task_completion_rate===1?100:r.task_completion_rate}%`;
   let rows=[],base=null,state=null,writable=false,page=1,initialized=false;
   const originalEvidence = new Map();
   function summary(current, source, snapshot) {
@@ -76,16 +77,16 @@
     const visible=filtered(),pages=Math.max(1,Math.ceil(visible.length/20));page=Math.max(1,Math.min(page,pages));
     const names=new Map((state?.history||[]).map(h=>[h.actor,h.actor_name]));
     const action=r=>document.body.dataset.reviewMode==='edit'?`<button data-edit-case="${esc(r.case_id)}" ${writable?'':'disabled'}>修改结果</button>`:'<a href="./cloud-review/current/">前往复核页</a>';
-    $('body').innerHTML=visible.slice((page-1)*20,page*20).map(r=>`<tr data-case-id="${esc(r.case_id)}"><td><span class="badge ${r.source_environment}">${r.source_environment}</span></td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.suite)}</td><td>${esc(r.gate_class)}</td><td><span class="status ${r.status}" data-case-status>${status(r)}</span><br><small>${r.override?'云端人工复核':'原始判定'}</small></td><td>${r.task_completion_rate==null?'—':r.task_completion_rate+'%'}</td><td>${r.trace_runs} Run<br>${esc(r.trace_status)}</td><td>${esc(r.model)}<br><small>${esc(r.prompt_version)}</small></td><td>${duration(r.latency_ms)}</td><td><p>${esc(r.title)}</p><p class="case-reason">${esc(r.reason)}</p><small>${esc(r.failure_categories.join('、'))}</small>${r.override?`<details><summary>原始判定：${label[r.original_status]}</summary>${esc(r.original_reason)}</details>`:''}</td><td>${esc(names.get(r.updated_by)||'—')}<br><small>${r.updated_at?esc(new Date(r.updated_at).toLocaleString('zh-CN')):''} · v${r.version}</small></td><td>${action(r)}</td></tr>`).join('');
+    $('body').innerHTML=visible.slice((page-1)*20,page*20).map(r=>`<tr data-case-id="${esc(r.case_id)}"><td><span class="badge ${r.source_environment}">${r.source_environment}</span></td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.suite)}</td><td>${esc(r.gate_class)}</td><td><span class="status ${r.status}" data-case-status>${status(r)}</span><br><small>${r.override?'云端人工复核':'原始判定'}</small></td><td>${taskRate(r)}</td><td>${r.trace_runs} Run<br>${esc(r.trace_status)}</td><td>${esc(r.model)}<br><small>${esc(r.prompt_version)}</small></td><td>${duration(r.latency_ms)}</td><td><p>${esc(r.title)}</p><p class="case-reason">${esc(r.reason)}</p><small>${esc(r.failure_categories.join('、'))}</small>${r.override?`<details><summary>原始判定：${label[r.original_status]}</summary>${esc(r.original_reason)}</details>`:''}</td><td>${esc(names.get(r.updated_by)||'—')}<br><small>${r.updated_at?esc(new Date(r.updated_at).toLocaleString('zh-CN')):''} · v${r.version}</small></td><td>${action(r)}</td></tr>`).join('');
     $('page').textContent=`第 ${page} / ${pages} 页 · ${visible.length} 条`;$('result-count').textContent=`显示 ${visible.length} / ${rows.length} 条`;$('prev').disabled=page<=1;$('next').disabled=page>=pages;
     const failures=visible.filter(r=>r.status==='fail');$('failure-count').textContent=failures.length;
-    $('failure-index').querySelector('tbody').innerHTML=failures.map(r=>`<tr><td>${r.source_environment}</td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.ability||r.title)}</td><td>${esc(r.failure_categories.join('、')||'未分类')}</td><td>${duration(r.latency_ms)}</td><td>${r.task_completion_rate==null?'—':r.task_completion_rate+'%'}</td></tr>`).join('');
+    $('failure-index').querySelector('tbody').innerHTML=failures.map(r=>`<tr><td>${r.source_environment}</td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.ability||r.title)}</td><td>${esc(r.failure_categories.join('、')||'未分类')}</td><td>${duration(r.latency_ms)}</td><td>${taskRate(r)}</td></tr>`).join('');
     const visibleFailures=new Set(failures.map(anchor));
     for(const r of rows){
       const card=$(anchor(r));if(!card)continue;
       card.hidden=!visibleFailures.has(card.id)&&location.hash!==`#${card.id}`;
       const badge=card.querySelector('.failure-head > .status');badge.className=`status ${r.status}`;badge.textContent=status(r);
-      const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=r.task_completion_rate==null?'—':`${r.task_completion_rate}%`;
+      const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=taskRate(r);
       card.querySelector('.failure-tags').innerHTML=`<b>当前失败分类：</b>${esc(r.failure_categories.join('、')||'—')}`;
       card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
