@@ -1,0 +1,326 @@
+{
+  "source_identity": {
+    "report_id": "review-735c188b6efc367cc0d19d85",
+    "run_id": "AI助手-2026-10-06-combined",
+    "environment": "combined",
+    "source_digest": "0bca1f28f1f6bcc97e6d1e7af98d82b90341f0da0fdb579d042badc0fc9c0ec7"
+  },
+  "source_cloud_revision": 2,
+  "summary": {
+    "selected": 16,
+    "original_generation_timeout": 13,
+    "original_generation_failed": 1,
+    "original_tool_timeout_mentions": 2,
+    "rerun_timeout": 0,
+    "rerun_generation_failed": 2,
+    "rerun_completed": 14,
+    "total": 16,
+    "evidence_attempted": 16,
+    "executed": 16,
+    "business_pass": 8,
+    "business_fail": 8,
+    "business_skip": 0,
+    "task_success_rate": 0.5,
+    "task_success_denominator": 16,
+    "manual_review": 0,
+    "automatic_pass": 0,
+    "automatic_fail": 9,
+    "manual_overturn": 8,
+    "authenticated_trace": 16,
+    "judge_errors": 0,
+    "execution_failures": 2
+  },
+  "comparison": [
+    {
+      "case_id": "AA-QAP-027",
+      "source_environment": "test",
+      "title": "AI评测相关的有哪些项目？",
+      "original_type": "生成失败（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "回答将检索口径错误限定为名称含“AI评测”，仅列出10项，遗漏Gold要求的创建人域交付项目、管理员域治理项目、知识召回质量治理等大量相关项目，并纳入了外部未授权/跨租户对照类项目，未正确给出目标对象集合。",
+      "latency_ms": 14098,
+      "original_excerpts": [
+        "Harness：assistant-chat-live+trace失败执行耗时 11.0s执行完成率 0%任务完成率 0%Trace 内部工具链已采集；权限/引用仍未观测失败分类：执行未完成业务复评：report chat generation failed工具链判断：Skill：structured_query；工具链：activate_skills(completed) → structured_schema(completed) → structured_select(failed)；自动断言：required/core tool failures=['struct",
+        "lect(failed)；自动断言：required/core tool failures=['structured_select:failed']步骤 2 · ask问题：AI评测相关的有哪些项目？report chat generation failedSession: cs_cdb4e359-5915-4977-9520-0cb3802274f8 · Request: d35b1fb0-d99f-406a-be19-507aeefadd42 · Message: cm_faa561d5-f092-45b0-8025-6b4c72ec1584 · HTTP: 200 ",
+        "SEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 20；任务未成功，最终发生report chat generation failed，未向用户交付项目列表。错误后没有观察到重试、降级输出或替代交付路径，因此错误恢复失败。未见重复调用形成循环。仅有一次运行且已观测步骤不足10步，连续完成和长步骤存活证据不足。资源效率：poor / 25；任务失败是决定性因素。虽然仅调用3次工具且未观察到明显冗余循环，但查询返回后生成阶段失败，10.975秒耗时和39"
+      ],
+      "sessions": [
+        "cs_cbc41e51-38dd-4cf6-a06e-203189b895c6"
+      ]
+    },
+    {
+      "case_id": "AA-FU-012",
+      "source_environment": "test",
+      "title": "“置顶优化”做完了吗？最近一次状态变更是什么时候？",
+      "original_type": "回答提及查询超时（有最终回答）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "回答未给出“置顶优化”是否完成及最近一次有效状态变更时间；虽检索出现歧义，但未继续查询候选任务的当前状态和操作记录以核实，缺少用户要求的关键事实与依据。",
+      "latency_ms": 42680,
+      "original_excerpts": [
+        "ask.query']步骤 2 · ask问题：“置顶优化”做完了吗？最近一次状态变更是什么时候？暂时仍无法确认。\n\n此前在当前可访问任务中按精确标题“置顶优化”未找到匹配项；本次尝试按名称定位时查询超时，而已关注任务列表中也没有该任务。因此无法判断是否完成，也无法获取最近一次状态变更时间。\n\n如果“置顶优化”是简称，请提供完整任务名、所属项目或任务链接，我可以继续核实。Session: cs_a5ca52b9-f89c-43af-9ebb-06b1ff719e04 · Request: ad09c4a9-d8f2-4",
+        "dge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 38；核心任务失败，最终未确认任务是否完成及最近状态变更时间。entity_resolve 超时后虽调用 structured_select，但该调用也标记为 failed，且未产生可支持最终答案的有效恢复，因此错误恢复失败。4次调用未见无进展循环。仅有1次运行，连续完成能力证据不足；不足10步，不能作10步存活判断。policy trace 未覆盖。资源效率：poor / 28；任务未成功，效率不能因调用数较少",
+        "。policy trace 未覆盖。资源效率：poor / 28；任务未成功，效率不能因调用数较少而判为良好。4次调用耗时19.8秒，输入101148 tokens、输出449 tokens；一次解析超时和一次未能完成目标的宽泛查询消耗了资源，却未给出核心答案。查看 GPT 计划质量裁判综合：fail / 43；计划没有重复死循环，解析超时后进行一次回退也不算冗余；但未先执行权限检查，回退查询没有形成可验证的目标命中或排除证据，也未继续采用项目范围、别名或完整标题等针对性纠错。最终回答提到“此前按精确标题未找到”和“已",
+        "101148 tokens、输出449 tokens；一次解析超时和一次未能完成目标的宽泛查询消耗了资源，却未给出核心答案。查看 GPT 计划质量裁判综合：fail / 43；计划没有重复死循环，解析超时后进行一次回退也不算冗余；但未先执行权限检查，回退查询没有形成可验证的目标命中或排除证据，也未继续采用项目范围、别名或完整标题等针对性纠错。最终回答提到“此前按精确标题未找到”和“已关注任务列表中也没有”，当前可观测Trace不足以支持这些具体检索结论。步骤正确：2/3；顺序：fail；最小步数：pass；Deadlo"
+      ],
+      "sessions": [
+        "cs_d5f85134-68b7-409a-8479-ce1c6b13ecfc"
+      ]
+    },
+    {
+      "case_id": "AA-FU-016",
+      "source_environment": "test",
+      "title": "“治理与安全整改”项目里的“安全整改验收”任务现在是什么状态？是否已经验收通过？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "生成失败",
+      "business_status": "fail",
+      "reason": "report chat generation failed",
+      "latency_ms": 36436,
+      "original_excerpts": [
+        "ive+trace失败执行耗时 120.5s执行完成率 0%任务完成率 0%Trace 内部工具链已采集；权限/引用仍未观测失败分类：执行未完成业务复评：report chat generation timed out工具链判断：Skill：structured_query；工具链：activate_skills(completed) → entity_resolve(completed) → structured_schema(completed) → structured_select(missing_result)；自动断言：",
+        " query precedes schema']步骤 2 · ask问题：“治理与安全整改”项目里的“安全整改验收”任务现在是什么状态？是否已经验收通过？report chat generation timed outSession: cs_d7f8d2fc-0ecc-47ae-a7fe-bb6620d73046 · Request: 663eccd3-e053-4fc1-b7e3-e7b322eeb8d2 · Message: cm_d8a5696e-8cb2-464c-a4e7-6928c29e80a1 · HTTP: 200 ",
+        "t SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 15；任务因报告生成超时而失败，且 structured_select 缺失结果后未观察到有效重试或替代查询路径。未发现无进展重复调用。仅观察到2个会话步骤，不足以评估10步存活；只有一次独立运行，无法评估连续完成能力。policy.check 相关覆盖缺失，无法验证该要求。资源效率：poor / 20；任务未成功，E2E耗时达到120468",
+        "l / 68；可观测查询链路的方向和顺序合理，且没有重复调用或虚构结果；但必需的 policy.check 未执行，最终查询也没有取得结果，因而未形成区分“当前任务状态”和“验收结论”的完整执行计划。超时本身不说明步骤错误，但缺少必需鉴权是明确缺陷。步骤正确：4/4；顺序：pass；最小步数：pass；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_9a03f3ef-c3d0-4adc-8fdc-9227c746ec93"
+      ]
+    },
+    {
+      "case_id": "AA-SMEM-004",
+      "source_environment": "test",
+      "title": "说下“X 项目”的进展和当前风险。",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "回答虽正确指出外部鉴权联调因回调域名未开放而阻塞并进行了风险排序，但遗漏“已提交申请并安排复查”的关键进展，且无依据声称截至10月6日已超过截止日，Trace反而显示项目is_overdue=false。",
+      "latency_ms": 23466,
+      "original_excerpts": [
+        "ive+trace失败执行耗时 120.5s执行完成率 0%任务完成率 0%Trace 内部工具链已采集；权限/引用仍未观测失败分类：执行未完成业务复评：report chat generation timed out工具链判断：工具链：scratchpad_read(completed) → entity_resolve(completed) → structured_schema(completed) → scratchpad_write(completed) → structured_select(missing_result",
+        "239d3e4729504: business query precedes schema']步骤 2 · ask问题：说下“X 项目”的进展和当前风险。report chat generation timed outSession: cs_0446d700-56c2-4ed1-a56d-03c43bdfeb0a · Request: 94d0634a-b0a5-4a0b-9dbc-aeffa4800920 · Message: cm_272e87d5-61ea-4d21-b221-a67dc3ba54d2 · HTTP: 200 ",
+        "ant SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 10；任务因生成超时失败。4次 structured_select 均为 missing_result，之后未观察到有效重试、纠参或替代路径；最终也未生成回答。查询分别面向项目、任务、评论和操作日志，不属于无进展重复循环。仅观察到2个会话步骤，不能证明10步存活能力。只有一次运行，无法评价连续完成能力。此外执行了被禁止的 scratchp",
+        "连续完成能力。此外执行了被禁止的 scratchpad_write，且 policy.check 未在 Trace 中得到证实。资源效率：poor / 10；任务未成功，E2E耗时约120.5秒并最终超时。8次工具调用中4次查询无结果，且存在一次被禁止的写调用；没有重试或及时降级。Token指标未采集，不能评价Token效率。查看 GPT 计划质量裁判综合：fail / 50；计划总体遵循实体解析、Schema 确认、再查询业务数据的依赖关系，且没有重复死循环或编造已完成结果。但执行了禁止且非必要的 scratchpa",
+        "务数据的依赖关系，且没有重复死循环或编造已完成结果。但执行了禁止且非必要的 scratchpad_write，同时遗漏必需的策略检查和会话记忆读取；后续查询也未返回结果，无法支持回答及第二轮风险排序。超时是环境背景，不是主要扣分依据。步骤正确：7/8；顺序：pass；最小步数：fail；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_7f550fa4-3859-4c2e-b80f-bd0593956f73"
+      ]
+    },
+    {
+      "case_id": "AA-SMEM-006",
+      "source_environment": "test",
+      "title": "AI评测项目里哪个做检索？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "用户纠正后的指代已绑定到“向量索引召回实验”项目，回答的负责人“自动化_Anna2”和当前待启动状态均与项目查询结果一致，并提供了可定位的项目引用。",
+      "latency_ms": 47451,
+      "original_excerpts": [
+        "ive+trace失败执行耗时 120.5s执行完成率 0%任务完成率 0%Trace 内部工具链已采集；权限/引用仍未观测失败分类：执行未完成业务复评：report chat generation timed out工具链判断：Skill：structured_query；工具链：space_knowledge_search(failed) → activate_skills(completed) → structured_schema(completed) → entity_resolve(completed) → struct",
+        "missing_result) → structured_select(missing_result)步骤 2 · ask问题：AI评测项目里哪个做检索？report chat generation timed outSession: cs_022343f3-dc17-486d-b162-b0e1ec2869ba · Request: c17945dc-89a5-4f32-bd41-9c30f65a71e8 · Message: cm_403804cf-8072-4df9-a537-452b70badee0 · HTTP: 200 ",
+        "ant SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 15；任务因生成超时失败。首次空间知识检索失败后虽切换到结构化查询路径，但该替代路径只得到项目歧义和两次 missing_result，未有效恢复并完成负责人回答，因此错误恢复判定为失败。两次 task 查询对应两个歧义项目候选，可视为必要回源，不构成无进展循环。仅观察到2个会话步骤，不能证明10步存活能力；且只有一次运行，无法评价连续完",
+        "失败后启用结构化能力，先确认 Schema 和候选项目，再查询任务。两个任务查询可对应两个不同项目候选，不能仅凭摘要参数相似判定为死循环。主要缺陷是遗漏必需的策略检查和会话读取，并且首轮在查询无结果后超时，因而没有推进到用户纠正“向量索引”以及询问负责人。步骤正确：6/6；顺序：pass；最小步数：pass；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_594991d1-46e0-47d9-8c80-c063545ebdce"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-001",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”进展怎么样？请带上当前项目状态和关联项目群，并结合项目和任务评论说下当前阶段、已完成和剩余工作。",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确覆盖了用户所问的项目状态、关联项目群、当前阶段、已完成事项和剩余工作。其明确说明项目仍在进行中，需求评审、交互稿及核心功能开发已完成；账户与权限联调的24项回归全部通过且任务结束；移动端回归仍受iOS后台唤醒问题影响；灰度验收尚未启动并依赖移动端回归结果。回答也正确区分了10月9日目标上线日期与最终放行结论，没有误称项目已完成、已上线或灰度验收已通过。风险判断被标注为推断且有评论依据。",
+      "latency_ms": 43626,
+      "original_excerpts": [
+        "26年10月5日本批数据，“星舟客户门户交付（进度评测）”进展怎么样？请带上当前项目状态和关联项目群，并结合项目和任务评论说下当前阶段、已完成和剩余工作。report chat generation timed outSession: cs_378ff8d9-6caa-4341-ae86-7b9ae37c1084 · Request: ffa8b3e6-3e37-4073-a305-bcc593313e98 · Message: cm_bbe7f04a-bbbd-4192-ae06-0cc93abbb580 · HTTP: 200 ",
+        "t SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 20；任务最终因生成超时失败且没有回答。已观察到 scratchpad_write 内部错误以及后续多个查询缺失结果，但没有形成成功回答，不能视为有效恢复。共观察到8次工具调用，未达到10步稳定性门槛；仅有单次运行，不能证明连续完成能力。未发现无进展的同参数重复调用。资源效率：poor / 15；任务失败是硬性缺陷。运行耗时约120.48秒，"
+      ],
+      "sessions": [
+        "cs_4369c3cc-e154-467c-9584-9a19abc70211"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-003",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”还有哪些事没做完，现在可以确认上线吗？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确识别了截至2026年10月5日的剩余工作与上线边界：需解决移动端后台唤醒问题并完成回归，之后启动并完成灰度验收；账户与权限联调已通过，不再列为待办；2026年10月9日仅为目标上线日，尚无最终放行决定，能否按期上线取决于修复、回归及验收结果。回答没有把灰度配置准备好误判为验收完成，也没有把已经解除的设备白名单问题列为待办。",
+      "latency_ms": 33822,
+      "original_excerpts": [
+        "sing_result）步骤 2 · ask问题：截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”还有哪些事没做完，现在可以确认上线吗？report chat generation timed outSession: cs_394ede7d-b437-4220-891f-6213d0fa5c7c · Request: f76fdac1-8c1c-4692-a4cb-8e3fb0b1d61c · Message: cm_7fe4602c-878a-4830-bb8a-85f81b3a103d · HTTP: 200 ",
+        "t SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 18；任务最终因生成超时失败，没有回答是否可上线。scratchpad_write 出现真实内部错误，之后虽改走实体解析和查询路径，但核心查询均缺失结果，未实现有效恢复。共观察到8次工具调用，未达到10步稳定性门槛；仅有单次运行，不能证明连续完成能力。未发现无进展重复调用。资源效率：poor / 14；任务失败，约120.47秒后仍无回答。8"
+      ],
+      "sessions": [
+        "cs_222b791e-8ddf-4dc2-a084-b2b130a03c50"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-004",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“云帆数据迁移（进度评测）”目前有哪些实际卡点和后续风险？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确区分了当前实际卡点与条件性后续风险：明确指出12条重复客户记录的规则修复和重新抽检尚未完成；业务方尚未确认10月11日核对时段，且全量核对依赖迁移完成；同时说明导出窗口已确认调整至10月10日，没有沿用“窗口仍未确认”的过时结论。对复检、窗口或核对资源延迟可能导致验收顺延的表述均标注为条件性影响或推断，未声称10月11日必然无法核对，也未声称发生数据丢失。",
+      "latency_ms": 62287,
+      "original_excerpts": [
+        "ct（missing_result）步骤 2 · ask问题：截至2026年10月5日本批数据，“云帆数据迁移（进度评测）”目前有哪些实际卡点和后续风险？report chat generation timed outSession: cs_fc31cc7f-037d-416d-879a-29adc3d73f05 · Request: f105f407-ed3b-4d1d-bb4b-d3bea62bf0e0 · Message: cm_8622f400-9fe4-48cf-b538-d977081baf3f · HTTP: 200 ",
+        "Esemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 12；单次运行任务失败：生成超时且没有回答。已观察到 scratchpad_write 真实失败以及4个 structured_select 缺失结果，之后没有取得对应数据或完成有效重试，不能认定恢复。8次工具调用中未见无进展重复调用，但不足10个可观测执行步骤，不能判定10步存活；也没有多次独立运行证据。资源效率：poor / 15；任务未完成，约",
+        "应数据或完成有效重试，不能认定恢复。8次工具调用中未见无进展重复调用，但不足10个可观测执行步骤，不能判定10步存活；也没有多次独立运行证据。资源效率：poor / 15；任务未完成，约120.5秒后超时；8次工具调用中包含1次非核心写入失败和4次无结果的查询调用，未产生最终回答。Token未采集，无法评估Token效率。查看 GPT 计划质量裁判综合：fail / 48；总体检索方向是先解析项目、获取 Schema，再查询项目、任务、评论和操作日志，依赖顺序基本合理；但无必要地执行了写入。核心查询均缺少结果，最终又发",
+        "GPT 计划质量裁判综合：fail / 48；总体检索方向是先解析项目、获取 Schema，再查询项目、任务、评论和操作日志，依赖顺序基本合理；但无必要地执行了写入。核心查询均缺少结果，最终又发生生成超时，无法形成基于评论证据的结论。未观察到同参无进展循环，也没有声称已完成未执行的步骤。实际仅有 8 个工具调用，不足以证明任何 10 步或 30 步稳定性。步骤正确：3/4；顺序：pass；最小步数：fail；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_7292f95b-121a-4a06-956a-979275adfe8b"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-005",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“云帆数据迁移（进度评测）”现在按哪个时间计划执行？之前的2026年10月8日还有效吗？",
+      "original_type": "原裁判提及实体解析超时（非生成超时）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确识别了同日后续评论对原计划的修订：全量迁移调整至2026年10月10日，2026年10月8日计划已取消且不再有效；同时说明业务核对预计在10月11日完成，具体时段尚待业务方确认。表述处于“计划/预计”语境，没有宣称迁移或核对已经完成，也未把10月9日误作当前核对日期。",
+      "latency_ms": 40890,
+      "original_excerpts": [
+        "无进展重复查询及未命中核心评论的数据路径。Token已采集：输入132773、输出1401、缓存103078，输入规模相对单一进度问题很高。查看 GPT 计划质量裁判综合：fail / 50；实体解析超时后改用 Schema 和结构化查询属于可接受的纠错，但项目查询为空后，没有继续通过可用范围定位真实项目并读取其评论，反而重复了同参任务查询，并进行了两次高度相近且均截断的消息查询。回答谨慎承认无法确认，未编造计划内容，因此不存在明显幻觉计划；但执行没有取得决定性评论证据，且重复调用降低了计划质量。外层 failed 与"
+      ],
+      "sessions": [
+        "cs_dbf5fd34-1f4c-4c56-abce-b7ddce850287"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-006",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”的“移动端回归”还被白名单卡住吗？现在还剩什么问题？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确识别了最新评论对旧风险的修订：设备白名单已经开通、真机登录恢复，原白名单阻塞不再存在；同时明确指出iOS后台唤醒异常仍在复现，因此移动端回归尚未完成。回答没有把旧评论误当成当前状态，也没有因白名单解除而断言回归或项目全部完成。补充“模拟器检查已通过”亦有较早评论支持。",
+      "latency_ms": 32308,
+      "original_excerpts": [
+        "sult）步骤 2 · ask问题：截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”的“移动端回归”还被白名单卡住吗？现在还剩什么问题？report chat generation timed outSession: cs_1b427493-c061-4400-adf7-2a8f4d2852d3 · Request: d15613d1-bf06-46e0-ad69-a3fae1c4d650 · Message: cm_0944b640-795e-4a23-9347-fd418c5c28cc · HTTP: 200 ",
+        "t SSEsemantic.qualityskipsemantic judge evidence unavailable查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 14；单次运行以生成超时结束且没有回答。项目已成功解析，但核心task查询缺失结果；没有观察到对该错误的有效重试或替代路径。scratchpad_write也真实失败且未恢复。5次工具调用中未见无进展重复，但不足10个可观测执行步骤，不能判定10步存活；没有多次独立运行证据。资源效率：poor / 16；任务未完成并耗时约120.5秒。虽然只",
+        "先获取 Schema、再解析项目并查询相关任务的依赖顺序合理，但插入了不必要的写入步骤。项目已成功解析，却未取得任务查询结果，也未继续读取目标任务或项目评论来判断白名单阻塞是否解除及残留问题；随后生成超时，无最终回答。没有观察到重复循环或虚构已完成步骤。实际仅有 5 个工具调用，不足以证明 10 步或 30 步稳定性。步骤正确：3/4；顺序：pass；最小步数：fail；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_8f2e32b0-647a-4b10-bd47-2ff09090470c"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-007",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“磐石账单升级（进度评测）”是不是已经交付完了？请结合任务状态和验收评论判断。",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "回答未完成核心业务判断。用户提供的是项目名称，但 Agent 主要按任务对象检索，未按已激活的 task_space 指引通过项目名称定位项目并读取其任务及评论，随后错误地要求用户再次提供项目名称。固定快照及目标评论已明确：项目仍进行中；金额精度修复和账单验收任务的结构化状态均为已完成；开发交付及精度回归已完成，但财务尚未签收，两张税额异常账单仍需按历史配置差异补算并重新抽查，因此不能认定项目已正式交付。回答仅称“无法确认”且没有呈现上述任务状态、验收进展和三个事实层次，遗漏了问题要求的业务结论。工具中虽有临时检索失败，但 Trace 同时显示检索目标选择不当，且最终运行正常完成，不能视为仅因采集证据缺失而跳过。",
+      "latency_ms": 54781,
+      "original_excerpts": [
+        "_result）步骤 2 · ask问题：截至2026年10月5日本批数据，“磐石账单升级（进度评测）”是不是已经交付完了？请结合任务状态和验收评论判断。report chat generation timed outSession: cs_9c4dfd7f-42c7-4555-ad19-780e01c75fa3 · Request: b8b40b5d-252c-46c3-9dee-57a7ea5d6d85 · Message: cm_95440e3e-2a55-4ce6-9b13-b796b7367862 · HTTP: 200 ",
+        "available查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 15；任务未成功且没有生成任何回答。运行中出现 scratchpad_write 内部错误、entity_resolve 超时以及3次 structured_select 缺失结果；虽然超时后的单请求 entity_resolve 成功解析了项目，但关键项目、任务和评论查询仍未取得结果，最终又发生生成超时，因此未形成有效恢复。未观察到无进展重复循环。仅观察到8次工具调用，低于10步门槛；且只有单次运行，不能证明连续完成能力。资源效率：poor",
+        "fail / 15；任务未成功且没有生成任何回答。运行中出现 scratchpad_write 内部错误、entity_resolve 超时以及3次 structured_select 缺失结果；虽然超时后的单请求 entity_resolve 成功解析了项目，但关键项目、任务和评论查询仍未取得结果，最终又发生生成超时，因此未形成有效恢复。未观察到无进展重复循环。仅观察到8次工具调用，低于10步门槛；且只有单次运行，不能证明连续完成能力。资源效率：poor / 10；任务失败是决定性因素。耗时124114毫秒、执行8次",
+        "y_resolve 超时以及3次 structured_select 缺失结果；虽然超时后的单请求 entity_resolve 成功解析了项目，但关键项目、任务和评论查询仍未取得结果，最终又发生生成超时，因此未形成有效恢复。未观察到无进展重复循环。仅观察到8次工具调用，低于10步门槛；且只有单次运行，不能证明连续完成能力。资源效率：poor / 10；任务失败是决定性因素。耗时124114毫秒、执行8次工具调用后仍无输出；包含一次无关写入失败、一次解析超时以及3次无结果查询，资源投入未转化为任务完成。Token未采集",
+        "8次工具调用，低于10步门槛；且只有单次运行，不能证明连续完成能力。资源效率：poor / 10；任务失败是决定性因素。耗时124114毫秒、执行8次工具调用后仍无输出；包含一次无关写入失败、一次解析超时以及3次无结果查询，资源投入未转化为任务完成。Token未采集，无法评估Token效率。查看 GPT 计划质量裁判综合：fail / 68；整体依赖顺序基本合理：先获取 Schema、解析项目，再尝试查询项目、任务及评论。超时后将实体解析从两个请求缩为一个请求是有针对性的纠错，不是死循环。但无关的 scratchpad",
+        "源投入未转化为任务完成。Token未采集，无法评估Token效率。查看 GPT 计划质量裁判综合：fail / 68；整体依赖顺序基本合理：先获取 Schema、解析项目，再尝试查询项目、任务及评论。超时后将实体解析从两个请求缩为一个请求是有针对性的纠错，不是死循环。但无关的 scratchpad 写入增加了可避免调用，且关键查询均无结果、最终无回答。未发现声称使用未执行工具或虚构结果。仅观测到 8 个工具步骤，不足以证明 10 步或 30 步稳定性。步骤正确：4/5；顺序：pass；最小步数：fail；Deadloo"
+      ],
+      "sessions": [
+        "cs_87fc43e3-ab2f-49e2-82f3-ab310e9d5b89"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-008",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，帮我汇总“星舟客户门户交付（进度评测）”三个任务的进展，带上当前项目状态和关联项目群，并给一个项目总体结论。",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "生成失败",
+      "business_status": "fail",
+      "reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+      "latency_ms": 120779,
+      "original_excerpts": [
+        "ask问题：截至2026年10月5日本批数据，帮我汇总“星舟客户门户交付（进度评测）”三个任务的进展，带上当前项目状态和关联项目群，并给一个项目总体结论。report chat generation timed outSession: cs_48bf1e27-2989-40c6-9aa5-69936ad8a48f · Request: 346bae86-17e1-4ee7-888b-12910be6bf16 · Message: cm_9829de7e-4822-4a5a-b67b-8587a97deddc · HTTP: 200 ",
+        "为空。scratchpad_write 失败后没有观察到同类错误的有效重试或替代路径；随后项目解析成功，但项目和任务的 structured_select 均为 missing_result，最终生成超时，三个任务进展、项目状态、关联项目群和总体结论均未交付。未见无进展重复调用。仅观察到6次工具调用，低于10步门槛；仅有单次运行证据。资源效率：poor / 8；任务失败且约120.5秒后仍无回答。6次工具调用中包含一次无关写入失败和两次无结果的核心查询，无法形成任何用户可用产出。Token未采集，Token成本未知。查"
+      ],
+      "sessions": [
+        "cs_73a7efc8-408c-4fb5-8098-e5d187a47ccf"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-009",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”评论里说核心开发已完成，为什么还不能确认按期上线？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答准确区分了“核心开发完成”和“具备上线条件”：明确指出移动端后台唤醒问题尚待修复及回归，灰度验收依赖移动端回归且尚未闭环，10月9日能否上线取决于修复与验收结果，并且尚未最终放行。回答没有否定已有开发成果，也没有把目标日期误当成已确认上线日期。末段关于兼容性及验收窗口压缩的内容被明确标为推断，且与已证实的依赖关系一致，不影响正确性。",
+      "latency_ms": 39207,
+      "original_excerpts": [
+        "esult）步骤 2 · ask问题：截至2026年10月5日本批数据，“星舟客户门户交付（进度评测）”评论里说核心开发已完成，为什么还不能确认按期上线？report chat generation timed outSession: cs_bf237138-c971-49fa-b8ea-ab4cd1fffaf5 · Request: ebd55369-617b-4170-8dea-2f9e59f24e48 · Message: cm_9a569e31-b05d-4e61-a4c1-a088ebd16fd1 · HTTP: 200 ",
+        "il / 12；任务未成功且没有回答。scratchpad_write 内部错误未被有效恢复；项目虽成功解析，但评论、任务和项目三项关键 structured_select 全部缺失结果，最终发生生成超时，未解释为何不能确认按期上线。没有观察到无进展重复循环。仅观察到7次工具调用，低于10步稳定性门槛；单次运行也不足以判断连续完成。资源效率：poor / 8；约120.5秒和7次工具调用后任务仍失败、输出为空。一次无关写入失败，随后3个核心查询均无结果，整体执行没有产生用户价值。Token未采集，无法核算Token效率"
+      ],
+      "sessions": [
+        "cs_5dd1b98d-cf25-4ed3-a34b-4a33b17452aa"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-010",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“晨光知识库优化（进度评测）”的“搜索效果验证”什么时候能完成，能确认2026年10月8日吗？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "回答正确说明了“2026年10月8日前完成首轮验证”只是争取目标，并依据任务评论指出评测样本仍在收集、开始及完成时间尚未确认，因此不能将10月8日视为已确认承诺。但回答遗漏了截至10月5日“暂时没有新的验证结果”这一当前进展，也未说明需等待样本和验证计划确认后才能给出可靠完成安排。完整Trace仅显示读取了任务评论TC-PROG-12，未读取包含上述最新补充信息的项目评论PC-PROG-09，因此未完整回答所问的当前完成时间与判断边界。",
+      "latency_ms": 46200,
+      "original_excerpts": [
+        "步骤 2 · ask问题：截至2026年10月5日本批数据，“晨光知识库优化（进度评测）”的“搜索效果验证”什么时候能完成，能确认2026年10月8日吗？report chat generation timed outSession: cs_b3996527-875d-414f-87cc-c3696708eec1 · Request: d902903f-c788-4dd9-9242-5a4312a6c346 · Message: cm_50cee7b7-cf7e-47b9-8d7b-a334adf0fafb · HTTP: 200 ",
+        "看 GPT 执行稳定性与资源效率裁判稳定性：fail / 15；单次运行未完成任务。已观察到 scratchpad_write 内部失败、核心 structured_select 缺失结果以及最终生成超时；retries=0，未见针对这些错误的有效重试或替代路径。5 个工具调用中未见无进展重复调用，但可观测执行步骤少于 10，不能证明 10 步存活；且仅有一次运行，不能证明连续完成能力。资源效率：poor / 15；任务失败且耗时约120.5秒，没有产出答案。5次工具调用中包含一次非必要且失败的 scratchpad_",
+        "率：poor / 15；任务失败且耗时约120.5秒，没有产出答案。5次工具调用中包含一次非必要且失败的 scratchpad_write，核心 structured_select 又无结果，随后生成超时；未采集 Token，无法评价令牌效率。查看 GPT 计划质量裁判综合：fail / 72；整体依赖顺序基本合理：先获取Schema和解析项目，再查询任务。没有重复调用或无进展循环，也没有最终回答声称使用未执行步骤。但插入了不必要且被禁止的scratchpad_write，导致计划不够正确、精简；最终查询无结果且生成超",
+        "取Schema和解析项目，再查询任务。没有重复调用或无进展循环，也没有最终回答声称使用未执行步骤。但插入了不必要且被禁止的scratchpad_write，导致计划不够正确、精简；最终查询无结果且生成超时属于执行失败背景，不能据此额外认定查询计划错误。步骤正确：4/5；顺序：pass；最小步数：fail；Deadloop避免：pass；幻觉计划避免：pass返回失败用例索引 ↑"
+      ],
+      "sessions": [
+        "cs_6a7ac65d-2eb2-4f9b-83c8-f744a2fd2bdd"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-011",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，“晨光知识库优化（进度评测）”的“内容更新校对”现在具体做到哪了，还有多少没完成？",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "pass",
+      "reason": "回答正确说明“内容更新校对”处于进行中，并依据唯一评论“收到，我再看一下”明确指出无法确定已校对范围、剩余数量或完成率；未虚构数值，也未从项目级进展推断该任务已完成。提出补充总量、已完成数或待校对条目的建议合理。",
+      "latency_ms": 43256,
+      "original_excerpts": [
+        "esult）步骤 2 · ask问题：截至2026年10月5日本批数据，“晨光知识库优化（进度评测）”的“内容更新校对”现在具体做到哪了，还有多少没完成？report chat generation timed outSession: cs_9354df57-6ed0-4f4f-9f5c-bea9eee01dca · Request: c7b3dd3b-2892-4de0-b840-9d8fcd106851 · Message: cm_68619759-50bf-4c3f-8075-c4b55c588d43 · HTTP: 200 ",
+        "ble查看 GPT 执行稳定性与资源效率裁判稳定性：fail / 15；单次运行未完成任务。scratchpad_write 明确失败，核心 structured_select 缺失结果，最终发生生成超时；retries=0，未观察到同一错误后的有效重试或替代路径。未见重复调用构成循环，但仅观察到5个工具执行步骤，低于10步门槛；单次运行也不足以证明连续完成。资源效率：poor / 15；任务失败、无最终答案，端到端耗时约120.5秒。5次工具调用包含一次失败的非必要写入，核心数据查询缺失结果且没有重试；Token 未"
+      ],
+      "sessions": [
+        "cs_b6d60b09-3756-44bd-b247-a4dbd6ba6325"
+      ]
+    },
+    {
+      "case_id": "AA-PROG-012",
+      "source_environment": "test",
+      "title": "截至2026年10月5日本批数据，说下“云帆数据迁移（进度评测）”当前进展和风险，并带上当前项目状态和关联项目群。",
+      "original_type": "生成超时（明确终态）",
+      "rerun_execution": "全部问答轮次完成",
+      "business_status": "fail",
+      "reason": "两轮均遗漏了关键且已有评论明确支持的风险：抽检发现12条重复客户记录，规则问题虽已定位，但修复和重新抽检尚未结束。首轮其他核心事实基本正确，包括项目进行中、关联项目群正确、脚本和迁移演练已完成、迁移调整到2026年10月10日、业务核对预计10月11日且时段待确认。次轮未继承完整风险，也未给出“修复规则并重新抽检重复记录”这一必要下一步；反而将脚本、环境、权限、业务方资源或验收口径可能出问题列为风险或检查项，这些并非评论确认的当前问题。",
+      "latency_ms": 48850,
+      "original_excerpts": [
+        "result）步骤 2 · ask问题：截至2026年10月5日本批数据，说下“云帆数据迁移（进度评测）”当前进展和风险，并带上当前项目状态和关联项目群。report chat generation timed outSession: cs_cf987f94-9eff-492b-906a-6d71bdff909a · Request: 938d068c-a538-4c5f-a416-198bb9ebd64f · Message: cm_9a5d93a5-2f1b-479f-88d6-30193fc15c4c · HTTP: 200 ",
+        "GPT 执行稳定性与资源效率裁判稳定性：fail / 12；单次运行未完成任务。scratchpad_write 失败，随后项目和任务两个核心 structured_select 均缺失结果，最终生成超时；retries=0，未见有效恢复。两个 structured_select 面向不同实体，属于完成复杂任务所需查询，不构成无进展循环。仅观察到6个工具执行步骤，低于10步门槛；单次运行不能证明连续完成。资源效率：poor / 12；任务失败且无输出，端到端耗时约124.1秒。虽然该任务需要项目、任务和关联项目群等多类"
+      ],
+      "sessions": [
+        "cs_c1a8cb40-e0bf-4b9a-b4c1-f2c01c9e8d64"
+      ]
+    }
+  ],
+  "execution_policy": "Independent fresh sessions; original question/Gold preserved. TENANT-A mapped for two cases to verified identity; no workbook edits; no webhook."
+}
