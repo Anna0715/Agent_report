@@ -2,6 +2,16 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
+  const backToTop = $('back-to-top');
+  if (backToTop) {
+    const updateBackToTop = () => { backToTop.hidden = window.scrollY < 400; };
+    window.addEventListener('scroll', updateBackToTop, {passive:true});
+    backToTop.addEventListener('click', () => {
+      $('report-top')?.focus({preventScroll:true});
+      window.scrollTo({top:0, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    });
+    updateBackToTop();
+  }
   const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const label = {pass:'通过',fail:'失败',skip:'待复核',pending_qa:'待 QA 复核',deferred:'延期',pending_fix:'待修复'};
   const isFailure = status => ['fail','pending_fix'].includes(status);
