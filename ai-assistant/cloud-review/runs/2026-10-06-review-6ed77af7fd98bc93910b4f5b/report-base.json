@@ -1,9 +1,9 @@
 {
   "identity": {
-    "report_id": "review-5cd7bf0ab3b932d8607d533b",
+    "report_id": "review-6ed77af7fd98bc93910b4f5b",
     "run_id": "AI助手-2026-10-06-combined",
     "environment": "combined",
-    "source_digest": "dc2b1e6a4be16e874e707a37b6e68d9c1270a2dd94dc561d4f4affb9be7cb10b"
+    "source_digest": "df839ec005c73bb0fa1db3d839a009bd4fd894fb1af9cf635c4b581c215c9217"
   },
   "rows": [
     {
@@ -970,26 +970,26 @@
       "case_id": "AA-FU-037",
       "source_environment": "test",
       "suite": "assistant_agent_followup",
-      "title": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+      "title": "唐玮手里有多少高优先级未完成任务？有超负荷证据吗？",
       "module": "跨源分析与风险",
-      "scenario": "anrou20在指定项目的高优先级未完成任务与负荷证据",
+      "scenario": "唐玮手里有多少高优先级未完成任务有超负荷证据吗",
       "gate_class": "quality",
       "ability": "跨源分析与风险",
       "kind": "business_review",
       "confidence": "high",
       "priority": "P1",
       "status": "fail",
-      "reason": "回答将“确定灰度比例”误判为低优先级，并据此回答高优先级未完成任务为0个。经线上回读及任务优先级契约核验，该任务的原始priority=2对应p1（高），状态status=1（待处理/未开始），anrou20为执行人、CFO为创建人，因此去重后正确数量应为1个。回答关于“暂无超负荷证据”的结论基本正确，但未说明任务没有截止时间及缺少工时/容量数据，且“未逾期”的表述没有充分体现无法据此判断逾期、临期或整体负荷的边界。核心计数和优先级事实错误，任务未正确完成。",
+      "reason": "仅要求澄清同名人员，未提供按创建与执行去重的高优先级未完成任务数、有效时态及负荷依据，且当前Trace未展示同名候选证据。",
       "failure_categories": [],
-      "latency_ms": 67037,
+      "latency_ms": 4956,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "task_completion_rate": 0,
       "model": "openrouter/openai/gpt-5.6-terra",
-      "prompt_version": "assistant_chat_agent@0.13.6",
+      "prompt_version": "assistant_chat_agent@0.12.5",
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": true,
+        "steps": false,
         "tool_calls": true,
         "tokens": true,
         "cache_token_ratio": true,
@@ -997,8 +997,7 @@
         "retries": true
       },
       "display_failure_categories": [
-        "任务优先级映射错误",
-        "数量错误"
+        "信息缺失"
       ]
     },
     {
@@ -1039,34 +1038,34 @@
       "case_id": "AA-FU-040",
       "source_environment": "test",
       "suite": "assistant_agent_followup",
-      "title": "这个项目从2026年9月1日到2026年10月7日发生了哪些关键变化？请结合任务及评论按时间顺序说明，区分历史变化和当前状态。",
+      "title": "这个项目从上周到现在发生了哪些关键变化？",
       "module": "跨源分析与风险",
-      "scenario": "指定项目的关键变化时间线（项目卡片）",
+      "scenario": "这个项目从上周到现在发生了哪些关键变化",
       "gate_class": "quality",
       "ability": "跨源分析与风险",
-      "kind": "execution_timeout",
+      "kind": "business_review",
       "confidence": "high",
       "priority": "P1",
       "status": "fail",
-      "reason": "项目卡片已传入；HTTP 200流已建立，但客户端在180秒截止后超时，未取得最终回答，本次任务未在时限内完成。未观察到服务端failed/error终态，不等同于report chat generation failed。Trace中task_query返回结构非法，后续structured_select尚无结果。",
+      "reason": "回答仅索要项目名称并预告查询时间范围，没有提供上周至今的关键变化时间线及依据，未完成Gold要求的变化总结。",
       "failure_categories": [],
-      "latency_ms": 180413,
+      "latency_ms": 4353,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "task_completion_rate": 0,
       "model": "openrouter/openai/gpt-5.6-terra",
-      "prompt_version": "assistant_chat_agent@0.13.6",
+      "prompt_version": "assistant_chat_agent@0.12.5",
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": true,
+        "steps": false,
         "tool_calls": true,
-        "tokens": false,
-        "cache_token_ratio": false,
-        "cost_usd": false,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
         "retries": true
       },
       "display_failure_categories": [
-        "执行超时"
+        "信息缺失"
       ]
     },
     {
@@ -7299,7 +7298,7 @@
       "suppressed_test_failure_attempts": 1
     },
     "report_date": "2026-10-06",
-    "generated_at": "2026-10-07T02:42:30.319359+00:00",
+    "generated_at": "2026-10-07T01:50:27.596760+00:00",
     "pre_case_count": 69,
     "test_scope": {
       "active_total": 82,
@@ -7373,9 +7372,9 @@
       "tool_accuracy": {
         "test": {
           "selection": {
-            "pass": 41,
-            "total": 56,
-            "rate": 0.7321428571428571
+            "pass": 39,
+            "total": 54,
+            "rate": 0.7222222222222222
           },
           "parameters": {
             "pass": 0,
@@ -7388,9 +7387,9 @@
             "rate": 0.3181818181818182
           },
           "chain_completeness": {
-            "pass": 92,
-            "total": 132,
-            "rate": 0.696969696969697
+            "pass": 89,
+            "total": 128,
+            "rate": 0.6953125
           }
         },
         "pre": {
@@ -7424,36 +7423,36 @@
       "planning_quality": {
         "test": {
           "step_correctness": {
-            "pass": 265,
-            "total": 342,
-            "rate": 0.7748538011695907,
+            "pass": 249,
+            "total": 321,
+            "rate": 0.7757009345794392,
             "covered_cases": 58
           },
           "order": {
             "pass": 20,
-            "total": 42,
-            "rate": 0.47619047619047616,
-            "covered_cases": 42,
-            "insufficient_cases": 18
+            "total": 41,
+            "rate": 0.4878048780487805,
+            "covered_cases": 41,
+            "insufficient_cases": 19
           },
           "minimality": {
-            "pass": 25,
+            "pass": 26,
             "total": 60,
-            "rate": 0.4166666666666667,
+            "rate": 0.43333333333333335,
             "covered_cases": 60,
             "insufficient_cases": 0
           },
           "deadloop_avoidance": {
-            "pass": 52,
+            "pass": 53,
             "total": 60,
-            "rate": 0.8666666666666667,
+            "rate": 0.8833333333333333,
             "covered_cases": 60,
             "insufficient_cases": 0
           },
           "hallucinated_plan_avoidance": {
-            "pass": 53,
+            "pass": 52,
             "total": 56,
-            "rate": 0.9464285714285714,
+            "rate": 0.9285714285714286,
             "covered_cases": 56,
             "insufficient_cases": 4
           }
@@ -7499,35 +7498,35 @@
         "judge_environment": "combined",
         "judge_summary": {
           "ratings": {
-            "fail": 120,
-            "pass": 6,
+            "fail": 119,
+            "pass": 7,
             "insufficient": 3
           },
-          "average_score": 48.0,
+          "average_score": 48.023809523809526,
           "scored_cases": 126,
           "step_correctness": {
-            "correct": 400,
-            "total": 572,
+            "correct": 384,
+            "total": 551,
             "covered_cases": 125
           },
           "order": {
-            "fail": 44,
+            "fail": 43,
             "pass": 28,
-            "insufficient": 57
+            "insufficient": 58
           },
           "minimality": {
-            "fail": 61,
-            "pass": 52,
+            "fail": 60,
+            "pass": 53,
             "insufficient": 16
           },
           "deadloop_avoidance": {
-            "pass": 111,
-            "fail": 18
+            "pass": 112,
+            "fail": 17
           },
           "hallucinated_plan_avoidance": {
-            "pass": 90,
+            "pass": 89,
             "insufficient": 11,
-            "fail": 28
+            "fail": 29
           }
         }
       },
@@ -7592,11 +7591,11 @@
       "efficiency": {
         "test": {
           "covered": 60,
-          "avg_latency_ms": 30058.1,
-          "p50_latency_ms": 25244.5,
-          "p95_latency_ms": 62524.499999999985,
+          "avg_latency_ms": 26089.083333333332,
+          "p50_latency_ms": 23632.0,
+          "p95_latency_ms": 52389.84999999999,
           "avg_steps": null,
-          "avg_tool_calls": 5.716666666666667,
+          "avg_tool_calls": 5.333333333333333,
           "avg_tokens": null
         },
         "pre": {
@@ -7621,22 +7620,22 @@
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 1803486.0,
-                "average": 30058.1,
-                "p50": 25244.5,
-                "p95": 62524.499999999985,
+                "total": 1565345.0,
+                "average": 26089.083333333332,
+                "p50": 23632.0,
+                "p95": 52389.84999999999,
                 "per_success_is_lower_bound": false
               },
               "steps": {
-                "valid_n": 54,
+                "valid_n": 52,
                 "attempted_n": 60,
-                "coverage_rate": 0.9,
+                "coverage_rate": 0.8666666666666667,
                 "successful_valid_n": 32,
                 "successful_n": 35,
-                "total": 343.0,
-                "average": 6.351851851851852,
-                "p50": 6.0,
-                "p95": 12.399999999999977,
+                "total": 320.0,
+                "average": 6.153846153846154,
+                "p50": 5.5,
+                "p95": 10.449999999999996,
                 "per_success_is_lower_bound": true
               },
               "tool_calls": {
@@ -7645,43 +7644,43 @@
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 343.0,
-                "average": 5.716666666666667,
-                "p50": 5.0,
-                "p95": 11.199999999999989,
+                "total": 320.0,
+                "average": 5.333333333333333,
+                "p50": 4.5,
+                "p95": 10.049999999999997,
                 "per_success_is_lower_bound": false
               },
               "tokens": {
-                "valid_n": 58,
+                "valid_n": 59,
                 "attempted_n": 60,
-                "coverage_rate": 0.9666666666666667,
+                "coverage_rate": 0.9833333333333333,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 6228712.0,
-                "average": 107391.58620689655,
-                "p50": 85334.0,
-                "p95": 204568.0,
+                "total": 5931822.0,
+                "average": 100539.35593220338,
+                "p50": 81469.0,
+                "p95": 198206.19999999995,
                 "per_success_is_lower_bound": true
               },
               "cache_token_ratio": {
-                "valid_n": 58,
+                "valid_n": 59,
                 "attempted_n": 60,
-                "coverage_rate": 0.9666666666666667,
+                "coverage_rate": 0.9833333333333333,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "ratio": 0.7215889766828779,
+                "ratio": 0.7142618958016179,
                 "per_success_is_lower_bound": false
               },
               "cost_usd": {
-                "valid_n": 58,
+                "valid_n": 59,
                 "attempted_n": 60,
-                "coverage_rate": 0.9666666666666667,
+                "coverage_rate": 0.9833333333333333,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 31.71423,
-                "average": 0.5467970689655173,
-                "p50": 0.43842000000000003,
-                "p95": 1.054093,
+                "total": 30.19945,
+                "average": 0.5118550847457627,
+                "p50": 0.412005,
+                "p95": 1.0170069999999998,
                 "per_success_is_lower_bound": true
               },
               "retries": {
@@ -7690,8 +7689,8 @@
                 "coverage_rate": 1.0,
                 "successful_valid_n": 35,
                 "successful_n": 35,
-                "total": 3.0,
-                "average": 0.05,
+                "total": 1.0,
+                "average": 0.016666666666666666,
                 "p50": 0.0,
                 "p95": 0.0,
                 "per_success_is_lower_bound": false
@@ -7801,8 +7800,8 @@
           "total_cases": 60
         },
         "test_judge": {
-          "model": "历史58例：openai/gpt-6-astra；本次2例：openai/gpt-5.6-sol",
-          "prompt_version": "ai-assistant-business-review-v3-session-and-access / ai-assistant-progress-business-review-multiturn-v2-question-scope + timeout-retry-existing-business-and-progress-multiturn + case-correction-multiturn-v1（客户端超时按原始证据细分）"
+          "model": "openai/gpt-6-astra",
+          "prompt_version": "ai-assistant-business-review-v3-session-and-access / ai-assistant-progress-business-review-multiturn-v2-question-scope + timeout-retry-existing-business-and-progress-multiturn"
         },
         "pre_assistant": {
           "models": [
@@ -7821,12 +7820,12 @@
           "prompt_version": "ai-assistant-business-review-v3-session-and-access"
         },
         "planning_judge": {
-          "model": "test: 历史58例：openai/gpt-5.6-sol；本次2例：openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
-          "prompt_version": "test: ai-assistant-planning-quality-review-v1 / ai-assistant-planning-quality-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1 + ai-assistant-planning-quality-review-v1；pre: ai-assistant-planning-quality-review-v1"
+          "model": "test: openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
+          "prompt_version": "test: ai-assistant-planning-quality-review-v1 / ai-assistant-planning-quality-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-planning-quality-review-v1"
         },
         "operational_judge": {
-          "model": "test: 历史58例：openai/gpt-5.6-sol；本次2例：openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
-          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1 + ai-assistant-operational-review-v1.1；pre: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1.1"
+          "model": "test: openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
+          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1.1"
         }
       },
       "automatic_pre": {
@@ -7839,35 +7838,35 @@
         "environment": "combined",
         "summary": {
           "ratings": {
-            "fail": 120,
-            "pass": 6,
+            "fail": 119,
+            "pass": 7,
             "insufficient": 3
           },
-          "average_score": 48.0,
+          "average_score": 48.023809523809526,
           "scored_cases": 126,
           "step_correctness": {
-            "correct": 400,
-            "total": 572,
+            "correct": 384,
+            "total": 551,
             "covered_cases": 125
           },
           "order": {
-            "fail": 44,
+            "fail": 43,
             "pass": 28,
-            "insufficient": 57
+            "insufficient": 58
           },
           "minimality": {
-            "fail": 61,
-            "pass": 52,
+            "fail": 60,
+            "pass": 53,
             "insufficient": 16
           },
           "deadloop_avoidance": {
-            "pass": 111,
-            "fail": 18
+            "pass": 112,
+            "fail": 17
           },
           "hallucinated_plan_avoidance": {
-            "pass": 90,
+            "pass": 89,
             "insufficient": 11,
-            "fail": 28
+            "fail": 29
           }
         },
         "by_environment": {
@@ -7875,39 +7874,39 @@
             "environment": "test",
             "summary": {
               "ratings": {
-                "fail": 54,
-                "pass": 5,
+                "fail": 53,
+                "pass": 6,
                 "insufficient": 1
               },
-              "average_score": 60.71186440677966,
+              "average_score": 60.76271186440678,
               "scored_cases": 59,
               "step_correctness": {
-                "correct": 265,
-                "total": 342,
+                "correct": 249,
+                "total": 321,
                 "covered_cases": 58
               },
               "order": {
-                "fail": 22,
+                "fail": 21,
                 "pass": 20,
-                "insufficient": 18
+                "insufficient": 19
               },
               "minimality": {
-                "fail": 35,
-                "pass": 25
+                "fail": 34,
+                "pass": 26
               },
               "deadloop_avoidance": {
-                "pass": 52,
-                "fail": 8
+                "pass": 53,
+                "fail": 7
               },
               "hallucinated_plan_avoidance": {
-                "pass": 53,
+                "pass": 52,
                 "insufficient": 4,
-                "fail": 3
+                "fail": 4
               }
             },
             "judge": {
-              "model": "历史58例：openai/gpt-5.6-sol；本次2例：openai/gpt-5.6-sol",
-              "prompt_version": "ai-assistant-planning-quality-review-v1 / ai-assistant-planning-quality-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1 + ai-assistant-planning-quality-review-v1"
+              "model": "openai/gpt-5.6-sol",
+              "prompt_version": "ai-assistant-planning-quality-review-v1 / ai-assistant-planning-quality-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1"
             }
           },
           "pre": {
@@ -7962,22 +7961,22 @@
               "fail": 74,
               "insufficient": 2
             },
-            "average_score": 51.55905511811024,
+            "average_score": 51.44094488188976,
             "scored_cases": 127,
             "error_recovery": {
               "pass": 25,
-              "no_error_observed": 56,
+              "no_error_observed": 58,
               "insufficient": 3,
-              "fail": 45
+              "fail": 43
             },
             "loop_avoidance": {
-              "pass": 114,
-              "fail": 15
+              "pass": 115,
+              "fail": 14
             },
             "step_robustness": {
-              "insufficient": 103,
+              "insufficient": 105,
               "pass": 12,
-              "fail": 14
+              "fail": 12
             },
             "continuous_completion": {
               "insufficient": 129
@@ -8004,22 +8003,22 @@
                   "fail": 37,
                   "insufficient": 1
                 },
-                "average_score": 54.11864406779661,
+                "average_score": 53.86440677966102,
                 "scored_cases": 59,
                 "error_recovery": {
                   "pass": 14,
-                  "no_error_observed": 15,
+                  "no_error_observed": 17,
                   "insufficient": 3,
-                  "fail": 28
+                  "fail": 26
                 },
                 "loop_avoidance": {
-                  "pass": 54,
-                  "fail": 6
+                  "pass": 55,
+                  "fail": 5
                 },
                 "step_robustness": {
-                  "insufficient": 44,
+                  "insufficient": 46,
                   "pass": 9,
-                  "fail": 7
+                  "fail": 5
                 },
                 "continuous_completion": {
                   "insufficient": 60
@@ -8037,8 +8036,8 @@
               }
             },
             "judge": {
-              "model": "历史58例：openai/gpt-5.6-sol；本次2例：openai/gpt-5.6-sol",
-              "prompt_version": "ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1 + ai-assistant-operational-review-v1.1"
+              "model": "openai/gpt-5.6-sol",
+              "prompt_version": "ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1"
             }
           },
           "pre": {
@@ -8094,8 +8093,8 @@
           "rating": "insufficient",
           "assessment": "已重算实测资源指标；未重新调用GPT生成整体资源效率结论。原始综合判断及本次专项判断保留在各自历史报告。",
           "findings": [],
-          "model": "test: 历史58例：openai/gpt-5.6-sol；本次2例：openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
-          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1 + ai-assistant-operational-review-v1.1；pre: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1.1"
+          "model": "test: openai/gpt-5.6-sol；pre: openai/gpt-5.6-sol",
+          "prompt_version": "test: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1+ai-assistant-progress-metrics-full-turns-status-conflict-v1；pre: ai-assistant-operational-review-v1 / ai-assistant-operational-review-v1.1"
         }
       }
     }
