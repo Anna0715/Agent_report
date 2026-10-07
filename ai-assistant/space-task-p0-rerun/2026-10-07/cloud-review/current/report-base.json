@@ -1,0 +1,882 @@
+{
+  "identity": {
+    "report_id": "review-25311e8112f5ef360faa888b",
+    "run_id": "AI助手-2026-10-07-space-task-p0-rerun",
+    "environment": "test",
+    "source_digest": "d7374aa297a425a28265e8b5dcccf1e9d3ee4d781248f55d1c12bf40eb172fcd"
+  },
+  "rows": [
+    {
+      "case_id": "AA-QAP-027",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "AI评测相关的有哪些项目？",
+      "module": "项目语义检索",
+      "scenario": "AI评测与语义检索相关项目全集",
+      "gate_class": "security",
+      "ability": "标题+描述+空间语义召回及结构化回源",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "fail",
+      "reason": "用户询问AI评测相关项目，回答却将范围缩为名称含“AI评测”的项目。独立业务回读确认25个目标项目均已落库且可见，回答仅覆盖其中8个，遗漏13个描述命中的权限评测项目及4个语义检索项目，未完成相关项目检索。另列入两个不在本公司目标范围内的项目；是否存在共享授权不作单凭租户差异的越权认定，不影响已确定的漏召回失败。",
+      "failure_categories": [],
+      "latency_ms": 16576,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 0,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ]
+    },
+    {
+      "case_id": "AA-QAP-028",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "项目执行人专项项目是谁负责的？",
+      "module": "项目语义检索",
+      "scenario": "项目执行人与创建人区分",
+      "gate_class": "core",
+      "ability": "项目别名定位+负责人字段核实",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "pass",
+      "reason": "回答正确指出项目负责人为自动化_Anna2，并将CFO明确区分为创建人，与独立业务快照一致。合法项目widget已定位所问项目，无须另行复述项目名称或原始ID。",
+      "failure_categories": [],
+      "latency_ms": 8460,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-FU-042",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "公司所有AI项目有哪些？",
+      "module": "权限与隔离",
+      "scenario": "公司所有AI项目有哪些",
+      "gate_class": "security",
+      "ability": "权限与隔离",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "fail",
+      "reason": "用户询问本公司所有AI项目，独立业务回读确认共26项。回答只覆盖其中9项，遗漏模型回答证据校准、知识召回质量治理等17项；同时混入归属智本科技的两个项目及无正向AI关联证据的云帆数据迁移项目。将返回的12项称为名称含AI的项目也与工具中云帆项目的实际标题不符。末尾提示可能遗漏并不能完成全部项目的查询任务。",
+      "failure_categories": [],
+      "latency_ms": 10332,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 0,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ]
+    },
+    {
+      "case_id": "AA-FU-044",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "和我同级的同事负责哪些项目？",
+      "module": "权限与隔离",
+      "scenario": "和我同级的同事负责哪些项目",
+      "gate_class": "security",
+      "ability": "权限与隔离",
+      "kind": "evidence_insufficient",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "skip",
+      "reason": "回答仅称当前可见的直属部门成员中只有本人，并明确无法据此识别同级同事，未断言不存在同级同事，也未编造其项目或将同级关系作为读取授权。该表述有目录工具结果支持。但独立回读存在项目列表与空间元数据可见性冲突，无法核验受限项目的实际授权边界，因此不能判定权限任务通过，亦无其他确定事实错误可判失败。",
+      "failure_categories": [],
+      "latency_ms": 14117,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": null,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-FU-058",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "我只记得项目名里有“评测”，你能帮我找候选吗？",
+      "module": "冲突澄清与安全",
+      "scenario": "我只记得项目名里有“评测”，你能帮我找候选吗",
+      "gate_class": "core",
+      "ability": "冲突澄清与安全",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "pass",
+      "reason": "回答完整列出当前账号可见的14个名称含“评测”的候选，并明确采用名称字面包含的匹配口径。候选与工具结果和Gold一致；跨公司两项有同账号独立业务回读支持，不能因项目名称含“未授权”或租户不同而判定越权。部分名称省略通用后缀“项目”，但真实项目引用明确，未影响候选识别。",
+      "failure_categories": [],
+      "latency_ms": 10643,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-FU-061",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "项目搜索返回空，但我给你项目ID pro_4230587368，能再核实吗？",
+      "module": "冲突澄清与安全",
+      "scenario": "项目搜索为空后按用户提供的定位信息再次核实",
+      "gate_class": "security",
+      "ability": "空检索后的结构化回源与最小披露",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "pass",
+      "reason": "回答通过结构化任务查询回源核实了指定项目的存在，并正确给出名称“项目执行人专项”。项目列表为空与任务查询返回项目信息被明确区分，未将搜索未命中误判为不存在。独立业务回读确认该项目当前对 CFO 可访问，未发现权限冲突。",
+      "failure_categories": [],
+      "latency_ms": 16626,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-FU-041",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "我参与了哪些项目？",
+      "module": "权限与隔离",
+      "scenario": "我参与了哪些项目",
+      "gate_class": "security",
+      "ability": "权限与隔离",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P0",
+      "status": "fail",
+      "reason": "用户询问本人参与的项目，当前独立业务快照确认按本人创建或项目执行口径仅有5个项目，均为本人执行。回答虽包含全部5个正确项目，却将未筛选的12个可见项目全部称为参与项目，多列7个，总数和筛选口径均错误；“可参与范围”的免责声明不能替代本人实际项目角色筛选。",
+      "failure_categories": [],
+      "latency_ms": 18110,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 0,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": [
+        "范围错误"
+      ]
+    },
+    {
+      "case_id": "AA-FU-069",
+      "source_environment": "test",
+      "suite": "assistant_agent_followup",
+      "title": "“Alpha 客户门户”项目目前有哪些逾期任务？请列出任务名称、负责人和当前状态；如有截止时间也一并说明。",
+      "module": "项目与任务事实",
+      "scenario": "查询指定项目的逾期任务清单",
+      "gate_class": "quality",
+      "ability": "项目范围与逾期标记筛选",
+      "kind": "business_review",
+      "confidence": "high",
+      "priority": "P1",
+      "status": "pass",
+      "reason": "回答正确列出Alpha 客户门户唯一逾期任务“埋点验收”，负责人anrou3、当前状态进行中，截止时间2026-09-14 18:00东京时间均与独立业务回读一致。数量为1，未混入非逾期或其他项目任务，也未将逾期标记误当作基础状态。",
+      "failure_categories": [],
+      "latency_ms": 16494,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "openrouter/openai/gpt-5.6-terra",
+      "prompt_version": "assistant_chat_agent@0.13.8",
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    }
+  ],
+  "summary": {
+    "report_display": {
+      "suppressed_test_failure_attempts": 0
+    },
+    "report_date": "2026-10-07",
+    "generated_at": "2026-10-07T06:36:22.724265+00:00",
+    "pre_case_count": 0,
+    "test_scope": {
+      "active_total": 8,
+      "online_executed": 8,
+      "online_assessed": 7,
+      "online_pending_retest": 1,
+      "not_executed": 0,
+      "local_executed": 0
+    },
+    "pre_scope": {
+      "active_total": 0,
+      "executed": 0,
+      "not_executed": 0
+    },
+    "local_fixture": {},
+    "reaudit": {},
+    "source_basis": {
+      "summary": {},
+      "judge": {}
+    },
+    "trace_gate": {
+      "required": true,
+      "executed": 8,
+      "captured": 8,
+      "complete": true,
+      "missing": {}
+    },
+    "metrics": {
+      "tool_accuracy": {
+        "test": {
+          "selection": {
+            "pass": 1,
+            "total": 7,
+            "rate": 0.14285714285714285
+          },
+          "parameters": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "output_understanding": {
+            "pass": 6,
+            "total": 6,
+            "rate": 1.0
+          },
+          "chain_completeness": {
+            "pass": 14,
+            "total": 20,
+            "rate": 0.7
+          }
+        },
+        "pre": {
+          "selection": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "parameters": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "output_understanding": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "chain_completeness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          }
+        },
+        "pre_observation": "N/A：pre不在本次重测范围。"
+      },
+      "planning_quality": {
+        "test": {
+          "step_correctness": {
+            "pass": 13,
+            "total": 19,
+            "rate": 0.6842105263157895,
+            "covered_cases": 8
+          },
+          "order": {
+            "pass": 2,
+            "total": 2,
+            "rate": 1.0,
+            "covered_cases": 2,
+            "insufficient_cases": 6
+          },
+          "minimality": {
+            "pass": 5,
+            "total": 7,
+            "rate": 0.7142857142857143,
+            "covered_cases": 7,
+            "insufficient_cases": 1
+          },
+          "deadloop_avoidance": {
+            "pass": 8,
+            "total": 8,
+            "rate": 1.0,
+            "covered_cases": 8,
+            "insufficient_cases": 0
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 6,
+            "total": 8,
+            "rate": 0.75,
+            "covered_cases": 8,
+            "insufficient_cases": 0
+          }
+        },
+        "pre": {
+          "step_correctness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "order": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "minimality": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "deadloop_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          }
+        },
+        "pre_observation": "N/A：pre不在本次重测范围。",
+        "judge_observation": "test 计划质量由 GPT 裁判基于可观测 Trace 复评；步骤正确率按实际可评工具步骤计，其余指标仅统计明确的 pass/fail，insufficient 不进入分母。",
+        "judge_environment": "test",
+        "judge_summary": {
+          "ratings": {
+            "fail": 6,
+            "insufficient": 2
+          },
+          "average_score": 54.166666666666664,
+          "scored_cases": 6,
+          "step_correctness": {
+            "correct": 13,
+            "total": 19,
+            "covered_cases": 8
+          },
+          "order": {
+            "insufficient": 6,
+            "pass": 2
+          },
+          "minimality": {
+            "pass": 5,
+            "insufficient": 1,
+            "fail": 2
+          },
+          "deadloop_avoidance": {
+            "pass": 8
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 6,
+            "fail": 2
+          }
+        }
+      },
+      "robustness": {
+        "pre_answer_completion": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "pre_error_recovery": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "pre_loop_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "pre_step_robustness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "survived_10_steps": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "continuous_completion": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "trace_pre": {
+          "error_recovery": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "loop_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "step_robustness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          },
+          "survived_10_steps": {
+            "pass": 0,
+            "total": 0,
+            "rate": null,
+            "covered_cases": 0
+          }
+        }
+      },
+      "efficiency": {
+        "test": {
+          "covered": 7,
+          "avg_latency_ms": 13891.57142857143,
+          "p50_latency_ms": 16494.0,
+          "p95_latency_ms": 17664.8,
+          "avg_steps": null,
+          "avg_tool_calls": 2.2857142857142856,
+          "avg_tokens": null
+        },
+        "pre": {
+          "covered": 0,
+          "avg_latency_ms": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "avg_steps": null,
+          "avg_tool_calls": null,
+          "avg_tokens": null,
+          "avg_cost_usd": null,
+          "total_cost_usd": null,
+          "cache_token_ratio": null
+        },
+        "resource_cost": {
+          "test": {
+            "definition": "单条成功用例成本=本轮所有已观测资源消耗÷业务成功用例数；包含失败尝试消耗。覆盖不全时为观测下限。",
+            "metrics": {
+              "e2e_ms": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 97241.0,
+                "average": 13891.57142857143,
+                "p50": 16494.0,
+                "p95": 17664.8,
+                "per_success_is_lower_bound": false
+              },
+              "steps": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 16.0,
+                "average": 2.2857142857142856,
+                "p50": 2.0,
+                "p95": 3.0,
+                "per_success_is_lower_bound": false
+              },
+              "tool_calls": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 16.0,
+                "average": 2.2857142857142856,
+                "p50": 2.0,
+                "p95": 3.0,
+                "per_success_is_lower_bound": false
+              },
+              "tokens": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 282875.0,
+                "average": 40410.71428571428,
+                "p50": 28995.0,
+                "p95": 73465.49999999997,
+                "per_success_is_lower_bound": false
+              },
+              "cache_token_ratio": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "ratio": 0.5157226181833787,
+                "per_success_is_lower_bound": false
+              },
+              "cost_usd": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 1.446835,
+                "average": 0.20669071428571428,
+                "p50": 0.150405,
+                "p95": 0.3725894999999999,
+                "per_success_is_lower_bound": false
+              },
+              "retries": {
+                "valid_n": 7,
+                "attempted_n": 7,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 4,
+                "successful_n": 4,
+                "total": 0.0,
+                "average": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "per_success_is_lower_bound": false
+              }
+            }
+          },
+          "pre": {
+            "definition": "单条成功用例成本=本轮所有已观测资源消耗÷业务成功用例数；包含失败尝试消耗。覆盖不全时为观测下限。",
+            "metrics": {
+              "e2e_ms": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              },
+              "steps": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              },
+              "tool_calls": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              },
+              "tokens": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              },
+              "cache_token_ratio": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "ratio": null,
+                "per_success_is_lower_bound": false
+              },
+              "cost_usd": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              },
+              "retries": {
+                "valid_n": 0,
+                "attempted_n": 0,
+                "coverage_rate": null,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": false
+              }
+            }
+          }
+        }
+      },
+      "versions": {
+        "test_assistant": {
+          "models": [
+            "openrouter/openai/gpt-5.6-terra"
+          ],
+          "prompts": [
+            "assistant_chat_agent@0.13.8"
+          ],
+          "model_covered_cases": 8,
+          "prompt_covered_cases": 8,
+          "total_cases": 8
+        },
+        "test_judge": {
+          "model": "openai/gpt-6.1-sol",
+          "prompt_version": "space-task-rerun-multiturn-v1"
+        },
+        "pre_assistant": {
+          "models": [],
+          "prompts": [],
+          "model_covered_cases": 0,
+          "prompt_covered_cases": 0,
+          "total_cases": 0
+        },
+        "judge": {
+          "model": "N/A（pre不在本次范围）",
+          "prompt_version": "N/A"
+        },
+        "planning_judge": {
+          "model": "openai/gpt-6.1-sol",
+          "prompt_version": "ai-assistant-planning-quality-review-v1"
+        },
+        "operational_judge": {
+          "model": "openai/gpt-6.1-sol",
+          "prompt_version": "ai-assistant-operational-review-v1.1"
+        }
+      },
+      "automatic_pre": {
+        "pass": 0,
+        "fail": 0,
+        "skip": 0,
+        "error": 0
+      },
+      "planning_judge": {
+        "environment": "test",
+        "summary": {
+          "ratings": {
+            "fail": 6,
+            "insufficient": 2
+          },
+          "average_score": 54.166666666666664,
+          "scored_cases": 6,
+          "step_correctness": {
+            "correct": 13,
+            "total": 19,
+            "covered_cases": 8
+          },
+          "order": {
+            "insufficient": 6,
+            "pass": 2
+          },
+          "minimality": {
+            "pass": 5,
+            "insufficient": 1,
+            "fail": 2
+          },
+          "deadloop_avoidance": {
+            "pass": 8
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 6,
+            "fail": 2
+          }
+        },
+        "unavailable": 0
+      },
+      "operational_judge": {
+        "environment": "test",
+        "summary": {
+          "robustness": {
+            "ratings": {
+              "fail": 4,
+              "pass": 2,
+              "insufficient": 2
+            },
+            "average_score": 26.666666666666668,
+            "scored_cases": 6,
+            "error_recovery": {
+              "no_error_observed": 8
+            },
+            "loop_avoidance": {
+              "pass": 8
+            },
+            "step_robustness": {
+              "insufficient": 8
+            },
+            "continuous_completion": {
+              "insufficient": 8
+            }
+          },
+          "efficiency": {
+            "ratings": {
+              "poor": 4,
+              "good": 1,
+              "fair": 3
+            },
+            "average_score": 44.0,
+            "scored_cases": 8
+          }
+        },
+        "assessment": "8次尝试仅4次业务成功，成功率50%；4例失败集中在项目相关性、用户参与范围、公司范围及“同级”定义未正确落实。运行成功、HTTP 200、调用少或无报错均不能替代业务成功。现有证据支持未观察到持续循环，但不能证明错误恢复、长链稳定性或连续完成能力。",
+        "recommendations": [
+          {
+            "priority": "P0",
+            "area": "业务筛选与结果验证",
+            "action": "修复AA-QAP-027、AA-FU-041、AA-FU-042的查询约束：明确AI或评测相关性、当前用户参与关系及公司可见范围；返回前逐项核验关联依据，分页未完成或权限范围有限时不得声称完整列表。",
+            "verification": "回归3个失败案例，并增加无关项目、同名项目和跨页结果测试；要求预期项目集合准确、干扰项排除、范围说明正确，且完整Trace能对应查询条件与回答。"
+          },
+          {
+            "priority": "P0",
+            "area": "人员定位与权限边界",
+            "action": "修复AA-FU-044：先确定“同级”指组织层级还是职级，歧义时澄清；人员目录仅返回本人时不得推断同级同事。定位后按权限执行项目查询，无法访问时提供有依据的限制说明。",
+            "verification": "覆盖同部门不同职级、同职级跨部门、目录仅含本人及无权限场景；分别验证正确查询、澄清或权限说明，禁止无证据推断。"
+          },
+          {
+            "priority": "P0",
+            "area": "Trace与资源证据完整性",
+            "action": "补齐脱敏后的完整查询参数、分页结果、最终回答、policy.check执行记录及逐调用Token和费用；区分执行状态、业务成功和策略通过，自动检查资源采集覆盖率。",
+            "verification": "8例均能重建答案证据链；必需策略检查具有明确执行记录。逐调用资源汇总与运行总量对账一致；缺失时报告valid_n并将相应成本标为观测下限。"
+          },
+          {
+            "priority": "P1",
+            "area": "定向检索与重复调用控制",
+            "action": "AA-FU-058优先使用name_contains=\"评测\"，AA-FU-061优先使用已提供的真实项目ID；AA-FU-028记录空结果后条件变化。AA-FU-069复用首轮结果，仅在字段缺失、时效要求或明确核实需求下再次查询。",
+            "verification": "保持对应案例业务成功；AA-FU-069由2次查询降至1次且字段完整；其他案例减少无关返回项，不误删空结果后有新增信息的必要查询。"
+          },
+          {
+            "priority": "P1",
+            "area": "上下文与成功成本优化",
+            "action": "按任务加载必要技能和上下文，压缩重复说明及无关历史，优先分析AA-FU-069和AA-FU-061的输入来源。采用同任务配对评测，以业务成功率为门槛再比较资源成本。",
+            "verification": "预先设定成功率非劣门槛和资源下降目标；业务成功率不得下降，且包含失败尝试消耗的cost_per_business_success下降。分别报告费用、Token、延迟及各指标有效样本数，不以缓存率或效率分替代成功率。"
+          },
+          {
+            "priority": "P2",
+            "area": "稳定性与恢复评测",
+            "action": "增加多次独立运行、自然需要至少10步的任务和超时、限流、工具错误注入；分别评估业务空结果处理、真实错误恢复及持续完成，不为凑步数增加无用调用。",
+            "verification": "预先定义重复运行次数和通过门槛；报告连续完成率、错误恢复成功率及长链有效样本数。没有对应证据的维度继续标为insufficient。"
+          }
+        ],
+        "unavailable": 0,
+        "resource_efficiency_review": {
+          "rating": "poor",
+          "assessment": "优先依据50%的业务成功率及包含成功、失败尝试消耗的每次业务成功成本，整体资源效率评为poor。各资源指标有效样本均为8/8，成功样本覆盖4/4；每次业务成功消耗0.4204825美元、82270.5 tokens、27.8395秒及4.75次工具调用。这些是本批次完整采集口径下的成本，而非观测下限。缺少同类任务基线和预算，不能判定超预算；也不能用效率均分44或缓存率掩盖任务失败。",
+          "findings": [
+            "8次尝试累计消耗1.68193美元、329082 tokens、111.358秒和19次工具调用；每次业务成功成本的分子包含全部成功和失败尝试的已观测消耗。",
+            "e2e_ms、steps、tool_calls、tokens、input_tokens、output_tokens、cached_tokens、cost_usd、retries及cache_token_ratio均有8/8有效样本。Token总量覆盖未见不足，但缺少按调用、上下文来源拆分的归因证据。",
+            "输入Token为325430，占总Token约98.9%；缓存占输入Token约52.6%，缓存命中不能抵消大上下文和业务失败带来的成本。",
+            "AA-FU-069输入83922 tokens，并存在一次未见新增信息的重复缓存查询；其他空结果后的有效查询不能仅因重复查询形式而判为冗余。",
+            "Trace覆盖不足：策略检查缺少执行证据，多例查询参数、结果或最终回答不完整；全部案例仅有一次独立运行及2至3个工具步骤，长链与连续完成证据不足。无错误观测不等于恢复能力通过。",
+            "当前完整成本结论仅适用于已报告采集口径；若后续发现遗漏调用或Token，相关cost_per_business_success应改标为观测下限，不得继续作为完整成本。"
+          ],
+          "model": "openai/gpt-6.1-sol",
+          "prompt_version": "ai-assistant-resource-efficiency-summary-v2"
+        }
+      }
+    }
+  }
+}
