@@ -1,0 +1,2182 @@
+{
+  "authenticated_session_readback": [
+    {
+      "session_id": "cs_7ed153d2-487d-4655-8fe3-c14d416f311a",
+      "actor": {
+        "account_ref": "安柔",
+        "company": "Zelto",
+        "tenant_id": "T112053RE",
+        "user_id": "ouv4qlvxa3mbkp"
+      },
+      "http_status": 200,
+      "business_code": 0,
+      "read_at": "2026-11-03T12:47:16.938195+00:00",
+      "verified": true,
+      "source": {
+        "session": {
+          "sessionId": "cs_7ed153d2-487d-4655-8fe3-c14d416f311a",
+          "title": "今日工作重点总结",
+          "createdAt": 1791202376407,
+          "updatedAt": 1793668397205,
+          "lastMessageAt": 1793697197204,
+          "hasUnread": true
+        },
+        "messages": [
+          {
+            "messageId": "cm_2ddc0d3a-8f26-43ae-9a47-219b244e1d9b",
+            "messageSequence": 2052,
+            "role": 1,
+            "status": 3,
+            "content": "帮我总结今天的工作重点",
+            "createdAt": 1791202376804,
+            "updatedAt": 1791202376804,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_ed1afa89-83d2-46b5-aa11-21ddeb23da36",
+            "messageSequence": 2053,
+            "role": 2,
+            "status": 3,
+            "content": "截至今天 21:12（东京时间），你的工作重点集中在 **AI 助手权限与发布验证**：\n\n1. **完成权限链路验证与环境发布**\n   - 跟进权限配置已部署到 pre 后的接口验证，需要基于新包完成验证。\n   - `pre` 已于约 20:42 重新发布完成；下一步应确认权限接口及人员全选能力在目标环境表现正常。\n   - 生产侧还有“AI 助手支持人员全选”的发布事项需要跟进。\n\n2. **合并后端修复并回归测试**\n   - 需要将 backend PR #112、#113 合并到 test；其中 #113 修复了任务状态字段取值错误，可能导致此前偶发查不到状态。\n   - 建议合并后重点回归：任务状态读取、权限相关接口，以及 AI 助手核心流程。\n\n3. **处理隐私文案与审计范围**\n   - 审计能力若无明确要求可不纳入本轮；隐私文案需调整为“记忆内容仅你本人可见”。\n   - 你已就隐私协议提出确认，建议在发布前同步核对协议内容与页面文案是否一致。\n\n4. **确认报告生成功能稳定性**\n   - 你反馈过 `report chat generation failed`；后续说明显示当时受依赖的 org 服务发布、无可用节点影响，发布完成后应恢复。\n   - 建议补一次报告生成验证，确认该问题不再复现。\n\n**需要留意的既有高优先级待办**（今天没有看到更新记录）：\n- 首次进入 AI 助手时，会话列表无法滑动。`widget:task:task_vwshbtwhpcoa:T112053RE`\n- Hover 后时间展示样式需要调整。`widget:task:task_vwshwom5twcc:T112053RE`\n\n今天未读取到你可见的当日汇报；项目任务中也未查到你创建或执行的项目任务。以上重点主要依据今天的群消息与既有消息任务整理。\n\n是否要将今天涉及的相关群设为长期关注，以便后续自动聚焦这类发布、权限和故障信息？",
+            "finishReason": "completed",
+            "createdAt": 1791202376806,
+            "updatedAt": 1791173609885,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_6c0be7d3-97f0-4c0d-9198-bbf89680255f",
+            "messageSequence": 2358,
+            "role": 1,
+            "status": 3,
+            "content": "帮我总结今天的工作重点",
+            "createdAt": 1791263170174,
+            "updatedAt": 1791263170174,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_94139161-9ee5-4fdf-b305-455f620a4bb9",
+            "messageSequence": 2359,
+            "role": 2,
+            "status": 3,
+            "content": "截至今天 14:06（东京时间），你的工作重点集中在 **AI 助手一期问题收敛与新包验证**：\n\n1. **复验并收敛产品问题**\n   - 产品昨天新增了 **19 个问题**，另有 **4–5 个历史遗留**计划今天继续验证；你提出要把产品、设计和测试提出的问题统一对齐，并评估是否需要增配人手分担。`widget:refs:msg:sg_3981594831:1099:T112053RE|msg:sg_3981594831:1100:T112053RE`\n\n2. **验证新包，定位阻塞项**\n   - 你已要求测试同学验证新包；当前已知阻塞包括“创建自动任务失败”，以及包本身仍存在问题，需要优先复现、定位并确认修复结果。`widget:refs:msg:sg_3981594831:1085:T112053RE|msg:sg_3981594831:1090:T112053RE|msg:sg_3981594831:1109:T112053RE`\n\n3. **推进跨租户权限验证**\n   - `prepare` 的跨租户权限仍在确认中；讨论中提到客户端会携带用户所在租户，建议围绕该上下文完成权限链路与异常场景验证。`widget:refs:msg:sg_3981594831:1097:T112053RE|msg:sg_3981594831:1098:T112053RE`\n\n4. **明确模型输出格式的修复归属**\n   - 当前出现反引号/渲染格式异常；“后端统一格式”和“调整 system prompt”两种方案仍有分歧，建议先确认根因与责任边界，再落实修复方案。`widget:refs:msg:sg_3981594831:1103:T112053RE|msg:sg_3981594831:1104:T112053RE|msg:sg_3981594831:1105:T112053RE|msg:sg_3981594831:1106:T112053RE`\n\n**覆盖说明：**今天尚未读取到可访问的当日汇报；任务当前状态也未能核实，因此以上以你在 AI 助手研发群的实际发言、被 @ 事项及相关讨论为主。",
+            "finishReason": "completed",
+            "createdAt": 1791263170177,
+            "updatedAt": 1791234406819,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_efc963f0-1d19-4902-a247-e02180bc284a",
+            "messageSequence": 7922,
+            "role": 1,
+            "status": 3,
+            "content": "帮我总结今天的工作重点",
+            "createdAt": 1793697051510,
+            "updatedAt": 1793697051512,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_4026f62b-1719-4009-b17d-099f637b1b25",
+            "messageSequence": 7923,
+            "role": 2,
+            "status": 3,
+            "content": "截至 **11 月 3 日 18:10（东京时间）**，你的工作重点主要是 **AI 助手全量测试、问题定位与产品体验验证**。项目任务和部分消息尚未完整核实，以下是根据已读记录整理的重点。\n\n1. **推进预发环境全量测试。** 你计划在最新代码部署后运行 pre 全量用例，范围包括消息和空间任务；同时确认自动化用例所需租户的开放情况，并分享了 test 云端复核报告。部署方已回复发布，但现有记录**不能确认 pre 全量已跑完或测试结果**。`widget:refs:msg:sg_1859764497:1593:T112053RE|msg:sg_1859764497:1594:T112053RE|msg:sg_1859764497:1596:T112053RE|msg:sg_1859764497:1610:T112053RE|msg:sg_1859764497:1611:T112053RE|msg:sg_1859764497:1652:T112053RE`\n\n2. **跟进测试报错和执行效率。** 你请孙文查看 iswarm 追问报错，修复结果尚未确认；另外，你反馈测试执行效率下降，提出可考虑晚上运行。后续对方表示已取消并发限制，是否重跑及效果如何仍待确认。`widget:refs:msg:sg_1859764497:1640:T112053RE|msg:sg_1859764497:1648:T112053RE|msg:sg_1859764497:1649:T112053RE|msg:sg_1859764497:1650:T112053RE`\n\n3. **推动任务列表刷新问题处理。** 你指出当前切换空间才会重新请求任务查询接口，建议切换任务 Tab 时也重新请求，并询问由谁处理；目前未看到明确接手人或修复完成的记录。`widget:refs:msg:sg_3981594831:2223:T112053RE|msg:sg_3981594831:2225:T112053RE|msg:sg_3981594831:2226:T112053RE`\n\n4. **对齐自定义字段和跨租户体验。** 你指出项目同步任务自定义字段时，向项目增加相同 key 的逻辑存在问题，并提出考虑去掉该同步逻辑；你也提出跨租户回答可能不易理解，询问相关 case 能否延期修复。两项是否最终调整或延期，尚未确认。`widget:refs:msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2237:T112053RE|msg:sg_3981594831:2279:T112053RE|msg:sg_3981594831:2281:T112053RE`\n\n5. **协调多语言验收。** 你请李振民联系爱德验收多语言；验收结果尚未看到。`widget:msg:sg_3981594831:2269:T112053RE`\n\n**补充更正：**此前列为既有待办的“首次进入 AI 助手会话列表无法滑动”和“Hover 时间样式”两项，当前状态均为**已完成**；但现有信息不能证明它们是在今天完成的。`widget:refs:task:task_vwshbtwhpcoa:T112053RE|task:task_vwshwom5twcc:T112053RE`\n\n今天的当日汇报未查到；项目任务、部分消息任务及其他相关消息尚未完整核实。你可以回复“继续”，我再补查剩余部分。",
+            "finishReason": "completed",
+            "createdAt": 1793697051510,
+            "updatedAt": 1793668397203,
+            "attachments": {}
+          }
+        ],
+        "nextBeforeSequence": 2052
+      }
+    }
+  ],
+  "independent_answer_citation_readback": {
+    "read_at": "2026-11-03T13:09:30.582988+00:00",
+    "original_actor": {
+      "account_ref": "安柔",
+      "company": "Zelto",
+      "tenant_id": "T112053RE",
+      "user_id": "ouv4qlvxa3mbkp"
+    },
+    "messages": [
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1593,
+        "request_id": "3e3a535b-44df-4a7b-922d-868f96aeca6d",
+        "read_at": "2026-11-03T13:02:59.652076+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "d884c5b1ff261ba70913d7ad062d499c",
+          "serverMsgID": "e8e667bf0000ab50750d43865a590517",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的\",\"atUserList\":[\"ouv4qlvxoaugyp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxoaugyp\",\"groupNickname\":\"公台\"}],\"quoteMessage\":{\"clientMsgID\":\"ded326e62f44e4987bf23c60e6c32fb8\",\"serverMsgID\":\"8c44029c44d1b9a4c12efe8914bb85b3\",\"createTime\":1793669375080,\"sendTime\":1793669375131,\"sessionType\":3,\"sendID\":\"ouv4qlvxoaugyp\",\"recvID\":\"1859764497\",\"conversationID\":\"sg_1859764497\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":4,\"senderNickname\":\"公台\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw\",\"senderEmail\":\"schmidtgan@gmail.com\",\"senderSignature\":\"分からない\",\"groupID\":\"1859764497\",\"seq\":1591,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"readProgress\":{\"clientMsgID\":\"ded326e62f44e4987bf23c60e6c32fb8\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"textElem\":{\"content\":\"我这基于main 分支重新发了一版\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":8}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 1593,
+          "sendTime": 1793670078483,
+          "createTime": 1793670078182,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: @公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"d884c5b1ff261ba70913d7ad062d499c\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouv4qlvxoaugyp\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouv4qlvxoaugyp"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1594,
+        "request_id": "a81ccdbe-2ace-4c2c-900b-1a20c3f12509",
+        "read_at": "2026-11-03T13:09:21.519806+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "18b1af8288d8b76d197bfeac50d32716",
+          "serverMsgID": "36a65bb39ec1b080f49e5d124027da54",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 114,
+          "content": "{\"text\":\"pre是包含消息和空间任务的全量case，test只有空间任务的case。\",\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"d884c5b1ff261ba70913d7ad062d499c\",\"serverMsgID\":\"e8e667bf0000ab50750d43865a590517\",\"createTime\":1793670078182,\"sendTime\":1793670078483,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"recvID\":\"1859764497\",\"conversationID\":\"sg_1859764497\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"1859764497\",\"seq\":1593,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"offlinePush\":{\"title\":\"agent 干活群\",\"desc\":\"安柔: @公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的\",\"ex\":\"{\\\"conversationId\\\":\\\"sg_1859764497\\\",\\\"clientMsgID\\\":\\\"d884c5b1ff261ba70913d7ad062d499c\\\",\\\"contentType\\\":106,\\\"sessionType\\\":3,\\\"atUserList\\\":[\\\"ouv4qlvxoaugyp\\\"],\\\"isUrgent\\\":false,\\\"isOtherTenant\\\":false,\\\"avaterUrl\\\":\\\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\\\"}\",\"iOSBadgeCount\":true},\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":8}}\",\"readProgress\":{\"clientMsgID\":\"d884c5b1ff261ba70913d7ad062d499c\",\"readCount\":2,\"totalMembers\":7,\"isCompleted\":false,\"readPercentage\":28,\"peerReadTime\":0},\"atTextElem\":{\"text\":\"@公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的\",\"atUserList\":[\"ouv4qlvxoaugyp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxoaugyp\",\"groupNickname\":\"公台\"}],\"quoteMessage\":{\"clientMsgID\":\"ded326e62f44e4987bf23c60e6c32fb8\",\"serverMsgID\":\"8c44029c44d1b9a4c12efe8914bb85b3\",\"createTime\":1793669375080,\"sendTime\":1793669375131,\"sessionType\":3,\"sendID\":\"ouv4qlvxoaugyp\",\"recvID\":\"1859764497\",\"conversationID\":\"sg_1859764497\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":4,\"senderNickname\":\"公台\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw\",\"senderEmail\":\"schmidtgan@gmail.com\",\"senderSignature\":\"分からない\",\"groupID\":\"1859764497\",\"seq\":1591,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"readProgress\":{\"clientMsgID\":\"ded326e62f44e4987bf23c60e6c32fb8\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"textElem\":{\"content\":\"我这基于main 分支重新发了一版\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":8}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":8}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"ded326e62f44e4987bf23c60e6c32fb8\",\"isUrgent\":false,\"urgentConfirm\":false}}",
+          "seq": 1594,
+          "sendTime": 1793670141736,
+          "createTime": 1793670141434,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: pre是包含消息和空间任务的全量case，test只有空间任务的case。",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"18b1af8288d8b76d197bfeac50d32716\",\"contentType\":114,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1596,
+        "request_id": "1df42c50-6e88-443e-85b3-38403f2adc49",
+        "read_at": "2026-11-03T13:09:21.518905+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "e1971129958aa0a0b023ff338c2ae551",
+          "serverMsgID": "48ed38b2dc5dcc17b8a64d39b373c8c1",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@Yatoro zelto和智本另一个租户什么时候放开，自动化case是在这两个租户跑的。\",\"atUserList\":[\"ouvppako1eetr0\"],\"atUsersInfo\":[{\"atUserID\":\"ouvppako1eetr0\",\"groupNickname\":\"Yatoro\"}],\"quoteMessage\":{\"clientMsgID\":\"66c6c9720fac3fb55a6d1a1ee5514c1d\",\"serverMsgID\":\"2e61b3c9fc2f4d2299e322b864fc46e2\",\"createTime\":1793671149099,\"sendTime\":1793671149522,\"sessionType\":3,\"sendID\":\"ouvppako1eetr0\",\"recvID\":\"1859764497\",\"conversationID\":\"sg_1859764497\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"Yatoro\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VPPBHsmkfm2t\",\"senderEmail\":\"leevianchang@gmail.com\",\"groupID\":\"1859764497\",\"seq\":1595,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"isEdited\":true,\"editTime\":1793671167749,\"readProgress\":{\"clientMsgID\":\"66c6c9720fac3fb55a6d1a1ee5514c1d\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"atTextElem\":{\"text\":\"￼\\n我验证了pre环境这个租户已经开始走sub2api了，zelto没有走sub2api，可以先小量验证，看看账单了@安柔 @公台 \",\"atUserList\":[\"ouv4qlvxa3mbkp\",\"ouv4qlvxoaugyp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxa3mbkp\",\"groupNickname\":\"安柔\"},{\"atUserID\":\"ouv4qlvxoaugyp\",\"groupNickname\":\"公台\"}],\"messageEntityList\":[{\"type\":\"image\",\"offset\":0,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZs5BrXzvvnt\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZs5BrXzvvnt\\\",\\\"isSticker\\\":false,\\\"width\\\":136,\\\"height\\\":106,\\\"size\\\":9309,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793671111163_r9dh6x.png\\\",\\\"filePath\\\":\\\"/Users/leevian/Library/Application Support/iHive/iHiveIMData/temp/f6/image_1793671111163_r9dh6x.png\\\",\\\"inlineId\\\":\\\"efa669ee-fc0d-41b2-8885-be7f49bcb7a2\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_1859764497\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}],\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":8}},\"reactionSummary\":{\"clientMsgID\":\"66c6c9720fac3fb55a6d1a1ee5514c1d\",\"totalCount\":1,\"emojiGroups\":[{\"emoji\":\"[OK]\",\"count\":1,\"users\":[{\"userID\":\"ouv4qlvxoaugyp\",\"nickname\":\"公台\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw\",\"signature\":\"\",\"createTime\":1793671189614,\"status\":2,\"isReadByMe\":true}],\"hasMore\":false,\"latestTime\":1793671189614,\"isMyReaction\":false}],\"updateTime\":1793671189614},\"hasReactions\":true,\"reactionCount\":1,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 1596,
+          "sendTime": 1793671469173,
+          "createTime": 1793671468778,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: @Yatoro zelto和智本另一个租户什么时候放开。",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"e1971129958aa0a0b023ff338c2ae551\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvppako1eetr0\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvppako1eetr0"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}",
+          "isEdited": true,
+          "editTime": 1793671495965
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1610,
+        "request_id": "810588d2-4a28-4def-815d-2c4279516e34",
+        "read_at": "2026-11-03T13:03:00.527963+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "ce082b70b12d873729708a47c6c2bc30",
+          "serverMsgID": "5c85d00d6f06af7b7f844afc8cdf1a14",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"好的，最新代码都部署到pre了吗@公台 @浩澜 部署完了我开始跑全量case了\",\"atUserList\":[\"ouv4qlvxoaugyp\",\"ouv4qluqoynfcv\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxoaugyp\",\"groupNickname\":\"公台\"},{\"atUserID\":\"ouv4qluqoynfcv\",\"groupNickname\":\"浩澜\"}],\"isAtSelf\":false}",
+          "seq": 1610,
+          "sendTime": 1793672922291,
+          "createTime": 1793672921898,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: 好的，最新代码都部署到pre了吗@公台 @浩澜 部署完了我开始跑全量case了",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"ce082b70b12d873729708a47c6c2bc30\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouv4qlvxoaugyp\",\"ouv4qluqoynfcv\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouv4qlvxoaugyp",
+            "ouv4qluqoynfcv"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1611,
+        "request_id": "7994f365-4ae8-4008-b2ee-6f77aacbb4c8",
+        "read_at": "2026-11-03T13:03:00.528516+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxoaugyp",
+          "groupID": "1859764497",
+          "clientMsgID": "1cc236a39c20a2763940d9a3fcc7e813",
+          "serverMsgID": "b773d3856a1bc8982cee6114096a3777",
+          "senderPlatformID": 4,
+          "senderNickname": "公台",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 101,
+          "content": "{\"content\":\"都发了\"}",
+          "seq": 1611,
+          "sendTime": 1793673088825,
+          "createTime": 1793673088747,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "公台: 都发了",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"1cc236a39c20a2763940d9a3fcc7e813\",\"contentType\":101,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":true}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1640,
+        "request_id": "56f12f82-bf0c-43a2-baef-d1ef8579bd63",
+        "read_at": "2026-11-03T13:03:01.228989+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "115f4846f95a5ac93d1aaddbb4f6dc4c",
+          "serverMsgID": "55d72ccf51f7f324eee9cc6b8e6d367b",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@孙文 看下iswarm追问报错的问题\",\"atUserList\":[\"ouvgomnvjyywac\"],\"atUsersInfo\":[{\"atUserID\":\"ouvgomnvjyywac\",\"groupNickname\":\"孙文\"}],\"quoteMessage\":{\"clientMsgID\":\"43d139c504e2119c1de520ce7d71794e\",\"serverMsgID\":\"9c0254915036617b76a665b21ba9aab0\",\"createTime\":1793674320276,\"sendTime\":1793674320569,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"recvID\":\"1859764497\",\"conversationID\":\"sg_1859764497\",\"msgFrom\":100,\"contentType\":102,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"1859764497\",\"seq\":1616,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"ex\":\"{\\\"originalFileName\\\":\\\"image_1793674318045_urc630.png\\\",\\\"localPreviewUrl\\\":\\\"file:///Users/barry/Library/Application Support/iHive/iHiveIMData/temp/93/image_1793674318045_urc630_1793674318483_qzscdq.png\\\"}\",\"readProgress\":{\"clientMsgID\":\"43d139c504e2119c1de520ce7d71794e\",\"readCount\":6,\"totalMembers\":7,\"isCompleted\":false,\"readPercentage\":85,\"peerReadTime\":0},\"pictureElem\":{\"sourcePath\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt\",\"sourcePicture\":{\"uuid\":\"fl09TqR8RUxIe3JV0VZsIeCZtq8vt\",\"type\":\"png\",\"size\":389850,\"width\":889,\"height\":896,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt\"},\"bigPicture\":{\"uuid\":\"fl09TqR8RUxIe3JV0VZsIeCZtq8vt\",\"type\":\"png\",\"size\":389850,\"width\":889,\"height\":896,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt\"},\"snapshotPicture\":{\"uuid\":\"fl09TqR8RUxIe3JV0VZsIeCZtq8vt\",\"type\":\"png\",\"size\":389850,\"width\":889,\"height\":896,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt\"},\"auth_attrs\":{\"conversation_id\":\"sg_1859764497\",\"scene\":\"chat\"},\"fileServerSource\":\"new\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":8}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":1,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 1640,
+          "sendTime": 1793693795762,
+          "createTime": 1793693795540,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: @孙文 看下iswarm追问报错的问题",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"115f4846f95a5ac93d1aaddbb4f6dc4c\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvgomnvjyywac\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvgomnvjyywac"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1648,
+        "request_id": "9fe8efc0-647f-4f05-87df-829823a46f79",
+        "read_at": "2026-11-03T13:03:01.576186+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "67fc6805a3aeb999e877c43ad8cc079b",
+          "serverMsgID": "20058c98090372f22fdfe34259304f5a",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 101,
+          "content": "{\"content\":\"执行效率变低了\"}",
+          "seq": 1648,
+          "sendTime": 1793694336653,
+          "createTime": 1793694336439,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: 执行效率bian'l变低了",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"67fc6805a3aeb999e877c43ad8cc079b\",\"contentType\":101,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}",
+          "isEdited": true,
+          "editTime": 1793694345213
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1649,
+        "request_id": "74482a99-be50-43d2-92df-61f2c0049455",
+        "read_at": "2026-11-03T13:03:01.927931+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "cf16ed93f0218973c753d677664ff4c5",
+          "serverMsgID": "005c7764d3bc62cb2b92d4d214a04d56",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 101,
+          "content": "{\"content\":\"感觉这得放在晚上跑\"}",
+          "seq": 1649,
+          "sendTime": 1793694355769,
+          "createTime": 1793694355570,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: 感觉这得放在晚上跑",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"cf16ed93f0218973c753d677664ff4c5\",\"contentType\":101,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1650,
+        "request_id": "5543d733-fe99-40df-b89b-16f942fcd10f",
+        "read_at": "2026-11-03T13:03:01.907173+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouvppako1eetr0",
+          "groupID": "1859764497",
+          "clientMsgID": "68436f0b3af60c7e2c4652924d9e3193",
+          "serverMsgID": "5ab6d549fb7098153298084d4033b55f",
+          "senderPlatformID": 4,
+          "senderNickname": "Yatoro",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VPPBHsmkfm2t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 101,
+          "content": "{\"content\":\"我把并发改成不限制了，反正都是自己用，应该问题不大吧\"}",
+          "seq": 1650,
+          "sendTime": 1793694423719,
+          "createTime": 1793694423557,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "Yatoro: 我把并发改成不限制了，反正都是自己用，应该问题不大吧",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"68436f0b3af60c7e2c4652924d9e3193\",\"contentType\":101,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VPPBHsmkfm2t\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":true}"
+        }
+      },
+      {
+        "conversation_id": "sg_1859764497",
+        "seq": 1652,
+        "request_id": "578086f6-c18b-4ec9-9f0a-a17f69c90428",
+        "read_at": "2026-11-03T13:03:02.277281+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "1859764497",
+          "clientMsgID": "b5d0c10c5681137642e4de0fb453f18c",
+          "serverMsgID": "665b2b813ab395c3089a823e256e26c0",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 125,
+          "content": "{\"originalText\":\"https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/current/\",\"link\":{\"url\":\"https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/current\",\"title\":\"AI助手 test 全量评测报告 · 云端人工复核\",\"linkType\":1,\"faviconUrl\":\"https://anna0715.github.io/favicon.ico\",\"domain\":\"anna0715.github.io\",\"status\":2}}",
+          "seq": 1652,
+          "sendTime": 1793695436177,
+          "createTime": 1793695435923,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "agent 干活群",
+            "desc": "安柔: https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/current/",
+            "ex": "{\"conversationId\":\"sg_1859764497\",\"clientMsgID\":\"b5d0c10c5681137642e4de0fb453f18c\",\"contentType\":101,\"sessionType\":3,\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":8,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2223,
+        "request_id": "fc0ae45a-c471-4cc4-bacc-ab914f2a9206",
+        "read_at": "2026-11-03T13:03:38.530886+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+          "serverMsgID": "e0d9b2d0ac5dc61b34b77ae60a4a2339",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@SuChen 这里要切换空间才会重新请求任务查询接口。\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"ebf30772b9384b644a5e90a70082a6c5\",\"serverMsgID\":\"c1bbf7dae58636b088ed64df0c7086a0\",\"createTime\":1793681140943,\"sendTime\":1793681141128,\"sessionType\":3,\"sendID\":\"ouvkmtuntg5xpk\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":117,\"senderPlatformID\":4,\"senderNickname\":\"SuChen\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"senderEmail\":\"suchen.su@foxmail.com\",\"groupID\":\"3981594831\",\"seq\":2222,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"advancedTextElem\":{\"text\":\"￼\\n我是在这个页面\",\"messageEntityList\":[{\"type\":\"image\",\"offset\":0,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZslG4mc5ewh\\\",\\\"isSticker\\\":false,\\\"width\\\":2940,\\\"height\\\":1846,\\\"size\\\":971488,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793681137047_uwanj7.png\\\",\\\"filePath\\\":\\\"/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png\\\",\\\"inlineId\\\":\\\"4c8e22b5-d065-4163-82e8-00dc372c3a54\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_3981594831\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}]},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2223,
+          "sendTime": 1793681330013,
+          "createTime": 1793681329795,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @SuChen 这里要切换空间才会重新请求任务查询接口。",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"60ec68e07d700f0ab86c51719e23fd6c\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvkmtuntg5xpk\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2225,
+        "request_id": "3e4f86a9-a2f8-4d97-9eff-8fb4ee9860a1",
+        "read_at": "2026-11-03T13:09:29.343850+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "247e3b2b136cd998e0a6188c3bf5c26c",
+          "serverMsgID": "485a12eacf023fed12cd20f1b60e031f",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"33bbd5617a4588aec5e0e27abfbfb589\",\"serverMsgID\":\"2f8150854d8bfe0783587157d9415a4f\",\"createTime\":1793681372431,\"sendTime\":1793681372648,\"sessionType\":3,\"sendID\":\"ouvkmtuntg5xpk\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"SuChen\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"senderEmail\":\"suchen.su@foxmail.com\",\"groupID\":\"3981594831\",\"seq\":2224,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@安柔 优化一下？让页面立即刷新下？\",\"atUserList\":[\"ouv4qlvxa3mbkp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxa3mbkp\",\"groupNickname\":\"安柔\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"60ec68e07d700f0ab86c51719e23fd6c\",\"serverMsgID\":\"e0d9b2d0ac5dc61b34b77ae60a4a2339\",\"createTime\":1793681329795,\"sendTime\":1793681330013,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2223,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@SuChen 这里要切换空间才会重新请求任务查询接口。\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"ebf30772b9384b644a5e90a70082a6c5\",\"serverMsgID\":\"c1bbf7dae58636b088ed64df0c7086a0\",\"createTime\":1793681140943,\"sendTime\":1793681141128,\"sessionType\":3,\"sendID\":\"ouvkmtuntg5xpk\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":117,\"senderPlatformID\":4,\"senderNickname\":\"SuChen\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"senderEmail\":\"suchen.su@foxmail.com\",\"groupID\":\"3981594831\",\"seq\":2222,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"advancedTextElem\":{\"text\":\"￼\\n我是在这个页面\",\"messageEntityList\":[{\"type\":\"image\",\"offset\":0,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZslG4mc5ewh\\\",\\\"isSticker\\\":false,\\\"width\\\":2940,\\\"height\\\":1846,\\\"size\\\":971488,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793681137047_uwanj7.png\\\",\\\"filePath\\\":\\\"/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png\\\",\\\"inlineId\\\":\\\"4c8e22b5-d065-4163-82e8-00dc372c3a54\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_3981594831\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}]},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"ebf30772b9384b644a5e90a70082a6c5\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"60ec68e07d700f0ab86c51719e23fd6c\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2225,
+          "sendTime": 1793681393295,
+          "createTime": 1793681393103,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"247e3b2b136cd998e0a6188c3bf5c26c\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvkmtuntg5xpk\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2226,
+        "request_id": "affd98f9-1a59-4059-ae60-d40c3c64d3bd",
+        "read_at": "2026-11-03T13:09:29.652473+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "25f9fbaa686e4cd985e43f53aeedbf02",
+          "serverMsgID": "1b9ae03417a8bd8e01fcdc0c935f9738",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@李振民 可以看下你处理一下还是自力来处理\",\"atUserList\":[\"ouv4qltobpg3qq\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qltobpg3qq\",\"groupNickname\":\"李振民\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"247e3b2b136cd998e0a6188c3bf5c26c\",\"serverMsgID\":\"485a12eacf023fed12cd20f1b60e031f\",\"createTime\":1793681393103,\"sendTime\":1793681393295,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"recvID\":\"3981594831\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2225,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"offlinePush\":{\"title\":\"AI助手·一期 研发群\",\"desc\":\"安柔: @SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。\",\"ex\":\"{\\\"conversationId\\\":\\\"sg_3981594831\\\",\\\"clientMsgID\\\":\\\"247e3b2b136cd998e0a6188c3bf5c26c\\\",\\\"contentType\\\":106,\\\"sessionType\\\":3,\\\"atUserList\\\":[\\\"ouvkmtuntg5xpk\\\"],\\\"isUrgent\\\":false,\\\"isOtherTenant\\\":false,\\\"avaterUrl\\\":\\\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\\\"}\",\"iOSBadgeCount\":true},\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"readProgress\":{\"clientMsgID\":\"247e3b2b136cd998e0a6188c3bf5c26c\",\"readCount\":2,\"totalMembers\":19,\"isCompleted\":false,\"readPercentage\":10,\"peerReadTime\":0},\"atTextElem\":{\"text\":\"@SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"33bbd5617a4588aec5e0e27abfbfb589\",\"serverMsgID\":\"2f8150854d8bfe0783587157d9415a4f\",\"createTime\":1793681372431,\"sendTime\":1793681372648,\"sessionType\":3,\"sendID\":\"ouvkmtuntg5xpk\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"SuChen\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"senderEmail\":\"suchen.su@foxmail.com\",\"groupID\":\"3981594831\",\"seq\":2224,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@安柔 优化一下？让页面立即刷新下？\",\"atUserList\":[\"ouv4qlvxa3mbkp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxa3mbkp\",\"groupNickname\":\"安柔\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"60ec68e07d700f0ab86c51719e23fd6c\",\"serverMsgID\":\"e0d9b2d0ac5dc61b34b77ae60a4a2339\",\"createTime\":1793681329795,\"sendTime\":1793681330013,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2223,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@SuChen 这里要切换空间才会重新请求任务查询接口。\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"ebf30772b9384b644a5e90a70082a6c5\",\"serverMsgID\":\"c1bbf7dae58636b088ed64df0c7086a0\",\"createTime\":1793681140943,\"sendTime\":1793681141128,\"sessionType\":3,\"sendID\":\"ouvkmtuntg5xpk\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":117,\"senderPlatformID\":4,\"senderNickname\":\"SuChen\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"senderEmail\":\"suchen.su@foxmail.com\",\"groupID\":\"3981594831\",\"seq\":2222,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"advancedTextElem\":{\"text\":\"￼\\n我是在这个页面\",\"messageEntityList\":[{\"type\":\"image\",\"offset\":0,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZslG4mc5ewh\\\",\\\"isSticker\\\":false,\\\"width\\\":2940,\\\"height\\\":1846,\\\"size\\\":971488,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793681137047_uwanj7.png\\\",\\\"filePath\\\":\\\"/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png\\\",\\\"inlineId\\\":\\\"4c8e22b5-d065-4163-82e8-00dc372c3a54\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_3981594831\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}]},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"ebf30772b9384b644a5e90a70082a6c5\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"60ec68e07d700f0ab86c51719e23fd6c\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"33bbd5617a4588aec5e0e27abfbfb589\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2226,
+          "sendTime": 1793681421385,
+          "createTime": 1793681421185,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @李振民 可以看下你处理一下还是自力来处理",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"25f9fbaa686e4cd985e43f53aeedbf02\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouv4qltobpg3qq\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouv4qltobpg3qq"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2232,
+        "request_id": "b1e3719c-ae27-41fc-927a-2fc7545c0713",
+        "read_at": "2026-11-03T13:03:39.238794+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "1f3990c5d0f737ed7d32be52b69dd6c7",
+          "serverMsgID": "adbfd43a4cf2bc2ad463eb8e30d50bbc",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@守白 感觉还是要把项目同步任务自定义字段的逻辑去掉，不然项目的字段太冗余了\",\"atUserList\":[\"ouvjhgphs7fnzd\"],\"atUsersInfo\":[{\"atUserID\":\"ouvjhgphs7fnzd\",\"groupNickname\":\"守白\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"0d22e0e74998a8c4d60f826fbf6abd63\",\"serverMsgID\":\"fae3867786d03417b8709e631b1e4b2b\",\"createTime\":1793681732098,\"sendTime\":1793681732563,\"sessionType\":3,\"sendID\":\"ouvjhgphs7fnzd\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":4,\"senderNickname\":\"守白\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm\",\"senderEmail\":\"colorday655@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2231,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"textElem\":{\"content\":\"嗯嗯 我开始还以为写入那个需求不支持：） 那还得等等，我先把数据同步搞好\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2232,
+          "sendTime": 1793681755490,
+          "createTime": 1793681755302,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @守白 感觉还是要把项目同步任务自定义字段的逻辑去掉，不然项目的字段太冗余了",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"1f3990c5d0f737ed7d32be52b69dd6c7\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvjhgphs7fnzd\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvjhgphs7fnzd"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2237,
+        "request_id": "01a590e7-5445-4323-84fd-084b6d8333ae",
+        "read_at": "2026-11-03T13:09:29.726715+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "41eaea7328709dbec9a063d261228b92",
+          "serverMsgID": "0c6df110ddc1af31ad627d186981bae5",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@守白 key和value和隔离开的，就是同步给项目增加一样的key的逻辑有问题。\",\"atUserList\":[\"ouvjhgphs7fnzd\"],\"atUsersInfo\":[{\"atUserID\":\"ouvjhgphs7fnzd\",\"groupNickname\":\"守白\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"6f1235d0bb4d5f6d9154588f70e68a45\",\"serverMsgID\":\"35f4badbcd44c59bc05a79f2909976aa\",\"createTime\":1793681862622,\"sendTime\":1793681863123,\"sessionType\":3,\"sendID\":\"ouvjhgphs7fnzd\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"守白\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm\",\"senderEmail\":\"colorday655@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2235,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@安柔 其实只要把项目详情里那部分隐藏不显示就行了，自定义字段是给任务用的，如果项目要用得和任务的隔离开\",\"atUserList\":[\"ouv4qlvxa3mbkp\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qlvxa3mbkp\",\"groupNickname\":\"安柔\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"1f3990c5d0f737ed7d32be52b69dd6c7\",\"serverMsgID\":\"adbfd43a4cf2bc2ad463eb8e30d50bbc\",\"createTime\":1793681755302,\"sendTime\":1793681755490,\"sessionType\":3,\"sendID\":\"ouv4qlvxa3mbkp\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"安柔\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\",\"senderEmail\":\"a16621325482@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2232,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"atTextElem\":{\"text\":\"@守白 感觉还是要把项目同步任务自定义字段的逻辑去掉，不然项目的字段太冗余了\",\"atUserList\":[\"ouvjhgphs7fnzd\"],\"atUsersInfo\":[{\"atUserID\":\"ouvjhgphs7fnzd\",\"groupNickname\":\"守白\"}],\"quoteMessage\":{\"tenantID\":\"T112053RE\",\"clientMsgID\":\"0d22e0e74998a8c4d60f826fbf6abd63\",\"serverMsgID\":\"fae3867786d03417b8709e631b1e4b2b\",\"createTime\":1793681732098,\"sendTime\":1793681732563,\"sessionType\":3,\"sendID\":\"ouvjhgphs7fnzd\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":4,\"senderNickname\":\"守白\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm\",\"senderEmail\":\"colorday655@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2231,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"attachedInfo\":\"{\\\"groupHasReadInfo\\\":{\\\"hasReadCount\\\":0,\\\"groupMemberCount\\\":20}}\",\"textElem\":{\"content\":\"嗯嗯 我开始还以为写入那个需求不支持：） 那还得等等，我先把数据同步搞好\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"0d22e0e74998a8c4d60f826fbf6abd63\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"replyToClientMsgID\":\"1f3990c5d0f737ed7d32be52b69dd6c7\",\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2237,
+          "sendTime": 1793681906803,
+          "createTime": 1793681906606,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @守白 key和value和隔离开的，就是同步给项目增加一样的key的逻辑有问题。",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"41eaea7328709dbec9a063d261228b92\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvjhgphs7fnzd\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvjhgphs7fnzd"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false,\"reactionList\":[{\"clientMsgID\":\"41eaea7328709dbec9a063d261228b92\",\"conversationID\":\"sg_3981594831\",\"emoji\":\"[YES]\",\"userID\":\"ouvjhgphs7fnzd\",\"msgSendID\":\"ouv4qlvxa3mbkp\",\"nickname\":\"守白\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm\",\"createTime\":1793681961307,\"isReadByMe\":true,\"readTime\":1793681962438,\"tenantID\":\"T112053RE\",\"companyID\":\"orv4mpnau8n1es\"}],\"reactions\":{\"clientMsgID\":\"41eaea7328709dbec9a063d261228b92\",\"conversationID\":\"sg_3981594831\",\"emojiGroups\":[{\"count\":1,\"emoji\":\"[YES]\",\"hasMore\":false,\"latestTime\":1793681961307,\"users\":[{\"createTime\":1793681961307,\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm\",\"nickname\":\"守白\",\"signature\":\"\",\"userID\":\"ouvjhgphs7fnzd\"}]}],\"totalCount\":1,\"updateTime\":1793711369905}}",
+          "hasReactions": true
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2269,
+        "request_id": "9b482317-1885-48ba-8248-707ed9732cd2",
+        "read_at": "2026-11-03T13:03:41.580770+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "9c95c2702c8a43e90a1aa39706aea799",
+          "serverMsgID": "a80b4bcc19dd0f89071d32ca99aad7b9",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@李振民 多语言你找下爱德验收\",\"atUserList\":[\"ouv4qltobpg3qq\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4qltobpg3qq\",\"groupNickname\":\"李振民\"}],\"quoteMessage\":{\"clientMsgID\":\"2072c0e96222fe7ec1e24ed16e442969\",\"serverMsgID\":\"d49fe7464d23344b8822b46182c74f1b\",\"createTime\":1793693406285,\"sendTime\":1793693406487,\"sessionType\":3,\"sendID\":\"ouv4qltobpg3qq\",\"recvID\":\"3981594831\",\"conversationID\":\"sg_3981594831\",\"msgFrom\":100,\"contentType\":106,\"senderPlatformID\":4,\"senderNickname\":\"李振民\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VYgCQydcfepi\",\"senderEmail\":\"agassiz.zhenmin@gmail.com\",\"groupID\":\"3981594831\",\"seq\":2267,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"readProgress\":{\"clientMsgID\":\"2072c0e96222fe7ec1e24ed16e442969\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"atTextElem\":{\"text\":\"1、AI 新手引导功能 (测试时，记得测试 多语言下的引导)\\n2、上面自动化创建后 ，列表刷新问题\\n3、会话草稿功能\\n@SuChen @安柔\",\"atUserList\":[\"ouvkmtuntg5xpk\",\"ouv4qlvxa3mbkp\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"},{\"atUserID\":\"ouv4qlvxa3mbkp\",\"groupNickname\":\"安柔\"}],\"isAtSelf\":false},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":20}},\"hasReactions\":false,\"reactionCount\":0,\"replyCount\":0,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 2269,
+          "sendTime": 1793693628827,
+          "createTime": 1793693628613,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: @李振民 多语言你找下爱德验收",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"9c95c2702c8a43e90a1aa39706aea799\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouv4qltobpg3qq\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouv4qltobpg3qq"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2279,
+        "request_id": "5596bde5-0b21-4a55-8191-3e5c2b0f49c7",
+        "read_at": "2026-11-03T13:03:41.949406+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "e849397d4b5dfa9494744e5ed6d5a73d",
+          "serverMsgID": "c4974e5dbfa8082f578e42c1e33fa02a",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"跨租户输出的回答是否需要优化下，这用户应该看不懂是什么意思。@SuChen ￼\",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"messageEntityList\":[{\"type\":\"image\",\"offset\":38,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZtiVH4xrbif\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZtiVH4xrbif\\\",\\\"isSticker\\\":false,\\\"width\\\":1052,\\\"height\\\":206,\\\"size\\\":33161,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793695256844_3z1b60.png\\\",\\\"filePath\\\":\\\"/Users/barry/Library/Application Support/iHive/iHiveIMData/temp/ce/image_1793695256844_3z1b60.png\\\",\\\"inlineId\\\":\\\"1efa4d27-80dc-420c-8d15-e851566d0ded\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_3981594831\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}],\"isAtSelf\":false}",
+          "seq": 2279,
+          "sendTime": 1793695271758,
+          "createTime": 1793695271504,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: \n跨租户模型返回的回答是否需要优化下。@SuChen [图片]",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"e849397d4b5dfa9494744e5ed6d5a73d\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvkmtuntg5xpk\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false,\"reactionList\":[{\"clientMsgID\":\"e849397d4b5dfa9494744e5ed6d5a73d\",\"conversationID\":\"sg_3981594831\",\"emoji\":\"[YES]\",\"userID\":\"ouvkmtuntg5xpk\",\"msgSendID\":\"ouv4qlvxa3mbkp\",\"nickname\":\"SuChen\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"createTime\":1793699715877,\"isReadByMe\":true,\"readTime\":1793700014518,\"tenantID\":\"T112053RE\",\"companyID\":\"orv4mpnau8n1es\"}],\"reactions\":{\"clientMsgID\":\"e849397d4b5dfa9494744e5ed6d5a73d\",\"conversationID\":\"sg_3981594831\",\"emojiGroups\":[{\"count\":1,\"emoji\":\"[YES]\",\"hasMore\":false,\"latestTime\":1793699715877,\"users\":[{\"createTime\":1793699715877,\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi\",\"nickname\":\"SuChen\",\"signature\":\"\",\"userID\":\"ouvkmtuntg5xpk\"}]}],\"totalCount\":1,\"updateTime\":1793711022096}}",
+          "hasReactions": true,
+          "isEdited": true,
+          "editTime": 1793695394729
+        }
+      },
+      {
+        "conversation_id": "sg_3981594831",
+        "seq": 2281,
+        "request_id": "82c137e1-f3a2-4827-b48a-3e6f20787c1e",
+        "read_at": "2026-11-03T13:03:41.950055+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlvxa3mbkp",
+          "groupID": "3981594831",
+          "clientMsgID": "75e7bb167bdd90b1db0bbbcd43933f36",
+          "serverMsgID": "de5df6507c88bd1dd6bef7a30f644bfc",
+          "senderPlatformID": 4,
+          "senderNickname": "安柔",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"￼看下这个case是否可以延期修复@SuChen \",\"atUserList\":[\"ouvkmtuntg5xpk\"],\"atUsersInfo\":[{\"atUserID\":\"ouvkmtuntg5xpk\",\"groupNickname\":\"SuChen\"}],\"messageEntityList\":[{\"type\":\"image\",\"offset\":0,\"length\":1,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZtn13zo9a0c\",\"ex\":\"{\\\"fileId\\\":\\\"fl09TqR8RUxIe3JV0VZtn13zo9a0c\\\",\\\"isSticker\\\":false,\\\"width\\\":1382,\\\"height\\\":765,\\\"size\\\":160002,\\\"mimeType\\\":\\\"image/png\\\",\\\"fileName\\\":\\\"image_1793696332580_xo6hf8.png\\\",\\\"filePath\\\":\\\"/Users/barry/Library/Application Support/iHive/iHiveIMData/temp/31/image_1793696332580_xo6hf8.png\\\",\\\"inlineId\\\":\\\"1cdd3703-e6f1-445a-985b-282d7363a5a0\\\",\\\"auth_attrs\\\":{\\\"scene\\\":\\\"chat\\\",\\\"conversation_id\\\":\\\"sg_3981594831\\\"},\\\"fileServerSource\\\":\\\"new\\\"}\"}],\"isAtSelf\":false}",
+          "seq": 2281,
+          "sendTime": 1793696364860,
+          "createTime": 1793696364655,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "AI助手·一期 研发群",
+            "desc": "安柔: [图片]看下这个case是否可以延期修复@SuChen ",
+            "ex": "{\"conversationId\":\"sg_3981594831\",\"clientMsgID\":\"75e7bb167bdd90b1db0bbbcd43933f36\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouvkmtuntg5xpk\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":20,\"hasReadCount\":0},\"isReadV2\":false}"
+        }
+      }
+    ],
+    "read_watermarks_unchanged": true,
+    "peer_messages_sent": 0,
+    "note": "Independent source content verifies factual citations, not proof of Agent retrieval."
+  },
+  "decoded_authenticated_original_messages": {
+    "method": "Recursive UTF-8 Base64/JSON decoding of authenticated original data; original receipts retained unchanged",
+    "messages": [
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "d884c5b1ff261ba70913d7ad062d499c",
+        "conversation_id": "sg_1859764497",
+        "seq": 1593,
+        "sender": "安柔",
+        "sendTime": 1793670078483,
+        "decoded_original_content": {
+          "text": "@公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的",
+          "atUserList": [
+            "ouv4qlvxoaugyp"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4qlvxoaugyp",
+              "groupNickname": "公台"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "ded326e62f44e4987bf23c60e6c32fb8",
+            "serverMsgID": "8c44029c44d1b9a4c12efe8914bb85b3",
+            "createTime": 1793669375080,
+            "sendTime": 1793669375131,
+            "sessionType": 3,
+            "sendID": "ouv4qlvxoaugyp",
+            "recvID": "1859764497",
+            "conversationID": "sg_1859764497",
+            "msgFrom": 100,
+            "contentType": 101,
+            "senderPlatformID": 4,
+            "senderNickname": "公台",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw",
+            "senderEmail": "schmidtgan@gmail.com",
+            "senderSignature": "分からない",
+            "groupID": "1859764497",
+            "seq": 1591,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "readProgress": {
+              "clientMsgID": "ded326e62f44e4987bf23c60e6c32fb8",
+              "readCount": 0,
+              "totalMembers": 0,
+              "isCompleted": false,
+              "readPercentage": 0,
+              "peerReadTime": 0
+            },
+            "textElem": {
+              "content": "我这基于main 分支重新发了一版"
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 8
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "18b1af8288d8b76d197bfeac50d32716",
+        "conversation_id": "sg_1859764497",
+        "seq": 1594,
+        "sender": "安柔",
+        "sendTime": 1793670141736,
+        "decoded_original_content": {
+          "text": "pre是包含消息和空间任务的全量case，test只有空间任务的case。",
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "d884c5b1ff261ba70913d7ad062d499c",
+            "serverMsgID": "e8e667bf0000ab50750d43865a590517",
+            "createTime": 1793670078182,
+            "sendTime": 1793670078483,
+            "sessionType": 3,
+            "sendID": "ouv4qlvxa3mbkp",
+            "recvID": "1859764497",
+            "conversationID": "sg_1859764497",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "安柔",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+            "senderEmail": "a16621325482@gmail.com",
+            "groupID": "1859764497",
+            "seq": 1593,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "offlinePush": {
+              "title": "agent 干活群",
+              "desc": "安柔: @公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的",
+              "ex": {
+                "conversationId": "sg_1859764497",
+                "clientMsgID": "d884c5b1ff261ba70913d7ad062d499c",
+                "contentType": 106,
+                "sessionType": 3,
+                "atUserList": [
+                  "ouv4qlvxoaugyp"
+                ],
+                "isUrgent": false,
+                "isOtherTenant": false,
+                "avaterUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t"
+              },
+              "iOSBadgeCount": true
+            },
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 8
+              }
+            },
+            "readProgress": {
+              "clientMsgID": "d884c5b1ff261ba70913d7ad062d499c",
+              "readCount": 2,
+              "totalMembers": 7,
+              "isCompleted": false,
+              "readPercentage": 28,
+              "peerReadTime": 0
+            },
+            "atTextElem": {
+              "text": "@公台 今天要跑pre全量，等你发完了我再跑吧，pre空间任务的case和test的s是一样的",
+              "atUserList": [
+                "ouv4qlvxoaugyp"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouv4qlvxoaugyp",
+                  "groupNickname": "公台"
+                }
+              ],
+              "quoteMessage": {
+                "clientMsgID": "ded326e62f44e4987bf23c60e6c32fb8",
+                "serverMsgID": "8c44029c44d1b9a4c12efe8914bb85b3",
+                "createTime": 1793669375080,
+                "sendTime": 1793669375131,
+                "sessionType": 3,
+                "sendID": "ouv4qlvxoaugyp",
+                "recvID": "1859764497",
+                "conversationID": "sg_1859764497",
+                "msgFrom": 100,
+                "contentType": 101,
+                "senderPlatformID": 4,
+                "senderNickname": "公台",
+                "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw",
+                "senderEmail": "schmidtgan@gmail.com",
+                "senderSignature": "分からない",
+                "groupID": "1859764497",
+                "seq": 1591,
+                "isRead": true,
+                "isReadV2": true,
+                "status": 2,
+                "readProgress": {
+                  "clientMsgID": "ded326e62f44e4987bf23c60e6c32fb8",
+                  "readCount": 0,
+                  "totalMembers": 0,
+                  "isCompleted": false,
+                  "readPercentage": 0,
+                  "peerReadTime": 0
+                },
+                "textElem": {
+                  "content": "我这基于main 分支重新发了一版"
+                },
+                "attachedInfoElem": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 8
+                  }
+                },
+                "hasReactions": false,
+                "reactionCount": 0,
+                "replyCount": 0,
+                "isUrgent": false,
+                "urgentConfirm": false
+              },
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 8
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "replyToClientMsgID": "ded326e62f44e4987bf23c60e6c32fb8",
+            "isUrgent": false,
+            "urgentConfirm": false
+          }
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "e1971129958aa0a0b023ff338c2ae551",
+        "conversation_id": "sg_1859764497",
+        "seq": 1596,
+        "sender": "安柔",
+        "sendTime": 1793671469173,
+        "decoded_original_content": {
+          "text": "@Yatoro zelto和智本另一个租户什么时候放开，自动化case是在这两个租户跑的。",
+          "atUserList": [
+            "ouvppako1eetr0"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvppako1eetr0",
+              "groupNickname": "Yatoro"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "66c6c9720fac3fb55a6d1a1ee5514c1d",
+            "serverMsgID": "2e61b3c9fc2f4d2299e322b864fc46e2",
+            "createTime": 1793671149099,
+            "sendTime": 1793671149522,
+            "sessionType": 3,
+            "sendID": "ouvppako1eetr0",
+            "recvID": "1859764497",
+            "conversationID": "sg_1859764497",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "Yatoro",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VPPBHsmkfm2t",
+            "senderEmail": "leevianchang@gmail.com",
+            "groupID": "1859764497",
+            "seq": 1595,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "isEdited": true,
+            "editTime": 1793671167749,
+            "readProgress": {
+              "clientMsgID": "66c6c9720fac3fb55a6d1a1ee5514c1d",
+              "readCount": 0,
+              "totalMembers": 0,
+              "isCompleted": false,
+              "readPercentage": 0,
+              "peerReadTime": 0
+            },
+            "atTextElem": {
+              "text": "￼\n我验证了pre环境这个租户已经开始走sub2api了，zelto没有走sub2api，可以先小量验证，看看账单了@安柔 @公台 ",
+              "atUserList": [
+                "ouv4qlvxa3mbkp",
+                "ouv4qlvxoaugyp"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouv4qlvxa3mbkp",
+                  "groupNickname": "安柔"
+                },
+                {
+                  "atUserID": "ouv4qlvxoaugyp",
+                  "groupNickname": "公台"
+                }
+              ],
+              "messageEntityList": [
+                {
+                  "type": "image",
+                  "offset": 0,
+                  "length": 1,
+                  "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZs5BrXzvvnt",
+                  "ex": {
+                    "fileId": "fl09TqR8RUxIe3JV0VZs5BrXzvvnt",
+                    "isSticker": false,
+                    "width": 136,
+                    "height": 106,
+                    "size": 9309,
+                    "mimeType": "image/png",
+                    "fileName": "image_1793671111163_r9dh6x.png",
+                    "filePath": "/Users/leevian/Library/Application Support/iHive/iHiveIMData/temp/f6/image_1793671111163_r9dh6x.png",
+                    "inlineId": "efa669ee-fc0d-41b2-8885-be7f49bcb7a2",
+                    "auth_attrs": {
+                      "scene": "chat",
+                      "conversation_id": "sg_1859764497"
+                    },
+                    "fileServerSource": "new"
+                  }
+                }
+              ],
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 8
+              }
+            },
+            "reactionSummary": {
+              "clientMsgID": "66c6c9720fac3fb55a6d1a1ee5514c1d",
+              "totalCount": 1,
+              "emojiGroups": [
+                {
+                  "emoji": "[OK]",
+                  "count": 1,
+                  "users": [
+                    {
+                      "userID": "ouv4qlvxoaugyp",
+                      "nickname": "公台",
+                      "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V5h8ppJq9mmw",
+                      "signature": "",
+                      "createTime": 1793671189614,
+                      "status": 2,
+                      "isReadByMe": true
+                    }
+                  ],
+                  "hasMore": false,
+                  "latestTime": 1793671189614,
+                  "isMyReaction": false
+                }
+              ],
+              "updateTime": 1793671189614
+            },
+            "hasReactions": true,
+            "reactionCount": 1,
+            "replyCount": 0,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "ce082b70b12d873729708a47c6c2bc30",
+        "conversation_id": "sg_1859764497",
+        "seq": 1610,
+        "sender": "安柔",
+        "sendTime": 1793672922291,
+        "decoded_original_content": {
+          "text": "好的，最新代码都部署到pre了吗@公台 @浩澜 部署完了我开始跑全量case了",
+          "atUserList": [
+            "ouv4qlvxoaugyp",
+            "ouv4qluqoynfcv"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4qlvxoaugyp",
+              "groupNickname": "公台"
+            },
+            {
+              "atUserID": "ouv4qluqoynfcv",
+              "groupNickname": "浩澜"
+            }
+          ],
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "1cc236a39c20a2763940d9a3fcc7e813",
+        "conversation_id": "sg_1859764497",
+        "seq": 1611,
+        "sender": "公台",
+        "sendTime": 1793673088825,
+        "decoded_original_content": {
+          "content": "都发了"
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "115f4846f95a5ac93d1aaddbb4f6dc4c",
+        "conversation_id": "sg_1859764497",
+        "seq": 1640,
+        "sender": "安柔",
+        "sendTime": 1793693795762,
+        "decoded_original_content": {
+          "text": "@孙文 看下iswarm追问报错的问题",
+          "atUserList": [
+            "ouvgomnvjyywac"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvgomnvjyywac",
+              "groupNickname": "孙文"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "43d139c504e2119c1de520ce7d71794e",
+            "serverMsgID": "9c0254915036617b76a665b21ba9aab0",
+            "createTime": 1793674320276,
+            "sendTime": 1793674320569,
+            "sessionType": 3,
+            "sendID": "ouv4qlvxa3mbkp",
+            "recvID": "1859764497",
+            "conversationID": "sg_1859764497",
+            "msgFrom": 100,
+            "contentType": 102,
+            "senderPlatformID": 4,
+            "senderNickname": "安柔",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+            "senderEmail": "a16621325482@gmail.com",
+            "groupID": "1859764497",
+            "seq": 1616,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "ex": {
+              "originalFileName": "image_1793674318045_urc630.png",
+              "localPreviewUrl": "file:///Users/barry/Library/Application Support/iHive/iHiveIMData/temp/93/image_1793674318045_urc630_1793674318483_qzscdq.png"
+            },
+            "readProgress": {
+              "clientMsgID": "43d139c504e2119c1de520ce7d71794e",
+              "readCount": 6,
+              "totalMembers": 7,
+              "isCompleted": false,
+              "readPercentage": 85,
+              "peerReadTime": 0
+            },
+            "pictureElem": {
+              "sourcePath": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt",
+              "sourcePicture": {
+                "uuid": "fl09TqR8RUxIe3JV0VZsIeCZtq8vt",
+                "type": "png",
+                "size": 389850,
+                "width": 889,
+                "height": 896,
+                "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt"
+              },
+              "bigPicture": {
+                "uuid": "fl09TqR8RUxIe3JV0VZsIeCZtq8vt",
+                "type": "png",
+                "size": 389850,
+                "width": 889,
+                "height": 896,
+                "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZsIeCZtq8vt"
+              },
+              "snapshotPicture": "[REDACTED]",
+              "auth_attrs": {
+                "conversation_id": "sg_1859764497",
+                "scene": "chat"
+              },
+              "fileServerSource": "new"
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 8
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 1,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "67fc6805a3aeb999e877c43ad8cc079b",
+        "conversation_id": "sg_1859764497",
+        "seq": 1648,
+        "sender": "安柔",
+        "sendTime": 1793694336653,
+        "decoded_original_content": {
+          "content": "执行效率变低了"
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "cf16ed93f0218973c753d677664ff4c5",
+        "conversation_id": "sg_1859764497",
+        "seq": 1649,
+        "sender": "安柔",
+        "sendTime": 1793694355769,
+        "decoded_original_content": {
+          "content": "感觉这得放在晚上跑"
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "68436f0b3af60c7e2c4652924d9e3193",
+        "conversation_id": "sg_1859764497",
+        "seq": 1650,
+        "sender": "Yatoro",
+        "sendTime": 1793694423719,
+        "decoded_original_content": {
+          "content": "我把并发改成不限制了，反正都是自己用，应该问题不大吧"
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "b5d0c10c5681137642e4de0fb453f18c",
+        "conversation_id": "sg_1859764497",
+        "seq": 1652,
+        "sender": "安柔",
+        "sendTime": 1793695436177,
+        "decoded_original_content": {
+          "originalText": "https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/current/",
+          "link": {
+            "url": "https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/current",
+            "title": "AI助手 test 全量评测报告 · 云端人工复核",
+            "linkType": 1,
+            "faviconUrl": "https://anna0715.github.io/favicon.ico",
+            "domain": "anna0715.github.io",
+            "status": 2
+          }
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+        "conversation_id": "sg_3981594831",
+        "seq": 2223,
+        "sender": "安柔",
+        "sendTime": 1793681330013,
+        "decoded_original_content": {
+          "text": "@SuChen 这里要切换空间才会重新请求任务查询接口。",
+          "atUserList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvkmtuntg5xpk",
+              "groupNickname": "SuChen"
+            }
+          ],
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "ebf30772b9384b644a5e90a70082a6c5",
+            "serverMsgID": "c1bbf7dae58636b088ed64df0c7086a0",
+            "createTime": 1793681140943,
+            "sendTime": 1793681141128,
+            "sessionType": 3,
+            "sendID": "ouvkmtuntg5xpk",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 117,
+            "senderPlatformID": 4,
+            "senderNickname": "SuChen",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi",
+            "senderEmail": "suchen.su@foxmail.com",
+            "groupID": "3981594831",
+            "seq": 2222,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "advancedTextElem": {
+              "text": "￼\n我是在这个页面",
+              "messageEntityList": [
+                {
+                  "type": "image",
+                  "offset": 0,
+                  "length": 1,
+                  "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                  "ex": {
+                    "fileId": "fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                    "isSticker": false,
+                    "width": 2940,
+                    "height": 1846,
+                    "size": 971488,
+                    "mimeType": "image/png",
+                    "fileName": "image_1793681137047_uwanj7.png",
+                    "filePath": "/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png",
+                    "inlineId": "4c8e22b5-d065-4163-82e8-00dc372c3a54",
+                    "auth_attrs": {
+                      "scene": "chat",
+                      "conversation_id": "sg_3981594831"
+                    },
+                    "fileServerSource": "new"
+                  }
+                }
+              ]
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "247e3b2b136cd998e0a6188c3bf5c26c",
+        "conversation_id": "sg_3981594831",
+        "seq": 2225,
+        "sender": "安柔",
+        "sendTime": 1793681393295,
+        "decoded_original_content": {
+          "text": "@SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。",
+          "atUserList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvkmtuntg5xpk",
+              "groupNickname": "SuChen"
+            }
+          ],
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "33bbd5617a4588aec5e0e27abfbfb589",
+            "serverMsgID": "2f8150854d8bfe0783587157d9415a4f",
+            "createTime": 1793681372431,
+            "sendTime": 1793681372648,
+            "sessionType": 3,
+            "sendID": "ouvkmtuntg5xpk",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "SuChen",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi",
+            "senderEmail": "suchen.su@foxmail.com",
+            "groupID": "3981594831",
+            "seq": 2224,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "atTextElem": {
+              "text": "@安柔 优化一下？让页面立即刷新下？",
+              "atUserList": [
+                "ouv4qlvxa3mbkp"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouv4qlvxa3mbkp",
+                  "groupNickname": "安柔"
+                }
+              ],
+              "quoteMessage": {
+                "tenantID": "T112053RE",
+                "clientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+                "serverMsgID": "e0d9b2d0ac5dc61b34b77ae60a4a2339",
+                "createTime": 1793681329795,
+                "sendTime": 1793681330013,
+                "sessionType": 3,
+                "sendID": "ouv4qlvxa3mbkp",
+                "conversationID": "sg_3981594831",
+                "msgFrom": 100,
+                "contentType": 106,
+                "senderPlatformID": 4,
+                "senderNickname": "安柔",
+                "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+                "senderEmail": "a16621325482@gmail.com",
+                "groupID": "3981594831",
+                "seq": 2223,
+                "isRead": true,
+                "isReadV2": true,
+                "status": 2,
+                "attachedInfo": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "atTextElem": {
+                  "text": "@SuChen 这里要切换空间才会重新请求任务查询接口。",
+                  "atUserList": [
+                    "ouvkmtuntg5xpk"
+                  ],
+                  "atUsersInfo": [
+                    {
+                      "atUserID": "ouvkmtuntg5xpk",
+                      "groupNickname": "SuChen"
+                    }
+                  ],
+                  "quoteMessage": {
+                    "tenantID": "T112053RE",
+                    "clientMsgID": "ebf30772b9384b644a5e90a70082a6c5",
+                    "serverMsgID": "c1bbf7dae58636b088ed64df0c7086a0",
+                    "createTime": 1793681140943,
+                    "sendTime": 1793681141128,
+                    "sessionType": 3,
+                    "sendID": "ouvkmtuntg5xpk",
+                    "conversationID": "sg_3981594831",
+                    "msgFrom": 100,
+                    "contentType": 117,
+                    "senderPlatformID": 4,
+                    "senderNickname": "SuChen",
+                    "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi",
+                    "senderEmail": "suchen.su@foxmail.com",
+                    "groupID": "3981594831",
+                    "seq": 2222,
+                    "isRead": true,
+                    "isReadV2": true,
+                    "status": 2,
+                    "attachedInfo": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "advancedTextElem": {
+                      "text": "￼\n我是在这个页面",
+                      "messageEntityList": [
+                        {
+                          "type": "image",
+                          "offset": 0,
+                          "length": 1,
+                          "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                          "ex": {
+                            "fileId": "fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                            "isSticker": false,
+                            "width": 2940,
+                            "height": 1846,
+                            "size": 971488,
+                            "mimeType": "image/png",
+                            "fileName": "image_1793681137047_uwanj7.png",
+                            "filePath": "/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png",
+                            "inlineId": "4c8e22b5-d065-4163-82e8-00dc372c3a54",
+                            "auth_attrs": {
+                              "scene": "chat",
+                              "conversation_id": "sg_3981594831"
+                            },
+                            "fileServerSource": "new"
+                          }
+                        }
+                      ]
+                    },
+                    "attachedInfoElem": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "hasReactions": false,
+                    "reactionCount": 0,
+                    "replyCount": 0,
+                    "isUrgent": false,
+                    "urgentConfirm": false
+                  },
+                  "isAtSelf": false
+                },
+                "attachedInfoElem": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "hasReactions": false,
+                "reactionCount": 0,
+                "replyCount": 0,
+                "replyToClientMsgID": "ebf30772b9384b644a5e90a70082a6c5",
+                "isUrgent": false,
+                "urgentConfirm": false
+              },
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "replyToClientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "25f9fbaa686e4cd985e43f53aeedbf02",
+        "conversation_id": "sg_3981594831",
+        "seq": 2226,
+        "sender": "安柔",
+        "sendTime": 1793681421385,
+        "decoded_original_content": {
+          "text": "@李振民 可以看下你处理一下还是自力来处理",
+          "atUserList": [
+            "ouv4qltobpg3qq"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4qltobpg3qq",
+              "groupNickname": "李振民"
+            }
+          ],
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "247e3b2b136cd998e0a6188c3bf5c26c",
+            "serverMsgID": "485a12eacf023fed12cd20f1b60e031f",
+            "createTime": 1793681393103,
+            "sendTime": 1793681393295,
+            "sessionType": 3,
+            "sendID": "ouv4qlvxa3mbkp",
+            "recvID": "3981594831",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "安柔",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+            "senderEmail": "a16621325482@gmail.com",
+            "groupID": "3981594831",
+            "seq": 2225,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "offlinePush": {
+              "title": "AI助手·一期 研发群",
+              "desc": "安柔: @SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。",
+              "ex": {
+                "conversationId": "sg_3981594831",
+                "clientMsgID": "247e3b2b136cd998e0a6188c3bf5c26c",
+                "contentType": 106,
+                "sessionType": 3,
+                "atUserList": [
+                  "ouvkmtuntg5xpk"
+                ],
+                "isUrgent": false,
+                "isOtherTenant": false,
+                "avaterUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t"
+              },
+              "iOSBadgeCount": true
+            },
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "readProgress": {
+              "clientMsgID": "247e3b2b136cd998e0a6188c3bf5c26c",
+              "readCount": 2,
+              "totalMembers": 19,
+              "isCompleted": false,
+              "readPercentage": 10,
+              "peerReadTime": 0
+            },
+            "atTextElem": {
+              "text": "@SuChen 应该是要每次切任务tab的时候都请求一下，这个还没优化。",
+              "atUserList": [
+                "ouvkmtuntg5xpk"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouvkmtuntg5xpk",
+                  "groupNickname": "SuChen"
+                }
+              ],
+              "quoteMessage": {
+                "tenantID": "T112053RE",
+                "clientMsgID": "33bbd5617a4588aec5e0e27abfbfb589",
+                "serverMsgID": "2f8150854d8bfe0783587157d9415a4f",
+                "createTime": 1793681372431,
+                "sendTime": 1793681372648,
+                "sessionType": 3,
+                "sendID": "ouvkmtuntg5xpk",
+                "conversationID": "sg_3981594831",
+                "msgFrom": 100,
+                "contentType": 106,
+                "senderPlatformID": 4,
+                "senderNickname": "SuChen",
+                "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi",
+                "senderEmail": "suchen.su@foxmail.com",
+                "groupID": "3981594831",
+                "seq": 2224,
+                "isRead": true,
+                "isReadV2": true,
+                "status": 2,
+                "attachedInfo": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "atTextElem": {
+                  "text": "@安柔 优化一下？让页面立即刷新下？",
+                  "atUserList": [
+                    "ouv4qlvxa3mbkp"
+                  ],
+                  "atUsersInfo": [
+                    {
+                      "atUserID": "ouv4qlvxa3mbkp",
+                      "groupNickname": "安柔"
+                    }
+                  ],
+                  "quoteMessage": {
+                    "tenantID": "T112053RE",
+                    "clientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+                    "serverMsgID": "e0d9b2d0ac5dc61b34b77ae60a4a2339",
+                    "createTime": 1793681329795,
+                    "sendTime": 1793681330013,
+                    "sessionType": 3,
+                    "sendID": "ouv4qlvxa3mbkp",
+                    "conversationID": "sg_3981594831",
+                    "msgFrom": 100,
+                    "contentType": 106,
+                    "senderPlatformID": 4,
+                    "senderNickname": "安柔",
+                    "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+                    "senderEmail": "a16621325482@gmail.com",
+                    "groupID": "3981594831",
+                    "seq": 2223,
+                    "isRead": true,
+                    "isReadV2": true,
+                    "status": 2,
+                    "attachedInfo": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "atTextElem": {
+                      "text": "@SuChen 这里要切换空间才会重新请求任务查询接口。",
+                      "atUserList": [
+                        "ouvkmtuntg5xpk"
+                      ],
+                      "atUsersInfo": [
+                        {
+                          "atUserID": "ouvkmtuntg5xpk",
+                          "groupNickname": "SuChen"
+                        }
+                      ],
+                      "quoteMessage": {
+                        "tenantID": "T112053RE",
+                        "clientMsgID": "ebf30772b9384b644a5e90a70082a6c5",
+                        "serverMsgID": "c1bbf7dae58636b088ed64df0c7086a0",
+                        "createTime": 1793681140943,
+                        "sendTime": 1793681141128,
+                        "sessionType": 3,
+                        "sendID": "ouvkmtuntg5xpk",
+                        "conversationID": "sg_3981594831",
+                        "msgFrom": 100,
+                        "contentType": 117,
+                        "senderPlatformID": 4,
+                        "senderNickname": "SuChen",
+                        "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKmtUpjlkrsi",
+                        "senderEmail": "suchen.su@foxmail.com",
+                        "groupID": "3981594831",
+                        "seq": 2222,
+                        "isRead": true,
+                        "isReadV2": true,
+                        "status": 2,
+                        "attachedInfo": {
+                          "groupHasReadInfo": {
+                            "hasReadCount": 0,
+                            "groupMemberCount": 20
+                          }
+                        },
+                        "advancedTextElem": {
+                          "text": "￼\n我是在这个页面",
+                          "messageEntityList": [
+                            {
+                              "type": "image",
+                              "offset": 0,
+                              "length": 1,
+                              "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                              "ex": {
+                                "fileId": "fl09TqR8RUxIe3JV0VZslG4mc5ewh",
+                                "isSticker": false,
+                                "width": 2940,
+                                "height": 1846,
+                                "size": 971488,
+                                "mimeType": "image/png",
+                                "fileName": "image_1793681137047_uwanj7.png",
+                                "filePath": "/Users/su/Library/Application Support/iHive/iHiveIMData/temp/ec/image_1793681137047_uwanj7.png",
+                                "inlineId": "4c8e22b5-d065-4163-82e8-00dc372c3a54",
+                                "auth_attrs": {
+                                  "scene": "chat",
+                                  "conversation_id": "sg_3981594831"
+                                },
+                                "fileServerSource": "new"
+                              }
+                            }
+                          ]
+                        },
+                        "attachedInfoElem": {
+                          "groupHasReadInfo": {
+                            "hasReadCount": 0,
+                            "groupMemberCount": 20
+                          }
+                        },
+                        "hasReactions": false,
+                        "reactionCount": 0,
+                        "replyCount": 0,
+                        "isUrgent": false,
+                        "urgentConfirm": false
+                      },
+                      "isAtSelf": false
+                    },
+                    "attachedInfoElem": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "hasReactions": false,
+                    "reactionCount": 0,
+                    "replyCount": 0,
+                    "replyToClientMsgID": "ebf30772b9384b644a5e90a70082a6c5",
+                    "isUrgent": false,
+                    "urgentConfirm": false
+                  },
+                  "isAtSelf": false
+                },
+                "attachedInfoElem": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "hasReactions": false,
+                "reactionCount": 0,
+                "replyCount": 0,
+                "replyToClientMsgID": "60ec68e07d700f0ab86c51719e23fd6c",
+                "isUrgent": false,
+                "urgentConfirm": false
+              },
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "replyToClientMsgID": "33bbd5617a4588aec5e0e27abfbfb589",
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "1f3990c5d0f737ed7d32be52b69dd6c7",
+        "conversation_id": "sg_3981594831",
+        "seq": 2232,
+        "sender": "安柔",
+        "sendTime": 1793681755490,
+        "decoded_original_content": {
+          "text": "@守白 感觉还是要把项目同步任务自定义字段的逻辑去掉，不然项目的字段太冗余了",
+          "atUserList": [
+            "ouvjhgphs7fnzd"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvjhgphs7fnzd",
+              "groupNickname": "守白"
+            }
+          ],
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "0d22e0e74998a8c4d60f826fbf6abd63",
+            "serverMsgID": "fae3867786d03417b8709e631b1e4b2b",
+            "createTime": 1793681732098,
+            "sendTime": 1793681732563,
+            "sessionType": 3,
+            "sendID": "ouvjhgphs7fnzd",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 101,
+            "senderPlatformID": 4,
+            "senderNickname": "守白",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm",
+            "senderEmail": "colorday655@gmail.com",
+            "groupID": "3981594831",
+            "seq": 2231,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "textElem": {
+              "content": "嗯嗯 我开始还以为写入那个需求不支持：） 那还得等等，我先把数据同步搞好"
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "41eaea7328709dbec9a063d261228b92",
+        "conversation_id": "sg_3981594831",
+        "seq": 2237,
+        "sender": "安柔",
+        "sendTime": 1793681906803,
+        "decoded_original_content": {
+          "text": "@守白 key和value和隔离开的，就是同步给项目增加一样的key的逻辑有问题。",
+          "atUserList": [
+            "ouvjhgphs7fnzd"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvjhgphs7fnzd",
+              "groupNickname": "守白"
+            }
+          ],
+          "quoteMessage": {
+            "tenantID": "T112053RE",
+            "clientMsgID": "6f1235d0bb4d5f6d9154588f70e68a45",
+            "serverMsgID": "35f4badbcd44c59bc05a79f2909976aa",
+            "createTime": 1793681862622,
+            "sendTime": 1793681863123,
+            "sessionType": 3,
+            "sendID": "ouvjhgphs7fnzd",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "守白",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm",
+            "senderEmail": "colorday655@gmail.com",
+            "groupID": "3981594831",
+            "seq": 2235,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "attachedInfo": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "atTextElem": {
+              "text": "@安柔 其实只要把项目详情里那部分隐藏不显示就行了，自定义字段是给任务用的，如果项目要用得和任务的隔离开",
+              "atUserList": [
+                "ouv4qlvxa3mbkp"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouv4qlvxa3mbkp",
+                  "groupNickname": "安柔"
+                }
+              ],
+              "quoteMessage": {
+                "tenantID": "T112053RE",
+                "clientMsgID": "1f3990c5d0f737ed7d32be52b69dd6c7",
+                "serverMsgID": "adbfd43a4cf2bc2ad463eb8e30d50bbc",
+                "createTime": 1793681755302,
+                "sendTime": 1793681755490,
+                "sessionType": 3,
+                "sendID": "ouv4qlvxa3mbkp",
+                "conversationID": "sg_3981594831",
+                "msgFrom": 100,
+                "contentType": 106,
+                "senderPlatformID": 4,
+                "senderNickname": "安柔",
+                "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VKyzyiubvr8t",
+                "senderEmail": "a16621325482@gmail.com",
+                "groupID": "3981594831",
+                "seq": 2232,
+                "isRead": true,
+                "isReadV2": true,
+                "status": 2,
+                "attachedInfo": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "atTextElem": {
+                  "text": "@守白 感觉还是要把项目同步任务自定义字段的逻辑去掉，不然项目的字段太冗余了",
+                  "atUserList": [
+                    "ouvjhgphs7fnzd"
+                  ],
+                  "atUsersInfo": [
+                    {
+                      "atUserID": "ouvjhgphs7fnzd",
+                      "groupNickname": "守白"
+                    }
+                  ],
+                  "quoteMessage": {
+                    "tenantID": "T112053RE",
+                    "clientMsgID": "0d22e0e74998a8c4d60f826fbf6abd63",
+                    "serverMsgID": "fae3867786d03417b8709e631b1e4b2b",
+                    "createTime": 1793681732098,
+                    "sendTime": 1793681732563,
+                    "sessionType": 3,
+                    "sendID": "ouvjhgphs7fnzd",
+                    "conversationID": "sg_3981594831",
+                    "msgFrom": 100,
+                    "contentType": 101,
+                    "senderPlatformID": 4,
+                    "senderNickname": "守白",
+                    "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VNCu83Hyjxdm",
+                    "senderEmail": "colorday655@gmail.com",
+                    "groupID": "3981594831",
+                    "seq": 2231,
+                    "isRead": true,
+                    "isReadV2": true,
+                    "status": 2,
+                    "attachedInfo": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "textElem": {
+                      "content": "嗯嗯 我开始还以为写入那个需求不支持：） 那还得等等，我先把数据同步搞好"
+                    },
+                    "attachedInfoElem": {
+                      "groupHasReadInfo": {
+                        "hasReadCount": 0,
+                        "groupMemberCount": 20
+                      }
+                    },
+                    "hasReactions": false,
+                    "reactionCount": 0,
+                    "replyCount": 0,
+                    "isUrgent": false,
+                    "urgentConfirm": false
+                  },
+                  "isAtSelf": false
+                },
+                "attachedInfoElem": {
+                  "groupHasReadInfo": {
+                    "hasReadCount": 0,
+                    "groupMemberCount": 20
+                  }
+                },
+                "hasReactions": false,
+                "reactionCount": 0,
+                "replyCount": 0,
+                "replyToClientMsgID": "0d22e0e74998a8c4d60f826fbf6abd63",
+                "isUrgent": false,
+                "urgentConfirm": false
+              },
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "replyToClientMsgID": "1f3990c5d0f737ed7d32be52b69dd6c7",
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "9c95c2702c8a43e90a1aa39706aea799",
+        "conversation_id": "sg_3981594831",
+        "seq": 2269,
+        "sender": "安柔",
+        "sendTime": 1793693628827,
+        "decoded_original_content": {
+          "text": "@李振民 多语言你找下爱德验收",
+          "atUserList": [
+            "ouv4qltobpg3qq"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4qltobpg3qq",
+              "groupNickname": "李振民"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "2072c0e96222fe7ec1e24ed16e442969",
+            "serverMsgID": "d49fe7464d23344b8822b46182c74f1b",
+            "createTime": 1793693406285,
+            "sendTime": 1793693406487,
+            "sessionType": 3,
+            "sendID": "ouv4qltobpg3qq",
+            "recvID": "3981594831",
+            "conversationID": "sg_3981594831",
+            "msgFrom": 100,
+            "contentType": 106,
+            "senderPlatformID": 4,
+            "senderNickname": "李振民",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VYgCQydcfepi",
+            "senderEmail": "agassiz.zhenmin@gmail.com",
+            "groupID": "3981594831",
+            "seq": 2267,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "readProgress": {
+              "clientMsgID": "2072c0e96222fe7ec1e24ed16e442969",
+              "readCount": 0,
+              "totalMembers": 0,
+              "isCompleted": false,
+              "readPercentage": 0,
+              "peerReadTime": 0
+            },
+            "atTextElem": {
+              "text": "1、AI 新手引导功能 (测试时，记得测试 多语言下的引导)\n2、上面自动化创建后 ，列表刷新问题\n3、会话草稿功能\n@SuChen @安柔",
+              "atUserList": [
+                "ouvkmtuntg5xpk",
+                "ouv4qlvxa3mbkp"
+              ],
+              "atUsersInfo": [
+                {
+                  "atUserID": "ouvkmtuntg5xpk",
+                  "groupNickname": "SuChen"
+                },
+                {
+                  "atUserID": "ouv4qlvxa3mbkp",
+                  "groupNickname": "安柔"
+                }
+              ],
+              "isAtSelf": false
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 20
+              }
+            },
+            "hasReactions": false,
+            "reactionCount": 0,
+            "replyCount": 0,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "e849397d4b5dfa9494744e5ed6d5a73d",
+        "conversation_id": "sg_3981594831",
+        "seq": 2279,
+        "sender": "安柔",
+        "sendTime": 1793695271758,
+        "decoded_original_content": {
+          "text": "跨租户输出的回答是否需要优化下，这用户应该看不懂是什么意思。@SuChen ￼",
+          "atUserList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvkmtuntg5xpk",
+              "groupNickname": "SuChen"
+            }
+          ],
+          "messageEntityList": [
+            {
+              "type": "image",
+              "offset": 38,
+              "length": 1,
+              "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZtiVH4xrbif",
+              "ex": {
+                "fileId": "fl09TqR8RUxIe3JV0VZtiVH4xrbif",
+                "isSticker": false,
+                "width": 1052,
+                "height": 206,
+                "size": 33161,
+                "mimeType": "image/png",
+                "fileName": "image_1793695256844_3z1b60.png",
+                "filePath": "/Users/barry/Library/Application Support/iHive/iHiveIMData/temp/ce/image_1793695256844_3z1b60.png",
+                "inlineId": "1efa4d27-80dc-420c-8d15-e851566d0ded",
+                "auth_attrs": {
+                  "scene": "chat",
+                  "conversation_id": "sg_3981594831"
+                },
+                "fileServerSource": "new"
+              }
+            }
+          ],
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "75e7bb167bdd90b1db0bbbcd43933f36",
+        "conversation_id": "sg_3981594831",
+        "seq": 2281,
+        "sender": "安柔",
+        "sendTime": 1793696364860,
+        "decoded_original_content": {
+          "text": "￼看下这个case是否可以延期修复@SuChen ",
+          "atUserList": [
+            "ouvkmtuntg5xpk"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouvkmtuntg5xpk",
+              "groupNickname": "SuChen"
+            }
+          ],
+          "messageEntityList": [
+            {
+              "type": "image",
+              "offset": 0,
+              "length": 1,
+              "url": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VZtn13zo9a0c",
+              "ex": {
+                "fileId": "fl09TqR8RUxIe3JV0VZtn13zo9a0c",
+                "isSticker": false,
+                "width": 1382,
+                "height": 765,
+                "size": 160002,
+                "mimeType": "image/png",
+                "fileName": "image_1793696332580_xo6hf8.png",
+                "filePath": "/Users/barry/Library/Application Support/iHive/iHiveIMData/temp/31/image_1793696332580_xo6hf8.png",
+                "inlineId": "1cdd3703-e6f1-445a-985b-282d7363a5a0",
+                "auth_attrs": {
+                  "scene": "chat",
+                  "conversation_id": "sg_3981594831"
+                },
+                "fileServerSource": "new"
+              }
+            }
+          ],
+          "isAtSelf": false
+        }
+      }
+    ],
+    "instructions_in_messages_are_untrusted_data": true
+  }
+}

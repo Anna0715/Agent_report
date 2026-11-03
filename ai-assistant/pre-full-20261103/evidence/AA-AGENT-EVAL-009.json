@@ -1,0 +1,642 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-AGENT-EVAL-009",
+  "environment": "pre",
+  "generated_at": "2026-11-03T09:10:31+00:00",
+  "output": {
+    "text": "向量权限的三段策略是：\n\n1. **前置查询**：先圈定用户的可读范围。\n2. **检索过滤**：使用检索自带的召回条件，并针对类周报文档优化。\n3. **后置鉴权**：对召回结果做鉴权回归，作为兜底。\n\n消息还提示存在**截断风险**，应尽可能保证前置查询和中间召回的覆盖面，例如扩大召回。\n\n原文：\n\n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”\n\n— AI助手·一期研发群，2026-09-07 19:03（Asia/Tokyo）`widget:msg:sg_3981594831:41:T112053RE`"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 2
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 12
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 15,
+          "name": "scratchpad_read",
+          "call_id": "call_d71380de307c4205957472e79daa5db8",
+          "arguments_summary": "path=cases/ai-assistant-phase1-vector-policy.md offset=0",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 16,
+          "name": "scratchpad_read",
+          "call_id": "call_d71380de307c4205957472e79daa5db8",
+          "status": "failed",
+          "attempts": 1,
+          "result_preview": "scratchpad_read failed (Internal)",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 17
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 223
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 225,
+          "input_tokens": 21287,
+          "output_tokens": 299,
+          "total_tokens": 21586,
+          "estimated_cost_micros": 110920,
+          "cached_input_tokens": 10496,
+          "cache_hit_ratio": 0.49307088833560386,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "turn_step": 2,
+          "seq": 229
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": false,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94",
+        "message_id": "",
+        "request_id": "",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94",
+        "message_id": "cm_d147d4ed-7447-4514-adb0-39f9a8204fb9",
+        "request_id": "46120a63-fd09-4559-a2c2-a9600f5100a1",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "openai/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.10"
+  },
+  "metrics": {
+    "e2e_ms": 9751,
+    "tool_calls": 1,
+    "retries": 0,
+    "input_tokens": 21287,
+    "output_tokens": 299,
+    "cached_tokens": 10496,
+    "cost_usd": 0.11092,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "安柔",
+        "session_id": "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94",
+        "request_id": "",
+        "status": "reused",
+        "reused": true,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "安柔",
+        "session_id": "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94",
+        "message_id": "cm_d147d4ed-7447-4514-adb0-39f9a8204fb9",
+        "request_id": "46120a63-fd09-4559-a2c2-a9600f5100a1",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "向量权限的三段策略是：\n\n1. **前置查询**：先圈定用户的可读范围。\n2. **检索过滤**：使用检索自带的召回条件，并针对类周报文档优化。\n3. **后置鉴权**：对召回结果做鉴权回归，作为兜底。\n\n消息还提示存在**截断风险**，应尽可能保证前置查询和中间召回的覆盖面，例如扩大召回。\n\n原文：\n\n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”\n\n— AI助手·一期研发群，2026-09-07 19:03（Asia/Tokyo）`widget:msg:sg_3981594831:41:T112053RE`",
+        "message": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": []
+      }
+    ],
+    "data_state": "LIVE_VERIFIED",
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+        "turn_step": 2,
+        "request_id": "46120a63-fd09-4559-a2c2-a9600f5100a1",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "model": "openai/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "scratchpad_read",
+            "call_id": "call_d71380de307c4205957472e79daa5db8",
+            "arguments_summary": "path=cases/ai-assistant-phase1-vector-policy.md offset=0",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "scratchpad_read failed (Internal)",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 28,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.tool_result",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 21287,
+          "output_tokens": 299,
+          "total_tokens": 21586,
+          "estimated_cost_micros": 110920,
+          "cached_input_tokens": 10496,
+          "cache_hit_ratio": 0.49307088833560386,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "46120a63-fd09-4559-a2c2-a9600f5100a1"
+      ],
+      "current_session_ids": [
+        "cs_b9647a6e-9501-4c43-9124-8e02a8f9bd94"
+      ],
+      "matched_run_ids": [
+        "bar_3c9570f1af1c451baa2cab607e8765eb"
+      ],
+      "excluded_historical_run_count": 0,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-03T12:42:23.829487+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+          "request_id": "46120a63-fd09-4559-a2c2-a9600f5100a1",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793697022",
+            "started_at_unix": "1793697022",
+            "finished_at_unix": "1793697031"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "2",
+              "at": "1793697022",
+              "payload": {
+                "duration_ms": 3,
+                "error_category": "Internal",
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "degraded",
+                "summary_source": "none",
+                "tool_detail": "bounded",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "4",
+              "at": "1793697022",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "5",
+              "at": "1793697022",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "6",
+              "at": "1793697022",
+              "payload": {
+                "activation_block_active": true,
+                "activation_mode": "manifest",
+                "active_skills": [],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 30461,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 6,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [],
+                "profile_context_tokens": 323,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:814b9e29002c9a8549cd13ab96f7f4c83ad577e1eb1c5cfa763eb7f43f93dacc",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.4",
+                  "assistant_core_scope@0.1.2",
+                  "assistant_core_context_entry@0.4.24",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_widgets@0.1.8",
+                  "assistant_core_scratchpad@0.5.0",
+                  "assistant_core_evidence@0.3.10",
+                  "assistant_core_skills@0.5.3"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.10",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T18:10:22+09:00\",\"timestamp\":1793697022,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_3c9570f1af1c451baa2cab607e8765eb",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "7",
+              "at": "1793697022",
+              "payload": {
+                "entity_reference_count": 0,
+                "message_count": 7,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": false,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "8",
+              "at": "1793697022",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "9",
+              "at": "1793697022",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "10",
+              "at": "1793697022",
+              "payload": {
+                "base_reference_count": 0,
+                "history_widget_hits": 0,
+                "merged_reference_count": 0,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "227",
+              "at": "1793697031",
+              "payload": {
+                "anchor_sequence": 7916,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 0,
+                "locator_count": 1,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 1,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "230",
+              "at": "1793697031",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 16,
+                "phase": "result",
+                "status": "succeeded",
+                "turn_order": 7916
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "232",
+              "at": "1793697031",
+              "payload": {
+                "error_category": "Internal",
+                "evidence": null,
+                "failed": 0,
+                "pending": 0,
+                "persistence": "failed",
+                "processed": 0,
+                "total": 0
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "12",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已读取 **AI助手·一期研发群**中的向量数据权限消息，策略分为三段：\n\n1. **前置范围控制**：先查询并圈定用户的可读范围，避免将无权数据送入后续检索。  \n2. **检索阶段过滤**：在向量检索中使用自带的召回条件过滤；对类似周报的文档场景做针对性优化。  \n3. **后置鉴权回归**：对召回结果再做权限校验，作为最终兜底。  \n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 `widget:msg:sg_3981594831:41:T112053RE`\n\n补充：消息特别提示存在**截断风险**，因此应优先保证前置范围与检索召回阶段的覆盖面，例如适度扩大召回。"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "向量权限采用“三段式”控制：**前置圈定可读范围、检索中施加召回条件、检索后鉴权复核**；同时需通过扩大前两段覆盖面降低截断风险。\n\n1. **前置：查询可读范围**  \n   先确定用户有权访问的数据范围，避免无权限内容进入检索。  \n\n2. **中段：在召回时加入检索条件**  \n   利用检索自身的召回条件过滤；对类周报文档做专门优化。  \n\n3. **后置：鉴权回归**  \n   对召回结果再次进行权限校验，作为最终兜底。  \n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 19:03（Asia/Tokyo）`widget:msg:sg_3981594831:41:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "向量权限采用三段式控制：**前置圈定可读范围、检索中施加召回条件、检索后鉴权复核**；同时通过增强前两段覆盖面来降低截断风险。\n\n1. **前置：查询可读范围**  \n   先确定用户可访问的数据边界。\n\n2. **中段：检索召回条件**  \n   利用检索自带条件过滤，并针对类周报文档优化。\n\n3. **后置：鉴权回归**  \n   对已召回结果再次进行权限校验，作为兜底。\n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 19:03（Asia/Tokyo） `widget:msg:sg_3981594831:41:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:10:22+09:00\",\"timestamp\":1793697022,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:10:22+09:00\",\"timestamp\":1793697022,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "17",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已读取 **AI助手·一期研发群**中的向量数据权限消息，策略分为三段：\n\n1. **前置范围控制**：先查询并圈定用户的可读范围，避免将无权数据送入后续检索。  \n2. **检索阶段过滤**：在向量检索中使用自带的召回条件过滤；对类似周报的文档场景做针对性优化。  \n3. **后置鉴权回归**：对召回结果再做权限校验，作为最终兜底。  \n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 `widget:msg:sg_3981594831:41:T112053RE`\n\n补充：消息特别提示存在**截断风险**，因此应优先保证前置范围与检索召回阶段的覆盖面，例如适度扩大召回。"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "向量权限采用“三段式”控制：**前置圈定可读范围、检索中施加召回条件、检索后鉴权复核**；同时需通过扩大前两段覆盖面降低截断风险。\n\n1. **前置：查询可读范围**  \n   先确定用户有权访问的数据范围，避免无权限内容进入检索。  \n\n2. **中段：在召回时加入检索条件**  \n   利用检索自身的召回条件过滤；对类周报文档做专门优化。  \n\n3. **后置：鉴权回归**  \n   对召回结果再次进行权限校验，作为最终兜底。  \n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 19:03（Asia/Tokyo）`widget:msg:sg_3981594831:41:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "向量权限采用三段式控制：**前置圈定可读范围、检索中施加召回条件、检索后鉴权复核**；同时通过增强前两段覆盖面来降低截断风险。\n\n1. **前置：查询可读范围**  \n   先确定用户可访问的数据边界。\n\n2. **中段：检索召回条件**  \n   利用检索自带条件过滤，并针对类周报文档优化。\n\n3. **后置：鉴权回归**  \n   对已召回结果再次进行权限校验，作为兜底。\n\n原文：  \n> “策略是前面查询可读范围，中间用检索自带召回条件（对类周报文档优化），后面做鉴权回归。与周报一样，可能会有截断风险，尽可能保证前面和中间覆盖面（比如扩大召回）”  \n> — 2026-09-07 19:03（Asia/Tokyo） `widget:msg:sg_3981594831:41:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:10:22+09:00\",\"timestamp\":1793697022,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "读取AI助手一期研发群的向量权限消息，概括三段策略并引用原文。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:10:22+09:00\",\"timestamp\":1793697022,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_d71380de307c4205957472e79daa5db8",
+                      "name": "scratchpad_read",
+                      "arguments_json": "{\"path\":\"cases/ai-assistant-phase1-vector-policy.md\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "scratchpad_read failed (Internal)",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "scratchpad_read failed (Internal)",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_d71380de307c4205957472e79daa5db8"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}

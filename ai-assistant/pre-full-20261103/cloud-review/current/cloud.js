@@ -47,6 +47,18 @@
     for (const row of value.rows) {
       if (!plain(row) || !text(row.case_id,100) || !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$/.test(row.case_id) || ids.has(row.case_id) || !['test','pre'].includes(row.source_environment) || !Object.hasOwn(labels,row.status) || !text(row.title,12000,true) || !text(row.reason,100000,true) || !text(row.module,1000,true) || !text(row.scenario,2000,true) || !Array.isArray(row.failure_categories) || !row.failure_categories.every(x=>text(x,1000)) || !(row.latency_ms === null || (Number.isFinite(row.latency_ms) && row.latency_ms >= 0)) || !plain(row.resource_coverage) || !Object.values(row.resource_coverage).every(x=>typeof x==='boolean')) throw Error('原始用例数据无效或编号重复，已停止连接。');
       if (row.display_failure_categories !== undefined && (!Array.isArray(row.display_failure_categories) || !row.display_failure_categories.every(x=>text(x,1000)))) throw Error('原始问题分类无效。');
+      if (row.review_resolution !== undefined) {
+        const r = row.review_resolution;
+        if (!plain(r) || r.schema !== 'ai_assistant.pending_resolution.v1' || r.report_id !== i.report_id ||
+            !integer(r.case_version) || r.case_version < 1 || !validOverride(r.override) || !r.override ||
+            !['skip','pending_qa'].includes(r.override.business_status) || !['pass','fail','skip'].includes(row.status) ||
+            (row.status === 'skip' && row.kind !== 'not_executed') || !text(r.updated_by,128) || !r.updated_by ||
+            !text(r.updated_at,100) || !Number.isFinite(Date.parse(r.updated_at)) ||
+            !text(r.actor_name,254) || !text(r.resolved_at,100) || !Number.isFinite(Date.parse(r.resolved_at)) ||
+            !/^review-[a-f0-9]{24}$/.test(r.evidence_report_id) ||
+            !/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(r.evidence_url))
+          throw Error('待复核补证记录无效，已停止连接。');
+      }
       ids.add(row.case_id);
     }
     return value;
@@ -95,13 +107,20 @@
       history:value.history.map(item=>({revision:item.revision,case_id:item.case_id,actor:item.actor,actor_name:item.actor_name,at:item.at,before:item.before,after:item.after}))
     };
   }
+  function resolvedPendingReview(original, remote) {
+    const r = original.review_resolution;
+    return r && remote && remote.version === r.case_version &&
+      remote.updated_by === r.updated_by && remote.updated_at === r.updated_at &&
+      sameOverride(remote.override, r.override) ? r : null;
+  }
   function effectiveRows() {
     if (!base) return [];
     const byId = new Map((state?.cases || []).map(row => [row.case_id,row]));
     return base.rows.map(original => {
-      const remote = byId.get(original.case_id), override = remote?.override;
+      const remote = byId.get(original.case_id), resolved = resolvedPendingReview(original, remote);
+      const override = resolved ? null : remote?.override;
       const status = override?.business_status || original.status;
-      return {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
+      return {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:resolved ? null : remote?.updated_by || null,updated_at:resolved ? null : remote?.updated_at || null,override:override || null,resolved_review:resolved};
     });
   }
   const canWrite = () => connected && !stale && session && state?.current_actor.role === 'reviewer' && document.body.dataset.reviewMode !== 'read';

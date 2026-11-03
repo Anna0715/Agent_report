@@ -1,0 +1,473 @@
+{
+  "read_at": "2026-11-03T13:09:05.605078+00:00",
+  "independent_original_messages": [
+    {
+      "clientMsgID": "1ae46f7325cd25e877080839e3c23160",
+      "groupID": "2205919698",
+      "conversation_id": "sg_2205919698",
+      "seq": 13371,
+      "request_id": "e36aa55b-e976-46c2-b5b8-c685c84bc8ac",
+      "read_at": "2026-11-03T13:09:04.216509+00:00",
+      "verified": true,
+      "actor": {
+        "account_ref": "安柔",
+        "company": "Zelto",
+        "tenant_id": "T112053RE",
+        "user_id": "ouv4qlvxa3mbkp"
+      },
+      "access_result": {
+        "ok": true,
+        "status_code": 200,
+        "error": ""
+      },
+      "content": "{\"text\":\"@士衡 @进华 \\n早上文件服务崩溃复盘\\n【影响时间】东京时间 8:00～10:10\\n\\n【原因】\\n代码bug，过期删除聊天文件，解码图片数据超大（内存解码完1.5GB，图片文件本身13.6MB），多张图片同时处理OOM。\\n\\n具体地，同一张 19688 × 20316（4.00 亿像素）的 PNG 被同一用户连发 3 次，过期清理作业把 3 条消息排进同一批，file 消费者按线上并发形态同时解码 3 张（每张 1.49 GB），堆瞬间 4.5 GB 打爆 2 GiB 的 cgroup 上限；未 ack 的整批消息被 Pulsar 重投，pod 反复 OOMKill 两小时，\\n\\n【临时恢复】\\n早上发版 Pulsar 消费者作短路处理（订阅消息不处理，直接 ack，避免重复投递）。\\n\\n【长期解决】\\n1.file 服务增加分布式锁，确保服务启动时，只有一台 Pod 获取锁订阅 Pulsar，异常不至于扩散到全部 Pod 导致服务不可用。\\n今天会优先处理这个问题。\",\"atUserList\":[\"ouv4mpnbncczdy\",\"ouv4qluiakumao\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4mpnbncczdy\",\"groupNickname\":\"士衡\"},{\"atUserID\":\"ouv4qluiakumao\",\"groupNickname\":\"进华\"}],\"quoteMessage\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"serverMsgID\":\"7e75d9300351e545aa304d7916b8218c\",\"createTime\":1789084930187,\"sendTime\":1789084930234,\"sessionType\":3,\"sendID\":\"ouv4mpnbncczdy\",\"recvID\":\"2205919698\",\"conversationID\":\"sg_2205919698\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":1,\"senderNickname\":\"士衡\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns\",\"senderEmail\":\"jacob.han2025@gmail.com\",\"senderSignature\":\"123456 test。。。\",\"groupID\":\"2205919698\",\"seq\":13321,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"readProgress\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"textElem\":{\"content\":\"文件服务，是挂了吗？及时查看一下\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":38},\"isReadV2\":true,\"reactions\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"totalCount\":1,\"emojiGroups\":[{\"emoji\":\"[了解]\",\"count\":1,\"users\":[{\"userID\":\"ouvfh4io3kb1vy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"signature\":\"\",\"createTime\":1789084952248}],\"hasMore\":false,\"latestTime\":1789084952248,\"isMyReaction\":false}],\"updateTime\":1789105755938},\"reactionList\":[{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"conversationID\":\"sg_2205919698\",\"emoji\":\"[了解]\",\"userID\":\"ouvfh4io3kb1vy\",\"msgSendID\":\"ouv4mpnbncczdy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"createTime\":1789084952248,\"isReadByMe\":true,\"tenantID\":\"T112053RE\",\"companyID\":\"orv4mpnau8n1es\"}]},\"reactionSummary\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"totalCount\":1,\"emojiGroups\":[{\"emoji\":\"[了解]\",\"count\":1,\"users\":[{\"userID\":\"ouvfh4io3kb1vy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"signature\":\"\",\"createTime\":1789084952248,\"status\":2,\"isReadByMe\":true}],\"hasMore\":false,\"latestTime\":1789084952248,\"isMyReaction\":false}],\"updateTime\":1789105755807},\"hasReactions\":true,\"reactionCount\":1,\"replyCount\":1,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+      "sender": "陈理仕",
+      "sendID": "ouv4qlus1pb5id",
+      "sendTime": 1789107011578,
+      "contentType": 106
+    }
+  ],
+  "original_actor_authenticated": true,
+  "read_watermarks_unchanged": true,
+  "remote_business_writes": 0,
+  "note": "Original source readback establishes content and access, not that the agent retrieved it.",
+  "authenticated_session_readback": [
+    {
+      "session_id": "cs_b524b7f4-1922-439f-bc45-b8b56d5a6ceb",
+      "actor": {
+        "account_ref": "安柔",
+        "company": "Zelto",
+        "tenant_id": "T112053RE",
+        "user_id": "ouv4qlvxa3mbkp"
+      },
+      "http_status": 200,
+      "business_code": 0,
+      "read_at": "2026-11-03T12:47:05.555829+00:00",
+      "verified": true,
+      "source": {
+        "session": {
+          "sessionId": "cs_b524b7f4-1922-439f-bc45-b8b56d5a6ceb",
+          "title": "技术中心群里，谁发布了“早上文件服务崩溃复盘”，影响时间和直接原",
+          "createdAt": 1790924182129,
+          "updatedAt": 1793661587718,
+          "lastMessageAt": 1793690387718,
+          "hasUnread": true
+        },
+        "messages": [
+          {
+            "messageId": "cm_7d7a27ff-5de4-450c-98a5-7981d730cfc4",
+            "messageSequence": 1614,
+            "role": 1,
+            "status": 3,
+            "content": "技术中心群里，谁发布了“早上文件服务崩溃复盘”，影响时间和直接原因是什么，并@了谁？请返回真实 groupID/clientMsgID。",
+            "createdAt": 1790924182584,
+            "updatedAt": 1790924182584,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_bc4291f2-ea66-45fb-a2d4-4dc08604a59f",
+            "messageSequence": 1615,
+            "role": 2,
+            "status": 3,
+            "content": "“早上文件服务崩溃复盘”由**陈理仕**发布。\n\n- **影响时间**：东京时间 **2026-09-11 08:00～10:10**\n- **直接原因**：过期删除聊天文件时，代码对超大图片进行解码；3 张相同 PNG 并发处理引发 OOM（单张约 **1.49GB**，cgroup 内存限制 **2GiB**）。\n- **@对象**：士衡、进华\n- **真实 groupID**：`2205919698`\n- **真实 clientMsgID**：`1ae46f7325cd25e877080839e3c23160`\n- 消息定位：`widget:msg:sg_2205919698:13371:T112053RE`",
+            "finishReason": "completed",
+            "createdAt": 1790924182586,
+            "updatedAt": 1790895413698,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_a9912570-6238-4b4c-a6c1-4acd61c0372c",
+            "messageSequence": 1955,
+            "role": 1,
+            "status": 3,
+            "content": "技术中心群里，谁发布了“早上文件服务崩溃复盘”，影响时间和直接原因是什么，并@了谁？请返回真实 groupID/clientMsgID。",
+            "createdAt": 1791201362085,
+            "updatedAt": 1791201362085,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_bffa7928-6a64-40d3-a793-9ba8e79971c5",
+            "messageSequence": 1956,
+            "role": 2,
+            "status": 3,
+            "content": "- **发布人**：陈理仕  \n- **影响时间**：东京时间 2026-09-11 08:00～10:10  \n- **直接原因**：清理过期聊天文件时对超大图片进行解码；3 张相同 PNG 并发处理导致 OOM（单张约 1.49GB，cgroup 内存限制 2GiB）。  \n- **@对象**：士衡、进华  \n- **真实 groupID**：`2205919698`  \n- **真实 clientMsgID**：`1ae46f7325cd25e877080839e3c23160`  \n\n消息定位：`widget:msg:sg_2205919698:13371:T112053RE`",
+            "finishReason": "completed",
+            "createdAt": 1791201362088,
+            "updatedAt": 1791172568160,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_33f6a3e6-a872-4cfb-aa16-9c674a223a2b",
+            "messageSequence": 2269,
+            "role": 1,
+            "status": 3,
+            "content": "技术中心群里，谁发布了“早上文件服务崩溃复盘”，影响时间和直接原因是什么，并@了谁？请返回真实 groupID/clientMsgID。",
+            "createdAt": 1791262337704,
+            "updatedAt": 1791262337704,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_ef9288f3-aa2d-4fd6-8525-d346f349d37d",
+            "messageSequence": 2270,
+            "role": 2,
+            "status": 3,
+            "content": "- **发布人**：陈理仕  \n- **影响时间**：东京时间 2026-09-11 08:00～10:10  \n- **直接原因**：清理过期聊天文件时解码超大图片，3 张相同 PNG 并发处理触发 OOM；单张约 1.49GB，cgroup 内存上限为 2GiB。  \n- **@对象**：士衡、进华  \n- **真实 groupID**：`2205919698`  \n- **真实 clientMsgID**：`1ae46f7325cd25e877080839e3c23160`  \n\n消息：`widget:msg:sg_2205919698:13371:T112053RE`",
+            "finishReason": "completed",
+            "createdAt": 1791262337706,
+            "updatedAt": 1791233543095,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_b97ab1e3-9d61-4516-b8e7-f8da096797e9",
+            "messageSequence": 7582,
+            "role": 1,
+            "status": 3,
+            "content": "技术中心群里，谁发布了“早上文件服务崩溃复盘”，影响时间和直接原因是什么，并@了谁？请返回真实 groupID/clientMsgID。",
+            "createdAt": 1793690347980,
+            "updatedAt": 1793690347982,
+            "attachments": {}
+          },
+          {
+            "messageId": "cm_41cff8b8-c1a1-4945-bdef-c75c076798c8",
+            "messageSequence": 7583,
+            "role": 2,
+            "status": 3,
+            "content": "技术中心群中，“早上文件服务崩溃复盘”的发布人是**陈理仕**。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：2026 年 9 月 11 日 08:00～10:10（东京时间）\n- **直接原因**：清理过期聊天文件时解码超大图片，3 张相同 PNG 并发处理触发 OOM；单张约 1.49GB，cgroup 内存上限为 2GiB。\n- **@对象**：士衡、进华\n- **真实 groupID**：`2205919698`\n- **真实 clientMsgID**：`1ae46f7325cd25e877080839e3c23160`",
+            "finishReason": "completed",
+            "createdAt": 1793690347980,
+            "updatedAt": 1793661587717,
+            "attachments": {}
+          }
+        ],
+        "nextBeforeSequence": 1614
+      }
+    }
+  ],
+  "independent_answer_citation_readback": {
+    "read_at": "2026-11-03T13:09:30.490771+00:00",
+    "original_actor": {
+      "account_ref": "安柔",
+      "company": "Zelto",
+      "tenant_id": "T112053RE",
+      "user_id": "ouv4qlvxa3mbkp"
+    },
+    "messages": [
+      {
+        "conversation_id": "sg_2205919698",
+        "seq": 13371,
+        "request_id": "7e58f84f-b440-4b9d-8723-5b8721d73086",
+        "read_at": "2026-11-03T13:09:23.517228+00:00",
+        "verified": true,
+        "http_status": 200,
+        "original_message": {
+          "sendID": "ouv4qlus1pb5id",
+          "groupID": "2205919698",
+          "clientMsgID": "1ae46f7325cd25e877080839e3c23160",
+          "serverMsgID": "b091636e9b347e3a4b3085eba7b2e5a6",
+          "senderPlatformID": 4,
+          "senderNickname": "陈理仕",
+          "senderFaceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V4qLV4m1hbfo",
+          "sessionType": 3,
+          "msgFrom": 100,
+          "contentType": 106,
+          "content": "{\"text\":\"@士衡 @进华 \\n早上文件服务崩溃复盘\\n【影响时间】东京时间 8:00～10:10\\n\\n【原因】\\n代码bug，过期删除聊天文件，解码图片数据超大（内存解码完1.5GB，图片文件本身13.6MB），多张图片同时处理OOM。\\n\\n具体地，同一张 19688 × 20316（4.00 亿像素）的 PNG 被同一用户连发 3 次，过期清理作业把 3 条消息排进同一批，file 消费者按线上并发形态同时解码 3 张（每张 1.49 GB），堆瞬间 4.5 GB 打爆 2 GiB 的 cgroup 上限；未 ack 的整批消息被 Pulsar 重投，pod 反复 OOMKill 两小时，\\n\\n【临时恢复】\\n早上发版 Pulsar 消费者作短路处理（订阅消息不处理，直接 ack，避免重复投递）。\\n\\n【长期解决】\\n1.file 服务增加分布式锁，确保服务启动时，只有一台 Pod 获取锁订阅 Pulsar，异常不至于扩散到全部 Pod 导致服务不可用。\\n今天会优先处理这个问题。\",\"atUserList\":[\"ouv4mpnbncczdy\",\"ouv4qluiakumao\"],\"atUsersInfo\":[{\"atUserID\":\"ouv4mpnbncczdy\",\"groupNickname\":\"士衡\"},{\"atUserID\":\"ouv4qluiakumao\",\"groupNickname\":\"进华\"}],\"quoteMessage\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"serverMsgID\":\"7e75d9300351e545aa304d7916b8218c\",\"createTime\":1789084930187,\"sendTime\":1789084930234,\"sessionType\":3,\"sendID\":\"ouv4mpnbncczdy\",\"recvID\":\"2205919698\",\"conversationID\":\"sg_2205919698\",\"msgFrom\":100,\"contentType\":101,\"senderPlatformID\":1,\"senderNickname\":\"士衡\",\"senderFaceUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns\",\"senderEmail\":\"jacob.han2025@gmail.com\",\"senderSignature\":\"123456 test。。。\",\"groupID\":\"2205919698\",\"seq\":13321,\"isRead\":true,\"isReadV2\":true,\"status\":2,\"readProgress\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"readCount\":0,\"totalMembers\":0,\"isCompleted\":false,\"readPercentage\":0,\"peerReadTime\":0},\"textElem\":{\"content\":\"文件服务，是挂了吗？及时查看一下\"},\"attachedInfoElem\":{\"groupHasReadInfo\":{\"hasReadCount\":0,\"groupMemberCount\":38},\"isReadV2\":true,\"reactions\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"totalCount\":1,\"emojiGroups\":[{\"emoji\":\"[了解]\",\"count\":1,\"users\":[{\"userID\":\"ouvfh4io3kb1vy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"signature\":\"\",\"createTime\":1789084952248}],\"hasMore\":false,\"latestTime\":1789084952248,\"isMyReaction\":false}],\"updateTime\":1789105755938},\"reactionList\":[{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"conversationID\":\"sg_2205919698\",\"emoji\":\"[了解]\",\"userID\":\"ouvfh4io3kb1vy\",\"msgSendID\":\"ouv4mpnbncczdy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"createTime\":1789084952248,\"isReadByMe\":true,\"tenantID\":\"T112053RE\",\"companyID\":\"orv4mpnau8n1es\"}]},\"reactionSummary\":{\"clientMsgID\":\"81fb6832ad37393b4d1ddeb1cf05e60d\",\"totalCount\":1,\"emojiGroups\":[{\"emoji\":\"[了解]\",\"count\":1,\"users\":[{\"userID\":\"ouvfh4io3kb1vy\",\"nickname\":\"Bruce\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd\",\"signature\":\"\",\"createTime\":1789084952248,\"status\":2,\"isReadByMe\":true}],\"hasMore\":false,\"latestTime\":1789084952248,\"isMyReaction\":false}],\"updateTime\":1789105755807},\"hasReactions\":true,\"reactionCount\":1,\"replyCount\":1,\"isUrgent\":false,\"urgentConfirm\":false},\"isAtSelf\":false}",
+          "seq": 13371,
+          "sendTime": 1789107011578,
+          "createTime": 1789107011391,
+          "status": 2,
+          "offlinePushInfo": {
+            "title": "技术中心",
+            "desc": "陈理仕: @士衡 @进华 \n早上文件服务崩溃复盘\n【影响时间】东京时间 8:00～10:10\n\n【原因】\n代码bug，过期删除聊天文件，解码图片数据超大（内存解码完1.5GB，图片文件本身13.6MB",
+            "ex": "{\"conversationId\":\"sg_2205919698\",\"clientMsgID\":\"1ae46f7325cd25e877080839e3c23160\",\"contentType\":106,\"sessionType\":3,\"atUserList\":[\"ouv4mpnbncczdy\",\"ouv4qluiakumao\"],\"isUrgent\":false,\"isOtherTenant\":false,\"avaterUrl\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V4qLV4m1hbfo\"}",
+            "iOSBadgeCount": true
+          },
+          "atUserIDList": [
+            "ouv4mpnbncczdy",
+            "ouv4qluiakumao"
+          ],
+          "attachedInfo": "{\"groupHasReadInfo\":{\"groupMemberCount\":38,\"hasReadCount\":0},\"isReadV2\":true,\"reactionList\":[{\"clientMsgID\":\"1ae46f7325cd25e877080839e3c23160\",\"conversationID\":\"sg_2205919698\",\"emoji\":\"[OK]\",\"userID\":\"ouv4mpnbncczdy\",\"msgSendID\":\"ouv4qlus1pb5id\",\"nickname\":\"士衡\",\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns\",\"createTime\":1789107292087,\"isReadByMe\":true,\"tenantID\":\"T112053RE\",\"companyID\":\"orv4mpnau8n1es\"}],\"reactions\":{\"clientMsgID\":\"1ae46f7325cd25e877080839e3c23160\",\"conversationID\":\"sg_2205919698\",\"emojiGroups\":[{\"count\":1,\"emoji\":\"[OK]\",\"hasMore\":false,\"latestTime\":1789107292087,\"users\":[{\"createTime\":1789107292087,\"faceURL\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns\",\"nickname\":\"士衡\",\"signature\":\"\",\"userID\":\"ouv4mpnbncczdy\"}]}],\"totalCount\":1,\"updateTime\":1793711363695}}",
+          "hasReactions": true,
+          "pinInfo": "{\"pinned\":true,\"seq\":13371,\"pin_at\":1789107313,\"pin_by\":{\"user_id\":\"ouv4mpnbncczdy\",\"nick_name\":\"士衡\"}}"
+        }
+      }
+    ],
+    "read_watermarks_unchanged": true,
+    "peer_messages_sent": 0,
+    "note": "Independent source content verifies factual citations, not proof of Agent retrieval."
+  },
+  "decoded_authenticated_original_messages": {
+    "method": "Recursive UTF-8 Base64/JSON decoding of authenticated original data; original receipts retained unchanged",
+    "messages": [
+      {
+        "source": "exact expected original message",
+        "clientMsgID": "1ae46f7325cd25e877080839e3c23160",
+        "groupID": "2205919698",
+        "seq": 13371,
+        "sender": "陈理仕",
+        "sendTime": 1789107011578,
+        "encoded_content_sha256": "c8e9a7a4419b1032aff287a8cb1a7fcd14111c87e415cc54e364408d7da3e9f6",
+        "decoded_original_content": {
+          "text": "@士衡 @进华 \n早上文件服务崩溃复盘\n【影响时间】东京时间 8:00～10:10\n\n【原因】\n代码bug，过期删除聊天文件，解码图片数据超大（内存解码完1.5GB，图片文件本身13.6MB），多张图片同时处理OOM。\n\n具体地，同一张 19688 × 20316（4.00 亿像素）的 PNG 被同一用户连发 3 次，过期清理作业把 3 条消息排进同一批，file 消费者按线上并发形态同时解码 3 张（每张 1.49 GB），堆瞬间 4.5 GB 打爆 2 GiB 的 cgroup 上限；未 ack 的整批消息被 Pulsar 重投，pod 反复 OOMKill 两小时，\n\n【临时恢复】\n早上发版 Pulsar 消费者作短路处理（订阅消息不处理，直接 ack，避免重复投递）。\n\n【长期解决】\n1.file 服务增加分布式锁，确保服务启动时，只有一台 Pod 获取锁订阅 Pulsar，异常不至于扩散到全部 Pod 导致服务不可用。\n今天会优先处理这个问题。",
+          "atUserList": [
+            "ouv4mpnbncczdy",
+            "ouv4qluiakumao"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4mpnbncczdy",
+              "groupNickname": "士衡"
+            },
+            {
+              "atUserID": "ouv4qluiakumao",
+              "groupNickname": "进华"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+            "serverMsgID": "7e75d9300351e545aa304d7916b8218c",
+            "createTime": 1789084930187,
+            "sendTime": 1789084930234,
+            "sessionType": 3,
+            "sendID": "ouv4mpnbncczdy",
+            "recvID": "2205919698",
+            "conversationID": "sg_2205919698",
+            "msgFrom": 100,
+            "contentType": 101,
+            "senderPlatformID": 1,
+            "senderNickname": "士衡",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns",
+            "senderEmail": "jacob.han2025@gmail.com",
+            "senderSignature": "123456 test。。。",
+            "groupID": "2205919698",
+            "seq": 13321,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "readProgress": {
+              "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+              "readCount": 0,
+              "totalMembers": 0,
+              "isCompleted": false,
+              "readPercentage": 0,
+              "peerReadTime": 0
+            },
+            "textElem": {
+              "content": "文件服务，是挂了吗？及时查看一下"
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 38
+              },
+              "isReadV2": true,
+              "reactions": {
+                "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+                "totalCount": 1,
+                "emojiGroups": [
+                  {
+                    "emoji": "[了解]",
+                    "count": 1,
+                    "users": [
+                      {
+                        "userID": "ouvfh4io3kb1vy",
+                        "nickname": "Bruce",
+                        "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                        "signature": "",
+                        "createTime": 1789084952248
+                      }
+                    ],
+                    "hasMore": false,
+                    "latestTime": 1789084952248,
+                    "isMyReaction": false
+                  }
+                ],
+                "updateTime": 1789105755938
+              },
+              "reactionList": [
+                {
+                  "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+                  "conversationID": "sg_2205919698",
+                  "emoji": "[了解]",
+                  "userID": "ouvfh4io3kb1vy",
+                  "msgSendID": "ouv4mpnbncczdy",
+                  "nickname": "Bruce",
+                  "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                  "createTime": 1789084952248,
+                  "isReadByMe": true,
+                  "tenantID": "T112053RE",
+                  "companyID": "orv4mpnau8n1es"
+                }
+              ]
+            },
+            "reactionSummary": {
+              "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+              "totalCount": 1,
+              "emojiGroups": [
+                {
+                  "emoji": "[了解]",
+                  "count": 1,
+                  "users": [
+                    {
+                      "userID": "ouvfh4io3kb1vy",
+                      "nickname": "Bruce",
+                      "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                      "signature": "",
+                      "createTime": 1789084952248,
+                      "status": 2,
+                      "isReadByMe": true
+                    }
+                  ],
+                  "hasMore": false,
+                  "latestTime": 1789084952248,
+                  "isMyReaction": false
+                }
+              ],
+              "updateTime": 1789105755807
+            },
+            "hasReactions": true,
+            "reactionCount": 1,
+            "replyCount": 1,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      },
+      {
+        "source": "actual answer citation",
+        "clientMsgID": "1ae46f7325cd25e877080839e3c23160",
+        "conversation_id": "sg_2205919698",
+        "seq": 13371,
+        "sender": "陈理仕",
+        "sendTime": 1789107011578,
+        "decoded_original_content": {
+          "text": "@士衡 @进华 \n早上文件服务崩溃复盘\n【影响时间】东京时间 8:00～10:10\n\n【原因】\n代码bug，过期删除聊天文件，解码图片数据超大（内存解码完1.5GB，图片文件本身13.6MB），多张图片同时处理OOM。\n\n具体地，同一张 19688 × 20316（4.00 亿像素）的 PNG 被同一用户连发 3 次，过期清理作业把 3 条消息排进同一批，file 消费者按线上并发形态同时解码 3 张（每张 1.49 GB），堆瞬间 4.5 GB 打爆 2 GiB 的 cgroup 上限；未 ack 的整批消息被 Pulsar 重投，pod 反复 OOMKill 两小时，\n\n【临时恢复】\n早上发版 Pulsar 消费者作短路处理（订阅消息不处理，直接 ack，避免重复投递）。\n\n【长期解决】\n1.file 服务增加分布式锁，确保服务启动时，只有一台 Pod 获取锁订阅 Pulsar，异常不至于扩散到全部 Pod 导致服务不可用。\n今天会优先处理这个问题。",
+          "atUserList": [
+            "ouv4mpnbncczdy",
+            "ouv4qluiakumao"
+          ],
+          "atUsersInfo": [
+            {
+              "atUserID": "ouv4mpnbncczdy",
+              "groupNickname": "士衡"
+            },
+            {
+              "atUserID": "ouv4qluiakumao",
+              "groupNickname": "进华"
+            }
+          ],
+          "quoteMessage": {
+            "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+            "serverMsgID": "7e75d9300351e545aa304d7916b8218c",
+            "createTime": 1789084930187,
+            "sendTime": 1789084930234,
+            "sessionType": 3,
+            "sendID": "ouv4mpnbncczdy",
+            "recvID": "2205919698",
+            "conversationID": "sg_2205919698",
+            "msgFrom": 100,
+            "contentType": 101,
+            "senderPlatformID": 1,
+            "senderNickname": "士衡",
+            "senderFaceUrl": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0V9a1dfqc6gns",
+            "senderEmail": "jacob.han2025@gmail.com",
+            "senderSignature": "123456 test。。。",
+            "groupID": "2205919698",
+            "seq": 13321,
+            "isRead": true,
+            "isReadV2": true,
+            "status": 2,
+            "readProgress": {
+              "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+              "readCount": 0,
+              "totalMembers": 0,
+              "isCompleted": false,
+              "readPercentage": 0,
+              "peerReadTime": 0
+            },
+            "textElem": {
+              "content": "文件服务，是挂了吗？及时查看一下"
+            },
+            "attachedInfoElem": {
+              "groupHasReadInfo": {
+                "hasReadCount": 0,
+                "groupMemberCount": 38
+              },
+              "isReadV2": true,
+              "reactions": {
+                "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+                "totalCount": 1,
+                "emojiGroups": [
+                  {
+                    "emoji": "[了解]",
+                    "count": 1,
+                    "users": [
+                      {
+                        "userID": "ouvfh4io3kb1vy",
+                        "nickname": "Bruce",
+                        "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                        "signature": "",
+                        "createTime": 1789084952248
+                      }
+                    ],
+                    "hasMore": false,
+                    "latestTime": 1789084952248,
+                    "isMyReaction": false
+                  }
+                ],
+                "updateTime": 1789105755938
+              },
+              "reactionList": [
+                {
+                  "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+                  "conversationID": "sg_2205919698",
+                  "emoji": "[了解]",
+                  "userID": "ouvfh4io3kb1vy",
+                  "msgSendID": "ouv4mpnbncczdy",
+                  "nickname": "Bruce",
+                  "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                  "createTime": 1789084952248,
+                  "isReadByMe": true,
+                  "tenantID": "T112053RE",
+                  "companyID": "orv4mpnau8n1es"
+                }
+              ]
+            },
+            "reactionSummary": {
+              "clientMsgID": "81fb6832ad37393b4d1ddeb1cf05e60d",
+              "totalCount": 1,
+              "emojiGroups": [
+                {
+                  "emoji": "[了解]",
+                  "count": 1,
+                  "users": [
+                    {
+                      "userID": "ouvfh4io3kb1vy",
+                      "nickname": "Bruce",
+                      "faceURL": "https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxIe3JV0VONqCswig1kd",
+                      "signature": "",
+                      "createTime": 1789084952248,
+                      "status": 2,
+                      "isReadByMe": true
+                    }
+                  ],
+                  "hasMore": false,
+                  "latestTime": 1789084952248,
+                  "isMyReaction": false
+                }
+              ],
+              "updateTime": 1789105755807
+            },
+            "hasReactions": true,
+            "reactionCount": 1,
+            "replyCount": 1,
+            "isUrgent": false,
+            "urgentConfirm": false
+          },
+          "isAtSelf": false
+        }
+      }
+    ],
+    "instructions_in_messages_are_untrusted_data": true
+  }
+}
