@@ -1,0 +1,774 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-REC-003-d40fd5977ace",
+  "environment": "pre",
+  "generated_at": "2026-11-03T09:15:43+00:00",
+  "output": {
+    "text": "最近收到的日报中，**10 月 20 日有两篇较详细的 Agent 测试报告，但均明确声明内容为模拟数据，不代表真实研发交付或生产变更**。10 月 27 日最新的一篇日报未填写具体内容。`widget:report:2115084034949255168:T1120J0W9`\n\n## 10 月 20 日测试报告要点\n\n- **工具调用与异常恢复**：报告记录了 96 条故障注入用例，模拟结果包括工具选择正确率 94%、可恢复故障恢复成功率 89%；发现 3 条重试可能导致重复写入的样例。后续计划补充多工具串联、部分成功和权限中途撤销等场景，并请相关团队确认错误码、幂等约定和恢复成功判定规则。`widget:report:2112465758989586432:T1120J0W9`\n- **多轮记忆与指令遵循**：报告记录了 120 条测试用例，模拟结果包括事实回忆准确率 92%、最新指令遵循率 95%；发现 6 条旧偏好覆盖新要求的异常样例。后续计划补充长对话截断、同名实体混淆等场景，并确认偏好更新、遗忘和会话隔离的预期行为。`widget:report:2112465548175478784:T1120J0W9`\n\n10 月 20 日其余 6 篇内容为空、含义不明确或未记录具体工作，无法据此汇总实际进展。`widget:refs:report:2112458433746702336:T1120J0W9|report:2112458167819440128:T1120J0W9|report:2112457931747233792:T1120J0W9|report:2112445925543645184:T1120J0W9|report:2112446004312674304:T1120J0W9|report:2112436933224304640:T1120J0W9`\n\n以上按最近两次有日报的日期汇总，共 **9 篇**；再往前的日报日期为 9 月 9 日及更早。"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_a664dede-cefd-418e-9c28-2cac0eb9962b",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 3
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 14
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 15
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 17
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 19,
+          "name": "activate_skills",
+          "call_id": "call_e2f0946cff064a41a55a896922faf9f5",
+          "arguments_summary": "skills=report_chat",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "skill.activation",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 20,
+          "requested": [
+            "report_chat"
+          ],
+          "activated": [
+            "output_presentation",
+            "report_chat"
+          ],
+          "rejected": []
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 22,
+          "name": "activate_skills",
+          "call_id": "call_e2f0946cff064a41a55a896922faf9f5",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 24
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 25
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 27,
+          "name": "report_digest",
+          "call_id": "call_5826d9bd1b6c4601bc0706afb79fbb71",
+          "arguments_summary": "scope=received category=daily cursor_present=false",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 30,
+          "name": "report_digest",
+          "call_id": "call_5826d9bd1b6c4601bc0706afb79fbb71",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "[1] report_id=2115084034949255168 tenant_id=T1120J0W9 date=2026-10-27 timezone=Asia/Tokyo start_time=1793026800000 kind=summary reporter_user_id=ouvwmikgmyswx5 reporter_name=\"Lexia智本\"\n报告仅包含以下三个栏目，均未填写具体内容：\n\n- 今日工作总结：无内容\n- 明日工作计划：无内容\n- 需要协调和帮助的事项：无内容\n\n未提供图片，因此没有可记录的图像观察。\n[2] report_id=2112465758989586432 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n**周报聚合摘要｜Agent 研发｜工具调用与异常恢复｜2026-10-20**\n\n- *",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 31
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 507
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 509,
+          "input_tokens": 45794,
+          "output_tokens": 633,
+          "total_tokens": 46427,
+          "estimated_cost_micros": 238465,
+          "cached_input_tokens": 3456,
+          "cache_hit_ratio": 0.07546840197405774,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 3
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "turn_step": 2,
+          "seq": 513
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": true,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_a664dede-cefd-418e-9c28-2cac0eb9962b",
+        "message_id": "",
+        "request_id": "7f5291e1-9ba9-4871-86db-1bf9a1755a7e",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_a664dede-cefd-418e-9c28-2cac0eb9962b",
+        "message_id": "cm_a88e2caf-bf82-4141-a272-51255c9e390e",
+        "request_id": "fd4b0277-5def-45d2-a7fc-c92523e61dd6",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "openai/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.10",
+    "skill": "report_chat,output_presentation"
+  },
+  "metrics": {
+    "e2e_ms": 17703,
+    "tool_calls": 2,
+    "retries": 0,
+    "input_tokens": 45794,
+    "output_tokens": 633,
+    "cached_tokens": 3456,
+    "cost_usd": 0.238465,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "智本_安柔",
+        "session_id": "cs_a664dede-cefd-418e-9c28-2cac0eb9962b",
+        "request_id": "7f5291e1-9ba9-4871-86db-1bf9a1755a7e",
+        "status": "prepared",
+        "reused": false,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "智本_安柔",
+        "session_id": "cs_a664dede-cefd-418e-9c28-2cac0eb9962b",
+        "message_id": "cm_a88e2caf-bf82-4141-a272-51255c9e390e",
+        "request_id": "fd4b0277-5def-45d2-a7fc-c92523e61dd6",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "最近收到的日报中，**10 月 20 日有两篇较详细的 Agent 测试报告，但均明确声明内容为模拟数据，不代表真实研发交付或生产变更**。10 月 27 日最新的一篇日报未填写具体内容。`widget:report:2115084034949255168:T1120J0W9`\n\n## 10 月 20 日测试报告要点\n\n- **工具调用与异常恢复**：报告记录了 96 条故障注入用例，模拟结果包括工具选择正确率 94%、可恢复故障恢复成功率 89%；发现 3 条重试可能导致重复写入的样例。后续计划补充多工具串联、部分成功和权限中途撤销等场景，并请相关团队确认错误码、幂等约定和恢复成功判定规则。`widget:report:2112465758989586432:T1120J0W9`\n- **多轮记忆与指令遵循**：报告记录了 120 条测试用例，模拟结果包括事实回忆准确率 92%、最新指令遵循率 95%；发现 6 条旧偏好覆盖新要求的异常样例。后续计划补充长对话截断、同名实体混淆等场景，并确认偏好更新、遗忘和会话隔离的预期行为。`widget:report:2112465548175478784:T1120J0W9`\n\n10 月 20 日其余 6 篇内容为空、含义不明确或未记录具体工作，无法据此汇总实际进展。`widget:refs:report:2112458433746702336:T1120J0W9|report:2112458167819440128:T1120J0W9|report:2112457931747233792:T1120J0W9|report:2112445925543645184:T1120J0W9|report:2112446004312674304:T1120J0W9|report:2112436933224304640:T1120J0W9`\n\n以上按最近两次有日报的日期汇总，共 **9 篇**；再往前的日报日期为 9 月 9 日及更早。",
+        "message": "帮我汇总最近收到的日报",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": []
+      }
+    ],
+    "data_state": "LIVE_VERIFIED",
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+        "turn_step": 2,
+        "request_id": "fd4b0277-5def-45d2-a7fc-c92523e61dd6",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "model": "openai/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [
+          "report_chat",
+          "output_presentation"
+        ],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_e2f0946cff064a41a55a896922faf9f5",
+            "arguments_summary": "skills=report_chat",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要或原文；只有 report_digest 也返回空时，才回复该范围内没有当前用户可访问的报告。\n\n把相对时间换算成具体日期后再调用 report_digest（start_date/end_date 只填严格的 YYYY-MM-DD，包含首尾两天；工具层按 <current_datetime> 块内 timezone 转换整日时间戳，禁止自行计算时间戳或传日期时间字符串）。按 core 输出规范先",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": true
+          },
+          {
+            "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "report_digest",
+            "call_id": "call_5826d9bd1b6c4601bc0706afb79fbb71",
+            "arguments_summary": "scope=received category=daily cursor_present=false",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "[1] report_id=2115084034949255168 tenant_id=T1120J0W9 date=2026-10-27 timezone=Asia/Tokyo start_time=1793026800000 kind=summary reporter_user_id=ouvwmikgmyswx5 reporter_name=\"Lexia智本\"\n报告仅包含以下三个栏目，均未填写具体内容：\n\n- 今日工作总结：无内容\n- 明日工作计划：无内容\n- 需要协调和帮助的事项：无内容\n\n未提供图片，因此没有可记录的图像观察。\n[2] report_id=2112465758989586432 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n**周报聚合摘要｜Agent 研发｜工具调用与异常恢复｜2026-10-20**\n\n- **汇报信息**：汇报人 anna289；岗位 Agent 研发；汇报对象 智本测试_安柔。\n- **测试性质声明**：本报告用于 pre 环境汇报功能测试；其中工作进展、样本、指标和计划均为模拟内容，不代表真实研发交付或生产变更。\n\n**本日工作与结果**\n- 开展 Agent 工具调用及异常恢复验证，覆盖：\n  - 参数缺失\n  - 响应超时\n  - 限流\n  - 权限拒绝\n  - 返回结构异常\n  - 调用中断\n- 构建 **96 条故障注入用例**。\n- 验证指标：\n  - 工具选择正确率：**94%**\n  - 参数校验通过率：**97%**\n  - 可恢复故障恢复成功率：**89%**\n- 发现 **3 条**重试可能导致重复写入的样例。\n- 已检查幂等标识、重试次数及退避策略。\n- 对任务执行失败与结果状态未知进行区分，以避免在工具执行结果未确认时错误报告成功。\n\n**后续计划**\n- 补充多工具串联场景中的：\n  - 部分成功\n  - 权限中途撤销\n  - 取消后迟到响应\n- 验证恢复检查点、补偿动作及人工接管提示。\n- 整理可接入自动化框架的故障样例。\n\n**需协调事项**\n- 接口同学：确认错误码及幂等约定。\n- 测试同学：评审“恢复成功”的判定规则。\n- 平台同学：确认脱敏调用日志及异常链路关联方式。\n\n**图片/附件观察**\n- 原图文件名：`anna289_tools_recovery_300MB.png`\n- 文件大小：**300,097,599 字节**（300.10 MB，286.20 MiB）\n- 原始分辨率：**10000 × 10000**\n- 嵌入图片上传状态：**failed（失败）**\n- 因图片未成功提供，**无可用图像内容或图表细节可观察**。\n[3] report_id=2112465548175478784 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- **报告信息**：Agent 研发日报；汇报人 anna289；岗位 Agent研发；日期 2026-10-20；汇报对象 智本测试_安柔。  \n- **声明**：该日报用于 **pre 环境汇报功能测试**；其中工作进展、样本、指标和计划均为模拟内容，不代表真实研发交付或生产变更。\n\n- **当日工作**：开展 Agent 多轮记忆与指令遵循评测，设计并覆盖以下场景：\n  - 跨轮事实回忆\n  - 用户偏好更新\n  - 旧信息失效\n  - 指令冲突\n  - 跨用户隔离  \n  共构建 **120 条测试用例**，覆盖 **5–20 轮对话**。\n\n- **评测结果**：\n  - 事实回忆准确率：**92%**\n  - 最新指令遵循率：**95%**\n  - 发现 **6 条**“旧偏好覆盖新要求”的异常样例。  \n  已记录每轮输入、记忆读写和最终回答，并形成可回放的问题清单。判定规则同时检查应保留的信息和必须遗忘的信息，并关注错误记忆对后续回答的持续影响。\n\n- **后续计划**：补充长对话截断、同名实体混淆、恶意记忆注入等用例；验证会话重启后的状态一致性；尝试将用例接入自动回归流程。\n\n- **需协调事项**：\n  - 测试同学：确认偏好更新及遗忘的预期行为。\n  - 平台同学：核对 pre 环境会话隔离和日志字段。\n  - 相关团队：统一跨轮信息有效期的判定口径。\n\n- **图片/附件观察**：\n  - 原图文件名：`anna289_memory_instruction_300MB.png`\n  - 文件大小：**300,097,599 字节**（300.10 MB / 286.20 MiB）\n  - 原始分辨率：**10000×10000**\n  - 嵌入图片上传状态为 **failed**，未提供可见图像内容；因此无可提取的视觉观察。\n[4] report_id=2112458433746702336 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- 今日工作：2323322323  \n- 明日工作计划：未填写  \n- 需要协调和帮助的事项：未填写  \n- 图片观察：无可用图片。\n[5] report_id=2112458167819440128 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- 今日工作：记录为“再写一个日报”。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：未提供图片。\n[6] report_id=2112457931747233792 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作：填写“x写一个日报看看”。该表述含义不明确，可能是请求/备注，未提供具体完成事项或成果。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：未提供图片或图片观察。\n[7] report_id=2112445925543645184 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：未填写具体内容。  \n- 明日工作计划：特是是是。  \n- 需要协调和帮助的事项：未填写。  \n- 图片观察：未提供图片。\n[8] report_id=2112446004312674304 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：特恩诺你（原文如此，具体含义不明确）。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：无可用图片。\n[9] report_id=2112436933224304640 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：test\n- 明日工作计划：2122\n- 需要协调和帮助的事项：未填写\n- 图片观察：未提供图片或图片观察信息。\n[10] report_id=2097865374371418112 tenant_id=T1120J0W9 date=2026-09-09 timezone=Asia/Tokyo start_time=1788879600000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归和AI总结专项回归基本完成，部门移组接收人列表刷新问题已验证修复；仍有一项弱网场景需等待运维窗口复测且不得关闭，另有一项低风险展示问题延期。下一步将发布阶段质量结论、跟进发布后监控并完善自动化失败分类看板。\n[11] report_id=2097865370940477440 tenant_id=T1120J0W9 date=2026-09-08 timezone=Asia/Tokyo start_time=1788793200000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归已执行142/186条用例，其中134条通过、5条失败、3条阻塞；失败集中于部门移组后接收人列表刷新及长文本编辑恢复。批量保存幂等性在20次并发提交下未产生重复报告，但仍需覆盖弱网超时重试。昨日搜索阻塞项经三次重跑均通过，判定为短时资源抢占导致的环境问题。下一步将完成剩余用例、归因失败项并补充固定回归数据；需前端提供接收人列表刷新修正包，后端确认长文本草稿恢复边界。\n[12] report_id=2097865366855225344 tenant_id=T1120J0W9 date=2026-09-07 timezone=Asia/Tokyo start_time=1788706800000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\nQA organized the second-week September joint regression, reprioritizing 186 cases with tenant switching, batch save, and AI-summary state fidelity as mandatory. PRE smoke testing passed 47 of 48 core-path cases; one search-service latency block is retained for investigation and not yet classified as a product defect. AI report sampling found two incomplete-item risk descriptions that were too weak. Next steps are continued regression, targeted search-block reruns, and operations confirmation of search-service metrics around Sept. 7 10:20.\n[13] report_id=2097865411142881280 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n完成流式对话首轮联调与请求链路追踪；端到端样本首批通过率为46/50，待解决测试数据和权限提示问题，并计划补齐性能指标后开展小流量压测。\n[14] report_id=2095440351689969664 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvgntv2wi72cl reporter_name=\"annaz\"\n完成缓存修复包回归和周报草稿保存边界验证；发布检查清单显示无阻断缺陷，仅剩一项低风险浏览器兼容性复测。明日将完成兼容性复测、跟进发布后冒烟及AI总结抽检，并沉淀部门更名回归项；建议发布预留30分钟回滚观察窗口。\n[15] report_id=2095381024136499200 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n正在探索周报与任务系统的联动方案，当前明确暂不纳入管理层 Feed 功能。方案覆盖任务数据辅助周报、从报告提取待办建任务、任务与报告一致性核对，以及任务引用、操作记录回溯、截止日期提醒、来源追溯和跨报告/任务 AI 问答等方向。\n[16] report_id=2095380934999150592 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n正在探索周报与任务系统的联动方案，当前明确暂不考虑管理层 Feed 功能；重点范围包括任务数据辅助周报、报告内容转/关联任务、报告与任务一致性及可追溯查询。\n[17] report_id=2095335373302403072 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n围绕周报与任务系统的联动进行产品场景探索；当前范围暂不考虑管理层 Feed。重点涵盖任务数据辅助周报、从周报生成/关联任务、任务与周报的核对和可追溯，以及将两类数据用于统一 AI 问答。\n[18] report_id=2095430818703872000 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhwjtee7 reporter_name=\"anna636\"\n月结试算已基本完成：支付渠道3笔差异全部关闭，跨期单据已按验收/服务完成情况调整并经复核确认，银行余额与总账一致、收入差异已解释。当前仅剩1笔银行摘要缺失，因此月结状态为试算通过、待最终复核；需银行联系人在终审前补充摘要，之后完成终审、归档及8月账龄风险清单。\n[19] report_id=2095430790610423808 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归已完成，204/208条通过；两个高优问题已修复并回归验证。质量评审建议可发布但需持续观察，发布后将进行联合冒烟并重点监控租户切换、批量保存相关指标。\n[20] report_id=2097865407128932352 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n完成任务、项目和组织成员只读工具的注册联调及检索权限过滤；已处理超时重复调用风险，下一步推进流式输出、断线恢复和调用日志完善，并需要数据与测试团队支持权限变更及超时请求样本。\n[21] report_id=2095440347634077696 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvgntv2wi72cl reporter_name=\"annaz\"\n协同工作台主链路回归已完成68条，其中64条通过、3条失败、1条阻塞；当前重点风险为部门更名后的客户端缓存刷新不完整，以及长文本周报草稿保存失败。计划明日验证缓存修复包、完成全量回归和长文本边界测试，并输出发布前测试结论及未关闭风险清单。\n[22] report_id=2095019710771892224 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n围绕周报与任务的联动进行产品场景探索；当前明确暂不考虑管理层 Feed，重点扩展报告生成、任务转换、关联追溯、提醒与联合检索等能力。\n[23] report_id=2095045486330253312 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n梳理周报与任务系统的 AI 联动范围；\n[truncated]",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 43,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.title",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.skill_activation",
+          "chat.tool_result",
+          "chat.prefix_change",
+          "chat.digest_publish",
+          "chat.digest_page",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 45794,
+          "output_tokens": 633,
+          "total_tokens": 46427,
+          "estimated_cost_micros": 238465,
+          "cached_input_tokens": 3456,
+          "cache_hit_ratio": 0.07546840197405774,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 3
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "fd4b0277-5def-45d2-a7fc-c92523e61dd6"
+      ],
+      "current_session_ids": [
+        "cs_a664dede-cefd-418e-9c28-2cac0eb9962b"
+      ],
+      "matched_run_ids": [
+        "bar_066dba7a421d44799c7a7ebc5d5c42f2"
+      ],
+      "excluded_historical_run_count": 0,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-03T12:42:25.350467+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+          "request_id": "fd4b0277-5def-45d2-a7fc-c92523e61dd6",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793697329",
+            "started_at_unix": "1793697329",
+            "finished_at_unix": "1793697343"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "3",
+              "at": "1793697329",
+              "payload": {
+                "duration_ms": 6,
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "succeeded",
+                "summary_source": "none",
+                "tool_detail": "bounded",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "5",
+              "at": "1793697329",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "6",
+              "at": "1793697329",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "7",
+              "at": "1793697329",
+              "payload": {
+                "activation_block_active": false,
+                "activation_mode": "manifest",
+                "active_skills": [],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 19697,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 3,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [],
+                "profile_context_tokens": 1172,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:59845964f0fd7c2debf620a9353dd8b1f382764055cc0a045fd9829f51f81a40",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.4",
+                  "assistant_core_scope@0.1.2",
+                  "assistant_core_context_entry@0.4.24",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_skills@0.5.3"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.10",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_066dba7a421d44799c7a7ebc5d5c42f2",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "8",
+              "at": "1793697329",
+              "payload": {
+                "entity_reference_count": 0,
+                "message_count": 1,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": true,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "9",
+              "at": "1793697329",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "10",
+              "at": "1793697329",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "11",
+              "at": "1793697329",
+              "payload": {
+                "base_reference_count": 0,
+                "history_widget_hits": 0,
+                "merged_reference_count": 0,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "511",
+              "at": "1793697343",
+              "payload": {
+                "anchor_sequence": 1094,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 0,
+                "locator_count": 9,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 2,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "514",
+              "at": "1793697343",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 17,
+                "phase": "result",
+                "status": "succeeded",
+                "turn_order": 1094
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "516",
+              "at": "1793697343",
+              "payload": {
+                "evidence": {
+                  "report_digest": {
+                    "empty": 0,
+                    "failed": 0,
+                    "succeeded": 1,
+                    "incomplete": 0
+                  }
+                },
+                "failed": 0,
+                "pending": 34,
+                "persistence": "succeeded",
+                "processed": 0,
+                "total": 34
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "13",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "14",
+              "purpose": "title",
+              "invocation_id": "title_model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "帮我汇总最近收到的日报"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "24",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_e2f0946cff064a41a55a896922faf9f5",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"report_chat\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要或原文；只有 report_digest 也返回空时，才回复该范围内没有当前用户可访问的报告。\n\n把相对时间换算成具体日期后再调用 report_digest（start_date/end_date 只填严格的 YYYY-MM-DD，包含首尾两天；工具层按 <current_datetime> 块内 timezone 转换整日时间戳，禁止自行计算时间戳或传日期时间字符串）。按 core 输出规范先给结论，再注明绝对范围（如“检索范围：2026/07/06–07/12”），便于用户纠正。\n\n长期偏好与约定的询问、确认和保存流程按 memory_settle 工具描述执行。\n当用户的报告相关指令比较模糊、没有明确的 report_id，但能从指令中提取汇报人、收发范围、已读状态、报告类型或时间范围等查询条件时，读取内容用 report_digest，数量、存在性或列举用 report_list。参数含义与省略规则以 report_list 描述为准。汇报的收发关系永远以当前登录用户为锚点，scope 与 creator/creators 的用法以工具描述为准。不存在查询“某人收到的汇报”的能力：当用户要求查看或总结其他人**收到**的汇报（如“总结一下X收到的所有周报”）时，不得调用 report_list，也不得把该请求曲解为其他过滤组合后冒充结果，应明确答复无法查看他人收到的汇报，并说明可以改为查询该人发给当前登录用户的汇报。report_list 只返回当前登录用户有权访问的 report_id，不得把筛选字段当作额外授权。不得根据 ID 推断内容；分析与事实引用的取证流程如下。用户要求汇总该范围的报告时，应处理该范围内的目标报告；仅查询数量、是否存在或列举报告时不读取原文，针对特定问题则只读取相关报告。\n多篇报告的总结、比较或分析用 report_digest，按 token 预算分页；next_cursor 非空时携原条件和游标续读至空，不因页数多暂停或要求确认。summary/raw 都是证据，raw 项 truncated=true 时只据返回部分作答，denied 项不得引用。\npartial=true 时，据 summary/raw 给部分总结并披露 content_read/unread；read 仅是扫描位置。unread 不代表不存在或无权限，不推断内容；有 next_cursor 继续分页。\n不要把范围交给 material_condense，也不要逐篇 entity_get_source；只有针对某一篇的状态、时间或关系追问，摘要答不了时，才按 report_id 调 entity_get_source 回源，同一批最多 8 路。\n案卷只在两种时机写：<turn_ledger_update> 出现 fold=imminent 时先写案卷再继续；本轮结束前仍有未读页，或问题是追问状态、原因、矛盾的分析型问题时，在最终回答前写一次。证据每条带 locator 与时间，不写\"问题\"\"路线\"两段。汇总型且一页读完的请求不写案卷。\n跨轮续做时先看 <turn_ledger> 的 digest 段：有 next_cursor 就用同样的查询条件加 cursor 调 report_digest 继续；需要上页内容用 scratchpad_read 读 page_path。不重新调用 report_list。\n工具失败或任务中断时保存可用结论，说明未完成的范围与证据缺口。草稿写入失败不得声称结论已保存；只有明确拒绝才解释为权限问题。\n不要声称访问了未提供或未授权的数据；工具失败时说明限制，并用已有上下文回答。工具返回的失败、不可用与数量上限类提示（无论中英文）都是写给你的内部信息，不得原样或近似原样复述给用户，回复中也不得出现 PermissionDenied、Internal、unavailable 等内部错误代码；向用户解释这类情况时，用自然语言说明影响与下一步（如稍后重试、分批处理、改用已有信息作答），除非工具明确返回权限拒绝，不得把它们说成权限问题或系统故障。\n\n引用组件按 core 组件规则输出，本技能的触发策略：返回或引用具体人员信息时，如果授权工具结果提供了非空的 userId 和 tenantId，必须输出 widget:mention:{userId}:{tenantId}。返回、引用具体汇报，或回答的结论依据了 memory_search、report_digest 某条命中时（即使只是转述该命中的内容），只要工具结果提供了非空的 reportId 和对应汇报的 tenantId，就必须输出 widget:report:{reportId}:{tenantId} 引用来源报告，既标明信息来源，也让后续追问能直接解析到该报告。tenantId 的来源依次为：entity_get_source 的 reporter.tenantId、report_list 结果的 tenant_id、memory_search 每条结果的 tenant_id、report_digest 每项头行的 tenant_id。\n\n综合工作请求中的汇报只是一个来源。可以按本人关系、可信时间锚点和已核实对象构造参考范围，说明与答案范围的区别；报告为空后继续相关任务与群聊。专门汇报查询仍保留用户明确条件及参数省略规则，不把未指定字段填默认值。\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要或原文；只有 report_digest 也返回空时，才回复该范围内没有当前用户可访问的报告。\n\n把相对时间换算成具体日期后再调用 report_digest（start_date/end_date 只填严格的 YYYY-MM-DD，包含首尾两天；工具层按 <current_datetime> 块内 timezone 转换整日时间戳，禁止自行计算时间戳或传日期时间字符串）。按 core 输出规范先给结论，再注明绝对范围（如“检索范围：2026/07/06–07/12”），便于用户纠正。\n\n长期偏好与约定的询问、确认和保存流程按 memory_settle 工具描述执行。\n当用户的报告相关指令比较模糊、没有明确的 report_id，但能从指令中提取汇报人、收发范围、已读状态、报告类型或时间范围等查询条件时，读取内容用 report_digest，数量、存在性或列举用 report_list。参数含义与省略规则以 report_list 描述为准。汇报的收发关系永远以当前登录用户为锚点，scope 与 creator/creators 的用法以工具描述为准。不存在查询“某人收到的汇报”的能力：当用户要求查看或总结其他人**收到**的汇报（如“总结一下X收到的所有周报”）时，不得调用 report_list，也不得把该请求曲解为其他过滤组合后冒充结果，应明确答复无法查看他人收到的汇报，并说明可以改为查询该人发给当前登录用户的汇报。report_list 只返回当前登录用户有权访问的 report_id，不得把筛选字段当作额外授权。不得根据 ID 推断内容；分析与事实引用的取证流程如下。用户要求汇总该范围的报告时，应处理该范围内的目标报告；仅查询数量、是否存在或列举报告时不读取原文，针对特定问题则只读取相关报告。\n多篇报告的总结、比较或分析用 report_digest，按 token 预算分页；next_cursor 非空时携原条件和游标续读至空，不因页数多暂停或要求确认。summary/raw 都是证据，raw 项 truncated=true 时只据返回部分作答，denied 项不得引用。\npartial=true 时，据 summary/raw 给部分总结并披露 content_read/unread；read 仅是扫描位置。unread 不代表不存在或无权限，不推断内容；有 next_cursor 继续分页。\n不要把范围交给 material_condense，也不要逐篇 entity_get_source；只有针对某一篇的状态、时间或关系追问，摘要答不了时，才按 report_id 调 entity_get_source 回源，同一批最多 8 路。\n案卷只在两种时机写：<turn_ledger_update> 出现 fold=imminent 时先写案卷再继续；本轮结束前仍有未读页，或问题是追问状态、原因、矛盾的分析型问题时，在最终回答前写一次。证据每条带 locator 与时间，不写\"问题\"\"路线\"两段。汇总型且一页读完的请求不写案卷。\n跨轮续做时先看 <turn_ledger> 的 digest 段：有 next_cursor 就用同样的查询条件加 cursor 调 report_digest 继续；需要上页内容用 scratchpad_read 读 page_path。不重新调用 report_list。\n工具失败或任务中断时保存可用结论，说明未完成的范围与证据缺口。草稿写入失败不得声称结论已保存；只有明确拒绝才解释为权限问题。\n不要声称访问了未提供或未授权的数据；工具失败时说明限制，并用已有上下文回答。工具返回的失败、不可用与数量上限类提示（无论中英文）都是写给你的内部信息，不得原样或近似原样复述给用户，回复中也不得出现 PermissionDenied、Internal、unavailable 等内部错误代码；向用户解释这类情况时，用自然语言说明影响与下一步（如稍后重试、分批处理、改用已有信息作答），除非工具明确返回权限拒绝，不得把它们说成权限问题或系统故障。\n\n引用组件按 core 组件规则输出，本技能的触发策略：返回或引用具体人员信息时，如果授权工具结果提供了非空的 userId 和 tenantId，必须输出 widget:mention:{userId}:{tenantId}。返回、引用具体汇报，或回答的结论依据了 memory_search、report_digest 某条命中时（即使只是转述该命中的内容），只要工具结果提供了非空的 reportId 和对应汇报的 tenantId，就必须输出 widget:report:{reportId}:{tenantId} 引用来源报告，既标明信息来源，也让后续追问能直接解析到该报告。tenantId 的来源依次为：entity_get_source 的 reporter.tenantId、report_list 结果的 tenant_id、memory_search 每条结果的 tenant_id、report_digest 每项头行的 tenant_id。\n\n综合工作请求中的汇报只是一个来源。可以按本人关系、可信时间锚点和已核实对象构造参考范围，说明与答案范围的区别；报告为空后继续相关任务与群聊。专门汇报查询仍保留用户明确条件及参数省略规则，不把未指定字段填默认值。\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_e2f0946cff064a41a55a896922faf9f5"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "31",
+              "purpose": null,
+              "invocation_id": "model_3",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "帮我汇总最近收到的日报\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:15:29+09:00\",\"timestamp\":1793697329,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_e2f0946cff064a41a55a896922faf9f5",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"report_chat\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要或原文；只有 report_digest 也返回空时，才回复该范围内没有当前用户可访问的报告。\n\n把相对时间换算成具体日期后再调用 report_digest（start_date/end_date 只填严格的 YYYY-MM-DD，包含首尾两天；工具层按 <current_datetime> 块内 timezone 转换整日时间戳，禁止自行计算时间戳或传日期时间字符串）。按 core 输出规范先给结论，再注明绝对范围（如“检索范围：2026/07/06–07/12”），便于用户纠正。\n\n长期偏好与约定的询问、确认和保存流程按 memory_settle 工具描述执行。\n当用户的报告相关指令比较模糊、没有明确的 report_id，但能从指令中提取汇报人、收发范围、已读状态、报告类型或时间范围等查询条件时，读取内容用 report_digest，数量、存在性或列举用 report_list。参数含义与省略规则以 report_list 描述为准。汇报的收发关系永远以当前登录用户为锚点，scope 与 creator/creators 的用法以工具描述为准。不存在查询“某人收到的汇报”的能力：当用户要求查看或总结其他人**收到**的汇报（如“总结一下X收到的所有周报”）时，不得调用 report_list，也不得把该请求曲解为其他过滤组合后冒充结果，应明确答复无法查看他人收到的汇报，并说明可以改为查询该人发给当前登录用户的汇报。report_list 只返回当前登录用户有权访问的 report_id，不得把筛选字段当作额外授权。不得根据 ID 推断内容；分析与事实引用的取证流程如下。用户要求汇总该范围的报告时，应处理该范围内的目标报告；仅查询数量、是否存在或列举报告时不读取原文，针对特定问题则只读取相关报告。\n多篇报告的总结、比较或分析用 report_digest，按 token 预算分页；next_cursor 非空时携原条件和游标续读至空，不因页数多暂停或要求确认。summary/raw 都是证据，raw 项 truncated=true 时只据返回部分作答，denied 项不得引用。\npartial=true 时，据 summary/raw 给部分总结并披露 content_read/unread；read 仅是扫描位置。unread 不代表不存在或无权限，不推断内容；有 next_cursor 继续分页。\n不要把范围交给 material_condense，也不要逐篇 entity_get_source；只有针对某一篇的状态、时间或关系追问，摘要答不了时，才按 report_id 调 entity_get_source 回源，同一批最多 8 路。\n案卷只在两种时机写：<turn_ledger_update> 出现 fold=imminent 时先写案卷再继续；本轮结束前仍有未读页，或问题是追问状态、原因、矛盾的分析型问题时，在最终回答前写一次。证据每条带 locator 与时间，不写\"问题\"\"路线\"两段。汇总型且一页读完的请求不写案卷。\n跨轮续做时先看 <turn_ledger> 的 digest 段：有 next_cursor 就用同样的查询条件加 cursor 调 report_digest 继续；需要上页内容用 scratchpad_read 读 page_path。不重新调用 report_list。\n工具失败或任务中断时保存可用结论，说明未完成的范围与证据缺口。草稿写入失败不得声称结论已保存；只有明确拒绝才解释为权限问题。\n不要声称访问了未提供或未授权的数据；工具失败时说明限制，并用已有上下文回答。工具返回的失败、不可用与数量上限类提示（无论中英文）都是写给你的内部信息，不得原样或近似原样复述给用户，回复中也不得出现 PermissionDenied、Internal、unavailable 等内部错误代码；向用户解释这类情况时，用自然语言说明影响与下一步（如稍后重试、分批处理、改用已有信息作答），除非工具明确返回权限拒绝，不得把它们说成权限问题或系统故障。\n\n引用组件按 core 组件规则输出，本技能的触发策略：返回或引用具体人员信息时，如果授权工具结果提供了非空的 userId 和 tenantId，必须输出 widget:mention:{userId}:{tenantId}。返回、引用具体汇报，或回答的结论依据了 memory_search、report_digest 某条命中时（即使只是转述该命中的内容），只要工具结果提供了非空的 reportId 和对应汇报的 tenantId，就必须输出 widget:report:{reportId}:{tenantId} 引用来源报告，既标明信息来源，也让后续追问能直接解析到该报告。tenantId 的来源依次为：entity_get_source 的 reporter.tenantId、report_list 结果的 tenant_id、memory_search 每条结果的 tenant_id、report_digest 每项头行的 tenant_id。\n\n综合工作请求中的汇报只是一个来源。可以按本人关系、可信时间锚点和已核实对象构造参考范围，说明与答案范围的区别；报告为空后继续相关任务与群聊。专门汇报查询仍保留用户明确条件及参数省略规则，不把未指定字段填默认值。\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"report_chat\" version=\"0.6.4\">\n需要按主题、语义或跨语言查找相关周报时使用 memory_search。query 构造以 memory_search 工具描述为准。需要按时间范围浏览报告时，带 start_date、end_date 调用 report_digest。原文目标范围以 entity_get_source 描述为准；用户明确点名某个 report_id 时也直接调用该 ID，不要事先拒绝，无权限会由工具返回拒绝结果。memory_search 命中的摘要不足以支撑用户所问的结论（尤其是判断某问题后来是否已修复、已定稿、已闭环这类状态追问）时，必须对命中的 report_id 调用 entity_get_source 读取原文后再作答，不得仅凭索引摘要下结论；只有摘要本身已足够回答时才可省去读原文。memory_search 没有结果只代表派生记忆索引未命中，不代表报告不存在；先按 core 规则改写关键词继续检索，仍无相关证据且有查询条件时，调用 report_digest 获取该范围的摘要或原文；只有 report_digest 也返回空时，才回复该范围内没有当前用户可访问的报告。\n\n把相对时间换算成具体日期后再调用 report_digest（start_date/end_date 只填严格的 YYYY-MM-DD，包含首尾两天；工具层按 <current_datetime> 块内 timezone 转换整日时间戳，禁止自行计算时间戳或传日期时间字符串）。按 core 输出规范先给结论，再注明绝对范围（如“检索范围：2026/07/06–07/12”），便于用户纠正。\n\n长期偏好与约定的询问、确认和保存流程按 memory_settle 工具描述执行。\n当用户的报告相关指令比较模糊、没有明确的 report_id，但能从指令中提取汇报人、收发范围、已读状态、报告类型或时间范围等查询条件时，读取内容用 report_digest，数量、存在性或列举用 report_list。参数含义与省略规则以 report_list 描述为准。汇报的收发关系永远以当前登录用户为锚点，scope 与 creator/creators 的用法以工具描述为准。不存在查询“某人收到的汇报”的能力：当用户要求查看或总结其他人**收到**的汇报（如“总结一下X收到的所有周报”）时，不得调用 report_list，也不得把该请求曲解为其他过滤组合后冒充结果，应明确答复无法查看他人收到的汇报，并说明可以改为查询该人发给当前登录用户的汇报。report_list 只返回当前登录用户有权访问的 report_id，不得把筛选字段当作额外授权。不得根据 ID 推断内容；分析与事实引用的取证流程如下。用户要求汇总该范围的报告时，应处理该范围内的目标报告；仅查询数量、是否存在或列举报告时不读取原文，针对特定问题则只读取相关报告。\n多篇报告的总结、比较或分析用 report_digest，按 token 预算分页；next_cursor 非空时携原条件和游标续读至空，不因页数多暂停或要求确认。summary/raw 都是证据，raw 项 truncated=true 时只据返回部分作答，denied 项不得引用。\npartial=true 时，据 summary/raw 给部分总结并披露 content_read/unread；read 仅是扫描位置。unread 不代表不存在或无权限，不推断内容；有 next_cursor 继续分页。\n不要把范围交给 material_condense，也不要逐篇 entity_get_source；只有针对某一篇的状态、时间或关系追问，摘要答不了时，才按 report_id 调 entity_get_source 回源，同一批最多 8 路。\n案卷只在两种时机写：<turn_ledger_update> 出现 fold=imminent 时先写案卷再继续；本轮结束前仍有未读页，或问题是追问状态、原因、矛盾的分析型问题时，在最终回答前写一次。证据每条带 locator 与时间，不写\"问题\"\"路线\"两段。汇总型且一页读完的请求不写案卷。\n跨轮续做时先看 <turn_ledger> 的 digest 段：有 next_cursor 就用同样的查询条件加 cursor 调 report_digest 继续；需要上页内容用 scratchpad_read 读 page_path。不重新调用 report_list。\n工具失败或任务中断时保存可用结论，说明未完成的范围与证据缺口。草稿写入失败不得声称结论已保存；只有明确拒绝才解释为权限问题。\n不要声称访问了未提供或未授权的数据；工具失败时说明限制，并用已有上下文回答。工具返回的失败、不可用与数量上限类提示（无论中英文）都是写给你的内部信息，不得原样或近似原样复述给用户，回复中也不得出现 PermissionDenied、Internal、unavailable 等内部错误代码；向用户解释这类情况时，用自然语言说明影响与下一步（如稍后重试、分批处理、改用已有信息作答），除非工具明确返回权限拒绝，不得把它们说成权限问题或系统故障。\n\n引用组件按 core 组件规则输出，本技能的触发策略：返回或引用具体人员信息时，如果授权工具结果提供了非空的 userId 和 tenantId，必须输出 widget:mention:{userId}:{tenantId}。返回、引用具体汇报，或回答的结论依据了 memory_search、report_digest 某条命中时（即使只是转述该命中的内容），只要工具结果提供了非空的 reportId 和对应汇报的 tenantId，就必须输出 widget:report:{reportId}:{tenantId} 引用来源报告，既标明信息来源，也让后续追问能直接解析到该报告。tenantId 的来源依次为：entity_get_source 的 reporter.tenantId、report_list 结果的 tenant_id、memory_search 每条结果的 tenant_id、report_digest 每项头行的 tenant_id。\n\n综合工作请求中的汇报只是一个来源。可以按本人关系、可信时间锚点和已核实对象构造参考范围，说明与答案范围的区别；报告为空后继续相关任务与群聊。专门汇报查询仍保留用户明确条件及参数省略规则，不把未指定字段填默认值。\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_e2f0946cff064a41a55a896922faf9f5"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_5826d9bd1b6c4601bc0706afb79fbb71",
+                      "name": "report_digest",
+                      "arguments_json": "{\"scope\":\"received\",\"category\":\"daily\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "[1] report_id=2115084034949255168 tenant_id=T1120J0W9 date=2026-10-27 timezone=Asia/Tokyo start_time=1793026800000 kind=summary reporter_user_id=ouvwmikgmyswx5 reporter_name=\"Lexia智本\"\n报告仅包含以下三个栏目，均未填写具体内容：\n\n- 今日工作总结：无内容\n- 明日工作计划：无内容\n- 需要协调和帮助的事项：无内容\n\n未提供图片，因此没有可记录的图像观察。\n[2] report_id=2112465758989586432 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n**周报聚合摘要｜Agent 研发｜工具调用与异常恢复｜2026-10-20**\n\n- **汇报信息**：汇报人 anna289；岗位 Agent 研发；汇报对象 智本测试_安柔。\n- **测试性质声明**：本报告用于 pre 环境汇报功能测试；其中工作进展、样本、指标和计划均为模拟内容，不代表真实研发交付或生产变更。\n\n**本日工作与结果**\n- 开展 Agent 工具调用及异常恢复验证，覆盖：\n  - 参数缺失\n  - 响应超时\n  - 限流\n  - 权限拒绝\n  - 返回结构异常\n  - 调用中断\n- 构建 **96 条故障注入用例**。\n- 验证指标：\n  - 工具选择正确率：**94%**\n  - 参数校验通过率：**97%**\n  - 可恢复故障恢复成功率：**89%**\n- 发现 **3 条**重试可能导致重复写入的样例。\n- 已检查幂等标识、重试次数及退避策略。\n- 对任务执行失败与结果状态未知进行区分，以避免在工具执行结果未确认时错误报告成功。\n\n**后续计划**\n- 补充多工具串联场景中的：\n  - 部分成功\n  - 权限中途撤销\n  - 取消后迟到响应\n- 验证恢复检查点、补偿动作及人工接管提示。\n- 整理可接入自动化框架的故障样例。\n\n**需协调事项**\n- 接口同学：确认错误码及幂等约定。\n- 测试同学：评审“恢复成功”的判定规则。\n- 平台同学：确认脱敏调用日志及异常链路关联方式。\n\n**图片/附件观察**\n- 原图文件名：`anna289_tools_recovery_300MB.png`\n- 文件大小：**300,097,599 字节**（300.10 MB，286.20 MiB）\n- 原始分辨率：**10000 × 10000**\n- 嵌入图片上传状态：**failed（失败）**\n- 因图片未成功提供，**无可用图像内容或图表细节可观察**。\n[3] report_id=2112465548175478784 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- **报告信息**：Agent 研发日报；汇报人 anna289；岗位 Agent研发；日期 2026-10-20；汇报对象 智本测试_安柔。  \n- **声明**：该日报用于 **pre 环境汇报功能测试**；其中工作进展、样本、指标和计划均为模拟内容，不代表真实研发交付或生产变更。\n\n- **当日工作**：开展 Agent 多轮记忆与指令遵循评测，设计并覆盖以下场景：\n  - 跨轮事实回忆\n  - 用户偏好更新\n  - 旧信息失效\n  - 指令冲突\n  - 跨用户隔离  \n  共构建 **120 条测试用例**，覆盖 **5–20 轮对话**。\n\n- **评测结果**：\n  - 事实回忆准确率：**92%**\n  - 最新指令遵循率：**95%**\n  - 发现 **6 条**“旧偏好覆盖新要求”的异常样例。  \n  已记录每轮输入、记忆读写和最终回答，并形成可回放的问题清单。判定规则同时检查应保留的信息和必须遗忘的信息，并关注错误记忆对后续回答的持续影响。\n\n- **后续计划**：补充长对话截断、同名实体混淆、恶意记忆注入等用例；验证会话重启后的状态一致性；尝试将用例接入自动回归流程。\n\n- **需协调事项**：\n  - 测试同学：确认偏好更新及遗忘的预期行为。\n  - 平台同学：核对 pre 环境会话隔离和日志字段。\n  - 相关团队：统一跨轮信息有效期的判定口径。\n\n- **图片/附件观察**：\n  - 原图文件名：`anna289_memory_instruction_300MB.png`\n  - 文件大小：**300,097,599 字节**（300.10 MB / 286.20 MiB）\n  - 原始分辨率：**10000×10000**\n  - 嵌入图片上传状态为 **failed**，未提供可见图像内容；因此无可提取的视觉观察。\n[4] report_id=2112458433746702336 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- 今日工作：2323322323  \n- 明日工作计划：未填写  \n- 需要协调和帮助的事项：未填写  \n- 图片观察：无可用图片。\n[5] report_id=2112458167819440128 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n- 今日工作：记录为“再写一个日报”。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：未提供图片。\n[6] report_id=2112457931747233792 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作：填写“x写一个日报看看”。该表述含义不明确，可能是请求/备注，未提供具体完成事项或成果。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：未提供图片或图片观察。\n[7] report_id=2112445925543645184 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：未填写具体内容。  \n- 明日工作计划：特是是是。  \n- 需要协调和帮助的事项：未填写。  \n- 图片观察：未提供图片。\n[8] report_id=2112446004312674304 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：特恩诺你（原文如此，具体含义不明确）。\n- 明日工作计划：未填写。\n- 需要协调和帮助的事项：未填写。\n- 图片观察：无可用图片。\n[9] report_id=2112436933224304640 tenant_id=T1120J0W9 date=2026-10-20 timezone=Asia/Tokyo start_time=1792422000000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n- 今日工作总结：test\n- 明日工作计划：2122\n- 需要协调和帮助的事项：未填写\n- 图片观察：未提供图片或图片观察信息。\n[10] report_id=2097865374371418112 tenant_id=T1120J0W9 date=2026-09-09 timezone=Asia/Tokyo start_time=1788879600000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归和AI总结专项回归基本完成，部门移组接收人列表刷新问题已验证修复；仍有一项弱网场景需等待运维窗口复测且不得关闭，另有一项低风险展示问题延期。下一步将发布阶段质量结论、跟进发布后监控并完善自动化失败分类看板。\n[11] report_id=2097865370940477440 tenant_id=T1120J0W9 date=2026-09-08 timezone=Asia/Tokyo start_time=1788793200000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归已执行142/186条用例，其中134条通过、5条失败、3条阻塞；失败集中于部门移组后接收人列表刷新及长文本编辑恢复。批量保存幂等性在20次并发提交下未产生重复报告，但仍需覆盖弱网超时重试。昨日搜索阻塞项经三次重跑均通过，判定为短时资源抢占导致的环境问题。下一步将完成剩余用例、归因失败项并补充固定回归数据；需前端提供接收人列表刷新修正包，后端确认长文本草稿恢复边界。\n[12] report_id=2097865366855225344 tenant_id=T1120J0W9 date=2026-09-07 timezone=Asia/Tokyo start_time=1788706800000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\nQA organized the second-week September joint regression, reprioritizing 186 cases with tenant switching, batch save, and AI-summary state fidelity as mandatory. PRE smoke testing passed 47 of 48 core-path cases; one search-service latency block is retained for investigation and not yet classified as a product defect. AI report sampling found two incomplete-item risk descriptions that were too weak. Next steps are continued regression, targeted search-block reruns, and operations confirmation of search-service metrics around Sept. 7 10:20.\n[13] report_id=2097865411142881280 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n完成流式对话首轮联调与请求链路追踪；端到端样本首批通过率为46/50，待解决测试数据和权限提示问题，并计划补齐性能指标后开展小流量压测。\n[14] report_id=2095440351689969664 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvgntv2wi72cl reporter_name=\"annaz\"\n完成缓存修复包回归和周报草稿保存边界验证；发布检查清单显示无阻断缺陷，仅剩一项低风险浏览器兼容性复测。明日将完成兼容性复测、跟进发布后冒烟及AI总结抽检，并沉淀部门更名回归项；建议发布预留30分钟回滚观察窗口。\n[15] report_id=2095381024136499200 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n正在探索周报与任务系统的联动方案，当前明确暂不纳入管理层 Feed 功能。方案覆盖任务数据辅助周报、从报告提取待办建任务、任务与报告一致性核对，以及任务引用、操作记录回溯、截止日期提醒、来源追溯和跨报告/任务 AI 问答等方向。\n[16] report_id=2095380934999150592 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n正在探索周报与任务系统的联动方案，当前明确暂不考虑管理层 Feed 功能；重点范围包括任务数据辅助周报、报告内容转/关联任务、报告与任务一致性及可追溯查询。\n[17] report_id=2095335373302403072 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n围绕周报与任务系统的联动进行产品场景探索；当前范围暂不考虑管理层 Feed。重点涵盖任务数据辅助周报、从周报生成/关联任务、任务与周报的核对和可追溯，以及将两类数据用于统一 AI 问答。\n[18] report_id=2095430818703872000 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhwjtee7 reporter_name=\"anna636\"\n月结试算已基本完成：支付渠道3笔差异全部关闭，跨期单据已按验收/服务完成情况调整并经复核确认，银行余额与总账一致、收入差异已解释。当前仅剩1笔银行摘要缺失，因此月结状态为试算通过、待最终复核；需银行联系人在终审前补充摘要，之后完成终审、归档及8月账龄风险清单。\n[19] report_id=2095430790610423808 tenant_id=T1120J0W9 date=2026-09-03 timezone=Asia/Tokyo start_time=1788361200000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归已完成，204/208条通过；两个高优问题已修复并回归验证。质量评审建议可发布但需持续观察，发布后将进行联合冒烟并重点监控租户切换、批量保存相关指标。\n[20] report_id=2097865407128932352 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\n完成任务、项目和组织成员只读工具的注册联调及检索权限过滤；已处理超时重复调用风险，下一步推进流式输出、断线恢复和调用日志完善，并需要数据与测试团队支持权限变更及超时请求样本。\n[21] report_id=2095440347634077696 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvgntv2wi72cl reporter_name=\"annaz\"\n协同工作台主链路回归已完成68条，其中64条通过、3条失败、1条阻塞；当前重点风险为部门更名后的客户端缓存刷新不完整，以及长文本周报草稿保存失败。计划明日验证缓存修复包、完成全量回归和长文本边界测试，并输出发布前测试结论及未关闭风险清单。\n[22] report_id=2095019710771892224 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n围绕周报与任务的联动进行产品场景探索；当前明确暂不考虑管理层 Feed，重点扩展报告生成、任务转换、关联追溯、提醒与联合检索等能力。\n[23] report_id=2095045486330253312 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n梳理周报与任务系统的 AI 联动范围；当前明确暂不考虑管理层 Feed，重点探索任务/周报之间的生成、转换、关联、追溯和联合检索能力。\n[24] report_id=2095430814585065472 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvtx9uhwjtee7 reporter_name=\"anna636\"\n完成未达账、应收账龄及8月费用截止性复核；仍有1笔未达账缺银行摘要、4笔疑似跨期费用待补服务验收日期并决定是否调整。明日将完成跨期取证与调整决策、关闭支付渠道差异，并编制月结试算报表。需销售负责人确认1家高风险逾期客户的升级方案及下次沟通时间。\n[25] report_id=2095430787259174912 tenant_id=T1120J0W9 date=2026-09-02 timezone=Asia/Tokyo start_time=1788274800000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n联合回归首轮已执行173/208条用例，162条通过、8条失败、3条阻塞，问题已按鉴权、数据和页面展示归档。已确认租户切换后报告接收人列表不刷新及批量保存偶发重复请求两项高优先级缺陷，均已分配负责人并计划当日修复。明日将完成剩余用例和高优先级缺陷回归后输出发布建议，并验证失败重跑机制不会掩盖真实缺陷；需开发保持两项修复的分支和配置独立以支持验证及回退。\n[26] report_id=2097865403341475840 tenant_id=T1120J0W9 date=2026-09-01 timezone=Asia/Tokyo start_time=1788188400000 kind=summary reporter_user_id=ouvtx9uhuppqs6 reporter_name=\"anna289\"\nAI助手9月迭代已完成需求拆解、43个问答场景联合审核及对话请求协议初版；下一步将设计工具注册与权限校验链路、接入首个只读查询工具并完善Trace字段。当前需产品确认写操作二次确认文案，后端确认协议错误码清单及重试语义。\n[27] report_id=2094715762810818560 tenant_id=T1120J0W9 date=2026-09-01 timezone=Asia/Tokyo start_time=1788188400000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n探索周报与任务系统的联动范围；明确暂不考虑管理层 Feed，重点覆盖报告撰写、任务创建/关联、核对提醒与联合检索等场景。\n[28] report_id=2095430811162513408 tenant_id=T1120J0W9 date=2026-09-01 timezone=Asia/Tokyo start_time=1788188400000 kind=summary reporter_user_id=ouvtx9uhwjtee7 reporter_name=\"anna636\"\n已启动8月结账并完成银行流水、支付渠道与订单系统的首轮核对；发现未达账、对账差异及待补开票信息，均已建立或明确后续跟进。明日将推进差异处理、应收账龄与回款复核、费用截止性检查；需业务于9月2日12:00前补齐6张退回票据的抬头和税号。\n[29] report_id=2095430783220060160 tenant_id=T1120J0W9 date=2026-09-01 timezone=Asia/Tokyo start_time=1788188400000 kind=summary reporter_user_id=ouvtx9uhugpp9u reporter_name=\"anna390\"\n质量团队已完成9月质量例会与PRE环境健康检查，明确本周联合回归范围和高风险基线；明日将按风险启动联合回归并优化自动化失败重跑规则。需各功能负责人下班前确认发布窗口、必测范围及变更影响链路。\n[30] report_id=2095440343796289536 tenant_id=T1120J0W9 date=2026-09-01 timezone=Asia/Tokyo start_time=1788188400000 kind=summary reporter_user_id=ouvgntv2wi72cl reporter_name=\"annaz\"\n协同工作台9月迭代测试已完成范围梳理和PRE环境部分冒烟，当前存在消息队列延迟导致的环境阻塞及组织切换后旧部门名称残留问题；后续将继续执行主链路用例并重跑阻塞项。\n[31] report_id=2095053099101065216 tenant_id=T1120J0W9 date=2026-08-31 timezone=Asia/Tokyo start_time=1788102000000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n梳理了周报与任务系统的联动方案，当前明确暂不考虑管理层 Feed。方案覆盖任务数据生成周报草稿、从报告识别待办并创建任务、任务状态与报告内容一致性核对，以及报告内关联已有任务、任务操作记录辅助回忆、截止日期提醒、任务回溯至来源报告、跨报告和任务的 AI 问答。提出可按“关联型、生成转换型、数据底座型”分类评估优先级；多项关键产品规则仍待确认。\n[32] report_id=2083017346741440512 tenant_id=T1120J0W9 date=2026-07-31 timezone=Asia/Tokyo start_time=1785423600000 kind=summary reporter_user_id=ouver3gg0msfrn reporter_name=\"Wayne.T\"\n研发人员当日完成迭代后端功能开发约90%、修复测试环境缺陷8项及线上隐患2项，并完成接口联调、代码优化和文档更新。复盘指出复杂需求工时估算、偶发问题排查、代码细节及文档同步仍需改进；计划细化需求和工时预留、积累故障排查经验、加强代码自查，并完成剩余开发、缺陷回归、代码评审及后续需求对接。\n[33] report_id=2082309319583338496 tenant_id=T1120J0W9 date=2026-07-29 timezone=Asia/Tokyo start_time=1785250800000 kind=raw settling=submitted truncated=false reporter_user_id=ouvdph6eyotw0g reporter_name=\"自力\"\n**今天工作：**\n\n啊时间地方卡上阿斯顿发了开始 阿斯顿看风景看了阿斯顿看风景啊三闾大夫就\n\n**明天工作：**\n\n**需要协调和帮助：**\n[34] report_id=2081636364327063552 tenant_id=T1120J0W9 date=2026-07-27 timezone=Asia/Tokyo start_time=1785078000000 kind=raw settling=submitted truncated=false reporter_user_id=ouvpu0onwntwwb reporter_name=\"智本企业公台\"\n**今天工作：**\n\n不想干了\n\n**明天工作：**\n\n就是不想干\n\n**需要协调和帮助：**\n\n我就是不想干\n---\nquery={\"scope\":\"received\",\"category\":\"daily\",\"timezone\":\"Asia/Tokyo\"} as_of=1793697333025 total=34 page=1 items=34 summary=32 raw=2 denied=0 failed=0 read=34 next_cursor=\npage_path=.ledger/digest/1094-1",
+                  "tool_call_id": "call_5826d9bd1b6c4601bc0706afb79fbb71"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}

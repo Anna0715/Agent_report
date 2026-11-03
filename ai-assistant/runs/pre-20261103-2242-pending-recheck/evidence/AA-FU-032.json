@@ -1,0 +1,658 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-FU-032",
+  "environment": "pre",
+  "generated_at": "2026-11-03T08:47:31+00:00",
+  "output": {
+    "text": "当时 AI 助手项目的核心卡点是：**关键技术方案和接口尚未收敛，研发人力又没有完全到位，提测、内测和对客排期因此面临较大压力。** 后来临近对客时，又出现选群体验和文件分析能力的缺口。\n\n以下是群里当时讨论的风险与下一步，**不代表目前仍未解决**。\n\n## 主要卡点\n\n1. **技术方案和接口未定。** 复杂任务拆解、结构化查询稳定性及混合查询仍需验证；公台接口虽有初稿，细节还待李振民确认，而接口明确是前端核心功能开发的前置条件。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n\n2. **人力和测试窗口不足。** 核心成员同时投入周报、假勤等项目，部分人员正式投入时间未定。团队认为 9 月 15 日提测和 10 月中旬对客都有风险，测试加内测预计至少需要一个月；安柔 9 月 19—27 日休假也与内测窗口部分重叠。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:334:T112053RE`\n\n3. **对客前有质量和能力缺口。** 9 月底有人反馈切换群后界面没有变化；群里称支持多选，但用户表示不容易看出来，现有材料不能确认这是否是同一个问题。10 月初，DOCX、PDF 和图片上传分析被提出为对客前必要能力，但文件解析原未排入一期，实现也较复杂。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:462:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:526:T112053RE`\n\n## 谁需要推进什么\n\n- **公台、李振民**：复核接口细节并启动开发，解除前端的接口依赖。`widget:msg:sg_2122635335:322:T112053RE`\n- **浩澜**：补齐结构化查询 Schema、优化稳定性，并验证结构化查询、语义查询和搜索方案；在下一次同步时确认阻塞是否解除。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化和数据权限，Yatoro 推动已有偏好总结、长期记忆能力向 AI 助手复用。`widget:msg:sg_2122635335:322:T112053RE`\n- **守白及研发、测试成员**：守白拆分 Epic、Story 并同步项目组；成员完成 Jira 拆解和时间预排，核对关键路径、负责人、截止时间及实际投入。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:321:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **安柔、苏宸**：安柔准备测试数据集和用例；针对休假重叠，群里建议苏宸先了解测试集合及执行方法，必要时由技术人员代执行。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:315:T112053RE`\n- **SuChen**：协调对应人员处理重要问题，包括选群反馈。所读群消息未明确该问题的具体修复负责人或完成情况。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:461:T112053RE`\n- **进华及文件能力相关研发**：协调人手推进文件能力，比较 PDF 直接输入模型与解析后输入的效果；群内另安排进华负责后续 AI 项目的沟通、推进和人力。文件能力的最终完成情况未在所读讨论中确认。`widget:refs:msg:sg_2122635335:526:T112053RE|msg:sg_2122635335:528:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:548:T112053RE`"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 2
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 12
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 15,
+          "name": "scratchpad_read",
+          "call_id": "call_514c0ef1b17c43789b2174d07e90dc44",
+          "arguments_summary": "path=cases/agent_squad_ai_assistant_blockers.md offset=0",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 16,
+          "name": "scratchpad_read",
+          "call_id": "call_514c0ef1b17c43789b2174d07e90dc44",
+          "status": "failed",
+          "attempts": 1,
+          "result_preview": "scratchpad_read failed (Internal)",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 17
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 1129
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 1131,
+          "input_tokens": 27330,
+          "output_tokens": 1208,
+          "total_tokens": 28538,
+          "estimated_cost_micros": 154770,
+          "cached_input_tokens": 13440,
+          "cache_hit_ratio": 0.49176728869374314,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "turn_step": 2,
+          "seq": 1135
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": false,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd",
+        "message_id": "",
+        "request_id": "",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd",
+        "message_id": "cm_576608cb-d996-47b3-b353-32e11dfa6c1a",
+        "request_id": "f4b00eae-5fcf-494e-ae88-96e54f36ea64",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "openai/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.10"
+  },
+  "metrics": {
+    "e2e_ms": 20474,
+    "tool_calls": 1,
+    "retries": 0,
+    "input_tokens": 27330,
+    "output_tokens": 1208,
+    "cached_tokens": 13440,
+    "cost_usd": 0.15477,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "安柔",
+        "session_id": "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd",
+        "request_id": "",
+        "status": "reused",
+        "reused": true,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "安柔",
+        "session_id": "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd",
+        "message_id": "cm_576608cb-d996-47b3-b353-32e11dfa6c1a",
+        "request_id": "f4b00eae-5fcf-494e-ae88-96e54f36ea64",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "当时 AI 助手项目的核心卡点是：**关键技术方案和接口尚未收敛，研发人力又没有完全到位，提测、内测和对客排期因此面临较大压力。** 后来临近对客时，又出现选群体验和文件分析能力的缺口。\n\n以下是群里当时讨论的风险与下一步，**不代表目前仍未解决**。\n\n## 主要卡点\n\n1. **技术方案和接口未定。** 复杂任务拆解、结构化查询稳定性及混合查询仍需验证；公台接口虽有初稿，细节还待李振民确认，而接口明确是前端核心功能开发的前置条件。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n\n2. **人力和测试窗口不足。** 核心成员同时投入周报、假勤等项目，部分人员正式投入时间未定。团队认为 9 月 15 日提测和 10 月中旬对客都有风险，测试加内测预计至少需要一个月；安柔 9 月 19—27 日休假也与内测窗口部分重叠。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:334:T112053RE`\n\n3. **对客前有质量和能力缺口。** 9 月底有人反馈切换群后界面没有变化；群里称支持多选，但用户表示不容易看出来，现有材料不能确认这是否是同一个问题。10 月初，DOCX、PDF 和图片上传分析被提出为对客前必要能力，但文件解析原未排入一期，实现也较复杂。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:462:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:526:T112053RE`\n\n## 谁需要推进什么\n\n- **公台、李振民**：复核接口细节并启动开发，解除前端的接口依赖。`widget:msg:sg_2122635335:322:T112053RE`\n- **浩澜**：补齐结构化查询 Schema、优化稳定性，并验证结构化查询、语义查询和搜索方案；在下一次同步时确认阻塞是否解除。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化和数据权限，Yatoro 推动已有偏好总结、长期记忆能力向 AI 助手复用。`widget:msg:sg_2122635335:322:T112053RE`\n- **守白及研发、测试成员**：守白拆分 Epic、Story 并同步项目组；成员完成 Jira 拆解和时间预排，核对关键路径、负责人、截止时间及实际投入。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:321:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **安柔、苏宸**：安柔准备测试数据集和用例；针对休假重叠，群里建议苏宸先了解测试集合及执行方法，必要时由技术人员代执行。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:315:T112053RE`\n- **SuChen**：协调对应人员处理重要问题，包括选群反馈。所读群消息未明确该问题的具体修复负责人或完成情况。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:461:T112053RE`\n- **进华及文件能力相关研发**：协调人手推进文件能力，比较 PDF 直接输入模型与解析后输入的效果；群内另安排进华负责后续 AI 项目的沟通、推进和人力。文件能力的最终完成情况未在所读讨论中确认。`widget:refs:msg:sg_2122635335:526:T112053RE|msg:sg_2122635335:528:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:548:T112053RE`",
+        "message": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": []
+      }
+    ],
+    "data_state": "LIVE_VERIFIED",
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+        "turn_step": 2,
+        "request_id": "f4b00eae-5fcf-494e-ae88-96e54f36ea64",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "model": "openai/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "scratchpad_read",
+            "call_id": "call_514c0ef1b17c43789b2174d07e90dc44",
+            "arguments_summary": "path=cases/agent_squad_ai_assistant_blockers.md offset=0",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "scratchpad_read failed (Internal)",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 28,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.tool_result",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 27330,
+          "output_tokens": 1208,
+          "total_tokens": 28538,
+          "estimated_cost_micros": 154770,
+          "cached_input_tokens": 13440,
+          "cache_hit_ratio": 0.49176728869374314,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "f4b00eae-5fcf-494e-ae88-96e54f36ea64"
+      ],
+      "current_session_ids": [
+        "cs_0df4d0f7-8259-424a-9417-5b74e2e562bd"
+      ],
+      "matched_run_ids": [
+        "bar_c60cb80ebb594a5fab12a16b36d5e5e8"
+      ],
+      "excluded_historical_run_count": 1,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-03T12:42:11.271722+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+          "request_id": "f4b00eae-5fcf-494e-ae88-96e54f36ea64",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793695633",
+            "started_at_unix": "1793695633",
+            "finished_at_unix": "1793695648"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "2",
+              "at": "1793695633",
+              "payload": {
+                "duration_ms": 4,
+                "error_category": "Internal",
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "degraded",
+                "summary_source": "none",
+                "tool_detail": "bounded",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "4",
+              "at": "1793695633",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "5",
+              "at": "1793695633",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "6",
+              "at": "1793695633",
+              "payload": {
+                "activation_block_active": true,
+                "activation_mode": "manifest",
+                "active_skills": [],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 30461,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 6,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [],
+                "profile_context_tokens": 323,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:814b9e29002c9a8549cd13ab96f7f4c83ad577e1eb1c5cfa763eb7f43f93dacc",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.4",
+                  "assistant_core_scope@0.1.2",
+                  "assistant_core_context_entry@0.4.24",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_widgets@0.1.8",
+                  "assistant_core_scratchpad@0.5.0",
+                  "assistant_core_evidence@0.3.10",
+                  "assistant_core_skills@0.5.3"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.10",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T17:47:13+09:00\",\"timestamp\":1793695633,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_c60cb80ebb594a5fab12a16b36d5e5e8",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "7",
+              "at": "1793695633",
+              "payload": {
+                "entity_reference_count": 0,
+                "message_count": 9,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": false,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "8",
+              "at": "1793695633",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "9",
+              "at": "1793695633",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "10",
+              "at": "1793695633",
+              "payload": {
+                "base_reference_count": 0,
+                "history_widget_hits": 0,
+                "merged_reference_count": 0,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "1133",
+              "at": "1793695648",
+              "payload": {
+                "anchor_sequence": 7840,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 0,
+                "locator_count": 18,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 1,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "1136",
+              "at": "1793695648",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 15,
+                "phase": "result",
+                "status": "succeeded",
+                "turn_order": 7840
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "1138",
+              "at": "1793695648",
+              "payload": {
+                "error_category": "Internal",
+                "evidence": null,
+                "failed": 0,
+                "pending": 0,
+                "persistence": "failed",
+                "processed": 0,
+                "total": 0
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "12",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "在 **Agent 小分队**里，AI 助手项目当时的核心矛盾是：**关键技术方案和接口尚未验证，但一期提测、内测及对客窗口已被排期锁定，且人力未真正到位。**\n\n**主要卡点**\n1. **技术方案未收敛**\n   - 复杂任务拆解、结构化查询稳定性、语义/混合查询和搜索方案仍在验证。\n   - 网关、多模态、记忆优化、定时任务/条件触发等能力也未完成或仍在调研。\n   - 向量数据、权限方案进展不明确，公台接口初稿还待确认。  \n   （群消息，8 月 25—28 日）\n\n2. **研发资源和排期不匹配**\n   - 核心成员当时仍主要投入周报、考勤等其他项目，AI 项目研发投入不足。\n   - E5 Work 等工作量较大，内测可能推迟；测试休假又与内测窗口冲突。\n   - 9 月 15 日提测、10 月中旬一期对客的目标被认为风险较高，测试加内测预计至少需要一个月。  \n   （群消息，8 月 27—28 日）\n\n3. **对客能力存在产品缺口**\n   - 后续明确暴露出“选群切换不生效”的重大问题。\n   - 对客前还必须补齐 DOCX/PDF 上传与分析；但文件解析复杂，原本并未列入一期范围。  \n   （群消息，9 月 30 日、10 月 2 日）\n\n**需要推进的下一步**\n- **SuChen**：牵头逐人核对任务拆分、排期、关键路径、Owner 和截止时间；组织解决选群切换问题；持续负责 AI 项目沟通、推进及人力协调。\n- **公台 / 振民**：尽快确认并复核公台接口；推进模型直喂文件与解析方案的效果评测，多模态能力尽快落地。\n- **进华**：为 AI 项目增派人手，缓解研发资源不足。\n- **技术负责人/研发团队**：在下一轮排期前确认结构化查询的具体阻塞，完成结构化/语义查询、搜索、权限与向量数据等关键方案验证。\n- **测试与项目管理**：重排研发—联调—测试—内测倒排计划，避开测试休假，并将文件解析等新增对客要求纳入一期范围和风险评估。\n\n补充：以上以 8 月下旬集中排期讨论为主，并纳入 9 月底到 10 月初暴露的上线质量与文件能力风险。消息检索存在截断，未能逐条覆盖全历史，但关键纪要和明确交办已核对。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "以 8 月下旬的排期讨论为主、并补充 9 月底—10 月初对客前暴露的问题，AI 助手项目当时的核心风险是：**关键能力未验证与研发资源不足叠加，导致内测和对客窗口均承压。**\n\n**主要卡点**\n1. **核心技术方案尚未验证**\n   - 复杂任务拆解、结构化查询稳定性、结构化/语义混合查询与搜索方案仍在调研或待验证。\n   - 向量化数据和数据权限缺少明确进展；网关、多模态、记忆优化及定时触发也仍在推进或调研中。  \n   依据：Agent 小分队群，2026-08-25 约13:48、2026-08-28 约13:22，消息 seq 310、322。\n\n2. **接口与前端启动相互依赖**\n   - 公台接口初稿虽已产出，但仍待振民确认细节；接口不定，前端核心开发无法稳定启动。  \n   依据：群消息，2026-08-25、2026-08-28，seq 310、322。\n\n3. **人力投入和测试窗口不足**\n   - 多名核心成员当时仍主要投入周报、考勤等项目，AI 助手实际投入有限；孙文、Yatoro 的正式投入时间也未确定。\n   - E5 Work 的复杂度可能将内测推迟至 9 月 20 日；测试安柔 9 月 19—27 日休假，与内测窗口冲突。\n   - 团队判断 9 月 15 日提测风险高，测试加内测至少需要一个月，10 月中旬对客存在较大风险。  \n   依据：群消息，2026-08-27—28，seq 315、322、327。\n\n4. **上线质量与对客能力仍有缺口**\n   - “切换群但结果不变”的选群 Bug 被明确认为是重大问题。\n   - 当时线上版本效果仍较粗糙；对客前又新增“必须支持 DOCX/PDF、图片上传分析”的要求，而 DOCX/PDF 解析原先未纳入一期且实现复杂。  \n   依据：群消息，2026-09-30—10-02，seq 461、493、517—527。\n\n**谁需要推进什么**\n- **SuChen**：牵头逐人完成 Jira 拆解与排期，核对关键路径、Owner、截止时间和真实人力；协调解决选群 Bug；后续负责 AI 项目的沟通、推进及人力统筹。  \n  依据：2026-08-28、2026-09-30、2026-10-02，seq 322、459、530—532。\n\n- **公台、李振民**：尽快复核接口方案并启动开发；公台还需推进文件/多模态方案，评测“模型直喂文件”与“解析后输入”两种效果及成本。  \n  依据：2026-08-28、2026-10-02，seq 322、525—548。\n\n- **浩澜**：验证结构化查询、语义查询和搜索方案，尽快明确并消除结构化查询阻塞。  \n  依据：2026-08-28，seq 322。\n\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化与数据权限，Yatoro的记忆/偏好能力复用到 AI 助手。  \n  依据：2026-08-28，seq 322。\n\n- **守白与全体研发/测试**：完成 Story/Jira 的开始、截止时间填写，形成包含依赖关系的可执行倒排计划。  \n  依据：2026-08-28，seq 321—322。\n\n- **进华**：为 DOCX/PDF 解析等新增对客能力补充研发人手。  \n  依据：2026-10-02，seq 525—529。\n\n- **安柔及项目管理**：提前准备测试数据集、测试用例，并针对休假与内测重叠重新安排测试保障。  \n  依据：2026-08-27—28，seq 315、322。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "以 **2026 年 8 月下旬排期讨论**为主，并结合 9 月底至 10 月初临近对客时新增的问题，AI 助手项目的核心风险是：**关键方案未验证、接口和人力未就绪，却面临紧张的提测与对客窗口。**\n\n**主要卡点**\n1. **核心能力尚未收敛**\n   - 复杂任务拆解、结构化查询稳定性、结构化/语义混合查询及搜索方案仍待验证。\n   - 向量数据与权限方案进展不清晰；网关、多模态、记忆优化、定时/条件触发等能力尚在开发或调研。  \n   来源：Agent 小分队群，2026-08-25—08-28，消息 seq 310、315、322。\n\n2. **接口方案牵制前端推进**\n   - 公台接口初稿待李振民确认；接口方案未定会影响前端核心功能稳定开工与联调。  \n   来源：2026-08-28，seq 322。\n\n3. **研发与测试资源不足、排期冲突**\n   - 核心成员同时投入周报、考勤等项目，AI 项目的实际研发投入不足，部分成员正式介入时间不明确。\n   - E5 Work 复杂度可能把内测推迟至 9 月 20 日；测试安柔 9 月 19—27 日休假，与内测窗口冲突。\n   - 团队判断 9 月 15 日提测风险高，测试加内测至少需一个月，10 月中旬对客窗口风险较大。  \n   来源：2026-08-27—08-28，seq 315、322、327。\n\n4. **对客前暴露质量与能力缺口**\n   - “切换群但结果不变”的选群问题被明确视为重大 Bug。\n   - DOCX/PDF 上传分析在对客前成为刚需，但原未列入一期，且文件解析实现复杂；同时还需尽快补齐多模态能力。  \n   来源：2026-09-30、2026-10-02，seq 459、461、517—548。\n\n**需要谁推进哪些下一步**\n- **SuChen**：牵头逐人核对 Jira 拆分、排期、关键路径、Owner、截止时间和实际人力；组织解决选群 Bug；持续负责 AI 项目的沟通、推进和资源协调。\n- **公台、李振民**：尽快确认接口细节并推进开发；评测“模型直读文件”和“解析后输入”两类文件方案的效果与成本，尽快落地多模态能力。\n- **浩澜**：推进并明确结构化查询、语义查询和搜索方案的验证结果，优先消除结构化查询阻塞。\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化及权限方案，Yatoro推动记忆/偏好能力复用到 AI 助手。\n- **守白及研发、测试团队**：补全 Story/Jira 的起止时间和依赖关系，形成可执行的研发—联调—测试—内测倒排计划。\n- **进华**：针对 DOCX/PDF 解析等新增对客能力补充研发人手。\n- **安柔及项目管理**：准备测试数据与用例，并针对休假和内测窗口重叠重新安排测试保障。\n\n注：上述结论来自群内关键纪要和明确交办；原始消息读取存在截断，因此不作为全量历史讨论的穷尽总结。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**当时最主要的卡点是：技术方案和接口还没收敛，核心研发人力又没有完全投入，提测、内测和对客时间因此承压。** 到 9 月底、10 月初，又暴露出选群体验和文件分析能力不足的问题。\n\n以下是群里**当时的风险和待推进事项**，不代表这些问题现在仍未解决。\n\n## 主要卡点\n\n1. **方案与接口有前置依赖。** 8 月底，复杂任务拆解、结构化查询稳定性及混合查询仍需验证；公台的接口方案已有初稿，但细节待振民确认，而接口明确是前端核心功能开发的前置条件。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n\n2. **人力不足，测试窗口紧。** 核心成员仍主要投入周报、假勤等项目；E5 Work 较复杂，内测可能延后。团队当时判断 9 月 15 日提测和 10 月中旬对客均有风险，测试加内测预计至少需要一个月；安柔 9 月 19—27 日休假也与内测部分重叠。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:334:T112053RE`\n\n3. **对客前又出现质量与能力缺口。** 9 月 30 日，有人反馈切换群后界面没有变化；群里虽称支持多选，但用户表示不易看出来，材料不能确认两者是否是同一个问题。10 月 2 日，DOCX、PDF 和图片上传分析被提出为对客前必要能力，但文件解析原未排入一期，且实现复杂。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:462:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:526:T112053RE`\n\n## 当时需要谁推进\n\n- **公台、李振民**：复核接口细节并启动开发；这是解除前端依赖的关键一步。`widget:msg:sg_2122635335:322:T112053RE`\n- **浩澜**：补齐结构化查询 Schema、优化稳定性，并验证结构化查询、语义查询和搜索等调研方案；会议安排下一次同步确认阻塞是否解除。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **孙文、Yatoro**：两人的正式投入时间当时待确认；孙文负责消息向量化和数据权限，Yatoro 已做的偏好总结与长期记忆可复用到 AI 助手。`widget:msg:sg_2122635335:322:T112053RE`\n- **守白和研发、测试成员**：守白拆分 Epic、Story 并同步项目组；全员完成 Jira 拆解和时间预排，再核对关键路径、负责人、截止时间及实际投入。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:321:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **安柔、苏宸**：安柔计划准备测试数据集和用例；为应对休假重叠，群里建议苏宸先了解测试集合与执行方法，必要时由技术人员代执行。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:315:T112053RE`\n- **SuChen**：9 月底被要求尽快找对应人员解决重要问题，包括选群反馈；群内材料未明确记录该问题的具体修复负责人或完成情况。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:461:T112053RE`\n- **进华及文件能力相关研发**：10 月初讨论了增加人手、推进文件能力，并比较直接将 PDF 输入模型与解析后输入的效果；群里另有安排让进华负责后续 AI 项目的沟通、推进和人力。文件能力最终完成情况在所读讨论中未确认。`widget:refs:msg:sg_2122635335:526:T112053RE|msg:sg_2122635335:528:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:548:T112053RE`\n\n更正前面的回答：我此前把**后续 AI 项目沟通、推进及人力统筹**写给了 SuChen；重新核对群内上下文后，这项安排指向的是**进华**。SuChen 则被要求协调解决重要问题。\n\n要不要我帮你长期关注“Agent 小分队”？"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T17:47:13+09:00\",\"timestamp\":1793695633,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T17:47:13+09:00\",\"timestamp\":1793695633,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "17",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "在 **Agent 小分队**里，AI 助手项目当时的核心矛盾是：**关键技术方案和接口尚未验证，但一期提测、内测及对客窗口已被排期锁定，且人力未真正到位。**\n\n**主要卡点**\n1. **技术方案未收敛**\n   - 复杂任务拆解、结构化查询稳定性、语义/混合查询和搜索方案仍在验证。\n   - 网关、多模态、记忆优化、定时任务/条件触发等能力也未完成或仍在调研。\n   - 向量数据、权限方案进展不明确，公台接口初稿还待确认。  \n   （群消息，8 月 25—28 日）\n\n2. **研发资源和排期不匹配**\n   - 核心成员当时仍主要投入周报、考勤等其他项目，AI 项目研发投入不足。\n   - E5 Work 等工作量较大，内测可能推迟；测试休假又与内测窗口冲突。\n   - 9 月 15 日提测、10 月中旬一期对客的目标被认为风险较高，测试加内测预计至少需要一个月。  \n   （群消息，8 月 27—28 日）\n\n3. **对客能力存在产品缺口**\n   - 后续明确暴露出“选群切换不生效”的重大问题。\n   - 对客前还必须补齐 DOCX/PDF 上传与分析；但文件解析复杂，原本并未列入一期范围。  \n   （群消息，9 月 30 日、10 月 2 日）\n\n**需要推进的下一步**\n- **SuChen**：牵头逐人核对任务拆分、排期、关键路径、Owner 和截止时间；组织解决选群切换问题；持续负责 AI 项目沟通、推进及人力协调。\n- **公台 / 振民**：尽快确认并复核公台接口；推进模型直喂文件与解析方案的效果评测，多模态能力尽快落地。\n- **进华**：为 AI 项目增派人手，缓解研发资源不足。\n- **技术负责人/研发团队**：在下一轮排期前确认结构化查询的具体阻塞，完成结构化/语义查询、搜索、权限与向量数据等关键方案验证。\n- **测试与项目管理**：重排研发—联调—测试—内测倒排计划，避开测试休假，并将文件解析等新增对客要求纳入一期范围和风险评估。\n\n补充：以上以 8 月下旬集中排期讨论为主，并纳入 9 月底到 10 月初暴露的上线质量与文件能力风险。消息检索存在截断，未能逐条覆盖全历史，但关键纪要和明确交办已核对。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "以 8 月下旬的排期讨论为主、并补充 9 月底—10 月初对客前暴露的问题，AI 助手项目当时的核心风险是：**关键能力未验证与研发资源不足叠加，导致内测和对客窗口均承压。**\n\n**主要卡点**\n1. **核心技术方案尚未验证**\n   - 复杂任务拆解、结构化查询稳定性、结构化/语义混合查询与搜索方案仍在调研或待验证。\n   - 向量化数据和数据权限缺少明确进展；网关、多模态、记忆优化及定时触发也仍在推进或调研中。  \n   依据：Agent 小分队群，2026-08-25 约13:48、2026-08-28 约13:22，消息 seq 310、322。\n\n2. **接口与前端启动相互依赖**\n   - 公台接口初稿虽已产出，但仍待振民确认细节；接口不定，前端核心开发无法稳定启动。  \n   依据：群消息，2026-08-25、2026-08-28，seq 310、322。\n\n3. **人力投入和测试窗口不足**\n   - 多名核心成员当时仍主要投入周报、考勤等项目，AI 助手实际投入有限；孙文、Yatoro 的正式投入时间也未确定。\n   - E5 Work 的复杂度可能将内测推迟至 9 月 20 日；测试安柔 9 月 19—27 日休假，与内测窗口冲突。\n   - 团队判断 9 月 15 日提测风险高，测试加内测至少需要一个月，10 月中旬对客存在较大风险。  \n   依据：群消息，2026-08-27—28，seq 315、322、327。\n\n4. **上线质量与对客能力仍有缺口**\n   - “切换群但结果不变”的选群 Bug 被明确认为是重大问题。\n   - 当时线上版本效果仍较粗糙；对客前又新增“必须支持 DOCX/PDF、图片上传分析”的要求，而 DOCX/PDF 解析原先未纳入一期且实现复杂。  \n   依据：群消息，2026-09-30—10-02，seq 461、493、517—527。\n\n**谁需要推进什么**\n- **SuChen**：牵头逐人完成 Jira 拆解与排期，核对关键路径、Owner、截止时间和真实人力；协调解决选群 Bug；后续负责 AI 项目的沟通、推进及人力统筹。  \n  依据：2026-08-28、2026-09-30、2026-10-02，seq 322、459、530—532。\n\n- **公台、李振民**：尽快复核接口方案并启动开发；公台还需推进文件/多模态方案，评测“模型直喂文件”与“解析后输入”两种效果及成本。  \n  依据：2026-08-28、2026-10-02，seq 322、525—548。\n\n- **浩澜**：验证结构化查询、语义查询和搜索方案，尽快明确并消除结构化查询阻塞。  \n  依据：2026-08-28，seq 322。\n\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化与数据权限，Yatoro的记忆/偏好能力复用到 AI 助手。  \n  依据：2026-08-28，seq 322。\n\n- **守白与全体研发/测试**：完成 Story/Jira 的开始、截止时间填写，形成包含依赖关系的可执行倒排计划。  \n  依据：2026-08-28，seq 321—322。\n\n- **进华**：为 DOCX/PDF 解析等新增对客能力补充研发人手。  \n  依据：2026-10-02，seq 525—529。\n\n- **安柔及项目管理**：提前准备测试数据集、测试用例，并针对休假与内测重叠重新安排测试保障。  \n  依据：2026-08-27—28，seq 315、322。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "以 **2026 年 8 月下旬排期讨论**为主，并结合 9 月底至 10 月初临近对客时新增的问题，AI 助手项目的核心风险是：**关键方案未验证、接口和人力未就绪，却面临紧张的提测与对客窗口。**\n\n**主要卡点**\n1. **核心能力尚未收敛**\n   - 复杂任务拆解、结构化查询稳定性、结构化/语义混合查询及搜索方案仍待验证。\n   - 向量数据与权限方案进展不清晰；网关、多模态、记忆优化、定时/条件触发等能力尚在开发或调研。  \n   来源：Agent 小分队群，2026-08-25—08-28，消息 seq 310、315、322。\n\n2. **接口方案牵制前端推进**\n   - 公台接口初稿待李振民确认；接口方案未定会影响前端核心功能稳定开工与联调。  \n   来源：2026-08-28，seq 322。\n\n3. **研发与测试资源不足、排期冲突**\n   - 核心成员同时投入周报、考勤等项目，AI 项目的实际研发投入不足，部分成员正式介入时间不明确。\n   - E5 Work 复杂度可能把内测推迟至 9 月 20 日；测试安柔 9 月 19—27 日休假，与内测窗口冲突。\n   - 团队判断 9 月 15 日提测风险高，测试加内测至少需一个月，10 月中旬对客窗口风险较大。  \n   来源：2026-08-27—08-28，seq 315、322、327。\n\n4. **对客前暴露质量与能力缺口**\n   - “切换群但结果不变”的选群问题被明确视为重大 Bug。\n   - DOCX/PDF 上传分析在对客前成为刚需，但原未列入一期，且文件解析实现复杂；同时还需尽快补齐多模态能力。  \n   来源：2026-09-30、2026-10-02，seq 459、461、517—548。\n\n**需要谁推进哪些下一步**\n- **SuChen**：牵头逐人核对 Jira 拆分、排期、关键路径、Owner、截止时间和实际人力；组织解决选群 Bug；持续负责 AI 项目的沟通、推进和资源协调。\n- **公台、李振民**：尽快确认接口细节并推进开发；评测“模型直读文件”和“解析后输入”两类文件方案的效果与成本，尽快落地多模态能力。\n- **浩澜**：推进并明确结构化查询、语义查询和搜索方案的验证结果，优先消除结构化查询阻塞。\n- **孙文、Yatoro**：明确正式投入时间；孙文推进消息向量化及权限方案，Yatoro推动记忆/偏好能力复用到 AI 助手。\n- **守白及研发、测试团队**：补全 Story/Jira 的起止时间和依赖关系，形成可执行的研发—联调—测试—内测倒排计划。\n- **进华**：针对 DOCX/PDF 解析等新增对客能力补充研发人手。\n- **安柔及项目管理**：准备测试数据与用例，并针对休假和内测窗口重叠重新安排测试保障。\n\n注：上述结论来自群内关键纪要和明确交办；原始消息读取存在截断，因此不作为全量历史讨论的穷尽总结。"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**当时最主要的卡点是：技术方案和接口还没收敛，核心研发人力又没有完全投入，提测、内测和对客时间因此承压。** 到 9 月底、10 月初，又暴露出选群体验和文件分析能力不足的问题。\n\n以下是群里**当时的风险和待推进事项**，不代表这些问题现在仍未解决。\n\n## 主要卡点\n\n1. **方案与接口有前置依赖。** 8 月底，复杂任务拆解、结构化查询稳定性及混合查询仍需验证；公台的接口方案已有初稿，但细节待振民确认，而接口明确是前端核心功能开发的前置条件。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n\n2. **人力不足，测试窗口紧。** 核心成员仍主要投入周报、假勤等项目；E5 Work 较复杂，内测可能延后。团队当时判断 9 月 15 日提测和 10 月中旬对客均有风险，测试加内测预计至少需要一个月；安柔 9 月 19—27 日休假也与内测部分重叠。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:334:T112053RE`\n\n3. **对客前又出现质量与能力缺口。** 9 月 30 日，有人反馈切换群后界面没有变化；群里虽称支持多选，但用户表示不易看出来，材料不能确认两者是否是同一个问题。10 月 2 日，DOCX、PDF 和图片上传分析被提出为对客前必要能力，但文件解析原未排入一期，且实现复杂。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:462:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:526:T112053RE`\n\n## 当时需要谁推进\n\n- **公台、李振民**：复核接口细节并启动开发；这是解除前端依赖的关键一步。`widget:msg:sg_2122635335:322:T112053RE`\n- **浩澜**：补齐结构化查询 Schema、优化稳定性，并验证结构化查询、语义查询和搜索等调研方案；会议安排下一次同步确认阻塞是否解除。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **孙文、Yatoro**：两人的正式投入时间当时待确认；孙文负责消息向量化和数据权限，Yatoro 已做的偏好总结与长期记忆可复用到 AI 助手。`widget:msg:sg_2122635335:322:T112053RE`\n- **守白和研发、测试成员**：守白拆分 Epic、Story 并同步项目组；全员完成 Jira 拆解和时间预排，再核对关键路径、负责人、截止时间及实际投入。`widget:refs:msg:sg_2122635335:315:T112053RE|msg:sg_2122635335:321:T112053RE|msg:sg_2122635335:322:T112053RE`\n- **安柔、苏宸**：安柔计划准备测试数据集和用例；为应对休假重叠，群里建议苏宸先了解测试集合与执行方法，必要时由技术人员代执行。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:315:T112053RE`\n- **SuChen**：9 月底被要求尽快找对应人员解决重要问题，包括选群反馈；群内材料未明确记录该问题的具体修复负责人或完成情况。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:461:T112053RE`\n- **进华及文件能力相关研发**：10 月初讨论了增加人手、推进文件能力，并比较直接将 PDF 输入模型与解析后输入的效果；群里另有安排让进华负责后续 AI 项目的沟通、推进和人力。文件能力最终完成情况在所读讨论中未确认。`widget:refs:msg:sg_2122635335:526:T112053RE|msg:sg_2122635335:528:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:548:T112053RE`\n\n更正前面的回答：我此前把**后续 AI 项目沟通、推进及人力统筹**写给了 SuChen；重新核对群内上下文后，这项安排指向的是**进华**。SuChen 则被要求协调解决重要问题。\n\n要不要我帮你长期关注“Agent 小分队”？"
+                },
+                {
+                  "role": "user",
+                  "content": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T17:47:13+09:00\",\"timestamp\":1793695633,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T17:47:13+09:00\",\"timestamp\":1793695633,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_514c0ef1b17c43789b2174d07e90dc44",
+                      "name": "scratchpad_read",
+                      "arguments_json": "{\"path\":\"cases/agent_squad_ai_assistant_blockers.md\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "scratchpad_read failed (Internal)",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "scratchpad_read failed (Internal)",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_514c0ef1b17c43789b2174d07e90dc44"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}

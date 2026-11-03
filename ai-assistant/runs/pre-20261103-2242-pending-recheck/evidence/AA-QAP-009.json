@@ -1,0 +1,650 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-QAP-009",
+  "environment": "pre",
+  "generated_at": "2026-11-03T07:08:15+00:00",
+  "output": {
+    "text": "根据“蜂巢AI助手”群 **2026 年 9 月 11 日晨会纪要**，项目当时已完成基础数据联调和部分真实数据接入，定时任务主流程基本完成；主要缺口集中在数据准备、多模态、定时任务完善和效果调优。\n\n## 已完成\n\n- **数据联调**：虚拟数据联调、真实群聊数据增量写入已完成。\n- **定时任务**：主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n## 还缺什么\n\n- **数据准备与接入**：空间数据仍在开发；历史群聊计划只接入部分指定群，任务空间历史数据则视数据量争取全量接入。\n- **多模态能力**：计划优先于 9 月 15 日前跑通周报汇总和聊天图片识别；任务空间图片识别尚未启动。\n- **定时任务完善**：创建、编辑时的联动及数据查询能力仍需补齐。\n- **AI 效果优化**：工具选择、路由和多场景适配需要持续调优。`widget:msg:sg_2658892958:61:T112053RE`\n- **群关注能力**：已单独提需，计划在 SP16 做版本澄清。`widget:msg:sg_2658892958:62:T112053RE`\n\n## 主要风险\n\n- **人力分流**：部分成员同时投入假勤新需求和周报，可能影响项目推进节奏。\n- **测试窗口紧张**：测试团队当周尚未投入 AI 助手，主要支持任务空间 SP15 新需求，可能压缩 9 月 15 日计划发布 pre 包前的验证时间。\n- **内测范围不确定**：pre 包可体验的功能和数据范围当时尚待明确，且历史群聊数据并非计划全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`\n\n以上是 **9 月 11 日纪要所反映的状态和计划**，不能据此认定截至目前这些缺口仍未解决或计划已实际完成。"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 2
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 12
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 15,
+          "name": "scratchpad_read",
+          "call_id": "call_60bea3fd576145c19012f6941621699e",
+          "arguments_summary": "path=cases/hive-ai-assistant-2026-09-11.md offset=0",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 16,
+          "name": "scratchpad_read",
+          "call_id": "call_60bea3fd576145c19012f6941621699e",
+          "status": "failed",
+          "attempts": 1,
+          "result_preview": "scratchpad_read failed (Internal)",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 17
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 497
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 499,
+          "input_tokens": 21993,
+          "output_tokens": 575,
+          "total_tokens": 22568,
+          "estimated_cost_micros": 118590,
+          "cached_input_tokens": 10752,
+          "cache_hit_ratio": 0.48888282635383984,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "turn_step": 2,
+          "seq": 503
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": false,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31",
+        "message_id": "",
+        "request_id": "",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31",
+        "message_id": "cm_42b486b0-cdd2-47b7-a057-abde4cd98b3a",
+        "request_id": "00c43bec-b821-423d-b09f-20e678cf436e",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "openai/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.10"
+  },
+  "metrics": {
+    "e2e_ms": 11485,
+    "tool_calls": 1,
+    "retries": 0,
+    "input_tokens": 21993,
+    "output_tokens": 575,
+    "cached_tokens": 10752,
+    "cost_usd": 0.11859,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "安柔",
+        "session_id": "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31",
+        "request_id": "",
+        "status": "reused",
+        "reused": true,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "安柔",
+        "session_id": "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31",
+        "message_id": "cm_42b486b0-cdd2-47b7-a057-abde4cd98b3a",
+        "request_id": "00c43bec-b821-423d-b09f-20e678cf436e",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "根据“蜂巢AI助手”群 **2026 年 9 月 11 日晨会纪要**，项目当时已完成基础数据联调和部分真实数据接入，定时任务主流程基本完成；主要缺口集中在数据准备、多模态、定时任务完善和效果调优。\n\n## 已完成\n\n- **数据联调**：虚拟数据联调、真实群聊数据增量写入已完成。\n- **定时任务**：主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n## 还缺什么\n\n- **数据准备与接入**：空间数据仍在开发；历史群聊计划只接入部分指定群，任务空间历史数据则视数据量争取全量接入。\n- **多模态能力**：计划优先于 9 月 15 日前跑通周报汇总和聊天图片识别；任务空间图片识别尚未启动。\n- **定时任务完善**：创建、编辑时的联动及数据查询能力仍需补齐。\n- **AI 效果优化**：工具选择、路由和多场景适配需要持续调优。`widget:msg:sg_2658892958:61:T112053RE`\n- **群关注能力**：已单独提需，计划在 SP16 做版本澄清。`widget:msg:sg_2658892958:62:T112053RE`\n\n## 主要风险\n\n- **人力分流**：部分成员同时投入假勤新需求和周报，可能影响项目推进节奏。\n- **测试窗口紧张**：测试团队当周尚未投入 AI 助手，主要支持任务空间 SP15 新需求，可能压缩 9 月 15 日计划发布 pre 包前的验证时间。\n- **内测范围不确定**：pre 包可体验的功能和数据范围当时尚待明确，且历史群聊数据并非计划全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`\n\n以上是 **9 月 11 日纪要所反映的状态和计划**，不能据此认定截至目前这些缺口仍未解决或计划已实际完成。",
+        "message": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": []
+      }
+    ],
+    "data_state": "LIVE_VERIFIED",
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+        "turn_step": 2,
+        "request_id": "00c43bec-b821-423d-b09f-20e678cf436e",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "model": "openai/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "scratchpad_read",
+            "call_id": "call_60bea3fd576145c19012f6941621699e",
+            "arguments_summary": "path=cases/hive-ai-assistant-2026-09-11.md offset=0",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "scratchpad_read failed (Internal)",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 28,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.tool_result",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 21993,
+          "output_tokens": 575,
+          "total_tokens": 22568,
+          "estimated_cost_micros": 118590,
+          "cached_input_tokens": 10752,
+          "cache_hit_ratio": 0.48888282635383984,
+          "prefix_rewrites": 0,
+          "entry_tool_count": 6
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "00c43bec-b821-423d-b09f-20e678cf436e"
+      ],
+      "current_session_ids": [
+        "cs_b9a4e12b-50b9-47d0-ab7f-7a0023600c31"
+      ],
+      "matched_run_ids": [
+        "bar_e52039b7ae3a4a6ebe79b14e7ad581b4"
+      ],
+      "excluded_historical_run_count": 0,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-03T12:42:04.335617+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+          "request_id": "00c43bec-b821-423d-b09f-20e678cf436e",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793689684",
+            "started_at_unix": "1793689684",
+            "finished_at_unix": "1793689694"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "2",
+              "at": "1793689684",
+              "payload": {
+                "duration_ms": 3,
+                "error_category": "Internal",
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "degraded",
+                "summary_source": "none",
+                "tool_detail": "bounded",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "4",
+              "at": "1793689684",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "5",
+              "at": "1793689684",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "6",
+              "at": "1793689684",
+              "payload": {
+                "activation_block_active": true,
+                "activation_mode": "manifest",
+                "active_skills": [],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 30123,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 6,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [],
+                "profile_context_tokens": 288,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:a3612ba6450bad3b25b8251ac0ac34de4f64b55f7445a0a3ea92e57e0053b92e",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.1",
+                  "assistant_core_scope@0.1.0",
+                  "assistant_core_context_entry@0.4.21",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_widgets@0.1.8",
+                  "assistant_core_scratchpad@0.5.0",
+                  "assistant_core_evidence@0.3.8",
+                  "assistant_core_skills@0.5.1"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.10",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T16:08:04+09:00\",\"timestamp\":1793689684,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_e52039b7ae3a4a6ebe79b14e7ad581b4",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "7",
+              "at": "1793689684",
+              "payload": {
+                "entity_reference_count": 0,
+                "message_count": 8,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": false,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "8",
+              "at": "1793689684",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "9",
+              "at": "1793689684",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "10",
+              "at": "1793689684",
+              "payload": {
+                "base_reference_count": 0,
+                "history_widget_hits": 0,
+                "merged_reference_count": 0,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "501",
+              "at": "1793689694",
+              "payload": {
+                "anchor_sequence": 7538,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 0,
+                "locator_count": 2,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 1,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "504",
+              "at": "1793689694",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 15,
+                "phase": "result",
+                "status": "succeeded",
+                "turn_order": 7538
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "506",
+              "at": "1793689694",
+              "payload": {
+                "error_category": "Internal",
+                "evidence": null,
+                "failed": 0,
+                "pending": 0,
+                "persistence": "failed",
+                "processed": 0,
+                "total": 0
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "12",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "根据“蜂巢AI助手”群 **9 月 11 日晨会纪要**，项目当时的状态如下（这是当日计划与进展，不代表后续实际完成态）：\n\n**已完成**\n- 已完成**虚拟数据联调**。\n- 已完成真实数据侧的**群聊数据增量写入**。\n- **定时任务主流程**已基本完成。\n\n**还缺什么**\n- **数据准备**：空间数据仍在开发，计划次日完成准备；历史群聊数据预计只接入部分指定群，任务空间数据则视数据量争取全量历史接入。\n- **多模态能力**：优先在 9 月 15 日前跑通周报汇总、聊天图片识别；任务空间图片识别尚未启动。\n- **定时任务完善**：创建/编辑时的联动能力、数据查询能力仍需补齐。\n- **AI 效果优化**：工具选择、路由和多场景适配需要持续调优。\n- **群关注能力**：已单独提需，计划在 SP16 做版本澄清。\n\n**主要风险**\n- **人力被分流**：部分成员同时投入假勤新需求和周报，可能影响 AI 助手推进节奏。\n- **测试资源不足**：测试团队当周尚未投入 AI 助手，仍主要支持任务空间 SP15 新需求；这会压缩 9 月 15 日 pre 包内测前的验证窗口。\n- **内测范围不确定**：9 月 15 日虽计划发 pre 包，但可体验功能和数据范围要到下周一早会才明确，且历史群聊数据覆盖并非全量。\n\n来源：`widget:msg:sg_2658892958:61:T112053RE`（2026-09-11 12:37 JST）；群关注能力补充见 `widget:msg:sg_2658892958:62:T112053RE`。"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "按“蜂巢AI助手”群 **9 月 11 日晨会纪要**，以下是当时的项目状态；并非后续实际完成情况。\n\n**已完成**\n- 虚拟数据联调已完成，真实群聊数据的增量写入已完成。\n- 定时任务主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n**还缺什么**\n- 空间数据仍在开发，需完成数据准备；历史群聊暂只覆盖部分指定群，任务空间数据计划尽量全量接入历史数据。\n- 多模态能力需先在 9 月 15 日前跑通周报汇总和聊天图片识别，任务空间图片识别后续补齐。\n- 定时任务仍需完善创建/编辑联动和数据查询能力。\n- AI 工具选择、路由及多场景适配仍需持续调优；群关注能力另行提需，计划在 SP16 澄清。`widget:refs:msg:sg_2658892958:61:T112053RE|msg:sg_2658892958:62:T112053RE`\n\n**主要风险**\n- **资源分流**：成员同时支持假勤新需求和周报，可能拖慢 AI 助手推进。\n- **测试投入不足**：测试团队当周尚未投入 AI 助手，仍主要支持任务空间 SP15 新需求，压缩了 9 月 15 日 pre 包内测前的验证时间。\n- **内测范围不确定**：pre 包虽计划于 9 月 15 日发布，但可体验功能及数据覆盖范围尚待明确，历史群聊数据也不是全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "根据“蜂巢AI助手”群 **2026 年 9 月 11 日晨会纪要**，以下是当时的项目状态，不代表其后的实际完成情况。\n\n**已完成**\n- 已完成虚拟数据联调，以及真实群聊数据的增量写入。\n- 定时任务主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n**还缺什么**\n- **数据接入**：空间数据仍在开发；历史群聊仅计划覆盖部分指定群，任务空间数据则视数据量争取全量历史接入。\n- **多模态能力**：需优先跑通周报汇总与聊天图片识别，任务空间图片识别尚待后续开发。\n- **定时任务完善**：创建/编辑联动、数据查询能力仍需补齐。\n- **AI 效果与能力完善**：工具选择、路由和多场景适配需要持续调优；群关注能力另行提需，计划在 SP16 版本澄清。`widget:refs:msg:sg_2658892958:61:T112053RE|msg:sg_2658892958:62:T112053RE`\n\n**主要风险**\n- **人员分流**：项目成员同时支持假勤新需求和周报，可能影响 AI 助手推进节奏。\n- **测试资源不足**：测试团队当周尚未投入 AI 助手，主要仍在支持任务空间 SP15 新需求，压缩了内测前的验证时间。\n- **内测范围不确定**：虽预计 9 月 15 日发布 pre 包，但可体验能力和数据覆盖范围尚待明确，历史群聊数据也不是全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:08:04+09:00\",\"timestamp\":1793689684,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:08:04+09:00\",\"timestamp\":1793689684,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "17",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "根据“蜂巢AI助手”群 **9 月 11 日晨会纪要**，项目当时的状态如下（这是当日计划与进展，不代表后续实际完成态）：\n\n**已完成**\n- 已完成**虚拟数据联调**。\n- 已完成真实数据侧的**群聊数据增量写入**。\n- **定时任务主流程**已基本完成。\n\n**还缺什么**\n- **数据准备**：空间数据仍在开发，计划次日完成准备；历史群聊数据预计只接入部分指定群，任务空间数据则视数据量争取全量历史接入。\n- **多模态能力**：优先在 9 月 15 日前跑通周报汇总、聊天图片识别；任务空间图片识别尚未启动。\n- **定时任务完善**：创建/编辑时的联动能力、数据查询能力仍需补齐。\n- **AI 效果优化**：工具选择、路由和多场景适配需要持续调优。\n- **群关注能力**：已单独提需，计划在 SP16 做版本澄清。\n\n**主要风险**\n- **人力被分流**：部分成员同时投入假勤新需求和周报，可能影响 AI 助手推进节奏。\n- **测试资源不足**：测试团队当周尚未投入 AI 助手，仍主要支持任务空间 SP15 新需求；这会压缩 9 月 15 日 pre 包内测前的验证窗口。\n- **内测范围不确定**：9 月 15 日虽计划发 pre 包，但可体验功能和数据范围要到下周一早会才明确，且历史群聊数据覆盖并非全量。\n\n来源：`widget:msg:sg_2658892958:61:T112053RE`（2026-09-11 12:37 JST）；群关注能力补充见 `widget:msg:sg_2658892958:62:T112053RE`。"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "按“蜂巢AI助手”群 **9 月 11 日晨会纪要**，以下是当时的项目状态；并非后续实际完成情况。\n\n**已完成**\n- 虚拟数据联调已完成，真实群聊数据的增量写入已完成。\n- 定时任务主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n**还缺什么**\n- 空间数据仍在开发，需完成数据准备；历史群聊暂只覆盖部分指定群，任务空间数据计划尽量全量接入历史数据。\n- 多模态能力需先在 9 月 15 日前跑通周报汇总和聊天图片识别，任务空间图片识别后续补齐。\n- 定时任务仍需完善创建/编辑联动和数据查询能力。\n- AI 工具选择、路由及多场景适配仍需持续调优；群关注能力另行提需，计划在 SP16 澄清。`widget:refs:msg:sg_2658892958:61:T112053RE|msg:sg_2658892958:62:T112053RE`\n\n**主要风险**\n- **资源分流**：成员同时支持假勤新需求和周报，可能拖慢 AI 助手推进。\n- **测试投入不足**：测试团队当周尚未投入 AI 助手，仍主要支持任务空间 SP15 新需求，压缩了 9 月 15 日 pre 包内测前的验证时间。\n- **内测范围不确定**：pre 包虽计划于 9 月 15 日发布，但可体验功能及数据覆盖范围尚待明确，历史群聊数据也不是全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？"
+                },
+                {
+                  "role": "assistant",
+                  "content": "根据“蜂巢AI助手”群 **2026 年 9 月 11 日晨会纪要**，以下是当时的项目状态，不代表其后的实际完成情况。\n\n**已完成**\n- 已完成虚拟数据联调，以及真实群聊数据的增量写入。\n- 定时任务主流程已基本完成。`widget:msg:sg_2658892958:61:T112053RE`\n\n**还缺什么**\n- **数据接入**：空间数据仍在开发；历史群聊仅计划覆盖部分指定群，任务空间数据则视数据量争取全量历史接入。\n- **多模态能力**：需优先跑通周报汇总与聊天图片识别，任务空间图片识别尚待后续开发。\n- **定时任务完善**：创建/编辑联动、数据查询能力仍需补齐。\n- **AI 效果与能力完善**：工具选择、路由和多场景适配需要持续调优；群关注能力另行提需，计划在 SP16 版本澄清。`widget:refs:msg:sg_2658892958:61:T112053RE|msg:sg_2658892958:62:T112053RE`\n\n**主要风险**\n- **人员分流**：项目成员同时支持假勤新需求和周报，可能影响 AI 助手推进节奏。\n- **测试资源不足**：测试团队当周尚未投入 AI 助手，主要仍在支持任务空间 SP15 新需求，压缩了内测前的验证时间。\n- **内测范围不确定**：虽预计 9 月 15 日发布 pre 包，但可体验能力和数据覆盖范围尚待明确，历史群聊数据也不是全量覆盖。`widget:msg:sg_2658892958:61:T112053RE`"
+                },
+                {
+                  "role": "user",
+                  "content": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:08:04+09:00\",\"timestamp\":1793689684,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "根据“蜂巢AI助手”群9月11日纪要，AI助手项目当前完成了什么、还缺什么、主要风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:08:04+09:00\",\"timestamp\":1793689684,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_60bea3fd576145c19012f6941621699e",
+                      "name": "scratchpad_read",
+                      "arguments_json": "{\"path\":\"cases/hive-ai-assistant-2026-09-11.md\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "scratchpad_read failed (Internal)",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "scratchpad_read failed (Internal)",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_60bea3fd576145c19012f6941621699e"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}
