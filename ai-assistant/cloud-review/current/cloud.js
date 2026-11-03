@@ -2,6 +2,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const labels = {pass:'通过',fail:'失败',skip:'待复核',pending_qa:'待 QA 复核',deferred:'延期',pending_fix:'待修复'};
+  const resultLabel = (row, value = row.status) => value==='skip'?({not_executed:'未执行',local_fixture_pass:'本地回放通过'}[row.kind]||labels.skip):labels[value];
   const isFailure = status => ['fail','pending_fix'].includes(status);
   const schema = 'ai_assistant.cloud_review.v1';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -262,8 +263,8 @@
     $('failure-table-body').innerHTML=failures.map(row=>`<tr><td><span class="badge ${esc(row.source_environment)}">${esc(row.source_environment)}</span></td><td><a class="case-link" href="#${esc(row.case_id)}" data-failure-jump="${esc(row.case_id)}">${esc(row.case_id)}</a></td><td>${esc(row.priority||'未标注')}</td><td>${esc(row.module)}</td><td>${esc(row.scenario)}</td><td>${esc(row.ability||row.title)}</td><td>${esc(row.failure_categories.join('、')||'未分类')}</td><td>${row.latency_ms===null?'—':`${(row.latency_ms/1000).toFixed(1)}s`}</td><td>${row.task_completion_rate==null?'—':`${esc(row.task_completion_rate)}%`}</td></tr>`).join('');
   }
   function originalAndCurrent(row) {
-    $('edit-original').textContent = `${labels[row.original_status]}：${row.original_reason}`;
-    $('edit-current').textContent = `${labels[row.status]} · v${row.version}\n${row.reason}`;
+    $('edit-original').textContent = `${resultLabel(row,row.original_status)}：${row.original_reason}`;
+    $('edit-current').textContent = `${resultLabel(row)} · v${row.version}\n${row.reason}`;
     $('edit-version').textContent = `草稿基于 v${currentEdit.base_version}`;
   }
   function formMode() {
@@ -277,6 +278,7 @@
     const row = effectiveRows().find(item=>item.case_id===id); if (!row) return;
     currentEdit = {case_id:id,base_version:row.version,actor_id:session.userId};
     $('edit-title').textContent = id+' · 人工复核'; $('edit-question').textContent = row.title;
+    $('edit-status').querySelector('option[value="skip"]').textContent = resultLabel(row,'skip');
     $('edit-status').value = row.status; $('edit-reason').value = ''; $('edit-categories').value = row.failure_categories.join('，');
     $('edit-feedback').textContent = ''; $('edit-refresh').hidden = true;
     const draft = drafts.get(`${session.userId}:${id}`);
