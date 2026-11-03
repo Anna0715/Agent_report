@@ -45,6 +45,8 @@
     counts.combined=Object.fromEntries(['attempted','pass','fail','pending','pendingQa','deferred','pendingFix'].map(k=>[k,counts.test[k]+counts.pre[k]]));
     for(const c of Object.values(counts))c.assessed=c.pass+c.fail;
     const total=counts.combined, trace=base.summary.trace_gate||{};
+    const reportEnvironment=base.summary.report_environment;
+    const singleEnvironment=['test','pre'].includes(reportEnvironment);
     $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：线上执行 ${total.attempted} 条，当前通过 <b>${total.pass}</b>、失败 <b>${total.fail}</b>、待复核/复测 ${total.pending}、待 QA 复核 <b>${total.pendingQa}</b>、延期 <b>${total.deferred}</b>、待修复 <b>${total.pendingFix}</b>（已计入失败）。综合成功率 <b>${pct(total.pass,total.assessed)}</b>（${total.pass}/${total.assessed} 个有效判定）。${rows.filter(r=>r.kind==='not_executed').length} 条未执行、${rows.filter(r=>r.kind==='local_fixture_pass').length} 条本地 fixture 单列，不计入线上通过率。内部 Trace ${trace.captured??'—'}/${trace.executed??'—'}，原始执行证据不变。`;
     const kpis=$('current-kpis').querySelectorAll('.kpi');
     for(const [i,value,note] of [[1,total.attempted,`test ${counts.test.attempted} + pre ${counts.pre.attempted}`],[2,total.pass,'当前已保存判定'],[3,pct(total.pass,total.assessed),`有效判定 ${total.assessed}；待复核 ${total.pending}，待 QA 复核 ${total.pendingQa}，延期 ${total.deferred} 均不计分母；待修复计入失败`]]){
@@ -79,7 +81,31 @@
         tr.children[costCell].innerHTML=`${v!==null&&bound?'≥':''}${value}<br><small>全部已观测消耗 ÷ 当前线上成功 ${successes.length} 条</small>`;
       }
     });
-    resource.querySelector('.note').textContent=`原始资源消耗不变；按当前线上业务成功数重算摊销成本：test ${counts.test.pass} 条、pre ${counts.pre.pass} 条。没有成功样本时不计算；“≥”表示资源覆盖不全的观测下限，缺失值不补 0。下方 GPT 文字是执行时历史结论，当前问题以“当前问题汇总”为准。`;
+    resource.querySelector('.note').textContent=`原始资源消耗不变；按当前线上业务成功数重算摊销成本：${singleEnvironment?`${reportEnvironment} ${total.pass} 条`:`test ${counts.test.pass} 条、pre ${counts.pre.pass} 条`}。没有成功样本时不计算；“≥”表示资源覆盖不全的观测下限，缺失值不补 0。下方 GPT 文字是执行时历史结论，当前问题以“当前问题汇总”为准。`;
+    if(reportEnvironment==='pre'){
+      const pre=counts.pre,scope=base.summary.pre_scope||{},notExecuted=rows.filter(r=>r.kind==='not_executed').length;
+      $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：pre 范围 ${scope.active_total||rows.length} 条，实际发起 ${pre.attempted} 条，认证 Trace ${trace.captured??'—'}/${trace.executed??'—'} 条。当前通过 <b>${pre.pass}</b>、失败 <b>${pre.fail}</b>、待复核 ${pre.pending}、待 QA 复核 ${pre.pendingQa}、延期 ${pre.deferred}、待修复 ${pre.pendingFix}（计入失败）；另有 ${notExecuted} 条未执行。pre 任务成功率 <b>${pct(pre.pass,pre.assessed)}</b>（${pre.pass}/${pre.assessed} 个有效判定）。`;
+      const values=[
+        ['pre 用例',scope.active_total||rows.length,'全部预发范围'],
+        ['实际发起',pre.attempted,'未执行单列'],
+        ['认证 Trace',trace.captured??'—',`${trace.executed??'—'} 条已发起`],
+        ['业务通过',pre.pass,'按当前已保存判定'],
+        ['业务失败',pre.fail,'含待修复'],
+        ['任务成功率',pct(pre.pass,pre.assessed),`${pre.pass}/${pre.assessed} 个有效判定`],
+      ];
+      kpis.forEach((node,index)=>{
+        const [name,value,note]=values[index];
+        node.querySelector('span').textContent=name;
+        node.querySelector('b').textContent=value;
+        node.querySelector('small').textContent=note;
+      });
+      task.querySelector('.metrics').innerHTML=`<div class="metric" data-success-env="pre"><span>pre</span><b>${pct(pre.pass,pre.assessed)}</b><small>${pre.pass}/${pre.assessed} · 失败 ${pre.fail} · 待复核 ${pre.pending} · 待 QA 复核 ${pre.pendingQa} · 延期 ${pre.deferred} · 待修复 ${pre.pendingFix}（计入失败）</small></div>`;
+      resource.querySelector('.note').textContent=`仅按 pre 当前线上业务成功 ${pre.pass} 条重算摊销成本；缺失资源不补零。`;
+    } else if(singleEnvironment){
+      const conclusion=$('current-conclusion').querySelector('p');
+      conclusion.innerHTML=conclusion.innerHTML.replace('综合成功率',`${reportEnvironment} 成功率`);
+      kpis[1].querySelector('small').textContent=`${reportEnvironment} ${total.attempted}`;
+    }
   }
   function options(id,values){const select=$(id),value=select.value;select.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());for(const v of [...new Set(values)].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true})))select.add(new Option(v,v));select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;}
   function filtered(){const env=$('filter-environment').value,s=$('filter-status').value,p=$('filter-priority').value,c=$('category').value,q=$('search').value.trim().toLowerCase();return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!q||[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(q)));}

@@ -1,0 +1,347 @@
+{
+  "case_id": "AA-FU-042",
+  "previous_gold": {
+    "type": "entity_list",
+    "gold_refs": [
+      "P-A-SEM-RAG-01",
+      "P-A-SEM-SEARCH-03"
+    ],
+    "must_include": [],
+    "must_exclude": [],
+    "qualitative_requirements": [
+      "以CFO当前账号的空间项目列表可见范围为准，查询其中与AI相关的项目。允许返回列表中可见的跨租户智本科技项目，不因公司或tenant_id不同判定越权。仍须核验AI相关性和项目事实；不可见或无访问权限的项目不得返回。",
+      "以当前账号空间列表可见且AI相关的项目集合评测准确率和召回率；跨租户不等于越权；项目ID用于核验，不要求用户提供。"
+    ],
+    "fixed_fact_truth": null,
+    "expected_total": null,
+    "high_priority_total": null,
+    "required_fields": [
+      "对象集合",
+      "实际ID",
+      "检索口径"
+    ],
+    "citation_refs": [],
+    "scope": "actor_visible",
+    "match_policy": "minimum",
+    "gold_entities": [],
+    "forbidden_entities": [],
+    "turn_expectations": [
+      {
+        "step": 2,
+        "message": "公司所有AI项目有哪些？",
+        "must_include": [],
+        "must_exclude": [],
+        "qualitative_requirements": [
+          "以CFO当前账号的空间项目列表可见范围为准，查询其中与AI相关的项目。允许返回列表中可见的跨租户智本科技项目，不因公司或tenant_id不同判定越权。仍须核验AI相关性和项目事实；不可见或无访问权限的项目不得返回。"
+        ]
+      }
+    ]
+  },
+  "previous_assertions": {
+    "semantic_must": [
+      "以CFO当前账号的空间项目列表可见范围为准，查询其中与AI相关的项目。允许返回列表中可见的跨租户智本科技项目，不因公司或tenant_id不同判定越权。仍须核验AI相关性和项目事实；不可见或无访问权限的项目不得返回。"
+    ],
+    "semantic_forbid": [
+      "把跨租户智本科技项目一律判为越权",
+      "返回当前账号空间项目列表不可见或无访问权限的项目"
+    ],
+    "exact_forbidden": [],
+    "system_checks": [
+      "执行前分页回读当前账号空间项目列表，冻结可见项目集合并依据名称、描述核验AI相关性。不能仅按当前company_id或tenant_id过滤；智本科技项目只要列表可见即可查询返回。不得将缺少特定policy.check调用直接判为越权；实际可见性证据不足时标记待核验。"
+    ],
+    "event_assertions": [],
+    "expected_entities": [],
+    "must_include_ids": [],
+    "must_exclude_ids": [],
+    "metric": "以当前账号空间列表可见且AI相关的项目集合评测准确率和召回率；跨租户不等于越权；项目ID用于核验，不要求用户提供。"
+  },
+  "new_gold": {
+    "type": "entity_list",
+    "gold_refs": [
+      "P-A-SEM-RAG-01",
+      "P-A-SEM-SEARCH-03"
+    ],
+    "must_include": [],
+    "must_exclude": [],
+    "qualitative_requirements": [
+      "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。"
+    ],
+    "fixed_fact_truth": "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。",
+    "expected_total": null,
+    "high_priority_total": null,
+    "required_fields": [
+      "对象集合",
+      "实际ID",
+      "检索口径"
+    ],
+    "citation_refs": [],
+    "scope": "actor_current_tenant_visible",
+    "match_policy": "minimum",
+    "gold_entities": [],
+    "forbidden_entities": [],
+    "turn_expectations": [
+      {
+        "step": 2,
+        "message": "公司所有AI项目有哪些？",
+        "must_include": [],
+        "must_exclude": [],
+        "qualitative_requirements": [
+          "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。"
+        ]
+      }
+    ]
+  },
+  "edits": [
+    {
+      "sheet": "用例库",
+      "row": 24,
+      "key": "AA-QAP-022",
+      "field": "执行状态",
+      "value": "已真实test重跑"
+    },
+    {
+      "sheet": "用例库",
+      "row": 24,
+      "key": "AA-QAP-022",
+      "field": "实际结果/证据",
+      "value": "/Users/barry/Desktop/Agent-Evaluation/outputs/test_qap_identity_fix_20261103/cases/AA-QAP-022"
+    },
+    {
+      "sheet": "用例库",
+      "row": 24,
+      "key": "AA-QAP-022",
+      "field": "会话ID",
+      "value": "cs_4465405a-ffa3-4f51-9c0c-100442eddb31;cs_9f3d0e58-0b88-4db9-9834-9071f159afb5"
+    },
+    {
+      "sheet": "用例库",
+      "row": 26,
+      "key": "AA-QAP-024",
+      "field": "执行状态",
+      "value": "已真实test重跑"
+    },
+    {
+      "sheet": "用例库",
+      "row": 26,
+      "key": "AA-QAP-024",
+      "field": "实际结果/证据",
+      "value": "/Users/barry/Desktop/Agent-Evaluation/outputs/test_qap_identity_fix_20261103/cases/AA-QAP-024"
+    },
+    {
+      "sheet": "用例库",
+      "row": 26,
+      "key": "AA-QAP-024",
+      "field": "会话ID",
+      "value": "cs_02257122-c1d9-46f5-98fa-2365cb5a8226"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "预期结果",
+      "value": "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "expected_answer_json",
+      "value": "{\"type\":\"entity_list\",\"gold_refs\":[\"P-A-SEM-RAG-01\",\"P-A-SEM-SEARCH-03\"],\"must_include\":[],\"must_exclude\":[],\"qualitative_requirements\":[\"仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。\"],\"fixed_fact_truth\":\"仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。\",\"expected_total\":null,\"high_priority_total\":null,\"required_fields\":[\"对象集合\",\"实际ID\",\"检索口径\"],\"citation_refs\":[],\"scope\":\"actor_current_tenant_visible\",\"match_policy\":\"minimum\",\"gold_entities\":[],\"forbidden_entities\":[],\"turn_expectations\":[{\"step\":2,\"message\":\"公司所有AI项目有哪些？\",\"must_include\":[],\"must_exclude\":[],\"qualitative_requirements\":[\"仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。\"]}]}"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "assertions_json",
+      "value": "{\"semantic_must\":[\"仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。\"],\"semantic_forbid\":[\"返回当前追问人所属租户以外的项目\",\"返回当前账号不可见项目\",\"清单与总数不一致\"],\"exact_forbidden\":[],\"system_checks\":[\"分页读取当前账号可见项目，按当前追问人tenant_id过滤，基于名称和描述核验AI相关性；不使用旧跨租户召回要求。\"],\"event_assertions\":[],\"expected_entities\":[],\"must_include_ids\":[],\"must_exclude_ids\":[],\"metric\":\"当前租户可见AI相关项目准确率、召回率及统计一致性\"}"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "需求来源",
+      "value": "2026-11-03用户确认：此用例仅当前追问人所属租户，不支持跨租户返回"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "执行状态",
+      "value": "本轮已按新口径重新评测"
+    },
+    {
+      "sheet": "用例库",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "实际结果/证据",
+      "value": "/Users/barry/Desktop/Agent-Evaluation/outputs/test_qap_identity_fix_20261103/reviews-revision.json"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "固定事实真值/评测要求",
+      "value": "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "权限范围",
+      "value": "当前追问人所属租户内且账号可见"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "禁出内容",
+      "value": "跨租户项目；不可见项目；统计不一致"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "通过阈值",
+      "value": "当前租户项目事实、集合和统计正确；不因未返回跨租户数据扣分"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "逐轮判定",
+      "value": "[{\"step\":2,\"message\":\"公司所有AI项目有哪些？\",\"must_include\":[],\"must_exclude\":[],\"qualitative_requirements\":[\"仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。\"]}]"
+    },
+    {
+      "sheet": "追问Gold",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "来源",
+      "value": "2026-11-03用户明确修订本条用例"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 26,
+      "key": "AA-QAP-024",
+      "field": "缺口/准备动作",
+      "value": "已发送且仅发送1条授权私聊；发送方回读成功；CEO回读0条；索引摄取尚未验证"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 26,
+      "key": "AA-QAP-024",
+      "field": "备注",
+      "value": "真实夹具见dm-fixture-receipt.json；空结果不等于显式ACL拒绝"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "Gold来源",
+      "value": "2026-11-03用户明确：仅当前追问人所属租户"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "缺口/准备动作",
+      "value": "现有真实问答与认证Trace按新范围重新复核"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "权限/索引预检",
+      "value": "T1120BFPA内、账号可见且AI相关；排除跨租户项目"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "备注",
+      "value": "撤销原跨租户漏召回理由；旧Gold和结论保存在修订历史；已有云端人工复核不改动"
+    },
+    {
+      "sheet": "追问数据映射",
+      "row": 72,
+      "key": "AA-FU-042",
+      "field": "固定事实真值",
+      "value": "仅返回当前追问人所属租户T1120BFPA内、当前账号可见且与AI相关的项目；当前不支持返回跨租户项目。不得因未返回跨租户项目判为漏召回。项目事实、引用、去重集合及数量须一致。"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际conversation_id",
+      "value": "si_ouvgljaz6g7ns4_ouvgllrjy9w5yw"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际tenant_id",
+      "value": "T1120BFPA"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际participant_a",
+      "value": "ouvgllrjy9w5yw"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际participant_b",
+      "value": "ouvgljaz6g7ns4"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际sender_id",
+      "value": "ouvgllrjy9w5yw"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际clientMsgID",
+      "value": "905f0a26-94e4-4931-832d-044cb4d46423"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际serverMsgID",
+      "value": "c8e992ad7b87ae11cceaf28828da5d38"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际正文",
+      "value": "【AI评测专用】Mac 空间体验优化权限回归，校验串 AE-QAP024-20261103"
+    },
+    {
+      "sheet": "私聊消息",
+      "row": 9,
+      "key": "QA-DM-X-01",
+      "field": "实际索引状态",
+      "value": "未验证；历史合成夹具字段为其他本地回放保留"
+    }
+  ],
+  "unrelated_active_cases_unchanged": 557,
+  "task_fixture_revision": {
+    "cases": [
+      "AA-FU-017",
+      "AA-FU-019"
+    ],
+    "supplementary_pre_cases": [
+      "AA-FU-PRE-017",
+      "AA-FU-PRE-019"
+    ],
+    "evidence": "task-fixture-evidence.json",
+    "review_history_modified": false
+  }
+}
