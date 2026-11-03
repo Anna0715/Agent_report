@@ -111,7 +111,7 @@
     $('logout').disabled = busy;
     $('refresh').disabled = busy || !connected;
     $('export-snapshot').disabled = busy || !connected;
-    for (const el of document.querySelectorAll('[data-edit-case]')) el.disabled = busy || !canWrite();
+    for (const el of document.querySelectorAll('[data-edit-case], [data-case-status-select]')) el.disabled = busy || !canWrite();
     for (const id of ['edit-save','edit-refresh','edit-status','edit-categories']) $(id).disabled = busy || !canWrite();
     $('edit-reason').disabled = busy || !canWrite() || $('edit-status').value === 'reset';
     $('edit-cancel').disabled = busy;
@@ -271,7 +271,7 @@
     $('categories-field').hidden = !isFailure($('edit-status').value);
     controls();
   }
-  function openEdit(id) {
+  function openEdit(id, selectedStatus = null) {
     if (busy || !canWrite()) return;
     try { requireSession(); } catch(error) { notice(error.message,true); return; }
     const row = effectiveRows().find(item=>item.case_id===id); if (!row) return;
@@ -286,7 +286,9 @@
       $('edit-feedback').textContent = '已恢复当前页面内存中的未提交草稿。';
       if (row.version!==draft.base_version) { $('edit-feedback').textContent += ' 云端版本已变化，请先查看最新版本。'; $('edit-refresh').hidden = false; }
     }
+    if (Object.hasOwn(labels,selectedStatus) || selectedStatus==='reset') $('edit-status').value = selectedStatus;
     originalAndCurrent(row); formMode(); $('edit-dialog').showModal();
+    if (selectedStatus !== null) preserveDraft();
   }
   $('login-form').onsubmit = event => {
     event.preventDefault(); if (busy || !configured) return;
@@ -360,6 +362,15 @@
   $('edit-status').onchange = () => {formMode();preserveDraft();};
   for (const id of ['edit-reason','edit-categories']) $(id).oninput = preserveDraft;
   document.addEventListener('click', event => {const button=event.target.closest('[data-edit-case]');if(button)openEdit(button.dataset.editCase);});
+  document.addEventListener('change', event => {
+    const select=event.target.closest('[data-case-status-select]');
+    if (!select) return;
+    const selected=select.value, row=effectiveRows().find(item=>item.case_id===select.dataset.caseStatusSelect);
+    if (!row) return;
+    // The header always shows the saved verdict; the proposed status is a dialog draft.
+    select.value=row.status;
+    openEdit(row.case_id,selected);
+  });
   $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
   const filterChanged=()=>{full?.resetPage();renderCases();};
   $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
