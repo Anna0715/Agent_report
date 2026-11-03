@@ -49,6 +49,7 @@
     const singleEnvironment=['test','pre'].includes(reportEnvironment);
     $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：线上执行 ${total.attempted} 条，当前通过 <b>${total.pass}</b>、失败 <b>${total.fail}</b>、待复核/复测 ${total.pending}、待 QA 复核 <b>${total.pendingQa}</b>、延期 <b>${total.deferred}</b>、待修复 <b>${total.pendingFix}</b>（已计入失败）。综合成功率 <b>${pct(total.pass,total.assessed)}</b>（${total.pass}/${total.assessed} 个有效判定）。${rows.filter(r=>r.kind==='not_executed').length} 条未执行、${rows.filter(r=>r.kind==='local_fixture_pass').length} 条本地 fixture 单列，不计入线上通过率。内部 Trace ${trace.captured??'—'}/${trace.executed??'—'}，原始执行证据不变。`;
     const kpis=$('current-kpis').querySelectorAll('.kpi');
+    for(const kpi of kpis)if(!kpi.querySelector('small'))kpi.appendChild(document.createElement('small'));
     for(const [i,value,note] of [[1,total.attempted,`test ${counts.test.attempted} + pre ${counts.pre.attempted}`],[2,total.pass,'当前已保存判定'],[3,pct(total.pass,total.assessed),`有效判定 ${total.assessed}；待复核 ${total.pending}，待 QA 复核 ${total.pendingQa}，延期 ${total.deferred} 均不计分母；待修复计入失败`]]){
       kpis[i].querySelector('b').textContent=value; kpis[i].querySelector('small').textContent=note;
     }
