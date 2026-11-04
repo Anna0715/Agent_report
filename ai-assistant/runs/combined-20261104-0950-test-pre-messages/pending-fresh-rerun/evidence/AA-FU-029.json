@@ -1,0 +1,598 @@
+{
+  "case_id": "AA-FU-029",
+  "evidence": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-029",
+    "environment": "pre",
+    "generated_at": "2026-11-04T08:16:30+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_06d12332f5ac4539a5c66de1976785ee",
+            "arguments_summary": "skills=group_summary",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "group_summary"
+            ],
+            "activated": [
+              "group_summary",
+              "output_presentation"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_06d12332f5ac4539a5c66de1976785ee",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "group_search",
+            "call_id": "call_f656c4f320174222a5a956b3e6913808",
+            "arguments_summary": "unknown tool",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "group_search",
+            "call_id": "call_f656c4f320174222a5a956b3e6913808",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2122635335\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2122635335:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2122635335\", \"group_name\": \"Agent 小分队\", \"group_type\": \"internal\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "turn_step": 2,
+            "seq": 29
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": false
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+          "message_id": "",
+          "request_id": "68a840d9-b6b0-4d6a-a6af-5b00a313b5ce",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+          "message_id": "cm_c3fcf84a-d9cb-432c-bb52-d45cc7e95115",
+          "request_id": "7febff5f-7ace-4eaf-b888-965feec0c6ce",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "group_summary,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 14573,
+      "tool_calls": 2,
+      "retries": 0
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+          "request_id": "68a840d9-b6b0-4d6a-a6af-5b00a313b5ce",
+          "status": "prepared",
+          "reused": false,
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_verification": {
+            "verified": true,
+            "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+            "empty_history": true,
+            "expected_context": null,
+            "observed_context": null,
+            "context_observed": true,
+            "checked_at": "2026-11-04T08:16:16.811417+00:00"
+          },
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+          "message_id": "cm_c3fcf84a-d9cb-432c-bb52-d45cc7e95115",
+          "request_id": "7febff5f-7ace-4eaf-b888-965feec0c6ce",
+          "status": "error",
+          "input_required": false,
+          "http_status": 200,
+          "terminal_event": "failed",
+          "started_at": "2026-11-04T08:16:16.812399+00:00",
+          "completed_at": "2026-11-04T08:16:30.590158+00:00",
+          "request_attempted": true,
+          "client_exception_type": "",
+          "answer": "",
+          "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+          "answer_truncated": false,
+          "question_truncated": false,
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "原请求认证 Trace 或消息落库终态确认服务端生成失败，未完成回答。",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "asked_at": "2026-11-04T08:16:17.237000+00:00",
+          "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+          "actual_user_message_id": "cm_dfe50da8-5026-4e59-a5b2-72d2cc5fd3ff",
+          "authenticated_terminal_readback": {
+            "checked_at": "2026-11-04T08:21:10.213082+00:00",
+            "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+            "status": "running",
+            "message_status": 4,
+            "session_generating": null
+          },
+          "recovered_from_original_request": true
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "execution_preflight": {
+        "verified": true,
+        "environment": "pre",
+        "case_id": "AA-FU-029",
+        "source": "authenticated_business_api",
+        "checked_at": "2026-11-04T08:14:42.907098+00:00",
+        "actor": {
+          "account_ref": "安柔",
+          "company": "Zelto",
+          "tenant_id": "T112053RE",
+          "user_id": "ouv4qlvxa3mbkp",
+          "company_id": "orv4mpnau8n1es"
+        },
+        "facts": {
+          "groups": {
+            "2122635335": {
+              "group_name": "Agent 小分队",
+              "captured_max_sequence": 1640,
+              "message_count": 1640,
+              "source_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_pending_fresh_sessions_20261104/source-versions/2122635335-081441280062.json",
+              "source_sha256": "3af73069bf6979d809ff1487fbd5d8787c7b0f389d1d551cc26ca76342df5c7d"
+            },
+            "2658892958": {
+              "group_name": "蜂巢AI助手",
+              "captured_max_sequence": 89,
+              "message_count": 89,
+              "source_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_pending_fresh_sessions_20261104/source-versions/2658892958-081441003046.json",
+              "source_sha256": "ea622bc6d722a81ee9657724ce3710cd0969396b297776a7b7e77fe55af4c77e"
+            }
+          },
+          "same_actor_group_access_verified": true,
+          "complete_sequence_range_read": true,
+          "current_risk_basis": "latest authenticated messages through checked_at; no fixed recency window assumed"
+        },
+        "max_age_seconds": 900
+      },
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+          "turn_step": 2,
+          "request_id": "7febff5f-7ace-4eaf-b888-965feec0c6ce",
+          "session_id": "cs_c19094d1-f62b-4936-bd94-de77e2e024cc",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "openai/gpt-6.1-terra",
+          "status": "running",
+          "skills": [
+            "group_summary",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_06d12332f5ac4539a5c66de1976785ee",
+              "arguments_summary": "skills=group_summary",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+              "result_preview_client_truncated": true,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_353b038e9bfe416da639f551cc5b9885",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "group_search",
+              "call_id": "call_f656c4f320174222a5a956b3e6913808",
+              "arguments_summary": "unknown tool",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2122635335\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2122635335:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2122635335\", \"group_name\": \"Agent 小分队\", \"group_type\": \"internal\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            }
+          ],
+          "event_count": 29,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change"
+          ],
+          "usage": {}
+        }
+      ],
+      "request_trace_scope": {
+        "strict": true,
+        "all_current_requests_matched": true,
+        "current_request_ids": [
+          "7febff5f-7ace-4eaf-b888-965feec0c6ce"
+        ],
+        "matched_run_ids": [
+          "bar_353b038e9bfe416da639f551cc5b9885"
+        ],
+        "expected_denied_request_ids": [],
+        "session_policy": "verified_fresh_session_per_case"
+      },
+      "trace_run_turn_mismatch": false,
+      "session_retention": {
+        "registered": true,
+        "execution_id": "59d91d38775347c383c84bba8a145647",
+        "evidence_archived": true,
+        "cleanup": {
+          "schema": "ai_assistant.session_retention.v1",
+          "environment": "pre",
+          "apply": true,
+          "keep_executions": 2,
+          "checked_at": "2026-11-04T08:16:31.895894+00:00",
+          "deleted": [],
+          "already_absent": [],
+          "pending": [],
+          "candidates": []
+        }
+      },
+      "recovery_trace_pending": {
+        "error_type": "TraceClientError",
+        "reason": "原请求尚未取得完整终态 Trace，仅保留已认证回读证据。"
+      },
+      "recovery_policy": {
+        "read_only": true,
+        "question_resent": false,
+        "original_stream_errors_preserved": true,
+        "recovered_at": "2026-11-04T08:21:13.201434+00:00"
+      }
+    }
+  },
+  "judgment": {
+    "business_status": "fail",
+    "business_reason": "问题已发出，服务端返回生成失败，消息也标记为失败，没有可评的风险分析答案。",
+    "failure_categories": [
+      "执行错误"
+    ],
+    "kind": "execution_failure",
+    "confidence": "high",
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "问题已发出，服务端返回生成失败，消息也标记为失败，没有可评的风险分析答案。",
+        "comparison": {
+          "expected": "服务端完成回答，随后按实际发问时间核对风险。",
+          "actual": "当前请求生成失败，未返回完整答案。",
+          "difference": "本次业务问答未完成。"
+        }
+      }
+    ],
+    "evidence_assessment": {
+      "sufficient": true,
+      "reason": "同一请求的认证 Trace 或助手消息失败终态；流错误、会话状态及回查均保留。"
+    },
+    "protected_api_judge_completed": false,
+    "judge_skipped_reason": "已认证生成失败终态，无回答可供内容裁判；按共用执行门禁判执行失败。",
+    "reviewed_at": "2026-11-04T08:22:47.342199+00:00",
+    "turn_time_basis": [
+      {
+        "step": 2,
+        "request_id": "7febff5f-7ace-4eaf-b888-965feec0c6ce",
+        "policy_version": "ai-assistant-temporal-review-v1",
+        "asked_at": "2026-11-04T08:16:17.237000+00:00",
+        "asked_at_ms": 1793780177237,
+        "timezone": "Asia/Tokyo",
+        "asked_at_local": "2026-11-04T17:16:17.237000+09:00",
+        "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+        "current_wording": false,
+        "historical_wording": false,
+        "recent_days_assumed": null,
+        "upper_inclusive": true,
+        "historical_context_allowed": true,
+        "static_gold_is_binding_for_current_facts": false
+      }
+    ],
+    "review_observation": null,
+    "baseline_comparison": {
+      "reused": false,
+      "result_changed_or_incomparable": true,
+      "previous_saved_review": {
+        "environment": "pre",
+        "verdict": {
+          "business_reason": "fix",
+          "business_status": "skip",
+          "failure_categories": []
+        },
+        "manual": true,
+        "provenance": {
+          "identity": {
+            "report_id": "review-9908bd10b6f0621f39578df4",
+            "run_id": "AI助手-2026-11-04-test-pre-messages-0950-combined",
+            "environment": "combined",
+            "source_digest": "59a2394ee6d5d6bab395f7146bf92b1cca29e84af7f0dadbc3d1d30b176a952a"
+          },
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/combined-20261104-0950-test-pre-messages/natural-update/before/",
+          "revision": 48,
+          "case_version": 1,
+          "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+          "actor_name": "安柔",
+          "reviewed_at": "2026-11-04T03:22:00.531371+00:00"
+        },
+        "observation": null,
+        "comparison_unavailable": "previous immutable observation unavailable"
+      }
+    },
+    "execution_evidence_sha256": "06e709a2796185f8e016ba50a44ce1aaf970d733b0beec6d10a02230e7c82322",
+    "fresh_session_verified": true
+  },
+  "current_gold": {
+    "type": "summary",
+    "gold_refs": [
+      "2122635335",
+      "2658892958"
+    ],
+    "must_include": [],
+    "must_exclude": [],
+    "qualitative_requirements": [
+      "按实际问题归纳指定两个群的交付风险，引用可核验来源。",
+      "以消息时间解释新旧状态，区分计划、完成、历史风险、当前是否解决未知。",
+      "风险排序没有唯一标准，但须延续前轮候选并有合理证据；不额外增加未问字段。"
+    ],
+    "fixed_fact_truth": "根据本次同追问人的独立消息回读和每轮实际发问时间判定。9月15日提测等旧计划仅为历史背景，不是当前必答内容。需结合10月27日对客计划变化、体验投诉及安全讨论，后续发布和修复消息判断状态；旧风险不能当作已确认仍未解决。",
+    "expected_total": null,
+    "high_priority_total": null,
+    "required_fields": [
+      "结论",
+      "依据",
+      "groupID",
+      "clientMsgID"
+    ],
+    "citation_refs": [],
+    "scope": "actor_visible",
+    "match_policy": "minimum",
+    "gold_entities": [],
+    "forbidden_entities": [],
+    "turn_expectations": [
+      {
+        "step": 2,
+        "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+        "must_include": [],
+        "must_exclude": [],
+        "criteria": "按本轮发问时间和已发生上下文核对风险与最新状态，不固定要求旧9月节点。"
+      }
+    ],
+    "snapshot_policy": "fresh_authenticated_messages_at_execution",
+    "temporal_policy": "每轮以实际用户问题落库时间为判定上界，以该轮已发生的上下文解释问题；不得使用报告生成日或复评日替代。\n“近期/目前/最新/仍待确认/待办”按追问当时的有效消息和最新状态判定；不得强制命中一两个月前的静态节点、人名、风险和未完成状态。\n“近期”未给具体天数时不能擅定7天或30天；合理、明确的最近范围可以接受，需核验重要最新证据和回答自述的覆盖范围。\n明确问历史日期、原计划、排期变化、指定消息或原发言人的，仍保留相关历史事实；旧消息不能因年代早而被自动排除。\n旧消息能解释背景，但旧计划不等于已完成，过去的风险不等于当前仍未解决；新旧消息须按发送时间及正文会议日期分别解释。\n事实证据须已在追问时存在。追问之后创建、或之后编辑且无法恢复旧版本的消息不能反向证明当时对错；当前可读不等于当时已可读。\n增量追问区间为(上一条用户消息落库时间,本次用户消息落库时间]；助手上次摘要截止日或历史引用时间不是用户追问下界。\n不因过期Gold改判就放过事实错误、重要漏答、错误消息ID、错认发言人、权限问题或编造；逐轮说明时间依据和实际差异。\n证据缺失只说明可证范围，不凭缺失断言不存在；已证实的错误可以判失败，无法核验的必要条件标待复核，不混作未执行。\n"
+  },
+  "evidence_note": "Complete actual turns and current-request tool summaries/results. Repeated intermediate model inputs and unrelated organization context remain in local evidence and are omitted from publication."
+}

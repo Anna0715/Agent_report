@@ -1,0 +1,1008 @@
+{
+  "case_id": "AA-QAP-016",
+  "evidence": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-QAP-016",
+    "environment": "pre",
+    "generated_at": "2026-11-04T08:15:47+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_f93bccd7051540e08b84a2f1907e21e0",
+            "arguments_summary": "skills=group_summary,structured_query,task_space",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "group_summary",
+              "structured_query",
+              "task_space"
+            ],
+            "activated": [
+              "group_summary",
+              "output_presentation",
+              "structured_query",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_f93bccd7051540e08b84a2f1907e21e0",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "scratchpad_write",
+            "call_id": "call_b6c06dda034745e6a8868a42e6b45909",
+            "arguments_summary": "path=risk/route expected_revision=0 bytes=278",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "scratchpad_write",
+            "call_id": "call_b6c06dda034745e6a8868a42e6b45909",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "written path=risk/route revision=1",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "group_search",
+            "call_id": "call_546c44823ede43e7a9160d2487066699",
+            "arguments_summary": "unknown tool",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "group_search",
+            "call_id": "call_546c44823ede43e7a9160d2487066699",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2122635335\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2122635335:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2122635335\", \"group_name\": \"Agent 小分队\", \"group_type\": \"internal\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 35
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 37,
+            "name": "group_search",
+            "call_id": "call_b9d3fb2990184354b81563e89b113575",
+            "arguments_summary": "unknown tool",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 38,
+            "name": "group_search",
+            "call_id": "call_b9d3fb2990184354b81563e89b113575",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2658892958\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2658892958:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2658892958\", \"group_name\": \"蜂巢AI助手\", \"group_type\": \"space_project\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 39
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 40
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 42,
+            "name": "group_message_search",
+            "call_id": "call_65bd9e1a6f954192964f03166bb24a09",
+            "arguments_summary": "keywords=1 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 43,
+            "name": "group_message_search",
+            "call_id": "call_65bd9e1a6f954192964f03166bb24a09",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"search_kind\": \"keyword\", \"status\": \"completed\", \"rows\": [{\"message.content\": \"@公台 https://pre-ai.saas-admin.org/ai/agent-trace?entity_id=automation-run:aur_a8ae020221a935dbb50127b7&page=1&run_id=bar_b363df0f8d2a48348e2d751283ac247e\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-11-03T03:12:14.203Z\", \"message.seq\": 1590, \"resources\": [], \"sender\": {\"id\": \"ouv4qluqoynfcv\"}}], \"count\": 1, \"groups\": [{\"conversation_id\": \"sg_2122635335\"}]",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 44
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 45
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 47,
+            "name": "material_ask",
+            "call_id": "call_f43037b0e9e34b3b988be1dc2e3a0430",
+            "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=56",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 48
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 49
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 51,
+            "name": "material_ask",
+            "call_id": "call_f43037b0e9e34b3b988be1dc2e3a0430",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\": [{\"entityType\": \"message_range\", \"id\": \"sg_2122635335:1560-1640\", \"tenantId\": \"T112053RE\"}, {\"entityType\": \"scratchpad\", \"id\": \"answers/sg_2122635335_1560-1650-c42a2974\", \"tenantId\": \"T112053RE\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": ",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 52
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 53
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 55,
+            "name": "scratchpad_read",
+            "call_id": "call_8170fbe2ac9547da961fd9bdd3ede921",
+            "arguments_summary": "path=answers/sg_2122635335_1560-1650-c42a2974 offset=0",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 56,
+            "name": "scratchpad_read",
+            "call_id": "call_8170fbe2ac9547da961fd9bdd3ede921",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\": \"host_answer\", \"path\": \"answers/sg_2122635335_1560-1650-c42a2974\", \"revision\": 1, \"content\": \"instruction: \\\"围绕1590的pre消息，梳理AI助手项目交付风险、具体问题、影响、责任人、时间、后续及是否解决；保留消息引用。\\\"\\nrange: {\\\"conversation_id\\\":\\\"sg_2122635335\\\",\\\"from_seq\\\":1560,\\\"to_seq\\\":1650}\\ncovered: {\\\"content_types\\\":{\\\"at_text\\\":45,\\\"image\\\":2,\\\"merged_forward\\\":1,\\\"quote_text\\\":1,\\\"rich_text\\\":2,\\\"text\\\":30},\\\"first_time\\\":\\\"2026-10-30T01:55:09.199Z\\\",\\\"from_seq\\\":1560,\\\"last_time\\\":\\\"2026-11-04T06:30:12.275Z\\\",\\\"messages",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 57
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 58
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 60,
+            "name": "group_message_search",
+            "call_id": "call_149ae8aa6ad44d33a4c3e1b923374d33",
+            "arguments_summary": "keywords=1 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 61,
+            "name": "group_message_search",
+            "call_id": "call_149ae8aa6ad44d33a4c3e1b923374d33",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"search_kind\": \"keyword\", \"status\": \"completed\", \"rows\": [{\"message.content\": \"pre 的？\", \"message.content_type\": \"text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-28T11:44:02.683Z\", \"message.seq\": 1504, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"发布到 pre 了\", \"message.content_type\": \"text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-28T12:05:43.577Z\", \"message.seq\": 1518, \"resources\": [], \"sender\": {\"id\"",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "turn_step": 2,
+            "seq": 62
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": false
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+          "message_id": "",
+          "request_id": "9764b1ee-2a8f-4c5b-97b5-356c8d0c226e",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+          "message_id": "cm_7d41e84f-0712-4866-ba25-76d9b3a3fc0a",
+          "request_id": "ae49c98c-1ab4-49d4-b448-fa14b037c1db",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "group_summary,structured_query,task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 43391,
+      "tool_calls": 8,
+      "retries": 0
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "ServerInternalError"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+          "request_id": "9764b1ee-2a8f-4c5b-97b5-356c8d0c226e",
+          "status": "prepared",
+          "reused": false,
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_verification": {
+            "verified": true,
+            "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+            "empty_history": true,
+            "expected_context": null,
+            "observed_context": null,
+            "context_observed": true,
+            "checked_at": "2026-11-04T08:15:05.340713+00:00"
+          },
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+          "message_id": "cm_7d41e84f-0712-4866-ba25-76d9b3a3fc0a",
+          "request_id": "ae49c98c-1ab4-49d4-b448-fa14b037c1db",
+          "status": "error",
+          "input_required": false,
+          "http_status": 200,
+          "terminal_event": "failed",
+          "started_at": "2026-11-04T08:15:05.341567+00:00",
+          "completed_at": "2026-11-04T08:15:47.741346+00:00",
+          "request_attempted": true,
+          "client_exception_type": "",
+          "answer": "",
+          "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+          "answer_truncated": false,
+          "question_truncated": false,
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "原请求认证 Trace 或消息落库终态确认服务端生成失败，未完成回答。",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "asked_at": "2026-11-04T08:15:05.781000+00:00",
+          "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+          "actual_user_message_id": "cm_352d5843-4bd7-4ba9-bfe0-1e7badcd5f60",
+          "authenticated_terminal_readback": {
+            "checked_at": "2026-11-04T08:21:01.408433+00:00",
+            "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+            "status": "failed",
+            "message_status": 2,
+            "session_generating": true
+          },
+          "recovered_from_original_request": true
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "execution_preflight": {
+        "verified": true,
+        "environment": "pre",
+        "case_id": "AA-QAP-016",
+        "source": "authenticated_business_api",
+        "checked_at": "2026-11-04T08:14:42.907098+00:00",
+        "actor": {
+          "account_ref": "安柔",
+          "company": "Zelto",
+          "tenant_id": "T112053RE",
+          "user_id": "ouv4qlvxa3mbkp",
+          "company_id": "orv4mpnau8n1es"
+        },
+        "facts": {
+          "groups": {
+            "2122635335": {
+              "group_name": "Agent 小分队",
+              "captured_max_sequence": 1640,
+              "message_count": 1640,
+              "source_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_pending_fresh_sessions_20261104/source-versions/2122635335-081441280062.json",
+              "source_sha256": "3af73069bf6979d809ff1487fbd5d8787c7b0f389d1d551cc26ca76342df5c7d"
+            },
+            "2658892958": {
+              "group_name": "蜂巢AI助手",
+              "captured_max_sequence": 89,
+              "message_count": 89,
+              "source_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_pending_fresh_sessions_20261104/source-versions/2658892958-081441003046.json",
+              "source_sha256": "ea622bc6d722a81ee9657724ce3710cd0969396b297776a7b7e77fe55af4c77e"
+            }
+          },
+          "same_actor_group_access_verified": true,
+          "complete_sequence_range_read": true,
+          "current_risk_basis": "latest authenticated messages through checked_at; no fixed recency window assumed"
+        },
+        "max_age_seconds": 900
+      },
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "session_retention": {
+        "registered": true,
+        "execution_id": "4be1d86b51f64d16b710ad117918fba1",
+        "evidence_archived": true,
+        "cleanup": {
+          "schema": "ai_assistant.session_retention.v1",
+          "environment": "pre",
+          "apply": true,
+          "keep_executions": 2,
+          "checked_at": "2026-11-04T08:15:52.672937+00:00",
+          "deleted": [],
+          "already_absent": [],
+          "pending": [],
+          "candidates": []
+        }
+      },
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+          "turn_step": 2,
+          "request_id": "ae49c98c-1ab4-49d4-b448-fa14b037c1db",
+          "session_id": "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [
+            "group_summary",
+            "structured_query",
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_f93bccd7051540e08b84a2f1907e21e0",
+              "arguments_summary": "skills=group_summary,structured_query,task_space",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复",
+              "result_preview_client_truncated": true,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "scratchpad_write",
+              "call_id": "call_b6c06dda034745e6a8868a42e6b45909",
+              "arguments_summary": "path=risk/route expected_revision=0 bytes=278",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "written path=risk/route revision=1",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "group_search",
+              "call_id": "call_546c44823ede43e7a9160d2487066699",
+              "arguments_summary": "unknown tool",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2122635335\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2122635335:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2122635335\", \"group_name\": \"Agent 小分队\", \"group_type\": \"internal\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 37,
+              "name": "group_search",
+              "call_id": "call_b9d3fb2990184354b81563e89b113575",
+              "arguments_summary": "unknown tool",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\": [{\"entityType\": \"group\", \"id\": \"2658892958\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:group:2658892958:T112053RE`\"}], \"status\": \"completed\", \"items\": [{\"group_id\": \"2658892958\", \"group_name\": \"蜂巢AI助手\", \"group_type\": \"space_project\"}], \"coverage\": {\"basis\": \"authorized_group_metadata_scan\", \"scanned_rows\": 180, \"returned_groups\": 1, \"completeness\": \"complete\", \"truncated\": false}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 42,
+              "name": "group_message_search",
+              "call_id": "call_65bd9e1a6f954192964f03166bb24a09",
+              "arguments_summary": "keywords=1 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"search_kind\": \"keyword\", \"status\": \"completed\", \"rows\": [{\"message.content\": \"@公台 https://pre-ai.saas-admin.org/ai/agent-trace?entity_id=automation-run:aur_a8ae020221a935dbb50127b7&page=1&run_id=bar_b363df0f8d2a48348e2d751283ac247e\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-11-03T03:12:14.203Z\", \"message.seq\": 1590, \"resources\": [], \"sender\": {\"id\": \"ouv4qluqoynfcv\"}}], \"count\": 1, \"groups\": [{\"conversation_id\": \"sg_2122635335\"}], \"locators\": [{\"entityType\": \"msg\", \"id\": \"sg_2122635335:1590\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1590:T112053RE`\"}, {\"entityType\": \"message_range\", \"id\": \"sg_2122635335:1590-1590\", \"tenantId\": \"T112053RE\"}], \"coverage\": {\"verified_conversations\": 1, \"basis\": \"structured_query_authorized_group_messages\", \"scope_truncated\": false, \"scope_unverified\": false, \"result_truncated\": false, \"omitted_rows\": 0, \"batches\": [{\"window\": 1, \"keyword\": \"pre\", \"matched_rows\": 1, \"truncated\": false}], \"windows\": [{\"from_time\": \"2026-11-01T08:15:17.675184067Z\", \"to_time\": \"2026-11-04T08:15:17.675184067Z\", \"matched_rows\": 1, \"complete\": true}], \"auto_window_expansion\": true, \"stop_reason\": \"matched\", \"can_expand\": true, \"next_window_days\": 7}, \"truncated\": false, \"hint\": \"已命中但不代表足以回答，提问/提及不能证明进展。先按 analysis 定范围交 material_ask 读取上下文；若结论仍缺所问进展、决定、负责人或下一步，须原样传 next_cursor 为 cursor 并重复原业务参数继续扩大窗口。宿主保留主题/范围/发送人/截止及总预算；充分才停止。\", \"next_cursor\": \"a8556eec303f2884cf909cd0ee7d42f8\", \"analysis\": {\"tool\": \"material_ask\", \"ranges\": [{\"conversation_id\": \"sg_2122635335\", \"from_time\": \"2026-11-01T08:15:17.675184067Z\", \"to_time\": \"2026-11-04T08:15:17.675184067Z\"}], \"remaining_conversations\": 0, \"hint\": \"命中仅作定位锚点。主模型选择范围，instruction 保留原问题、命中定位及待确认事项；小模型读取含无关键词回复的上下文给结论，保留时间/发送人/未读条件。下步读答案 key，按 covered/citation_gaps 说明缺口；仍不足再定范围下钻或原参数续查 next_cursor。\"}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 47,
+              "name": "material_ask",
+              "call_id": "call_f43037b0e9e34b3b988be1dc2e3a0430",
+              "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=56",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\": [{\"entityType\": \"message_range\", \"id\": \"sg_2122635335:1560-1640\", \"tenantId\": \"T112053RE\"}, {\"entityType\": \"scratchpad\", \"id\": \"answers/sg_2122635335_1560-1650-c42a2974\", \"tenantId\": \"T112053RE\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1584\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1584:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1583\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1583:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1588\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1588:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1589\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1589:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1590\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1590:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1591\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1591:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1591\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1591:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1634\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1634:T112053RE`\"}], \"empty\": 0, \"requested\": 1, \"ready\": 1, \"cached\": 0, \"stats\": 0, \"failed\": 0, \"remaining\": [], \"truncated\": false, \"frame_version\": \"13\", \"items\": [{\"range\": {\"conversation_id\": \"sg_2122635335\", \"from_seq\": 1560, \"to_seq\": 1650}, \"covered\": {\"content_types\": {\"at_text\": 45, \"image\": 2, \"merged_forward\": 1, \"quote_text\": 1, \"rich_text\": 2, \"text\": 30}, \"first_time\": \"2026-10-30T01:55:09.199Z\", \"from_seq\": 1560, \"last_time\": \"2026-11-04T06:30:12.275Z\", \"messages\": 81, \"range_truncated\": false, \"senders\": [{\"user_id\": \"ouv4mwtykysmzj\", \"messages\": 27}, {\"user_id\": \"ouvkmtuntg5xpk\", \"messages\": 19}, {\"user_id\": \"ouv4qlvxoaugyp\", \"messages\": 13}, {\"user_id\": \"ouv4mpnbncczdy\", \"messages\": 9}, {\"user_id\": \"ouv4qluqoynfcv\", \"messages\": 4}, {\"user_id\": \"ouv4qovzlarm8d\", \"messages\": 3}, {\"user_id\": \"ouvwzhogat6shz\", \"messages\": 3}, {\"user_id\": \"ouv4qovznsatvc\", \"messages\": 2}, {\"user_id\": \"\", \"messages\": 1}], \"to_seq\": 1640}, \"status\": \"ready\", \"key\": \"answers/sg_2122635335_1560-1650-c42a2974\", \"chunks\": 1, \"pages\": 1, \"answer_tokens\": 321, \"attempts\": 2, \"persisted\": true}]}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 55,
+              "name": "scratchpad_read",
+              "call_id": "call_8170fbe2ac9547da961fd9bdd3ede921",
+              "arguments_summary": "path=answers/sg_2122635335_1560-1650-c42a2974 offset=0",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\": \"host_answer\", \"path\": \"answers/sg_2122635335_1560-1650-c42a2974\", \"revision\": 1, \"content\": \"instruction: \\\"围绕1590的pre消息，梳理AI助手项目交付风险、具体问题、影响、责任人、时间、后续及是否解决；保留消息引用。\\\"\\nrange: {\\\"conversation_id\\\":\\\"sg_2122635335\\\",\\\"from_seq\\\":1560,\\\"to_seq\\\":1650}\\ncovered: {\\\"content_types\\\":{\\\"at_text\\\":45,\\\"image\\\":2,\\\"merged_forward\\\":1,\\\"quote_text\\\":1,\\\"rich_text\\\":2,\\\"text\\\":30},\\\"first_time\\\":\\\"2026-10-30T01:55:09.199Z\\\",\\\"from_seq\\\":1560,\\\"last_time\\\":\\\"2026-11-04T06:30:12.275Z\\\",\\\"messages\\\":81,\\\"range_truncated\\\":false,\\\"senders\\\":[{\\\"user_id\\\":\\\"ouv4mwtykysmzj\\\",\\\"messages\\\":27},{\\\"user_id\\\":\\\"ouvkmtuntg5xpk\\\",\\\"messages\\\":19},{\\\"user_id\\\":\\\"ouv4qlvxoaugyp\\\",\\\"messages\\\":13},{\\\"user_id\\\":\\\"ouv4mpnbncczdy\\\",\\\"messages\\\":9},{\\\"user_id\\\":\\\"ouv4qluqoynfcv\\\",\\\"messages\\\":4},{\\\"user_id\\\":\\\"ouv4qovzlarm8d\\\",\\\"messages\\\":3},{\\\"user_id\\\":\\\"ouvwzhogat6shz\\\",\\\"messages\\\":3},{\\\"user_id\\\":\\\"ouv4qovznsatvc\\\",\\\"messages\\\":2},{\\\"user_id\\\":\\\"\\\",\\\"messages\\\":1}],\\\"to_seq\\\":1640}\\nchunks: 1\\n\\n{\\n  \\\"交付风险\\\": [\\n    \\\"全量回归暴露较高质量风险：2026-11-03测试实际执行382项、通过268项，通过率70%；材料未说明剩余114项的最终去向。`widget:msg:sg_2122635335:1634:T112053RE`\\\",\\n    \\\"主要待处理项及当时预估：子任务问题约占三分之一，预计明后天解决；向量检索性能导致检索超时，预计明后天解决；长期记忆需支持按不同对象、时间范围检索，预计明后天解决；增加推理强度预计本周提测。均为计划，后续是否完成材料未说明。`widget:msg:sg_2122635335:1634:T112053RE`\\\",\\n    \\\"测试计划包括调整、补齐用例（时效、历史记录、写入类自动化用例），当天重测时效和历史记录影响的案例、每日重跑失败项，并计划下周一全量回归；执行结果未见。`widget:msg:sg_2122635335:1634:T112053RE`\\\"\\n  ],\\n  \\\"1590前后问题\\\": [\\n    \\\"2026-11-03，有人报告同一对话中AI首次阅读日报未读出内容，追问两次后才读出；报告者猜测日报含较多图片可能有关，并请人排查。影响是阅读结果不稳定；图片原因仅为猜测，未确认。`widget:msg:sg_2122635335:1584:T112053RE`\\\",\\n    \\\"此前已提供该会话的session_id；随后有人询问自动化执行ID能否查到，另一人回复可查DB并去查。1590发送了pre环境的agent-trace链接及automation-run/run_id，表明提供了追踪线索；材料未显示具体诊断结论。`widget:refs:msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1588:T112053RE|msg:sg_2122635335:1589:T112053RE|msg:sg_2122635335:1590:T112053RE`\\\",\\n    \\\"2026-11-03 03:18，ouv4qlvxoaugyp称问题是原来的gpt-5.6模型“降智比较严重”，并表示已把线上模型换成gpt-6.1，“会好点”。这是其诊断和已实施的模型切换；是否改善、是否解决阅读日报问题，材料没有后续验证。`widget:msg:sg_2122635335:1591:T112053RE`\\\"\\n  ],\\n  \\\"责任人与后续\\\": [\\n    \\\"可确认的处理动作责任人仅为发送人ID ouv4qlvxoaugyp：其报告线上模型已切换；其余问题的具体负责研发人员，材料中没有依据。`widget:msg:sg_2122635335:1591:T112053RE`\\\",\\n    \\\"AI项目后续安排由发送人ID ouvwzhogat6shz概述，包括处理上述问题、补测试用例和复测；材料未给出各项负责人姓名，也未记录计划完成后的验证结果。`widget:msg:sg_2122635335:1634:T112053RE`\\\"\\n  ]\\n}\", \"next_offset\": 3319, \"eof\": true, \"byte_size\": 3319}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_4e9607be5eed4d3c824013918ae4bb21",
+              "turn_step": 2,
+              "seq": 60,
+              "name": "group_message_search",
+              "call_id": "call_149ae8aa6ad44d33a4c3e1b923374d33",
+              "arguments_summary": "keywords=1 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"search_kind\": \"keyword\", \"status\": \"completed\", \"rows\": [{\"message.content\": \"pre 的？\", \"message.content_type\": \"text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-28T11:44:02.683Z\", \"message.seq\": 1504, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"发布到 pre 了\", \"message.content_type\": \"text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-28T12:05:43.577Z\", \"message.seq\": 1518, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"@可大力 这个 pre 修了\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-29T03:41:39.258Z\", \"message.seq\": 1540, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"@Yatoro 推荐问题的 Prompt 是不是还没发到 pre 啊？\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-29T10:34:42.6Z\", \"message.seq\": 1547, \"resources\": [], \"sender\": {\"id\": \"ouvkmtuntg5xpk\"}}, {\"message.content\": \"@SuChen 和多语言一起改了，在test，已经同步给爱德了。明天发pre\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-29T10:35:13.666Z\", \"message.seq\": 1549, \"resources\": [], \"sender\": {\"id\": \"ouvppako1eetr0\"}}, {\"message.content\": \"@可大力 定时任务只在线上跑，线上那个修复还没发布呢，你可以去 pre 主动问一下\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-30T01:42:59.247Z\", \"message.seq\": 1559, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"@hearts2hearts 这个在不碰图片的解析的情况下修了，发到 pre 了\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-10-30T06:52:37.103Z\", \"message.seq\": 1569, \"resources\": [], \"sender\": {\"id\": \"ouv4qlvxoaugyp\"}}, {\"message.content\": \"@公台 https://pre-ai.saas-admin.org/ai/agent-trace?entity_id=automation-run:aur_a8ae020221a935dbb50127b7&page=1&run_id=bar_b363df0f8d2a48348e2d751283ac247e\", \"message.content_type\": \"at_text\", \"message.conversation_id\": \"sg_2122635335\", \"message.send_time\": \"2026-11-03T03:12:14.203Z\", \"message.seq\": 1590, \"resources\": [], \"sender\": {\"id\": \"ouv4qluqoynfcv\"}}], \"count\": 8, \"groups\": [{\"conversation_id\": \"sg_2122635335\"}], \"locators\": [{\"entityType\": \"msg\", \"id\": \"sg_2122635335:1504\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1504:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1518\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1518:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1540\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1540:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1547\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1547:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1549\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1549:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1559\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1559:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1569\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1569:T112053RE`\"}, {\"entityType\": \"msg\", \"id\": \"sg_2122635335:1590\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:msg:sg_2122635335:1590:T112053RE`\"}, {\"entityType\": \"message_range\", \"id\": \"sg_2122635335:1504-1590\", \"tenantId\": \"T112053RE\"}], \"coverage\": {\"verified_conversations\": 1, \"basis\": \"structured_query_authorized_group_messages\", \"scope_truncated\": false, \"scope_unverified\": false, \"result_truncated\": false, \"omitted_rows\": 0, \"batches\": [{\"window\": 2, \"keyword\": \"pre\", \"matched_rows\": 8, \"truncated\": false}], \"windows\": [{\"from_time\": \"2026-11-01T08:15:17.675184067Z\", \"to_time\": \"2026-11-04T08:15:17.675184067Z\", \"matched_rows\": 1, \"complete\": true}, {\"from_time\": \"2026-10-28T08:15:17.675184067Z\", \"to_time\": \"2026-11-04T08:15:17.675184067Z\", \"matched_rows\": 8, \"complete\": true}], \"auto_window_expansion\": true, \"stop_reason\": \"matched\", \"can_expand\": true, \"next_window_days\": 30}, \"truncated\": false, \"hint\": \"已命中但不代表足以回答，提问/提及不能证明进展。先按 analysis 定范围交 material_ask 读取上下文；若结论仍缺所问进展、决定、负责人或下一步，须原样传 next_cursor 为 cursor 并重复原业务参数继续扩大窗口。宿主保留主题/范围/发送人/截止及总预算；充分才停止。\", \"next_cursor\": \"ff228ad62b7bd8ac39f8f784c209b573\", \"analysis\": {\"tool\": \"material_ask\", \"ranges\": [{\"conversation_id\": \"sg_2122635335\", \"from_time\": \"2026-10-28T08:15:17.675184067Z\", \"to_time\": \"2026-11-04T08:15:17.675184067Z\"}], \"remaining_conversations\": 0, \"hint\": \"命中仅作定位锚点。主模型选择范围，instruction 保留原问题、命中定位及待确认事项；小模型读取含无关键词回复的上下文给结论，保留时间/发送人/未读条件。下步读答案 key，按 covered/citation_gaps 说明缺口；仍不足再定范围下钻或原参数续查 next_cursor。\"}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            }
+          ],
+          "event_count": 63,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.material_ask"
+          ],
+          "usage": {}
+        }
+      ],
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "ae49c98c-1ab4-49d4-b448-fa14b037c1db"
+        ],
+        "current_session_ids": [
+          "cs_1887169f-cd47-4158-a8b4-69d5789e6d8b"
+        ],
+        "matched_run_ids": [
+          "bar_4e9607be5eed4d3c824013918ae4bb21"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "verified_fresh_session_per_case"
+      },
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "collector_client_truncation": false,
+        "server_truncation_preserved": true,
+        "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+      },
+      "recovery_policy": {
+        "read_only": true,
+        "question_resent": false,
+        "original_stream_errors_preserved": true,
+        "recovered_at": "2026-11-04T08:21:04.094045+00:00"
+      }
+    }
+  },
+  "judgment": {
+    "business_status": "fail",
+    "business_reason": "第一轮生成失败，没有返回风险清单，因此第二轮“最严重的是哪个”没有发送。本次无法完成两轮追问。",
+    "failure_categories": [
+      "执行错误"
+    ],
+    "kind": "execution_failure",
+    "confidence": "high",
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "第一轮生成失败，没有返回风险清单，因此第二轮“最严重的是哪个”没有发送。本次无法完成两轮追问。",
+        "comparison": {
+          "expected": "服务端完成回答，随后按实际发问时间核对风险。",
+          "actual": "当前请求生成失败，未返回完整答案。",
+          "difference": "本次业务问答未完成。"
+        }
+      }
+    ],
+    "evidence_assessment": {
+      "sufficient": true,
+      "reason": "同一请求的认证 Trace 或助手消息失败终态；流错误、会话状态及回查均保留。"
+    },
+    "protected_api_judge_completed": false,
+    "judge_skipped_reason": "已认证生成失败终态，无回答可供内容裁判；按共用执行门禁判执行失败。",
+    "reviewed_at": "2026-11-04T08:22:28.457072+00:00",
+    "turn_time_basis": [
+      {
+        "step": 2,
+        "request_id": "ae49c98c-1ab4-49d4-b448-fa14b037c1db",
+        "policy_version": "ai-assistant-temporal-review-v1",
+        "asked_at": "2026-11-04T08:15:05.781000+00:00",
+        "asked_at_ms": 1793780105781,
+        "timezone": "Asia/Tokyo",
+        "asked_at_local": "2026-11-04T17:15:05.781000+09:00",
+        "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+        "current_wording": false,
+        "historical_wording": false,
+        "recent_days_assumed": null,
+        "upper_inclusive": true,
+        "historical_context_allowed": true,
+        "static_gold_is_binding_for_current_facts": false
+      }
+    ],
+    "review_observation": null,
+    "baseline_comparison": {
+      "reused": false,
+      "result_changed_or_incomparable": true,
+      "previous_saved_review": {
+        "environment": "pre",
+        "verdict": {
+          "business_reason": "加上时间裁判规则",
+          "business_status": "skip",
+          "failure_categories": []
+        },
+        "manual": true,
+        "provenance": {
+          "identity": {
+            "report_id": "review-9908bd10b6f0621f39578df4",
+            "run_id": "AI助手-2026-11-04-test-pre-messages-0950-combined",
+            "environment": "combined",
+            "source_digest": "59a2394ee6d5d6bab395f7146bf92b1cca29e84af7f0dadbc3d1d30b176a952a"
+          },
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/combined-20261104-0950-test-pre-messages/natural-update/before/",
+          "revision": 48,
+          "case_version": 1,
+          "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+          "actor_name": "安柔",
+          "reviewed_at": "2026-11-04T03:09:50.848878+00:00"
+        },
+        "observation": null,
+        "comparison_unavailable": "previous immutable observation unavailable"
+      }
+    },
+    "execution_evidence_sha256": "dc0fb30ccd4038f46480604b22948ebfc0e56bc09360c4fb0b26bc4fd50ea6ef",
+    "fresh_session_verified": true
+  },
+  "current_gold": {
+    "type": "memory",
+    "gold_refs": [
+      "2122635335",
+      "2658892958"
+    ],
+    "must_include": [],
+    "must_exclude": [],
+    "qualitative_requirements": [
+      "按实际问题归纳指定两个群的交付风险，引用可核验来源。",
+      "以消息时间解释新旧状态，区分计划、完成、历史风险、当前是否解决未知。",
+      "风险排序没有唯一标准，但须延续前轮候选并有合理证据；不额外增加未问字段。"
+    ],
+    "fixed_fact_truth": "根据本次同追问人的独立消息回读和每轮实际发问时间判定。9月15日提测等旧计划仅为历史背景，不是当前必答内容。需结合10月27日对客计划变化、体验投诉及安全讨论，后续发布和修复消息判断状态；旧风险不能当作已确认仍未解决。",
+    "expected_total": null,
+    "high_priority_total": null,
+    "required_fields": [
+      "结论",
+      "依据",
+      "groupID",
+      "clientMsgID"
+    ],
+    "citation_refs": [],
+    "scope": "actor_visible",
+    "match_policy": "minimum",
+    "gold_entities": [],
+    "forbidden_entities": [],
+    "turn_expectations": [
+      {
+        "step": 2,
+        "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+        "must_include": [],
+        "must_exclude": [],
+        "criteria": "按本轮发问时间和已发生上下文核对风险与最新状态，不固定要求旧9月节点。"
+      },
+      {
+        "step": 3,
+        "message": "其中最严重的是哪个，为什么？",
+        "must_include": [],
+        "must_exclude": [],
+        "criteria": "按本轮发问时间和已发生上下文核对风险与最新状态，不固定要求旧9月节点。"
+      }
+    ],
+    "snapshot_policy": "fresh_authenticated_messages_at_execution",
+    "temporal_policy": "每轮以实际用户问题落库时间为判定上界，以该轮已发生的上下文解释问题；不得使用报告生成日或复评日替代。\n“近期/目前/最新/仍待确认/待办”按追问当时的有效消息和最新状态判定；不得强制命中一两个月前的静态节点、人名、风险和未完成状态。\n“近期”未给具体天数时不能擅定7天或30天；合理、明确的最近范围可以接受，需核验重要最新证据和回答自述的覆盖范围。\n明确问历史日期、原计划、排期变化、指定消息或原发言人的，仍保留相关历史事实；旧消息不能因年代早而被自动排除。\n旧消息能解释背景，但旧计划不等于已完成，过去的风险不等于当前仍未解决；新旧消息须按发送时间及正文会议日期分别解释。\n事实证据须已在追问时存在。追问之后创建、或之后编辑且无法恢复旧版本的消息不能反向证明当时对错；当前可读不等于当时已可读。\n增量追问区间为(上一条用户消息落库时间,本次用户消息落库时间]；助手上次摘要截止日或历史引用时间不是用户追问下界。\n不因过期Gold改判就放过事实错误、重要漏答、错误消息ID、错认发言人、权限问题或编造；逐轮说明时间依据和实际差异。\n证据缺失只说明可证范围，不凭缺失断言不存在；已证实的错误可以判失败，无法核验的必要条件标待复核，不混作未执行。\n"
+  },
+  "evidence_note": "Complete actual turns and current-request tool summaries/results. Repeated intermediate model inputs and unrelated organization context remain in local evidence and are omitted from publication."
+}

@@ -1,0 +1,836 @@
+{
+  "case_id": "AA-FU-028",
+  "evidence": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-028",
+    "environment": "pre",
+    "generated_at": "2026-11-04T08:16:13+00:00",
+    "output": {
+      "text": "**暂时无法核实这条合并消息的发送人、内层原始发言人或讨论内容。** 已确认群 ID 对应“AI多轮对话总结开发群”，但在该群的可查询消息索引中，按提供的 clientMsgID 精确查询未返回消息；这不能证明消息不存在。`widget:conversation:sg_753029280:T112053RE`\n\n请提供这条合并消息的链接、截图或转发内容，我可以据此继续核对。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 17,
+            "name": "activate_skills",
+            "call_id": "call_8383ef1cea4f41d39fd4986be500889e",
+            "arguments_summary": "skills=group_summary,structured_query",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 18,
+            "requested": [
+              "group_summary",
+              "structured_query"
+            ],
+            "activated": [
+              "group_summary",
+              "output_presentation",
+              "structured_query"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 20,
+            "name": "activate_skills",
+            "call_id": "call_8383ef1cea4f41d39fd4986be500889e",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 23
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "structured_schema",
+            "call_id": "call_72ed99191cba4329be54a1c3261d5759",
+            "arguments_summary": "entities=2",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "structured_schema",
+            "call_id": "call_72ed99191cba4329be54a1c3261d5759",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"entities\":[{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"message.at_users.id\",\"predicate_form\":\"quantified_many\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.client_msg_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.content_type\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.conversation_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "structured_schema",
+            "call_id": "call_96f93d834cd84f2ab6cc9b78f3f3ef47",
+            "arguments_summary": "entities=2",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "structured_schema",
+            "call_id": "call_96f93d834cd84f2ab6cc9b78f3f3ef47",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"entities\":[{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_1\"},{\"option\":\"option_2\"},{\"allows_unfiltered_query\":true,\"option\":\"option_3\"}],\"aliases\":[\"用户\",\"成员\",\"员工\",\"人员\"],\"description\":\"租户内的企业用户，可关联公司、群组、会话和消息等业务实体。第一人称会话范围通过 user.conversations 表达；系统分组置顶状态通过 user.conversations._edge.system_group_pinned 表达；收藏消息通过 user.favorite_messages 表达，收藏消息与置顶会话不是同一业务语义。直属上下级使用 line_manager/direct_reports，部门团队与实线汇报不得混同；空间、项目、任务访问",
+            "result_preview_client_truncated": true,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 35
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 37,
+            "name": "structured_select",
+            "call_id": "call_5e55f2937e2f4845b85345af030b3a98",
+            "arguments_summary": "entity=conversation fields=2 where_runes=36 order_by=0",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 38,
+            "name": "structured_select",
+            "call_id": "call_5e55f2937e2f4845b85345af030b3a98",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\": [{\"entityType\": \"conversation\", \"id\": \"sg_753029280\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:conversation:sg_753029280:T112053RE`\"}], \"completeness\": \"complete\", \"count\": 1, \"rows\": [{\"conversation.id\": \"sg_753029280\", \"conversation.name\": \"AI多轮对话总结开发群\"}], \"status\": \"completed\", \"trace_id\": \"sq_1a1a5a1250e_320\", \"visibility_scope\": \"caller_authorized\"}",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 39
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 40
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 42,
+            "name": "structured_select",
+            "call_id": "call_cd986cf2dfb447dcb734289a404a6f2b",
+            "arguments_summary": "entity=message fields=12 where_runes=105 order_by=0",
+            "arguments_summary_client_truncated": false,
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 43,
+            "name": "structured_select",
+            "call_id": "call_cd986cf2dfb447dcb734289a404a6f2b",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"truncated\": false, \"status\": \"completed\", \"rows\": [], \"count\": 0, \"completeness\": \"complete\", \"visibility_scope\": \"caller_authorized\", \"trace_id\": \"sq_1a1a5a13975_321\", \"analysis\": {\"feasible\": false}}",
+            "result_preview_client_truncated": false,
+            "result_preview_truncated": false,
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 44
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 138
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 140,
+            "input_tokens": 173777,
+            "output_tokens": 391,
+            "total_tokens": 174168,
+            "estimated_cost_micros": 874750,
+            "cached_input_tokens": 84096,
+            "cache_hit_ratio": 0.4839305546763956,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "turn_step": 2,
+            "seq": 144
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+          "message_id": "",
+          "request_id": "5ac5d982-5173-4fe5-998a-e2fd064a1cc3",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+          "message_id": "cm_18d2b583-1a1d-4994-8b18-85621f048be7",
+          "request_id": "4eb3946f-10d7-40f9-a7e7-869b0c6449b2",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "group_summary,structured_query,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 21011,
+      "tool_calls": 5,
+      "retries": 0,
+      "input_tokens": 173777,
+      "output_tokens": 391,
+      "cached_tokens": 84096,
+      "cost_usd": 0.87475,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+          "request_id": "5ac5d982-5173-4fe5-998a-e2fd064a1cc3",
+          "status": "prepared",
+          "reused": false,
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_verification": {
+            "verified": true,
+            "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+            "empty_history": true,
+            "expected_context": null,
+            "observed_context": null,
+            "context_observed": true,
+            "checked_at": "2026-11-04T08:15:53.630958+00:00"
+          },
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "actor": {
+            "account_ref": "安柔",
+            "company": "Zelto",
+            "tenant_id": "T112053RE",
+            "user_id": "ouv4qlvxa3mbkp",
+            "company_id": "orv4mpnau8n1es"
+          },
+          "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+          "message_id": "cm_18d2b583-1a1d-4994-8b18-85621f048be7",
+          "request_id": "4eb3946f-10d7-40f9-a7e7-869b0c6449b2",
+          "status": "completed",
+          "input_required": false,
+          "http_status": 200,
+          "terminal_event": "completed",
+          "started_at": "2026-11-04T08:15:53.631154+00:00",
+          "completed_at": "2026-11-04T08:16:13.689493+00:00",
+          "request_attempted": true,
+          "client_exception_type": "",
+          "answer": "**暂时无法核实这条合并消息的发送人、内层原始发言人或讨论内容。** 已确认群 ID 对应“AI多轮对话总结开发群”，但在该群的可查询消息索引中，按提供的 clientMsgID 精确查询未返回消息；这不能证明消息不存在。`widget:conversation:sg_753029280:T112053RE`\n\n请提供这条合并消息的链接、截图或转发内容，我可以据此继续核对。",
+          "message": "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？",
+          "answer_truncated": false,
+          "question_truncated": false,
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "asked_at": "2026-11-04T08:15:54.097000+00:00",
+          "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+          "actual_user_message_id": "cm_f9340c7b-b690-4fee-a150-8c02d7e2a0be",
+          "authenticated_terminal_readback": {
+            "checked_at": "2026-11-04T08:21:06.566761+00:00",
+            "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+            "status": "succeeded",
+            "message_status": 3,
+            "session_generating": null
+          },
+          "recovered_from_original_request": true
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "execution_preflight": {},
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "session_retention": {
+        "registered": true,
+        "execution_id": "9046bc409f5b41ac80e8ee8afb921f8f",
+        "evidence_archived": true,
+        "cleanup": {
+          "schema": "ai_assistant.session_retention.v1",
+          "environment": "pre",
+          "apply": true,
+          "keep_executions": 2,
+          "checked_at": "2026-11-04T08:16:16.004990+00:00",
+          "deleted": [],
+          "already_absent": [],
+          "pending": [],
+          "candidates": []
+        }
+      },
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+          "turn_step": 2,
+          "request_id": "4eb3946f-10d7-40f9-a7e7-869b0c6449b2",
+          "session_id": "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "group_summary",
+            "structured_query",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+              "turn_step": 2,
+              "seq": 17,
+              "name": "activate_skills",
+              "call_id": "call_8383ef1cea4f41d39fd4986be500889e",
+              "arguments_summary": "skills=group_summary,structured_query",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复",
+              "result_preview_client_truncated": true,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "structured_schema",
+              "call_id": "call_72ed99191cba4329be54a1c3261d5759",
+              "arguments_summary": "entities=2",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"entities\":[{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"message.at_users.id\",\"predicate_form\":\"quantified_many\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.client_msg_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.content_type\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.conversation_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.merge_parent_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"message.reply_to_seq\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"\\u003c\",\"\\u003c=\",\"==\",\"\\u003e\",\"\\u003e=\",\"in\",\"not in\"],\"path\":\"message.send_time\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.sender.id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"\\u003c\",\"\\u003c=\",\"==\",\"\\u003e\",\"\\u003e=\",\"in\",\"not in\"],\"path\":\"message.seq\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.server_msg_id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_1\"}],\"aliases\":[\"消息\",\"聊天消息\"],\"description\":\"当前仍存在并可通过消息搜索索引查询的 IM 消息\",\"display_name\":\"消息\",\"fields\":[{\"display_name\":\"客户端消息ID\",\"name\":\"client_msg_id\",\"output_visibility\":\"internal\",\"path\":\"message.client_msg_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"消息文字正文，非文本消息可能为空。投影该字段会按 projection.includes 递归关联消息资源，包含嵌套消息路径。 仅做标识或统计时不会隐式展开，关联不可规划时必须将完整性标为 partial，不能把缺失资源理解为无附件。\",\"display_name\":\"消息内容\",\"entity_match\":false,\"name\":\"content\",\"path\":\"message.content\",\"string\":{\"subtype\":\"text\"},\"type\":\"string\"},{\"description\":\"会话中可见且持久化消息的内容载体类型，并非互斥的业务特征；一条消息只有一个 content_type，但载体内可同时包含 @ 和引用回复。判断消息是否 @ 某人应查询 at_users，判断引用关系应查询 reply_to_seq，不应仅依赖 at_text 或 quote_text。 当前 ES 仅从 at_text 提取 at_users；quote_text 的 messageEntityList 即使带 @ 实体，也尚未写入 at_user_ids。 markdown、multi_picture_text、privacy_view_notice、meeting_card、calendar_invite_card 当前尚未完整写入 ES，按这些类型过滤可能暂时无结果。\",\"display_name\":\"消息类型\",\"enum\":{\"assistant_template\":{\"display_name\":\"助手模板消息\"},\"at_text\":{\"display_name\":\"@消息\"},\"audio\":{\"display_name\":\"音频消息\"},\"calendar_invite_card\":{\"display_name\":\"日历邀请卡片消息\"},\"contact_card\":{\"display_name\":\"联系人名片消息\"},\"file\":{\"display_name\":\"文件消息\"},\"image\":{\"display_name\":\"图片消息\"},\"link_card\":{\"display_name\":\"链接卡片消息\"},\"markdown\":{\"display_name\":\"Markdown 消息\"},\"meeting_card\":{\"display_name\":\"会议卡片消息\"},\"merged_forward\":{\"display_name\":\"合并转发消息\"},\"multi_picture_text\":{\"display_name\":\"多图文消息\"},\"privacy_view_notice\":{\"display_name\":\"隐私信息查看通知\"},\"quote_text\":{\"display_name\":\"引用回复消息\"},\"rich_text\":{\"display_name\":\"富文本消息\"},\"text\":{\"display_name\":\"文本消息\"},\"video\":{\"display_name\":\"视频消息\"}},\"name\":\"content_type\",\"path\":\"message.content_type\",\"type\":\"enum\"},{\"description\":\"消息所属会话ID\",\"display_name\":\"会话ID\",\"name\":\"conversation_id\",\"output_visibility\":\"internal\",\"path\":\"message.conversation_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"仅用于合并转发父子关系关联，不建议直接展示给用户；当前 Provider 绑定按服务端消息ID解释 ParentMsgID，需与消息服务契约确认\",\"display_name\":\"合并转发父消息ID\",\"entity_match\":false,\"name\":\"merge_parent_id\",\"output_visibility\":\"internal\",\"path\":\"message.merge_parent_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"当前消息直接引用的同一会话内原消息 seq；不是合并转发 parent_msg_id\",\"display_name\":\"回复目标序列号\",\"name\":\"reply_to_seq\",\"output_visibility\":\"internal\",\"path\":\"message.reply_to_seq\",\"type\":\"number\"},{\"display_name\":\"发送时间\",\"name\":\"send_time\",\"path\":\"message.send_time\",\"type\":\"timestamp\"},{\"description\":\"消息在会话中的序列号\",\"display_name\":\"消息序列号\",\"name\":\"seq\",\"output_visibility\":\"internal\",\"path\":\"message.seq\",\"type\":\"number\"},{\"display_name\":\"服务端消息ID\",\"name\":\"server_msg_id\",\"output_visibility\":\"internal\",\"path\":\"message.server_msg_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"}],\"filter_capabilities\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"message.at_users.id\",\"predicate_form\":\"quantified_many\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.client_msg_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.content_type\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.conversation_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.merge_parent_id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"message.reply_to_seq\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"\\u003c\",\"\\u003c=\",\"==\",\"\\u003e\",\"\\u003e=\",\"in\",\"not in\"],\"path\":\"message.send_time\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.sender.id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"\\u003c\",\"\\u003c=\",\"==\",\"\\u003e\",\"\\u003e=\",\"in\",\"not in\"],\"path\":\"message.seq\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"!=\",\"==\",\"in\",\"not in\"],\"path\":\"message.server_msg_id\",\"predicate_form\":\"scalar\"}],\"identity_fields\":[\"message.conversation_id\",\"message.seq\"],\"name\":\"message\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"消息与被@用户之间的关系，支持从用户反向查询提及该用户的消息\",\"display_name\":\"消息@用户\",\"kind\":\"direct\",\"name\":\"at_users\",\"path\":\"message.at_users\",\"target_entity\":\"user\",\"traversable\":true},{\"cardinality\":\"one\",\"description\":\"会话与消息之间的关系\",\"display_name\":\"会话消息\",\"kind\":\"direct\",\"name\":\"conversation\",\"path\":\"message.conversation\",\"target_entity\":\"conversation\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"合并转发父消息与其子消息之间的关系；ParentMsgID 只表示合并转发层级，不表示普通回复。\",\"display_name\":\"合并转发消息关系\",\"kind\":\"direct\",\"name\":\"merge_children\",\"path\":\"message.merge_children\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"zero_or_one\",\"description\":\"合并转发父消息与其子消息之间的关系；ParentMsgID 只表示合并转发层级，不表示普通回复。\",\"display_name\":\"合并转发消息关系\",\"kind\":\"direct\",\"name\":\"merge_parent\",\"path\":\"message.merge_parent\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"zero_or_one\",\"description\":\"在某个会话作用域内将消息置顶的当前关系。\",\"display_name\":\"会话置顶消息关系\",\"edge\":{\"fields\":[{\"display_name\":\"置顶时间\",\"name\":\"created_at\",\"path\":\"message.pinned_in_conversation._edge.created_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"pinned_in_conversation\",\"path\":\"message.pinned_in_conversation\",\"target_entity\":\"conversation\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"一条表情回应属于一条消息；同一用户可在同一消息下产生多个不同 emoji 的独立回应实体\",\"display_name\":\"消息表情回应归属\",\"kind\":\"direct\",\"name\":\"reactions\",\"path\":\"message.reactions\",\"target_entity\":\"message_reaction\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"用户已经读取某条消息的关系。\",\"display_name\":\"消息已读关系\",\"edge\":{\"fields\":[{\"display_name\":\"读取时间\",\"name\":\"read_at\",\"path\":\"message.readers._edge.read_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"readers\",\"path\":\"message.readers\",\"target_entity\":\"user\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"通过同一会话的 conversation_id 和 reply_to_seq 定位被回复消息；不使用 parent_msg_id\",\"display_name\":\"消息回复关系\",\"kind\":\"direct\",\"name\":\"replies\",\"path\":\"message.replies\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"zero_or_one\",\"description\":\"通过同一会话的 conversation_id 和 reply_to_seq 定位被回复消息；不使用 parent_msg_id\",\"display_name\":\"消息回复关系\",\"kind\":\"direct\",\"name\":\"reply_to\",\"path\":\"message.reply_to\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"资源严格属于唯一父消息，通过 conversation_id 与 seq 的复合键关联。读取资源必须遵循父消息权限。\",\"display_name\":\"消息资源与消息\",\"kind\":\"direct\",\"name\":\"resources\",\"path\":\"message.resources\",\"target_entity\":\"message_resource\",\"traversable\":true},{\"cardinality\":\"one\",\"display_name\":\"消息发送人\",\"kind\":\"direct\",\"name\":\"sender\",\"path\":\"message.sender\",\"target_entity\":\"user\",\"traversable\":true},{\"cardinality\":\"zero_or_one\",\"display_name\":\"消息加急\",\"kind\":\"direct\",\"name\":\"urgent\",\"path\":\"message.urgent\",\"target_entity\":\"urgent_message\",\"traversable\":false}],\"search_capabilities\":[{\"candidate_operators\":[\"contains\"],\"description\":\"虚拟搜索入口，不返回文本值。以 messages 中已双写的正文、文件名、名片昵称、链接标题和合并转发标题检索；音频消息补查 medias， 不逐一扫描文件和链接索引。需要资源详情时通过 message.resources 展开；指定消息类型可结合 content_type 过滤。\",\"path\":\"message.searchable_text\",\"query_only\":true}]},{\"access_options\":[{\"allows_unfiltered_que\n[truncated]",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "structured_schema",
+              "call_id": "call_96f93d834cd84f2ab6cc9b78f3f3ef47",
+              "arguments_summary": "entities=2",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"entities\":[{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_1\"},{\"option\":\"option_2\"},{\"allows_unfiltered_query\":true,\"option\":\"option_3\"}],\"aliases\":[\"用户\",\"成员\",\"员工\",\"人员\"],\"description\":\"租户内的企业用户，可关联公司、群组、会话和消息等业务实体。第一人称会话范围通过 user.conversations 表达；系统分组置顶状态通过 user.conversations._edge.system_group_pinned 表达；收藏消息通过 user.favorite_messages 表达，收藏消息与置顶会话不是同一业务语义。直属上下级使用 line_manager/direct_reports，部门团队与实线汇报不得混同；空间、项目、任务访问权限继续由现有业务 RPC 判定。\",\"display_name\":\"用户\",\"fields\":[{\"display_name\":\"签名\",\"entity_match\":false,\"name\":\"biography\",\"path\":\"user.biography\",\"string\":{\"subtype\":\"text\"},\"type\":\"string\"},{\"display_name\":\"用户ID\",\"name\":\"id\",\"output_visibility\":\"internal\",\"path\":\"user.id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"仅用于内部直连关系，未获授权的上级不写入\",\"display_name\":\"可见实线上级ID（内部关联键）\",\"name\":\"line_manager_id\",\"output_visibility\":\"internal\",\"path\":\"user.line_manager_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"姓名\",\"name\":\"name\",\"path\":\"user.name\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"},{\"display_name\":\"员工账户状态\",\"enum\":{\"activated\":{\"aliases\":[\"active\"],\"display_name\":\"已激活\"},\"deleted\":{\"display_name\":\"删除\"},\"frozen\":{\"display_name\":\"冻结（暂停）\"},\"not_activated\":{\"display_name\":\"未激活\"},\"not_joined\":{\"display_name\":\"未加入\"},\"resigned\":{\"display_name\":\"离职\"}},\"name\":\"status\",\"path\":\"user.status\",\"type\":\"enum\"},{\"description\":\"IANA 时区标识，例如 Asia/Shanghai\",\"display_name\":\"时区\",\"name\":\"timezone\",\"path\":\"user.timezone\",\"type\":\"string\"}],\"filter_capabilities\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"}],\"identity_fields\":[\"user.id\"],\"name\":\"user\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"项目的管理员列表，用户自身租户/公司等资料通过 user 实体查询\",\"display_name\":\"项目管理员\",\"kind\":\"association\",\"name\":\"administered_projects\",\"path\":\"user.administered_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务的执行人\",\"display_name\":\"任务执行人\",\"kind\":\"association\",\"name\":\"assigned_tasks\",\"path\":\"user.assigned_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"分类与其所有者用户之间的关系\",\"display_name\":\"分类所有者\",\"kind\":\"direct\",\"name\":\"categories\",\"path\":\"user.categories\",\"target_entity\":\"category\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"统一评论实体的作者\",\"display_name\":\"评论作者\",\"kind\":\"direct\",\"name\":\"comments\",\"path\":\"user.comments\",\"target_entity\":\"comment\",\"traversable\":false},{\"cardinality\":\"one\",\"display_name\":\"用户公司\",\"kind\":\"direct\",\"name\":\"company\",\"path\":\"user.company\",\"target_entity\":\"company\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户视角下的有效会话集合；目标 conversation 使用 source user 作为 viewer_user query-instance binding；系统分组置顶状态属于该 association edge\",\"display_name\":\"用户会话\",\"edge\":{\"fields\":[{\"description\":\"当前用户在系统分组范围内的置顶排序值\",\"display_name\":\"系统分组置顶排序\",\"name\":\"system_group_pin_order\",\"path\":\"user.conversations._edge.system_group_pin_order\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"系统分组置顶更新时间\",\"name\":\"system_group_pin_updated_at\",\"path\":\"user.conversations._edge.system_group_pin_updated_at\",\"type\":\"timestamp\"},{\"description\":\"当前用户是否在系统分组范围内置顶此会话\",\"display_name\":\"是否系统分组置顶\",\"name\":\"system_group_pinned\",\"path\":\"user.conversations._edge.system_group_pinned\",\"type\":\"bool\"},{\"display_name\":\"系统分组置顶时间\",\"name\":\"system_group_pinned_at\",\"path\":\"user.conversations._edge.system_group_pinned_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"conversations\",\"path\":\"user.conversations\",\"target_entity\":\"conversation\",\"traversable\":true},{\"cardinality\":\"many\",\"display_name\":\"群创建人\",\"kind\":\"direct\",\"name\":\"created_groups\",\"path\":\"user.created_groups\",\"target_entity\":\"group\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目的创建人\",\"display_name\":\"项目创建人\",\"kind\":\"direct\",\"name\":\"created_projects\",\"path\":\"user.created_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务对创建人的单值业务引用，底层可通过独立角色 RPC 实现\",\"display_name\":\"任务创建人\",\"kind\":\"direct\",\"name\":\"created_tasks\",\"path\":\"user.created_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户与当前可见组织架构中直属部门之间的关联关系\",\"display_name\":\"部门成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"是否主负责人\",\"name\":\"is_primary_manager\",\"path\":\"user.departments._edge.is_primary_manager\",\"type\":\"bool\"},{\"display_name\":\"部门成员角色\",\"enum\":{\"manager\":{\"display_name\":\"负责人\"},\"member\":{\"display_name\":\"普通成员\"}},\"name\":\"role\",\"path\":\"user.departments._edge.role\",\"type\":\"enum\"}]},\"kind\":\"association\",\"name\":\"departments\",\"path\":\"user.departments\",\"target_entity\":\"department\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"基于可见员工及其直接上级账户派生，与部门负责人不同\",\"display_name\":\"实线直属上下级\",\"kind\":\"direct\",\"name\":\"direct_reports\",\"path\":\"user.direct_reports\",\"target_entity\":\"user\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户当前收藏某条消息的关系；收藏记录本身不是独立 Canonical Entity。该关系对应收藏消息系统入口，不表示置顶会话。\",\"display_name\":\"消息收藏关系\",\"edge\":{\"fields\":[{\"display_name\":\"收藏时间\",\"name\":\"created_at\",\"path\":\"user.favorite_messages._edge.created_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"favorite_messages\",\"path\":\"user.favorite_messages\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"任务的关注人\",\"display_name\":\"任务关注人\",\"kind\":\"association\",\"name\":\"followed_tasks\",\"path\":\"user.followed_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"本次群成员变更事件作用的用户。\",\"display_name\":\"群成员变更事件-成员\",\"kind\":\"direct\",\"name\":\"group_membership_events\",\"path\":\"user.group_membership_events\",\"target_entity\":\"group_membership_event\",\"traversable\":false},{\"cardinality\":\"many\",\"display_name\":\"入群申请-申请人\",\"kind\":\"direct\",\"name\":\"group_requests\",\"path\":\"user.group_requests\",\"target_entity\":\"group_request\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"GroupMember 不是 Canonical Entity；(group,user) 唯一确定当前 membership\",\"display_name\":\"群成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"入群来源\",\"enum\":{\"admin\":{\"display_name\":\"管理员添加\"},\"invitation\":{\"display_name\":\"邀请加入\"},\"project\":{\"display_name\":\"项目加入\"},\"qr_code\":{\"display_name\":\"二维码加入\"},\"search\":{\"display_name\":\"搜索加入\"}},\"name\":\"join_source\",\"path\":\"user.groups._edge.join_source\",\"type\":\"enum\"},{\"display_name\":\"入群时间\",\"name\":\"joined_at\",\"path\":\"user.groups._edge.joined_at\",\"type\":\"timestamp\"},{\"display_name\":\"群内昵称\",\"name\":\"nickname\",\"path\":\"user.groups._edge.nickname\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"},{\"display_name\":\"群成员角色\",\"enum\":{\"admin\":{\"display_name\":\"管理员\"},\"member\":{\"display_name\":\"普通成员\"},\"owner\":{\"display_name\":\"群主\"}},\"name\":\"role_level\",\"path\":\"user.groups._edge.role_level\",\"type\":\"enum\"}],\"relations\":[{\"cardinality\":\"zero_or_one\",\"description\":\"仅在邀请入群场景存在，表示邀请该成员加入群组的用户\",\"display_name\":\"邀请人\",\"name\":\"inviter\",\"path\":\"user.groups._edge.inviter\",\"target_entity\":\"user\"},{\"cardinality\":\"zero_or_one\",\"description\":\"执行添加该成员操作的用户，可能是管理员或群主\",\"display_name\":\"操作人\",\"name\":\"operator\",\"path\":\"user.groups._edge.operator\",\"target_entity\":\"user\"},{\"cardinality\":\"many\",\"description\":\"产生当前成员关系的来源用户集合\",\"display_name\":\"来源用户\",\"name\":\"source_users\",\"path\":\"user.groups._edge.source_users\",\"target_entity\":\"user\"},{\"cardinality\":\"zero_or_one\",\"description\":\"当前成员关系记录的上级用户\",\"display_name\":\"上级用户\",\"name\":\"upper_user\",\"path\":\"user.groups._edge.upper_user\",\"target_entity\":\"user\"}]},\"kind\":\"association\",\"name\":\"groups\",\"path\":\"user.groups\",\"target_entity\":\"group\",\"traversable\":true},{\"cardinality\":\"many\",\"display_name\":\"入群申请-处理人\",\"kind\":\"direct\",\"name\":\"handled_group_requests\",\"path\":\"user.handled_group_requests\",\"target_entity\":\"group_request\",\"traversable\":false},{\"cardinality\":\"many\",\"display_name\":\"入群申请-邀请人\",\"kind\":\"direct\",\"name\":\"invited_group_requests\",\"path\":\"user.invited_group_requests\",\"target_entity\":\"group_request\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目的成员列表，用户自身租户/公司等资料通过 user 实体查询\",\"display_name\":\"项目成员\",\"kind\":\"association\",\"name\":\"joined_projects\",\"path\":\"user.joined_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"zero_or_one\",\"description\":\"基于可见员工及其直接上级账户派生，与部门负责人不同\",\"display_name\":\"实线直属上下级\",\"kind\":\"direct\",\"name\":\"lin\n[truncated]",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false
+            },
+            {
+              "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+              "turn_step": 2,
+              "seq": 37,
+              "name": "structured_select",
+              "call_id": "call_5e55f2937e2f4845b85345af030b3a98",
+              "arguments_summary": "entity=conversation fields=2 where_runes=36 order_by=0",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\": [{\"entityType\": \"conversation\", \"id\": \"sg_753029280\", \"tenantId\": \"T112053RE\", \"widget\": \"`widget:conversation:sg_753029280:T112053RE`\"}], \"completeness\": \"complete\", \"count\": 1, \"rows\": [{\"conversation.id\": \"sg_753029280\", \"conversation.name\": \"AI多轮对话总结开发群\"}], \"status\": \"completed\", \"trace_id\": \"sq_1a1a5a1250e_320\", \"visibility_scope\": \"caller_authorized\"}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            },
+            {
+              "run_id": "bar_6b213e3a982d44629143957f527cb73a",
+              "turn_step": 2,
+              "seq": 42,
+              "name": "structured_select",
+              "call_id": "call_cd986cf2dfb447dcb734289a404a6f2b",
+              "arguments_summary": "entity=message fields=12 where_runes=105 order_by=0",
+              "arguments_summary_client_truncated": false,
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"truncated\": false, \"status\": \"completed\", \"rows\": [], \"count\": 0, \"completeness\": \"complete\", \"visibility_scope\": \"caller_authorized\", \"trace_id\": \"sq_1a1a5a13975_321\", \"analysis\": {\"feasible\": false}}",
+              "result_preview_client_truncated": false,
+              "result_preview_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            }
+          ],
+          "event_count": 55,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.title",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 173777,
+            "output_tokens": 391,
+            "total_tokens": 174168,
+            "estimated_cost_micros": 874750,
+            "cached_input_tokens": 84096,
+            "cache_hit_ratio": 0.4839305546763956,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "4eb3946f-10d7-40f9-a7e7-869b0c6449b2"
+        ],
+        "current_session_ids": [
+          "cs_879c8f1e-4096-4e24-98bb-1ed7a82a5fb1"
+        ],
+        "matched_run_ids": [
+          "bar_6b213e3a982d44629143957f527cb73a"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "verified_fresh_session_per_case"
+      },
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "collector_client_truncation": false,
+        "server_truncation_preserved": true,
+        "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+      },
+      "recovery_policy": {
+        "read_only": true,
+        "question_resent": false,
+        "original_stream_errors_preserved": true,
+        "recovered_at": "2026-11-04T08:21:08.630691+00:00"
+      }
+    }
+  },
+  "judgment": {
+    "business_status": "fail",
+    "business_reason": "回答如实说明了索引查询未命中，没有编造消息内容。但同一追问人身份在提问前已能读取指定合并消息，足以核实外层发送人、内层发言人及讨论主题，回答未完成这些实际问题。",
+    "failure_categories": [
+      "未完成核对",
+      "重要漏答"
+    ],
+    "kind": "business_review",
+    "confidence": "low",
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "指定历史合并消息的外层发送人为自力，内层原始发言人为孙文和自力，提问前的同身份原始读取已证实。回答仅报告无法核实并要求用户补充材料，遗漏了全部核心核对结论。",
+        "comparison": {
+          "expected": "核对群753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50：外层由自力发送；内层为孙文、自力。讨论结构化流式消息采用markdown还是prosemirror、模型及聊天框对结构化输出的支持与必要性；自力追问为何支持周报格式，孙文建议与公台确认。",
+          "actual": "仅确认群名，称消息索引精确查询未返回消息，因此暂时无法核实发送人、原始发言人和讨论内容，并要求提供链接、截图或转发内容。",
+          "difference": "未提供可由提问前同身份可读原始消息核实的外层发送人、内层发言人和讨论主题，也未引用指定合并消息作为结论依据。"
+        }
+      }
+    ],
+    "evidence_assessment": {
+      "sufficient": true,
+      "time_basis": "本轮判定上界为2026-11-04T08:15:54.097Z；独立认证读取发生于2026-11-04T08:14:41.261771Z，早于提问。",
+      "source": "同一身份可读的群753029280原始消息，clientMsgID=e09c299a97c69389b26979ec013e9a50，包含完整合并内容。",
+      "tool_result": "当次消息索引查询确实返回0条，但索引未命中不能否定已由原始消息正向证实的可见内容。"
+    },
+    "protected_api_judge_completed": true,
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "judge_prompt_version": "pending-fresh-actual-turn-time-v1",
+    "judge_system_sha256": "ee1c8e659221574edd54caaedf1312c5d66239bd89ba4fdd3eb1fce1bc73f4b3",
+    "input_sha256": "ee2a06e3f28d8e6fae771ee63383b7d74585a27380cec2ff79b22577692b3912",
+    "judge_attempts": 1,
+    "reviewed_at": "2026-11-04T08:22:47.297044+00:00",
+    "turn_time_basis": [
+      {
+        "step": 2,
+        "request_id": "4eb3946f-10d7-40f9-a7e7-869b0c6449b2",
+        "policy_version": "ai-assistant-temporal-review-v1",
+        "asked_at": "2026-11-04T08:15:54.097000+00:00",
+        "asked_at_ms": 1793780154097,
+        "timezone": "Asia/Tokyo",
+        "asked_at_local": "2026-11-04T17:15:54.097000+09:00",
+        "time_source": "authenticated session user.createdAt, corroborated by exact-request Trace",
+        "current_wording": false,
+        "historical_wording": true,
+        "recent_days_assumed": null,
+        "upper_inclusive": true,
+        "historical_context_allowed": true,
+        "static_gold_is_binding_for_current_facts": false
+      }
+    ],
+    "review_observation": {
+      "basis": "dd2ab2b040ff74a81572fb5cbd4ee79c9013ab73f87d59df75462438e3f23ea2",
+      "result": "1f01236ece7495193833b594d8c9ac5e4ee772cf0fe921bf58dd1c659e4a088c",
+      "requests": [
+        "4eb3946f-10d7-40f9-a7e7-869b0c6449b2"
+      ]
+    },
+    "baseline_comparison": {
+      "reused": false,
+      "result_changed_or_incomparable": true,
+      "previous_saved_review": {
+        "environment": "pre",
+        "verdict": {
+          "business_reason": "case有问题",
+          "business_status": "skip",
+          "failure_categories": []
+        },
+        "manual": true,
+        "provenance": {
+          "identity": {
+            "report_id": "review-9908bd10b6f0621f39578df4",
+            "run_id": "AI助手-2026-11-04-test-pre-messages-0950-combined",
+            "environment": "combined",
+            "source_digest": "59a2394ee6d5d6bab395f7146bf92b1cca29e84af7f0dadbc3d1d30b176a952a"
+          },
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/combined-20261104-0950-test-pre-messages/natural-update/before/",
+          "revision": 48,
+          "case_version": 1,
+          "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+          "actor_name": "安柔",
+          "reviewed_at": "2026-11-04T03:21:40.308522+00:00"
+        },
+        "observation": {
+          "basis": "aa130eb31b24d16f84a6d72c27d533734153b8d059a0955f0230cfc4ca0c2054",
+          "result": "c544f9885188bfdca289d37d6f2bb0a3e424eba2090fdd4a7cd2df98d46c01e1",
+          "requests": [
+            "434aa474-f340-45be-a15c-2dfa126cc385"
+          ]
+        },
+        "comparison_unavailable": null
+      }
+    },
+    "execution_evidence_sha256": "3e2f991320f28cdb2cce61b7de8bf355d571ab70117ec12aaeb471a8bbc33fe0",
+    "fresh_session_verified": true
+  },
+  "current_gold": {
+    "type": "fact",
+    "gold_refs": [
+      "753029280",
+      "e09c299a97c69389b26979ec013e9a50"
+    ],
+    "must_include": [
+      "自力",
+      "孙文",
+      "markdown",
+      "prosemirror"
+    ],
+    "must_exclude": [],
+    "qualitative_requirements": [
+      "区分外层发送人和内层原发言人，引用合并消息clientMsgID。"
+    ],
+    "fixed_fact_truth": "外层消息由自力发送；合并内容包含孙文与自力的对话。孙文讨论结构化流式消息及markdown/prosemirror格式，自力追问为何支持周报格式。",
+    "expected_total": null,
+    "high_priority_total": null,
+    "required_fields": [
+      "结论",
+      "依据",
+      "groupID",
+      "clientMsgID"
+    ],
+    "citation_refs": [
+      "e09c299a97c69389b26979ec013e9a50"
+    ],
+    "scope": "actor_visible",
+    "match_policy": "minimum",
+    "gold_entities": [],
+    "forbidden_entities": [],
+    "turn_expectations": [
+      {
+        "step": 2,
+        "message": "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？",
+        "must_include": [
+          "自力",
+          "孙文",
+          "markdown",
+          "prosemirror"
+        ],
+        "must_exclude": [],
+        "criteria": "核对指定历史合并消息的外层发送人、内层发言人与讨论主题。"
+      }
+    ],
+    "reexecution_independent_readback": {},
+    "temporal_policy": "每轮以实际用户问题落库时间为判定上界，以该轮已发生的上下文解释问题；不得使用报告生成日或复评日替代。\n“近期/目前/最新/仍待确认/待办”按追问当时的有效消息和最新状态判定；不得强制命中一两个月前的静态节点、人名、风险和未完成状态。\n“近期”未给具体天数时不能擅定7天或30天；合理、明确的最近范围可以接受，需核验重要最新证据和回答自述的覆盖范围。\n明确问历史日期、原计划、排期变化、指定消息或原发言人的，仍保留相关历史事实；旧消息不能因年代早而被自动排除。\n旧消息能解释背景，但旧计划不等于已完成，过去的风险不等于当前仍未解决；新旧消息须按发送时间及正文会议日期分别解释。\n事实证据须已在追问时存在。追问之后创建、或之后编辑且无法恢复旧版本的消息不能反向证明当时对错；当前可读不等于当时已可读。\n增量追问区间为(上一条用户消息落库时间,本次用户消息落库时间]；助手上次摘要截止日或历史引用时间不是用户追问下界。\n不因过期Gold改判就放过事实错误、重要漏答、错误消息ID、错认发言人、权限问题或编造；逐轮说明时间依据和实际差异。\n证据缺失只说明可证范围，不凭缺失断言不存在；已证实的错误可以判失败，无法核验的必要条件标待复核，不混作未执行。\n"
+  },
+  "evidence_note": "Complete actual turns and current-request tool summaries/results. Repeated intermediate model inputs and unrelated organization context remain in local evidence and are omitted from publication."
+}
