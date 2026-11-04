@@ -65,10 +65,10 @@
     const total=counts.combined, trace=base.summary.trace_gate||{};
     const reportEnvironment=base.summary.report_environment;
     const singleEnvironment=['test','pre'].includes(reportEnvironment);
-    $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：线上执行 ${total.attempted} 条，当前通过 <b>${total.pass}</b>、失败 <b>${total.fail}</b>、待复核/复测 ${total.pending}、待 QA 复核 <b>${total.pendingQa}</b>、延期 <b>${total.deferred}</b>、待修复 <b>${total.pendingFix}</b>（已计入失败）。综合成功率 <b>${pct(total.pass,total.assessed)}</b>（${total.pass}/${total.assessed} 个有效判定）。${rows.filter(r=>r.kind==='not_executed').length} 条未执行、${rows.filter(r=>r.kind==='local_fixture_pass').length} 条本地 fixture 单列，不计入线上通过率。内部 Trace ${trace.captured??'—'}/${trace.executed??'—'}，原始执行证据不变。`;
+    $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：实际发起 ${trace.executed??'—'} 条，纳入当前在线结果统计 ${total.attempted} 条，当前通过 <b>${total.pass}</b>、失败 <b>${total.fail}</b>、待复核/复测 ${total.pending}、待 QA 复核 <b>${total.pendingQa}</b>、延期 <b>${total.deferred}</b>、待修复 <b>${total.pendingFix}</b>（已计入失败）。综合成功率 <b>${pct(total.pass,total.assessed)}</b>（${total.pass}/${total.assessed} 个有效判定）。${rows.filter(r=>r.kind==='not_executed').length} 条未执行、${rows.filter(r=>r.kind==='local_fixture_pass').length} 条本地 fixture 单列，不计入线上通过率。内部 Trace ${trace.captured??'—'}/${trace.executed??'—'}，原始执行证据不变。`;
     const kpis=$('current-kpis').querySelectorAll('.kpi');
     for(const kpi of kpis)if(!kpi.querySelector('small'))kpi.appendChild(document.createElement('small'));
-    for(const [i,value,note] of [[1,total.attempted,`test ${counts.test.attempted} + pre ${counts.pre.attempted}`],[2,total.pass,'当前已保存判定'],[3,pct(total.pass,total.assessed),`有效判定 ${total.assessed}；待复核 ${total.pending}，待 QA 复核 ${total.pendingQa}，延期 ${total.deferred} 均不计分母；待修复计入失败`]]){
+    for(const [i,value,note] of [[1,trace.executed??'—',`test ${base.summary.test_scope?.online_executed??'—'} + pre ${base.summary.pre_scope?.executed??'—'}`],[2,total.pass,'当前业务判定'],[3,pct(total.pass,total.assessed),`有效判定 ${total.assessed}；待复核 ${total.pending}，待 QA 复核 ${total.pendingQa}，延期 ${total.deferred} 均不计分母；待修复计入失败`]]){
       kpis[i].querySelector('b').textContent=value; kpis[i].querySelector('small').textContent=note;
     }
     const task=$('task-success');
@@ -79,8 +79,8 @@
       first.innerHTML=`<b>Task Success Rate ${pct(c.pass,c.assessed)}</b>（${c.pass}/${c.assessed}）· 失败 ${c.fail} · 待复核 ${c.pending} · 待 QA 复核 ${c.pendingQa} · 延期 ${c.deferred} · 待修复 ${c.pendingFix}（计入失败）`;
       const scope=base.summary[env==='test'?'test_scope':'pre_scope']||{};
       card.querySelectorAll('p')[1].textContent=env==='test'
-        ?`有效用例 ${scope.active_total??'—'} 条；线上已发起 ${c.attempted} 条，当前有效判定 ${c.assessed}、待复核/复测 ${c.pending}、待 QA 复核 ${c.pendingQa}；本地 fixture ${scope.local_executed??0} 条；未执行 ${scope.not_executed??0} 条。`
-        :`数据集 ${scope.active_total??'—'} 条；保留业务执行记录 ${c.attempted} 条，当前有效判定 ${c.assessed}、待复核/复测 ${c.pending}、待 QA 复核 ${c.pendingQa}；未执行 ${scope.not_executed??0} 条。回答是否生成完成按原始执行证据统计，与人工业务判定分开。`;
+        ?`有效用例 ${scope.active_total??'—'} 条；线上已发起 ${scope.online_executed??'—'} 条，纳入当前在线结果统计 ${c.attempted} 条，当前有效判定 ${c.assessed}、待复核/复测 ${c.pending}、待 QA 复核 ${c.pendingQa}；本地 fixture ${scope.local_executed??0} 条；未执行 ${scope.not_executed??0} 条。`
+        :`数据集 ${scope.active_total??'—'} 条；线上已发起 ${scope.executed??'—'} 条，纳入当前在线结果统计 ${c.attempted} 条，当前有效判定 ${c.assessed}、待复核/复测 ${c.pending}、待 QA 复核 ${c.pendingQa}；未执行 ${scope.not_executed??0} 条。回答是否生成完成按原始执行证据统计，与人工业务判定分开。`;
     }
     const failures=rows.filter(r=>isFailure(r.status)), changed=rows.filter(r=>r.override), distribution=new Map();
     for(const row of failures)for(const category of row.failure_categories.length?row.failure_categories:['未分类'])distribution.set(category,(distribution.get(category)||0)+1);
