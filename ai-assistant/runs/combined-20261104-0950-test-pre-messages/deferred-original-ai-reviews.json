@@ -1,0 +1,344 @@
+{
+  "AA-FU-012": {
+    "schema": "ai_assistant.original_ai_review.v1",
+    "historical": true,
+    "business_status": "fail",
+    "business_reason": "正确回答了尚未完成，但将“最近一次状态变更”限定为系统结构化状态字段变更，认定为9月15日，并明确排除9月17日评论中的有效业务阶段变化。用户未限定只问系统字段；最新评论明确确认状态已从产品设计推进到开发中，内审尚未开始，应以9月17日为最新业务状态变化依据，同时可另行说明系统字段最后变更于9月15日。",
+    "failure_categories": [
+      "评论解析错误",
+      "时序错误"
+    ],
+    "judge_model": "gpt-6.1-sol",
+    "judge_prompt_version": "test-full-business-multiturn-20261103-1934-v1",
+    "source_identity": {
+      "report_id": "review-b00e238ad1570ffcf4b8f490",
+      "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+      "environment": "test",
+      "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+    },
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-FU-012",
+    "source_record": "current_session_review",
+    "verdict": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "评论解析错误",
+        "时序错误"
+      ],
+      "business_reason": "正确回答了尚未完成，但将“最近一次状态变更”限定为系统结构化状态字段变更，认定为9月15日，并明确排除9月17日评论中的有效业务阶段变化。用户未限定只问系统字段；最新评论明确确认状态已从产品设计推进到开发中，内审尚未开始，应以9月17日为最新业务状态变化依据，同时可另行说明系统字段最后变更于9月15日。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "task_detail确认任务仍为in_progress；operation_log_query完整返回9月15日pending → in_progress的字段变更，以及9月17日10:24:40（日本时间）新增评论“状态已从产品设计推进到开发中；内审尚未开始”。该评论与独立源回读一致，证据已读且不存在采集缺失。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "未完成的判断正确，也复述了开发中、内审未开始，但把最新有效业务状态变化排除在所问状态变更之外，导致主要时间结论停留在9月15日。应区分最新业务阶段变化与系统状态字段变更，而非用后者替代前者。",
+          "evidence_refs": [
+            "trace.tools.seq=24 task_detail",
+            "trace.tools.seq=29 operation_log_query",
+            "QA-TC-PIN-STATE-01 / cmtvvr7xjnsn0oy，created_at=2026-09-17T01:24:40Z"
+          ]
+        }
+      ],
+      "suggestions": [
+        "回答尚未完成，目前开发中、内审尚未开始；最新业务阶段变化由2026年9月17日10:24:40（日本时间）的评论确认。",
+        "如需补充审计口径，另列系统状态字段最后于9月15日17:25:12（日本时间）由待启动改为进行中，避免与业务阶段变化混为一谈。"
+      ],
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：activate_skills（completed） → task_detail（completed） → operation_log_query（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "1c33daae60cf8ed219c45ac4b0b9cb37ee88538b65bdd50b0dff6695edfd9a2d"
+    },
+    "source_verdict_sha256": "821c075146c27fcf1be4a8c7894111be465b76ae417f3b027c34423c1a942fd7",
+    "current_deferred_status_preserved": true,
+    "new_business_request": false,
+    "new_judge_request": false
+  },
+  "AA-MULTI-TEST-001": {
+    "schema": "ai_assistant.original_ai_review.v1",
+    "historical": true,
+    "business_status": "fail",
+    "business_reason": "用户要求统计所选项目的主任务及全部子孙任务，回答却止于63项的部分统计，未完成64项全树的创建人及状态统计。独立完整回读确认Anna7应为23项（未开始8、进行中8、已完成7），回答仅统计22项；Anna应为20项（未开始6、进行中7、已完成7），回答列为6、6、8，存在明确状态分组错误。回答诚实标注一项待核对，但不能替代完成所要求的全量统计。",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "judge_model": "gpt-6.1-sol",
+    "judge_prompt_version": "test-full-business-multiturn-20261103-1934-v1",
+    "source_identity": {
+      "report_id": "review-b00e238ad1570ffcf4b8f490",
+      "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+      "environment": "test",
+      "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+    },
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-MULTI-TEST-001",
+    "source_record": "current_session_review",
+    "verdict": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "指令未遵循"
+      ],
+      "business_reason": "用户要求统计所选项目的主任务及全部子孙任务，回答却止于63项的部分统计，未完成64项全树的创建人及状态统计。独立完整回读确认Anna7应为23项（未开始8、进行中8、已完成7），回答仅统计22项；Anna应为20项（未开始6、进行中7、已完成7），回答列为6、6、8，存在明确状态分组错误。回答诚实标注一项待核对，但不能替代完成所要求的全量统计。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论。独立业务源提供64项完整递归回读及创建人、状态字段；Trace seq24明确显示全量计数64而实际聚合覆盖63，seq30已读取三级任务064的创建人与进行中状态，seq35展示被沿用的63项旧交叉统计。证据足以确认最终统计未完成且Anna状态交叉数与业务源不符，不属于Trace采集缺失。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "项目来源与主任务、全部后代口径基本明确，排序方向正确，也没有将逾期当作基础状态；但未继续完成任务实体去重及全树核对，最终只交付63项部分结果。Anna7漏计一项进行中任务，Anna的进行中和已完成数量分别少1、多1，因此核心聚合任务未正确完成。",
+          "evidence_refs": [
+            "turns[step=2].answer",
+            "trace.runs[0].tools[seq=24].task_ask",
+            "trace.runs[0].tools[seq=30].task_detail",
+            "trace.runs[0].tools[seq=35].scratchpad_read",
+            "preflight.current_independent_readback.tasks",
+            "preflight.current_independent_readback.global_statistics"
+          ]
+        }
+      ],
+      "suggestions": [
+        "遇到counts.total与covered.tasks不一致时，继续递归读取后代实体并按(task_id, tenant_id)核对集合差异，不要停留在部分聚合结果。",
+        "对完整去重任务集合重新按创建人与各任务自身状态生成交叉统计，避免直接沿用已有统计透视；核验各行合计及总计均为64。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_detail（completed） → scratchpad_read（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "d7b0ec7f333fa7f1e256e45a4685d4c4ffc79773063781ecf8caef455b30314e"
+    },
+    "source_verdict_sha256": "406f13f2105d54e1103df8c7cbd4ec0525456c62eb3d1a8db83895d7644cd7b1",
+    "current_deferred_status_preserved": true,
+    "new_business_request": false,
+    "new_judge_request": false
+  },
+  "AA-RPT-TEST-001": {
+    "schema": "ai_assistant.original_ai_review.v1",
+    "historical": true,
+    "business_status": "fail",
+    "business_reason": "本轮未完成“所有已收汇报”的核心任务。回答明确承认7月以前未完整读取，并遗漏Gold原文可核验的澜石网关、青渚对账、梧北配置、赤岸发布、墨桐监控、岑南值班及ZX-Cloud-Lite等项目。披露检索缺口是恰当的，但不能替代全量汇总。此外，AI助手迭代和联合回归将Anna5、Anna7合并展示，未分别呈现每个人的完成情况、进度与风险。",
+    "failure_categories": [
+      "信息缺失",
+      "范围错误",
+      "指令未遵循"
+    ],
+    "judge_model": "gpt-6.1-sol",
+    "judge_prompt_version": "test-full-business-multiturn-20261103-1934-v1",
+    "source_identity": {
+      "report_id": "review-b00e238ad1570ffcf4b8f490",
+      "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+      "environment": "test",
+      "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+    },
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-RPT-TEST-001",
+    "source_record": "current_session_review",
+    "verdict": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误",
+        "指令未遵循"
+      ],
+      "business_reason": "本轮未完成“所有已收汇报”的核心任务。回答明确承认7月以前未完整读取，并遗漏Gold原文可核验的澜石网关、青渚对账、梧北配置、赤岸发布、墨桐监控、岑南值班及ZX-Cloud-Lite等项目。披露检索缺口是恰当的，但不能替代全量汇总。此外，AI助手迭代和联合回归将Anna5、Anna7合并展示，未分别呈现每个人的完成情况、进度与风险。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例以汇报原文而非任务评论为证据。独立业务快照确认1223份去重已收汇报、7位汇报人及跨2025-12-29至2026-10-31的材料；项目人员oracle提供被遗漏项目的原文。回答及trace seq18均明确记录历史读取缺口，足以确定未完成全量任务，无需将工具预览截断解释为没有数据。部分来源仅在trace中显示AI摘要，不能据此全面认证原文读取或进一步认定所有细节错误。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "终态回答仅交付部分时段汇总，明确未覆盖7月以前，实际遗漏多个已确认项目；若干多人材料合并列示，不满足按项目分别展示每位汇报人的要求。回答保留历史状态和未完成边界、没有假称已覆盖全部，这些优点不改变核心任务尚未完成的结论。",
+          "evidence_refs": [
+            "turns[step=2].answer：开头及风险段明确说明7月以前未完整覆盖",
+            "trace run bar_387452aeb1784423afc5a947111650b4 seq18：reports/overview记录全量列表截断与历史读取缺口",
+            "preflight.case_inventory.truth：1223份去重汇报、三类汇报及完整时间范围",
+            "project_person_minimum_oracle：2092166103965896704（澜石网关、青渚对账）",
+            "project_person_minimum_oracle：2093144068736421888、2093144622506184704、2093144762042290176、2091834730742812672",
+            "turns[step=2].answer：AI助手与商业化、未明确项目归属的工作中Anna5与Anna7合并条目"
+          ]
+        }
+      ],
+      "suggestions": [
+        "继续检索全部历史周期及日报、周报、月报，遍历分页并按reportId建立去重清单，核对覆盖范围后再交付全量结论。",
+        "依据原文建立“项目—汇报人—周期—来源”索引，补齐遗漏项目，并将Anna5、Anna7的共同项目材料分别归纳。",
+        "保留同周期更正及跨人冲突的时间边界，明确Anna7第二版20条回归结论，不以他人的后续修复替代Anna8本人复测证据。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（completed） → activate_skills（completed） → report_digest（completed） → report_digest（completed） → scratchpad_write（completed） → report_digest（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "362e38ee9139ca5a722413d5a75ae59c1b759c574620e95ce258078362d8e9b4"
+    },
+    "source_verdict_sha256": "85b707fb0e16b3eb5b06941177a56a2eee296c525cc286e3d78ed4b77bada563",
+    "current_deferred_status_preserved": true,
+    "new_business_request": false,
+    "new_judge_request": false
+  },
+  "AA-QAP-012": {
+    "schema": "ai_assistant.original_ai_review.v1",
+    "historical": true,
+    "business_status": "fail",
+    "business_reason": "回答将用户指定的AI周报总结替换成了群内质检报告及多条后续消息，未回答目标周报的核心成果、风险和资源协助事项。Gold确认的商业化V2.0全量上线、技术负责人离职导致约1周延期风险、额外2张A100及前端增援、新用户次周留存降至19.7%且需验证新手引导，均未出现在回答中。即使所引质检内容本身真实，也不能完成本轮针对指定消息的总结任务。",
+    "failure_categories": [
+      "范围错误",
+      "信息缺失"
+    ],
+    "judge_model": "gpt-6.1-sol",
+    "judge_prompt_version": "shared-business-all-turns-pre-20261103",
+    "source_identity": {
+      "report_id": "review-5f79026481b594937e92b0b6",
+      "run_id": "AI助手-2026-11-03-pre-full",
+      "environment": "pre",
+      "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+    },
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/#failure-pre-AA-QAP-012",
+    "source_record": "outputs/pre_full_live_20261103T064204Z_d957f198/direct/business_review.json",
+    "verdict": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失"
+      ],
+      "business_reason": "回答将用户指定的AI周报总结替换成了群内质检报告及多条后续消息，未回答目标周报的核心成果、风险和资源协助事项。Gold确认的商业化V2.0全量上线、技术负责人离职导致约1周延期风险、额外2张A100及前端增援、新用户次周留存降至19.7%且需验证新手引导，均未出现在回答中。即使所引质检内容本身真实，也不能完成本轮针对指定消息的总结任务。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "partial",
+        "reason": "已验证Gold明确目标消息为群753029280中的0614d6eb7d1e0ec72bea877c6c4d20f8，并给出该周报的核心事实；完整回答则明确称其依据是8月至9月初质检报告及后续消息，足以确认总结对象偏离及关键遗漏。Trace仅显示scratchpad_read内部失败，无法核验回答所引其他消息的具体内容，因此不额外认定这些内容属于编造；该限制不影响已确定的范围错误。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "虽分列成果、风险和建议，但总结的是另一份质检报告，且跨多条群消息归纳，未覆盖指定周报中已上线成果、人员变动延期风险、算力与前端协助需求及留存下降问题。末尾范围说明不能替代用户所要求的目标消息总结。",
+          "evidence_refs": [
+            "Gold.fixed_fact_truth",
+            "Gold.citation_refs:0614d6eb7d1e0ec72bea877c6c4d20f8",
+            "turns[step=2].answer",
+            "trace.runs[turn_step=2].tools[seq=15]"
+          ]
+        }
+      ],
+      "suggestions": [
+        "先定位并读取指定周报消息，避免将同群质检报告当作目标材料。",
+        "按已完成成果、明确风险、明确需协助事项分别总结，并保留约1周、2张A100、19.7%等关键量化信息。",
+        "仅根据目标消息提出建议，将验证新手引导等待办与已完成事项明确区分；读取失败时应说明无法核验，而非用其他材料替代。"
+      ],
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed）",
+      "input_sha256": "723ccb46ff34088f8ebd46b9bb66743d69e45a6cd12abd4402364c92abe7c3b1",
+      "judge_meta": {
+        "model": "gpt-6.1-sol",
+        "prompt_version": "hybrid-judge-mvp-v1",
+        "cached": false,
+        "endpoint": "https://test-ai.oa-test.org/sub2api/v1/chat/completions",
+        "transport": "sse",
+        "usage": {
+          "prompt_tokens": 5933,
+          "completion_tokens": 650,
+          "total_tokens": 6583,
+          "completion_tokens_details": {
+            "reasoning_tokens": 25
+          }
+        }
+      },
+      "judge_elapsed_ms": 34828
+    },
+    "source_verdict_sha256": "87b2561593262e501433a0869b99f7519dfb1771f1872028a4606556136fc3b2",
+    "current_deferred_status_preserved": true,
+    "new_business_request": false,
+    "new_judge_request": false
+  },
+  "AA-FU-025": {
+    "schema": "ai_assistant.original_ai_review.v1",
+    "historical": true,
+    "business_status": "fail",
+    "business_reason": "回答覆盖了 prepare 接口不再需要 domain、检索问题可交浩澜查看，但遗漏了关键消息的具体关注事项：孙文明确 @安柔阅读向量数据权限文档，并说明查询可读范围、检索召回条件及后置鉴权回归的策略。回答只在“其余 @ 消息”中泛称“检索权限与截断风险”，未交代这条消息要求安柔关注的文档和鉴权策略，也未明确这些核心消息的发送人。该遗漏可由本例实际读取的消息直接核验，不依赖补齐其余截断 Trace。",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "judge_model": "gpt-6.1-sol",
+    "judge_prompt_version": "shared-business-all-turns-pre-20261103",
+    "source_identity": {
+      "report_id": "review-5f79026481b594937e92b0b6",
+      "run_id": "AI助手-2026-11-03-pre-full",
+      "environment": "pre",
+      "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+    },
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/#failure-pre-AA-FU-025",
+    "source_record": "outputs/pre_full_live_20261103T064204Z_d957f198/direct/business_review.json",
+    "verdict": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "回答覆盖了 prepare 接口不再需要 domain、检索问题可交浩澜查看，但遗漏了关键消息的具体关注事项：孙文明确 @安柔阅读向量数据权限文档，并说明查询可读范围、检索召回条件及后置鉴权回归的策略。回答只在“其余 @ 消息”中泛称“检索权限与截断风险”，未交代这条消息要求安柔关注的文档和鉴权策略，也未明确这些核心消息的发送人。该遗漏可由本例实际读取的消息直接核验，不依赖补齐其余截断 Trace。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "Trace seq=33 的 structured_select 返回了孙文发送的向量数据权限文档消息原文，明确包含 @公台 @安柔，以及查询可读范围、检索召回条件、鉴权回归和截断风险。回答引用 sg_3981594831:41，但仅给出笼统主题，未充分回答该条真实消息的具体事项。其余工具摘要有截断，不据此判断新增消息为虚构或认定91条统计错误。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "核心要求是说明哪些真实消息 @安柔及分别需关注或处理什么。回答虽提供了群名和消息引用，并正确概括 prepare、检索协助等事项，但未清楚列出孙文关于向量权限文档及鉴权策略的具体通知，已读证据中的关键事项被过度归并为泛化主题。未展示内部ID本身不作为失败原因。",
+          "evidence_refs": [
+            "trace.runs[0].tools[seq=33] structured_select：孙文的向量数据权限文档消息",
+            "回答“其余 @ 消息”：sg_3981594831:41",
+            "Gold：9e12463850f8d7054424c79dfeba66fb",
+            "回答“接口和账号”：sg_3981594831:187",
+            "回答“方案讨论与检索”：sg_3981594831:265"
+          ]
+        }
+      ],
+      "suggestions": [
+        "将关键消息单独列明发送人、具体事项和可点击消息来源，避免按主题归并时丢失交办内容。",
+        "补充孙文的向量数据权限文档通知，说明安柔需关注可读范围查询、召回过滤及后置鉴权回归策略；保留历史通知不等于当前未完成的边界说明。"
+      ],
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → structured_schema（completed） → structured_select（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+      "input_sha256": "943eee1b8f24891ac083b3bd053397d196c963cce14b6c06a8183390fff35bb4",
+      "judge_meta": {
+        "model": "gpt-6.1-sol",
+        "prompt_version": "hybrid-judge-mvp-v1",
+        "cached": false,
+        "endpoint": "https://test-ai.oa-test.org/sub2api/v1/chat/completions",
+        "transport": "sse",
+        "usage": {
+          "prompt_tokens": 12757,
+          "completion_tokens": 714,
+          "total_tokens": 13471,
+          "completion_tokens_details": {
+            "reasoning_tokens": 57
+          }
+        }
+      },
+      "judge_elapsed_ms": 27847
+    },
+    "source_verdict_sha256": "128258448a5d524cb0a3bbf23eb977b41143922adbe3b2e519b7a0785164b57f",
+    "current_deferred_status_preserved": true,
+    "new_business_request": false,
+    "new_judge_request": false
+  }
+}

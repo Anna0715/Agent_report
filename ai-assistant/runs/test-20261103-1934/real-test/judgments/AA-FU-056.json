@@ -1,0 +1,57 @@
+{
+  "business_status": "pass",
+  "kind": "business_review",
+  "confidence": "high",
+  "failure_categories": [],
+  "business_reason": "回答正确说明当前可访问范围未找到北极星迁移项目，并请求提供其他名称或项目链接，没有编造进展或断言全系统不存在。群聊和汇报的空结果有实际查询支撑，且明确说明未覆盖30天以前的群聊。",
+  "evidence_assessment": {
+    "sufficient": true,
+    "comment_grounding": "not_applicable",
+    "reason": "认证预检以CFO身份完整检查可见项目，matches为空；本轮entity_resolve返回complete/not_found，project_query按北极星名称查询返回0。两次群消息关键词查询完整覆盖近30天且无命中，report_digest对应日期范围返回0，足以支撑回答；目标项目未找到，无需额外读取评论。"
+  },
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "pass",
+      "reason": "在当前授权范围未找到项目时如实说明无法确认进展，并补问名称或链接；没有将检索无结果扩大为全系统不存在，时间覆盖边界也表述正确。",
+      "evidence_refs": [
+        "authenticated_preflight.absent_project：complete=true，matches=[]，CFO身份",
+        "trace seq 27、42：entity_resolve complete/not_found",
+        "trace seq 43：project_query total=0",
+        "trace seq 31、44：group_message_search近30天无命中",
+        "trace seq 46：report_digest total=0",
+        "turns step 2.answer"
+      ]
+    }
+  ],
+  "suggestions": [],
+  "reviewed_at": "2026-11-04T01:55:18.651382+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "real-test-three-cases-20261104-v1",
+  "automatic_status": "fail",
+  "tool_chain": "步骤 2：activate_skills（completed） → scratchpad_write（failed） → entity_resolve（completed） → group_message_vector_search（completed） → memory_search（completed） → group_search（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed） → scratchpad_write（failed） → entity_resolve（completed） → project_query（completed） → group_message_search（外层 completed / 内层 completed） → memory_search（completed） → report_digest（completed） → group_search（外层 completed / 内层 completed）",
+  "review_observation": {
+    "basis": "d31b025749a3c68f45fac09cfaa4dd09d2ecea14c5c078c5e1b7d143679de44b",
+    "result": "9aaf7fc83eb21c2cdf3853f70b643cba1ed4f507d5a0e9c923f8297a4a138dab",
+    "requests": [
+      "c1fb49f5-1f08-4c40-aef5-09dfc978c186"
+    ]
+  },
+  "input_sha256": "022f925938a4526d4dcaca797278051717eef4865292866c2ff70b911f55f3eb",
+  "evidence_sha256": "9fac2e8d6a1131876e5f0ae58400b085d6db34f335a25a00acf258a14b8d8b02",
+  "review_baseline": {
+    "contract": "ai_assistant.review_baseline.v1",
+    "environment": "test",
+    "identity": {
+      "report_id": "review-b00e238ad1570ffcf4b8f490",
+      "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+      "environment": "test",
+      "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+    },
+    "revision": 17,
+    "fetched_at": "2026-11-04T01:41:36.289884+00:00",
+    "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+  },
+  "protected_api_judge_completed": true
+}
