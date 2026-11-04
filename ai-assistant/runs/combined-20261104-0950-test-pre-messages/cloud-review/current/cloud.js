@@ -91,6 +91,19 @@
           if(!ids.has(id)||!sourceCases.has(id)||!plain(original)||!Object.hasOwn(labels,original.status)||!text(original.reason,100000,true)||!Array.isArray(original.failure_categories)||!original.failure_categories.every(category=>text(category,1000))||!(original.task_completion_rate===null||Number.isFinite(original.task_completion_rate)&&original.task_completion_rate>=0&&original.task_completion_rate<=100))throw Error('延期复核的用例绑定无效。');
         }
       }
+      if(source.resolved_reviews!==undefined){
+        if(!plain(source.resolved_reviews))throw Error('来源复核的补证记录无效。');
+        for(const [id,resolution] of Object.entries(source.resolved_reviews)){
+          if(!sourceCases.has(id)||!plain(resolution)||!integer(resolution.case_version)||resolution.case_version===0||!validOverride(resolution.override)||resolution.override===null||!text(resolution.updated_by,128)||!resolution.updated_by||!text(resolution.updated_at,100)||!Number.isFinite(Date.parse(resolution.updated_at)))throw Error('来源复核的补证版本无效。');
+        }
+      }
+      if(source.workflow_case_ids!==undefined){
+        if(!Array.isArray(source.workflow_case_ids)||new Set(source.workflow_case_ids).size!==source.workflow_case_ids.length||!plain(source.workflow_original_results))throw Error('人工复核流程的来源配置无效。');
+        for(const id of source.workflow_case_ids){
+          const original=source.workflow_original_results[id];
+          if(!ids.has(id)||!sourceCases.has(id)||!plain(original)||!Object.hasOwn(labels,original.status)||!text(original.reason,100000,true)||!Array.isArray(original.failure_categories)||!original.failure_categories.every(category=>text(category,1000))||!(original.task_completion_rate===null||Number.isFinite(original.task_completion_rate)&&original.task_completion_rate>=0&&original.task_completion_rate<=100))throw Error('人工复核流程的业务请求绑定无效。');
+        }
+      }
       sourceIds.add(identity.report_id);
     }
     return value;
@@ -150,10 +163,12 @@
     const byId = new Map((state?.cases || []).map(row => [row.case_id,row]));
     const inherited = new Map();
     sourceStates.forEach((snapshot,index)=>{
-      const source=base.review_sources[index], eligible=new Set(source.eligible_case_ids),deferred=new Set(source.deferred_case_ids||[]);
+      const source=base.review_sources[index], eligible=new Set(source.eligible_case_ids),deferred=new Set(source.deferred_case_ids||[]),workflow=new Set(source.workflow_case_ids||[]);
       const names=new Map(snapshot.history.map(item=>[item.actor,item.actor_name]));
-      for(const row of snapshot.cases)if((eligible.has(row.case_id)||deferred.has(row.case_id))&&row.version>0){
-        inherited.set(row.case_id,{row,source,snapshot,workflowOnly:!eligible.has(row.case_id),name:names.get(row.updated_by)||'已授权复核员'});
+      for(const row of snapshot.cases)if((eligible.has(row.case_id)||deferred.has(row.case_id)||workflow.has(row.case_id))&&row.version>0){
+        const resolved=source.resolved_reviews?.[row.case_id];
+        if(resolved&&row.version===resolved.case_version&&sameOverride(row.override,resolved.override)&&row.updated_by===resolved.updated_by&&row.updated_at===resolved.updated_at)continue;
+        inherited.set(row.case_id,{row,source,snapshot,workflowOnly:!eligible.has(row.case_id),sameRequest:workflow.has(row.case_id),sameCase:deferred.has(row.case_id),name:names.get(row.updated_by)||'已授权复核员'});
       }
     });
     return base.rows.map(original => {
@@ -164,12 +179,13 @@
       const prior=inherited.get(original.case_id);
       // A saved current-batch review or reset takes precedence over the prior batch.
       if(prior&&(!remote||remote.version===0)){
-        const saved=prior.row.override, released=prior.workflowOnly&&saved?.business_status!=='deferred';
-        const result=released?prior.source.deferred_original_results[original.case_id]:saved?{status:saved.business_status,reason:saved.business_reason,failure_categories:saved.failure_categories,task_completion_rate:saved.business_status==='pass'?100:isFailure(saved.business_status)?0:null}:prior.source.original_results[original.case_id];
+        const saved=prior.row.override, queue=prior.sameRequest&&['skip','pending_qa','pending_fix'].includes(saved?.business_status),deferred=prior.sameCase&&saved?.business_status==='deferred';
+        const released=prior.workflowOnly&&!queue&&!deferred;
+        const result=released?(prior.sameRequest?prior.source.workflow_original_results[original.case_id]:prior.source.deferred_original_results[original.case_id]):saved?{status:saved.business_status,reason:saved.business_reason,failure_categories:saved.failure_categories,task_completion_rate:saved.business_status==='pass'?100:isFailure(saved.business_status)?0:null}:prior.source.original_results[original.case_id];
         Object.assign(row,result,{updated_by:prior.row.updated_by,updated_at:prior.row.updated_at,inherited_override:released?null:saved,
           review_reuse:{mode:'live_source',source_report_id:prior.source.identity.report_id,source_url:prior.source.url,
             revision:prior.snapshot.revision,case_version:prior.row.version,actor:prior.row.updated_by,actor_name:prior.name,
-            reviewed_at:prior.row.updated_at,source_reset:saved===null,source_deferral_released:released,inheritance_chain:original.review_reuse||null}});
+            reviewed_at:prior.row.updated_at,source_reset:saved===null,source_deferral_released:released&&!prior.sameRequest,source_workflow_released:released&&prior.sameRequest,source_same_request_workflow:prior.workflowOnly&&queue,inheritance_chain:original.review_reuse||null}});
       }
       return row;
     });
@@ -318,6 +334,23 @@
       <section class="panel"><h2>GPT 执行稳定性与资源效率复评（${esc(op.environment||'未执行')}）</h2><div class="metrics">${metricCard('稳定性通过',`${ratings.pass||0}/${robustScored}`,'原始稳定性复评')}${metricCard('效率优秀/良好',`${efficiencyGood}/${efficiencyScored}`,'原始效率复评')}${metricCard('稳定性平均分',fmtNumber(op.summary?.robustness?.average_score),`${op.summary?.robustness?.scored_cases||0} 条有分`)}${metricCard('效率平均分',fmtNumber(op.summary?.efficiency?.average_score),`${op.summary?.efficiency?.scored_cases||0} 条有分`)}${metricCard('证据不足',`${ratings.insufficient||0}/${effRatings.insufficient||0}`,'稳定性 / 效率')}</div><p style="margin-top:12px"><b>综合评估：</b>${esc(op.assessment||'未取得 GPT 复评结论')}</p><div class="table-wrap"><table><thead><tr><th>优先级</th><th>领域</th><th>建议</th><th>验收方式</th></tr></thead><tbody>${recommendations}</tbody></table></div><p class="muted" style="margin-top:10px">连续完成只认多次独立运行证据；Token 未采集保持证据不足，不补 0。其中 ${unavailableOps} 条因裁判服务错误未完成，按未评测排除。</p></section>
       <p class="muted">报告生成时间：${esc(s.generated_at||'未记录')}。Trace、计划、稳定性和效率是本批次原始执行指标；人工改判即时更新业务状态、任务成功率、失败索引和成功样本成本。</p>`;
   }
+  function renderAudit() {
+    if(!state){
+      $('audit-count').textContent='';
+      $('audit-list').innerHTML='<li>登录并获得报告访问授权后，可读取云端修改记录。</li>';
+      return;
+    }
+    const batches=[{snapshot:state,identity:base.identity,url:null},...sourceStates.map((snapshot,index)=>({snapshot,identity:base.review_sources[index].identity,url:base.review_sources[index].url}))];
+    const events=batches.flatMap(batch=>batch.snapshot.history.map(item=>({item,batch})));
+    events.sort((left,right)=>Date.parse(right.item.at)-Date.parse(left.item.at)||right.item.revision-left.item.revision||left.batch.identity.report_id.localeCompare(right.batch.identity.report_id));
+    const prior=events.length-state.history.length;
+    $('audit-count').textContent=sourceStates.length?`${events.length} 条修订记录（本批次 ${state.history.length} 条，原批次 ${prior} 条）`:`${state.history.length} 条记录`;
+    $('audit-list').innerHTML=events.length?events.map(({item,batch})=>{
+      const row=base.rows.find(row=>row.case_id===item.case_id),target=row?`#${full?full.anchor(row):row.case_id}`:`${batch.url||''}#failure-${batch.identity.environment}-${item.case_id}`;
+      const origin=batch.url?`<a href="${esc(batch.url)}" target="_blank" rel="noopener">${esc(batch.identity.run_id)}</a>`:'当前批次';
+      return `<li data-audit-report="${esc(batch.identity.report_id)}" data-audit-revision="${item.revision}" data-audit-case="${esc(item.case_id)}"><strong>${esc(item.actor_name)}</strong> · <a href="${esc(target)}">${esc(item.case_id)}</a> · ${esc(labels[item.before?.business_status]||'原始裁判')} → ${esc(labels[item.after?.business_status]||'恢复原判')} <time datetime="${esc(item.at)}">${esc(time(item.at))}</time><small>${origin} · r${item.revision} · ${esc(item.after?.business_reason||'移除人工覆盖；原始判定恢复，历史记录保留。')}</small></li>`;
+    }).join(''):'<li>尚无人工复核修改。</li>';
+  }
   function render() {
     if (!base) { controls(); return; }
     const rows = effectiveRows();
@@ -326,20 +359,11 @@
     $('results-source').textContent = state ? connected && !stale ? `已读取云端 r${state.revision}。总结基于已保存改判实时重算；未提交草稿不计入汇总。` : `以下含上次读取的云端 r${state.revision}，不是当前最新结果。请重新登录或拉取云端结果。` : '以下为报告原始结果，尚未读取云端复核。';
     $('run-label').textContent = `${base.identity.run_id} · ${base.identity.report_id}`;
     $('actor-label').textContent = state ? `${state.current_actor.name} · ${state.current_actor.role==='reviewer'?document.body.dataset.reviewMode==='read'?'复核员（在复核页修改）':'复核员（可修改）':'只读账号'}` : '';
-    $('audit-count').textContent = state ? `${state.history.length} 条记录` : '';
-    $('audit-list').innerHTML = !state ? '<li>登录并获得报告访问授权后，可读取云端修改记录。</li>' : state.history.length ? [...state.history].reverse().map(item=>{const row=base.rows.find(r=>r.case_id===item.case_id);return `<li><strong>${esc(item.actor_name)}</strong> · <a href="#${full?full.anchor(row):esc(item.case_id)}">${esc(item.case_id)}</a> · ${esc(labels[item.before?.business_status] || '原始裁判')} → ${esc(labels[item.after?.business_status] || '恢复原判')} <time>${esc(time(item.at))}</time><small>云端 r${item.revision} · ${esc(item.after?.business_reason || '移除人工覆盖；原始裁判恢复，历史记录保留。')}</small></li>`;}).join('') : '<li>尚无人工复核修改。</li>';
+    renderAudit();
     if(sourceStates.length){
       const revisions=sourceStates.map(source=>`r${source.revision}`).join('、');
       $('cloud-version').textContent+=` · 来源 ${revisions}`;
       $('results-source').textContent+=` 同时读取来源报告 ${revisions}；本批次已保存的改判或恢复原判优先。业务证据未变时沿用来源结论，同一用例的已保存延期保留为工作流状态。`;
-      $('audit-count').textContent+=` · 来源 ${sourceStates.reduce((total,source)=>total+source.history.length,0)} 条（保留原批次）`;
-      $('audit-list').innerHTML+=sourceStates.map((source,index)=>{
-        const origin=base.review_sources[index];
-        return `<li><strong>来源报告 · r${source.revision}</strong> · <a href="${esc(origin.url)}" target="_blank" rel="noopener">查看原批次完整记录</a><ul>${[...source.history].reverse().map(item=>{
-          const row=base.rows.find(row=>row.case_id===item.case_id),href=origin.url+(row?`#${full?full.anchor(row):esc(item.case_id)}`:'');
-          return `<li><strong>${esc(item.actor_name)}</strong> · <a href="${esc(href)}" target="_blank" rel="noopener">${esc(item.case_id)}</a> · ${esc(labels[item.before?.business_status]||'原始裁判')} → ${esc(labels[item.after?.business_status]||'恢复原判')} <time>${esc(time(item.at))}</time><small>来源 r${item.revision} · ${esc(item.after?.business_reason||'恢复来源报告原判，审计记录保留。')}</small></li>`;
-        }).join('')}</ul></li>`;
-      }).join('');
     }
     renderCases(); controls();
   }

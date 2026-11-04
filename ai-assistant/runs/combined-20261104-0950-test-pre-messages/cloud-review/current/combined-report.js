@@ -21,7 +21,7 @@
     if (r.temporal_review && !r.override && r.review_reuse?.mode!=='live_source') return r.status==='pending_fix'?'AI时间复裁 · 保留人工待修复状态':'AI按原追问时间复裁';
     const source=r.review_reuse;
     if (!source) return '原始判定';
-    if(source.mode==='live_source')return `${source.source_deferral_released?'来源延期已解除，显示本轮评测':'来源报告实时复核'} · <a href="${esc(source.source_url)}" target="_blank" rel="noopener">原批次</a> · r${source.revision} · ${esc(source.actor_name)} · ${esc(source.reviewed_at)}${source.source_reset&&!source.source_deferral_released?' · 已恢复来源原判':''}`;
+    if(source.mode==='live_source')return `${source.source_workflow_released?'来源复核流程已解除，显示本轮评测':source.source_deferral_released?'来源延期已解除，显示本轮评测':source.source_same_request_workflow?'保留同一业务请求的人工复核状态':'来源报告实时复核'} · <a href="${esc(source.source_url)}" target="_blank" rel="noopener">原批次</a> · r${source.revision} · ${esc(source.actor_name)} · ${esc(source.reviewed_at)}${source.source_reset&&!source.source_deferral_released&&!source.source_workflow_released?' · 已恢复来源原判':''}`;
     const from=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.source_url||'')?`<a href="${esc(source.source_url)}" target="_blank" rel="noopener">上一份报告</a>`:'上一份报告';
     return `${source.mode==='deferred_skip'?'上轮延期，本轮跳过':source.mode==='carried_forward'?'本轮未重跑，保留已保存复核':source.mode==='same_request_preserved'?'原请求复评，保留已保存人工结论':source.mode==='source_report_merge'?'沿用来源报告已保存人工复核':'结果一致，沿用已保存复核'} · ${from} · r${esc(source.revision)}${source.actor_name?` · ${esc(source.actor_name)}`:''}${source.reviewed_at?` · ${esc(source.reviewed_at)}`:''}`;
   };
@@ -187,7 +187,7 @@
       select.title=writable?'选择状态后填写复核理由并保存':'请先登录有修改权限的复核账号';
       const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=taskRate(r);
       card.querySelector('.failure-tags').innerHTML=`<b>当前失败分类：</b>${esc(r.failure_categories.join('、')||'—')}`;
-      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.review_reuse?.source_deferral_released?'来源延期已解除，显示本轮评测':r.review_reuse?.mode==='live_source'?'来源报告已保存复核':r.temporal_review?'AI按原追问时间复裁':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
+      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.review_reuse?.source_workflow_released?'来源复核流程已解除，显示本轮评测':r.review_reuse?.source_deferral_released?'来源延期已解除，显示本轮评测':r.review_reuse?.mode==='live_source'?'来源报告已保存复核':r.temporal_review?'AI按原追问时间复裁':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
   }
