@@ -11,7 +11,7 @@
   const text = (value, limit, multiline = false) => typeof value === 'string' && value.length <= limit && !(multiline ? /[\u0000-\u0008\u000b-\u001f\u007f-\u009f]/ : /[\u0000-\u001f\u007f-\u009f]/).test(value);
   const time = value => value ? new Date(value).toLocaleString('zh-CN', {hour12:false}) : '未修改';
   const drafts = new Map(); // Unsaved work stays in memory; never persist credentials or drafts.
-  let config = null, base = null, state = null, session = null, busy = false, currentEdit = null;
+  let config = null, base = null, state = null, session = null, busy = false, syncing = false, currentEdit = null;
   let configured = false, connected = false, configError = '';
   let auth = null, stale = false, lastSynced = null;
   const full = window.AICombinedReport;
@@ -131,7 +131,10 @@
     $('logout').disabled = busy;
     $('refresh').disabled = busy || !connected;
     $('export-snapshot').disabled = busy || !connected;
-    for (const el of document.querySelectorAll('[data-edit-case], [data-case-status-select]')) el.disabled = busy || !canWrite();
+    for (const el of document.querySelectorAll('[data-edit-case], [data-case-status-select]')) {
+      const disabled = busy || !canWrite();
+      if (el.disabled !== disabled) el.disabled = disabled;
+    }
     for (const id of ['edit-save','edit-refresh','edit-status','edit-categories']) $(id).disabled = busy || !canWrite();
     $('edit-reason').disabled = busy || !canWrite() || $('edit-status').value === 'reset';
     $('edit-cancel').disabled = busy;
@@ -190,7 +193,9 @@
     try { validated = validateSnapshot(value); }
     catch(error) { if(auth)auth.clear('云端快照校验失败，已停止连接。');else expire(); throw error; }
     if (state && validated.revision < state.revision) throw Error('云端返回旧版本快照，已拒绝回退；请联系管理员核对。');
-    state = validated; connected = true; stale = false; lastSynced = new Date().toISOString(); render();
+    const changed = !connected || stale || JSON.stringify(state) !== JSON.stringify(validated);
+    state = validated; connected = true; stale = false; lastSynced = new Date().toISOString();
+    if (changed) render(); else controls();
   }
   const snapshot = () => request('/rest/v1/rpc/ai_review_snapshot',{p_report_id:base.identity.report_id,p_source_digest:base.identity.source_digest});
   const fmtNumber = (value, digits=1) => value === null || value === undefined || !Number.isFinite(Number(value)) ? '—' : Number(value).toLocaleString('zh-CN',{maximumFractionDigits:digits,minimumFractionDigits:digits});
@@ -418,17 +423,20 @@
     }
   });
   async function synchronize() {
-    if(!configured||busy||document.hidden||$('edit-dialog').open) return;
-    busy=true;
+    if(!configured||busy||syncing||document.hidden||$('edit-dialog').open) return;
+    syncing=true;
     try {
       if(auth&&!auth.authenticated){if(!await auth.restore())return;session=auth;}
       if(!session)return;
-      const previousRevision=state?.revision,wasStale=stale;
-      accept(await snapshot());
+      const previousState=state,previousSession=session,previousRevision=state?.revision,wasStale=stale;
+      const value=await snapshot();
+      // A foreground save/refresh or another login supersedes this in-flight read.
+      if(session!==previousSession||busy||state!==previousState) return;
+      accept(value);
       if(wasStale||previousRevision!==state.revision)notice(`已同步云端 r${state.revision}，报告统计、问题汇总和用例结论已更新。`);
     } catch(error) {
       stale=true;render();notice(`同步未完成：${error.message} 当前显示上次确认的数据，不保证最新。`,true);
-    } finally {busy=false;controls();}
+    } finally {syncing=false;controls();}
   }
   if(channel)channel.onmessage=event=>{if(event.data?.report_id===base?.identity.report_id)synchronize();};
   window.setInterval(synchronize,5000);

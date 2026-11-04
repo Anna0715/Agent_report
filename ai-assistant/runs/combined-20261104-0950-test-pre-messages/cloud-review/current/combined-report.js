@@ -126,7 +126,15 @@
       kpis[1].querySelector('small').textContent=`${reportEnvironment} ${total.attempted}`;
     }
   }
-  function options(id,values){const select=$(id),value=select.value;select.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());for(const v of [...new Set(values)].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true})))select.add(new Option(v,v));select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;}
+  function options(id,values){
+    const select=$(id),value=select.value;
+    const next=[...new Set(values)].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}));
+    const current=[...select.options].slice(1).map(option=>option.value);
+    if(JSON.stringify(current)===JSON.stringify(next)||document.activeElement===select)return;
+    select.querySelectorAll('option:not(:first-child)').forEach(option=>option.remove());
+    for(const item of next)select.add(new Option(item,item));
+    select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;
+  }
   function filtered(){const env=$('filter-environment').value,s=$('filter-status').value,p=$('filter-priority').value,c=$('category').value,q=$('search').value.trim().toLowerCase();return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!q||[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(q)));}
   function renderCases(current,source,snapshot,canWrite){
     rows=current;base=source;state=snapshot;writable=canWrite;
@@ -135,6 +143,12 @@
       $('prev').onclick=()=>{page--;renderTable();};$('next').onclick=()=>{page++;renderTable();};
       $('category').onchange=()=>{page=1;renderTable();};
       window.addEventListener('hashchange',showTarget);
+      // Apply option-list changes after the native popup has finished its change/blur events.
+      document.addEventListener('focusout',event=>{
+        const select=event.target;
+        if(!select.matches('[data-case-status-select],#filter-priority,#category'))return;
+        requestAnimationFrame(()=>{if(document.activeElement!==select)renderCases(rows,base,state,writable);});
+      });
       initialized=true;
     }
     options('filter-priority',rows.map(r=>r.priority||'未标注'));
@@ -164,9 +178,10 @@
         card.querySelector('.failure-head > .status').replaceWith(select);
       }
       select.className=`status case-status-select ${r.status}`;
-      select.querySelector('option[value="skip"]').textContent=r.kind==='not_executed'?'未执行':r.kind==='local_fixture_pass'?'本地回放通过':label.skip;
-      select.value=r.status;
-      select.disabled=!writable;
+      const skipOption=select.querySelector('option[value="skip"]'),skipText=r.kind==='not_executed'?'未执行':r.kind==='local_fixture_pass'?'本地回放通过':label.skip;
+      if(skipOption.textContent!==skipText)skipOption.textContent=skipText;
+      if(document.activeElement!==select&&select.value!==r.status)select.value=r.status;
+      if(select.disabled!==!writable)select.disabled=!writable;
       select.title=writable?'选择状态后填写复核理由并保存':'请先登录有修改权限的复核账号';
       const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=taskRate(r);
       card.querySelector('.failure-tags').innerHTML=`<b>当前失败分类：</b>${esc(r.failure_categories.join('、')||'—')}`;
