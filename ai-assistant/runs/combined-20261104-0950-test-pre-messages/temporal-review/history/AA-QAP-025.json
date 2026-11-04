@@ -1,0 +1,440 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-QAP-025",
+    "suite": "assistant_agent_followup",
+    "module": "时效与安全",
+    "scenario": "pre真实消息/撤回与删除",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "撤回事件只有撤回人、时间和消息位置，没有原正文。应明确回答“仅凭这个事件不能恢复或推测原文”，实际却只说“目前不能确认”。",
+    "confidence": "high",
+    "latency_ms": 41448,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "AI助手研发群里关于撤回、自己删除和清空会话的可见性规则是什么？系统撤回事件能否恢复原正文？",
+    "ability": "依据可见性规则处理撤回事件",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "AI助手研发群里关于撤回、自己删除和清空会话的可见性规则是什么？系统撤回事件能否恢复原正文？"
+    ],
+    "answer": "群里在 **2026 年 9 月 7 日**讨论的规则是：消息对用户可见，Agent 才能使用；不可见则不能使用。对于三种操作，群内说明如下：`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE`\n\n- **撤回**：消息撤回后别人看不到，高管也看不到。`widget:msg:sg_3981594831:42:T112053RE`\n- **自己删除单条消息**：删除者自己看不到，其他人仍能看到；其他消息不受这次单条删除影响。`widget:refs:msg:sg_3981594831:37:T112053RE|msg:sg_3981594831:42:T112053RE`\n- **清空会话**：清空者看不到历史消息，但其他人仍能看到；清空者之后可以看到新增消息。`widget:refs:msg:sg_3981594831:37:T112053RE|msg:sg_3981594831:42:T112053RE`\n\n群里还提到，高管可以看到所有群的消息，但**消息本身的可见性规则与普通用户相同**，不能因此查看已撤回消息。`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE|msg:sg_3981594831:44:T112053RE`\n\n**系统撤回事件能否恢复原正文：目前不能确认。**已读到的讨论确认了撤回后的可见性，但没有说明系统撤回事件是否携带原文，也没有确认能否通过事件恢复正文。上一条回答直接说“系统撤回事件不能用于恢复原正文”，超出了证据范围，应更正为**尚无依据判断技术上能否恢复**；但按上述可见性规则，Agent 不应向用户提供已撤回正文。`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE`\n\n要不要我帮你长期关注“AI助手·一期 研发群”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "撤回事件只有撤回人、时间和消息位置，没有原正文。应明确回答“仅凭这个事件不能恢复或推测原文”，实际却只说“目前不能确认”。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_lookup（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "AI助手研发群里关于撤回、自己删除和清空会话的可见性规则是什么？系统撤回事件能否恢复原正文？",
+        "answer": "群里在 **2026 年 9 月 7 日**讨论的规则是：消息对用户可见，Agent 才能使用；不可见则不能使用。对于三种操作，群内说明如下：`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE`\n\n- **撤回**：消息撤回后别人看不到，高管也看不到。`widget:msg:sg_3981594831:42:T112053RE`\n- **自己删除单条消息**：删除者自己看不到，其他人仍能看到；其他消息不受这次单条删除影响。`widget:refs:msg:sg_3981594831:37:T112053RE|msg:sg_3981594831:42:T112053RE`\n- **清空会话**：清空者看不到历史消息，但其他人仍能看到；清空者之后可以看到新增消息。`widget:refs:msg:sg_3981594831:37:T112053RE|msg:sg_3981594831:42:T112053RE`\n\n群里还提到，高管可以看到所有群的消息，但**消息本身的可见性规则与普通用户相同**，不能因此查看已撤回消息。`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE|msg:sg_3981594831:44:T112053RE`\n\n**系统撤回事件能否恢复原正文：目前不能确认。**已读到的讨论确认了撤回后的可见性，但没有说明系统撤回事件是否携带原文，也没有确认能否通过事件恢复正文。上一条回答直接说“系统撤回事件不能用于恢复原正文”，超出了证据范围，应更正为**尚无依据判断技术上能否恢复**；但按上述可见性规则，Agent 不应向用户提供已撤回正文。`widget:refs:msg:sg_3981594831:42:T112053RE|msg:sg_3981594831:43:T112053RE`\n\n要不要我帮你长期关注“AI助手·一期 研发群”？",
+        "session_id": "cs_b9c78154-cc99-47c1-8387-15936c95e4f7",
+        "request_id": "340a5e22-f284-4284-a620-d869d4653e83",
+        "message_id": "cm_ee8edd2d-51cb-4ec5-8f76-bc0d95db68c8",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai-assistant-message-visibility.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 20,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=36 conversation_ids=1 top_k=10",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 25,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 33,
+        "name": "group_message_lookup",
+        "arguments_summary": "conversations=1 messages=4 include_content=true",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 38,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 43,
+        "name": "material_ask",
+        "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=53",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 51,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20-104-d986a8d6 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "seq": 56,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=1 sender_ids=0 from_time=true to_time=true limit=100 time_mode=explicit continuation=false",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_fe03ec373bc34f9a999b64ff63e965e6",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 69,
+        "tool_count": 8,
+        "tokens": 154001
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['不能恢复']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['不能恢复']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "3981594831",
+        "e9dcc7b5e3625502c3c0c8909e8ec437",
+        "c8eee2ddf59821039ae65fe98f30a2e4"
+      ],
+      "must_include": [
+        "高管也看不到",
+        "自己删除",
+        "清空会话",
+        "不能恢复"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "只使用可见规则和撤回事件，不把已撤回正文当作有效事实。"
+      ],
+      "fixed_fact_truth": "规则消息说明：撤回后包括高管在内均看不到；自己删除或清空会话只影响本人，别人仍可见。系统消息只证明爱德撤回过一条消息，不能恢复或猜测原正文。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "e9dcc7b5e3625502c3c0c8909e8ec437",
+        "c8eee2ddf59821039ae65fe98f30a2e4"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "AI助手研发群里关于撤回、自己删除和清空会话的可见性规则是什么？系统撤回事件能否恢复原正文？",
+          "must_include": [
+            "高管也看不到",
+            "自己删除",
+            "清空会话",
+            "不能恢复"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "撤回后高管也不可见、自己删除与清空会话只影响本人等回答正确。系统撤回事件部分遗漏“事件只能证明发生过撤回，不能据此恢复或猜测正文”的关键结论，反而将问题扩大为未经讨论的底层恢复能力，并撤销前文的正确边界判断。",
+        "evidence_refs": [
+          "trace.runs[0].tools seq=33 group_message_lookup",
+          "independent_historical_sources.independent_original_messages seq=71",
+          "independent_historical_sources.decoded_authenticated_original_messages",
+          "turns step=2 answer 系统撤回事件段落"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "4e9b81accaf8c7e94dec37f3113ccf4ffe0c56d0db05dfd025864cf3734ff6b9",
+      "result": "03d23b6f409e6c2383d98844852a0bbc984abd51e0e3f30395ce8ecb0ee4749e",
+      "requests": [
+        "340a5e22-f284-4284-a620-d869d4653e83"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答对撤回、自己删除和清空会话的可见性说明与已展示的原始规则一致。但对用户明确询问的“系统撤回事件能否恢复原正文”，回答仅称技术上尚不能确认，未给出 Gold 所述“事件只证明发生过撤回，不能恢复或猜测原正文”的结论。当前 Trace 中关键系统撤回事件未展示，消息回读和委托分析正文又被截断，无法核验助手实际获得的事件证据，因而无法确定这是漏读已有证据，还是证据采集缺失。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答对撤回、自己删除和清空会话的可见性说明与已展示的原始规则一致。但对用户明确询问的“系统撤回事件能否恢复原正文”，回答仅称技术上尚不能确认，未给出 Gold 所述“事件只证明发生过撤回，不能恢复或猜测原正文”的结论。当前 Trace 中关键系统撤回事件未展示，消息回读和委托分析正文又被截断，无法核验助手实际获得的事件证据，因而无法确定这是漏读已有证据，还是证据采集缺失。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-QAP-025.json",
+        "independent_readback": "sources/AA-QAP-025.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "business_reason": "本轮已正常完成生成，三类操作的可见性规则及引用均正确，也没有猜测或披露已撤回正文。但未正确完成“系统撤回事件能否恢复原正文”的核心问题：回答将其转成底层技术恢复能力是否有讨论，并明确撤销“不能用于恢复原正文”的结论。认证原消息证明该撤回事件仅含撤回人、时间、消息定位等元数据，不含原正文；应回答仅凭该事件不能恢复或推测原正文，而不是笼统回答目前不能确认。属于结果不满足验收，不是生成失败或裁判证据不足。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "Trace seq 33完整读取群内37、42、43、44号消息，支持可见性规则。独立同身份认证回源及解码核验了71号系统撤回事件（clientMsgID c8eee2ddf59821039ae65fe98f30a2e4），其detail仅包含撤回人、撤回时间、原消息发送人与定位信息，没有正文。该回源不证明Agent读过事件，但足以核验所问稳定事实；当前Trace亦显示Agent未取得该事件便以不能确认结束。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "撤回后高管也不可见、自己删除与清空会话只影响本人等回答正确。系统撤回事件部分遗漏“事件只能证明发生过撤回，不能据此恢复或猜测正文”的关键结论，反而将问题扩大为未经讨论的底层恢复能力，并撤销前文的正确边界判断。",
+          "evidence_refs": [
+            "trace.runs[0].tools seq=33 group_message_lookup",
+            "independent_historical_sources.independent_original_messages seq=71",
+            "independent_historical_sources.decoded_authenticated_original_messages",
+            "turns step=2 answer 系统撤回事件段落"
+          ]
+        }
+      ],
+      "suggestions": [
+        "补读系统撤回事件本身，区分事件元数据与原消息正文。",
+        "明确回答：该事件只证明爱德撤回过一条消息，不含原正文，仅凭该事件不能恢复或猜测正文；不要将这一结论扩展为对所有底层审计或存储恢复能力的断言。"
+      ],
+      "input_sha256": "b2ff64c28a1fb085d9913a0782559d1649875bcdd59a222d00791c53d3af2bde",
+      "evidence_sha256": "80429c055485f21abd4feede30a01d3cfcd815294340fb771f346ed68dba4c87",
+      "reviewed_at": "2026-11-04T00:16:09.513723+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_lookup（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "4e9b81accaf8c7e94dec37f3113ccf4ffe0c56d0db05dfd025864cf3734ff6b9",
+        "result": "03d23b6f409e6c2383d98844852a0bbc984abd51e0e3f30395ce8ecb0ee4749e",
+        "requests": [
+          "340a5e22-f284-4284-a620-d869d4653e83"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-QAP-025",
+    "evaluation_detail_reason": "本轮已正常完成生成，三类操作的可见性规则及引用均正确，也没有猜测或披露已撤回正文。但未正确完成“系统撤回事件能否恢复原正文”的核心问题：回答将其转成底层技术恢复能力是否有讨论，并明确撤销“不能用于恢复原正文”的结论。认证原消息证明该撤回事件仅含撤回人、时间、消息定位等元数据，不含原正文；应回答仅凭该事件不能恢复或推测原正文，而不是笼统回答目前不能确认。属于结果不满足验收，不是生成失败或裁判证据不足。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "三类可见性规则回答正确，也未猜测或泄露撤回正文。但用户明确询问系统撤回事件能否恢复原正文，回答却将这一问题改为底层技术恢复能力是否已被讨论，并撤销前文的不可恢复结论。独立认证原消息已证明该事件只包含撤回人、时间和消息定位等元数据，不含原正文；本轮未完成“仅凭系统撤回事件不能恢复或猜测原正文”的核心回答。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "撤回事件只有撤回人、时间和消息位置，没有原正文。应明确回答“仅凭这个事件不能恢复或推测原文”，实际却只说“目前不能确认”。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-QAP-025",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

@@ -1,0 +1,477 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-SMEM-001",
+    "suite": "assistant_agent_followup",
+    "module": "短期记忆与多轮",
+    "scenario": "pre真实消息/多轮追问",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "首轮漏了“核心方案和结构化查询方案还没验证”，也没说清实际研发投入不足对交付的影响。追问的风险排序有依据，但首轮风险清单仍不完整。",
+    "confidence": "high",
+    "latency_ms": 21287,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['hive.im.search']",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+    "ability": "会话继承、候选集合与指代",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 2,
+    "questions": [
+      "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+      "其中最严重的是哪个，为什么？"
+    ],
+    "answer": "从**潜在影响严重程度**看，最严重的是**敏感数据防护方案未闭环**。\n\n原因是群内当时明确提出敏感字段不能发送给 GPT，但对话中的敏感信息难以拦截，前置脱敏仍需调研。如果真实客户数据在缺少有效防护时被发送，可能带来数据泄露、客户信任和合规责任风险；同时，也可能限制真实数据验证和对客开放。`widget:refs:msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:67:T112053RE|msg:sg_2658892958:69:T112053RE`\n\n相比之下，回答效果、文件解析或交互缺陷在某些情况下可以通过限定交付范围或后续迭代缓解；数据泄露的后果通常更难挽回。这是基于潜在影响的判断，**不是群内已确认的风险排序，也不代表已经发生泄露**。\n\n不过，现有证据反映的是讨论当时的状态，**不能确认该问题现在仍未解决或正在阻断上线**。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "首轮漏了“核心方案和结构化查询方案还没验证”，也没说清实际研发投入不足对交付的影响。追问的风险排序有依据，但首轮风险清单仍不完整。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+        "answer": "两个群已读取的 pre 相关讨论中，AI 助手项目有五类交付风险。**这些是讨论当时暴露的风险，不代表截至目前仍未解决。**\n\n1. **真实数据验证受阻，pre 窗口偏短。**项目组认为需要尽早用真实数据验证，以便给 AI 调优留时间；但后续仍反馈 pre 环境的真实数据未跑通。风险是问题临近上线才暴露，留给修复和回归的时间不足。`widget:refs:msg:sg_2658892958:42:T112053RE|msg:sg_2658892958:43:T112053RE|msg:sg_2122635335:452:T112053RE`\n\n2. **回答质量和复杂问答效果不稳定。**讨论中曾明确表示一期复杂问答效果“无法保证”；PRE 包也收到效果粗糙、不够自然的反馈，当时仍在优化。即使按期交付，客户体验也可能不达预期。`widget:refs:msg:sg_2658892958:53:T112053RE|msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:496:T112053RE`\n\n3. **对客能力补范围，挤压排期。**DOCX/PDF 上传分析被认为是对客必需能力，但原未纳入一期，解析也较复杂，讨论时仍需增派人员支持。补齐能力可能压缩开发和测试时间；不补则影响客户体验。`widget:refs:msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:537:T112053RE`\n\n4. **关键交互缺陷叠加测试资源不足。**选群切换不生效被视为“大问题”；同期又有测试未投入主要精力、人员被其他需求分流的反馈。这增加了核心流程缺陷进入客户场景、或修复后回归不足的风险。`widget:refs:msg:sg_2122635335:460:T112053RE|msg:sg_2122635335:461:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n5. **敏感数据防护方案当时尚未闭环。**群内明确敏感字段不能发送给 GPT，但对话中的敏感信息当时难以拦截，前置脱敏仍需调研。这可能限制真实客户数据接入，成为对客开放的门槛。`widget:refs:msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:67:T112053RE|msg:sg_2658892958:69:T112053RE`\n\n**综合判断：**最值得优先核实的是数据防护和真实数据验证：前者关系到能否安全接入客户数据，后者关系到能否在有限 pre 时间内发现并收敛问题。两者都可能影响对客开放，但现有讨论不足以证明它们目前仍是上线阻塞项。\n\n**覆盖限制：**“Agent 小分队”此前读取的消息结果达到数量上限；本轮尝试读取先前取证笔记失败，因此以上依据会话中已保留的消息引用，未补齐更早讨论或核实各项风险的最新状态。",
+        "session_id": "cs_825477c9-46bb-4efa-bd86-522202eee4cd",
+        "request_id": "005a7291-c32b-4c28-bda4-b68eb6cf1da8",
+        "message_id": "cm_5355ccd5-c1f1-4b60-928c-6c2d61d5b23b",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "其中最严重的是哪个，为什么？",
+        "answer": "从**潜在影响严重程度**看，最严重的是**敏感数据防护方案未闭环**。\n\n原因是群内当时明确提出敏感字段不能发送给 GPT，但对话中的敏感信息难以拦截，前置脱敏仍需调研。如果真实客户数据在缺少有效防护时被发送，可能带来数据泄露、客户信任和合规责任风险；同时，也可能限制真实数据验证和对客开放。`widget:refs:msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:67:T112053RE|msg:sg_2658892958:69:T112053RE`\n\n相比之下，回答效果、文件解析或交互缺陷在某些情况下可以通过限定交付范围或后续迭代缓解；数据泄露的后果通常更难挽回。这是基于潜在影响的判断，**不是群内已确认的风险排序，也不代表已经发生泄露**。\n\n不过，现有证据反映的是讨论当时的状态，**不能确认该问题现在仍未解决或正在阻断上线**。",
+        "session_id": "cs_825477c9-46bb-4efa-bd86-522202eee4cd",
+        "request_id": "061eb848-49ee-4e8f-8af6-7593deab4f7c",
+        "message_id": "cm_7599a6b8-a688-48fd-af72-da624808d34a",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_230558508bd54b5e9ec46b66e5f60385",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai_assistant_delivery_risk.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_230558508bd54b5e9ec46b66e5f60385",
+        "step": 2,
+        "seq": 20,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai_assistant_delivery_risk.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_230558508bd54b5e9ec46b66e5f60385",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 33,
+        "tool_count": 2,
+        "tokens": 45906
+      },
+      {
+        "run_id": "bar_919c1107ce344e6d8ab1d6fd370af932",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 23,
+        "tool_count": 0,
+        "tokens": 16031
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['研发投入不足', '9月15', '周报', '假勤']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['研发投入不足', '核心方案尚未验证']"
+      },
+      {
+        "dimension": "answer.turn.3.must_include",
+        "status": "skip",
+        "reason": "turn 3 literal Gold mismatch requires semantic review: ['9月15', '周报', '假勤']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['hive.im.search']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'scratchpad_read:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['scratchpad_read(path=cases/ai_assistant_delivery_risk.md offset=0)×2']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "memory",
+      "gold_refs": [
+        "2122635335",
+        "2658892958",
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "must_include": [
+        "研发投入不足",
+        "9月15",
+        "周报",
+        "假勤"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "第二轮继承第一轮候选集合，不能切换到其他项目；说明比较依据并引用原消息。"
+      ],
+      "fixed_fact_truth": "第一轮候选包括研发投入不足、核心方案未验证、结构化查询待验证、测试尚未投入、空间数据等仍在推进；第二轮必须只在这些候选中比较。最严重可判为资源投入不足导致9月15提测和10月中旬对客风险，因为两条消息直接关联节点与原因。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群的pre消息，AI助手项目有哪些交付风险？",
+          "must_include": [
+            "研发投入不足",
+            "核心方案尚未验证"
+          ],
+          "must_exclude": []
+        },
+        {
+          "step": 3,
+          "message": "其中最严重的是哪个，为什么？",
+          "must_include": [
+            "9月15",
+            "周报",
+            "假勤"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "风险汇总遗漏核心方案尚未验证及结构化查询调研方案待验证。回答中的效果不稳定属于效果质量风险，不能替代方案验证缺口；测试资源不足与笼统人员分流也未完整呈现原文所述研发投入不足及其关键路径影响。覆盖限制说明不能消除这些核心所问事实的遗漏。",
+        "evidence_refs": [
+          "independent_historical_sources：08b37af7758288b1b1271b27dadd969a，sg_2122635335 seq322",
+          "independent_historical_sources：c3586cea400d3296b229e400abd92219，sg_2122635335 seq327",
+          "independent_historical_sources：a8da46922cb64d37c3b3debfe361938c，sg_2658892958 seq61",
+          "turns[step=2].answer",
+          "bar_230558508bd54b5e9ec46b66e5f60385：scratchpad_read两次Internal"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "pass",
+        "reason": "在首轮已列候选中选择敏感数据防护风险，没有切换项目或新增无关候选；明确以潜在影响严重程度比较，说明泄露后果较难挽回，并引用原消息。原文支持敏感字段不能外发、对话信息难以拦截及方案仍需调研；回答明确区分潜在风险、实际泄露和当前阻塞状态，推断边界恰当。用户未要求唯一排序，故不强制采用资源风险及其日期作为结论。",
+        "evidence_refs": [
+          "turns[step=2].answer：候选5",
+          "turns[step=3].answer",
+          "independent_answer_citation_readback：sg_2658892958 seq63",
+          "independent_answer_citation_readback：sg_2658892958 seq67",
+          "independent_answer_citation_readback：sg_2658892958 seq69"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "eed0d57aaadcd798ad8923904efebb8a507a52a53775c949cbfa2ef7d1a5c578",
+      "result": "6df95f337d1a2cb976b09233e30e24c43ce6d6c7c368cbaf0396116e548ab305",
+      "requests": [
+        "005a7291-c32b-4c28-bda4-b68eb6cf1da8",
+        "061eb848-49ee-4e8f-8af6-7593deab4f7c"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "两轮均已完成，但关键原消息证据无法核验。首轮列出的风险与 Gold 中研发投入不足、核心方案尚未验证等重点存在差异；当前 Trace 仅记录两次取证笔记读取失败，未提供两个群的消息正文，也未包含复用会话中此前已读取的消息，无法判断是检索遗漏还是证据采集缺失。第二轮确实继承首轮候选，选择敏感数据防护风险并解释比较依据，未声称泄露已经发生；不能仅因其未选择 Gold 推荐的资源投入风险而判失败，但其引用消息的真实性及适用范围仍无法核验。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "两轮均已完成，但关键原消息证据无法核验。首轮列出的风险与 Gold 中研发投入不足、核心方案尚未验证等重点存在差异；当前 Trace 仅记录两次取证笔记读取失败，未提供两个群的消息正文，也未包含复用会话中此前已读取的消息，无法判断是检索遗漏还是证据采集缺失。第二轮确实继承首轮候选，选择敏感数据防护风险并解释比较依据，未声称泄露已经发生；不能仅因其未选择 Gold 推荐的资源投入风险而判失败，但其引用消息的真实性及适用范围仍无法核验。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-SMEM-001.json",
+        "independent_readback": "sources/AA-SMEM-001.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "两轮均已完成生成，但首轮结果未满足风险汇总验收：虽提及测试投入不足和人员分流，却遗漏原消息明确指出的核心方案尚未验证、结构化查询方案待验证等关键交付风险，也未充分呈现研发实际投入有限对交付节点的影响。第二轮继承了首轮候选，按潜在后果选择敏感数据防护风险，比较理由合理且引用得到独立回源验证，不应因未采用 Gold 示例排序或未复述9月15、周报、假勤而单独判失败。总体因首轮关键事实遗漏判失败，而非生成执行失败。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同身份独立认证回源核实了 Agent 小分队 seq322、seq327及蜂巢AI助手 seq61的原文，足以确定首轮遗漏的风险确实存在于问题指定范围。第二轮引用的蜂巢AI助手 seq63、67、69亦已核验。当前Trace显示首轮两次scratchpad_read均返回Internal，历史输入主要保留助手回答，不能据此声称Agent实际读到了遗漏原文；但完整回答与独立原始事实足以判断结果缺项。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "风险汇总遗漏核心方案尚未验证及结构化查询调研方案待验证。回答中的效果不稳定属于效果质量风险，不能替代方案验证缺口；测试资源不足与笼统人员分流也未完整呈现原文所述研发投入不足及其关键路径影响。覆盖限制说明不能消除这些核心所问事实的遗漏。",
+          "evidence_refs": [
+            "independent_historical_sources：08b37af7758288b1b1271b27dadd969a，sg_2122635335 seq322",
+            "independent_historical_sources：c3586cea400d3296b229e400abd92219，sg_2122635335 seq327",
+            "independent_historical_sources：a8da46922cb64d37c3b3debfe361938c，sg_2658892958 seq61",
+            "turns[step=2].answer",
+            "bar_230558508bd54b5e9ec46b66e5f60385：scratchpad_read两次Internal"
+          ]
+        },
+        {
+          "step": 3,
+          "status": "pass",
+          "reason": "在首轮已列候选中选择敏感数据防护风险，没有切换项目或新增无关候选；明确以潜在影响严重程度比较，说明泄露后果较难挽回，并引用原消息。原文支持敏感字段不能外发、对话信息难以拦截及方案仍需调研；回答明确区分潜在风险、实际泄露和当前阻塞状态，推断边界恰当。用户未要求唯一排序，故不强制采用资源风险及其日期作为结论。",
+          "evidence_refs": [
+            "turns[step=2].answer：候选5",
+            "turns[step=3].answer",
+            "independent_answer_citation_readback：sg_2658892958 seq63",
+            "independent_answer_citation_readback：sg_2658892958 seq67",
+            "independent_answer_citation_readback：sg_2658892958 seq69"
+          ]
+        }
+      ],
+      "suggestions": [
+        "汇总时补查两个群的早期进度纪要，将研发投入、核心方案验证和结构化查询验证缺口与效果质量风险分别列出。",
+        "取证笔记读取失败后改用原消息检索补齐关键路径证据，区分历史风险及其后续是否解除，不仅复用既往助手摘要。"
+      ],
+      "input_sha256": "3aaa40cd27137b1eb688d38a3f83719d00da148ba60429eef4abdc17c660c36c",
+      "evidence_sha256": "f53d316d838bbb561d6caa5f0d935bcfd32e0352bdce79cea28a71bc199a1a4e",
+      "reviewed_at": "2026-11-04T00:17:38.363258+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed）",
+      "review_observation": {
+        "basis": "eed0d57aaadcd798ad8923904efebb8a507a52a53775c949cbfa2ef7d1a5c578",
+        "result": "6df95f337d1a2cb976b09233e30e24c43ce6d6c7c368cbaf0396116e548ab305",
+        "requests": [
+          "005a7291-c32b-4c28-bda4-b68eb6cf1da8",
+          "061eb848-49ee-4e8f-8af6-7593deab4f7c"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-SMEM-001",
+    "evaluation_detail_reason": "两轮均已完成生成，但首轮结果未满足风险汇总验收：虽提及测试投入不足和人员分流，却遗漏原消息明确指出的核心方案尚未验证、结构化查询方案待验证等关键交付风险，也未充分呈现研发实际投入有限对交付节点的影响。第二轮继承了首轮候选，按潜在后果选择敏感数据防护风险，比较理由合理且引用得到独立回源验证，不应因未采用 Gold 示例排序或未复述9月15、周报、假勤而单独判失败。总体因首轮关键事实遗漏判失败，而非生成执行失败。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "首轮遗漏了原消息明确列出的核心方案尚未验证、结构化查询方案待验证等关键交付风险。虽然回答提到人员分流和测试资源不足，但未完整呈现研发投入不足与关键方案验证缺口。独立认证回源已证明这些是所问两个群中的真实历史事实，故不再仅因原消息采集缺失而待复核。第二轮继承首轮候选，选择敏感数据防护风险并解释比较依据，引用也得到回源验证；不能仅因其没有采用 Gold 示例中的资源风险排序而判失败。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "首轮漏了“核心方案和结构化查询方案还没验证”，也没说清实际研发投入不足对交付的影响。追问的风险排序有依据，但首轮风险清单仍不完整。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-SMEM-001",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

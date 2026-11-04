@@ -1,0 +1,88 @@
+{
+  "business_status": "fail",
+  "business_reason": "三项可见性规则回答正确，引用也可定位。但真实系统撤回事件仅保留撤回人、时间和消息定位等元数据，没有原正文，不能据此恢复原文；回答只说不能确认，并撤销此前结论，未答清这一问。",
+  "failure_categories": [
+    "回答不完整",
+    "证据结论不充分"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "以2026年11月3日08:54:47 UTC为上界，9月的规则及撤回事件均是有效历史依据。可见性部分准确，但把“不能从该系统事件恢复正文”误转成技术能力未知，漏掉了可以由事件字段确定的结论。",
+      "evidence_refs": [
+        "sg_3981594831:42 / e9dcc7b5e3625502c3c0c8909e8ec437",
+        "sg_3981594831:71 / c8eee2ddf59821039ae65fe98f30a2e4",
+        "sg_3981594831:97 / a31f167be54aead73bb4aeae2a71a6a4",
+        "99f754d9-c384-46fd-b4d1-31dce6fb04e0:tool_seq_28"
+      ],
+      "comparison": {
+        "expected": "说明撤回后包括高管均不可见；自己删除及清空会话只影响本人。明确现有系统撤回事件不含原正文，仅凭事件不能恢复或猜测原文。",
+        "actual": "正确给出三项规则，但称规则未说明事件是否包含原文或可否恢复，因此不能确认，并为此前“不能恢复”的回答道歉。",
+        "difference": "未利用真实撤回事件只含元数据这一事实回答第二问；无需断言所有后台恢复手段均不存在，但应明确事件本身不能恢复正文。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "原始Trace核实了规则消息，独立回读提供了追问前已存在的真实撤回事件及完整字段，足以判断事件本身不能还原正文，不涉及推断后台是否另有恢复机制。"
+  },
+  "temporal_assessment": {
+    "scope": "historical",
+    "ignored_stale_expectations": [],
+    "current_factual_basis": [
+      {
+        "reference": "sg_3981594831:42 / e9dcc7b5e3625502c3c0c8909e8ec437",
+        "use": "核实撤回、本人删除与清空会话的三项可见性规则。"
+      },
+      {
+        "reference": "sg_3981594831:71 / c8eee2ddf59821039ae65fe98f30a2e4",
+        "use": "核实爱德的真实撤回事件只有撤回及消息定位元数据，不含原正文。"
+      },
+      {
+        "reference": "sg_3981594831:97 / a31f167be54aead73bb4aeae2a71a6a4",
+        "use": "补充核验另一真实撤回事件同样没有原正文。"
+      }
+    ],
+    "reason_changed": false,
+    "previous_failure_still_valid": true
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T08:54:47.485000+00:00",
+      "asked_at_ms": 1793696087485,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T17:54:47.485000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": false,
+      "historical_wording": true,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "67aec28a146b7f9abaf6fc0bd4225e3d6cd6080fb206e7b346613fb4ace7859f",
+  "evidence_sha256": "fb70c62ab28cc32603fd65a9ec0ec8e4c65cc0aaecbeac739238bb7b66bde91c",
+  "reviewed_at": "2026-11-04T05:09:55.634439+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 2：group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_lookup（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

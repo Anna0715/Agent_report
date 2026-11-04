@@ -1,0 +1,466 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-038",
+    "suite": "assistant_agent_followup",
+    "module": "跨源分析与风险",
+    "scenario": "pre真实消息/范围确认",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "自行只查近30天，漏了两项关键安排：李振民跟进AI助手PRD并确认处理人，以及产品和Bud、士衡确认一期必须做好的问答范围。",
+    "confidence": "high",
+    "latency_ms": 132561,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "跨“AI助手·一期 研发群”和“蜂巢AI助手”两个群，AI助手的PRD和复杂问答范围有哪些仍待评审/确认，分别由谁跟进？",
+    "ability": "识别PRD与问答范围待确认事项",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "跨“AI助手·一期 研发群”和“蜂巢AI助手”两个群，AI助手的PRD和复杂问答范围有哪些仍待评审/确认，分别由谁跟进？"
+    ],
+    "answer": "截至 **11 月 3 日**，能从群讨论中明确看到的后续主要是：**PRD 已对齐逻辑的回写、自定义字段方案，以及复杂问答的权限边界和图片／多轮交互验收**。但多项只有跟进安排、没有读到最终评审或验收结论，不能断言至今仍未完成。\n\n## PRD 与产品方案\n\n- **已对齐逻辑回写 PRD**：10 月 9 日，群内请 **SuChen** 更新已对齐的逻辑，原因是找不到原始结论。后续是否完成回写，当前材料未确认。`widget:msg:sg_3981594831:1386:T112053RE`\n- **自定义字段读写方案**：11 月 3 日，SuChen 提出 AI 助手读写都要支持，要求 **11 月中旬前出方案**；方案跟进人及评审结论未明确。相关的“项目同步任务自定义字段逻辑调整”则明确由 **Lexia** 负责小迭代，但不能直接等同于 AI 助手整体方案的负责人。`widget:refs:msg:sg_3981594831:2236:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2234:T112053RE`\n- **用户限额 PRD 评审**：10 月 19 日提出大家先看 PRD、另约时间评审，点名 **公台、进华、李振民、安柔、Webb 和梦成 Rhys** 参与；其中 Webb 涉及后台需求和设计协调。现有材料没有确认评审是否已举行，**参与人不等于评审负责人**。`widget:msg:sg_3981594831:1822:T112053RE`\n\n## 复杂问答范围与验收\n\n- **跨租户和权限边界**：讨论已明确新功能默认不跨租户、**写操作限制在本租户**；旧功能已有的跨租户能力暂不改。查询侧涉及空间、项目、任务的具体调整与验收仍需核实。群内要求 **孙文**调整，但未读到完成或验收结论。`widget:refs:msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2148:T112053RE|msg:sg_3981594831:2151:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE`\n- **图片／附件与多轮追问**：需要确认图片代替文本、图片内容在后续对话中的保留，以及关闭追问后是否正确结束。10 月 29 日提到提示词调整已发 pre，**孙文**被要求处理，待 **振民**打包后一起验收；11 月 2 日又询问孙文写入问答添加附件能否测试。最终测试和验收结果未确认。`widget:refs:msg:sg_3981594831:2096:T112053RE|msg:sg_3981594831:2108:T112053RE|msg:sg_3981594831:2127:T112053RE|msg:sg_3981594831:2142:T112053RE|msg:sg_3981594831:2172:T112053RE`\n- **专家／Skill 进入问答的方式**：11 月 3 日讨论了先选专家再进入问答，以及由 AI 按意图自动选择 Skill。**公台**称正在做 Skill 可插拔改造，**SuChen**倾向自动选择；这还是方向讨论，未读到复杂问答范围的正式确认，也未明确谁负责范围评审。`widget:refs:msg:sg_3981594831:2243:T112053RE|msg:sg_3981594831:2241:T112053RE|msg:sg_3981594831:2245:T112053RE`\n\n以上具名事项来自 **“AI助手·一期 研发群”**。本轮读取的 **“蜂巢AI助手”**近 30 天可见讨论中，没有足够依据列出对应的待评审项或跟进人；这不等于该群从未讨论过。研发群已补读 10 月 27 日至 11 月 3 日上下文，10 月更早的命中尚未全部补读，因此上述清单**不是完整未决事项清单**；之前提到的置顶接口、Word 待办遗漏等旧项，也尚不能确认当前状态。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "自行只查近30天，漏了两项关键安排：李振民跟进AI助手PRD并确认处理人，以及产品和Bud、士衡确认一期必须做好的问答范围。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "跨“AI助手·一期 研发群”和“蜂巢AI助手”两个群，AI助手的PRD和复杂问答范围有哪些仍待评审/确认，分别由谁跟进？",
+        "answer": "截至 **11 月 3 日**，能从群讨论中明确看到的后续主要是：**PRD 已对齐逻辑的回写、自定义字段方案，以及复杂问答的权限边界和图片／多轮交互验收**。但多项只有跟进安排、没有读到最终评审或验收结论，不能断言至今仍未完成。\n\n## PRD 与产品方案\n\n- **已对齐逻辑回写 PRD**：10 月 9 日，群内请 **SuChen** 更新已对齐的逻辑，原因是找不到原始结论。后续是否完成回写，当前材料未确认。`widget:msg:sg_3981594831:1386:T112053RE`\n- **自定义字段读写方案**：11 月 3 日，SuChen 提出 AI 助手读写都要支持，要求 **11 月中旬前出方案**；方案跟进人及评审结论未明确。相关的“项目同步任务自定义字段逻辑调整”则明确由 **Lexia** 负责小迭代，但不能直接等同于 AI 助手整体方案的负责人。`widget:refs:msg:sg_3981594831:2236:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2234:T112053RE`\n- **用户限额 PRD 评审**：10 月 19 日提出大家先看 PRD、另约时间评审，点名 **公台、进华、李振民、安柔、Webb 和梦成 Rhys** 参与；其中 Webb 涉及后台需求和设计协调。现有材料没有确认评审是否已举行，**参与人不等于评审负责人**。`widget:msg:sg_3981594831:1822:T112053RE`\n\n## 复杂问答范围与验收\n\n- **跨租户和权限边界**：讨论已明确新功能默认不跨租户、**写操作限制在本租户**；旧功能已有的跨租户能力暂不改。查询侧涉及空间、项目、任务的具体调整与验收仍需核实。群内要求 **孙文**调整，但未读到完成或验收结论。`widget:refs:msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2148:T112053RE|msg:sg_3981594831:2151:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE`\n- **图片／附件与多轮追问**：需要确认图片代替文本、图片内容在后续对话中的保留，以及关闭追问后是否正确结束。10 月 29 日提到提示词调整已发 pre，**孙文**被要求处理，待 **振民**打包后一起验收；11 月 2 日又询问孙文写入问答添加附件能否测试。最终测试和验收结果未确认。`widget:refs:msg:sg_3981594831:2096:T112053RE|msg:sg_3981594831:2108:T112053RE|msg:sg_3981594831:2127:T112053RE|msg:sg_3981594831:2142:T112053RE|msg:sg_3981594831:2172:T112053RE`\n- **专家／Skill 进入问答的方式**：11 月 3 日讨论了先选专家再进入问答，以及由 AI 按意图自动选择 Skill。**公台**称正在做 Skill 可插拔改造，**SuChen**倾向自动选择；这还是方向讨论，未读到复杂问答范围的正式确认，也未明确谁负责范围评审。`widget:refs:msg:sg_3981594831:2243:T112053RE|msg:sg_3981594831:2241:T112053RE|msg:sg_3981594831:2245:T112053RE`\n\n以上具名事项来自 **“AI助手·一期 研发群”**。本轮读取的 **“蜂巢AI助手”**近 30 天可见讨论中，没有足够依据列出对应的待评审项或跟进人；这不等于该群从未讨论过。研发群已补读 10 月 27 日至 11 月 3 日上下文，10 月更早的命中尚未全部补读，因此上述清单**不是完整未决事项清单**；之前提到的置顶接口、Word 待办遗漏等旧项，也尚不能确认当前状态。",
+        "session_id": "cs_d8f23d1b-21a7-4a11-9b99-ce83da916765",
+        "request_id": "af052baf-bedc-442c-a7bf-e2ca5bfa27c6",
+        "message_id": "cm_c6da77fa-21bc-4f26-9d78-e0c4da3c46b0",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai-assistant-prd-review-20261002.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 20,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 28,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=0 conversation_ids=2 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 33,
+        "name": "material_ask",
+        "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=93",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 43,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_2658892958_20261004T085013Z-20261103T085013Z-0efc0e37 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 48,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261031T085031Z-20261103T085031Z-ed4060a3 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 53,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=0 conversation_ids=2 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 58,
+        "name": "material_ask",
+        "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=54",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 66,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261027T085031Z-20261031T085031Z-a34742e9 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "seq": 71,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=0 conversation_ids=2 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_345df95d971a49feb4d9f9cd9cb662bb",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 84,
+        "tool_count": 10,
+        "tokens": 246294
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['问答Case', 'Bud', '士衡']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['问答Case', 'Bud', '士衡']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['group_message_search(keywords=4 group_ids=0 conversation_ids=2 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true)×2']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "3981594831",
+        "2658892958",
+        "72a6eea39803987b224528b48b4f8f63",
+        "869eda3ec2893a553d362deab2e82e72"
+      ],
+      "must_include": [
+        "PRD",
+        "李振民",
+        "问答Case",
+        "Bud",
+        "士衡"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "只描述消息中明确的评审/范围动作；不得声称存在“未点赞即排期”的违规事实。"
+      ],
+      "fixed_fact_truth": "孙文让李振民关注AI助手PRD并确认处理同事；8月31日纪要说明部分复杂问答一期效果不保证，产品需与Bud、士衡圈定一期必须达到最优效果的范围，其余复杂场景不作为一期上线门槛。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "72a6eea39803987b224528b48b4f8f63",
+        "869eda3ec2893a553d362deab2e82e72"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "跨“AI助手·一期 研发群”和“蜂巢AI助手”两个群，AI助手的PRD和复杂问答范围有哪些仍待评审/确认，分别由谁跟进？",
+          "must_include": [
+            "PRD",
+            "李振民",
+            "问答Case",
+            "Bud",
+            "士衡"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答提供了PRD回写、限额评审和近期问答验收事项，但遗漏直接对应用户问题的PRD处理归属确认及一期复杂问答范围圈定安排，未说明李振民在前一事项中的跟进职责，也未回答产品与Bud、士衡核对问答Case及上线门槛边界。回答没有编造“未点赞即排期”的违规事实，且合理区分未见验收结论与未完成，但这些优点不能弥补核心业务信息缺失。",
+        "evidence_refs": [
+          "group_message_search call_eeac73e6b522494c947a41d6801943b0：coverage.windows及max_window，实查仅近30天",
+          "independent_historical_sources.independent_original_messages：sg_3981594831:5，clientMsgID 72a6eea39803987b224528b48b4f8f63",
+          "independent_historical_sources.independent_original_messages：sg_2658892958:53，clientMsgID 869eda3ec2893a553d362deab2e82e72",
+          "authenticated_session_readback：本轮助手消息cm_c6da77fa-21bc-4f26-9d78-e0c4da3c46b0"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "484271fae08bd92bfec00b1433f7fac52a2a4714f999ee5bbb62ad80e5d3ebf2",
+      "result": "e0eb6fc92101caa76bd791f893c9ae796a12cd8a9bde4a5181329144b3d57be7",
+      "requests": [
+        "af052baf-bedc-442c-a7bf-e2ca5bfa27c6"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答未覆盖 Gold 所指的两项核心线索：孙文请李振民关注 PRD 并确认处理同事，以及产品与 Bud、士衡圈定一期必须达到最优效果的问答Case范围、其他复杂场景不作为一期上线门槛。但本例提供的工具 Trace 只有截断摘要，未展示这两条消息的原文或独立源回读，无法核验它们与本轮实际消息时序及后续修订的关系。不能仅凭原 Gold 与回答差异确定业务失败，也不能判定回答已正确完成跨群汇总。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答未覆盖 Gold 所指的两项核心线索：孙文请李振民关注 PRD 并确认处理同事，以及产品与 Bud、士衡圈定一期必须达到最优效果的问答Case范围、其他复杂场景不作为一期上线门槛。但本例提供的工具 Trace 只有截断摘要，未展示这两条消息的原文或独立源回读，无法核验它们与本轮实际消息时序及后续修订的关系。不能仅凭原 Gold 与回答差异确定业务失败，也不能判定回答已正确完成跨群汇总。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-FU-038.json",
+        "independent_readback": "sources/AA-FU-038.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "business_reason": "本次回答已实际完成生成，也正确汇总了部分近期讨论并保留验收状态的不确定性，但未完成跨群范围确认的核心问题。检索自行限制在近30天，遗漏孙文请李振民关注AI助手PRD并确认处理同事的安排，以及产品与Bud、士衡过《IM&任务空间 问答Case》、圈定一期必须达到最优效果的范围、其余复杂场景不作为一期上线门槛的明确动作。这两条历史原消息已通过同身份认证回源核实；不能以声明清单不完整替代所问关键事项。此为结果不满足验收，而非生成执行失败。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "认证Trace确认本轮成功读取两个群的局部上下文，搜索最终覆盖2026-10-04至2026-11-03；独立历史回源核实研发群seq 5及蜂巢AI助手群seq 53的原文、发送人和当前调用身份的可访问性。回源仅用于核验历史稳定事实，不视为Agent实际检索，也不据此断言历史待办在11月仍未完成。关键遗漏及检索范围收缩均可确定。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "回答提供了PRD回写、限额评审和近期问答验收事项，但遗漏直接对应用户问题的PRD处理归属确认及一期复杂问答范围圈定安排，未说明李振民在前一事项中的跟进职责，也未回答产品与Bud、士衡核对问答Case及上线门槛边界。回答没有编造“未点赞即排期”的违规事实，且合理区分未见验收结论与未完成，但这些优点不能弥补核心业务信息缺失。",
+          "evidence_refs": [
+            "group_message_search call_eeac73e6b522494c947a41d6801943b0：coverage.windows及max_window，实查仅近30天",
+            "independent_historical_sources.independent_original_messages：sg_3981594831:5，clientMsgID 72a6eea39803987b224528b48b4f8f63",
+            "independent_historical_sources.independent_original_messages：sg_2658892958:53，clientMsgID 869eda3ec2893a553d362deab2e82e72",
+            "authenticated_session_readback：本轮助手消息cm_c6da77fa-21bc-4f26-9d78-e0c4da3c46b0"
+          ]
+        }
+      ],
+      "suggestions": [
+        "对未限定时间的跨群范围问题，补查早期PRD和一期范围决策记录，不将默认30天窗口当作用户范围。",
+        "补充两项明确安排及各自跟进人，并将历史安排与当前完成状态分开表述；如未获得后续结论，标明当前是否完成仍待核验。"
+      ],
+      "input_sha256": "97c1db3a2eea80237067fb59d5ee2b74d3d6a775cc3a9ba929fe53f919efd3e6",
+      "evidence_sha256": "3b80434e7cfa8fddacd2a9777904dd50e96bcf21cf92fa96a5bf4dd3c58b5e26",
+      "reviewed_at": "2026-11-04T00:17:06.909465+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "484271fae08bd92bfec00b1433f7fac52a2a4714f999ee5bbb62ad80e5d3ebf2",
+        "result": "e0eb6fc92101caa76bd791f893c9ae796a12cd8a9bde4a5181329144b3d57be7",
+        "requests": [
+          "af052baf-bedc-442c-a7bf-e2ca5bfa27c6"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-FU-038",
+    "evaluation_detail_reason": "本次回答已实际完成生成，也正确汇总了部分近期讨论并保留验收状态的不确定性，但未完成跨群范围确认的核心问题。检索自行限制在近30天，遗漏孙文请李振民关注AI助手PRD并确认处理同事的安排，以及产品与Bud、士衡过《IM&任务空间 问答Case》、圈定一期必须达到最优效果的范围、其余复杂场景不作为一期上线门槛的明确动作。这两条历史原消息已通过同身份认证回源核实；不能以声明清单不完整替代所问关键事项。此为结果不满足验收，而非生成执行失败。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "本轮确实完成了部分近期讨论的读取与有来源汇总，但将无时间限制的问题自行缩至近30天，遗漏了跨群问题的两项核心事实：孙文请李振民关注AI助手PRD并确认由哪位同事处理；产品需与Bud、士衡过《IM&任务空间 问答Case》，圈定一期必须达到最优效果的范围，其余复杂场景不作为一期上线门槛。补充认证回源已核实两条原消息及当前用户可访问性，因此不再属于关键原文无法核验的待复核情形。回答承认清单不完整、未编造违规事实，但不能替代核心业务问题的完成。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "自行只查近30天，漏了两项关键安排：李振民跟进AI助手PRD并确认处理人，以及产品和Bud、士衡确认一期必须做好的问答范围。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-FU-038",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

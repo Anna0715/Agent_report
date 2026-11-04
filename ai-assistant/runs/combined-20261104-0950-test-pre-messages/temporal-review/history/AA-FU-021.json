@@ -1,0 +1,460 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-021",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实消息/多版本结论",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "用户要求准确提供原消息ID，但10月初那条ID少了一个字母d，导致引用字段错误；时间版本的解释基本正确。",
+    "confidence": "high",
+    "latency_ms": 49321,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "指令未遵循"
+    ],
+    "title": "AI助手·一期研发群里，对客时间出现过哪些版本？目前能确认到什么程度？请附 groupID/clientMsgID。",
+    "ability": "区分预计、承诺与兜底时间",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "AI助手·一期研发群里，对客时间出现过哪些版本？目前能确认到什么程度？请附 groupID/clientMsgID。"
+    ],
+    "answer": "群里出现过 **9月底、10月初和10月中旬**三个对客时间说法；后来的明确安排是 **10月8日随版本发布核心功能，仅向 Zelto 有限用户开放体验**，并不等同于正式对客。依据目前读到的消息，**还不能确认最终正式对客日期**；也不能据此断言后来一定没有定过。`widget:refs:msg:sg_3981594831:5:T112053RE|msg:sg_3981594831:6:T112053RE|msg:sg_3981594831:7:T112053RE|msg:sg_3981594831:930:T112053RE`\n\n群 **groupID：`3981594831`**。各版本及相关节点如下：\n\n| 群内说法 | 性质和确认程度 | clientMsgID |\n|---|---|---|\n| **9月底对客** | 8月19日的一版预计。`widget:msg:sg_3981594831:5:T112053RE` | `72a6eea39803987b224528b48b4f8f63` |\n| **10月初对客** | 8月19日提到这是对外承诺，团队先按此目标推进；但也明确说效果不行就延后。`widget:refs:msg:sg_3981594831:6:T112053RE\\|msg:sg_3981594831:7:T112053RE` | `5f6ee489d7ce05737a88c910eeb8c4e` |\n| **10月中旬对客** | 同日提出的备选：如果10月初做不到，就延至10月中旬，并做客户预期管理；不是已确认延期。`widget:msg:sg_3981594831:6:T112053RE` | `4943fb40a6b091f675d42c04639ea880` |\n| **10月内测** | 9月25日的 Memo 说 Zelto 正式内测按10月执行，覆盖 SP17＋SP18；这是**内测安排**，不能直接当作正式对客日期。`widget:msg:sg_3981594831:532:T112053RE` | `fe4728d75d98c7e23d4e38f1035ff42d` |\n| **10月8日版本** | 10月2日的会议纪要安排核心功能随该版本发布，只开放 Zelto 有限用户体验；SP17 对客前继续测试和优化。它是**计划中的阶段发布节点**，不是已确认的正式对客日，也不能仅凭该计划认定实际已发布。`widget:msg:sg_3981594831:930:T112053RE` | `7e0126b561b9ec6a5787542585d3bdb5` |\n| **具体时间待资源确认** | 10月2日群内说，对客前需求可与10月8日版本分开，等资源确定后再对具体时间。同条提到“SP17的版本在8.22左右”，但日期与上下文不一致，不能自行改写或作为确定排期。`widget:msg:sg_3981594831:848:T112053RE` | `430be479f6f2f556de8255d7f7cfe6fe` |\n\n**最新能确认到的程度：**10月2日的安排仍区分“10月8日有限用户体验”和“SP17对客前持续优化”。本次补读的 **10月31日至11月3日**群消息中，未发现新的正式对客日期；其中提到的测试回归、11月中旬前出方案，也不能等同于对客上线。`widget:refs:msg:sg_3981594831:930:T112053RE|msg:sg_3981594831:2202:T112053RE|msg:sg_3981594831:2236:T112053RE`\n\n覆盖限制：本次没有完整核实10月8日之后至10月31日之前的全部讨论，因此不能排除那段时间有后续排期。表中 clientMsgID 沿用本会话此前结果；本次读取接口返回了对应消息定位，但未独立返回 clientMsgID，无法再次核验其一一对应关系。\n\n要不要我帮你长期关注“AI助手·一期研发群”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "指令未遵循"
+    ],
+    "business_reason": "用户要求准确提供原消息ID，但10月初那条ID少了一个字母d，导致引用字段错误；时间版本的解释基本正确。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → group_message_search（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "AI助手·一期研发群里，对客时间出现过哪些版本？目前能确认到什么程度？请附 groupID/clientMsgID。",
+        "answer": "群里出现过 **9月底、10月初和10月中旬**三个对客时间说法；后来的明确安排是 **10月8日随版本发布核心功能，仅向 Zelto 有限用户开放体验**，并不等同于正式对客。依据目前读到的消息，**还不能确认最终正式对客日期**；也不能据此断言后来一定没有定过。`widget:refs:msg:sg_3981594831:5:T112053RE|msg:sg_3981594831:6:T112053RE|msg:sg_3981594831:7:T112053RE|msg:sg_3981594831:930:T112053RE`\n\n群 **groupID：`3981594831`**。各版本及相关节点如下：\n\n| 群内说法 | 性质和确认程度 | clientMsgID |\n|---|---|---|\n| **9月底对客** | 8月19日的一版预计。`widget:msg:sg_3981594831:5:T112053RE` | `72a6eea39803987b224528b48b4f8f63` |\n| **10月初对客** | 8月19日提到这是对外承诺，团队先按此目标推进；但也明确说效果不行就延后。`widget:refs:msg:sg_3981594831:6:T112053RE\\|msg:sg_3981594831:7:T112053RE` | `5f6ee489d7ce05737a88c910eeb8c4e` |\n| **10月中旬对客** | 同日提出的备选：如果10月初做不到，就延至10月中旬，并做客户预期管理；不是已确认延期。`widget:msg:sg_3981594831:6:T112053RE` | `4943fb40a6b091f675d42c04639ea880` |\n| **10月内测** | 9月25日的 Memo 说 Zelto 正式内测按10月执行，覆盖 SP17＋SP18；这是**内测安排**，不能直接当作正式对客日期。`widget:msg:sg_3981594831:532:T112053RE` | `fe4728d75d98c7e23d4e38f1035ff42d` |\n| **10月8日版本** | 10月2日的会议纪要安排核心功能随该版本发布，只开放 Zelto 有限用户体验；SP17 对客前继续测试和优化。它是**计划中的阶段发布节点**，不是已确认的正式对客日，也不能仅凭该计划认定实际已发布。`widget:msg:sg_3981594831:930:T112053RE` | `7e0126b561b9ec6a5787542585d3bdb5` |\n| **具体时间待资源确认** | 10月2日群内说，对客前需求可与10月8日版本分开，等资源确定后再对具体时间。同条提到“SP17的版本在8.22左右”，但日期与上下文不一致，不能自行改写或作为确定排期。`widget:msg:sg_3981594831:848:T112053RE` | `430be479f6f2f556de8255d7f7cfe6fe` |\n\n**最新能确认到的程度：**10月2日的安排仍区分“10月8日有限用户体验”和“SP17对客前持续优化”。本次补读的 **10月31日至11月3日**群消息中，未发现新的正式对客日期；其中提到的测试回归、11月中旬前出方案，也不能等同于对客上线。`widget:refs:msg:sg_3981594831:930:T112053RE|msg:sg_3981594831:2202:T112053RE|msg:sg_3981594831:2236:T112053RE`\n\n覆盖限制：本次没有完整核实10月8日之后至10月31日之前的全部讨论，因此不能排除那段时间有后续排期。表中 clientMsgID 沿用本会话此前结果；本次读取接口返回了对应消息定位，但未独立返回 clientMsgID，无法再次核验其一一对应关系。\n\n要不要我帮你长期关注“AI助手·一期研发群”？",
+        "session_id": "cs_2b3b92c8-edb9-49e5-b664-dd0dc438b0c0",
+        "request_id": "8d59605f-be20-4b9a-808f-6f07391f39cd",
+        "message_id": "cm_6a5b7db7-0b05-431b-b2fb-39d33ac7f3c2",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/customer-time-versions.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 20,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/customer-time-versions.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 25,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 33,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=40 conversation_ids=0 top_k=30",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 38,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=1 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 43,
+        "name": "material_ask",
+        "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=57",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 51,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261031T071738Z-20261103T071738Z-5217a5f5 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 56,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=1 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 61,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=2 group_ids=1 conversation_ids=0 sender_ids=0 from_time=true to_time=true limit=100 time_mode=explicit continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "seq": 66,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=2 group_ids=1 conversation_ids=0 sender_ids=0 from_time=true to_time=true limit=100 time_mode=explicit continuation=false",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_06121a11230d4e27aeed220d205bf0ec",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 79,
+        "tool_count": 10,
+        "tokens": 230560
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['九月底']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['九月底']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'scratchpad_read:failed', 'group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['scratchpad_read(path=cases/customer-time-versions.md offset=0)×2', 'group_message_search(keywords=2 group_ids=1 conversation_ids=0 sender_ids=0 from_time=true to_time=true limit=100 time_mode=explicit continuation=false)×2']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "comparison",
+      "gold_refs": [
+        "3981594831",
+        "72a6eea39803987b224528b48b4f8f63",
+        "4943fb40a6b091f675d42c04639ea880"
+      ],
+      "must_include": [
+        "九月底",
+        "10月初",
+        "10月中旬"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "按消息来源列出时间版本与确定性，指出没有足够证据把某一日期写成最终结论。"
+      ],
+      "fixed_fact_truth": "孙文消息提到“预计九月底对客”；SuChen随后说明团队承诺10月初，并提到若无法实现则10月中旬作为客户预期管理方案。两条消息不能合并成单一已最终确认日期。groupID=3981594831。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "72a6eea39803987b224528b48b4f8f63",
+        "4943fb40a6b091f675d42c04639ea880"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "AI助手·一期研发群里，对客时间出现过哪些版本？目前能确认到什么程度？请附 groupID/clientMsgID。",
+          "must_include": [
+            "九月底",
+            "10月初",
+            "10月中旬"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "三个时间版本、计划与最终结论的区分均符合证据，且说明了未完整覆盖后续讨论的限制；但10月初对应的 clientMsgID 写错，未正确完成用户明确要求的来源标识提供。",
+        "evidence_refs": [
+          "turns[step=2].answer：10月初对客表格行",
+          "trace.tools[seq=61]：群消息 seq=5、6、7",
+          "trace.tools[seq=66]：群消息 seq=848、930",
+          "independent_historical_sources.independent_answer_citation_readback.messages[seq=7]",
+          "recovered_business_evidence.message_pool：已传入的历史回答含正确 clientMsgID"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "0cad842cd27edfd019dbf22fe40f6ed7a14aeeba38a7793f2420ad47bfc4a1bf",
+      "result": "e575c67bd706f9a98e2d82fc6dcc3dfeba8150ee9bc3ceb69adb5808caa5c5b8",
+      "requests": [
+        "8d59605f-be20-4b9a-808f-6f07391f39cd"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答正确区分了九月底预计、10月初承诺目标和10月中旬条件性备选，并未将任一日期认定为最终正式对客时间；groupID及两条Gold指定clientMsgID也一致。但回答进一步给出了9月25日、10月2日及最新消息的具体结论和多条额外clientMsgID，当前Trace只有截断预览，无法核验这些事实和标识的对应关系。回答称clientMsgID沿用此前会话结果，而本次裁判输入未提供这些前文，不能据此认定其编造，也不能完成整份有效回答的事实核验。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答正确区分了九月底预计、10月初承诺目标和10月中旬条件性备选，并未将任一日期认定为最终正式对客时间；groupID及两条Gold指定clientMsgID也一致。但回答进一步给出了9月25日、10月2日及最新消息的具体结论和多条额外clientMsgID，当前Trace只有截断预览，无法核验这些事实和标识的对应关系。回答称clientMsgID沿用此前会话结果，而本次裁判输入未提供这些前文，不能据此认定其编造，也不能完成整份有效回答的事实核验。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-FU-021.json",
+        "independent_readback": "sources/AA-FU-021.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "指令未遵循"
+      ],
+      "business_reason": "本轮已完成回答，时间版本及确定性判断基本正确：区分了九月底预计、10月初目标承诺和10月中旬条件性备选，也未把10月8日有限体验计划当作最终正式对客日期。但用户明确要求 clientMsgID，回答在10月初一行给出的“5f6ee489d7ce05737a88c910eeb8c4e”遗漏字符 d；认证原消息 seq=7 的真实标识为“5f6ee489d7ce05737a88c910eebd8c4e”。这是所问引用字段的明确错误，属于结果不满足验收，而非执行失败或证据不足。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "当前请求的 group_message_search 已读取 seq=5、6、7 的时间版本原文及 seq=848、930 的后续安排，material_ask 与 scratchpad_read 核实了近期讨论的边界。独立认证原消息回读进一步确认 seq=7 的真实 clientMsgID；当前模型收到的历史业务回答也包含该正确标识，因此能够确定本轮输出存在引用字段抄录错误。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "三个时间版本、计划与最终结论的区分均符合证据，且说明了未完整覆盖后续讨论的限制；但10月初对应的 clientMsgID 写错，未正确完成用户明确要求的来源标识提供。",
+          "evidence_refs": [
+            "turns[step=2].answer：10月初对客表格行",
+            "trace.tools[seq=61]：群消息 seq=5、6、7",
+            "trace.tools[seq=66]：群消息 seq=848、930",
+            "independent_historical_sources.independent_answer_citation_readback.messages[seq=7]",
+            "recovered_business_evidence.message_pool：已传入的历史回答含正确 clientMsgID"
+          ]
+        }
+      ],
+      "suggestions": [
+        "将10月初一行的 clientMsgID 更正为 5f6ee489d7ce05737a88c910eebd8c4e；输出用户明确索取的标识时直接复制已验证字段，避免手工改写。",
+        "保留现有关于条件性延期、有限体验与正式对客区别，以及检索覆盖限制的说明。"
+      ],
+      "input_sha256": "add4407d603c2da2e08e238b6573d38372f6b09c5f06f9a83b337a3ac60e2294",
+      "evidence_sha256": "68554946ff73500b0a70bb2b990c15ab3330a1d4e4741321a864f30f654f6344",
+      "reviewed_at": "2026-11-04T00:16:24.786399+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → group_message_search（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "0cad842cd27edfd019dbf22fe40f6ed7a14aeeba38a7793f2420ad47bfc4a1bf",
+        "result": "e575c67bd706f9a98e2d82fc6dcc3dfeba8150ee9bc3ceb69adb5808caa5c5b8",
+        "requests": [
+          "8d59605f-be20-4b9a-808f-6f07391f39cd"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-FU-021",
+    "evaluation_detail_reason": "本轮已完成回答，时间版本及确定性判断基本正确：区分了九月底预计、10月初目标承诺和10月中旬条件性备选，也未把10月8日有限体验计划当作最终正式对客日期。但用户明确要求 clientMsgID，回答在10月初一行给出的“5f6ee489d7ce05737a88c910eeb8c4e”遗漏字符 d；认证原消息 seq=7 的真实标识为“5f6ee489d7ce05737a88c910eebd8c4e”。这是所问引用字段的明确错误，属于结果不满足验收，而非执行失败或证据不足。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "时间版本与确定性判断正确：回答区分了九月底预计、10月初承诺目标、10月中旬条件性备选，也没有把内测或10月8日阶段发布计划当成最终正式对客日期。但用户明确要求附 clientMsgID，回答将10月初所对应消息的标识写为“5f6ee489d7ce05737a88c910eeb8c4e”，独立认证原消息及已传入的历史回答均为“5f6ee489d7ce05737a88c910eebd8c4e”，漏掉字符 d，属于可确定的所问引用字段错误。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "用户要求准确提供原消息ID，但10月初那条ID少了一个字母d，导致引用字段错误；时间版本的解释基本正确。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-FU-021",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

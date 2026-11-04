@@ -1,0 +1,463 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-QAP-010",
+    "suite": "assistant_agent_followup",
+    "module": "跨源事实与风险",
+    "scenario": "pre真实消息/版本变更",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "提测延期原因没答全：漏掉高级筛选、特殊高管计分规则、历史及重要信息流初始化这三项未完成工作；给出的还是事后测试记录ID，不能定位原消息。",
+    "confidence": "high",
+    "latency_ms": 49313,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "tool ordering anomalies: ['bar_0e6959d5581049aca21cb3e9402bbdf4: query before/without structured_schema']",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "iOS首页重要信息流原计划何时提测，后来改到什么时候？延期原因是什么？请附真实ID。",
+    "ability": "识别旧提测计划和最新调整",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "iOS首页重要信息流原计划何时提测，后来改到什么时候？延期原因是什么？请附真实ID。"
+    ],
+    "answer": "两条测试记录称：该事项**原计划“昨天晚上”提测，后来改为“下周一”**；延期涉及三项尚未完成的内容。但记录没有列出这三项的具体内容，也没有提供原始消息的日期，因此**不能可靠换算成具体日期或确认延期原因**。`widget:refs:task:task_vxfpoxehtqtx:T1120J0W9|task:task_vxfprhoeda4j:T1120J0W9`\n\n上述记录的真实任务 ID 分别为 `task_vxfpoxehtqtx`、`task_vxfprhoeda4j`；它们是事后测试记录，**不是该 iOS 需求或原始消息的 ID**。本次未能定位原始讨论，群消息检索也有部分未覆盖，因此暂不能提供原始消息 ID。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "提测延期原因没答全：漏掉高级筛选、特殊高管计分规则、历史及重要信息流初始化这三项未完成工作；给出的还是事后测试记录ID，不能定位原消息。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → scratchpad_write（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → entity_resolve（completed） → task_detail（completed） → task_detail（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "iOS首页重要信息流原计划何时提测，后来改到什么时候？延期原因是什么？请附真实ID。",
+        "answer": "两条测试记录称：该事项**原计划“昨天晚上”提测，后来改为“下周一”**；延期涉及三项尚未完成的内容。但记录没有列出这三项的具体内容，也没有提供原始消息的日期，因此**不能可靠换算成具体日期或确认延期原因**。`widget:refs:task:task_vxfpoxehtqtx:T1120J0W9|task:task_vxfprhoeda4j:T1120J0W9`\n\n上述记录的真实任务 ID 分别为 `task_vxfpoxehtqtx`、`task_vxfprhoeda4j`；它们是事后测试记录，**不是该 iOS 需求或原始消息的 ID**。本次未能定位原始讨论，群消息检索也有部分未覆盖，因此暂不能提供原始消息 ID。",
+        "session_id": "cs_75d7f431-2aee-4849-8248-0ee55b97607c",
+        "request_id": "1f951b0e-5753-4d2f-a244-36b7e5c32397",
+        "message_id": "cm_97cb51ba-6eaa-48e9-ad76-908cc86cacd9",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ios-infofeed-testing-delay.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 20,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ios-infofeed-testing-delay.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 25,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary,structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 33,
+        "name": "scratchpad_write",
+        "arguments_summary": "path=cases/ios-delay-route-nov.md expected_revision=0 bytes=481",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 38,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=28 conversation_ids=0 top_k=30",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 43,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 48,
+        "name": "entity_resolve",
+        "arguments_summary": "requests=2",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 53,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vxfpoxehtqtx",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 58,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vxfprhoeda4j",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "seq": 63,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_0e6959d5581049aca21cb3e9402bbdf4",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、structured_query、task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 76,
+        "tool_count": 10,
+        "tokens": 326014
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['高级筛选', '历史数据']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['高级筛选', '历史数据']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'scratchpad_read:failed', 'group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['scratchpad_read(path=cases/ios-infofeed-testing-delay.md offset=0)×2']"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "fail",
+        "reason": "tool ordering anomalies: ['bar_0e6959d5581049aca21cb3e9402bbdf4: query before/without structured_schema']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "1577269387",
+        "6ca5795c4c21df1b0f791b5b21d5a7e4"
+      ],
+      "must_include": [
+        "昨天晚上",
+        "下周一",
+        "高级筛选",
+        "历史数据"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "区分旧计划与新计划，列出三项未完成原因，不把joinTime转换成发送日期。"
+      ],
+      "fixed_fact_truth": "刘健说明原计划“昨天晚上提测”，因高级筛选、高管特殊用户计分规则、历史数据初始化三项未完成，改为“下周一”提测。groupID=1577269387，clientMsgID=6ca5795c4c21df1b0f791b5b21d5a7e4。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "6ca5795c4c21df1b0f791b5b21d5a7e4"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "iOS首页重要信息流原计划何时提测，后来改到什么时候？延期原因是什么？请附真实ID。",
+          "must_include": [
+            "昨天晚上",
+            "下周一",
+            "高级筛选",
+            "历史数据"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "已给出旧、新相对提测时间，且未将joinTime误作发送日期；但仅称有三项未完成而未列明内容，并明确无法提供原始消息ID，核心问题未完整完成。认证原文可核验三项原因与对应真实群、消息ID。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.tools[seq=38,43,53,58,63]",
+          "independent_historical_sources.independent_original_messages[clientMsgID=6ca5795c4c21df1b0f791b5b21d5a7e4]",
+          "independent_historical_sources.decoded_authenticated_original_messages"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "b9d717a0a17624d98711674a6e41d2f6d2a6d83455d9804dfd021528bb081bab",
+      "result": "dfd1f65aa8c782eb13f05f9409033616864730669f197039b876277425f4409b",
+      "requests": [
+        "1f951b0e-5753-4d2f-a244-36b7e5c32397"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答区分了原计划“昨天晚上”和改至“下周一”，但未完成用户要求的三项延期原因及原始真实ID。当前Trace只可核验两条事后测试任务记录，未包含刘健原始消息；群消息搜索结果含截断，向量搜索明确服务失败，亦无本轮独立源回读或预检证明关键原文可访问。因此无法区分环境/证据采集缺失与助手检索遗漏，不足以确定业务失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答区分了原计划“昨天晚上”和改至“下周一”，但未完成用户要求的三项延期原因及原始真实ID。当前Trace只可核验两条事后测试任务记录，未包含刘健原始消息；群消息搜索结果含截断，向量搜索明确服务失败，亦无本轮独立源回读或预检证明关键原文可访问。因此无法区分环境/证据采集缺失与助手检索遗漏，不足以确定业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-QAP-010.json",
+        "independent_readback": "sources/AA-QAP-010.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本次实际回答区分了原计划“昨天晚上”和调整后的“下周一”，但未回答三项具体延期原因，也未提供所问事项的原始真实ID。独立认证原消息明确记载高级筛选、高管特殊用户新增记分规则处理、历史数据及重要信息流数据初始化尚未完成，因此预计延期到下周一。回答提供的两个ID被明确说明为事后测试记录，并不能满足原消息ID要求。属于结果不满足验收，不是空回答或生成失败，也非评论理解错误。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同身份认证回源核实了群1577269387、消息6ca5795c4c21df1b0f791b5b21d5a7e4（seq 72）的原文及访问成功结果，足以核验稳定历史事实。当前请求Trace显示语义检索Unavailable，关键词检索仅覆盖近期且第二次结果不完整，读取的两条任务详情均为测试失败记录；没有证据表明Agent已读到原消息。此区别不改变最终遗漏所问原因与真实ID的业务失败结论。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "已给出旧、新相对提测时间，且未将joinTime误作发送日期；但仅称有三项未完成而未列明内容，并明确无法提供原始消息ID，核心问题未完整完成。认证原文可核验三项原因与对应真实群、消息ID。",
+          "evidence_refs": [
+            "turns[step=2].answer",
+            "trace.tools[seq=38,43,53,58,63]",
+            "independent_historical_sources.independent_original_messages[clientMsgID=6ca5795c4c21df1b0f791b5b21d5a7e4]",
+            "independent_historical_sources.decoded_authenticated_original_messages"
+          ]
+        }
+      ],
+      "suggestions": [
+        "保留事项主题检索历史消息，避免只查近期窗口；对截断结果细化关键词或读取相关会话上下文。",
+        "定位原消息后，列明三项未完成内容，并附groupID 1577269387和clientMsgID 6ca5795c4c21df1b0f791b5b21d5a7e4；不要用事后测试任务ID代替业务来源ID。"
+      ],
+      "input_sha256": "18c2cc0e1d09cc4f484f348493454fb5010944a6b4d6067a01cf6b33d46f0fdb",
+      "evidence_sha256": "e6ddbd3d9e98a69306389776763a6eaeec55d23a7c60ee5b52387c3ab6561197",
+      "reviewed_at": "2026-11-04T00:15:18.130410+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → scratchpad_write（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → entity_resolve（completed） → task_detail（completed） → task_detail（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "b9d717a0a17624d98711674a6e41d2f6d2a6d83455d9804dfd021528bb081bab",
+        "result": "dfd1f65aa8c782eb13f05f9409033616864730669f197039b876277425f4409b",
+        "requests": [
+          "1f951b0e-5753-4d2f-a244-36b7e5c32397"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-QAP-010",
+    "evaluation_detail_reason": "本次实际回答区分了原计划“昨天晚上”和调整后的“下周一”，但未回答三项具体延期原因，也未提供所问事项的原始真实ID。独立认证原消息明确记载高级筛选、高管特殊用户新增记分规则处理、历史数据及重要信息流数据初始化尚未完成，因此预计延期到下周一。回答提供的两个ID被明确说明为事后测试记录，并不能满足原消息ID要求。属于结果不满足验收，不是空回答或生成失败，也非评论理解错误。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "本轮回答正确区分原计划“昨天晚上”与调整后的“下周一”，但未回答三项具体延期原因，也未提供用户要求的相关原始真实ID。补充的同身份认证回源已核实原消息存在且可访问，明确列出高级筛选、高管特殊用户新增记分规则处理、历史数据及重要信息流初始化三项未完成内容，因此此次检索未完成属于实际任务失败，而非仍待核验的证据缺失。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "提测延期原因没答全：漏掉高级筛选、特殊高管计分规则、历史及重要信息流初始化这三项未完成工作；给出的还是事后测试记录ID，不能定位原消息。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-QAP-010",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PRE-MSG-005",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实群/合并消息",
+    "gate_class": "core",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "没有按发言人总结指定合并消息。应区分转发者自力、孙文对流式内容和格式的建议、自力对周报格式的追问；实际只让用户重新提供内容。",
+    "confidence": "high",
+    "latency_ms": 38871,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "AI多轮对话总结开发群里那条关于markdown和prosemirror的合并消息，分别是谁提出了哪些观点？",
+    "ability": "保留合并消息内部发言人归因",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "AI多轮对话总结开发群里那条关于markdown和prosemirror的合并消息，分别是谁提出了哪些观点？"
+    ],
+    "answer": "**目前无法可靠地分别列出那条合并消息里各人的观点**：群里的确有一条合并转发消息，但当前读取结果没有返回其内部内容。`widget:msg:sg_753029280:2:T112053RE`\n\n前几次回答把群内其他 Markdown 围栏和协议讨论，当成了这条合并消息的内容；这一归属没有得到核实，**请不要以此前按人归纳的观点为准**。相邻讨论中能确认的是：有人提出用 Markdown 围栏表达项目和任务卡片，但这不足以说明合并消息里谁对 Markdown 与 ProseMirror 提出了什么观点。`widget:refs:msg:sg_753029280:8:T112053RE|msg:sg_753029280:18:T112053RE|msg:sg_753029280:19:T112053RE|msg:sg_753029280:20:T112053RE`\n\n如果你能展开那条合并消息并贴出文字或截图，我可以按发言人准确整理。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "没有按发言人总结指定合并消息。应区分转发者自力、孙文对流式内容和格式的建议、自力对周报格式的追问；实际只让用户重新提供内容。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_lookup（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "AI多轮对话总结开发群里那条关于markdown和prosemirror的合并消息，分别是谁提出了哪些观点？",
+        "answer": "**目前无法可靠地分别列出那条合并消息里各人的观点**：群里的确有一条合并转发消息，但当前读取结果没有返回其内部内容。`widget:msg:sg_753029280:2:T112053RE`\n\n前几次回答把群内其他 Markdown 围栏和协议讨论，当成了这条合并消息的内容；这一归属没有得到核实，**请不要以此前按人归纳的观点为准**。相邻讨论中能确认的是：有人提出用 Markdown 围栏表达项目和任务卡片，但这不足以说明合并消息里谁对 Markdown 与 ProseMirror 提出了什么观点。`widget:refs:msg:sg_753029280:8:T112053RE|msg:sg_753029280:18:T112053RE|msg:sg_753029280:19:T112053RE|msg:sg_753029280:20:T112053RE`\n\n如果你能展开那条合并消息并贴出文字或截图，我可以按发言人准确整理。",
+        "session_id": "cs_a1da8f8f-611d-4d7f-a315-65b73be18328",
+        "request_id": "c773c510-bbce-468e-944c-d5ffcfa726f7",
+        "message_id": "cm_8c370821-60ee-4b92-94f5-bb3d1d641324",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/markdown-prosemirror-merge.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 20,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=30 conversation_ids=1 top_k=10",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 25,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 33,
+        "name": "material_ask",
+        "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=103",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 43,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_753029280_1-80-9ee195c2 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 48,
+        "name": "group_message_lookup",
+        "arguments_summary": "conversations=1 messages=1 include_content=true",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "seq": 53,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_7b15a41febe94ffd89907b544b37e3e8",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 66,
+        "tool_count": 7,
+        "tokens": 147201
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['markdown', 'prosemirror', '孙文', '自力']"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['markdown', 'prosemirror', '孙文', '自力']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "PRE-G-MULTI",
+        "PRE-M-MERGED-FORMAT",
+        "PRE-M-FORMAT-QUESTION"
+      ],
+      "must_include": [
+        "markdown",
+        "prosemirror",
+        "孙文",
+        "自力"
+      ],
+      "must_exclude": [
+        "全部观点都由自力提出"
+      ],
+      "qualitative_requirements": [
+        "区分外层转发者与内层原发言人，引用合并消息。"
+      ],
+      "fixed_fact_truth": "外层消息由自力发送，合并内容记录孙文与自力的对话；孙文讨论结构化流式消息、markdown/prosemirror，自力追问为何要支持周报格式。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "依据",
+        "有效时态"
+      ],
+      "citation_refs": [
+        "e09c299a97c69389b26979ec013e9a50",
+        "a248e0c6323643d40d168f32880f7f08"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "AI多轮对话总结开发群里那条关于markdown和prosemirror的合并消息，分别是谁提出了哪些观点？",
+          "must_include": [
+            "markdown",
+            "prosemirror",
+            "孙文",
+            "自力"
+          ],
+          "must_exclude": [
+            "全部观点都由自力提出"
+          ]
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "未回答孙文与自力分别提出哪些观点，也未说明自力是外层转发者。实际回答的读取限制与 Trace 相符，未据此判编造，但核心事实查询仍未完成。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=48]",
+          "independent_historical_sources.independent_original_messages[clientMsgID=e09c299a97c69389b26979ec013e9a50]",
+          "independent_historical_sources.decoded_authenticated_original_messages"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "f1292fc22a2a1b12ffd2186d704471cb8e2c55e154965834f816eb8872847329",
+      "result": "4fb5c420ce67cfe6e7759cafb2337ae083127621b889ba4ebc188637c212f116",
+      "requests": [
+        "c773c510-bbce-468e-944c-d5ffcfa726f7"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "本轮实际问题是区分合并消息中孙文与自力各自提出的观点。回答未完成该归纳，但现有 Trace 显示，直接读取目标合并消息时正文为空、resources 为空，关键词检索也未取得内部对话。Gold 提供了观点归属参考，但没有本轮独立源回读证明助手可读取这些内部内容，无法确定未完成源于环境读取限制还是助手检索错误，因此不能据此判定业务失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "本轮实际问题是区分合并消息中孙文与自力各自提出的观点。回答未完成该归纳，但现有 Trace 显示，直接读取目标合并消息时正文为空、resources 为空，关键词检索也未取得内部对话。Gold 提供了观点归属参考，但没有本轮独立源回读证明助手可读取这些内部内容，无法确定未完成源于环境读取限制还是助手检索错误，因此不能据此判定业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-PRE-MSG-005.json",
+        "independent_readback": "sources/AA-PRE-MSG-005.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本轮已正常生成回答，但未完成按发言人归纳指定合并消息观点的核心任务。同身份认证回源核实了目标消息及完整内层对话：外层转发者是自力；孙文提出结构化流式内容及 markdown/prosemirror 格式选择，并建议与公台确认；自力追问为何支持周报格式。回答仅说明无法读取内部内容并要求用户补贴材料，遗漏上述核心事实。这属于读取链路导致的业务结果不满足验收，而不是生成失败或裁判证据不足；谨慎撤回历史错误归属不等于完成本轮任务。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "认证 Trace 的 group_message_lookup（seq 48）确实返回目标 merged_forward 消息，但正文为空；独立同身份原消息回读以 HTTP 200 返回 e09c299a97c69389b26979ec013e9a50 的完整 multiMessage，验证了外层转发者、内层发言人及观点。该稳定历史事实足以核验答案，独立回源不被当作 Agent 已读取的证明。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "未回答孙文与自力分别提出哪些观点，也未说明自力是外层转发者。实际回答的读取限制与 Trace 相符，未据此判编造，但核心事实查询仍未完成。",
+          "evidence_refs": [
+            "turns[step=2].answer",
+            "trace.runs[0].tools[seq=48]",
+            "independent_historical_sources.independent_original_messages[clientMsgID=e09c299a97c69389b26979ec013e9a50]",
+            "independent_historical_sources.decoded_authenticated_original_messages"
+          ]
+        }
+      ],
+      "suggestions": [
+        "修复合并转发消息的正文展开与传递，保留 multiMessage 中的原发言人及文本，不能仅返回空正文。",
+        "读取完整内层对话后，分别归纳孙文和自力的观点，并区分外层转发者与原发言人，引用该合并消息；格式选择仍待确认，不应写成已达成决策。"
+      ],
+      "input_sha256": "01e99d7c66faa16a2faa4208b8acc550d81cace3992aeb1dde1063340c63d98a",
+      "evidence_sha256": "80bf89717f7be435c61238032df5fc1e12edce11dd2939b4663c02306ddffbad",
+      "reviewed_at": "2026-11-04T00:17:36.792217+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_lookup（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed）",
+      "review_observation": {
+        "basis": "f1292fc22a2a1b12ffd2186d704471cb8e2c55e154965834f816eb8872847329",
+        "result": "4fb5c420ce67cfe6e7759cafb2337ae083127621b889ba4ebc188637c212f116",
+        "requests": [
+          "c773c510-bbce-468e-944c-d5ffcfa726f7"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-PRE-MSG-005",
+    "evaluation_detail_reason": "本轮已正常生成回答，但未完成按发言人归纳指定合并消息观点的核心任务。同身份认证回源核实了目标消息及完整内层对话：外层转发者是自力；孙文提出结构化流式内容及 markdown/prosemirror 格式选择，并建议与公台确认；自力追问为何支持周报格式。回答仅说明无法读取内部内容并要求用户补贴材料，遗漏上述核心事实。这属于读取链路导致的业务结果不满足验收，而不是生成失败或裁判证据不足；谨慎撤回历史错误归属不等于完成本轮任务。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "用户要求按发言人归纳指定合并消息中的观点，本轮回答最终仅表示无法读取内部内容，未回答孙文与自力分别提出了什么。补充的原调用人认证回源已确认目标消息存在、可访问且包含完整内部对话：外层转发者为自力；孙文讨论结构化流式内容及 markdown/prosemirror，并提出格式选择需与公台确认；自力追问为何支持周报格式。运行时目标读取返回空正文是实际读取链路的未完成结果，不是裁判证据采集缺失。回答谨慎撤回旧归属、不编造内容是合理的，但不能替代完成本轮事实查询。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "没有按发言人总结指定合并消息。应区分转发者自力、孙文对流式内容和格式的建议、自力对周报格式的追问；实际只让用户重新提供内容。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-PRE-MSG-005",
+    "version": 1,
+    "override": {
+      "business_reason": "fix",
+      "business_status": "pending_fix",
+      "failure_categories": [
+        "信息缺失"
+      ]
+    },
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": "2026-11-04T03:36:53.540812+00:00",
+    "updated_by": "3252c4ab-f117-4a87-b819-0e436548d1c8"
+  },
+  "cloud_history": [
+    {
+      "at": "2026-11-04T03:36:53.540812+00:00",
+      "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+      "after": {
+        "business_reason": "fix",
+        "business_status": "pending_fix",
+        "failure_categories": [
+          "信息缺失"
+        ]
+      },
+      "before": null,
+      "case_id": "AA-PRE-MSG-005",
+      "revision": 3,
+      "actor_name": "安柔"
+    }
+  ],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

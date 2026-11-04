@@ -1,0 +1,102 @@
+{
+  "business_status": "fail",
+  "business_reason": "回答正确整理了业务接口查询、用户权限边界、跨租户读写差异和自定义字段限制，也谨慎区分了历史反馈与当前落实情况。但用户未限定只看近期，回答漏掉群内已明确讨论的三类检索综合方案及召回前、中、后的权限策略，核心问题仍未答全。",
+  "failure_categories": [
+    "核心方案漏答",
+    "检索范围不完整"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "截至2026年11月3日07:10:29.551Z，近期业务限制的总结基本有据，但不能用只覆盖10月至11月的局部讨论代替用户所问的检索与权限方案。应补充已有设计，并将设计目标与当前实现状态分开，而不是仅留下底层算法未确认的结论。",
+      "evidence_refs": [
+        "sg_3981594831:41 / 9e12463850f8d7054424c79dfeba66fb",
+        "sg_3981594831:274 / 5acf70e2bc41062699cb7e0054327cc4",
+        "sg_3981594831:275 / f35ad283e12f317a54bcfa3a98371c0a",
+        "sg_3981594831:1958",
+        "sg_3981594831:2117",
+        "sg_3981594831:2185"
+      ],
+      "comparison": {
+        "expected": "说明群内提出的结构化字段、关键词、语义向量三类检索结果交由模型综合；说明先查询可读范围、检索时注入召回条件、结果后验鉴权及截断风险，并区分历史方案和当前落地证据。",
+        "actual": "回答了业务接口、权限不扩大、跨租户与字段限制，但未说明三类检索如何综合，也未交代召回前范围圈选、召回条件和后验鉴权这一完整设计链路。",
+        "difference": "遗漏直接回答检索与权限策略的关键群内方案；这不是缺少固定关键词或原始消息ID，而是实质内容缺失。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "当次认证Trace和独立原消息可核验回答及遗漏；9月7日权限策略与9月15日检索规则均在提问前存在，属于本题直接相关方案，而非仅由旧Gold新增的要求。无需据此认定这些方案已在11月全部落地。"
+  },
+  "temporal_assessment": {
+    "scope": "mixed",
+    "ignored_stale_expectations": [
+      "不强制把9月一期仅高管、普通用户二期的规划表述为11月当前有效范围。",
+      "不要求复述9月15日节点、人力分工或把历史全量同步风险认定为当前仍未解决。",
+      "用户未要求clientMsgID，接受可定位的msg.seq/widget引用。"
+    ],
+    "current_factual_basis": [
+      {
+        "reference": "sg_3981594831:41，2026-09-07",
+        "purpose": "核验已提出可读范围查询、召回条件与后验鉴权链路及截断风险，作为相关历史设计。"
+      },
+      {
+        "reference": "sg_3981594831:274-275，2026-09-15",
+        "purpose": "核验三类检索综合方案及结构化字段与文本检索的分工，不据此断言全部已实现。"
+      },
+      {
+        "reference": "sg_3981594831:1958，2026-10-22",
+        "purpose": "支持权限跟随用户、不扩大范围的近期原则。"
+      },
+      {
+        "reference": "sg_3981594831:2117、2151、2162-2163、2174",
+        "purpose": "支持业务接口跨租户查询、新旧功能区别、写入限制及测试环境部署的时间演变。"
+      },
+      {
+        "reference": "sg_3981594831:2185、2228、2236",
+        "purpose": "支持提问时自定义字段尚不支持、后续仅提出方案的边界。"
+      }
+    ],
+    "reason_changed": true,
+    "previous_failure_still_valid": true
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T07:10:29.551000+00:00",
+      "asked_at_ms": 1793689829551,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T16:10:29.551000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": false,
+      "historical_wording": false,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "61842f49563691f649426844cdbd104422f9161a817cd2e74b2d1b6bcb398c32",
+  "evidence_sha256": "b8678aa442d824435b8c1e5f4e448e6be710972e1a8d12bc37e94fea5ec66d99",
+  "reviewed_at": "2026-11-04T05:08:25.387134+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

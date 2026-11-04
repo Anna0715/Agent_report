@@ -1,0 +1,410 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-028",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实消息/合并转发归因",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "没有查出合并消息里谁说了什么。应说明外层转发者是自力，内层孙文和自力讨论了结构化流式消息及格式选择，实际只回答“无法确认”。",
+    "confidence": "high",
+    "latency_ms": 16715,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？",
+    "ability": "区分外层发送人与内层发言人",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？"
+    ],
+    "answer": "暂时无法确认这条合并消息的**转发人、内层原始发言人或讨论内容**。\n\n已确认群 ID 对应“AI多轮对话总结开发群”，但按你提供的 clientMsgID 查询消息索引未找到匹配记录，因此无法读取合并消息原文；这不代表消息一定不存在。`widget:conversation:sg_753029280:T112053RE`\n\n如果方便，请提供这条消息的链接、发送时间，或合并消息展开后的截图，我可以继续核对。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "没有查出合并消息里谁说了什么。应说明外层转发者是自力，内层孙文和自力讨论了结构化流式消息及格式选择，实际只回答“无法确认”。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed） → structured_select（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？",
+        "answer": "暂时无法确认这条合并消息的**转发人、内层原始发言人或讨论内容**。\n\n已确认群 ID 对应“AI多轮对话总结开发群”，但按你提供的 clientMsgID 查询消息索引未找到匹配记录，因此无法读取合并消息原文；这不代表消息一定不存在。`widget:conversation:sg_753029280:T112053RE`\n\n如果方便，请提供这条消息的链接、发送时间，或合并消息展开后的截图，我可以继续核对。",
+        "session_id": "cs_02fc8d2f-1ae7-438c-a6b3-5ec5c60bd118",
+        "request_id": "434aa474-f340-45be-a15c-2dfa126cc385",
+        "message_id": "cm_e56b8ead-efc0-4c09-be59-0e3dd4522c05",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary,structured_query",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "seq": 27,
+        "name": "structured_schema",
+        "arguments_summary": "entities=3",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "seq": 32,
+        "name": "structured_select",
+        "arguments_summary": "entity=conversation fields=2 where_runes=36 order_by=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "seq": 37,
+        "name": "structured_select",
+        "arguments_summary": "entity=message fields=9 where_runes=105 order_by=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "seq": 42,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=1 group_ids=1 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_d70d8a1b94a64ff8ae86976d0af9c0c0",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、structured_query、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 55,
+        "tool_count": 5,
+        "tokens": 173855
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['自力', '孙文', 'markdown', 'prosemirror']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['自力', '孙文', 'markdown', 'prosemirror']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "753029280",
+        "e09c299a97c69389b26979ec013e9a50"
+      ],
+      "must_include": [
+        "自力",
+        "孙文",
+        "markdown",
+        "prosemirror"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "区分外层发送人和内层原发言人，引用合并消息clientMsgID。"
+      ],
+      "fixed_fact_truth": "外层消息由自力发送；合并内容包含孙文与自力的对话。孙文讨论结构化流式消息及markdown/prosemirror格式，自力追问为何支持周报格式。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "e09c299a97c69389b26979ec013e9a50"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "请核对群ID=753029280中clientMsgID=e09c299a97c69389b26979ec013e9a50这条合并消息：由谁发到群里，内层原始发言人有哪些？他们在讨论什么？",
+          "must_include": [
+            "自力",
+            "孙文",
+            "markdown",
+            "prosemirror"
+          ],
+          "must_exclude": []
+        }
+      ],
+      "reexecution_independent_readback": {}
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "用户已明确指定目标群和消息，助手正确定位群名，但未回答外层发送人自力、内层发言人孙文和自力，也未概述markdown/prosemirror及结构化流式输出讨论，未提供目标合并消息的引用。独立原文已核验这些事实，故不能因本次检索空集而判为证据不足。",
+        "evidence_refs": [
+          "trace seq=32：群会话定位成功",
+          "trace seq=37 / call_75c320657f0242e9a9a932a7f1c0049c：精确消息查询rows=[]",
+          "trace seq=42：将clientMsgID作为关键词搜索，近30天无命中",
+          "independent_historical_sources.independent_original_messages：e09c299a97c69389b26979ec013e9a50，groupID=753029280，seq=2",
+          "independent_historical_sources.decoded_authenticated_original_messages",
+          "turns step=2及reexecution_session_readback：最终回答无法确认"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "aa130eb31b24d16f84a6d72c27d533734153b8d059a0955f0230cfc4ca0c2054",
+      "result": "2bbb870d1e795041aaa915993b23747fd390710bc444f5fb37e52086e864e80f",
+      "requests": [
+        "434aa474-f340-45be-a15c-2dfa126cc385"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "本轮要求识别指定合并消息的外层发送人、内层发言人及讨论内容。助手未给出这些结论，但现有输入未提供该消息附件、引用或可定位上下文，Trace 也没有消息读取结果。Gold 虽列出参考事实与消息标识，不能据此证明执行时助手获得了目标消息或可检索定位信息，因此无法确定是助手漏查还是目标引用未传入。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": true,
+      "current_scope": "补条件后新会话重跑",
+      "original_execution_preserved": true,
+      "new_sessions": [
+        "cs_02fc8d2f-1ae7-438c-a6b3-5ec5c60bd118"
+      ],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "new isolated business reexecution",
+        "previous_pending_reason": "本轮要求识别指定合并消息的外层发送人、内层发言人及讨论内容。助手未给出这些结论，但现有输入未提供该消息附件、引用或可定位上下文，Trace 也没有消息读取结果。Gold 虽列出参考事实与消息标识，不能据此证明执行时助手获得了目标消息或可检索定位信息，因此无法确定是助手漏查还是目标引用未传入。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-FU-028.json",
+        "independent_readback": "sources/AA-FU-028.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本轮已有完整回答和明确完成终态，但未完成用户要求的合并消息归因核对。认证独立原消息回读确认，目标消息外层发送人为自力，内层原始发言人为孙文和自力，讨论结构化流式消息、markdown/prosemirror格式及支持周报格式的必要性。助手查询空集后仅回答无法确认，遗漏全部核心事实。这是检索未完成导致结果不满足验收，不是生成失败，也没有证据表明助手误读或编造了消息内容。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "同一请求认证Trace完整记录了精确消息查询返回空集及后续关键词查询无命中；独立认证原消息回读以相同业务身份成功读取指定groupID、clientMsgID的原文，核验了外层sender和内层multiMessage发言及内容。回读发生在执行之后，仅用于核验历史消息的稳定事实，不据此反推旧时刻动态权限。工具实际返回completed，与turn_ledger中structured_select被记为failed存在记录冲突；本判断依据实际工具载荷和最终回答，不据汇总失败标记推断。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "用户已明确指定目标群和消息，助手正确定位群名，但未回答外层发送人自力、内层发言人孙文和自力，也未概述markdown/prosemirror及结构化流式输出讨论，未提供目标合并消息的引用。独立原文已核验这些事实，故不能因本次检索空集而判为证据不足。",
+          "evidence_refs": [
+            "trace seq=32：群会话定位成功",
+            "trace seq=37 / call_75c320657f0242e9a9a932a7f1c0049c：精确消息查询rows=[]",
+            "trace seq=42：将clientMsgID作为关键词搜索，近30天无命中",
+            "independent_historical_sources.independent_original_messages：e09c299a97c69389b26979ec013e9a50，groupID=753029280，seq=2",
+            "independent_historical_sources.decoded_authenticated_original_messages",
+            "turns step=2及reexecution_session_readback：最终回答无法确认"
+          ]
+        }
+      ],
+      "suggestions": [
+        "完善指定clientMsgID的原消息读取与合并转发展开路径，避免精确索引空集后仅把消息ID作为正文关键词检索。",
+        "读取外层发送人和内层multiMessage后分别归因，概述格式选择仍待确认的讨论，并附目标合并消息来源。"
+      ],
+      "input_sha256": "ec77f52f488c4f06109bc29d26bdd759a3d18038bde5ff629215847af439f788",
+      "evidence_sha256": "bc6df43bd23869d4b44d1ef5c7a19ffe518bc31d8ecc9de447b93a6a0f051fc9",
+      "reviewed_at": "2026-11-04T00:16:41.424774+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed） → structured_select（外层 completed / 内层 completed） → group_message_search（外层 completed / 内层 completed）",
+      "review_observation": {
+        "basis": "aa130eb31b24d16f84a6d72c27d533734153b8d059a0955f0230cfc4ca0c2054",
+        "result": "2bbb870d1e795041aaa915993b23747fd390710bc444f5fb37e52086e864e80f",
+        "requests": [
+          "434aa474-f340-45be-a15c-2dfa126cc385"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-FU-028",
+    "evaluation_detail_reason": "本轮已有完整回答和明确完成终态，但未完成用户要求的合并消息归因核对。认证独立原消息回读确认，目标消息外层发送人为自力，内层原始发言人为孙文和自力，讨论结构化流式消息、markdown/prosemirror格式及支持周报格式的必要性。助手查询空集后仅回答无法确认，遗漏全部核心事实。这是检索未完成导致结果不满足验收，不是生成失败，也没有证据表明助手误读或编造了消息内容。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "用户已明确提供群ID和clientMsgID，但助手最终未回答外层发送人、内层发言人及讨论内容。认证独立回源已确认该目标消息存在且同一业务用户可访问：外层发送人为自力，内层发言人为孙文和自力，讨论结构化流式消息、markdown与prosemirror及支持周报格式的必要性。本次实际查询返回空集并以无法确认结束，属于检索未完成导致的业务失败，而非合并消息理解错误或编造。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "没有查出合并消息里谁说了什么。应说明外层转发者是自力，内层孙文和自力讨论了结构化流式消息及格式选择，实际只回答“无法确认”。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-FU-028",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

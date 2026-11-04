@@ -1,0 +1,468 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-035",
+    "suite": "assistant_agent_followup",
+    "module": "跨源分析与风险",
+    "scenario": "pre真实消息/权限与检索",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "没有总结出用户要的检索策略和权限方案，漏了三类检索综合、查询前确认可读范围、检索时过滤、检索后鉴权，以及一期二期范围和数据风险。",
+    "confidence": "high",
+    "latency_ms": 79059,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "AI助手研发群里，群聊/任务空间检索采用什么检索与权限策略？有哪些范围限制和风险？",
+    "ability": "综合权限策略、检索策略和数据范围",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "AI助手研发群里，群聊/任务空间检索采用什么检索与权限策略？有哪些范围限制和风险？"
+    ],
+    "answer": "群里的讨论表明：**任务空间已有检索能力，也讨论过向量召回；权限上要区分“查询范围”和“写入范围”，不能简单概括为两者都只限当前租户。**群聊方面，早期讨论允许高管 A 模式检索全租户群，但限制跳转到本人未加入的群。至于两类检索完整采用哪些算法、各环节如何鉴权，已读材料不足以确认。\n\n先更正我之前的回答：我说“任务空间未见语义检索方案”，表述过于绝对。群内 10 月已有空间向量召回失败的反馈，也有人确认任务空间能够检索，但仍在观察召回率；这些证据不能证明当前生产环境的完整实现或效果。`widget:refs:msg:sg_3981594831:1475:T112053RE|msg:sg_3981594831:1166:T112053RE`\n\n## 检索与权限策略\n\n- **群聊：候选检索范围与跳转权限分开。**早期讨论中，高管 A 模式可查询全租户群，但不能跳转至本人未加入的群。因此，搜索范围较宽不等于获得目标群访问权；已读材料不足以确认消息正文、摘要及每个展示环节的最终鉴权实现。`widget:msg:sg_3981594831:831:T112053RE`\n- **任务空间：有检索和向量召回线索，但不能确认完整技术组合。**10 月 6 日反馈称任务空间已能检索，召回率仍在观察；10 月 9 日又反馈空间向量召回失败。不能据此断言当前完全依赖向量、关键词，或已经采用某种混合检索策略。`widget:refs:msg:sg_3981594831:1166:T112053RE|msg:sg_3981594831:1475:T112053RE`\n- **按人查询受组织权限影响。**10 月 27 日研发解释：按姓名查询要先通过搜索接口查用户 ID，受组织架构权限管控；通过 `@` 引用时直接带用户 ID，因此该案例可以继续查询。群内认为按用户权限限制范围合理；这不等于 `@` 后可以绕过目标资源授权。`widget:refs:msg:sg_3981594831:2074:T112053RE|msg:sg_3981594831:2079:T112053RE|msg:sg_3981594831:2085:T112053RE`\n- **空间查询和写入的租户边界不同。**10 月 29 日讨论称，空间列表首页当时不限当前租户；随后决定将写操作限制在当前租户。11 月 2 日研发称“禁止跨租户”已部署测试环境，但不能据此认定所有查询都已禁止跨租户，也不能认定生产环境已完成验收。`widget:refs:msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2146:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE|msg:sg_3981594831:2174:T112053RE`\n\n## 范围限制与风险\n\n1. **召回可能遗漏或不稳定。**测试反馈中，首轮仅用文字描述任务可能查不到，明确添加任务后才能答对；另有空间向量召回失败反馈。11 月 3 日群内还提出，结果质量可能随提示词熟练程度波动；这是使用者反馈，不是量化评测结论。`widget:refs:msg:sg_3981594831:1580:T112053RE|msg:sg_3981594831:1475:T112053RE|msg:sg_3981594831:2238:T112053RE`\n2. **任务自定义字段暂不支持。**11 月 2 日研发明确说，当时任务返回字段和筛选项均不支持自定义字段；依赖这些字段查询或汇总时，结果可能不完整。`widget:refs:msg:sg_3981594831:2183:T112053RE|msg:sg_3981594831:2185:T112053RE`\n3. **上下文关系可能缺失。**10 月 9 日研发称消息检索当时没有加入引用关系，可能影响对回复对象或上下文的判断；该消息不能证明之后一直未改。`widget:msg:sg_3981594831:1440:T112053RE`\n4. **跨租户范围和授权容易混淆。**空间列表曾不限当前租户，而写入后来决定限制本租户，用户可能遇到“查得到、但不能操作”。是否会展示无权数据、各查询接口如何校验，材料没有给出足够证据，不能断言已泄露或已彻底隔离。`widget:refs:msg:sg_3981594831:2146:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE`\n5. **引用与环境配置有安全风险。**群内曾反馈跨群引用问题；PRE 验收时也曾讨论临时放宽权限。建议分别核验检索结果展示、引用和跳转的目标资源权限，并避免将测试环境配置当成生产权限策略。这里是风险控制建议，不代表各环节已经实现。`widget:msg:sg_3981594831:884:T112053RE`\n\n本次补查以该群 **2026 年 10 月 4 日至 11 月 3 日**的主题消息为主，并读取了部分前后文；30 天范围的关键词结果有截断，群语义检索也未成功，因此以上不是完整历史或最终上线方案。早期 A 模式结论来自此前已引用的 10 月初消息，也不应未经复核地视为当前生产配置。\n\n要不要我帮你长期关注“AI助手·一期研发群”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "没有总结出用户要的检索策略和权限方案，漏了三类检索综合、查询前确认可读范围、检索时过滤、检索后鉴权，以及一期二期范围和数据风险。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "AI助手研发群里，群聊/任务空间检索采用什么检索与权限策略？有哪些范围限制和风险？",
+        "answer": "群里的讨论表明：**任务空间已有检索能力，也讨论过向量召回；权限上要区分“查询范围”和“写入范围”，不能简单概括为两者都只限当前租户。**群聊方面，早期讨论允许高管 A 模式检索全租户群，但限制跳转到本人未加入的群。至于两类检索完整采用哪些算法、各环节如何鉴权，已读材料不足以确认。\n\n先更正我之前的回答：我说“任务空间未见语义检索方案”，表述过于绝对。群内 10 月已有空间向量召回失败的反馈，也有人确认任务空间能够检索，但仍在观察召回率；这些证据不能证明当前生产环境的完整实现或效果。`widget:refs:msg:sg_3981594831:1475:T112053RE|msg:sg_3981594831:1166:T112053RE`\n\n## 检索与权限策略\n\n- **群聊：候选检索范围与跳转权限分开。**早期讨论中，高管 A 模式可查询全租户群，但不能跳转至本人未加入的群。因此，搜索范围较宽不等于获得目标群访问权；已读材料不足以确认消息正文、摘要及每个展示环节的最终鉴权实现。`widget:msg:sg_3981594831:831:T112053RE`\n- **任务空间：有检索和向量召回线索，但不能确认完整技术组合。**10 月 6 日反馈称任务空间已能检索，召回率仍在观察；10 月 9 日又反馈空间向量召回失败。不能据此断言当前完全依赖向量、关键词，或已经采用某种混合检索策略。`widget:refs:msg:sg_3981594831:1166:T112053RE|msg:sg_3981594831:1475:T112053RE`\n- **按人查询受组织权限影响。**10 月 27 日研发解释：按姓名查询要先通过搜索接口查用户 ID，受组织架构权限管控；通过 `@` 引用时直接带用户 ID，因此该案例可以继续查询。群内认为按用户权限限制范围合理；这不等于 `@` 后可以绕过目标资源授权。`widget:refs:msg:sg_3981594831:2074:T112053RE|msg:sg_3981594831:2079:T112053RE|msg:sg_3981594831:2085:T112053RE`\n- **空间查询和写入的租户边界不同。**10 月 29 日讨论称，空间列表首页当时不限当前租户；随后决定将写操作限制在当前租户。11 月 2 日研发称“禁止跨租户”已部署测试环境，但不能据此认定所有查询都已禁止跨租户，也不能认定生产环境已完成验收。`widget:refs:msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2146:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE|msg:sg_3981594831:2174:T112053RE`\n\n## 范围限制与风险\n\n1. **召回可能遗漏或不稳定。**测试反馈中，首轮仅用文字描述任务可能查不到，明确添加任务后才能答对；另有空间向量召回失败反馈。11 月 3 日群内还提出，结果质量可能随提示词熟练程度波动；这是使用者反馈，不是量化评测结论。`widget:refs:msg:sg_3981594831:1580:T112053RE|msg:sg_3981594831:1475:T112053RE|msg:sg_3981594831:2238:T112053RE`\n2. **任务自定义字段暂不支持。**11 月 2 日研发明确说，当时任务返回字段和筛选项均不支持自定义字段；依赖这些字段查询或汇总时，结果可能不完整。`widget:refs:msg:sg_3981594831:2183:T112053RE|msg:sg_3981594831:2185:T112053RE`\n3. **上下文关系可能缺失。**10 月 9 日研发称消息检索当时没有加入引用关系，可能影响对回复对象或上下文的判断；该消息不能证明之后一直未改。`widget:msg:sg_3981594831:1440:T112053RE`\n4. **跨租户范围和授权容易混淆。**空间列表曾不限当前租户，而写入后来决定限制本租户，用户可能遇到“查得到、但不能操作”。是否会展示无权数据、各查询接口如何校验，材料没有给出足够证据，不能断言已泄露或已彻底隔离。`widget:refs:msg:sg_3981594831:2146:T112053RE|msg:sg_3981594831:2162:T112053RE|msg:sg_3981594831:2163:T112053RE`\n5. **引用与环境配置有安全风险。**群内曾反馈跨群引用问题；PRE 验收时也曾讨论临时放宽权限。建议分别核验检索结果展示、引用和跳转的目标资源权限，并避免将测试环境配置当成生产权限策略。这里是风险控制建议，不代表各环节已经实现。`widget:msg:sg_3981594831:884:T112053RE`\n\n本次补查以该群 **2026 年 10 月 4 日至 11 月 3 日**的主题消息为主，并读取了部分前后文；30 天范围的关键词结果有截断，群语义检索也未成功，因此以上不是完整历史或最终上线方案。早期 A 模式结论来自此前已引用的 10 月初消息，也不应未经复核地视为当前生产配置。\n\n要不要我帮你长期关注“AI助手·一期研发群”？",
+        "session_id": "cs_3b5930e3-e69f-492b-b884-f9850164ec80",
+        "request_id": "5ef3c7cb-60b8-44d3-b1c6-44d5dd2837cd",
+        "message_id": "cm_cabf508d-cf92-4d73-9984-1642616c17f1",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai_assistant_research_retrieval_policy.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 20,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 28,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=39 conversation_ids=1 top_k=30",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 33,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=5 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 38,
+        "name": "material_ask",
+        "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=62",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 46,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261031T084807Z-20261103T084807Z-eed33a63 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 51,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=5 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 56,
+        "name": "material_ask",
+        "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=56",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 64,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_2040-2170-9f509e24 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "seq": 69,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=5 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_e2fce4b7cf17452dab5033c570f10da4",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 82,
+        "tool_count": 10,
+        "tokens": 304262
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['结构化字段检索', '关键词检索', '语义向量检索', '鉴权回归']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['结构化字段检索', '关键词检索', '语义向量检索', '鉴权回归']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['group_message_search(keywords=5 group_ids=0 conversation_ids=1 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true)×2']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "3981594831",
+        "9e12463850f8d7054424c79dfeba66fb",
+        "2137b37e1531ab7c9f863dd55dee5b52",
+        "5acf70e2bc41062699cb7e0054327cc4"
+      ],
+      "must_include": [
+        "结构化字段检索",
+        "关键词检索",
+        "语义向量检索",
+        "鉴权回归"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "区分检索策略、权限步骤、一期范围与风险，引用三条真实消息。"
+      ],
+      "fixed_fact_truth": "检索规则包括结构化字段、关键词、语义向量三类结果交由模型综合；权限策略为查询可读范围、检索时加入召回条件、结果后验鉴权；一期只支持高管，普通用户权限在二期，存在截断、敏感数据和全量同步风险。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "9e12463850f8d7054424c79dfeba66fb",
+        "2137b37e1531ab7c9f863dd55dee5b52",
+        "5acf70e2bc41062699cb7e0054327cc4"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "AI助手研发群里，群聊/任务空间检索采用什么检索与权限策略？有哪些范围限制和风险？",
+          "must_include": [
+            "结构化字段检索",
+            "关键词检索",
+            "语义向量检索",
+            "鉴权回归"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答包含有依据的向量召回反馈、跨租户查询与写入区别及多条真实引用，但未说明结构化字段、关键词、语义向量三类结果交由模型综合，未回答完整权限链路及一期/二期范围，也未覆盖原方案的截断、敏感数据与全量同步风险。近期实现反馈没有取代或否定这些历史设计讨论；应分别陈述设计口径和后续变化，而不是仅表示无法确认核心策略。",
+        "evidence_refs": [
+          "independent_historical_sources.independent_original_messages：sg_3981594831:274，clientMsgID=5acf70e2bc41062699cb7e0054327cc4",
+          "independent_historical_sources.independent_original_messages：sg_3981594831:41，clientMsgID=9e12463850f8d7054424c79dfeba66fb",
+          "independent_historical_sources.independent_original_messages：sg_3981594831:50，clientMsgID=2137b37e1531ab7c9f863dd55dee5b52",
+          "recovered_business_evidence：call_1afc214284404a3b8efdc7ed79a1ac8d，coverage.result_truncated=true、omitted_rows=123",
+          "turns[step=2].answer"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "3612f908bc8977061275678a7f25c0c488c73861afda52f6031b3840d2ef3c52",
+      "result": "cb828bd86f71a5a76599ceb7d2fe35e40bde20a0e52540779d259b0e4fdbf400",
+      "requests": [
+        "5ef3c7cb-60b8-44d3-b1c6-44d5dd2837cd"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答没有给出 Gold 所列的三类检索综合策略、三步权限策略、一期与二期范围及截断、敏感数据、全量同步风险，而是明确表示材料不足以确认完整方案。但本例提供的 Trace 仅含截断预览，未展示三条关键原始消息或其完整回读内容，无法确定这些方案在本轮源数据中的适用性，以及助手是否已读后遗漏。现有证据不足以将该差异确定为业务失败，也不足以判定通过。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答没有给出 Gold 所列的三类检索综合策略、三步权限策略、一期与二期范围及截断、敏感数据、全量同步风险，而是明确表示材料不足以确认完整方案。但本例提供的 Trace 仅含截断预览，未展示三条关键原始消息或其完整回读内容，无法确定这些方案在本轮源数据中的适用性，以及助手是否已读后遗漏。现有证据不足以将该差异确定为业务失败，也不足以判定通过。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-FU-035.json",
+        "independent_readback": "sources/AA-FU-035.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "business_reason": "本次请求已正常完成生成，但结果未满足核心业务验收。回答正确区分了查询与写入边界、历史反馈与生产实现，也提供了真实消息引用；然而遗漏了群内明确讨论的三类检索综合策略、召回前可读范围—召回过滤—后验鉴权链路，以及一期高管、二期普通用户的范围和敏感数据、全量同步风险。以“已读材料不足”限定结论避免了编造，但不能替代完成用户所问的策略总结。独立认证原消息已补足关键事实，故不属于证据不足或生成失败。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同请求认证 Trace 核实了实际检索范围和完整回答；独立同身份原消息回读核实 sg_3981594831:274 的三类检索综合方案、:41 的可读范围与召回条件及鉴权回归、:50 的一期范围和同步安全风险。上述回读证明历史讨论内容，不代表 Agent 实际读取过。Trace 显示 Agent 主要查询10月4日至11月3日，最后关键词结果明确截断并遗漏123行，未覆盖9月关键设计讨论；这是可确定的检索覆盖及结果遗漏，而非采集缺失。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "回答包含有依据的向量召回反馈、跨租户查询与写入区别及多条真实引用，但未说明结构化字段、关键词、语义向量三类结果交由模型综合，未回答完整权限链路及一期/二期范围，也未覆盖原方案的截断、敏感数据与全量同步风险。近期实现反馈没有取代或否定这些历史设计讨论；应分别陈述设计口径和后续变化，而不是仅表示无法确认核心策略。",
+          "evidence_refs": [
+            "independent_historical_sources.independent_original_messages：sg_3981594831:274，clientMsgID=5acf70e2bc41062699cb7e0054327cc4",
+            "independent_historical_sources.independent_original_messages：sg_3981594831:41，clientMsgID=9e12463850f8d7054424c79dfeba66fb",
+            "independent_historical_sources.independent_original_messages：sg_3981594831:50，clientMsgID=2137b37e1531ab7c9f863dd55dee5b52",
+            "recovered_business_evidence：call_1afc214284404a3b8efdc7ed79a1ac8d，coverage.result_truncated=true、omitted_rows=123",
+            "turns[step=2].answer"
+          ]
+        }
+      ],
+      "suggestions": [
+        "将检索时间扩展至早期设计讨论，按“结构化字段、鉴权回归、数据同步”等具体主题补查，避免30天窗口漏掉方案来源。",
+        "以三条已核实原消息概括检索组合、三阶段权限链路和一期范围，再单独补充10月至11月的实际反馈与边界调整。",
+        "明确区分原始设计、后续决策、已部署测试环境和尚未确认的生产实现，不把设计讨论表述为已完成上线。"
+      ],
+      "input_sha256": "d7591400b6e4fc2b822afaf4cc0ad0399cc19e722c3147f292c0d846617755f7",
+      "evidence_sha256": "1f6e4967244c7e8020fc2c1de8de43e3d76eac4f192cae185fa3f82684005790",
+      "reviewed_at": "2026-11-04T00:17:01.765234+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "3612f908bc8977061275678a7f25c0c488c73861afda52f6031b3840d2ef3c52",
+        "result": "cb828bd86f71a5a76599ceb7d2fe35e40bde20a0e52540779d259b0e4fdbf400",
+        "requests": [
+          "5ef3c7cb-60b8-44d3-b1c6-44d5dd2837cd"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-FU-035",
+    "evaluation_detail_reason": "本次请求已正常完成生成，但结果未满足核心业务验收。回答正确区分了查询与写入边界、历史反馈与生产实现，也提供了真实消息引用；然而遗漏了群内明确讨论的三类检索综合策略、召回前可读范围—召回过滤—后验鉴权链路，以及一期高管、二期普通用户的范围和敏感数据、全量同步风险。以“已读材料不足”限定结论避免了编造，但不能替代完成用户所问的策略总结。独立认证原消息已补足关键事实，故不属于证据不足或生成失败。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "独立认证回源已补齐三条关键历史消息，确认群内明确讨论过三类检索交由模型综合、查询可读范围—召回过滤—后验鉴权的权限链路，以及一期高管/二期普通用户的范围与截断、敏感数据和全量同步风险。本轮回答虽准确概括了部分10月至11月的反馈，并谨慎区分查询与写入、测试部署与生产验收，但没有回答上述核心策略和范围，反而以材料不足结束核心问题，任务未正确完成。这是检索覆盖不足造成的关键事实遗漏，不认定为已读评论误解或编造。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "没有总结出用户要的检索策略和权限方案，漏了三类检索综合、查询前确认可读范围、检索时过滤、检索后鉴权，以及一期二期范围和数据风险。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-FU-035",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

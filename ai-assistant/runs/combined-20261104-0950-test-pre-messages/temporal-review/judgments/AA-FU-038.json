@@ -1,0 +1,103 @@
+{
+  "business_status": "fail",
+  "business_reason": "旧判要求必须复述8月的李振民、Bud和士衡安排，不适用于11月3日的当前未决事项。但回答仍漏掉已明确的最新图片问答范围和部署进展，并把图片上下文记忆问题的跟进人混入孙文，未准确回答各事项分别由谁跟进。",
+  "failure_categories": [
+    "最新范围遗漏",
+    "跟进人归属不准确"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "PRD回写、自定义字段方案期限和跨租户写入原则基本有据，回答也正确保留了最终验收未知的边界。不过图片问答在11月2日已明确部署测试，且仅支持图片创建任务标题、不支持创建项目和评论；图片上下文丢失则明确由公台接手，这些重要范围和责任区分没有交代。",
+      "evidence_refs": [
+        "sg_3981594831:1386",
+        "sg_3981594831:2236",
+        "sg_3981594831:2162-2163",
+        "sg_3981594831:2174-2175",
+        "sg_3981594831:2096-2097",
+        "sg_3981594831:2100",
+        "sg_3981594831:2207"
+      ],
+      "comparison": {
+        "expected": "截至追问时区分已确认范围、已部署待验收及仍待确认事项：图片替代文本已部署测试，当前仅支持创建任务标题，创建项目和评论需另提；图片上下文记忆丢失由公台跟进，关闭循环及图片写入由孙文相关推进。",
+        "actual": "将图片附件、多轮上下文和关闭行为合并为一项，主要列孙文处理及振民打包，停留在10月29日安排和11月2日询问能否测试，未说明当天已有部署回复及任务专属范围，也未列公台接手上下文丢失。",
+        "difference": "不是缺少最终验收结论就应判错，而是遗漏已有明确回复的最新能力边界和部署状态，并未准确区分用户所问的各事项跟进人。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "原问时间为2026年11月3日08:50:13 UTC；独立回读包含此前的图片问答范围、部署回复及明确指派关系，足以核验具体差异，不依赖推断全量未决清单。"
+  },
+  "temporal_assessment": {
+    "scope": "current",
+    "ignored_stale_expectations": [
+      "必须复述8月19日孙文请李振民关注PRD并确认处理同事的安排",
+      "必须将8月31日产品与Bud、士衡圈定一期问答Case范围列为11月仍待确认事项",
+      "用户未要求的原始groupID、clientMsgID固定输出格式"
+    ],
+    "current_factual_basis": [
+      {
+        "reference": "sg_3981594831:2236",
+        "用途": "11月3日自定义字段读写方案要求及11月中旬期限。"
+      },
+      {
+        "reference": "sg_3981594831:2162-2163",
+        "用途": "10月29日最终明确所有写操作限制本租户。"
+      },
+      {
+        "reference": "sg_3981594831:2174-2175",
+        "用途": "11月2日已部署测试及图片创建任务标题的明确支持范围，均早于追问。"
+      },
+      {
+        "reference": "sg_3981594831:2097、2100",
+        "用途": "公台要求将图片上下文丢失记任务给自己，SuChen确认记录，核验实际跟进人。"
+      },
+      {
+        "reference": "sg_3981594831:2207",
+        "用途": "11月2日孙文补充474版本通过at唤起图片，证明已有后续使用说明。"
+      }
+    ],
+    "reason_changed": true,
+    "previous_failure_still_valid": false
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T08:50:13.001000+00:00",
+      "asked_at_ms": 1793695813001,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T17:50:13.001000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": true,
+      "historical_wording": false,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "1cf272870ccbaa1c8b324ed047005fb46500e309f863f4d0eae6b202dcae38e5",
+  "evidence_sha256": "3b80434e7cfa8fddacd2a9777904dd50e96bcf21cf92fa96a5bf4dd3c58b5e26",
+  "reviewed_at": "2026-11-04T05:14:22.839617+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 2：scratchpad_read（failed） → activate_skills（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

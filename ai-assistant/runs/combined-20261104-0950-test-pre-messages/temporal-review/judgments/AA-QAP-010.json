@@ -1,0 +1,84 @@
+{
+  "business_status": "fail",
+  "business_reason": "用户明确询问历史提测改期，5月的原始讨论仍是有效依据，并未因追问发生在11月而过期。回答区分了旧计划和新计划，也坦承测试记录不是原消息，但遗漏三项具体延期原因，未提供所问事项的真实消息ID，原失败结论仍成立。",
+  "failure_categories": [
+    "历史事实漏答",
+    "相关真实ID缺失"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "截至2026年11月3日本轮提问，历史原文可明确核验改期缘由。回答给出了“昨天晚上”改到“下周一”，但未回答具体原因，并明确未提供原始讨论ID。",
+      "evidence_refs": [
+        "sg_1577269387:72 / clientMsgID=6ca5795c4c21df1b0f791b5b21d5a7e4",
+        "sg_1577269387:73 / clientMsgID=e645ad76007acb54540c656f63f3b243",
+        "cm_97cb51ba-6eaa-48e9-ad76-908cc86cacd9",
+        "bar_0e6959d5581049aca21cb3e9402bbdf4:53,58"
+      ],
+      "comparison": {
+        "expected": "说明原计划“昨天晚上”提测，后为做完整功能改至“下周一”；未完成的是高级筛选、高管特殊用户新增记分规则处理、历史重要信息流数据初始化，并提供相关真实消息ID 6ca5795c4c21df1b0f791b5b21d5a7e4（群1577269387）。无需强制换算绝对日期。",
+        "actual": "引用事后测试记录说明两个相对时间及有三项未完成，但表示无法确认具体延期原因；仅列出两个测试任务ID，并说明不是原需求或原消息ID。",
+        "difference": "两个相对时间正确，但三项原因全部缺失，相关原消息真实ID也未交付；测试任务ID不能替代用户所问历史事项的证据。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "独立回读的5月28日原消息明确载有原计划、新计划和三项未完成工作，均早于本轮提问；原始回答及对应Trace可核验。此结论不依赖倒推当时ACL，也不据跨租户工具返回单独认定越权。"
+  },
+  "temporal_assessment": {
+    "scope": "historical",
+    "ignored_stale_expectations": [],
+    "current_factual_basis": [
+      {
+        "reference": "sg_1577269387:72 / 6ca5795c4c21df1b0f791b5b21d5a7e4，2026-05-28T07:45:34.841Z",
+        "usage": "核验原计划、改期和三项延期原因；原文发送时间早于提问上界。"
+      },
+      {
+        "reference": "sg_1577269387:73 / e645ad76007acb54540c656f63f3b243",
+        "usage": "核验延期仅针对重要信息流部分，其他部分可照常提测。"
+      }
+    ],
+    "reason_changed": false,
+    "previous_failure_still_valid": true
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T07:08:20.706000+00:00",
+      "asked_at_ms": 1793689700706,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T16:08:20.706000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": false,
+      "historical_wording": true,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "b70b2c95954c62595c25e7386e6605c73e42c1ce70424051acb63f5269d01412",
+  "evidence_sha256": "e6ddbd3d9e98a69306389776763a6eaeec55d23a7c60ee5b52387c3ab6561197",
+  "reviewed_at": "2026-11-04T05:08:00.876616+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "fail",
+  "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → scratchpad_write（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → entity_resolve（completed） → task_detail（completed） → task_detail（completed） → group_message_search（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

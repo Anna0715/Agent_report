@@ -1,0 +1,428 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-QAP-011",
+    "suite": "assistant_agent_followup",
+    "module": "跨源事实与风险",
+    "scenario": "pre真实消息/阻塞分析",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "没有说清当时为什么卡住、由谁推进。漏了多数成员仍在做周报和假勤，以及拆解Jira、核对排期、复核接口、验证结构化查询方案等具体分工。",
+    "confidence": "high",
+    "latency_ms": 24157,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['hive.im.search']",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？",
+    "ability": "归纳项目卡点、责任人与下一步",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？"
+    ],
+    "answer": "当时 AI 助手已进入真实数据试用阶段，主要卡在 **对客能力缺口、权限安全、稳定性和使用体验**；人力与排期也曾构成推进风险。以下是群聊里的历史讨论，不代表这些问题现在仍未解决。`widget:group:2122635335:T112053RE`\n\n## 主要卡点\n\n- **文件分析是对客前置项**：DOCX、PDF、图片分析原本不在一期范围，后来被要求对客前支持，还需考虑 Excel 等格式。团队需要比较“解析成文本”和“模型直接读文件”的效果、成本及多轮追问表现。`widget:refs:msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:553:T112053RE|msg:sg_2122635335:573:T112053RE|msg:sg_2122635335:582:T112053RE`\n- **权限与数据隔离需要把牢**：扩大高管可查询的数据范围时，仍要做好隔离和权限校验；后续还出现过租户 ID 缺失导致的引用、检索异常。`widget:refs:msg:sg_2122635335:195:T112053RE|msg:sg_2122635335:203:T112053RE|msg:sg_2122635335:633:T112053RE`\n- **核心链路稳定性待验证**：复杂任务拆解、结构化和混合查询，以及索引、未读消息、历史会话加载等能力仍需验证或修复。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:654:T112053RE|msg:sg_2122635335:682:T112053RE`\n- **交互与回答质量影响试用**：包括切换群后结果不变、多群选择不直观，以及回答大段堆叠、重点不突出等问题。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:611:T112053RE|msg:sg_2122635335:628:T112053RE`\n- **人力和排期偏紧**：核心成员同时承担其他项目，提测和内测存在风险，后续需要统一协调资源。`widget:refs:msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:530:T112053RE`\n\n## 谁推进下一步\n\n- **SuChen**：统筹 AI 项目的沟通、推进和人力协调，拉通问题清单及试用、复测。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:545:T112053RE`\n- **公台**：推进 PDF、Word、图片等文件理解能力，复用 ATS 解析能力并评估文件处理方案；同时跟进租户 ID、检索等后端问题。`widget:refs:msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:563:T112053RE|msg:sg_2122635335:633:T112053RE`\n- **进华**：为文件解析补充支持人力，协调 ATS 侧已有能力。`widget:refs:msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE`\n- **浩澜、李振民**：跟进未读、引用、历史会话等问题的复现、修复与新包验证。`widget:refs:msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:643:T112053RE|msg:sg_2122635335:657:T112053RE`\n- **Will**：提出回答样式优化方案，改善大段文字、重点不清的问题。`widget:refs:msg:sg_2122635335:611:T112053RE|msg:sg_2122635335:612:T112053RE`\n- **试用团队**：继续使用 PRE／线上真实数据试用，将问题沉淀到任务空间，并在版本发布后复测。`widget:refs:msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:629:T112053RE|msg:sg_2122635335:631:T112053RE`\n\n以上依据此前已查到的群聊记录整理；本次未核验任务系统中的最新完成状态。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "没有说清当时为什么卡住、由谁推进。漏了多数成员仍在做周报和假勤，以及拆解Jira、核对排期、复核接口、验证结构化查询方案等具体分工。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？",
+        "answer": "当时 AI 助手已进入真实数据试用阶段，主要卡在 **对客能力缺口、权限安全、稳定性和使用体验**；人力与排期也曾构成推进风险。以下是群聊里的历史讨论，不代表这些问题现在仍未解决。`widget:group:2122635335:T112053RE`\n\n## 主要卡点\n\n- **文件分析是对客前置项**：DOCX、PDF、图片分析原本不在一期范围，后来被要求对客前支持，还需考虑 Excel 等格式。团队需要比较“解析成文本”和“模型直接读文件”的效果、成本及多轮追问表现。`widget:refs:msg:sg_2122635335:517:T112053RE|msg:sg_2122635335:553:T112053RE|msg:sg_2122635335:573:T112053RE|msg:sg_2122635335:582:T112053RE`\n- **权限与数据隔离需要把牢**：扩大高管可查询的数据范围时，仍要做好隔离和权限校验；后续还出现过租户 ID 缺失导致的引用、检索异常。`widget:refs:msg:sg_2122635335:195:T112053RE|msg:sg_2122635335:203:T112053RE|msg:sg_2122635335:633:T112053RE`\n- **核心链路稳定性待验证**：复杂任务拆解、结构化和混合查询，以及索引、未读消息、历史会话加载等能力仍需验证或修复。`widget:refs:msg:sg_2122635335:310:T112053RE|msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:654:T112053RE|msg:sg_2122635335:682:T112053RE`\n- **交互与回答质量影响试用**：包括切换群后结果不变、多群选择不直观，以及回答大段堆叠、重点不突出等问题。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:464:T112053RE|msg:sg_2122635335:611:T112053RE|msg:sg_2122635335:628:T112053RE`\n- **人力和排期偏紧**：核心成员同时承担其他项目，提测和内测存在风险，后续需要统一协调资源。`widget:refs:msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:530:T112053RE`\n\n## 谁推进下一步\n\n- **SuChen**：统筹 AI 项目的沟通、推进和人力协调，拉通问题清单及试用、复测。`widget:refs:msg:sg_2122635335:459:T112053RE|msg:sg_2122635335:530:T112053RE|msg:sg_2122635335:545:T112053RE`\n- **公台**：推进 PDF、Word、图片等文件理解能力，复用 ATS 解析能力并评估文件处理方案；同时跟进租户 ID、检索等后端问题。`widget:refs:msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:563:T112053RE|msg:sg_2122635335:633:T112053RE`\n- **进华**：为文件解析补充支持人力，协调 ATS 侧已有能力。`widget:refs:msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE`\n- **浩澜、李振民**：跟进未读、引用、历史会话等问题的复现、修复与新包验证。`widget:refs:msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:643:T112053RE|msg:sg_2122635335:657:T112053RE`\n- **Will**：提出回答样式优化方案，改善大段文字、重点不清的问题。`widget:refs:msg:sg_2122635335:611:T112053RE|msg:sg_2122635335:612:T112053RE`\n- **试用团队**：继续使用 PRE／线上真实数据试用，将问题沉淀到任务空间，并在版本发布后复测。`widget:refs:msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:629:T112053RE|msg:sg_2122635335:631:T112053RE`\n\n以上依据此前已查到的群聊记录整理；本次未核验任务系统中的最新完成状态。",
+        "session_id": "cs_1c60f717-6702-46d5-b8d4-9e44bee093e0",
+        "request_id": "4e3b7097-b97a-4326-a3a8-005d2bc4070e",
+        "message_id": "cm_af507e76-2704-4c28-b5bf-fc663f0f8632",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_fc5ba69b3f40462280052fe8f6148eae",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/agent_ai_project_blockers.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fc5ba69b3f40462280052fe8f6148eae",
+        "step": 2,
+        "seq": 20,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/agent_ai_project_blockers.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_fc5ba69b3f40462280052fe8f6148eae",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 33,
+        "tool_count": 2,
+        "tokens": 44523
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['研发投入不足', '核心方案尚未验证', '周报', '假勤']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['研发投入不足', '核心方案尚未验证', '周报', '假勤']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['hive.im.search']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'scratchpad_read:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['scratchpad_read(path=cases/agent_ai_project_blockers.md offset=0)×2']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "2122635335",
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219"
+      ],
+      "must_include": [
+        "研发投入不足",
+        "核心方案尚未验证",
+        "周报",
+        "假勤"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "从两条消息提炼卡点、责任人、下一步和风险，不补造任务状态。"
+      ],
+      "fixed_fact_truth": "研发投入不足、核心方案尚未验证、结构化查询待验证；多数成员仍在周报和假勤，一期10月中旬对客与9月15提测风险较高。下一步包括完成Jira拆解/预排、公台和振民复核接口并启动开发、确认结构化查询阻塞及关键路径。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "Agent小分队里，AI助手项目当时主要卡点是什么，谁需要推进哪些下一步？",
+          "must_include": [
+            "研发投入不足",
+            "核心方案尚未验证",
+            "周报",
+            "假勤"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "本轮实际回答虽包含泛化的人力紧张、查询待验证和若干责任人，但未说明周报与假勤占用研发投入，未提炼目标消息中的 Jira 拆解预排、守白核对排期、公台和振民复核接口启动开发、结构化查询验证及关键路径确认等核心下一步；也未准确呈现9月15日提测和10月中旬对客的高风险背景。主体以较晚阶段问题替代目标历史阻塞分析，属于结果不满足验收，不是空回答或生成失败。",
+        "evidence_refs": [
+          "independent_historical_sources.independent_original_messages: seq 322 / clientMsgID 08b37af7758288b1b1271b27dadd969a",
+          "independent_historical_sources.independent_original_messages: seq 327 / clientMsgID c3586cea400d3296b229e400abd92219",
+          "turns[step=2].answer",
+          "recovered_business_evidence.runs[run_id=bar_fc5ba69b3f40462280052fe8f6148eae]",
+          "trace.runs[0].tools: seq 15、20"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "cbf370cae4401430fc0e33f16b4e5dce09fe93dc13fc5fd2e628581e41515f09",
+      "result": "5b250089c37ff6a26c648a139f0762768c670e9a46659ed71ffea892b2be1993",
+      "requests": [
+        "4e3b7097-b97a-4326-a3a8-005d2bc4070e"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答围绕文件分析、权限、试用体验等较宽泛的历史问题展开，与 Gold 所指的研发投入不足、核心方案尚未验证及接口开发推进存在明显偏差，也未说明周报、假勤占用人力及 Jira 拆解等关键内容。但本例 Trace 仅记录两次 scratchpad_read 内部失败，未提供目标两条消息原文或回答引用消息的内容；会话为复用，所称此前已读取的记录也未随输入提供。因此无法核验“当时”的具体时点及相关责任分工，不能区分证据采集缺失与助手实际漏读、误读，暂不确定判定业务失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答围绕文件分析、权限、试用体验等较宽泛的历史问题展开，与 Gold 所指的研发投入不足、核心方案尚未验证及接口开发推进存在明显偏差，也未说明周报、假勤占用人力及 Jira 拆解等关键内容。但本例 Trace 仅记录两次 scratchpad_read 内部失败，未提供目标两条消息原文或回答引用消息的内容；会话为复用，所称此前已读取的记录也未随输入提供。因此无法核验“当时”的具体时点及相关责任分工，不能区分证据采集缺失与助手实际漏读、误读，暂不确定判定业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-QAP-011.json",
+        "independent_readback": "sources/AA-QAP-011.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "business_reason": "本轮已正常生成完整回答，但结果未满足阻塞分析验收。回答仅笼统提到成员承担其他项目和排期风险，遗漏多数成员仍主要投入周报、假勤这一关键原因，也未给出当时明确的推进分工：所有人完成 Jira 拆解和时间预排、守白逐人核对并发布排期、公台与振民复核接口并启动开发，以及确认结构化查询阻塞、方案验证和关键路径。回答主要转向后续文件分析、权限和试用缺陷，不能替代上述历史阶段的卡点与行动。正确群引用及未确认当前完成状态的边界说明可认可，但不足以弥补核心遗漏。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同身份认证独立回源已核验 Agent 小分队 seq 322、327 的原始正文、发送时间及访问成功结果，足以确认历史稳定事实与回答遗漏。当前认证 Trace 显示两次 scratchpad_read 均返回 Internal，历史输入主要为此前助手总结，没有目标原文的工具注入；因此不认定 Agent 已读原文后误读，也不将独立回源冒充 Agent 检索。已有完整回答及真实源文，可以确定结果不满足验收，而非采集不足。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "本轮实际回答虽包含泛化的人力紧张、查询待验证和若干责任人，但未说明周报与假勤占用研发投入，未提炼目标消息中的 Jira 拆解预排、守白核对排期、公台和振民复核接口启动开发、结构化查询验证及关键路径确认等核心下一步；也未准确呈现9月15日提测和10月中旬对客的高风险背景。主体以较晚阶段问题替代目标历史阻塞分析，属于结果不满足验收，不是空回答或生成失败。",
+          "evidence_refs": [
+            "independent_historical_sources.independent_original_messages: seq 322 / clientMsgID 08b37af7758288b1b1271b27dadd969a",
+            "independent_historical_sources.independent_original_messages: seq 327 / clientMsgID c3586cea400d3296b229e400abd92219",
+            "turns[step=2].answer",
+            "recovered_business_evidence.runs[run_id=bar_fc5ba69b3f40462280052fe8f6148eae]",
+            "trace.runs[0].tools: seq 15、20"
+          ]
+        }
+      ],
+      "suggestions": [
+        "读取或回查当时进度纪要及紧随其后的风险消息，避免直接沿用此前助手的跨阶段总结。",
+        "按“卡点—证据—推进人—下一步”归纳，明确周报、假勤占用投入，补齐拆解排期、接口复核开发、方案验证和关键路径确认。",
+        "将后续试用阶段的文件、权限及体验问题单列为补充背景，不替代当时的主要风险与分工。"
+      ],
+      "input_sha256": "a6f5d5ee45c84a6318fb8cb3a4eedc6e93c96a9c80aff7f150cea866225bff75",
+      "evidence_sha256": "3c8c2da188a18f7c7d71ce29c016b5b491cbd8e7938837b3012d8064829e0884",
+      "reviewed_at": "2026-11-04T00:15:21.361187+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed）",
+      "review_observation": {
+        "basis": "cbf370cae4401430fc0e33f16b4e5dce09fe93dc13fc5fd2e628581e41515f09",
+        "result": "5b250089c37ff6a26c648a139f0762768c670e9a46659ed71ffea892b2be1993",
+        "requests": [
+          "4e3b7097-b97a-4326-a3a8-005d2bc4070e"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-QAP-011",
+    "evaluation_detail_reason": "本轮已正常生成完整回答，但结果未满足阻塞分析验收。回答仅笼统提到成员承担其他项目和排期风险，遗漏多数成员仍主要投入周报、假勤这一关键原因，也未给出当时明确的推进分工：所有人完成 Jira 拆解和时间预排、守白逐人核对并发布排期、公台与振民复核接口并启动开发，以及确认结构化查询阻塞、方案验证和关键路径。回答主要转向后续文件分析、权限和试用缺陷，不能替代上述历史阶段的卡点与行动。正确群引用及未确认当前完成状态的边界说明可认可，但不足以弥补核心遗漏。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "独立认证回源已补齐目标两条历史消息，能够确定本轮遗漏核心所问事实和推进分工。回答虽概括了人力紧张、查询待验证，也提供了正确群来源，但未说明多数成员仍投入周报和假勤，未提炼所有人完成 Jira 拆解与预排、守白核对拆分排期、公台和振民复核接口并启动开发，以及确认结构化查询阻塞和关键路径等关键下一步；反而主要回答了后续文件分析、权限与试用缺陷，不能替代目标历史阶段的阻塞分析。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "没有说清当时为什么卡住、由谁推进。漏了多数成员仍在做周报和假勤，以及拆解Jira、核对排期、复核接口、验证结构化查询方案等具体分工。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-QAP-011",
+    "version": 1,
+    "override": {
+      "business_reason": "fix",
+      "business_status": "pending_fix",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ]
+    },
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": "2026-11-04T04:46:43.835982+00:00",
+    "updated_by": "3252c4ab-f117-4a87-b819-0e436548d1c8"
+  },
+  "cloud_history": [
+    {
+      "at": "2026-11-04T04:46:43.835982+00:00",
+      "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+      "after": {
+        "business_reason": "fix",
+        "business_status": "pending_fix",
+        "failure_categories": [
+          "信息缺失",
+          "范围错误"
+        ]
+      },
+      "before": null,
+      "case_id": "AA-QAP-011",
+      "revision": 8,
+      "actor_name": "安柔"
+    }
+  ],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "business_status": "fail",
+  "business_reason": "回答对预发修复、线上尚未发布、回归计划和当天换模的区分基本准确，也没有把旧风险直接认定为当前未解决。但增量起点错误地沿用了上次摘要截止时间，并漏掉了此前重点追踪的“通知追问未进上下文”问题已修复的直接进展，旧失败仍有实际依据。",
+  "failure_categories": [
+    "incremental_time_window_error",
+    "important_progress_omission"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 1,
+      "status": "fail",
+      "reason": "本轮应以东京时间10月10日09:46:47.655之后为新增区间，而回答与实际材料查询均从10月9日18:33开始。10月12日对此前“通知追问未进入上下文”的明确修复答复未被报告，使同主题进展摘要漏掉了重要状态变化。",
+      "evidence_refs": [
+        "history:cm_615542f0-df0b-4e63-b359-073613b95dbe.createdAt=1791593207655",
+        "turn:cm_ebc20032-ed4e-45ae-afcd-25094210a1b0.createdAt=1793697560125",
+        "trace:call_fcdc94de20dd47df843cb0d78a71592a.range.from_time=2026-10-09T09:33:00Z",
+        "msg:sg_2122635335:1046:T112053RE",
+        "msg:sg_2122635335:1047:T112053RE",
+        "msg:sg_2122635335:1048:T112053RE"
+      ],
+      "comparison": {
+        "expected": "汇总(2026-10-10 09:46:47.655, 2026-11-03 18:19:20.125]东京时间内的新增进展；说明通知追问上下文问题10月12日已称修复、计划稍后发布，不能据此认定实际上线。",
+        "actual": "声明覆盖10月9日18:33起的消息，并按此起点读取材料；报告了后期检索、写入、权限与回归状态，但未说明通知追问上下文问题的修复答复。",
+        "difference": "以旧摘要截止时刻替代上一轮用户提问时间，且遗漏此前已追踪阻塞的一项明确修复进展。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "已核实上一条用户消息和本次追问的落库时间；原始 Trace 明确显示查询起点，独立消息1046—1048可核验被遗漏的自动化修复进展。无需凭检索缺失推断错误。"
+  },
+  "temporal_assessment": {
+    "scope": "incremental",
+    "ignored_stale_expectations": [
+      "不要求重述8月人力投入和9月15日提测风险作为当前阻塞。",
+      "10月7日权限尚未发布不能覆盖10月23日已有实际开通的后续事实。"
+    ],
+    "current_factual_basis": [
+      {
+        "reference": "msg:sg_2122635335:1046-1047:T112053RE",
+        "purpose": "核验通知追问未进上下文的问题已称修复，但发布仍是计划。"
+      },
+      {
+        "reference": "msg:sg_2122635335:1289:T112053RE",
+        "purpose": "支持已有个别权限开通，不代表所有申请完成。"
+      },
+      {
+        "reference": "msg:sg_2122635335:1465:T112053RE;msg:sg_2122635335:1518:T112053RE;msg:sg_2122635335:1559:T112053RE",
+        "purpose": "核验预发修复与线上发布不可混同。"
+      },
+      {
+        "reference": "msg:sg_2122635335:1580:T112053RE;msg:sg_2122635335:1584:T112053RE;msg:sg_2122635335:1591:T112053RE",
+        "purpose": "核验追问前最新回归计划、日报问题反馈与线上换模。"
+      }
+    ],
+    "reason_changed": true,
+    "previous_failure_still_valid": true
+  },
+  "turn_time_basis": [
+    {
+      "step": 1,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T09:19:20.125000+00:00",
+      "asked_at_ms": 1793697560125,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T18:19:20.125000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": true,
+      "historical_wording": false,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false,
+      "incremental": true,
+      "lower_bound_verified": true,
+      "lower_exclusive": true,
+      "lower_bound_ms": 1791593207655,
+      "lower_bound": "2026-10-10T00:46:47.655000+00:00",
+      "lower_source": "previous user createdAt"
+    }
+  ],
+  "input_sha256": "0f501c97ac37e423c91b23f2ad69b55392a71938615ffdf5418e2d6fc4e8a213",
+  "evidence_sha256": "dc4e2735e520276f6682c326a77e5e0ee7b1b492aeaf5dd1312c54d80172c22f",
+  "reviewed_at": "2026-11-04T05:10:48.258812+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 1：scratchpad_read（failed） → activate_skills（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

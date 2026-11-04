@@ -1,0 +1,504 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PRE-MSG-018",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实群/最新入口随机推荐逻辑",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "推荐逻辑少说了两点：推荐文案池由AI编写，且每个入口要关联具体的对话、群、项目或任务。随机展示3条等其他规则回答正确。",
+    "confidence": "high",
+    "latency_ms": 64474,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "AI助手产品最新的要求不同入口随机出3个推荐的逻辑是什么",
+    "ability": "召回并归纳最新产品规则",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "AI助手产品最新的要求不同入口随机出3个推荐的逻辑是什么"
+    ],
+    "answer": "目前能确认的逻辑是：**根据进入 AI 助手的场景，从配置的系统推荐中随机展示 3 条不重复的问题；每条推荐对应一段默认 Prompt。**这是 10 月 8 日开发说明并得到确认的口径。`widget:refs:msg:sg_1859764497:946:T112053RE|msg:sg_1859764497:948:T112053RE|msg:sg_1859764497:949:T112053RE`\n\n- **入口场景**：验收范围包括单一私聊、单一群聊、单一项目、单一任务、不指定项目的任务空间，以及没有指定对象的混合场景。私聊和群聊的推荐内容提出要区分；私聊入口随后被加入接口和客户端验收范围。`widget:refs:msg:sg_3981594831:1283:T112053RE|msg:sg_3981594831:1352:T112053RE|msg:sg_3981594831:1476:T112053RE`\n- **点击行为**：用户点击推荐问题后，对应 Prompt 会直接发出。10 月 28 日产品提出对 Prompt 分段，并检查渲染和间距；记录中未确认调整是否完成。`widget:refs:msg:sg_2122635335:1457:T112053RE|msg:sg_2122635335:1456:T112053RE`\n- **后续调整**：10 月 9 日有补充推荐池文案的合入请求；10 月 10 日验收发现项目入口传成了空间标识，导致推荐内容不符合预期，当时在排查调整。`widget:refs:msg:sg_1859764497:1001:T112053RE|msg:sg_1859764497:1020:T112053RE|msg:sg_1859764497:1021:T112053RE|msg:sg_1859764497:1022:T112053RE`\n\n**尚不能确认**每个入口的完整题池、刷新时机、跨次展示是否去重，以及后续是否修改了“三条”的规则。以上是查到的明确口径，不宜直接视为截至 11 月 3 日的完整最新规格；相关群消息检索也未完全覆盖。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "推荐逻辑少说了两点：推荐文案池由AI编写，且每个入口要关联具体的对话、群、项目或任务。随机展示3条等其他规则回答正确。",
+    "tool_chain_summary": "步骤 2：group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_search（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "AI助手产品最新的要求不同入口随机出3个推荐的逻辑是什么",
+        "answer": "目前能确认的逻辑是：**根据进入 AI 助手的场景，从配置的系统推荐中随机展示 3 条不重复的问题；每条推荐对应一段默认 Prompt。**这是 10 月 8 日开发说明并得到确认的口径。`widget:refs:msg:sg_1859764497:946:T112053RE|msg:sg_1859764497:948:T112053RE|msg:sg_1859764497:949:T112053RE`\n\n- **入口场景**：验收范围包括单一私聊、单一群聊、单一项目、单一任务、不指定项目的任务空间，以及没有指定对象的混合场景。私聊和群聊的推荐内容提出要区分；私聊入口随后被加入接口和客户端验收范围。`widget:refs:msg:sg_3981594831:1283:T112053RE|msg:sg_3981594831:1352:T112053RE|msg:sg_3981594831:1476:T112053RE`\n- **点击行为**：用户点击推荐问题后，对应 Prompt 会直接发出。10 月 28 日产品提出对 Prompt 分段，并检查渲染和间距；记录中未确认调整是否完成。`widget:refs:msg:sg_2122635335:1457:T112053RE|msg:sg_2122635335:1456:T112053RE`\n- **后续调整**：10 月 9 日有补充推荐池文案的合入请求；10 月 10 日验收发现项目入口传成了空间标识，导致推荐内容不符合预期，当时在排查调整。`widget:refs:msg:sg_1859764497:1001:T112053RE|msg:sg_1859764497:1020:T112053RE|msg:sg_1859764497:1021:T112053RE|msg:sg_1859764497:1022:T112053RE`\n\n**尚不能确认**每个入口的完整题池、刷新时机、跨次展示是否去重，以及后续是否修改了“三条”的规则。以上是查到的明确口径，不宜直接视为截至 11 月 3 日的完整最新规格；相关群消息检索也未完全覆盖。",
+        "session_id": "cs_d18bc190-6715-4937-9acf-27abfacfdf5a",
+        "request_id": "1d944e50-8237-4e4b-b9d3-d923dc1fd231",
+        "message_id": "cm_0f7e3a83-45da-453a-95fd-4973b1e39824",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 19,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=29 conversation_ids=0 top_k=30",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 24,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 32,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 37,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=0 sender_ids=0 from_time=true to_time=true limit=100 time_mode=explicit continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 42,
+        "name": "material_ask",
+        "arguments_summary": "ranges=3 message=3 report=0 format=text instruction_runes=60",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 58,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_1240-1510-e7904be9 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 63,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_1859764497_916-1060-ba141efd offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "seq": 68,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_2122635335_1400-1480-cb8d7350 offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_a384696f71c44079be1357286a0c9096",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 81,
+        "tool_count": 8,
+        "tokens": 271784
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "PRE-G-AI-RD",
+        "PRE-M-RECOMMENDATION-LOGIC"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "应从安柔可见的「AI助手·一期 研发群」召回讨论，并按消息时间说明最新产品口径：六类入口为单一私聊、单一群聊、单一项目、单一任务、不指定项目的任务空间、混合/无指定对象；前四类关联具体群/对话/项目/任务，不能混用推荐范围。不同入口需要对应推荐文案与提示语，文案池由AI编写，研发已讨论不同入口随机建议+对应prompt；结合题干解释随机3个，不是给所有入口固定同三条或只生成三个示例问题。10/8最新消息说明推荐接口biz已增加私聊入口，端上需要与群聊区分；早先group_chat可同时覆盖群聊/私聊只是较早讨论。9/30按具体业务页面+长期记忆、不读完整上下文以及跨业务综合推荐尚未定稿可作历史背景，不得充当本轮已实现功能。群消息没有确认精确抽样算法、文案池大小、去重/刷新/不足3条补齐细则，必须说明未确认；3个数量来自用户题干，不能伪造群内明确承诺。每个关键结论可回溯groupID/clientMsgID/消息时间，研发发dev/test与新增接口枚举消息不等于pre或生产已上线。",
+        "语义判定，不以固定措辞命中代替事实核验；问题问推荐逻辑，不要求输出三个示例问题。"
+      ],
+      "fixed_fact_truth": "应从安柔可见的「AI助手·一期 研发群」召回讨论，并按消息时间说明最新产品口径：六类入口为单一私聊、单一群聊、单一项目、单一任务、不指定项目的任务空间、混合/无指定对象；前四类关联具体群/对话/项目/任务，不能混用推荐范围。不同入口需要对应推荐文案与提示语，文案池由AI编写，研发已讨论不同入口随机建议+对应prompt；结合题干解释随机3个，不是给所有入口固定同三条或只生成三个示例问题。10/8最新消息说明推荐接口biz已增加私聊入口，端上需要与群聊区分；早先group_chat可同时覆盖群聊/私聊只是较早讨论。9/30按具体业务页面+长期记忆、不读完整上下文以及跨业务综合推荐尚未定稿可作历史背景，不得充当本轮已实现功能。群消息没有确认精确抽样算法、文案池大小、去重/刷新/不足3条补齐细则，必须说明未确认；3个数量来自用户题干，不能伪造群内明确承诺。每个关键结论可回溯groupID/clientMsgID/消息时间，研发发dev/test与新增接口枚举消息不等于pre或生产已上线。",
+      "required_fields": [
+        "入口和对象范围",
+        "文案池/随机建议",
+        "最新私聊区别",
+        "群消息来源",
+        "未确认边界"
+      ],
+      "citation_refs": [
+        "b2c8dce4c886853289dde26274de33ce",
+        "7e026f36b1a24cd6a1d7d6c4a42896a3",
+        "ecd9f4804446e284c5ae5025dbd26fe2",
+        "efbff43d2a1e20c8d4af2e3a9dbd3f9c",
+        "2230f6e1d4719366dc19bcb099152de4",
+        "bb4496f5d89bd2c14bee7ef5c4baba53",
+        "1edee138e718284b2ce1c4b8cb358c21",
+        "05cce2a509b662b6d7e05e9451ac1102",
+        "28361a474c2953395d92f1a2bab62670",
+        "8fbb51cd58bf5801143f0c94cee8faa1",
+        "5f8747a81906508618186ea646044060",
+        "71cf2a8b8946f7d36705eca0c81f04e7",
+        "a477fca150cf37b28a4a7379798d6fe3",
+        "039399f0ffab76a5cda9d6795d83f4b8",
+        "94ad9c1469ac28e5c75b205f3b0d137f"
+      ],
+      "citation_policy": "关键结论引用对应有效消息即可；不强制逐条列出全部15条背景消息",
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "factual_checkpoints": [
+        {
+          "id": "REC-ENTRY-01",
+          "status": "explicit_product_requirement",
+          "requirement": "按入口区分：单一私聊、单一群聊、单一项目、单一任务；前四类绑定具体对象；另有不指定项目的任务空间、混合/无指定对象入口。",
+          "source_ids": [
+            "039399f0ffab76a5cda9d6795d83f4b8",
+            "a477fca150cf37b28a4a7379798d6fe3"
+          ]
+        },
+        {
+          "id": "REC-POOL-01",
+          "status": "explicit_product_requirement",
+          "requirement": "不同入口有系统推荐文案/提示语文案池的需求；SuChen明确文案池也由AI编写，不应总结成所有入口共用同一套固定三问。",
+          "source_ids": [
+            "8fbb51cd58bf5801143f0c94cee8faa1",
+            "5f8747a81906508618186ea646044060"
+          ]
+        },
+        {
+          "id": "REC-RANDOM-01",
+          "status": "group_confirmed_feature_and_user_question_count",
+          "requirement": "概括为按当前入口与具体对象匹配的推荐/提示语中随机出3个；不同入口随机建议+对应prompt有研发消息依据，3个数量来自本次用户题干。群文本未明确算法、池大小、抽样是否去重、刷新周期或不足3个的补齐规则，须留作待确认。",
+          "source_ids": [
+            "efbff43d2a1e20c8d4af2e3a9dbd3f9c"
+          ],
+          "count_authority": "用户截图原问题；不是从群消息额外推导的实现保证"
+        },
+        {
+          "id": "REC-LATEST-01",
+          "status": "latest_developer_statement_not_release_verification",
+          "requirement": "最新Yatoro消息已说明推荐接口biz增加私聊入口，并要求端上与群聊区分；不能仍把早先group_chat可能兼容群聊/私聊的讨论当作最新结论。不臆造新增枚举名或宣称pre/生产已完成上线。",
+          "source_ids": [
+            "71cf2a8b8946f7d36705eca0c81f04e7",
+            "94ad9c1469ac28e5c75b205f3b0d137f"
+          ]
+        },
+        {
+          "id": "REC-BOUNDARY-01",
+          "status": "historical_design_context",
+          "requirement": "9/30曾讨论按业务+具体页面、长期记忆而不读完整上下文来推荐；跨消息/项目/周报综合推荐当时尚未想清楚。可作为带时间归属的背景，不可宣称本次已实现全量上下文生成或跨业务综合推荐。",
+          "source_ids": [
+            "b2c8dce4c886853289dde26274de33ce",
+            "7e026f36b1a24cd6a1d7d6c4a42896a3",
+            "ecd9f4804446e284c5ae5025dbd26fe2"
+          ]
+        }
+      ],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "AI助手产品最新的要求不同入口随机出3个推荐的逻辑是什么",
+          "qualitative_requirements": [
+            "应从安柔可见的「AI助手·一期 研发群」召回讨论，并按消息时间说明最新产品口径：六类入口为单一私聊、单一群聊、单一项目、单一任务、不指定项目的任务空间、混合/无指定对象；前四类关联具体群/对话/项目/任务，不能混用推荐范围。不同入口需要对应推荐文案与提示语，文案池由AI编写，研发已讨论不同入口随机建议+对应prompt；结合题干解释随机3个，不是给所有入口固定同三条或只生成三个示例问题。10/8最新消息说明推荐接口biz已增加私聊入口，端上需要与群聊区分；早先group_chat可同时覆盖群聊/私聊只是较早讨论。9/30按具体业务页面+长期记忆、不读完整上下文以及跨业务综合推荐尚未定稿可作历史背景，不得充当本轮已实现功能。群消息没有确认精确抽样算法、文案池大小、去重/刷新/不足3条补齐细则，必须说明未确认；3个数量来自用户题干，不能伪造群内明确承诺。每个关键结论可回溯groupID/clientMsgID/消息时间，研发发dev/test与新增接口枚举消息不等于pre或生产已上线。"
+          ]
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答核心抽取机制基本正确，来源可追溯，也没有将接口新增或验收安排误称为生产上线；但漏答已读取的AI编写文案池要求，并未明确前四类入口绑定具体对象、推荐范围不能混用。末尾对完整最新规格的保留不能替代这些已确认的关键逻辑。",
+        "evidence_refs": [
+          "trace seq 58 scratchpad_read answers/sg_3981594831_1240-1510-e7904be9",
+          "sg_3981594831:1277-1278，2026-10-08，文案池由AI编写",
+          "sg_3981594831:1284、1476，具体对象关联与六类入口",
+          "sg_3981594831:1352，2026-10-08，推荐接口biz新增私聊入口",
+          "sg_1859764497:946、948、949，2026-10-08，随机3条不重复及默认Prompt",
+          "authenticated_session_readback：cm_0f7e3a83-45da-453a-95fd-4973b1e39824"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "0d6c8f2fc3ba7d662f8b805b3c0d5a550e161b3297c1b7dff255ecb0efe2f4e2",
+      "result": "fd1affa01af662d9c31747728e91a87b4bf6e0c1bdc4c67626ef57a6a707236b",
+      "requests": [
+        "1d944e50-8237-4e4b-b9d3-d923dc1fd231"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答覆盖了六类入口、场景化随机推荐及对应 Prompt、私聊与群聊区分，并对刷新等未确认事项作了限定。但其明确声称“随机展示3条不重复的问题”是10月8日开发确认的口径，与原Gold中“三条来自题干、抽样去重未确认”的边界存在实质差异。本轮实际检索到了另一些消息范围，但所提供Trace仅保留截断摘要，没有展示上述关键消息正文，无法判断这是独立源回读带来的有效补充，还是回答误读或无依据扩写。因此不能确定通过，也不能仅依据原Gold认定编造。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答覆盖了六类入口、场景化随机推荐及对应 Prompt、私聊与群聊区分，并对刷新等未确认事项作了限定。但其明确声称“随机展示3条不重复的问题”是10月8日开发确认的口径，与原Gold中“三条来自题干、抽样去重未确认”的边界存在实质差异。本轮实际检索到了另一些消息范围，但所提供Trace仅保留截断摘要，没有展示上述关键消息正文，无法判断这是独立源回读带来的有效补充，还是回答误读或无依据扩写。因此不能确定通过，也不能仅依据原Gold认定编造。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-PRE-MSG-018.json",
+        "independent_readback": "sources/AA-PRE-MSG-018.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本轮已正常完成生成，且正确回答了按入口配置系统推荐、随机展示3条不重复推荐、每条对应默认Prompt、六类入口及私聊接口新增情况，并保留了刷新及发布边界。但对所问推荐逻辑仍遗漏关键内容：已读消息明确说明文案池由AI编写，以及单一入口关联具体对话、群、项目或任务；回答只列场景，未明确这一对象范围要求。属于结果不满足验收，不是执行失败或证据不足。“3条不重复”有真实原文支持，不按旧Gold认定为编造。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同请求认证Trace中，scratchpad_read已返回sg_3981594831:1277-1278的AI编写文案池说明及1284、1476的具体对象关联要求；认证原消息回读进一步核验这些稳定事实。sg_1859764497:946、948、949原文明确支持随机3条且不重复及对应默认Prompt，修正了Gold对此项的旧边界。关键证据已具备，无须因搜索中途Unavailable或摘要截断而skip。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "回答核心抽取机制基本正确，来源可追溯，也没有将接口新增或验收安排误称为生产上线；但漏答已读取的AI编写文案池要求，并未明确前四类入口绑定具体对象、推荐范围不能混用。末尾对完整最新规格的保留不能替代这些已确认的关键逻辑。",
+          "evidence_refs": [
+            "trace seq 58 scratchpad_read answers/sg_3981594831_1240-1510-e7904be9",
+            "sg_3981594831:1277-1278，2026-10-08，文案池由AI编写",
+            "sg_3981594831:1284、1476，具体对象关联与六类入口",
+            "sg_3981594831:1352，2026-10-08，推荐接口biz新增私聊入口",
+            "sg_1859764497:946、948、949，2026-10-08，随机3条不重复及默认Prompt",
+            "authenticated_session_readback：cm_0f7e3a83-45da-453a-95fd-4973b1e39824"
+          ]
+        }
+      ],
+      "suggestions": [
+        "在现有回答中补充：不同入口使用相应推荐文案与提示语池，产品明确文案池也由AI编写。",
+        "明确单一私聊、群聊、项目、任务入口关联当前具体对象，不能将项目与任务空间等入口范围混用。",
+        "保留原文已确认的单次3条不重复，同时将精确抽样算法、池大小、刷新、跨次去重及不足3条补齐规则分别标为未确认。"
+      ],
+      "input_sha256": "2768ecc17db7cab286657a27d42996d46bd524bc65988c80f2cec1af9f51d568",
+      "evidence_sha256": "a86c5da317d06fff6d0bf12b217e3feacec55e8911cfc461909fbb2ad8f1110c",
+      "reviewed_at": "2026-11-04T00:18:59.997484+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_search（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+      "review_observation": {
+        "basis": "0d6c8f2fc3ba7d662f8b805b3c0d5a550e161b3297c1b7dff255ecb0efe2f4e2",
+        "result": "fd1affa01af662d9c31747728e91a87b4bf6e0c1bdc4c67626ef57a6a707236b",
+        "requests": [
+          "1d944e50-8237-4e4b-b9d3-d923dc1fd231"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-PRE-MSG-018",
+    "evaluation_detail_reason": "本轮已正常完成生成，且正确回答了按入口配置系统推荐、随机展示3条不重复推荐、每条对应默认Prompt、六类入口及私聊接口新增情况，并保留了刷新及发布边界。但对所问推荐逻辑仍遗漏关键内容：已读消息明确说明文案池由AI编写，以及单一入口关联具体对话、群、项目或任务；回答只列场景，未明确这一对象范围要求。属于结果不满足验收，不是执行失败或证据不足。“3条不重复”有真实原文支持，不按旧Gold认定为编造。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "回答正确解释了按入口配置推荐、随机展示3条及对应默认Prompt，也覆盖六类入口和新增私聊入口，但遗漏了推荐逻辑的关键产品要求：文案池由AI编写，以及前四类入口须关联具体对话、群、项目或任务。实际已读材料明确包含这些内容，最终回答只列入口名称和验收范围，未完整说明对象范围。此前待核验的“3条不重复”现已由真实消息正文证实，不属于编造，也不应按原Gold的旧边界扣分。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "推荐逻辑少说了两点：推荐文案池由AI编写，且每个入口要关联具体的对话、群、项目或任务。随机展示3条等其他规则回答正确。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-PRE-MSG-018",
+    "version": 1,
+    "override": {
+      "business_reason": "向量检索",
+      "business_status": "pending_fix",
+      "failure_categories": [
+        "信息缺失"
+      ]
+    },
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": "2026-11-04T03:38:38.937886+00:00",
+    "updated_by": "3252c4ab-f117-4a87-b819-0e436548d1c8"
+  },
+  "cloud_history": [
+    {
+      "at": "2026-11-04T03:38:38.937886+00:00",
+      "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
+      "after": {
+        "business_reason": "向量检索",
+        "business_status": "pending_fix",
+        "failure_categories": [
+          "信息缺失"
+        ]
+      },
+      "before": null,
+      "case_id": "AA-PRE-MSG-018",
+      "revision": 7,
+      "actor_name": "安柔"
+    }
+  ],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

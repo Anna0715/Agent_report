@@ -1,0 +1,107 @@
+{
+  "business_status": "fail",
+  "business_reason": "回答准确说明了按入口配置、随机抽取3条不重复推荐及对应默认Prompt的基础逻辑，旧Gold关于“群内未确认3条和去重”的预期已失效。但用户在11月3日问最新要求，回答漏掉后续题池和推荐类型调整，并将Prompt格式调整仍列为未确认，未反映10月30日已发布pre的明确消息。",
+  "failure_categories": [
+    "最新信息遗漏",
+    "状态依据过期"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "10月8日的随机3条、不重复和默认Prompt均有真实消息支持，不能沿用旧Gold判为编造。按11月3日的提问时间，仍需纳入后续明确变更；回答的检索不完整声明不能替代已存在的最新状态，尤其格式和多语言已于10月30日发布pre。",
+      "evidence_refs": [
+        "sg_1859764497:946",
+        "sg_1859764497:948",
+        "sg_1859764497:949",
+        "sg_3981594831:1703",
+        "sg_3981594831:1978",
+        "sg_2122635335:1501",
+        "sg_3981594831:2165"
+      ],
+      "comparison": {
+        "expected": "解释按入口配置随机抽取3条不重复推荐、对应不同Prompt，并结合追问前后续消息说明题池和Prompt替换、推荐接口新增action及三种type等变更；格式和多语言应说明10月30日已发布pre，不扩大为客户端所有渲染调整均已完成。",
+        "actual": "基础规则正确，但后续调整只列10月9日补文案和10月10日入口传参问题；对10月28日Prompt分段仅称记录未确认是否完成，未纳入后续整体替换及10月30日pre发布确认。",
+        "difference": "最新要求的整理停留在较早版本，遗漏明确的后续推荐变更，并对已有发布确认的Prompt格式状态保留了过期的不确定表达。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "原始回答和当次Trace可核验基础逻辑；独立回读提供了追问前已存在的10月14日题池调整、10月23日推荐接口扩展和10月30日格式及多语言发布消息，足以证明具体遗漏，不依赖推断其他消息不存在。"
+  },
+  "temporal_assessment": {
+    "scope": "current",
+    "ignored_stale_expectations": [
+      "旧Gold称3条仅来自用户题干、群内未明确抽样去重；10月8日真实消息已明确随机3条不重复，并得到确认。",
+      "不把10月8日接口增加私聊入口强制认作11月3日的唯一最新变更。",
+      "不要求复述9月30日长期规划背景，也不以向量检索失败本身判业务失败。"
+    ],
+    "current_factual_basis": [
+      {
+        "ref": "sg_1859764497:948-949",
+        "use": "核验按入口配置、随机3条不重复及不同默认Prompt，证明回答基础规则正确。"
+      },
+      {
+        "ref": "sg_3981594831:1284、1352",
+        "use": "核验六类场景及私聊入口区分的历史依据。"
+      },
+      {
+        "ref": "sg_3981594831:1703",
+        "use": "10月14日产品已修改各分类推荐问题和Prompt，属于后续版本信息。"
+      },
+      {
+        "ref": "sg_3981594831:1978",
+        "use": "10月23日推荐接口增加action字段、type为三种，证明存在后续推荐逻辑扩展。"
+      },
+      {
+        "ref": "sg_2122635335:1501",
+        "use": "10月28日所有推荐Prompt已调整，标题人工翻译英语和日语，Prompt交由AI翻译。"
+      },
+      {
+        "ref": "sg_3981594831:2165",
+        "use": "10月30日明确推荐Prompt格式和多语言已发布pre，早于11月3日追问。"
+      }
+    ],
+    "reason_changed": true,
+    "previous_failure_still_valid": false
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T09:15:50.996000+00:00",
+      "asked_at_ms": 1793697350996,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T18:15:50.996000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": true,
+      "historical_wording": false,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "e82bab22c9c02046491ee4079fb1c31923bac2310af5ae7059fec805d1990157",
+  "evidence_sha256": "a86c5da317d06fff6d0bf12b217e3feacec55e8911cfc461909fbb2ad8f1110c",
+  "reviewed_at": "2026-11-04T05:11:12.218480+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 2：group_message_vector_search（外层 failed / 内层 failed） → activate_skills（completed） → group_message_search（completed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

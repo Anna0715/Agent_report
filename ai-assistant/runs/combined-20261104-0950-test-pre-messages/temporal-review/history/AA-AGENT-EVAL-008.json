@@ -1,0 +1,419 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-AGENT-EVAL-008",
+    "suite": "assistant_agent_followup",
+    "module": "计划质量",
+    "scenario": "pre真实群/任务分解",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "把“已经调整并发”说成了“只是提议、是否实施未知”。原消息明确说已取消并发限制，且账号仍保留10的限制，回答没有准确反映实施进展。",
+    "confidence": "high",
+    "latency_ms": 61091,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['hive.im.search', 'citation.resolve']",
+    "categories": [
+      "评论解析错误"
+    ],
+    "title": "对三个AI助手相关群做一次去重总结：先确定范围，再并行检索，最后按主题合并并引用。",
+    "ability": "跨群任务拆分正确",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "对三个AI助手相关群做一次去重总结：先确定范围，再并行检索，最后按主题合并并引用。"
+    ],
+    "answer": "三个群的讨论集中在 **PRE 回归、线上模型与自动化运行，以及助手使用中的质量问题**。线上模型已切换，但效果仍待观察；PRE 全量测试已安排，尚未看到本次测试结果。\n\n**范围**：AI助手·一期研发群、Agent 小分队、agent 干活群；并行读取 **11 月 2 日 18:09 至 11 月 3 日 18:09（东京时间）** 的消息，共 169 条。以下按主题跨群去重。\n\n## 发布、模型与回归\n\n- **PRE 部署和回归正在推进**：最新代码已部署 PRE，团队准备跑全量案例；PRE 覆盖消息和空间任务，test 只有空间任务。本时段未见本次全量测试结果。`widget:refs:msg:sg_1859764497:1588:T112053RE|msg:sg_1859764497:1593:T112053RE|msg:sg_1859764497:1594:T112053RE|msg:sg_1859764497:1610:T112053RE|msg:sg_1859764497:1611:T112053RE`\n- **线上模型已从 GPT-5.6 切换到 GPT-6.1**。群内预期新模型会改善表现，但尚无效果反馈；PRE 也有换模型的反馈，test 的具体模型版本仍有人询问。`widget:refs:msg:sg_2122635335:1591:T112053RE|msg:sg_1859764497:1612:T112053RE|msg:sg_1859764497:1615:T112053RE|msg:sg_1859764497:1657:T112053RE`\n- **租户模型服务路由已推进**：群内验证目标租户已走 sub2api，随后确认 zelto 也已切换；补充租户配置后重新发布 PRE。`widget:refs:msg:sg_1859764497:1589:T112053RE|msg:sg_1859764497:1595:T112053RE|msg:sg_1859764497:1605:T112053RE|msg:sg_1859764497:1609:T112053RE`\n\n## 自动化与测试效率\n\n- **线上自动化在周末和晚间已停用**；一位测试者表示目前暂作测试，正式使用时计划每天运行 1–2 次。另一起自动化执行问题已找到对应的运行追踪记录，但尚未见原因或修复结论。`widget:refs:msg:sg_3981594831:2210:T112053RE|msg:sg_3981594831:2211:T112053RE|msg:sg_2122635335:1588:T112053RE|msg:sg_2122635335:1589:T112053RE|msg:sg_2122635335:1590:T112053RE`\n- 测试任务并发限制为 5 后，群内反馈任务跑满、效率下降；随后有人提出取消该并发限制，同时保留账号侧 10 的限制。**调整是否实施及效果尚未确认**。`widget:refs:msg:sg_1859764497:1646:T112053RE|msg:sg_1859764497:1647:T112053RE|msg:sg_1859764497:1648:T112053RE|msg:sg_1859764497:1649:T112053RE|msg:sg_1859764497:1650:T112053RE|msg:sg_1859764497:1651:T112053RE`\n\n## 回答质量与会话体验\n\n- **表格和日报读取待排查**：AI 输出表格出现问题，有人怀疑是渲染问题；另一次首次读取日报未读出内容，两次追问后才读出。日报图片较多被提出为可能原因，**均未确认根因**。`widget:refs:msg:sg_2122635335:1581:T112053RE|msg:sg_2122635335:1582:T112053RE|msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1584:T112053RE|msg:sg_2122635335:1587:T112053RE`\n- **会话异常与附件能力仍有缺口**：群内将一次异常初步判断为代理空回复，开发者表示先加修复；另有 iswarm 追问报错待查。周报聊天 swarm 当前只支持纯文本，不支持附件。`widget:refs:msg:sg_3981594831:2253:T112053RE|msg:sg_3981594831:2254:T112053RE|msg:sg_1859764497:1620:T112053RE|msg:sg_1859764497:1640:T112053RE|msg:sg_1859764497:1641:T112053RE`\n- **交互回归清单已明确**：新手引导需测试多语言，自动化创建后列表刷新及会话草稿需复测；项目任务创建后列表不立即刷新也已定位到重新请求时机，优化尚未确认完成。`widget:refs:msg:sg_3981594831:2220:T112053RE|msg:sg_3981594831:2223:T112053RE|msg:sg_3981594831:2225:T112053RE|msg:sg_3981594831:2252:T112053RE|msg:sg_3981594831:2267:T112053RE`\n\n## 自定义字段与问题管理\n\n- **助手尚不支持自定义字段读写**。群内提出在 **11 月中旬前出读写支持方案**；项目同步任务字段造成冗余的问题则讨论做小迭代，可比一期晚 1–2 个版本。两者均尚非完成状态。`widget:refs:msg:sg_3981594831:2228:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2234:T112053RE|msg:sg_3981594831:2235:T112053RE|msg:sg_3981594831:2236:T112053RE`\n- 群内要求 Lexia 将讨论中提出的问题补录到任务空间，特别是当日上午的两个问题；**是否录入完成未见确认**。`widget:refs:msg:sg_2122635335:1585:T112053RE|msg:sg_2122635335:1586:T112053RE`",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "评论解析错误"
+    ],
+    "business_reason": "把“已经调整并发”说成了“只是提议、是否实施未知”。原消息明确说已取消并发限制，且账号仍保留10的限制，回答没有准确反映实施进展。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_lookup（外层 completed / 内层 completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "对三个AI助手相关群做一次去重总结：先确定范围，再并行检索，最后按主题合并并引用。",
+        "answer": "三个群的讨论集中在 **PRE 回归、线上模型与自动化运行，以及助手使用中的质量问题**。线上模型已切换，但效果仍待观察；PRE 全量测试已安排，尚未看到本次测试结果。\n\n**范围**：AI助手·一期研发群、Agent 小分队、agent 干活群；并行读取 **11 月 2 日 18:09 至 11 月 3 日 18:09（东京时间）** 的消息，共 169 条。以下按主题跨群去重。\n\n## 发布、模型与回归\n\n- **PRE 部署和回归正在推进**：最新代码已部署 PRE，团队准备跑全量案例；PRE 覆盖消息和空间任务，test 只有空间任务。本时段未见本次全量测试结果。`widget:refs:msg:sg_1859764497:1588:T112053RE|msg:sg_1859764497:1593:T112053RE|msg:sg_1859764497:1594:T112053RE|msg:sg_1859764497:1610:T112053RE|msg:sg_1859764497:1611:T112053RE`\n- **线上模型已从 GPT-5.6 切换到 GPT-6.1**。群内预期新模型会改善表现，但尚无效果反馈；PRE 也有换模型的反馈，test 的具体模型版本仍有人询问。`widget:refs:msg:sg_2122635335:1591:T112053RE|msg:sg_1859764497:1612:T112053RE|msg:sg_1859764497:1615:T112053RE|msg:sg_1859764497:1657:T112053RE`\n- **租户模型服务路由已推进**：群内验证目标租户已走 sub2api，随后确认 zelto 也已切换；补充租户配置后重新发布 PRE。`widget:refs:msg:sg_1859764497:1589:T112053RE|msg:sg_1859764497:1595:T112053RE|msg:sg_1859764497:1605:T112053RE|msg:sg_1859764497:1609:T112053RE`\n\n## 自动化与测试效率\n\n- **线上自动化在周末和晚间已停用**；一位测试者表示目前暂作测试，正式使用时计划每天运行 1–2 次。另一起自动化执行问题已找到对应的运行追踪记录，但尚未见原因或修复结论。`widget:refs:msg:sg_3981594831:2210:T112053RE|msg:sg_3981594831:2211:T112053RE|msg:sg_2122635335:1588:T112053RE|msg:sg_2122635335:1589:T112053RE|msg:sg_2122635335:1590:T112053RE`\n- 测试任务并发限制为 5 后，群内反馈任务跑满、效率下降；随后有人提出取消该并发限制，同时保留账号侧 10 的限制。**调整是否实施及效果尚未确认**。`widget:refs:msg:sg_1859764497:1646:T112053RE|msg:sg_1859764497:1647:T112053RE|msg:sg_1859764497:1648:T112053RE|msg:sg_1859764497:1649:T112053RE|msg:sg_1859764497:1650:T112053RE|msg:sg_1859764497:1651:T112053RE`\n\n## 回答质量与会话体验\n\n- **表格和日报读取待排查**：AI 输出表格出现问题，有人怀疑是渲染问题；另一次首次读取日报未读出内容，两次追问后才读出。日报图片较多被提出为可能原因，**均未确认根因**。`widget:refs:msg:sg_2122635335:1581:T112053RE|msg:sg_2122635335:1582:T112053RE|msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1584:T112053RE|msg:sg_2122635335:1587:T112053RE`\n- **会话异常与附件能力仍有缺口**：群内将一次异常初步判断为代理空回复，开发者表示先加修复；另有 iswarm 追问报错待查。周报聊天 swarm 当前只支持纯文本，不支持附件。`widget:refs:msg:sg_3981594831:2253:T112053RE|msg:sg_3981594831:2254:T112053RE|msg:sg_1859764497:1620:T112053RE|msg:sg_1859764497:1640:T112053RE|msg:sg_1859764497:1641:T112053RE`\n- **交互回归清单已明确**：新手引导需测试多语言，自动化创建后列表刷新及会话草稿需复测；项目任务创建后列表不立即刷新也已定位到重新请求时机，优化尚未确认完成。`widget:refs:msg:sg_3981594831:2220:T112053RE|msg:sg_3981594831:2223:T112053RE|msg:sg_3981594831:2225:T112053RE|msg:sg_3981594831:2252:T112053RE|msg:sg_3981594831:2267:T112053RE`\n\n## 自定义字段与问题管理\n\n- **助手尚不支持自定义字段读写**。群内提出在 **11 月中旬前出读写支持方案**；项目同步任务字段造成冗余的问题则讨论做小迭代，可比一期晚 1–2 个版本。两者均尚非完成状态。`widget:refs:msg:sg_3981594831:2228:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2234:T112053RE|msg:sg_3981594831:2235:T112053RE|msg:sg_3981594831:2236:T112053RE`\n- 群内要求 Lexia 将讨论中提出的问题补录到任务空间，特别是当日上午的两个问题；**是否录入完成未见确认**。`widget:refs:msg:sg_2122635335:1585:T112053RE|msg:sg_2122635335:1586:T112053RE`",
+        "session_id": "cs_3eb10645-f68b-4ad4-993a-b7ddb6b1b5b8",
+        "request_id": "e334b740-5ed9-4108-8288-dcb5b8a682fd",
+        "message_id": "cm_0c6c1ac1-97fe-4494-93a1-eac3369c6123",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 23,
+        "name": "material_ask",
+        "arguments_summary": "ranges=3 message=3 report=0 format=text instruction_runes=66",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 35,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_1859764497_20261102T090921Z-20261103T090921Z-8f20a058 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 40,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_2122635335_20261102T090921Z-20261103T090921Z-4db4e6b0 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 45,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261102T090921Z-20261103T090921Z-5f1058ff offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "seq": 50,
+        "name": "group_message_lookup",
+        "arguments_summary": "conversations=1 messages=16 include_content=true",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_a868820dea91445bb4a4c045e6c6bad3",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 63,
+        "tool_count": 6,
+        "tokens": 185366
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['来源']"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['来源']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['hive.im.search', 'citation.resolve']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "PRE-G-AGENT-SQUAD",
+        "PRE-G-AI-RD",
+        "PRE-G-AI-HUB; PRE-M-MEETING-0825; PRE-M-VECTOR-MEETING; PRE-M-STATUS-0911",
+        "DEP-AGENT-METRICS",
+        "PRE-M-MEETING-0825",
+        "PRE-M-VECTOR-MEETING",
+        "PRE-M-STATUS-0911"
+      ],
+      "must_include": [
+        "范围",
+        "去重",
+        "来源"
+      ],
+      "must_exclude": [
+        "虚构第四个群"
+      ],
+      "qualitative_requirements": [
+        "plan.evaluation提供逐步正确性，错误分解不能被最终答案掩盖。"
+      ],
+      "fixed_fact_truth": "正确计划包含范围确认、授权检索、并行读取、去重合并和引用。",
+      "required_fields": [
+        "任务结论",
+        "依据"
+      ],
+      "citation_refs": [
+        "PRE-M-MEETING-0825",
+        "PRE-M-VECTOR-MEETING",
+        "PRE-M-STATUS-0911"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "对三个AI助手相关群做一次去重总结：先确定范围，再并行检索，最后按主题合并并引用。",
+          "must_include": [
+            "范围",
+            "去重",
+            "来源"
+          ],
+          "must_exclude": [
+            "虚构第四个群"
+          ]
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确沿用历史已确定的三个群，同批检索后按主题合并并引用，数量统计正确；但把“已改为不限制”的群内执行反馈降格为“提出取消、实施未确认”。可以保留实际效果尚待观察的边界，却不能否定已有的执行反馈。",
+        "evidence_refs": [
+          "recovered_business_evidence：material_ask call_015730f0a4c2457d923e0d07d25ff6ca，requested=3、ready=3",
+          "trace seq35、40、45：三个群摘要读取，covered.messages分别为82、11、76",
+          "recovered_business_evidence原始materials：sg_1859764497:1646-1651",
+          "independent_answer_citation_readback：sg_1859764497:1650、1651，verified=true",
+          "turns step2回答：自动化与测试效率第二条"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "a766ad98870f543e02af47f855b6ff55cbae24edda123aa09246db28f1f22148",
+      "result": "e8ae6643f3aa4f99cd6fa02e86ab5686b0438559016e52de5342ced2cfef125a",
+      "requests": [
+        "e334b740-5ed9-4108-8288-dcb5b8a682fd"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "本轮回答明确列出三个群及时间范围，按主题合并去重并提供消息引用，未虚构第四个群；也区分了已完成、计划和待确认事项。但所提供 Trace 的读取结果均为截断摘要，未展示支撑具体结论的消息正文，也未展示范围确认与并行检索的完整执行过程。因此无法核验模型切换、部署、自动化及字段能力等关键事实，不能仅凭回答形式判定任务正确完成，也没有充分证据认定业务失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "本轮回答明确列出三个群及时间范围，按主题合并去重并提供消息引用，未虚构第四个群；也区分了已完成、计划和待确认事项。但所提供 Trace 的读取结果均为截断摘要，未展示支撑具体结论的消息正文，也未展示范围确认与并行检索的完整执行过程。因此无法核验模型切换、部署、自动化及字段能力等关键事实，不能仅凭回答形式判定任务正确完成，也没有充分证据认定业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-AGENT-EVAL-008.json",
+        "independent_readback": "sources/AA-AGENT-EVAL-008.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "评论解析错误"
+      ],
+      "business_reason": "本次已完成实际业务执行，三个群的范围、同批检索、169条覆盖统计、按主题去重及引用均有证据支持，也未虚构第四个群。但总结将已报告执行的并发调整误写为提议：原消息1650明确说“我把并发改成不限制了”，1651补充账号仍保持10的限制，回答却称“提出取消”并写“调整是否实施尚未确认”。这是结果不满足验收的进度解析错误，不是执行失败或证据缺失。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "认证Trace包含三个群的原始消息材料、material_ask三个范围的有效结果及完整摘要读取，覆盖数为82、11、76条；group_message_lookup补读了引用缺口。关键消息sg_1859764497:1650及1651还由同身份独立回源核验，原文与运行时材料一致，足以确定回答误读，不能归因于Trace截断。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "正确沿用历史已确定的三个群，同批检索后按主题合并并引用，数量统计正确；但把“已改为不限制”的群内执行反馈降格为“提出取消、实施未确认”。可以保留实际效果尚待观察的边界，却不能否定已有的执行反馈。",
+          "evidence_refs": [
+            "recovered_business_evidence：material_ask call_015730f0a4c2457d923e0d07d25ff6ca，requested=3、ready=3",
+            "trace seq35、40、45：三个群摘要读取，covered.messages分别为82、11、76",
+            "recovered_business_evidence原始materials：sg_1859764497:1646-1651",
+            "independent_answer_citation_readback：sg_1859764497:1650、1651，verified=true",
+            "turns step2回答：自动化与测试效率第二条"
+          ]
+        }
+      ],
+      "suggestions": [
+        "将并发进展改为“群内反馈已取消任务侧并发限制，账号侧仍保持10的限制；调整后的效率与稳定性效果尚未见反馈”，区分执行反馈与效果验证。",
+        "跨群合并前，对摘要中的“提出、已完成、尚未确认”等状态词与最新原文逐项核对，避免继承子摘要的状态误读。"
+      ],
+      "input_sha256": "456678f4c9fe3bff7b7102a1931c08782129e52494251bab5d7b9f402d1c413a",
+      "evidence_sha256": "beeae1b29e050beea2a69b3bffaa140c453e21a7a47546b261a75dbf1ffdffde",
+      "reviewed_at": "2026-11-04T00:18:10.392671+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：activate_skills（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_lookup（外层 completed / 内层 completed）",
+      "review_observation": {
+        "basis": "a766ad98870f543e02af47f855b6ff55cbae24edda123aa09246db28f1f22148",
+        "result": "e8ae6643f3aa4f99cd6fa02e86ab5686b0438559016e52de5342ced2cfef125a",
+        "requests": [
+          "e334b740-5ed9-4108-8288-dcb5b8a682fd"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-AGENT-EVAL-008",
+    "evaluation_detail_reason": "本次已完成实际业务执行，三个群的范围、同批检索、169条覆盖统计、按主题去重及引用均有证据支持，也未虚构第四个群。但总结将已报告执行的并发调整误写为提议：原消息1650明确说“我把并发改成不限制了”，1651补充账号仍保持10的限制，回答却称“提出取消”并写“调整是否实施尚未确认”。这是结果不满足验收的进度解析错误，不是执行失败或证据缺失。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "本轮正确沿用三个相关群的历史范围，同批检索三个时间区间，读取各群摘要后按主题去重并附引用；169条消息也与82、11、76条的覆盖统计一致。但对并发调整的最新进展存在明确误读：原消息1650说“我把并发改成不限制了”，回答却写成“提出取消”并断言“调整是否实施尚未确认”，将已报告执行的动作降为提议。最终总结不能掩盖该进度解析错误。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "把“已经调整并发”说成了“只是提议、是否实施未知”。原消息明确说已取消并发限制，且账号仍保留10的限制，回答没有准确反映实施进展。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-AGENT-EVAL-008",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

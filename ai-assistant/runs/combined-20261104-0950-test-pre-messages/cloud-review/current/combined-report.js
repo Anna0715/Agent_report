@@ -18,6 +18,7 @@
   const online = r => !['not_executed','local_fixture_pass','deferred'].includes(r.kind);
   const reviewOrigin = r => {
     if (r.review_resolution && !r.override) return '本轮重新评测 · 原复核记录保留';
+    if (r.temporal_review && !r.override) return r.status==='pending_fix'?'AI时间复裁 · 保留人工待修复状态':'AI按原追问时间复裁';
     const source=r.review_reuse;
     if (!source) return '原始判定';
     const from=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.source_url||'')?`<a href="${esc(source.source_url)}" target="_blank" rel="noopener">上一份报告</a>`:'上一份报告';
@@ -185,7 +186,7 @@
       select.title=writable?'选择状态后填写复核理由并保存':'请先登录有修改权限的复核账号';
       const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=taskRate(r);
       card.querySelector('.failure-tags').innerHTML=`<b>当前失败分类：</b>${esc(r.failure_categories.join('、')||'—')}`;
-      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
+      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.temporal_review?'AI按原追问时间复裁':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
   }

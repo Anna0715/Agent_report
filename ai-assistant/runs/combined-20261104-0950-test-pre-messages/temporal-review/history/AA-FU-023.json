@@ -1,0 +1,451 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-023",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实消息/跨群总结",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "要求总结三个群，实际只完成两个群，漏了蜂巢AI助手群的最新PRE范围；同时没有提供要求的原消息ID，所列会话ID和消息序号不能替代。",
+    "confidence": "high",
+    "latency_ms": 95116,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "按群总结 Agent小分队、AI助手·一期研发群、蜂巢AI助手里关于AI助手项目的里程碑、数据链路和最新pre数据范围，并附真实ID。",
+    "ability": "跨群检索、去重与引用",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "按群总结 Agent小分队、AI助手·一期研发群、蜂巢AI助手里关于AI助手项目的里程碑、数据链路和最新pre数据范围，并附真实ID。"
+    ],
+    "answer": "**目前能确认的主要进展**：AI 助手一期已进入预发和回归测试；PRE 中有一个 JIRA 与 iHive 双向同步的真实数据测试项目。11 月 3 日群内报告的 PRE 成功率为 **52.1%**，但当时仍在修复，样本量、统计口径和最终复测结果未明确。\n\n**覆盖限制**：已读取 Agent 小分队、AI助手·一期研发群的近期讨论；蜂巢AI助手群已定位，但本次主题检索未取得可总结的消息，不能代表该群没有相关讨论。较早一周的关键词检索也未完整覆盖，因此下述不是项目全历史。时间截至 2026 年 11 月 4 日 09:12（东京时间）。\n\n## Agent 小分队\n\n群 ID：`2122635335`；会话 ID：`sg_2122635335`。`widget:group:2122635335:T112053RE`\n\n- **里程碑与问题**：11 月 3 日，有人表示已将线上模型从 GPT-5.6 切换为 GPT-6.1；消息未提供切换后的验证结果。同日仍在讨论 AI 助手头像、标题和展示样式，不能视为最终定稿。`widget:refs:msg:sg_2122635335:1591:T112053RE|msg:sg_2122635335:1598:T112053RE|msg:sg_2122635335:1605:T112053RE|msg:sg_2122635335:1608:T112053RE|msg:sg_2122635335:1609:T112053RE|msg:sg_2122635335:1614:T112053RE`\n- **数据链路线索**：群内针对一次问题对话，用会话 ID 查询自动化执行信息，并分享 PRE 的 agent-trace 链接。这只能说明该次排查链路，不能据此还原完整的数据处理架构。`widget:refs:msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1588:T112053RE|msg:sg_2122635335:1589:T112053RE|msg:sg_2122635335:1590:T112053RE`\n- **可核实的 PRE 标识**：该次问题的会话 ID 为 `cs_ba367354-df1d-44e8-8fdc-bdd80e25aec1`；trace 中的 `entity_id` 为 `automation-run:aur_a8ae020221a935dbb50127b7`，`run_id` 为 `bar_b363df0f8d2a48348e2d751283ac247e`。这是单次执行的定位信息，不代表 PRE 全量数据范围。`widget:refs:msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1590:T112053RE`\n\n## AI助手·一期研发群\n\n群 ID：`3981594831`；会话 ID：`sg_3981594831`。`widget:group:3981594831:T112053RE`\n\n### 里程碑\n\n- **11 月 2 日**：群内称 AI 助手相关功能已部署测试环境，使用包 **1.0.474**；预发包包含“大部分”AI 功能。写入测试中，项目及一、二级任务创建基本可用，人员、更新和删除当时暂不支持。这些是测试进展，不等于全部验收完成。`widget:refs:msg:sg_3981594831:2174:T112053RE|msg:sg_3981594831:2175:T112053RE|msg:sg_3981594831:2181:T112053RE|msg:sg_3981594831:2206:T112053RE`\n- **11 月 3 日**：群内报告回归已跑完，但仍在修复，报告参考性有限；skill 可插拔改造正在进行，按意图自动选择 skill 是讨论方向，并非已完成能力。`widget:refs:msg:sg_3981594831:2311:T112053RE|msg:sg_3981594831:2315:T112053RE|msg:sg_3981594831:2241:T112053RE|msg:sg_3981594831:2245:T112053RE`\n- **后续计划**：自定义字段的读写支持被列为后续迭代，提出 **11 月中旬前出方案**，可比一期晚 1–2 个版本上线；不能表述为已经实现。`widget:refs:msg:sg_3981594831:2234:T112053RE|msg:sg_3981594831:2236:T112053RE`\n\n### 数据链路与 PRE 范围\n\n- **测试项目**：PRE 有一个 **JIRA ↔ iHive 双向同步**测试项目，群内称每天同步两次；项目使用了自定义字段，并计划用真实需求数据测试 AI 助手，也提出同步每个需求的产品经理信息。`widget:refs:msg:sg_3981594831:2193:T112053RE|msg:sg_3981594831:2194:T112053RE|msg:sg_3981594831:2195:T112053RE`\n- **接入方式**：11 月 2 日发言者称，由于当时还没有 OpenAPI，先使用个人 token 和任务空间 HTTP 接口；自定义字段上线后，计划尝试基于项目数据自动生成报告。这是当时的方案和计划，不证明报告已生成。`widget:msg:sg_3981594831:2203:T112053RE`\n- **能力边界**：当时 AI 助手返回字段及筛选项不支持自定义字段，后续读写支持仍待方案。`widget:refs:msg:sg_3981594831:2185:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2236:T112053RE`\n- **PRE 数据边界尚不完整**：消息没有给出上述测试项目的真实名称、项目 ID、需求条数或完整时间范围，不能把它当成整个 PRE 的数据全貌。群内还提到一个具体空间列表页面取首页数据、**不限当前租户**；这是该页面当时的范围说明，不应推广为所有 PRE 数据的范围。`widget:refs:msg:sg_3981594831:2193:T112053RE|msg:sg_3981594831:2194:T112053RE|msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2146:T112053RE`\n- **最新可见回归数字**：11 月 3 日群内反馈 test 成功率 **63.5%**、PRE **52.1%**；研发称当时尚未稳定，部分 case 仍待评估。未见样本量、统计口径或最终复测值。`widget:refs:msg:sg_3981594831:2316:T112053RE|msg:sg_3981594831:2317:T112053RE`\n- **真实会话 ID**：群内明确标注 PRE 的会话为 `cs_fe5373da-bd22-46b2-a5d9-9efffcdd864f`；另有 case 会话 `cs_13d6b1a0-26f6-4b91-82a9-b47532aeaf37`。现有消息不足以确认它们属于上述同步项目或回归报告数据集。`widget:refs:msg:sg_3981594831:2250:T112053RE|msg:sg_3981594831:2273:T112053RE`\n\n## 蜂巢AI助手\n\n群 ID：`2658892958`。`widget:group:2658892958:T112053RE`\n\n本次未取得可总结的该群主题消息，**无法确认该群对里程碑、数据链路或最新 PRE 范围的补充**；也无法据此断定该群没有讨论。\n\n要不要我帮你长期关注“Agent 小分队”和“AI助手·一期研发群”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "要求总结三个群，实际只完成两个群，漏了蜂巢AI助手群的最新PRE范围；同时没有提供要求的原消息ID，所列会话ID和消息序号不能替代。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → group_search（外层 completed / 内层 completed） → group_search（外层 completed / 内层 completed） → group_search（外层 completed / 内层 completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_search（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "按群总结 Agent小分队、AI助手·一期研发群、蜂巢AI助手里关于AI助手项目的里程碑、数据链路和最新pre数据范围，并附真实ID。",
+        "answer": "**目前能确认的主要进展**：AI 助手一期已进入预发和回归测试；PRE 中有一个 JIRA 与 iHive 双向同步的真实数据测试项目。11 月 3 日群内报告的 PRE 成功率为 **52.1%**，但当时仍在修复，样本量、统计口径和最终复测结果未明确。\n\n**覆盖限制**：已读取 Agent 小分队、AI助手·一期研发群的近期讨论；蜂巢AI助手群已定位，但本次主题检索未取得可总结的消息，不能代表该群没有相关讨论。较早一周的关键词检索也未完整覆盖，因此下述不是项目全历史。时间截至 2026 年 11 月 4 日 09:12（东京时间）。\n\n## Agent 小分队\n\n群 ID：`2122635335`；会话 ID：`sg_2122635335`。`widget:group:2122635335:T112053RE`\n\n- **里程碑与问题**：11 月 3 日，有人表示已将线上模型从 GPT-5.6 切换为 GPT-6.1；消息未提供切换后的验证结果。同日仍在讨论 AI 助手头像、标题和展示样式，不能视为最终定稿。`widget:refs:msg:sg_2122635335:1591:T112053RE|msg:sg_2122635335:1598:T112053RE|msg:sg_2122635335:1605:T112053RE|msg:sg_2122635335:1608:T112053RE|msg:sg_2122635335:1609:T112053RE|msg:sg_2122635335:1614:T112053RE`\n- **数据链路线索**：群内针对一次问题对话，用会话 ID 查询自动化执行信息，并分享 PRE 的 agent-trace 链接。这只能说明该次排查链路，不能据此还原完整的数据处理架构。`widget:refs:msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1588:T112053RE|msg:sg_2122635335:1589:T112053RE|msg:sg_2122635335:1590:T112053RE`\n- **可核实的 PRE 标识**：该次问题的会话 ID 为 `cs_ba367354-df1d-44e8-8fdc-bdd80e25aec1`；trace 中的 `entity_id` 为 `automation-run:aur_a8ae020221a935dbb50127b7`，`run_id` 为 `bar_b363df0f8d2a48348e2d751283ac247e`。这是单次执行的定位信息，不代表 PRE 全量数据范围。`widget:refs:msg:sg_2122635335:1583:T112053RE|msg:sg_2122635335:1590:T112053RE`\n\n## AI助手·一期研发群\n\n群 ID：`3981594831`；会话 ID：`sg_3981594831`。`widget:group:3981594831:T112053RE`\n\n### 里程碑\n\n- **11 月 2 日**：群内称 AI 助手相关功能已部署测试环境，使用包 **1.0.474**；预发包包含“大部分”AI 功能。写入测试中，项目及一、二级任务创建基本可用，人员、更新和删除当时暂不支持。这些是测试进展，不等于全部验收完成。`widget:refs:msg:sg_3981594831:2174:T112053RE|msg:sg_3981594831:2175:T112053RE|msg:sg_3981594831:2181:T112053RE|msg:sg_3981594831:2206:T112053RE`\n- **11 月 3 日**：群内报告回归已跑完，但仍在修复，报告参考性有限；skill 可插拔改造正在进行，按意图自动选择 skill 是讨论方向，并非已完成能力。`widget:refs:msg:sg_3981594831:2311:T112053RE|msg:sg_3981594831:2315:T112053RE|msg:sg_3981594831:2241:T112053RE|msg:sg_3981594831:2245:T112053RE`\n- **后续计划**：自定义字段的读写支持被列为后续迭代，提出 **11 月中旬前出方案**，可比一期晚 1–2 个版本上线；不能表述为已经实现。`widget:refs:msg:sg_3981594831:2234:T112053RE|msg:sg_3981594831:2236:T112053RE`\n\n### 数据链路与 PRE 范围\n\n- **测试项目**：PRE 有一个 **JIRA ↔ iHive 双向同步**测试项目，群内称每天同步两次；项目使用了自定义字段，并计划用真实需求数据测试 AI 助手，也提出同步每个需求的产品经理信息。`widget:refs:msg:sg_3981594831:2193:T112053RE|msg:sg_3981594831:2194:T112053RE|msg:sg_3981594831:2195:T112053RE`\n- **接入方式**：11 月 2 日发言者称，由于当时还没有 OpenAPI，先使用个人 token 和任务空间 HTTP 接口；自定义字段上线后，计划尝试基于项目数据自动生成报告。这是当时的方案和计划，不证明报告已生成。`widget:msg:sg_3981594831:2203:T112053RE`\n- **能力边界**：当时 AI 助手返回字段及筛选项不支持自定义字段，后续读写支持仍待方案。`widget:refs:msg:sg_3981594831:2185:T112053RE|msg:sg_3981594831:2232:T112053RE|msg:sg_3981594831:2236:T112053RE`\n- **PRE 数据边界尚不完整**：消息没有给出上述测试项目的真实名称、项目 ID、需求条数或完整时间范围，不能把它当成整个 PRE 的数据全貌。群内还提到一个具体空间列表页面取首页数据、**不限当前租户**；这是该页面当时的范围说明，不应推广为所有 PRE 数据的范围。`widget:refs:msg:sg_3981594831:2193:T112053RE|msg:sg_3981594831:2194:T112053RE|msg:sg_3981594831:2145:T112053RE|msg:sg_3981594831:2146:T112053RE`\n- **最新可见回归数字**：11 月 3 日群内反馈 test 成功率 **63.5%**、PRE **52.1%**；研发称当时尚未稳定，部分 case 仍待评估。未见样本量、统计口径或最终复测值。`widget:refs:msg:sg_3981594831:2316:T112053RE|msg:sg_3981594831:2317:T112053RE`\n- **真实会话 ID**：群内明确标注 PRE 的会话为 `cs_fe5373da-bd22-46b2-a5d9-9efffcdd864f`；另有 case 会话 `cs_13d6b1a0-26f6-4b91-82a9-b47532aeaf37`。现有消息不足以确认它们属于上述同步项目或回归报告数据集。`widget:refs:msg:sg_3981594831:2250:T112053RE|msg:sg_3981594831:2273:T112053RE`\n\n## 蜂巢AI助手\n\n群 ID：`2658892958`。`widget:group:2658892958:T112053RE`\n\n本次未取得可总结的该群主题消息，**无法确认该群对里程碑、数据链路或最新 PRE 范围的补充**；也无法据此断定该群没有讨论。\n\n要不要我帮你长期关注“Agent 小分队”和“AI助手·一期研发群”？",
+        "session_id": "cs_e4ed247c-2b4e-4019-85fd-e23d2707933f",
+        "request_id": "e2159063-92ac-4234-8eea-d3c00e5e5cad",
+        "message_id": "cm_ebe4aa87-2afa-4c8f-90c2-2acfb18b0a58",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 27,
+        "name": "group_search",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 32,
+        "name": "group_search",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 37,
+        "name": "group_search",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 42,
+        "name": "group_message_vector_search",
+        "arguments_summary": "query_runes=25 conversation_ids=0 top_k=50",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 47,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=3 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 52,
+        "name": "material_ask",
+        "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=61",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 62,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_2122635335_20261101T001201Z-20261104T001201Z-cecbbb4b offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 67,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_20261101T001201Z-20261104T001201Z-eb8aa435 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "seq": 72,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=4 group_ids=3 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_fac788df03af4861ac8f29c31d31b7e9",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 85,
+        "tool_count": 10,
+        "tokens": 243849
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['AI助手·一期 研发群']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['AI助手·一期 研发群']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['group_message_vector_search:failed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['group_search(unknown tool)×3']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-FU-023",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "2122635335",
+        "3981594831",
+        "2658892958",
+        "799bf379066a8ddb415621c657cb7977",
+        "2137b37e1531ab7c9f863dd55dee5b52",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "must_include": [
+        "Agent 小分队",
+        "AI助手·一期 研发群",
+        "蜂巢AI助手"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "按群归类、跨群去重，不能用单群结果冒充全量；每组附groupID和clientMsgID。"
+      ],
+      "fixed_fact_truth": "Agent小分队给出8月25日项目里程碑与风险；AI助手·一期研发群给出向量/增量/全量数据链路及权限方案；蜂巢AI助手给出9月11日最新pre数据范围。三群groupID分别为2122635335、3981594831、2658892958。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "799bf379066a8ddb415621c657cb7977",
+        "2137b37e1531ab7c9f863dd55dee5b52",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "按群总结 Agent小分队、AI助手·一期研发群、蜂巢AI助手里关于AI助手项目的里程碑、数据链路和最新pre数据范围，并附真实ID。",
+          "must_include": [
+            "Agent 小分队",
+            "AI助手·一期 研发群",
+            "蜂巢AI助手"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答正确区分了近期部署、回归、修复和后续计划，也未冒称三群已查全；但蜂巢AI助手没有实质总结，且各组缺少明确要求的clientMsgID，属于已执行但结果不满足验收，而非空回答或证据采集失败。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.tools[seq=32]: 三个目标中两个AI助手群的真实元数据",
+          "call_3e4041455fb24aca80a97305b2dd454d: material_ask仅包含两个群范围",
+          "call_db5dd2b458b34e30906e9477d09ae3cd: coverage_incomplete、omitted_rows=12、truncated=true",
+          "expected_answer.qualitative_requirements: 每组附groupID和clientMsgID"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "review_observation": {
+      "basis": "923471b1cfe0b98c4223c17f48f9ad791e198b9fb00deff8a0cbde01c21facb8",
+      "result": "1c8960c3bbfa1f98c9650c294682490dcef1726911f0ab198a4dd490286e398d",
+      "requests": [
+        "e2159063-92ac-4234-8eea-d3c00e5e5cad"
+      ]
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "business_reason": "本次已成功生成回答，不再适用旧的生成失败结论，但结果未满足验收：用户要求总结三个指定群，实际仅总结两个群的近期内容，蜂巢AI助手仅列群ID并说明无法确认，未完成该群最新PRE数据范围的总结。此外，验收明确要求每组附groupID和clientMsgID，回答未提供任何clientMsgID，所列会话ID、执行ID及消息seq引用不能替代该字段。回答诚实披露了覆盖限制，不能据此认定编造，但披露限制不等于完成任务。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "partial",
+        "reason": "同一请求认证Trace及恢复业务输入完整展示了检索参数、返回内容和最终回答。material_ask只读取sg_2122635335及sg_3981594831两个群；关键词检索先覆盖最近3天，续查7天返回coverage_incomplete、omitted_rows=12、truncated=true，随后结束回答，未进一步定向补查蜂巢AI助手。两个已总结群的主要近期事实有原文支持；蜂巢群历史关键消息正文未在本次材料中提供，因此不对其具体历史内容作额外事实判错，但三群总结未完成及clientMsgID缺失可直接确定。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "回答正确区分了近期部署、回归、修复和后续计划，也未冒称三群已查全；但蜂巢AI助手没有实质总结，且各组缺少明确要求的clientMsgID，属于已执行但结果不满足验收，而非空回答或证据采集失败。",
+          "evidence_refs": [
+            "turns[step=2].answer",
+            "trace.tools[seq=32]: 三个目标中两个AI助手群的真实元数据",
+            "call_3e4041455fb24aca80a97305b2dd454d: material_ask仅包含两个群范围",
+            "call_db5dd2b458b34e30906e9477d09ae3cd: coverage_incomplete、omitted_rows=12、truncated=true",
+            "expected_answer.qualitative_requirements: 每组附groupID和clientMsgID"
+          ]
+        }
+      ],
+      "suggestions": [
+        "对蜂巢AI助手单独按PRE数据范围主题检索，扩大到相关历史时间段，并读取命中消息的连续上下文。",
+        "针对数据链路补查向量、增量、全量及权限方案，而非仅以近期JIRA同步讨论替代项目数据链路总结。",
+        "回源核验并展示各群关键依据消息的真实clientMsgID，与groupID成对列出。"
+      ],
+      "input_sha256": "955b80386827e591291953ea4d75e31911ca951a8a75cdef03cd9bdf8b475183",
+      "evidence_sha256": "31535b87540f3756adb3d83666e2d3e56b0cda45a05478e088b20bdda9af8064",
+      "reviewed_at": "2026-11-04T00:24:10.435392+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → group_search（外层 completed / 内层 completed） → group_search（外层 completed / 内层 completed） → group_search（外层 completed / 内层 completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → group_message_search（completed）",
+      "review_observation": {
+        "basis": "923471b1cfe0b98c4223c17f48f9ad791e198b9fb00deff8a0cbde01c21facb8",
+        "result": "1c8960c3bbfa1f98c9650c294682490dcef1726911f0ab198a4dd490286e398d",
+        "requests": [
+          "e2159063-92ac-4234-8eea-d3c00e5e5cad"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": true,
+        "same_historical_request": false,
+        "original_evidence_preserved": true
+      }
+    },
+    "evaluation_detail_reason": "本次已成功生成回答，不再适用旧的生成失败结论，但结果未满足验收：用户要求总结三个指定群，实际仅总结两个群的近期内容，蜂巢AI助手仅列群ID并说明无法确认，未完成该群最新PRE数据范围的总结。此外，验收明确要求每组附groupID和clientMsgID，回答未提供任何clientMsgID，所列会话ID、执行ID及消息seq引用不能替代该字段。回答诚实披露了覆盖限制，不能据此认定编造，但披露限制不等于完成任务。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "第2轮问答已正式发起，但运行以 failed 明确终止，错误为 report chat generation failed，未生成任何回答。因此未完成三群项目里程碑、数据链路、最新pre数据范围及真实ID的总结任务，属于 execution_failure，而非已证实的评论理解错误。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": true,
+      "same_historical_request": false,
+      "previous_execution_preserved": true,
+      "new_sessions": [
+        "cs_e4ed247c-2b4e-4019-85fd-e23d2707933f"
+      ],
+      "new_request_ids": [
+        "68c3ed23-2e72-4943-99b4-8536149a834c",
+        "e2159063-92ac-4234-8eea-d3c00e5e5cad"
+      ],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "要求总结三个群，实际只完成两个群，漏了蜂巢AI助手群的最新PRE范围；同时没有提供要求的原消息ID，所列会话ID和消息序号不能替代。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-FU-023",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "business_status": "fail",
+  "business_reason": "回答正确区分了早期对客目标、有限用户体验与实际发布，但漏掉了追问前已出现的“月底真实客户对客／10月29日”版本。用户明确要求clientMsgID，回答中10月初对应的ID也确实少了一个字母d，原失败仍成立且不只是时间依据问题。",
+  "failure_categories": [
+    "重要版本漏答",
+    "真实消息ID错误"
+  ],
+  "kind": "business_review",
+  "confidence": "high",
+  "turn_verdicts": [
+    {
+      "step": 2,
+      "status": "fail",
+      "reason": "早期三个版本和10月8日有限体验的解释基本准确，也明确交代了读取缺口，没有断言后来从未定期。但历史版本问题不能因覆盖声明而遗漏10月29日目标，明确要求的真实ID也不能用错误字符串替代。",
+      "evidence_refs": [
+        "sg_3981594831:7 / 5f6ee489d7ce05737a88c910eebd8c4e",
+        "sg_3981594831:930 / 7e0126b561b9ec6a5787542585d3bdb5",
+        "sg_3981594831:1506 / 7a41e9590324fd31fa980a06ac38a3a0",
+        "sg_3981594831:1507 / b05145cc58bfa04bbc217944ff4989e8",
+        "sg_3981594831:1939 / 8d546d5be9031d684ff6f00bae1c18a9"
+      ],
+      "comparison": {
+        "expected": "列出追问前出现的重要对客版本，包括10月10日提出的月底真实客户对客及SuChen明确的10月29日目标；区分目标与实际完成，并提供准确clientMsgID。10月初主目标消息seq 7的真实ID为5f6ee489d7ce05737a88c910eebd8c4e。",
+        "actual": "只列9月底、10月初、10月中旬及10月2日前后的阶段安排，未列10月29日；seq 7的ID写成5f6ee489d7ce05737a88c910eeb8c4e。",
+        "difference": "遗漏了晚于10月2日的重要明确目标，10月22日“还有一周要对客”也进一步印证该排期曾存在；原始ID少了d。不能据此认定10月29日实际已上线，但应把它列为曾提出的目标。"
+      }
+    }
+  ],
+  "evidence_assessment": {
+    "sufficient": true,
+    "reason": "独立消息可直接核验8月19日原始ID，以及10月10日、10月22日新增对客目标；这些证据均早于2026年11月3日07:17:26.360Z追问上界，足以确认错误，无需推断最终是否实际对客。"
+  },
+  "temporal_assessment": {
+    "scope": "mixed",
+    "ignored_stale_expectations": [
+      "不把10月2日待资源确认当作11月3日唯一有效排期结论。",
+      "不要求复述9月15日内部体测及旧人力安排。",
+      "不把10月8日发布计划或10月29日对客目标自动认定为实际完成。"
+    ],
+    "current_factual_basis": [
+      {
+        "reference": "sg_3981594831:7 / 5f6ee489d7ce05737a88c910eebd8c4e",
+        "use": "核验10月初目标及准确原始ID。"
+      },
+      {
+        "reference": "sg_3981594831:930 / 7e0126b561b9ec6a5787542585d3bdb5",
+        "use": "核验10月8日仅为有限用户体验安排。"
+      },
+      {
+        "reference": "sg_3981594831:1506 / 7a41e9590324fd31fa980a06ac38a3a0；seq 1507 / b05145cc58bfa04bbc217944ff4989e8",
+        "use": "证明10月10日已提出月底真实客户对客，并明确为10月29日。"
+      },
+      {
+        "reference": "sg_3981594831:1939 / 8d546d5be9031d684ff6f00bae1c18a9",
+        "use": "核验10月22日仍按一周后对客推进，不能仅以10月2日安排概括全部版本。"
+      },
+      {
+        "reference": "sg_3981594831:2202 / 36cb69110506a061d4912a0f6fec16a6",
+        "use": "核验最新回归安排；该消息本身不能证明正式对客日期或实际上线。"
+      }
+    ],
+    "reason_changed": true,
+    "previous_failure_still_valid": true
+  },
+  "turn_time_basis": [
+    {
+      "step": 2,
+      "policy_version": "ai-assistant-temporal-review-v1",
+      "asked_at": "2026-11-03T07:17:26.360000+00:00",
+      "asked_at_ms": 1793690246360,
+      "timezone": "Asia/Tokyo",
+      "asked_at_local": "2026-11-03T16:17:26.360000+09:00",
+      "time_source": "original authenticated session user.createdAt, corroborated by exact-request authenticated Trace started_at",
+      "current_wording": true,
+      "historical_wording": false,
+      "recent_days_assumed": null,
+      "upper_inclusive": true,
+      "historical_context_allowed": true,
+      "static_gold_is_binding_for_current_facts": false
+    }
+  ],
+  "input_sha256": "cd40c8d046ab14fd3f545675bf8a6d7a265857d3b3e8de0c56af721b05e76bfd",
+  "evidence_sha256": "68554946ff73500b0a70bb2b990c15ab3330a1d4e4741321a864f30f654f6344",
+  "reviewed_at": "2026-11-04T05:08:52.179911+00:00",
+  "judge_model": "gpt-6.1-sol",
+  "judge_stream": true,
+  "judge_prompt_version": "ai-assistant-temporal-review-v1",
+  "judge_system_sha256": "a3b743be04f33caa08f29b541d0e7d9951df82b598c061dabd73a6264fcee935",
+  "judge_attempts": 1,
+  "protected_api_judge_completed": true,
+  "automatic_status": "skip",
+  "tool_chain": "步骤 2：scratchpad_read（failed） → scratchpad_read（failed） → activate_skills（completed） → group_message_vector_search（外层 failed / 内层 failed） → group_message_search（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → group_message_search（completed） → group_message_search（completed） → group_message_search（completed）",
+  "review_observation": null,
+  "reevaluation": {
+    "same_historical_request": true,
+    "question_resent": false,
+    "new_business_requests": 0,
+    "original_evidence_preserved": true,
+    "reason_manual_verdict_not_blindly_reused": "User requested a changed time-aware judging basis; old Gold/review is preserved as history."
+  }
+}

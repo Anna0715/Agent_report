@@ -1,0 +1,400 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-REC-002-e232da726b70",
+    "suite": "assistant_agent_followup",
+    "module": "AI助手",
+    "scenario": "推荐",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "待办状态落后于提问前的消息：Zelto中转、pre部署和test报告发布都已有确认，回答仍说跑测或报告交付“尚未确认”，没纳入最新进展。",
+    "confidence": "high",
+    "latency_ms": 121119,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "评论解析错误",
+      "时序错误"
+    ],
+    "title": "有哪些待办事项需要我跟进？",
+    "ability": "推荐问题回答",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "有哪些待办事项需要我跟进？"
+    ],
+    "answer": "截至 **11 月 3 日 18:13（东京时间）**，建议优先跟进全量回归和今天提出的测试事项。项目任务这次未能完整读取，下面不是全部待办；消息任务中你可能是创建人或参与人，不一定都是执行人。\n\n## 优先跟进\n\n1. **AI 助手全量回归及报告**：11 月 2 日你说明，要等公台替换 pre API 后才能跑全量；一次约需 2–3 小时，跑完还要复核。你曾表示**进展顺利的话，11 月 3 日可以提供报告**。已读讨论未确认实际跑测或报告交付，建议先确认 API 替换、回归和复核进度。另有 11 月 3 日重跑 test、跑完后告知对方的请求，结果也尚未确认。`widget:refs:msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:12:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:23:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:27:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:34:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:35:T112053RE|msg:sg_1859764497:1622:T112053RE`\n\n2. **补齐回归范围和创建任务需求**：你在 11 月 2 日说创建任务功能尚未测试，并请求补发 PRD；对方提供了需求链接，但是否包含所需文档、过程中新增需求是否覆盖，仍需确认。`widget:refs:msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:13:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:15:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:29:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:32:T112053RE`\n\n3. **重置新手引导并再次测试**：11 月 3 日有人请你重置引导，以便重新测试；同一清单还提到多语言引导、自动化创建后的列表刷新和会话草稿。已读讨论没有确认重置或测试完成。`widget:refs:msg:sg_3981594831:2267:T112053RE|msg:sg_3981594831:2268:T112053RE`\n\n## 需要核实状态\n\n- **发布单和 PR**：近期有人请你审批多个发布单、合入多个 PR；已读讨论未逐项确认完成情况。建议先核对当前仍待你处理的单据和 PR，避免重复操作。`widget:refs:msg:sg_1859764497:1384:T112053RE|msg:sg_1859764497:1530:T112053RE|msg:sg_1859764497:1581:T112053RE|msg:sg_1859764497:1621:T112053RE`\n- **已提出问题的修复与验收**：包括任务创建后列表未立即刷新、项目详情自定义字段同步逻辑，以及跨租户回答相关 case。你已提出或询问处理方式，已读讨论未确认修复或验收完成；这些不等于都由你负责修复。`widget:refs:msg:sg_3981594831:2223:T112053RE|msg:sg_3981594831:2225:T112053RE|msg:sg_3981594831:2235:T112053RE|msg:sg_3981594831:2237:T112053RE|msg:sg_3981594831:2279:T112053RE|msg:sg_3981594831:2281:T112053RE`\n- **任务记录中有一项已逾期**：“技术部任务”当前显示**进行中、已逾期**，截止时间为 2025 年 12 月 29 日 09:00。你与该任务有关联，但本次列表未返回执行人，需打开确认是否需要你处理。`widget:task:taskv6lrkze9ma3r:T112053RE`\n\n此前我把“检查包”和反引号问题直接列为当前待办，并使用了无效的来源标识；那份结论及引用不可靠，请以本次核实结果为准。本次还未读完所有相关会话，且项目任务未完整取得，因此不能排除其他待办。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "评论解析错误",
+      "时序错误"
+    ],
+    "business_reason": "待办状态落后于提问前的消息：Zelto中转、pre部署和test报告发布都已有确认，回答仍说跑测或报告交付“尚未确认”，没纳入最新进展。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → scratchpad_read（failed） → structured_schema（completed） → task_query（failed） → task_query（completed） → structured_select（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "有哪些待办事项需要我跟进？",
+        "answer": "截至 **11 月 3 日 18:13（东京时间）**，建议优先跟进全量回归和今天提出的测试事项。项目任务这次未能完整读取，下面不是全部待办；消息任务中你可能是创建人或参与人，不一定都是执行人。\n\n## 优先跟进\n\n1. **AI 助手全量回归及报告**：11 月 2 日你说明，要等公台替换 pre API 后才能跑全量；一次约需 2–3 小时，跑完还要复核。你曾表示**进展顺利的话，11 月 3 日可以提供报告**。已读讨论未确认实际跑测或报告交付，建议先确认 API 替换、回归和复核进度。另有 11 月 3 日重跑 test、跑完后告知对方的请求，结果也尚未确认。`widget:refs:msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:12:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:23:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:27:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:34:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:35:T112053RE|msg:sg_1859764497:1622:T112053RE`\n\n2. **补齐回归范围和创建任务需求**：你在 11 月 2 日说创建任务功能尚未测试，并请求补发 PRD；对方提供了需求链接，但是否包含所需文档、过程中新增需求是否覆盖，仍需确认。`widget:refs:msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:13:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:15:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:29:T112053RE|msg:si_ouv4qlvxa3mbkp_ouvwzhogat6shz:32:T112053RE`\n\n3. **重置新手引导并再次测试**：11 月 3 日有人请你重置引导，以便重新测试；同一清单还提到多语言引导、自动化创建后的列表刷新和会话草稿。已读讨论没有确认重置或测试完成。`widget:refs:msg:sg_3981594831:2267:T112053RE|msg:sg_3981594831:2268:T112053RE`\n\n## 需要核实状态\n\n- **发布单和 PR**：近期有人请你审批多个发布单、合入多个 PR；已读讨论未逐项确认完成情况。建议先核对当前仍待你处理的单据和 PR，避免重复操作。`widget:refs:msg:sg_1859764497:1384:T112053RE|msg:sg_1859764497:1530:T112053RE|msg:sg_1859764497:1581:T112053RE|msg:sg_1859764497:1621:T112053RE`\n- **已提出问题的修复与验收**：包括任务创建后列表未立即刷新、项目详情自定义字段同步逻辑，以及跨租户回答相关 case。你已提出或询问处理方式，已读讨论未确认修复或验收完成；这些不等于都由你负责修复。`widget:refs:msg:sg_3981594831:2223:T112053RE|msg:sg_3981594831:2225:T112053RE|msg:sg_3981594831:2235:T112053RE|msg:sg_3981594831:2237:T112053RE|msg:sg_3981594831:2279:T112053RE|msg:sg_3981594831:2281:T112053RE`\n- **任务记录中有一项已逾期**：“技术部任务”当前显示**进行中、已逾期**，截止时间为 2025 年 12 月 29 日 09:00。你与该任务有关联，但本次列表未返回执行人，需打开确认是否需要你处理。`widget:task:taskv6lrkze9ma3r:T112053RE`\n\n此前我把“检查包”和反引号问题直接列为当前待办，并使用了无效的来源标识；那份结论及引用不可靠，请以本次核实结果为准。本次还未读完所有相关会话，且项目任务未完整取得，因此不能排除其他待办。",
+        "session_id": "cs_b660aca8-9425-4487-b04b-d9b082a56706",
+        "request_id": "2733b0bb-f584-4c64-8a62-090c52eefff0",
+        "message_id": "cm_2fed24ea-7b0e-4d6b-87b5-b71a341f1e2d",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary,report_chat,structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 23,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=case_followups_2026-10-05.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 28,
+        "name": "structured_schema",
+        "arguments_summary": "entities=2",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 33,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=mine role=all",
+        "status": "failed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 38,
+        "name": "task_query",
+        "arguments_summary": "type=message scope=mine role=all",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 43,
+        "name": "structured_select",
+        "arguments_summary": "entity=message fields=4 where_runes=142 order_by=1",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 48,
+        "name": "material_ask",
+        "arguments_summary": "ranges=7 message=7 report=0 format=text instruction_runes=95",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 72,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/si_ouv4qlvxa3mbkp_ouvwzhogat6shz_1-95-15f1dc9f offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 77,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_1859764497_1363-1722-e3fc70fa offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "seq": 82,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/sg_3981594831_2103-2342-126d6ec8 offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_53417ed03fdc4740b67142a26840969e",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、report_chat、structured_query、task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 99,
+        "tool_count": 10,
+        "tokens": 654375
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed', 'task_query:failed']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "dynamic_recommendation",
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "回答主问题并列明具体事项，不仅复述抽象任务名称。",
+        "事实、时间范围和状态有授权来源支撑；未知字段明确说明。"
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "具体测试、需求范围、新手引导等推荐有来源，未知执行关系也有说明；但将已有 test 报告发布事实仍表述为结果未确认，并未纳入已确认的 pre 部署进展，导致最优先待办的现状描述错误。可以建议再次核实 pre 全量复核或交付情况，但不能忽略已经发生的 test 报告反馈。",
+        "evidence_refs": [
+          "recovered_business_evidence：sg_1859764497 原始 materials，seq 1609—1611",
+          "recovered_business_evidence：sg_1859764497 原始 materials，seq 1652—1653，2026-11-03T08:43:56.177Z—08:44:27.889Z",
+          "trace：scratchpad_read seq 77，摘要错误声称重跑 test 未见结果",
+          "turns[step=2].answer：优先跟进第1项"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "1952b7d6538b9693656782e41ab4eaca0c41dd704a5276fb48c30c0d57fbc7f8",
+      "result": "eb949a803477b3cd6d410cf92e5afd795fd18fd7afb36efd8bded72a6ba185a3",
+      "requests": [
+        "2733b0bb-f584-4c64-8a62-090c52eefff0"
+      ]
+    },
+    "current_batch_scope": "本轮未重跑；保留原执行与已保存人工复核",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答列出了全量回归及报告、需求范围确认、新手引导重测等具体跟进事项，也明确区分了建议核实与已确认未完成、关联人与执行人，并说明结果不完整。但提供的 Trace 仅有截断的工具摘要，关键消息正文和任务明细均不可见，无法核验这些事项的实际交办、最新进展与截止时间，因而不能确定业务回答是否正确。工具读取有成功记录，不能据此认定助手未读取证据或编造。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答列出了全量回归及报告、需求范围确认、新手引导重测等具体跟进事项，也明确区分了建议核实与已确认未完成、关联人与执行人，并说明结果不完整。但提供的 Trace 仅有截断的工具摘要，关键消息正文和任务明细均不可见，无法核验这些事项的实际交办、最新进展与截止时间，因而不能确定业务回答是否正确。工具读取有成功记录，不能据此认定助手未读取证据或编造。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-REC-002-e232da726b70.json",
+        "independent_readback": "sources/AA-REC-002-e232da726b70.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "评论解析错误",
+        "时序错误"
+      ],
+      "business_reason": "本轮已完成生成，且列出了具体跟进事项并说明查询限制，但核心回归事项的状态不符合请求截止时已有事实。11月3日群消息已确认 Zelto 中转生效、pre 最新代码已部署；17:43—17:44（东京时间）安柔发布报告链接并明确说明“test的”，早于18:13的请求。回答仍称实际跑测或报告交付未确认、重跑 test 结果尚未确认，遗漏了会改变当前待办判断的后续进展。这是结果不满足验收，不是空回答或执行生成失败。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "同请求认证 Trace 恢复了 material_ask 所处理的完整群消息正文，包含 sg_1859764497:1609—1611 的中转及部署确认，以及1652—1653的 test 报告发布。委托摘要错误遗漏这些后续，最终回答沿用了摘要中的“未见结果”。原始材料足以确定状态误读，无需以其他未读会话或项目任务查询失败为由跳过。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "具体测试、需求范围、新手引导等推荐有来源，未知执行关系也有说明；但将已有 test 报告发布事实仍表述为结果未确认，并未纳入已确认的 pre 部署进展，导致最优先待办的现状描述错误。可以建议再次核实 pre 全量复核或交付情况，但不能忽略已经发生的 test 报告反馈。",
+          "evidence_refs": [
+            "recovered_business_evidence：sg_1859764497 原始 materials，seq 1609—1611",
+            "recovered_business_evidence：sg_1859764497 原始 materials，seq 1652—1653，2026-11-03T08:43:56.177Z—08:44:27.889Z",
+            "trace：scratchpad_read seq 77，摘要错误声称重跑 test 未见结果",
+            "turns[step=2].answer：优先跟进第1项"
+          ]
+        }
+      ],
+      "suggestions": [
+        "按同一事项串联交办、执行反馈及报告链接，使用截止时刻之前的最新消息更新待办状态。",
+        "将 test 已发布报告与 pre 全量是否完成复核、是否向需求方交付分开描述；仅把后者尚缺证据的部分列为待确认。",
+        "对委托摘要中的“未见结果”核查窗口后段，避免摘要遗漏覆盖原始后续事实。"
+      ],
+      "input_sha256": "8f75f1c4eff2cdd63a71fa38d8f0c1e6f89f0e36053e2a9ea8bda4c525a5e2b7",
+      "evidence_sha256": "c86b36d63d75cd561321b024948616c7369017e369c9e83b0729e8a53e4b5231",
+      "reviewed_at": "2026-11-04T00:18:24.195244+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → scratchpad_read（failed） → structured_schema（completed） → task_query（failed） → task_query（completed） → structured_select（completed） → material_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+      "review_observation": {
+        "basis": "1952b7d6538b9693656782e41ab4eaca0c41dd704a5276fb48c30c0d57fbc7f8",
+        "result": "eb949a803477b3cd6d410cf92e5afd795fd18fd7afb36efd8bded72a6ba185a3",
+        "requests": [
+          "2733b0bb-f584-4c64-8a62-090c52eefff0"
+        ]
+      },
+      "reevaluation": {
+        "source_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "same_historical_request": true,
+        "original_evidence_preserved": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-REC-002-e232da726b70",
+    "evaluation_detail_reason": "本轮已完成生成，且列出了具体跟进事项并说明查询限制，但核心回归事项的状态不符合请求截止时已有事实。11月3日群消息已确认 Zelto 中转生效、pre 最新代码已部署；17:43—17:44（东京时间）安柔发布报告链接并明确说明“test的”，早于18:13的请求。回答仍称实际跑测或报告交付未确认、重跑 test 结果尚未确认，遗漏了会改变当前待办判断的后续进展。这是结果不满足验收，不是空回答或执行生成失败。",
+    "reason_style": "plain_chinese_v1",
+    "failure_recheck": {
+      "previous_status": "fail",
+      "previous_reason": "回答列出了具体跟进事项且披露了查询缺口，但对核心回归事项的最新进展判断错误：截至本轮请求之前，11月3日的群消息已确认 pre 部署及 Zelto 中转配置生效，安柔也已发布 test 报告链接并明确标注“test的”。回答仍称实际跑测及 test 结果尚未确认，未将这些后续事实纳入待办判断。该问题可由恢复的同请求原始业务材料确定，不再属于证据不足。",
+      "previous_kind": "business_review",
+      "automatic_reevaluation": "fail",
+      "current_status": "失败",
+      "question_resent": false,
+      "same_historical_request": true,
+      "previous_execution_preserved": true,
+      "new_sessions": [],
+      "new_request_ids": [],
+      "prior_saved_review": null,
+      "judge_completed": true,
+      "current_reason": "待办状态落后于提问前的消息：Zelto中转、pre部署和test报告发布都已有确认，回答仍说跑测或报告交付“尚未确认”，没纳入最新进展。"
+    },
+    "source_report": {
+      "identity": {
+        "report_id": "review-5f79026481b594937e92b0b6",
+        "run_id": "AI助手-2026-11-03-pre-full",
+        "environment": "pre",
+        "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+      },
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/",
+      "revision": 5
+    }
+  },
+  "saved_review": {
+    "case_id": "AA-REC-002-e232da726b70",
+    "version": 0,
+    "override": null,
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "updated_at": null,
+    "updated_by": null
+  },
+  "cloud_history": [],
+  "old_report_identity": {
+    "report_id": "review-2bd636d6653c5d8e1e6fcfb9",
+    "run_id": "AI助手-2026-11-04-natural-cases-retest-combined",
+    "environment": "combined",
+    "source_digest": "ee9cdd4322f84e2655c2e7756142fe5a93ce8a9dec71fc9858fc23dcac850c83"
+  }
+}
