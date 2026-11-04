@@ -1,0 +1,1046 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-REAL-PRE-013",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务真实场景问答",
+    "scenario": "查近期更新任务但不把更新时间当完成时间",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "两轮均正确得到当前无匹配任务的结果，但明确把“最近7天”改成“最近7个自然日”，并将查询区间写为10月28日至11月3日。按实际执行时刻向前7天，第一轮应从10月27日17:24左右开始，第二轮应从10月27日17:25左右开始。该时间口径与本轮要求不符。当前源任务最后更新均在10月23日，因此空结果本身正确，不能沿用历史Gold的43条或22条判错。",
+    "confidence": "high",
+    "latency_ms": 45444,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "时序错误",
+      "指令未遵循"
+    ],
+    "title": "最近7天更新过、但现在还没有完成的任务有哪些？按最近更新时间排序。",
+    "ability": "真实工作查询",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 2,
+    "questions": [
+      "最近7天更新过、但现在还没有完成的任务有哪些？按最近更新时间排序。",
+      "只保留高优先级，列出最后更新时间。"
+    ],
+    "answer": "截至 11 月 3 日 17:25（东京时间），项目甲和项目乙中，**没有找到最近 7 个自然日内更新过、目前未完成的高优先级任务**，因此没有可列出的最后更新时间。\n\n查询范围为 2026 年 10 月 28 日至 11 月 3 日；未完成包括待启动、进行中和暂停。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "两轮均正确得到当前无匹配任务的结果，但明确把“最近7天”改成“最近7个自然日”，并将查询区间写为10月28日至11月3日。按实际执行时刻向前7天，第一轮应从10月27日17:24左右开始，第二轮应从10月27日17:25左右开始。该时间口径与本轮要求不符。当前源任务最后更新均在10月23日，因此空结果本身正确，不能沿用历史Gold的43条或22条判错。",
+    "tool_chain_summary": "工具链：task_query(completed) → task_query(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "最近7天更新过、但现在还没有完成的任务有哪些？按最近更新时间排序。",
+        "answer": "截至 2026 年 11 月 3 日 17:24（东京时间），在这两个项目中，**没有找到最近 7 个自然日内更新过、目前尚未完成的任务**。\n\n查询范围为 10 月 28 日至 11 月 3 日，未完成包括待启动、进行中和暂停状态。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+        "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+        "request_id": "eb39217c-f7ec-42db-8cdd-85a331eff6dc",
+        "message_id": "cm_306dc2b5-9a09-4e92-9a4c-c3b5a29794d5",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "只保留高优先级，列出最后更新时间。",
+        "answer": "截至 11 月 3 日 17:25（东京时间），项目甲和项目乙中，**没有找到最近 7 个自然日内更新过、目前未完成的高优先级任务**，因此没有可列出的最后更新时间。\n\n查询范围为 2026 年 10 月 28 日至 11 月 3 日；未完成包括待启动、进行中和暂停。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`",
+        "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+        "request_id": "59b1feda-9b9a-40d5-947a-4e4c9edad13b",
+        "message_id": "cm_6504cb86-f941-40bd-a644-f35ddafe0092",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_710a32814db345f191d53616767c7e0a",
+        "step": 2,
+        "seq": 19,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=visible role=all",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_710a32814db345f191d53616767c7e0a",
+        "step": 2,
+        "seq": 24,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=visible role=all",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_710a32814db345f191d53616767c7e0a",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 41,
+        "tool_count": 2,
+        "tokens": 112524
+      },
+      {
+        "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 24,
+        "tool_count": 0,
+        "tokens": 28158
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.3.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['task_query(type=project scope=visible role=all)×2']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-REAL-PRE-013",
+    "gold": {
+      "type": "real_workplace_readonly_query",
+      "gold_refs": [
+        "AGG-PRE-SPACE",
+        "AGG-PRE-P-A",
+        "AGG-PRE-P-B",
+        "AGG-PRE-P-Z",
+        "AGG-PRE-T001",
+        "AGG-PRE-T002",
+        "AGG-PRE-T003",
+        "AGG-PRE-T004",
+        "AGG-PRE-T005",
+        "AGG-PRE-T006",
+        "AGG-PRE-T007",
+        "AGG-PRE-T008",
+        "AGG-PRE-T009",
+        "AGG-PRE-T010",
+        "AGG-PRE-T011",
+        "AGG-PRE-T012",
+        "AGG-PRE-T013",
+        "AGG-PRE-T014",
+        "AGG-PRE-T015",
+        "AGG-PRE-T016",
+        "AGG-PRE-T017",
+        "AGG-PRE-T018",
+        "AGG-PRE-T019",
+        "AGG-PRE-T020",
+        "AGG-PRE-T021",
+        "AGG-PRE-T022",
+        "AGG-PRE-T023",
+        "AGG-PRE-T024",
+        "AGG-PRE-T025",
+        "AGG-PRE-T026",
+        "AGG-PRE-T027",
+        "AGG-PRE-T028",
+        "AGG-PRE-T029",
+        "AGG-PRE-T030",
+        "AGG-PRE-T031",
+        "AGG-PRE-T032",
+        "AGG-PRE-T033",
+        "AGG-PRE-T034",
+        "AGG-PRE-T035",
+        "AGG-PRE-T036",
+        "AGG-PRE-T037",
+        "AGG-PRE-T038",
+        "AGG-PRE-T039",
+        "AGG-PRE-T040",
+        "AGG-PRE-T041",
+        "AGG-PRE-T042",
+        "AGG-PRE-T043",
+        "AGG-PRE-T044",
+        "AGG-PRE-T045",
+        "AGG-PRE-T046",
+        "AGG-PRE-T047",
+        "AGG-PRE-T048",
+        "AGG-PRE-T049",
+        "AGG-PRE-T050",
+        "AGG-PRE-T051",
+        "AGG-PRE-T052",
+        "AGG-PRE-T053",
+        "AGG-PRE-T054",
+        "AGG-PRE-T055",
+        "AGG-PRE-T056",
+        "AGG-PRE-T057",
+        "AGG-PRE-T058",
+        "AGG-PRE-T059",
+        "AGG-PRE-T060",
+        "AGG-PRE-T061",
+        "AGG-PRE-T062",
+        "AGG-PRE-T063",
+        "AGG-PRE-T064",
+        "AGG-PRE-U0",
+        "AGG-PRE-U1",
+        "AGG-PRE-U2"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+        "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+        "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+        "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+        "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+        "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+        "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+        "筛选按update_time，最近7天为实际执行时刻往前7天。只说明最后更新时间，不能据此编造具体变更内容或完成时间。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "第1轮：{\"任务数\":43,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1ney0pq2s\",\"task_vys1nhd18vci\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1odxf7vfu\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1pclutxql\",\"task_vys1plbvly1j\",\"task_vys1pmhbgfw8\",\"task_vys1pyj1ohws\",\"task_vys1qm7cc8tw\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1rtcddjwq\",\"task_vys1s3eoqmz2\",\"task_vys1sbdsowup\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1t9sbdz1o\",\"task_vys1tfooyn6z\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1uc45xqsv\",\"task_vys1uhskfuza\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vcvclkxc\",\"task_vys1vk1uqr44\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wl7y9pri\",\"task_vys1wsyxs4dr\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xndsrv1a\",\"task_vys1xvwib6gn\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":21,\"进行中\":22,\"已完成\":0},\"主任务数\":21,\"子孙任务数\":22}\n第2轮：{\"任务数\":22,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1plbvly1j\",\"task_vys1pyj1ohws\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":0,\"进行中\":22,\"已完成\":0},\"主任务数\":11,\"子孙任务数\":11}",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "最近7天更新过、但现在还没有完成的任务有哪些？按最近更新时间排序。",
+          "qualitative_requirements": [
+            "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+            "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+            "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+            "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+            "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+            "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+            "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+            "筛选按update_time，最近7天为实际执行时刻往前7天。只说明最后更新时间，不能据此编造具体变更内容或完成时间。",
+            "本轮示例Gold={\"任务数\":43,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1ney0pq2s\",\"task_vys1nhd18vci\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1odxf7vfu\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1pclutxql\",\"task_vys1plbvly1j\",\"task_vys1pmhbgfw8\",\"task_vys1pyj1ohws\",\"task_vys1qm7cc8tw\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1rtcddjwq\",\"task_vys1s3eoqmz2\",\"task_vys1sbdsowup\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1t9sbdz1o\",\"task_vys1tfooyn6z\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1uc45xqsv\",\"task_vys1uhskfuza\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vcvclkxc\",\"task_vys1vk1uqr44\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wl7y9pri\",\"task_vys1wsyxs4dr\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xndsrv1a\",\"task_vys1xvwib6gn\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":21,\"进行中\":22,\"已完成\":0},\"主任务数\":21,\"子孙任务数\":22}"
+          ]
+        },
+        {
+          "step": 3,
+          "message": "只保留高优先级，列出最后更新时间。",
+          "qualitative_requirements": [
+            "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+            "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+            "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+            "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+            "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+            "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+            "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+            "筛选按update_time，最近7天为实际执行时刻往前7天。只说明最后更新时间，不能据此编造具体变更内容或完成时间。",
+            "本轮示例Gold={\"任务数\":22,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1plbvly1j\",\"task_vys1pyj1ohws\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":0,\"进行中\":22,\"已完成\":0},\"主任务数\":11,\"子孙任务数\":11}"
+          ]
+        }
+      ],
+      "numeric_oracle": [
+        {
+          "任务数": 43,
+          "任务ID集合": [
+            "task_vys1mtyiey9h",
+            "task_vys1ney0pq2s",
+            "task_vys1nhd18vci",
+            "task_vys1noe6cl7x",
+            "task_vys1ns3hn6b6",
+            "task_vys1odxf7vfu",
+            "task_vys1ohjulphr",
+            "task_vys1onyxh99o",
+            "task_vys1osbymewz",
+            "task_vys1pclutxql",
+            "task_vys1plbvly1j",
+            "task_vys1pmhbgfw8",
+            "task_vys1pyj1ohws",
+            "task_vys1qm7cc8tw",
+            "task_vys1qrzhi9js",
+            "task_vys1qybbbtt1",
+            "task_vys1r30nlqxx",
+            "task_vys1re7yxucc",
+            "task_vys1rtcddjwq",
+            "task_vys1s3eoqmz2",
+            "task_vys1sbdsowup",
+            "task_vys1sgjrsuyb",
+            "task_vys1smzdnvip",
+            "task_vys1t9sbdz1o",
+            "task_vys1tfooyn6z",
+            "task_vys1tkkwc87l",
+            "task_vys1tqctqyjj",
+            "task_vys1uc45xqsv",
+            "task_vys1uhskfuza",
+            "task_vys1umv40yu9",
+            "task_vys1urw9vcut",
+            "task_vys1vcvclkxc",
+            "task_vys1vk1uqr44",
+            "task_vys1vofvmb5t",
+            "task_vys1vwyeidgz",
+            "task_vys1wl7y9pri",
+            "task_vys1wsyxs4dr",
+            "task_vys1wxc1rssk",
+            "task_vys1x3upqxmw",
+            "task_vys1xndsrv1a",
+            "task_vys1xvwib6gn",
+            "task_vys1xyvta5dc",
+            "task_vys1y6o0pish"
+          ],
+          "按状态": {
+            "未开始": 21,
+            "进行中": 22,
+            "已完成": 0
+          },
+          "主任务数": 21,
+          "子孙任务数": 22
+        },
+        {
+          "任务数": 22,
+          "任务ID集合": [
+            "task_vys1mtyiey9h",
+            "task_vys1noe6cl7x",
+            "task_vys1ns3hn6b6",
+            "task_vys1onyxh99o",
+            "task_vys1osbymewz",
+            "task_vys1plbvly1j",
+            "task_vys1pyj1ohws",
+            "task_vys1qybbbtt1",
+            "task_vys1r30nlqxx",
+            "task_vys1re7yxucc",
+            "task_vys1sgjrsuyb",
+            "task_vys1smzdnvip",
+            "task_vys1tkkwc87l",
+            "task_vys1tqctqyjj",
+            "task_vys1umv40yu9",
+            "task_vys1urw9vcut",
+            "task_vys1vofvmb5t",
+            "task_vys1vwyeidgz",
+            "task_vys1wxc1rssk",
+            "task_vys1x3upqxmw",
+            "task_vys1xyvta5dc",
+            "task_vys1y6o0pish"
+          ],
+          "按状态": {
+            "未开始": 0,
+            "进行中": 22,
+            "已完成": 0
+          },
+          "主任务数": 11,
+          "子孙任务数": 11
+        }
+      ],
+      "oracle_source": "outputs/real_query_cases_20261026/pre.real-query-oracle.json",
+      "snapshot_policy": "源快照2026-10-23，日期计算示例2026-10-26；实跑前必须重新读取源并冻结实际时间，不能把本表作为实时事实。",
+      "scope": "pre/actor_visible/AGG-PRE-SPACE",
+      "evaluation_scope": "all_answer_turns",
+      "reference_time": "2026-10-26T12:00:00+09:00",
+      "source_snapshot_time": "2026-10-23T11:15:36.027065+00:00"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "无匹配任务的结论符合当前源数据，提供了两个项目的有效来源引用，也未把更新时间当成完成时间；但将滚动最近7天错误解释为10月28日至11月3日的7个自然日。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[turn_step=2].tools[seq=19,24]",
+          "current_independent_readback.complete_recursive_task_tree"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "正确保留未完成及近期更新条件并追加高优先级，空集合无需列出更新时间；但继续明确使用10月28日至11月3日的自然日区间，未按本轮实际执行时刻向前7天计算。",
+        "evidence_refs": [
+          "turns[step=3].answer",
+          "turns[step=2].answer",
+          "current_independent_readback.complete_recursive_task_tree"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-REAL-PRE-013",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:25:37+00:00",
+    "output": {
+      "text": "截至 11 月 3 日 17:25（东京时间），项目甲和项目乙中，**没有找到最近 7 个自然日内更新过、目前未完成的高优先级任务**，因此没有可列出的最后更新时间。\n\n查询范围为 2026 年 10 月 28 日至 11 月 3 日；未完成包括待启动、进行中和暂停。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "task_query",
+            "call_id": "call_f5e92f8fb729424a857d2c309b7e41ea",
+            "arguments_summary": "type=project scope=visible role=all",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 20,
+            "name": "task_query",
+            "call_id": "call_f5e92f8fb729424a857d2c309b7e41ea",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"tasks\":[]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_query",
+            "call_id": "call_ea0308261a0f46d5b9da48a113bc28c2",
+            "arguments_summary": "type=project scope=visible role=all",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 25,
+            "name": "task_query",
+            "call_id": "call_ea0308261a0f46d5b9da48a113bc28c2",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"tasks\":[]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 150
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 152,
+            "input_tokens": 112029,
+            "output_tokens": 495,
+            "total_tokens": 112524,
+            "estimated_cost_micros": 567570,
+            "cached_input_tokens": 18432,
+            "cache_hit_ratio": 0.16452882735720215,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_710a32814db345f191d53616767c7e0a",
+            "turn_step": 2,
+            "seq": 156
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "seq": 125
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "seq": 127,
+            "input_tokens": 28007,
+            "output_tokens": 151,
+            "total_tokens": 28158,
+            "estimated_cost_micros": 142300,
+            "cached_input_tokens": 4608,
+            "cache_hit_ratio": 0.16453029599742922,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+            "turn_step": 3,
+            "seq": 131
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "message_id": "",
+          "request_id": "03f8fac5-45f8-45cb-bb13-3bd2427a8572",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "message_id": "cm_306dc2b5-9a09-4e92-9a4c-c3b5a29794d5",
+          "request_id": "eb39217c-f7ec-42db-8cdd-85a331eff6dc",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "message_id": "cm_6504cb86-f941-40bd-a644-f35ddafe0092",
+          "request_id": "59b1feda-9b9a-40d5-947a-4e4c9edad13b",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 2
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 45444,
+      "tool_calls": 2,
+      "retries": 0,
+      "input_tokens": 140036,
+      "output_tokens": 646,
+      "cached_tokens": 23040,
+      "cost_usd": 0.70987,
+      "usage_runs": 2
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "request_id": "03f8fac5-45f8-45cb-bb13-3bd2427a8572",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "message_id": "cm_306dc2b5-9a09-4e92-9a4c-c3b5a29794d5",
+          "request_id": "eb39217c-f7ec-42db-8cdd-85a331eff6dc",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 2026 年 11 月 3 日 17:24（东京时间），在这两个项目中，**没有找到最近 7 个自然日内更新过、目前尚未完成的任务**。\n\n查询范围为 10 月 28 日至 11 月 3 日，未完成包括待启动、进行中和暂停状态。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+          "message": "最近7天更新过、但现在还没有完成的任务有哪些？按最近更新时间排序。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f",
+          "message_id": "cm_6504cb86-f941-40bd-a644-f35ddafe0092",
+          "request_id": "59b1feda-9b9a-40d5-947a-4e4c9edad13b",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 11 月 3 日 17:25（东京时间），项目甲和项目乙中，**没有找到最近 7 个自然日内更新过、目前未完成的高优先级任务**，因此没有可列出的最后更新时间。\n\n查询范围为 2026 年 10 月 28 日至 11 月 3 日；未完成包括待启动、进行中和暂停。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9`",
+          "message": "只保留高优先级，列出最后更新时间。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_710a32814db345f191d53616767c7e0a",
+          "turn_step": 2,
+          "request_id": "eb39217c-f7ec-42db-8cdd-85a331eff6dc",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_710a32814db345f191d53616767c7e0a",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "task_query",
+              "call_id": "call_f5e92f8fb729424a857d2c309b7e41ea",
+              "arguments_summary": "type=project scope=visible role=all",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"tasks\":[]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_710a32814db345f191d53616767c7e0a",
+              "turn_step": 2,
+              "seq": 24,
+              "name": "task_query",
+              "call_id": "call_ea0308261a0f46d5b9da48a113bc28c2",
+              "arguments_summary": "type=project scope=visible role=all",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"tasks\":[]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 41,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.tool_result",
+            "chat.completion_review",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 112029,
+            "output_tokens": 495,
+            "total_tokens": 112524,
+            "estimated_cost_micros": 567570,
+            "cached_input_tokens": 18432,
+            "cache_hit_ratio": 0.16452882735720215,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "run_id": "bar_6ed2c78466654eafacb5fb3b646f03b8",
+          "turn_step": 3,
+          "request_id": "59b1feda-9b9a-40d5-947a-4e4c9edad13b",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 24,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 28007,
+            "output_tokens": 151,
+            "total_tokens": 28158,
+            "estimated_cost_micros": 142300,
+            "cached_input_tokens": 4608,
+            "cache_hit_ratio": 0.16453029599742922,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "eb39217c-f7ec-42db-8cdd-85a331eff6dc",
+          "59b1feda-9b9a-40d5-947a-4e4c9edad13b"
+        ],
+        "current_session_ids": [
+          "cs_4b8cda63-5a33-4c02-a14d-a7eda70c218f"
+        ],
+        "matched_run_ids": [
+          "bar_710a32814db345f191d53616767c7e0a",
+          "bar_6ed2c78466654eafacb5fb3b646f03b8"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

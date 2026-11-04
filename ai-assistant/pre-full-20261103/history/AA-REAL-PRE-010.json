@@ -1,0 +1,945 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-REAL-PRE-010",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务真实场景问答",
+    "scenario": "周会汇总项目进展并提供风险任务依据",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "用户要求两个项目整体的完成数、剩余数及具体关注任务，未限定一级任务。助手自行将统计和风险候选范围缩为一级任务，项目甲仅报告已完成10项、剩余21项，没有完成全部子孙层级的汇总。当前独立完整递归回读确认项目甲共63项，已完成20项、剩余43项（进行中22项、未开始21项）；项目乙已完成1项、剩余0项。虽然回答明确披露了一级任务口径且给出3项真实关注任务，但披露范围缩减不能替代用户所问的整体结果。",
+    "confidence": "high",
+    "latency_ms": 50656,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "范围错误",
+      "信息缺失"
+    ],
+    "title": "帮我整理这两个项目的周会进展：完成了多少、还剩多少，哪些具体任务最需要关注？不要只给抽象结论。",
+    "ability": "真实工作查询",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "帮我整理这两个项目的周会进展：完成了多少、还剩多少，哪些具体任务最需要关注？不要只给抽象结论。"
+    ],
+    "answer": "截至 **2026 年 11 月 3 日 17:23（东京时间）**，项目甲的一级任务还剩 **21 项**，其中 **9 项标记为逾期**；项目乙的唯一任务已完成。这里是当前任务状态，不代表这些任务都在本周完成。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|task:task_vys1sry4cqk9:T1120J0W9`\n\n| 项目 | 一级任务 | 已完成 | 剩余 | 逾期标记 |\n|---|---:|---:|---:|---:|\n| 项目甲 | 31 | 10 | 21：进行中 11、待启动 10 | 9 |\n| 项目乙 | 1 | 1 | 0 | 0 |\n\n项目甲另有 **32 项子任务**；上表状态统计仅覆盖 31 项一级任务，不能据此判断子任务完成情况。逾期是独立标记，不是额外的基础状态。`widget:project:pro_993982662:T1120J0W9`\n\n## 周会建议重点询问\n\n从项目甲的 31 项一级任务中，按**高优先级、进行中且已逾期**选出以下 3 项；这不是全部逾期任务。三项均由 anna289 执行，截止时间均为 **2026 年 10 月 20 日 18:00（东京时间）**。任务描述和评论未提供具体进展或阻塞原因，建议周会上逐项确认实际进度、延期原因和新的完成安排：\n\n- **任务028**：进行中、高优先级、已逾期。`widget:task:task_vys1re7yxucc:T1120J0W9`\n- **任务016**：进行中、高优先级、已逾期。`widget:task:task_vys1plbvly1j:T1120J0W9`\n- **任务004**：进行中、高优先级、已逾期。`widget:task:task_vys1noe6cl7x:T1120J0W9`\n\n项目乙的唯一任务已完成且未标记逾期；现有任务材料未提供具体完成进展或评论，不宜据此补写成果。`widget:task:task_vys1sry4cqk9:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "用户要求两个项目整体的完成数、剩余数及具体关注任务，未限定一级任务。助手自行将统计和风险候选范围缩为一级任务，项目甲仅报告已完成10项、剩余21项，没有完成全部子孙层级的汇总。当前独立完整递归回读确认项目甲共63项，已完成20项、剩余43项（进行中22项、未开始21项）；项目乙已完成1项、剩余0项。虽然回答明确披露了一级任务口径且给出3项真实关注任务，但披露范围缩减不能替代用户所问的整体结果。",
+    "tool_chain_summary": "工具链：task_ask(completed) → scratchpad_read(completed) → scratchpad_read(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "帮我整理这两个项目的周会进展：完成了多少、还剩多少，哪些具体任务最需要关注？不要只给抽象结论。",
+        "answer": "截至 **2026 年 11 月 3 日 17:23（东京时间）**，项目甲的一级任务还剩 **21 项**，其中 **9 项标记为逾期**；项目乙的唯一任务已完成。这里是当前任务状态，不代表这些任务都在本周完成。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|task:task_vys1sry4cqk9:T1120J0W9`\n\n| 项目 | 一级任务 | 已完成 | 剩余 | 逾期标记 |\n|---|---:|---:|---:|---:|\n| 项目甲 | 31 | 10 | 21：进行中 11、待启动 10 | 9 |\n| 项目乙 | 1 | 1 | 0 | 0 |\n\n项目甲另有 **32 项子任务**；上表状态统计仅覆盖 31 项一级任务，不能据此判断子任务完成情况。逾期是独立标记，不是额外的基础状态。`widget:project:pro_993982662:T1120J0W9`\n\n## 周会建议重点询问\n\n从项目甲的 31 项一级任务中，按**高优先级、进行中且已逾期**选出以下 3 项；这不是全部逾期任务。三项均由 anna289 执行，截止时间均为 **2026 年 10 月 20 日 18:00（东京时间）**。任务描述和评论未提供具体进展或阻塞原因，建议周会上逐项确认实际进度、延期原因和新的完成安排：\n\n- **任务028**：进行中、高优先级、已逾期。`widget:task:task_vys1re7yxucc:T1120J0W9`\n- **任务016**：进行中、高优先级、已逾期。`widget:task:task_vys1plbvly1j:T1120J0W9`\n- **任务004**：进行中、高优先级、已逾期。`widget:task:task_vys1noe6cl7x:T1120J0W9`\n\n项目乙的唯一任务已完成且未标记逾期；现有任务材料未提供具体完成进展或评论，不宜据此补写成果。`widget:task:task_vys1sry4cqk9:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+        "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+        "request_id": "97119717-d347-4df3-81b1-2edee36f8047",
+        "message_id": "cm_1db696bc-87dc-420e-a5e5-a16cb5c8f082",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+        "step": 2,
+        "seq": 19,
+        "name": "task_ask",
+        "arguments_summary": "queries=2 group_by=project,status,is_overdue format=text detail=true comments=true mode=focus children=false instruction_runes=97",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+        "step": 2,
+        "seq": 29,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_pro_993982662-2507f43e offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+        "step": 2,
+        "seq": 34,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_pro_1679732559-67535707 offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 47,
+        "tool_count": 3,
+        "tokens": 126580
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-REAL-PRE-010",
+    "gold": {
+      "type": "real_workplace_readonly_query",
+      "gold_refs": [
+        "AGG-PRE-SPACE",
+        "AGG-PRE-P-A",
+        "AGG-PRE-P-B",
+        "AGG-PRE-P-Z",
+        "AGG-PRE-T001",
+        "AGG-PRE-T002",
+        "AGG-PRE-T003",
+        "AGG-PRE-T004",
+        "AGG-PRE-T005",
+        "AGG-PRE-T006",
+        "AGG-PRE-T007",
+        "AGG-PRE-T008",
+        "AGG-PRE-T009",
+        "AGG-PRE-T010",
+        "AGG-PRE-T011",
+        "AGG-PRE-T012",
+        "AGG-PRE-T013",
+        "AGG-PRE-T014",
+        "AGG-PRE-T015",
+        "AGG-PRE-T016",
+        "AGG-PRE-T017",
+        "AGG-PRE-T018",
+        "AGG-PRE-T019",
+        "AGG-PRE-T020",
+        "AGG-PRE-T021",
+        "AGG-PRE-T022",
+        "AGG-PRE-T023",
+        "AGG-PRE-T024",
+        "AGG-PRE-T025",
+        "AGG-PRE-T026",
+        "AGG-PRE-T027",
+        "AGG-PRE-T028",
+        "AGG-PRE-T029",
+        "AGG-PRE-T030",
+        "AGG-PRE-T031",
+        "AGG-PRE-T032",
+        "AGG-PRE-T033",
+        "AGG-PRE-T034",
+        "AGG-PRE-T035",
+        "AGG-PRE-T036",
+        "AGG-PRE-T037",
+        "AGG-PRE-T038",
+        "AGG-PRE-T039",
+        "AGG-PRE-T040",
+        "AGG-PRE-T041",
+        "AGG-PRE-T042",
+        "AGG-PRE-T043",
+        "AGG-PRE-T044",
+        "AGG-PRE-T045",
+        "AGG-PRE-T046",
+        "AGG-PRE-T047",
+        "AGG-PRE-T048",
+        "AGG-PRE-T049",
+        "AGG-PRE-T050",
+        "AGG-PRE-T051",
+        "AGG-PRE-T052",
+        "AGG-PRE-T053",
+        "AGG-PRE-T054",
+        "AGG-PRE-T055",
+        "AGG-PRE-T056",
+        "AGG-PRE-T057",
+        "AGG-PRE-T058",
+        "AGG-PRE-T059",
+        "AGG-PRE-T060",
+        "AGG-PRE-T061",
+        "AGG-PRE-T062",
+        "AGG-PRE-T063",
+        "AGG-PRE-T064",
+        "AGG-PRE-U0",
+        "AGG-PRE-U1",
+        "AGG-PRE-U2"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+        "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+        "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+        "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+        "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+        "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+        "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+        "列出具体任务、负责人、优先级和截止时间作为关注依据。不把当前状态说成本周新增完成；缺完成时间不能统计本周完成数。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "第1轮：{\"项目任务状态\":{\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":{\"任务数\":63,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1n444a1lh\",\"task_vys1ney0pq2s\",\"task_vys1nhd18vci\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1nxuocabx\",\"task_vys1o2ziaaha\",\"task_vys1odxf7vfu\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1oxelsvow\",\"task_vys1p2i0euf3\",\"task_vys1pclutxql\",\"task_vys1plbvly1j\",\"task_vys1pmhbgfw8\",\"task_vys1pwyi4vwx\",\"task_vys1pyj1ohws\",\"task_vys1q9gfladf\",\"task_vys1qhb3t7nv\",\"task_vys1qm7cc8tw\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1rgdczg7w\",\"task_vys1rop9tqlj\",\"task_vys1rtcddjwq\",\"task_vys1s3eoqmz2\",\"task_vys1sbdsowup\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1syeeuh86\",\"task_vys1t9sbdz1o\",\"task_vys1tfooyn6z\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1tusunimj\",\"task_vys1u0ixtdco\",\"task_vys1uc45xqsv\",\"task_vys1uhskfuza\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1ux3vp6sl\",\"task_vys1v2snp8xu\",\"task_vys1vcvclkxc\",\"task_vys1vk1uqr44\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1vyhsx7zf\",\"task_vys1w93jjok8\",\"task_vys1whiwgku2\",\"task_vys1wl7y9pri\",\"task_vys1wsyxs4dr\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xd8ivmf9\",\"task_vys1xlohwmu2\",\"task_vys1xndsrv1a\",\"task_vys1xvwib6gn\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":21,\"进行中\":22,\"已完成\":20},\"主任务数\":31,\"子孙任务数\":32},\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":{\"任务数\":1,\"任务ID集合\":[\"task_vys1sry4cqk9\"],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":1},\"主任务数\":1,\"子孙任务数\":0}},\"风险任务\":{\"任务数\":26,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1plbvly1j\",\"task_vys1pyj1ohws\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1t9sbdz1o\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vcvclkxc\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":4,\"进行中\":22,\"已完成\":0},\"主任务数\":13,\"子孙任务数\":13}}",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "帮我整理这两个项目的周会进展：完成了多少、还剩多少，哪些具体任务最需要关注？不要只给抽象结论。",
+          "qualitative_requirements": [
+            "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+            "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+            "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+            "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+            "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+            "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+            "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+            "列出具体任务、负责人、优先级和截止时间作为关注依据。不把当前状态说成本周新增完成；缺完成时间不能统计本周完成数。",
+            "本轮示例Gold={\"项目任务状态\":{\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":{\"任务数\":63,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1n444a1lh\",\"task_vys1ney0pq2s\",\"task_vys1nhd18vci\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1nxuocabx\",\"task_vys1o2ziaaha\",\"task_vys1odxf7vfu\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1oxelsvow\",\"task_vys1p2i0euf3\",\"task_vys1pclutxql\",\"task_vys1plbvly1j\",\"task_vys1pmhbgfw8\",\"task_vys1pwyi4vwx\",\"task_vys1pyj1ohws\",\"task_vys1q9gfladf\",\"task_vys1qhb3t7nv\",\"task_vys1qm7cc8tw\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1rgdczg7w\",\"task_vys1rop9tqlj\",\"task_vys1rtcddjwq\",\"task_vys1s3eoqmz2\",\"task_vys1sbdsowup\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1syeeuh86\",\"task_vys1t9sbdz1o\",\"task_vys1tfooyn6z\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1tusunimj\",\"task_vys1u0ixtdco\",\"task_vys1uc45xqsv\",\"task_vys1uhskfuza\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1ux3vp6sl\",\"task_vys1v2snp8xu\",\"task_vys1vcvclkxc\",\"task_vys1vk1uqr44\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1vyhsx7zf\",\"task_vys1w93jjok8\",\"task_vys1whiwgku2\",\"task_vys1wl7y9pri\",\"task_vys1wsyxs4dr\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xd8ivmf9\",\"task_vys1xlohwmu2\",\"task_vys1xndsrv1a\",\"task_vys1xvwib6gn\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":21,\"进行中\":22,\"已完成\":20},\"主任务数\":31,\"子孙任务数\":32},\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":{\"任务数\":1,\"任务ID集合\":[\"task_vys1sry4cqk9\"],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":1},\"主任务数\":1,\"子孙任务数\":0}},\"风险任务\":{\"任务数\":26,\"任务ID集合\":[\"task_vys1mtyiey9h\",\"task_vys1noe6cl7x\",\"task_vys1ns3hn6b6\",\"task_vys1ohjulphr\",\"task_vys1onyxh99o\",\"task_vys1osbymewz\",\"task_vys1plbvly1j\",\"task_vys1pyj1ohws\",\"task_vys1qrzhi9js\",\"task_vys1qybbbtt1\",\"task_vys1r30nlqxx\",\"task_vys1re7yxucc\",\"task_vys1sgjrsuyb\",\"task_vys1smzdnvip\",\"task_vys1t9sbdz1o\",\"task_vys1tkkwc87l\",\"task_vys1tqctqyjj\",\"task_vys1umv40yu9\",\"task_vys1urw9vcut\",\"task_vys1vcvclkxc\",\"task_vys1vofvmb5t\",\"task_vys1vwyeidgz\",\"task_vys1wxc1rssk\",\"task_vys1x3upqxmw\",\"task_vys1xyvta5dc\",\"task_vys1y6o0pish\"],\"按状态\":{\"未开始\":4,\"进行中\":22,\"已完成\":0},\"主任务数\":13,\"子孙任务数\":13}}"
+          ]
+        }
+      ],
+      "numeric_oracle": [
+        {
+          "项目任务状态": {
+            "聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]": {
+              "任务数": 63,
+              "任务ID集合": [
+                "task_vys1mtyiey9h",
+                "task_vys1n444a1lh",
+                "task_vys1ney0pq2s",
+                "task_vys1nhd18vci",
+                "task_vys1noe6cl7x",
+                "task_vys1ns3hn6b6",
+                "task_vys1nxuocabx",
+                "task_vys1o2ziaaha",
+                "task_vys1odxf7vfu",
+                "task_vys1ohjulphr",
+                "task_vys1onyxh99o",
+                "task_vys1osbymewz",
+                "task_vys1oxelsvow",
+                "task_vys1p2i0euf3",
+                "task_vys1pclutxql",
+                "task_vys1plbvly1j",
+                "task_vys1pmhbgfw8",
+                "task_vys1pwyi4vwx",
+                "task_vys1pyj1ohws",
+                "task_vys1q9gfladf",
+                "task_vys1qhb3t7nv",
+                "task_vys1qm7cc8tw",
+                "task_vys1qrzhi9js",
+                "task_vys1qybbbtt1",
+                "task_vys1r30nlqxx",
+                "task_vys1re7yxucc",
+                "task_vys1rgdczg7w",
+                "task_vys1rop9tqlj",
+                "task_vys1rtcddjwq",
+                "task_vys1s3eoqmz2",
+                "task_vys1sbdsowup",
+                "task_vys1sgjrsuyb",
+                "task_vys1smzdnvip",
+                "task_vys1syeeuh86",
+                "task_vys1t9sbdz1o",
+                "task_vys1tfooyn6z",
+                "task_vys1tkkwc87l",
+                "task_vys1tqctqyjj",
+                "task_vys1tusunimj",
+                "task_vys1u0ixtdco",
+                "task_vys1uc45xqsv",
+                "task_vys1uhskfuza",
+                "task_vys1umv40yu9",
+                "task_vys1urw9vcut",
+                "task_vys1ux3vp6sl",
+                "task_vys1v2snp8xu",
+                "task_vys1vcvclkxc",
+                "task_vys1vk1uqr44",
+                "task_vys1vofvmb5t",
+                "task_vys1vwyeidgz",
+                "task_vys1vyhsx7zf",
+                "task_vys1w93jjok8",
+                "task_vys1whiwgku2",
+                "task_vys1wl7y9pri",
+                "task_vys1wsyxs4dr",
+                "task_vys1wxc1rssk",
+                "task_vys1x3upqxmw",
+                "task_vys1xd8ivmf9",
+                "task_vys1xlohwmu2",
+                "task_vys1xndsrv1a",
+                "task_vys1xvwib6gn",
+                "task_vys1xyvta5dc",
+                "task_vys1y6o0pish"
+              ],
+              "按状态": {
+                "未开始": 21,
+                "进行中": 22,
+                "已完成": 20
+              },
+              "主任务数": 31,
+              "子孙任务数": 32
+            },
+            "聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]": {
+              "任务数": 1,
+              "任务ID集合": [
+                "task_vys1sry4cqk9"
+              ],
+              "按状态": {
+                "未开始": 0,
+                "进行中": 0,
+                "已完成": 1
+              },
+              "主任务数": 1,
+              "子孙任务数": 0
+            }
+          },
+          "风险任务": {
+            "任务数": 26,
+            "任务ID集合": [
+              "task_vys1mtyiey9h",
+              "task_vys1noe6cl7x",
+              "task_vys1ns3hn6b6",
+              "task_vys1ohjulphr",
+              "task_vys1onyxh99o",
+              "task_vys1osbymewz",
+              "task_vys1plbvly1j",
+              "task_vys1pyj1ohws",
+              "task_vys1qrzhi9js",
+              "task_vys1qybbbtt1",
+              "task_vys1r30nlqxx",
+              "task_vys1re7yxucc",
+              "task_vys1sgjrsuyb",
+              "task_vys1smzdnvip",
+              "task_vys1t9sbdz1o",
+              "task_vys1tkkwc87l",
+              "task_vys1tqctqyjj",
+              "task_vys1umv40yu9",
+              "task_vys1urw9vcut",
+              "task_vys1vcvclkxc",
+              "task_vys1vofvmb5t",
+              "task_vys1vwyeidgz",
+              "task_vys1wxc1rssk",
+              "task_vys1x3upqxmw",
+              "task_vys1xyvta5dc",
+              "task_vys1y6o0pish"
+            ],
+            "按状态": {
+              "未开始": 4,
+              "进行中": 22,
+              "已完成": 0
+            },
+            "主任务数": 13,
+            "子孙任务数": 13
+          }
+        }
+      ],
+      "oracle_source": "outputs/real_query_cases_20261026/pre.real-query-oracle.json",
+      "snapshot_policy": "源快照2026-10-23，日期计算示例2026-10-26；实跑前必须重新读取源并冻结实际时间，不能把本表作为实时事实。",
+      "scope": "pre/actor_visible/AGG-PRE-SPACE",
+      "evaluation_scope": "all_answer_turns",
+      "reference_time": "2026-10-26T12:00:00+09:00",
+      "source_snapshot_time": "2026-10-23T11:15:36.027065+00:00"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "项目乙统计正确，3项具体关注任务的状态、优先级和截止时间有工具依据，且未将当前已完成数冒充本周新增完成数。但项目甲遗漏32项子孙任务的完成和剩余统计，并仅在一级任务内挑选关注项，未正确完成两个项目整体周会进展汇总。",
+        "evidence_refs": [
+          "trace.runs[0].tools[seq=19]: children=false，covered.total=31，counts.total=63，children_rows=0",
+          "trace.runs[0].tools[seq=29]: 项目甲一级任务已完成10项、剩余21项",
+          "current_independent_readback.complete_recursive_task_tree: 31项根任务、32项子孙任务，含task_vys1y6o0pish三级任务",
+          "turns[step=2].answer: 明确仅统计一级任务，未补充全层级状态汇总"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-REAL-PRE-010",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:24:04+00:00",
+    "output": {
+      "text": "截至 **2026 年 11 月 3 日 17:23（东京时间）**，项目甲的一级任务还剩 **21 项**，其中 **9 项标记为逾期**；项目乙的唯一任务已完成。这里是当前任务状态，不代表这些任务都在本周完成。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|task:task_vys1sry4cqk9:T1120J0W9`\n\n| 项目 | 一级任务 | 已完成 | 剩余 | 逾期标记 |\n|---|---:|---:|---:|---:|\n| 项目甲 | 31 | 10 | 21：进行中 11、待启动 10 | 9 |\n| 项目乙 | 1 | 1 | 0 | 0 |\n\n项目甲另有 **32 项子任务**；上表状态统计仅覆盖 31 项一级任务，不能据此判断子任务完成情况。逾期是独立标记，不是额外的基础状态。`widget:project:pro_993982662:T1120J0W9`\n\n## 周会建议重点询问\n\n从项目甲的 31 项一级任务中，按**高优先级、进行中且已逾期**选出以下 3 项；这不是全部逾期任务。三项均由 anna289 执行，截止时间均为 **2026 年 10 月 20 日 18:00（东京时间）**。任务描述和评论未提供具体进展或阻塞原因，建议周会上逐项确认实际进度、延期原因和新的完成安排：\n\n- **任务028**：进行中、高优先级、已逾期。`widget:task:task_vys1re7yxucc:T1120J0W9`\n- **任务016**：进行中、高优先级、已逾期。`widget:task:task_vys1plbvly1j:T1120J0W9`\n- **任务004**：进行中、高优先级、已逾期。`widget:task:task_vys1noe6cl7x:T1120J0W9`\n\n项目乙的唯一任务已完成且未标记逾期；现有任务材料未提供具体完成进展或评论，不宜据此补写成果。`widget:task:task_vys1sry4cqk9:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "task_ask",
+            "call_id": "call_ab368b0acd6c4de0a93c0c991b83d1bb",
+            "arguments_summary": "queries=2 group_by=project,status,is_overdue format=text detail=true comments=true mode=focus children=false instruction_runes=97",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 23
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 25,
+            "name": "task_ask",
+            "call_id": "call_ab368b0acd6c4de0a93c0c991b83d1bb",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_1679732559-67535707\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"},{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_993982662-2507f43e\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1re7yxucc\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1re7yxucc:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1plbvly1j\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1plbvly1j:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1noe6cl7x\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1noe6cl7x:T1120J0W9`\"}],\"requested\":2,\"ready\":2,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":1,\"comments_pages\":1,\"comments_complete\":true,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"f43aa2ca\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"project\":[{\"key\":\"pro_1679732559\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"count\":1,\"pct\":100}],\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_1679732559-67535707\",\"chunks\":1,\"answer_tokens\":98,\"attempts\":9,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"ready\",\"covered\":{\"total\":31,\"tasks\":31,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":31,\"comments_pages\":31,\"comments_complete\":true,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":31,\"details_truncated\":false,\"fingerprint\":\"7cf291b1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":22,\"pct\":70},\"true\":{\"count\":9,\"pct\":29}},\"priority\":{\"high\":{\"count\":11,\"pct\":35},\"low\":{\"count\":10,\"pct\":32},\"medium\":{\"count\":10,\"pct\":32}},\"project\":[{\"key\":\"pro_993982662\",\"name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"count\":31,\"pct\":100}],\"status\":{\"completed\":{\"count\":10,\"pct\":32},\"in_progress\":{\"count\":11,\"pct\":35},\"pending\":{\"count\":10,\"pct\":32}}}},\"key\":\"answers/task_project_pro_993982662-2507f43e\",\"chunks\":1,\"answer_tokens\":192,\"attempts\":129,\"answer_mode\":\"focus\",\"cited_tasks\":3,\"cache_reuse_allowed\":true}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 29,
+            "name": "scratchpad_read",
+            "call_id": "call_32ec71de72f0435ab453ade27ae70864",
+            "arguments_summary": "path=answers/task_project_pro_993982662-2507f43e offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "scratchpad_read",
+            "call_id": "call_32ec71de72f0435ab453ade27ae70864",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_993982662-2507f43e\",\"revision\":1,\"content\":\"instruction: \\\"分别统计两个项目的任务基础状态及逾期情况，说明已完成、剩余任务口径；依据具体任务状态、逾期、截止时间及描述和评论，挑选最需周会关注的具体任务，说明执行人、截止时间、进展、阻塞及证据，不推断因果。\\\"\\nrange: {\\\"label\\\":\\\"项目甲\\\",\\\"project_id\\\":\\\"pro_993982662\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:7cf291b1\\ncovered: {\\\"total\\\":31,\\\"tasks\\\":31,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":31,\\\"comments_pages\\\":31,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":63,\\\"root_total\\\":31,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":31,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"7cf291b1\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":22,\\\"pct\\\":70},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":29}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"low\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"medium\\\":{\\\"count\\\":10,\\\"pct\\\":32}},\\\"project\\\":[{\\\"key\\\":\\\"pro_993982662\\\",\\\"name\\\":\\\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\\\",\\\"count\\\":31,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":32}}},\\\"pivot\\\":{\\\"project×status\\\":{\\\"pro_993982662\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":32}}}}}\\nchunks: 1\\n\\n候选任务 31 条，本次选择 3 条；\\n{\\n  \\\"项目甲\\\": {\\n    \\\"统计\\\": \\\"宿主统计：共31项，已完成10项（32%），进行中11项（35%），待办10项（32%）；逾期9项（29%），未逾期22项（70%）。基础状态与逾期分别统计，进行中且逾期仍计入进行中。剩余任务按未完成口径为21项（进行中11项+待办10项）。\\\",\\n    \\\"周会关注\\\": [\\n      \\\"候选任务31项，选中3项。任务028：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1re7yxucc:T1120J0W9`\\\",\\n      \\\"任务016：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1plbvly1j:T1120J0W9`\\\",\\n      \\\"任务004：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1noe6cl7x:T1120J0W9`\\\"\\n    ]\\n  },\\n  \\\"项目乙\\\": \\\"材料中没有依据，无法统计任务基础状态、逾期情况或挑选周会关注任务。\\\"\\n}\",\"next_offset\":3007,\"eof\":true,\"byte_size\":3007}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 32
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 34,
+            "name": "scratchpad_read",
+            "call_id": "call_1ad4594e471a4054917ca7bb86626a39",
+            "arguments_summary": "path=answers/task_project_pro_1679732559-67535707 offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 35,
+            "name": "scratchpad_read",
+            "call_id": "call_1ad4594e471a4054917ca7bb86626a39",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_1679732559-67535707\",\"revision\":1,\"content\":\"instruction: \\\"分别统计两个项目的任务基础状态及逾期情况，说明已完成、剩余任务口径；依据具体任务状态、逾期、截止时间及描述和评论，挑选最需周会关注的具体任务，说明执行人、截止时间、进展、阻塞及证据，不推断因果。\\\"\\nrange: {\\\"label\\\":\\\"项目乙\\\",\\\"project_id\\\":\\\"pro_1679732559\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:f43aa2ca\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":1,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":1,\\\"comments_pages\\\":1,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":1,\\\"root_total\\\":1,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":1,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"f43aa2ca\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"priority\\\":{\\\"low\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"project\\\":[{\\\"key\\\":\\\"pro_1679732559\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}},\\\"pivot\\\":{\\\"project×status\\\":{\\\"pro_1679732559\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}}}}\\nchunks: 1\\n\\n候选任务 1 条，本次选择 1 条；\\n{\\n  \\\"项目乙\\\": {\\n    \\\"任务统计\\\": \\\"宿主统计：共1项，已完成1项（100%），未完成/剩余0项；逾期0项（0%）。已完成按基础状态 completed 计，剩余按非 completed 计。`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\",\\n    \\\"周会关注\\\": \\\"候选1项，选中0项。唯一任务已完成、未逾期，截止时间为2026-10-20 18:00（+09:00）；材料未提供完成进展、阻塞或评论信息。执行人记录为 annaA（ID：ouvdieyaga1igt），无法据材料对应其身份。`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\"\\n  },\\n  \\\"另一项目\\\": \\\"材料中没有依据，无法统计其任务基础状态及逾期情况，也无法与项目乙比较。\\\"\\n}\",\"next_offset\":2003,\"eof\":true,\"byte_size\":2003}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 36
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 596
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 598,
+            "input_tokens": 124598,
+            "output_tokens": 1982,
+            "total_tokens": 126580,
+            "estimated_cost_micros": 652720,
+            "cached_input_tokens": 67968,
+            "cache_hit_ratio": 0.5789487133621241,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+            "turn_step": 2,
+            "seq": 602
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+          "message_id": "",
+          "request_id": "0be6024b-315a-4337-a6a4-525b8302fe42",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+          "message_id": "cm_1db696bc-87dc-420e-a5e5-a16cb5c8f082",
+          "request_id": "97119717-d347-4df3-81b1-2edee36f8047",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 50656,
+      "tool_calls": 3,
+      "retries": 0,
+      "input_tokens": 124598,
+      "output_tokens": 1982,
+      "cached_tokens": 67968,
+      "cost_usd": 0.65272,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+          "request_id": "0be6024b-315a-4337-a6a4-525b8302fe42",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83",
+          "message_id": "cm_1db696bc-87dc-420e-a5e5-a16cb5c8f082",
+          "request_id": "97119717-d347-4df3-81b1-2edee36f8047",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 **2026 年 11 月 3 日 17:23（东京时间）**，项目甲的一级任务还剩 **21 项**，其中 **9 项标记为逾期**；项目乙的唯一任务已完成。这里是当前任务状态，不代表这些任务都在本周完成。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|task:task_vys1sry4cqk9:T1120J0W9`\n\n| 项目 | 一级任务 | 已完成 | 剩余 | 逾期标记 |\n|---|---:|---:|---:|---:|\n| 项目甲 | 31 | 10 | 21：进行中 11、待启动 10 | 9 |\n| 项目乙 | 1 | 1 | 0 | 0 |\n\n项目甲另有 **32 项子任务**；上表状态统计仅覆盖 31 项一级任务，不能据此判断子任务完成情况。逾期是独立标记，不是额外的基础状态。`widget:project:pro_993982662:T1120J0W9`\n\n## 周会建议重点询问\n\n从项目甲的 31 项一级任务中，按**高优先级、进行中且已逾期**选出以下 3 项；这不是全部逾期任务。三项均由 anna289 执行，截止时间均为 **2026 年 10 月 20 日 18:00（东京时间）**。任务描述和评论未提供具体进展或阻塞原因，建议周会上逐项确认实际进度、延期原因和新的完成安排：\n\n- **任务028**：进行中、高优先级、已逾期。`widget:task:task_vys1re7yxucc:T1120J0W9`\n- **任务016**：进行中、高优先级、已逾期。`widget:task:task_vys1plbvly1j:T1120J0W9`\n- **任务004**：进行中、高优先级、已逾期。`widget:task:task_vys1noe6cl7x:T1120J0W9`\n\n项目乙的唯一任务已完成且未标记逾期；现有任务材料未提供具体完成进展或评论，不宜据此补写成果。`widget:task:task_vys1sry4cqk9:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+          "message": "帮我整理这两个项目的周会进展：完成了多少、还剩多少，哪些具体任务最需要关注？不要只给抽象结论。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+          "turn_step": 2,
+          "request_id": "97119717-d347-4df3-81b1-2edee36f8047",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "task_ask",
+              "call_id": "call_ab368b0acd6c4de0a93c0c991b83d1bb",
+              "arguments_summary": "queries=2 group_by=project,status,is_overdue format=text detail=true comments=true mode=focus children=false instruction_runes=97",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_1679732559-67535707\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"},{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_993982662-2507f43e\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1re7yxucc\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1re7yxucc:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1plbvly1j\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1plbvly1j:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1noe6cl7x\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1noe6cl7x:T1120J0W9`\"}],\"requested\":2,\"ready\":2,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":1,\"comments_pages\":1,\"comments_complete\":true,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"f43aa2ca\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"project\":[{\"key\":\"pro_1679732559\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"count\":1,\"pct\":100}],\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_1679732559-67535707\",\"chunks\":1,\"answer_tokens\":98,\"attempts\":9,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"ready\",\"covered\":{\"total\":31,\"tasks\":31,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":31,\"comments_pages\":31,\"comments_complete\":true,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":31,\"details_truncated\":false,\"fingerprint\":\"7cf291b1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":22,\"pct\":70},\"true\":{\"count\":9,\"pct\":29}},\"priority\":{\"high\":{\"count\":11,\"pct\":35},\"low\":{\"count\":10,\"pct\":32},\"medium\":{\"count\":10,\"pct\":32}},\"project\":[{\"key\":\"pro_993982662\",\"name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"count\":31,\"pct\":100}],\"status\":{\"completed\":{\"count\":10,\"pct\":32},\"in_progress\":{\"count\":11,\"pct\":35},\"pending\":{\"count\":10,\"pct\":32}}}},\"key\":\"answers/task_project_pro_993982662-2507f43e\",\"chunks\":1,\"answer_tokens\":192,\"attempts\":129,\"answer_mode\":\"focus\",\"cited_tasks\":3,\"cache_reuse_allowed\":true}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+              "turn_step": 2,
+              "seq": 29,
+              "name": "scratchpad_read",
+              "call_id": "call_32ec71de72f0435ab453ade27ae70864",
+              "arguments_summary": "path=answers/task_project_pro_993982662-2507f43e offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_993982662-2507f43e\",\"revision\":1,\"content\":\"instruction: \\\"分别统计两个项目的任务基础状态及逾期情况，说明已完成、剩余任务口径；依据具体任务状态、逾期、截止时间及描述和评论，挑选最需周会关注的具体任务，说明执行人、截止时间、进展、阻塞及证据，不推断因果。\\\"\\nrange: {\\\"label\\\":\\\"项目甲\\\",\\\"project_id\\\":\\\"pro_993982662\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:7cf291b1\\ncovered: {\\\"total\\\":31,\\\"tasks\\\":31,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":31,\\\"comments_pages\\\":31,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":63,\\\"root_total\\\":31,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":31,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"7cf291b1\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":22,\\\"pct\\\":70},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":29}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"low\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"medium\\\":{\\\"count\\\":10,\\\"pct\\\":32}},\\\"project\\\":[{\\\"key\\\":\\\"pro_993982662\\\",\\\"name\\\":\\\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\\\",\\\"count\\\":31,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":32}}},\\\"pivot\\\":{\\\"project×status\\\":{\\\"pro_993982662\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":32},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":35},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":32}}}}}\\nchunks: 1\\n\\n候选任务 31 条，本次选择 3 条；\\n{\\n  \\\"项目甲\\\": {\\n    \\\"统计\\\": \\\"宿主统计：共31项，已完成10项（32%），进行中11项（35%），待办10项（32%）；逾期9项（29%），未逾期22项（70%）。基础状态与逾期分别统计，进行中且逾期仍计入进行中。剩余任务按未完成口径为21项（进行中11项+待办10项）。\\\",\\n    \\\"周会关注\\\": [\\n      \\\"候选任务31项，选中3项。任务028：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1re7yxucc:T1120J0W9`\\\",\\n      \\\"任务016：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1plbvly1j:T1120J0W9`\\\",\\n      \\\"任务004：执行人 anna289（ID：ouvtx9uhuppqs6）；进行中、高优先级、已逾期，截止2026-10-20 18:00（+09:00）。描述仅为“聚合统计测试夹具”，具体进展或阻塞材料中没有依据；未见评论内容，无法据此补充。`widget:task:task_vys1noe6cl7x:T1120J0W9`\\\"\\n    ]\\n  },\\n  \\\"项目乙\\\": \\\"材料中没有依据，无法统计任务基础状态、逾期情况或挑选周会关注任务。\\\"\\n}\",\"next_offset\":3007,\"eof\":true,\"byte_size\":3007}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_0d708d295d514476a1f9d03128df86f5",
+              "turn_step": 2,
+              "seq": 34,
+              "name": "scratchpad_read",
+              "call_id": "call_1ad4594e471a4054917ca7bb86626a39",
+              "arguments_summary": "path=answers/task_project_pro_1679732559-67535707 offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_1679732559-67535707\",\"revision\":1,\"content\":\"instruction: \\\"分别统计两个项目的任务基础状态及逾期情况，说明已完成、剩余任务口径；依据具体任务状态、逾期、截止时间及描述和评论，挑选最需周会关注的具体任务，说明执行人、截止时间、进展、阻塞及证据，不推断因果。\\\"\\nrange: {\\\"label\\\":\\\"项目乙\\\",\\\"project_id\\\":\\\"pro_1679732559\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:f43aa2ca\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":1,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":1,\\\"comments_pages\\\":1,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":1,\\\"root_total\\\":1,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":1,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"f43aa2ca\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"priority\\\":{\\\"low\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"project\\\":[{\\\"key\\\":\\\"pro_1679732559\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}},\\\"pivot\\\":{\\\"project×status\\\":{\\\"pro_1679732559\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}}}}\\nchunks: 1\\n\\n候选任务 1 条，本次选择 1 条；\\n{\\n  \\\"项目乙\\\": {\\n    \\\"任务统计\\\": \\\"宿主统计：共1项，已完成1项（100%），未完成/剩余0项；逾期0项（0%）。已完成按基础状态 completed 计，剩余按非 completed 计。`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\",\\n    \\\"周会关注\\\": \\\"候选1项，选中0项。唯一任务已完成、未逾期，截止时间为2026-10-20 18:00（+09:00）；材料未提供完成进展、阻塞或评论信息。执行人记录为 annaA（ID：ouvdieyaga1igt），无法据材料对应其身份。`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\"\\n  },\\n  \\\"另一项目\\\": \\\"材料中没有依据，无法统计其任务基础状态及逾期情况，也无法与项目乙比较。\\\"\\n}\",\"next_offset\":2003,\"eof\":true,\"byte_size\":2003}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 47,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.task_ask",
+            "chat.tool_result",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 124598,
+            "output_tokens": 1982,
+            "total_tokens": 126580,
+            "estimated_cost_micros": 652720,
+            "cached_input_tokens": 67968,
+            "cache_hit_ratio": 0.5789487133621241,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "97119717-d347-4df3-81b1-2edee36f8047"
+        ],
+        "current_session_ids": [
+          "cs_2d0f1b92-70da-4723-9e54-c4ace259fd83"
+        ],
+        "matched_run_ids": [
+          "bar_0d708d295d514476a1f9d03128df86f5"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

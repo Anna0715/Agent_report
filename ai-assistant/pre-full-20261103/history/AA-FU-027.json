@@ -1,0 +1,455 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-027",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实消息/PIN状态",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第2轮已正式发起问答，但运行以 failed 终态结束，报错 report chat generation failed，且回答为空。用户所问的PIN需求状态、后续验收与上线条件均未得到回答，属于 execution_failure，而非已证实的评论理解错误。",
+    "confidence": "high",
+    "latency_ms": 30639,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "PIN需求对接群里，消息tab下PIN需求当时是什么状态，后续验收与上线条件是什么？",
+    "ability": "区分测试完成、遗留Bug与上线条件",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "PIN需求对接群里，消息tab下PIN需求当时是什么状态，后续验收与上线条件是什么？"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "第2轮已正式发起问答，但运行以 failed 终态结束，报错 report chat generation failed，且回答为空。用户所问的PIN需求状态、后续验收与上线条件均未得到回答，属于 execution_failure，而非已证实的评论理解错误。",
+    "tool_chain_summary": "未取得可观测工具链。",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "安柔",
+        "question": "PIN需求对接群里，消息tab下PIN需求当时是什么状态，后续验收与上线条件是什么？",
+        "answer": "",
+        "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+        "request_id": "ee5f5ffe-4a8c-43bb-b626-0e3851e6daeb",
+        "message_id": "cm_d501e641-45ec-41a1-a5d0-b3a362109c78",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 15,
+        "tool_count": 0,
+        "tokens": null
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'model.response', 'output.completed']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE: ['hive.im.search']"
+      },
+      {
+        "dimension": "tool.forbidden",
+        "status": "skip",
+        "reason": "absence of forbidden tools cannot be verified from Assistant SSE"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "tool call/results unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "skill activation unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-FU-027",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "1244339075",
+        "626a24081308829c0a827f421ec2e025"
+      ],
+      "must_include": [
+        "测试完成",
+        "高优",
+        "验收",
+        "bug"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "不得把“功能测试完成”写成“已上线完成”；保留验收与Bug条件。"
+      ],
+      "fixed_fact_truth": "高耳机说明功能测试完成，但仍有高优待解决Bug和样式UI问题；李辰光、梦成Rhys需提前验收，空间相关由tomo跟进；月底能否上线取决于Bug修复速度和是否新增Bug。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "626a24081308829c0a827f421ec2e025"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "PIN需求对接群里，消息tab下PIN需求当时是什么状态，后续验收与上线条件是什么？",
+          "must_include": [
+            "测试完成",
+            "高优",
+            "验收",
+            "bug"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "运行时生成失败且未输出答案，未完成本轮状态、验收与上线条件的查询回答。",
+        "evidence_refs": [
+          "turns[step=2].terminal_event=failed",
+          "turns[step=2].error=report chat generation failed",
+          "trace.runs[run_id=bar_06a79df4930a4b7c85052939b23d371f].status=failed",
+          "trace.errors[step=2,stage=stream]"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-027",
+    "environment": "pre",
+    "generated_at": "2026-11-03T07:22:35+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+            "turn_step": 2,
+            "seq": 14,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": false,
+        "mcp": false,
+        "memory": true,
+        "model": false,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+          "message_id": "cm_d501e641-45ec-41a1-a5d0-b3a362109c78",
+          "request_id": "ee5f5ffe-4a8c-43bb-b626-0e3851e6daeb",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 30639,
+      "tool_calls": 0,
+      "retries": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cached_tokens": 0,
+      "cost_usd": 0.0,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "session_id": "cs_ec5af045-9e62-4323-86b9-c014cb56df24",
+          "message_id": "cm_d501e641-45ec-41a1-a5d0-b3a362109c78",
+          "request_id": "ee5f5ffe-4a8c-43bb-b626-0e3851e6daeb",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "PIN需求对接群里，消息tab下PIN需求当时是什么状态，后续验收与上线条件是什么？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_06a79df4930a4b7c85052939b23d371f",
+          "turn_step": 2,
+          "request_id": "ee5f5ffe-4a8c-43bb-b626-0e3851e6daeb",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 15,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false
+    }
+  }
+}

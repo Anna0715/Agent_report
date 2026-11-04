@@ -1,0 +1,984 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PRE-MSG-013",
+    "suite": "assistant_agent_followup",
+    "module": "群聊事实",
+    "scenario": "pre真实大群/历史检索",
+    "gate_class": "core",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "回答的发布者、影响时间、直接原因、@对象及消息引用均已由独立原消息回读验证，新增的4.5GB、2GiB和Pulsar重投等细节也有原文依据，不构成编造。但本用例明确要求完成分页或索引检索；认证的完整当前请求Trace显示仅调用一次失败的scratchpad_read，随后使用历史助手回答生成结果，没有完成消息检索。独立回源能验证答案事实，不能替代Agent实际完成检索，因此事实回答正确但明确的流程验收条件未完成。",
+    "confidence": "high",
+    "latency_ms": 8010,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['hive.im.search']",
+    "categories": [
+      "指令未遵循"
+    ],
+    "title": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？",
+    "ability": "大群分页后命中唯一消息",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+    ],
+    "answer": "**陈理仕**在技术中心群发布了这份复盘。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制，触发 OOM。未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "指令未遵循"
+    ],
+    "business_reason": "回答的发布者、影响时间、直接原因、@对象及消息引用均已由独立原消息回读验证，新增的4.5GB、2GiB和Pulsar重投等细节也有原文依据，不构成编造。但本用例明确要求完成分页或索引检索；认证的完整当前请求Trace显示仅调用一次失败的scratchpad_read，随后使用历史助手回答生成结果，没有完成消息检索。独立回源能验证答案事实，不能替代Agent实际完成检索，因此事实回答正确但明确的流程验收条件未完成。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？",
+        "answer": "**陈理仕**在技术中心群发布了这份复盘。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制，触发 OOM。未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。",
+        "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+        "request_id": "9cfd0793-8950-4edf-81af-e7cc69fdfd30",
+        "message_id": "cm_6d0bcf17-6909-414b-949d-902b8e0d969c",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/techcenter_file_service_review.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 28,
+        "tool_count": 1,
+        "tokens": 20882
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['hive.im.search']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "fact",
+      "gold_refs": [
+        "PRE-G-TECH",
+        "PRE-M-FILE-OOM-INCIDENT"
+      ],
+      "must_include": [
+        "陈理仕",
+        "8:00",
+        "10:10",
+        "OOM",
+        "士衡",
+        "进华"
+      ],
+      "must_exclude": [
+        "没有相关消息"
+      ],
+      "qualitative_requirements": [
+        "必须完成分页/索引检索并返回唯一原消息，不因大群截断而漏检。"
+      ],
+      "fixed_fact_truth": "陈理仕在技术中心群发布“早上文件服务崩溃复盘”：影响时间为东京时间 8:00～10:10；直接原因为过期删除聊天文件时并发解码超大图片导致 OOM；并@士衡、进华。groupID=2205919698，clientMsgID=1ae46f7325cd25e877080839e3c23160。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "依据",
+        "有效时态"
+      ],
+      "citation_refs": [
+        "1ae46f7325cd25e877080839e3c23160"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？",
+          "must_include": [
+            "陈理仕",
+            "8:00",
+            "10:10",
+            "OOM",
+            "士衡",
+            "进华"
+          ],
+          "must_exclude": [
+            "没有相关消息"
+          ]
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "完整回答准确覆盖陈理仕、东京时间8:00～10:10、并发解码超大图片导致OOM以及@士衡、进华，引用也对应唯一目标原消息。但唯一工具调用scratchpad_read返回Internal后未恢复检索，不满足明确要求的分页或索引检索条件；不是因工具中途报错本身判失败，而是必要检索最终未完成。",
+        "evidence_refs": [
+          "recovered_business_evidence.runs[0].input_invocations",
+          "recovered_business_evidence.runs[0].context_events: chat.tool_memory_injection",
+          "call_13825d48d125434a8b2c53c8c9b0e665",
+          "independent_evidence_supplement.independent_original_messages[0]",
+          "independent_evidence_supplement.independent_answer_citation_readback.messages[0]",
+          "expected_answer.qualitative_requirements[0]"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "20f3076dd973c171ae679b71eae2615460d667ef04bbeb5f8f37b9c530136a6e",
+      "result": "288d6d3955260f7279a0aa143dbac71562743575cb2fb6210f53474f5c06073a",
+      "requests": [
+        "9cfd0793-8950-4edf-81af-e7cc69fdfd30"
+      ]
+    },
+    "current_batch_scope": "恢复原请求证据并重新评估",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "本轮回答包含发布者陈理仕、东京时间8:00～10:10、并发解码超大图片导致OOM及@士衡、进华，与Gold核心事实一致，并给出了消息引用。但认证Trace仅展示一次失败的scratchpad_read，未提供目标原消息或分页/索引检索结果，无法核验回答新增的图片数量、内存数值、cgroup限制及Pulsar重投等细节，也无法确认唯一原消息检索要求已完成。现有证据不足以判定这些细节为编造，亦不足以完整判定通过。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "本轮回答包含发布者陈理仕、东京时间8:00～10:10、并发解码超大图片导致OOM及@士衡、进华，与Gold核心事实一致，并给出了消息引用。但认证Trace仅展示一次失败的scratchpad_read，未提供目标原消息或分页/索引检索结果，无法核验回答新增的图片数量、内存数值、cgroup限制及Pulsar重投等细节，也无法确认唯一原消息检索要求已完成。现有证据不足以判定这些细节为编造，亦不足以完整判定通过。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-PRE-MSG-013.json",
+        "independent_readback": "sources/AA-PRE-MSG-013.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "指令未遵循"
+      ],
+      "business_reason": "回答的发布者、影响时间、直接原因、@对象及消息引用均已由独立原消息回读验证，新增的4.5GB、2GiB和Pulsar重投等细节也有原文依据，不构成编造。但本用例明确要求完成分页或索引检索；认证的完整当前请求Trace显示仅调用一次失败的scratchpad_read，随后使用历史助手回答生成结果，没有完成消息检索。独立回源能验证答案事实，不能替代Agent实际完成检索，因此事实回答正确但明确的流程验收条件未完成。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "独立原消息及引用回读均定位至技术中心群seq=13371、clientMsgID=1ae46f7325cd25e877080839e3c23160，验证全部回答事实。当前请求认证Trace及两次input_invocations显示输入仅有历史问答和本轮失败的scratchpad_read；tool_memory_injection为空，没有分页或索引检索执行记录。证据已足以区分事实正确与检索流程未完成。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "完整回答准确覆盖陈理仕、东京时间8:00～10:10、并发解码超大图片导致OOM以及@士衡、进华，引用也对应唯一目标原消息。但唯一工具调用scratchpad_read返回Internal后未恢复检索，不满足明确要求的分页或索引检索条件；不是因工具中途报错本身判失败，而是必要检索最终未完成。",
+          "evidence_refs": [
+            "recovered_business_evidence.runs[0].input_invocations",
+            "recovered_business_evidence.runs[0].context_events: chat.tool_memory_injection",
+            "call_13825d48d125434a8b2c53c8c9b0e665",
+            "independent_evidence_supplement.independent_original_messages[0]",
+            "independent_evidence_supplement.independent_answer_citation_readback.messages[0]",
+            "expected_answer.qualitative_requirements[0]"
+          ]
+        }
+      ],
+      "suggestions": [
+        "历史摘要或scratchpad读取失败后，恢复到群历史索引检索或分页查询，定位并读取目标原消息后再作答。",
+        "保留实际检索命中和原消息读取记录，使正确事实与检索流程两项验收条件均可核验。"
+      ],
+      "input_sha256": "b77268499efc18e38ab7d6d9e7b6afcd6ac786a16ba682dcdd25e5d689e36f92",
+      "evidence_sha256": "c0c9096bbc5a37a835eb006b6f205a7b2b1bd188a10435076cf925f0e406b51c",
+      "reviewed_at": "2026-11-03T13:17:09.600968+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed）",
+      "review_observation": {
+        "basis": "20f3076dd973c171ae679b71eae2615460d667ef04bbeb5f8f37b9c530136a6e",
+        "result": "288d6d3955260f7279a0aa143dbac71562743575cb2fb6210f53474f5c06073a",
+        "requests": [
+          "9cfd0793-8950-4edf-81af-e7cc69fdfd30"
+        ]
+      },
+      "evidence_repair": {
+        "previous_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-03T12:37:36.5114+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "original_attempt_preserved": true,
+        "recovered_original_request_trace": true
+      },
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "本轮回答包含发布者陈理仕、东京时间8:00～10:10、并发解码超大图片导致OOM及@士衡、进华，与Gold核心事实一致，并给出了消息引用。但认证Trace仅展示一次失败的scratchpad_read，未提供目标原消息或分页/索引检索结果，无法核验回答新增的图片数量、内存数值、cgroup限制及Pulsar重投等细节，也无法确认唯一原消息检索要求已完成。现有证据不足以判定这些细节为编造，亦不足以完整判定通过。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-PRE-MSG-013"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-PRE-MSG-013",
+    "environment": "pre",
+    "generated_at": "2026-11-03T09:04:34+00:00",
+    "output": {
+      "text": "**陈理仕**在技术中心群发布了这份复盘。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制，触发 OOM。未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "scratchpad_read",
+            "call_id": "call_13825d48d125434a8b2c53c8c9b0e665",
+            "arguments_summary": "path=cases/techcenter_file_service_review.md offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 16,
+            "name": "scratchpad_read",
+            "call_id": "call_13825d48d125434a8b2c53c8c9b0e665",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "scratchpad_read failed (Internal)",
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 151
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 153,
+            "input_tokens": 20679,
+            "output_tokens": 203,
+            "total_tokens": 20882,
+            "estimated_cost_micros": 106440,
+            "cached_input_tokens": 10112,
+            "cache_hit_ratio": 0.4889985008946274,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "turn_step": 2,
+            "seq": 157
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+          "message_id": "cm_6d0bcf17-6909-414b-949d-902b8e0d969c",
+          "request_id": "9cfd0793-8950-4edf-81af-e7cc69fdfd30",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 8010,
+      "tool_calls": 1,
+      "retries": 0,
+      "input_tokens": 20679,
+      "output_tokens": 203,
+      "cached_tokens": 10112,
+      "cost_usd": 0.10644,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "session_id": "cs_24db83a7-f0f1-4084-b62a-a588283a190a",
+          "message_id": "cm_6d0bcf17-6909-414b-949d-902b8e0d969c",
+          "request_id": "9cfd0793-8950-4edf-81af-e7cc69fdfd30",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "**陈理仕**在技术中心群发布了这份复盘。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制，触发 OOM。未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。",
+          "message": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+          "turn_step": 2,
+          "request_id": "9cfd0793-8950-4edf-81af-e7cc69fdfd30",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "scratchpad_read",
+              "call_id": "call_13825d48d125434a8b2c53c8c9b0e665",
+              "arguments_summary": "path=cases/techcenter_file_service_review.md offset=0",
+              "status": "failed",
+              "attempts": 1,
+              "result_preview": "scratchpad_read failed (Internal)",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 28,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.tool_result",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 20679,
+            "output_tokens": 203,
+            "total_tokens": 20882,
+            "estimated_cost_micros": 106440,
+            "cached_input_tokens": 10112,
+            "cache_hit_ratio": 0.4889985008946274,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "9cfd0793-8950-4edf-81af-e7cc69fdfd30"
+        ],
+        "current_session_ids": [
+          "cs_24db83a7-f0f1-4084-b62a-a588283a190a"
+        ],
+        "matched_run_ids": [
+          "bar_bfd5d3ae2f524863a062cde154c6361f"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      },
+      "evidence_recovery": {
+        "collected_at": "2026-11-03T12:42:20.868324+00:00",
+        "read_only": true,
+        "question_resent": false,
+        "same_historical_requests": true,
+        "system_developer_prompts_saved": false,
+        "binary_content_saved": false,
+        "runs": [
+          {
+            "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+            "request_id": "9cfd0793-8950-4edf-81af-e7cc69fdfd30",
+            "turn_step": 2,
+            "server_times": {
+              "created_at_unix": "1793696667",
+              "started_at_unix": "1793696667",
+              "finished_at_unix": "1793696673"
+            },
+            "context_events": [
+              {
+                "event_type": "chat.session_overlay_read",
+                "seq": "2",
+                "at": "1793696667",
+                "payload": {
+                  "duration_ms": 3,
+                  "error_category": "Internal",
+                  "fallback_status": "empty",
+                  "fallback_used": true,
+                  "operation": "get_window",
+                  "recent_turn_limit": 128,
+                  "status": "degraded",
+                  "summary_source": "none",
+                  "tool_detail": "bounded",
+                  "turn_count": 0
+                }
+              },
+              {
+                "event_type": "context.organization",
+                "seq": "4",
+                "at": "1793696667",
+                "payload": {
+                  "status": "loaded"
+                }
+              },
+              {
+                "event_type": "context.current_user",
+                "seq": "5",
+                "at": "1793696667",
+                "payload": {
+                  "name_present": true,
+                  "status": "available"
+                }
+              },
+              {
+                "event_type": "chat.started",
+                "seq": "6",
+                "at": "1793696667",
+                "payload": {
+                  "activation_block_active": true,
+                  "activation_mode": "manifest",
+                  "active_skills": [],
+                  "answer_count": 0,
+                  "assembled_prompt_bytes": 30461,
+                  "carried_skills": [],
+                  "entry": "",
+                  "entry_tool_count": 6,
+                  "historical_active_skills": [],
+                  "page_type": "",
+                  "prior_skills": [],
+                  "profile_context_tokens": 323,
+                  "profile_render_mode": "skills",
+                  "prompt_digest": "sha256:814b9e29002c9a8549cd13ab96f7f4c83ad577e1eb1c5cfa763eb7f43f93dacc",
+                  "prompt_fragments": [
+                    "assistant_core_identity@0.1.3",
+                    "assistant_core_output@0.3.4",
+                    "assistant_core_scope@0.1.2",
+                    "assistant_core_context_entry@0.4.24",
+                    "assistant_core_domain_map@0.6.2",
+                    "assistant_core_widgets@0.1.8",
+                    "assistant_core_scratchpad@0.5.0",
+                    "assistant_core_evidence@0.3.10",
+                    "assistant_core_skills@0.5.3"
+                  ],
+                  "prompt_key": "assistant_chat_agent",
+                  "prompt_source": "embedded",
+                  "prompt_version": "0.22.10",
+                  "request_datetime": "{\"local_datetime\":\"2026-11-03T18:04:27+09:00\",\"timestamp\":1793696667,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                  "run_id": "bar_bfd5d3ae2f524863a062cde154c6361f",
+                  "suggestion_category": ""
+                }
+              },
+              {
+                "event_type": "chat.history_source",
+                "seq": "7",
+                "at": "1793696667",
+                "payload": {
+                  "entity_reference_count": 0,
+                  "message_count": 7,
+                  "overlay_history_disabled": false,
+                  "overlay_turn_count": 0,
+                  "overlay_window_read": false,
+                  "source": "chat_manager_fallback",
+                  "status": "succeeded"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection",
+                "seq": "8",
+                "at": "1793696667",
+                "payload": {
+                  "digest_only_turn_count": 0,
+                  "downgraded_turn_count": 0,
+                  "empty_turn_count": 0,
+                  "full_detail_turn_count": 0,
+                  "injected_bytes": 0,
+                  "injected_turn_count": 0,
+                  "missing_anchor_count": 0,
+                  "missing_anchor_sequences": null,
+                  "overlay_turn_count": 0,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection_detail",
+                "seq": "9",
+                "at": "1793696667",
+                "payload": {
+                  "injections": null,
+                  "missing_anchor_sequences": null,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.session_locator_catalog",
+                "seq": "10",
+                "at": "1793696667",
+                "payload": {
+                  "base_reference_count": 0,
+                  "history_widget_hits": 0,
+                  "merged_reference_count": 0,
+                  "overlay_locator_enabled": true,
+                  "overlay_locator_hits": 0,
+                  "status": "succeeded",
+                  "widget_fallback_available": true
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "155",
+                "at": "1793696673",
+                "payload": {
+                  "anchor_sequence": 7900,
+                  "async": true,
+                  "blocking": false,
+                  "bounded_result_bytes": 0,
+                  "locator_count": 1,
+                  "omitted_tool_activity_count": 0,
+                  "phase": "schedule",
+                  "status": "scheduled",
+                  "timeout_ms": 3000,
+                  "tool_activity_count": 1,
+                  "tool_activity_truncated": false
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "158",
+                "at": "1793696673",
+                "payload": {
+                  "async": true,
+                  "blocking": false,
+                  "duration_ms": 17,
+                  "phase": "result",
+                  "status": "succeeded",
+                  "turn_order": 7900
+                }
+              },
+              {
+                "event_type": "chat.turn_ledger",
+                "seq": "160",
+                "at": "1793696673",
+                "payload": {
+                  "error_category": "Internal",
+                  "evidence": null,
+                  "failed": 0,
+                  "pending": 0,
+                  "persistence": "failed",
+                  "processed": 0,
+                  "total": 0
+                }
+              }
+            ],
+            "business_input": [
+              {
+                "seq": "12",
+                "purpose": null,
+                "invocation_id": "model_1",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "技术中心群中，**陈理仕**发布了《早上文件服务崩溃复盘》。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码导致内存约 **4.5GB**，超过 **2GiB cgroup** 限制，触发 OOM。未确认消息被 Pulsar 重投，使 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "发布者是**陈理仕**。影响时间为**东京时间 8:00～10:10**；直接原因是过期聊天文件删除代码存在 bug，同一用户连续发送 3 张超大 PNG，消费者并发解码导致内存约 4.5GB，超过 2GiB cgroup 限制而触发 OOM，消息重投又造成 Pod 反复 OOMKill；@对象是**士衡、进华**。`widget:msg:sg_2205919698:13371:T112053RE`"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "发布者是**陈理仕**。\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制触发 OOM；未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。`widget:msg:sg_2205919698:13371:T112053RE`"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:04:27+09:00\",\"timestamp\":1793696667,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:04:27+09:00\",\"timestamp\":1793696667,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              },
+              {
+                "seq": "17",
+                "purpose": null,
+                "invocation_id": "model_2",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "技术中心群中，**陈理仕**发布了《早上文件服务崩溃复盘》。`widget:msg:sg_2205919698:13371:T112053RE`\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码导致内存约 **4.5GB**，超过 **2GiB cgroup** 限制，触发 OOM。未确认消息被 Pulsar 重投，使 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "发布者是**陈理仕**。影响时间为**东京时间 8:00～10:10**；直接原因是过期聊天文件删除代码存在 bug，同一用户连续发送 3 张超大 PNG，消费者并发解码导致内存约 4.5GB，超过 2GiB cgroup 限制而触发 OOM，消息重投又造成 Pod 反复 OOMKill；@对象是**士衡、进华**。`widget:msg:sg_2205919698:13371:T112053RE`"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "发布者是**陈理仕**。\n\n- **影响时间**：东京时间 **8:00～10:10**。\n- **直接原因**：过期聊天文件删除代码存在 bug；同一用户连续发送 3 张超大 PNG，消费者并发解码使内存升至约 4.5GB，超过 2GiB cgroup 限制触发 OOM；未确认消息被 Pulsar 重投，导致 Pod 反复 OOMKill。\n- **@对象**：**士衡、进华**。`widget:msg:sg_2205919698:13371:T112053RE`"
+                  },
+                  {
+                    "role": "user",
+                    "content": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:04:27+09:00\",\"timestamp\":1793696667,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "在技术中心群历史消息里，谁发布了“早上文件服务崩溃复盘”？影响时间、直接原因和@对象分别是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T18:04:27+09:00\",\"timestamp\":1793696667,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "role": "assistant",
+                    "tool_calls": [
+                      {
+                        "id": "call_13825d48d125434a8b2c53c8c9b0e665",
+                        "name": "scratchpad_read",
+                        "arguments_json": "{\"path\":\"cases/techcenter_file_service_review.md\"}"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "tool",
+                    "content": "scratchpad_read failed (Internal)",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "scratchpad_read failed (Internal)",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ],
+                    "tool_call_id": "call_13825d48d125434a8b2c53c8c9b0e665"
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              }
+            ]
+          }
+        ]
+      },
+      "tool_preview_policy": {
+        "collector_client_truncation": false,
+        "server_truncation_preserved": true,
+        "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+      }
+    }
+  }
+}

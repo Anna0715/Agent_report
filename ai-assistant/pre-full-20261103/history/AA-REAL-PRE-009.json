@@ -1,0 +1,975 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-REAL-PRE-009",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务真实场景问答",
+    "scenario": "查看同时参与两个项目的人员及待办",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "正式问答已发起，但第2步以 terminal_event=failed 结束，错误为“report chat generation failed”，回答为空。用户要求识别两个项目的共同任务执行人并列出其各项目未完成任务，本次未交付任何结论，属于 execution_failure，而非已证实的角色解析或评论理解错误。",
+    "confidence": "high",
+    "latency_ms": 88094,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "哪些人同时在这两个项目里担任任务执行人？他们在各项目分别还有哪些没完成的任务？",
+    "ability": "真实工作查询",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "哪些人同时在这两个项目里担任任务执行人？他们在各项目分别还有哪些没完成的任务？"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "正式问答已发起，但第2步以 terminal_event=failed 结束，错误为“report chat generation failed”，回答为空。用户要求识别两个项目的共同任务执行人并列出其各项目未完成任务，本次未交付任何结论，属于 execution_failure，而非已证实的角色解析或评论理解错误。",
+    "tool_chain_summary": "工具链：task_ask(completed) → task_query(completed) → task_query(completed) → task_detail(completed) → scratchpad_read(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "智本测试_安柔",
+        "question": "哪些人同时在这两个项目里担任任务执行人？他们在各项目分别还有哪些没完成的任务？",
+        "answer": "",
+        "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+        "request_id": "991d3018-ab48-4c9f-ad03-218e51bfe3fe",
+        "message_id": "cm_f60d6364-47fa-40b5-850b-6a1e395b64cd",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "seq": 19,
+        "name": "task_ask",
+        "arguments_summary": "queries=2 group_by=owner,project format=text detail=false comments=false mode=complete children=false instruction_runes=93",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "seq": 29,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=visible role=all",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "seq": 34,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=visible role=all",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "seq": 39,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vys1n444a1lh",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "seq": 44,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_pro_1679732559-834b6d8f offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_e423169f544f425495d925144dbb3001",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 53,
+        "tool_count": 5,
+        "tokens": 199810
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'output.completed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['task_query(type=project scope=visible role=all)×2']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-REAL-PRE-009",
+    "gold": {
+      "type": "real_workplace_readonly_query",
+      "gold_refs": [
+        "AGG-PRE-SPACE",
+        "AGG-PRE-P-A",
+        "AGG-PRE-P-B",
+        "AGG-PRE-P-Z",
+        "AGG-PRE-T001",
+        "AGG-PRE-T002",
+        "AGG-PRE-T003",
+        "AGG-PRE-T004",
+        "AGG-PRE-T005",
+        "AGG-PRE-T006",
+        "AGG-PRE-T007",
+        "AGG-PRE-T008",
+        "AGG-PRE-T009",
+        "AGG-PRE-T010",
+        "AGG-PRE-T011",
+        "AGG-PRE-T012",
+        "AGG-PRE-T013",
+        "AGG-PRE-T014",
+        "AGG-PRE-T015",
+        "AGG-PRE-T016",
+        "AGG-PRE-T017",
+        "AGG-PRE-T018",
+        "AGG-PRE-T019",
+        "AGG-PRE-T020",
+        "AGG-PRE-T021",
+        "AGG-PRE-T022",
+        "AGG-PRE-T023",
+        "AGG-PRE-T024",
+        "AGG-PRE-T025",
+        "AGG-PRE-T026",
+        "AGG-PRE-T027",
+        "AGG-PRE-T028",
+        "AGG-PRE-T029",
+        "AGG-PRE-T030",
+        "AGG-PRE-T031",
+        "AGG-PRE-T032",
+        "AGG-PRE-T033",
+        "AGG-PRE-T034",
+        "AGG-PRE-T035",
+        "AGG-PRE-T036",
+        "AGG-PRE-T037",
+        "AGG-PRE-T038",
+        "AGG-PRE-T039",
+        "AGG-PRE-T040",
+        "AGG-PRE-T041",
+        "AGG-PRE-T042",
+        "AGG-PRE-T043",
+        "AGG-PRE-T044",
+        "AGG-PRE-T045",
+        "AGG-PRE-T046",
+        "AGG-PRE-T047",
+        "AGG-PRE-T048",
+        "AGG-PRE-T049",
+        "AGG-PRE-T050",
+        "AGG-PRE-T051",
+        "AGG-PRE-T052",
+        "AGG-PRE-T053",
+        "AGG-PRE-T054",
+        "AGG-PRE-T055",
+        "AGG-PRE-T056",
+        "AGG-PRE-T057",
+        "AGG-PRE-T058",
+        "AGG-PRE-T059",
+        "AGG-PRE-T060",
+        "AGG-PRE-T061",
+        "AGG-PRE-T062",
+        "AGG-PRE-T063",
+        "AGG-PRE-T064",
+        "AGG-PRE-U0",
+        "AGG-PRE-U1",
+        "AGG-PRE-U2"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+        "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+        "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+        "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+        "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+        "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+        "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+        "先按执行人关系求两个项目的人员交集，再列交集中各人的未完成任务。不能把创建人或项目成员自动当执行人。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "第1轮：{\"共同执行人\":{\"annaA\":{\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":{\"任务数\":0,\"任务ID集合\":[],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":0},\"主任务数\":0,\"子孙任务数\":0},\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":{\"任务数\":0,\"任务ID集合\":[],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":0},\"主任务数\":0,\"子孙任务数\":0}}}}",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "哪些人同时在这两个项目里担任任务执行人？他们在各项目分别还有哪些没完成的任务？",
+          "qualitative_requirements": [
+            "仅查询所选项目及本轮明确指定的任务。默认含全部子孙层级，按(tenant_id, task_id)去重，不把展示路径父节点当命中。",
+            "先完整分页和递归读源，再筛选、排序和统计。人员角色分别解释，多个执行人关系不等于多条任务。",
+            "未知字段保持未知。没有截止时间不算逾期。任务数量不能直接证明人员超负荷，不推断未提供的工时、依赖或完成原因。",
+            "连续追问保留未被修改的条件，明确替换的条件不与旧条件取交集。每轮的附件集合是权威范围。",
+            "同一邮箱身份跨公司共享空间、项目、任务可见性，不按公司或tenant差异直接判越权；仍核验实际对象ACL。",
+            "只读，不创建提醒、不改任务、不发送消息。需要发送的文案只能草拟。所有事实列出可追溯任务ID或来源。",
+            "时间统一Asia/Tokyo，以本轮实际执行时间冻结；周一为周首。本周/本月用自然周期；未来7天为今天00:00至第8天00:00的左闭右开区间。截止时间晚于当前时刻不算逾期。",
+            "先按执行人关系求两个项目的人员交集，再列交集中各人的未完成任务。不能把创建人或项目成员自动当执行人。",
+            "本轮示例Gold={\"共同执行人\":{\"annaA\":{\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":{\"任务数\":0,\"任务ID集合\":[],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":0},\"主任务数\":0,\"子孙任务数\":0},\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":{\"任务数\":0,\"任务ID集合\":[],\"按状态\":{\"未开始\":0,\"进行中\":0,\"已完成\":0},\"主任务数\":0,\"子孙任务数\":0}}}}"
+          ]
+        }
+      ],
+      "numeric_oracle": [
+        {
+          "共同执行人": {
+            "annaA": {
+              "聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]": {
+                "任务数": 0,
+                "任务ID集合": [],
+                "按状态": {
+                  "未开始": 0,
+                  "进行中": 0,
+                  "已完成": 0
+                },
+                "主任务数": 0,
+                "子孙任务数": 0
+              },
+              "聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]": {
+                "任务数": 0,
+                "任务ID集合": [],
+                "按状态": {
+                  "未开始": 0,
+                  "进行中": 0,
+                  "已完成": 0
+                },
+                "主任务数": 0,
+                "子孙任务数": 0
+              }
+            }
+          }
+        }
+      ],
+      "oracle_source": "outputs/real_query_cases_20261026/pre.real-query-oracle.json",
+      "snapshot_policy": "源快照2026-10-23，日期计算示例2026-10-26；实跑前必须重新读取源并冻结实际时间，不能把本表作为实时事实。",
+      "scope": "pre/actor_visible/AGG-PRE-SPACE",
+      "evaluation_scope": "all_answer_turns",
+      "reference_time": "2026-10-26T12:00:00+09:00",
+      "source_snapshot_time": "2026-10-23T11:15:36.027065+00:00"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "生成流程最终失败且没有回答，未完成共同执行人识别及各项目待办查询结果交付。中途已有部分有效查询不等于最终业务任务完成。",
+        "evidence_refs": [
+          "turns[step=2]: status=error, terminal_event=failed, answer为空",
+          "trace.runs[turn_step=2]: status=failed",
+          "trace.tools[seq=19]: 项目甲子调用报 Concurrency limit exceeded",
+          "trace.errors[step=2]: report chat generation failed"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-REAL-PRE-009",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:24:08+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "task_ask",
+            "call_id": "call_c6d47a18e60044859887f120fdda74a0",
+            "arguments_summary": "queries=2 group_by=owner,project format=text detail=false comments=false mode=complete children=false instruction_runes=93",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 23
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 25,
+            "name": "task_ask",
+            "call_id": "call_c6d47a18e60044859887f120fdda74a0",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_1679732559-834b6d8f\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":1,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"a0436039\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"owner\":[{\"key\":\"ouvdieyaga1igt@T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"count\":1,\"pct\":100}],\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"project\":[{\"key\":\"pro_1679732559\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"count\":1,\"pct\":100}],\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_1679732559-834b6d8f\",\"chunks\":1,\"answer_tokens\":64,\"attempts\":5,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"failed\",\"attempts\":5,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":true,\"error\":\"chunk 1: rpc error: code = Internal desc = ask model invocation failed (Unavailable: sub2api upstream error: Concurrency limit exceeded for user, please retry later)\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 29,
+            "name": "task_query",
+            "call_id": "call_bd95a498f1bf410dab1573e880a8017e",
+            "arguments_summary": "type=project scope=visible role=all",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "task_query",
+            "call_id": "call_bd95a498f1bf410dab1573e880a8017e",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\",\"creator\",\"level\",\"space_id\"],\"page\":1,\"page_size\":30,\"returned\":30,\"tasks\":[{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1sgjrsuyb\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务031 [AEFIX:AGG-PRE-T031:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1s3eoqmz2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务030 [AEFIX:AGG-PRE-T030:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1rop9tqlj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务029 [AEFIX:AGG-PRE-T029:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1re7yxucc\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务028 [AEFIX:AGG-PRE-T028:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1rtcddjwq\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务027 [AEFIX:AGG-PRE-T027:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1rgdczg7w\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务026 [AEFIX:AGG-PRE-T026:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1r30nlqxx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务025 [AEFIX:AGG-PRE-T025:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1qrzhi9js\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务024 [AEFIX:AGG-PRE-T024:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1qybbbtt1\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务022 [AEFIX:AGG-PRE-T022:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1qhb3t7nv\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务023 [AEFIX:AGG-PRE-T023:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1qm7cc8tw\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务021 [AEFIX:AGG-PRE-T021:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1q9gfladf\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务020 [AEFIX:AGG-PRE-T020:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1pyj1ohws\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务019 [AEFIX:AGG-PRE-T019:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1pmhbgfw8\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务018 [AEFIX:AGG-PRE-T018:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1pwyi4vwx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务017 [AEFIX:AGG-PRE-T017:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1plbvly1j\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务016 [AEFIX:AGG-PRE-T016:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1pclutxql\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务015 [AEFIX:AGG-PRE-T015:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1p2i0euf3\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务014 [AEFIX:AGG-PRE-T014:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1osbymewz\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务013 [AEFIX:AGG-PRE-T013:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1ohjulphr\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务012 [AEFIX:AGG-PRE-T012:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1oxelsvow\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务011 [AEFIX:AGG-PRE-T011:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1onyxh99o\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务010 [AEFIX:AGG-PRE-T010:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1odxf7vfu\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务009 [AEFIX:AGG-PRE-T009:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1o2ziaaha\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务008 [AEFIX:AGG-PRE-T008:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1ns3hn6b6\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务007 [AEFIX:AGG-PRE-T007:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1nhd18vci\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务006 [AEFIX:AGG-PRE-T0\n[truncated]",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 32
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 34,
+            "name": "task_query",
+            "call_id": "call_d9fac4f3696d465badd29354b777f5c7",
+            "arguments_summary": "type=project scope=visible role=all",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 35,
+            "name": "task_query",
+            "call_id": "call_d9fac4f3696d465badd29354b777f5c7",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\"],\"page\":1,\"page_size\":30,\"returned\":18,\"tasks\":[{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1xlohwmu2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务062 [AEFIX:AGG-PRE-T062:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1xd8ivmf9\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务059 [AEFIX:AGG-PRE-T059:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1whiwgku2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务056 [AEFIX:AGG-PRE-T056:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1w93jjok8\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务053 [AEFIX:AGG-PRE-T053:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1v2snp8xu\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务047 [AEFIX:AGG-PRE-T047:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1ux3vp6sl\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务044 [AEFIX:AGG-PRE-T044:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1u0ixtdco\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务041 [AEFIX:AGG-PRE-T041:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1tusunimj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务038 [AEFIX:AGG-PRE-T038:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1syeeuh86\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务035 [AEFIX:AGG-PRE-T035:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1rop9tqlj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务029 [AEFIX:AGG-PRE-T029:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1rgdczg7w\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务026 [AEFIX:AGG-PRE-T026:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1qhb3t7nv\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务023 [AEFIX:AGG-PRE-T023:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1pwyi4vwx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务017 [AEFIX:AGG-PRE-T017:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1p2i0euf3\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务014 [AEFIX:AGG-PRE-T014:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1oxelsvow\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务011 [AEFIX:AGG-PRE-T011:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1o2ziaaha\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务008 [AEFIX:AGG-PRE-T008:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1nxuocabx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务005 [AEFIX:AGG-PRE-T005:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1n444a1lh\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务002 [AEFIX:AGG-PRE-T002:v1]\"}],\"total\":18}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 36
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 37
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 39,
+            "name": "task_detail",
+            "call_id": "call_e49fdf06dc2f466b81b7aba56e1366df",
+            "arguments_summary": "task_id=task_vys1n444a1lh",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 40,
+            "name": "task_detail",
+            "call_id": "call_e49fdf06dc2f466b81b7aba56e1366df",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vys1n444a1lh\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务002 [AEFIX:AGG-PRE-T002:v1]\",\"task_type\":\"project\",\"status\":\"completed\",\"priority\":\"low\",\"is_overdue\":false,\"is_followed\":false,\"end_time\":\"2026-10-30T18:00:00+09:00\",\"created_at\":\"2026-10-23T20:14:29+09:00\",\"updated_at\":\"2026-10-23T20:14:29+09:00\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"level\":1,\"owners\":[{\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"聚合统计测试夹具；[AEFIX:AGG-PRE-T002:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 41
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 42
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 44,
+            "name": "scratchpad_read",
+            "call_id": "call_1290b40c34b24e7581182364213424d2",
+            "arguments_summary": "path=answers/task_project_pro_1679732559-834b6d8f offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 45,
+            "name": "scratchpad_read",
+            "call_id": "call_1290b40c34b24e7581182364213424d2",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_1679732559-834b6d8f\",\"revision\":1,\"content\":\"instruction: \\\"找出同时在两个项目中担任过任务执行人的人员（不限定任务状态），并逐人列出其在每个项目中的所有未完成任务（待启动、进行中、暂停），标明状态和逾期标记，逐任务给引用；区分项目，保留人员身份。\\\"\\nrange: {\\\"label\\\":\\\"项目乙\\\",\\\"project_id\\\":\\\"pro_1679732559\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:a0436039\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":1,\\\"answer_mode\\\":\\\"complete\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":1,\\\"root_total\\\":1,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"a0436039\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"owner\\\":[{\\\"key\\\":\\\"ouvdieyaga1igt@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdieyaga1igt\\\",\\\"name\\\":\\\"annaA\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"priority\\\":{\\\"low\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"project\\\":[{\\\"key\\\":\\\"pro_1679732559\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}},\\\"pivot\\\":{\\\"owner×project\\\":{\\\"ouvdieyaga1igt@T1120J0W9\\\":{\\\"pro_1679732559\\\":{\\\"count\\\":1,\\\"pct\\\":100}}}}}\\nchunks: 1\\n\\n{\\\"结果\\\":\\\"本段材料仅涉及项目乙，无法判断是否有人曾在两个项目中担任任务执行人。\\\",\\\"材料内相关记录\\\":[{\\\"人员\\\":\\\"annaA（ouvdieyaga1igt）\\\",\\\"项目\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"任务\\\":\\\"聚合验收任务032 [AEFIX:AGG-PRE-T032:v1]\\\",\\\"状态\\\":\\\"已完成\\\",\\\"逾期\\\":false,\\\"说明\\\":\\\"该任务不属于未完成任务。\\\",\\\"引用\\\":\\\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\"}]}\",\"next_offset\":1745,\"eof\":true,\"byte_size\":1745}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 46
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 47
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 50
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_e423169f544f425495d925144dbb3001",
+            "turn_step": 2,
+            "seq": 52,
+            "input_tokens": 198809,
+            "output_tokens": 1001,
+            "total_tokens": 199810,
+            "estimated_cost_micros": 1009060,
+            "cached_input_tokens": 59136,
+            "cache_hit_ratio": 0.29976124941072707,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+          "message_id": "",
+          "request_id": "277efe03-bb08-4567-80d1-7470424bd4e9",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+          "message_id": "cm_f60d6364-47fa-40b5-850b-6a1e395b64cd",
+          "request_id": "991d3018-ab48-4c9f-ad03-218e51bfe3fe",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 88094,
+      "tool_calls": 5,
+      "retries": 0,
+      "input_tokens": 198809,
+      "output_tokens": 1001,
+      "cached_tokens": 59136,
+      "cost_usd": 1.00906,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+          "request_id": "277efe03-bb08-4567-80d1-7470424bd4e9",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09",
+          "message_id": "cm_f60d6364-47fa-40b5-850b-6a1e395b64cd",
+          "request_id": "991d3018-ab48-4c9f-ad03-218e51bfe3fe",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "哪些人同时在这两个项目里担任任务执行人？他们在各项目分别还有哪些没完成的任务？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_e423169f544f425495d925144dbb3001",
+          "turn_step": 2,
+          "request_id": "991d3018-ab48-4c9f-ad03-218e51bfe3fe",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_e423169f544f425495d925144dbb3001",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "task_ask",
+              "call_id": "call_c6d47a18e60044859887f120fdda74a0",
+              "arguments_summary": "queries=2 group_by=owner,project format=text detail=false comments=false mode=complete children=false instruction_runes=93",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_1679732559-834b6d8f\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1sry4cqk9\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":1,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"a0436039\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"owner\":[{\"key\":\"ouvdieyaga1igt@T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"count\":1,\"pct\":100}],\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"project\":[{\"key\":\"pro_1679732559\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"count\":1,\"pct\":100}],\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_1679732559-834b6d8f\",\"chunks\":1,\"answer_tokens\":64,\"attempts\":5,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"failed\",\"attempts\":5,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":true,\"error\":\"chunk 1: rpc error: code = Internal desc = ask model invocation failed (Unavailable: sub2api upstream error: Concurrency limit exceeded for user, please retry later)\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_e423169f544f425495d925144dbb3001",
+              "turn_step": 2,
+              "seq": 29,
+              "name": "task_query",
+              "call_id": "call_bd95a498f1bf410dab1573e880a8017e",
+              "arguments_summary": "type=project scope=visible role=all",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\",\"creator\",\"level\",\"space_id\"],\"page\":1,\"page_size\":30,\"returned\":30,\"tasks\":[{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1sgjrsuyb\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务031 [AEFIX:AGG-PRE-T031:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1s3eoqmz2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务030 [AEFIX:AGG-PRE-T030:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1rop9tqlj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务029 [AEFIX:AGG-PRE-T029:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1re7yxucc\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务028 [AEFIX:AGG-PRE-T028:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1rtcddjwq\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务027 [AEFIX:AGG-PRE-T027:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1rgdczg7w\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务026 [AEFIX:AGG-PRE-T026:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1r30nlqxx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务025 [AEFIX:AGG-PRE-T025:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1qrzhi9js\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务024 [AEFIX:AGG-PRE-T024:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1qybbbtt1\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务022 [AEFIX:AGG-PRE-T022:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1qhb3t7nv\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务023 [AEFIX:AGG-PRE-T023:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1qm7cc8tw\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务021 [AEFIX:AGG-PRE-T021:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1q9gfladf\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务020 [AEFIX:AGG-PRE-T020:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1pyj1ohws\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务019 [AEFIX:AGG-PRE-T019:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1pmhbgfw8\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务018 [AEFIX:AGG-PRE-T018:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1pwyi4vwx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务017 [AEFIX:AGG-PRE-T017:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1plbvly1j\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务016 [AEFIX:AGG-PRE-T016:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1pclutxql\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务015 [AEFIX:AGG-PRE-T015:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1p2i0euf3\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务014 [AEFIX:AGG-PRE-T014:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1osbymewz\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务013 [AEFIX:AGG-PRE-T013:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1ohjulphr\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务012 [AEFIX:AGG-PRE-T012:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1oxelsvow\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务011 [AEFIX:AGG-PRE-T011:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1onyxh99o\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务010 [AEFIX:AGG-PRE-T010:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1odxf7vfu\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务009 [AEFIX:AGG-PRE-T009:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys1o2ziaaha\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务008 [AEFIX:AGG-PRE-T008:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"high\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys1ns3hn6b6\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务007 [AEFIX:AGG-PRE-T007:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"medium\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys1nhd18vci\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务006 [AEFIX:AGG-PRE-T0\n[truncated]",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_e423169f544f425495d925144dbb3001",
+              "turn_step": 2,
+              "seq": 34,
+              "name": "task_query",
+              "call_id": "call_d9fac4f3696d465badd29354b777f5c7",
+              "arguments_summary": "type=project scope=visible role=all",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\"],\"page\":1,\"page_size\":30,\"returned\":18,\"tasks\":[{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1xlohwmu2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务062 [AEFIX:AGG-PRE-T062:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1xd8ivmf9\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务059 [AEFIX:AGG-PRE-T059:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1whiwgku2\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务056 [AEFIX:AGG-PRE-T056:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1w93jjok8\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务053 [AEFIX:AGG-PRE-T053:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1v2snp8xu\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务047 [AEFIX:AGG-PRE-T047:v1]\"},{\"creator\":{\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1ux3vp6sl\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务044 [AEFIX:AGG-PRE-T044:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1u0ixtdco\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务041 [AEFIX:AGG-PRE-T041:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1tusunimj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务038 [AEFIX:AGG-PRE-T038:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"is_followed\":false,\"is_overdue\":false,\"level\":2,\"parent_task_id\":\"task_vys1mtyiey9h\",\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1syeeuh86\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务035 [AEFIX:AGG-PRE-T035:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1rop9tqlj\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务029 [AEFIX:AGG-PRE-T029:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1rgdczg7w\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务026 [AEFIX:AGG-PRE-T026:v1]\"},{\"creator\":{\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1qhb3t7nv\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务023 [AEFIX:AGG-PRE-T023:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1pwyi4vwx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务017 [AEFIX:AGG-PRE-T017:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1p2i0euf3\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务014 [AEFIX:AGG-PRE-T014:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1oxelsvow\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务011 [AEFIX:AGG-PRE-T011:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1o2ziaaha\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务008 [AEFIX:AGG-PRE-T008:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1nxuocabx\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务005 [AEFIX:AGG-PRE-T005:v1]\"},{\"creator\":{\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\"},\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"level\":1,\"priority\":\"low\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"status\":\"completed\",\"task_id\":\"task_vys1n444a1lh\",\"task_type\":\"project\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务002 [AEFIX:AGG-PRE-T002:v1]\"}],\"total\":18}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_e423169f544f425495d925144dbb3001",
+              "turn_step": 2,
+              "seq": 39,
+              "name": "task_detail",
+              "call_id": "call_e49fdf06dc2f466b81b7aba56e1366df",
+              "arguments_summary": "task_id=task_vys1n444a1lh",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vys1n444a1lh\",\"tenant_id\":\"T1120J0W9\",\"title\":\"聚合验收任务002 [AEFIX:AGG-PRE-T002:v1]\",\"task_type\":\"project\",\"status\":\"completed\",\"priority\":\"low\",\"is_overdue\":false,\"is_followed\":false,\"end_time\":\"2026-10-30T18:00:00+09:00\",\"created_at\":\"2026-10-23T20:14:29+09:00\",\"updated_at\":\"2026-10-23T20:14:29+09:00\",\"project_id\":\"pro_993982662\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"space_id\":\"4012016751\",\"level\":1,\"owners\":[{\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"聚合统计测试夹具；[AEFIX:AGG-PRE-T002:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_e423169f544f425495d925144dbb3001",
+              "turn_step": 2,
+              "seq": 44,
+              "name": "scratchpad_read",
+              "call_id": "call_1290b40c34b24e7581182364213424d2",
+              "arguments_summary": "path=answers/task_project_pro_1679732559-834b6d8f offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_1679732559-834b6d8f\",\"revision\":1,\"content\":\"instruction: \\\"找出同时在两个项目中担任过任务执行人的人员（不限定任务状态），并逐人列出其在每个项目中的所有未完成任务（待启动、进行中、暂停），标明状态和逾期标记，逐任务给引用；区分项目，保留人员身份。\\\"\\nrange: {\\\"label\\\":\\\"项目乙\\\",\\\"project_id\\\":\\\"pro_1679732559\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:a0436039\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":1,\\\"answer_mode\\\":\\\"complete\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":1,\\\"root_total\\\":1,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"a0436039\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"owner\\\":[{\\\"key\\\":\\\"ouvdieyaga1igt@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdieyaga1igt\\\",\\\"name\\\":\\\"annaA\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"priority\\\":{\\\"low\\\":{\\\"count\\\":1,\\\"pct\\\":100}},\\\"project\\\":[{\\\"key\\\":\\\"pro_1679732559\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":100}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":1,\\\"pct\\\":100}}},\\\"pivot\\\":{\\\"owner×project\\\":{\\\"ouvdieyaga1igt@T1120J0W9\\\":{\\\"pro_1679732559\\\":{\\\"count\\\":1,\\\"pct\\\":100}}}}}\\nchunks: 1\\n\\n{\\\"结果\\\":\\\"本段材料仅涉及项目乙，无法判断是否有人曾在两个项目中担任任务执行人。\\\",\\\"材料内相关记录\\\":[{\\\"人员\\\":\\\"annaA（ouvdieyaga1igt）\\\",\\\"项目\\\":\\\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\\\",\\\"任务\\\":\\\"聚合验收任务032 [AEFIX:AGG-PRE-T032:v1]\\\",\\\"状态\\\":\\\"已完成\\\",\\\"逾期\\\":false,\\\"说明\\\":\\\"该任务不属于未完成任务。\\\",\\\"引用\\\":\\\"`widget:task:task_vys1sry4cqk9:T1120J0W9`\\\"}]}\",\"next_offset\":1745,\"eof\":true,\"byte_size\":1745}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 53,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.task_ask",
+            "chat.tool_result",
+            "chat.completion_review",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "input_tokens": 198809,
+            "output_tokens": 1001,
+            "total_tokens": 199810,
+            "estimated_cost_micros": 1009060,
+            "cached_input_tokens": 59136,
+            "cache_hit_ratio": 0.29976124941072707,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "991d3018-ab48-4c9f-ad03-218e51bfe3fe"
+        ],
+        "current_session_ids": [
+          "cs_73702b3a-61f4-4204-8ccc-7ceb93cbba09"
+        ],
+        "matched_run_ids": [
+          "bar_e423169f544f425495d925144dbb3001"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

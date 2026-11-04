@@ -1,0 +1,817 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PRE-REAL-012",
+    "suite": "assistant_agent_followup",
+    "module": "空间项目任务追问",
+    "scenario": "六轮持续追问：筛选、插入话题、回到原范围",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第2步已正式发起问答，但运行以 failed 终止，明确报错“report chat generation failed”，未生成任何回答，首轮任务未完成，属于 execution_failure，而非已证实的评论理解错误。第3至7步未执行，无法评价其业务正确性；首轮确定失败使整例判为 fail。",
+    "confidence": "high",
+    "latency_ms": 60341,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "tool ordering anomalies: ['bar_bb09f346c30e40579b53587fe127858a: query before/without structured_schema']",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "先看“PRE项目创建人专项”和“PRE项目管理员专项”，分别列出任务、创建人和执行人，后面我会接着问。",
+    "ability": "多轮业务连续追问",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "先看“PRE项目创建人专项”和“PRE项目管理员专项”，分别列出任务、创建人和执行人，后面我会接着问。",
+      "这两个里面，哪个项目是anna856创建的？",
+      "这个项目里的任务也都是她执行的吗？",
+      "插一个问题：“PRE项目执行人专项”里的任务又是谁在执行？",
+      "好，回到一开始那两个项目，我创建或执行的任务一共几条？按任务去重。",
+      "把这两条压缩成我的跟进清单，带上项目和截止时间；没有依据的别补。"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "第2步已正式发起问答，但运行以 failed 终止，明确报错“report chat generation failed”，未生成任何回答，首轮任务未完成，属于 execution_failure，而非已证实的评论理解错误。第3至7步未执行，无法评价其业务正确性；首轮确定失败使整例判为 fail。",
+    "tool_chain_summary": "Skill：output_presentation、structured_query、task_space；工具链：activate_skills(completed) → entity_resolve(completed)；自动断言：tool ordering anomalies: ['bar_bb09f346c30e40579b53587fe127858a: query before/without structured_schema']",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "智本测试_安柔",
+        "question": "先看“PRE项目创建人专项”和“PRE项目管理员专项”，分别列出任务、创建人和执行人，后面我会接着问。",
+        "answer": "",
+        "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+        "request_id": "db2ed9a1-fc73-42d9-8d59-0a1c7a23dbe1",
+        "message_id": "cm_264349e7-bc24-448a-8d04-232eddc4025a",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+        "step": 2,
+        "seq": 27,
+        "name": "entity_resolve",
+        "arguments_summary": "requests=2",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "structured_query、task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 32,
+        "tool_count": 2,
+        "tokens": 34702
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'output.completed']"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "fail",
+        "reason": "tool ordering anomalies: ['bar_bb09f346c30e40579b53587fe127858a: query before/without structured_schema']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-PRE-REAL-012",
+    "gold": {
+      "type": "multi_turn_business_followup",
+      "gold_refs": [
+        "P-PRE-CREATED",
+        "P-PRE-ADMIN",
+        "P-PRE-EXECUTED",
+        "T-PRE-CREATED-OTHER",
+        "T-PRE-ADMIN-OTHER",
+        "T-PRE-EXECUTED-OTHER"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "按业务含义逐轮评判，不要求逐字匹配；只要求本轮明确提问的字段，不要求每次追问重述所有历史答案。",
+        "消息发送时间、正文中的计划日期、记录导出时间分别处理；计划、完成、推断和建议分别表述。",
+        "可点击来源与内部对象ID共同核验事实；用户未要求时不强制回答裸ID。不存在或未返回的字段要明确为未知，不补造。",
+        "空间、项目和任务按同一邮箱真实身份与实际ACL判断可见性，不因创建公司不同而直接拒绝；用户限定的业务查询范围仍须遵守。",
+        "本例只读。缺少独立数据前置条件时待复测；环境已建立而Agent漏查、答错按正常失败处理。"
+      ],
+      "fixed_fact_truth": "第1轮：建立两个项目范围，各一条已知任务，两条任务均由智本测试_安柔创建并执行，项目创建人分别anna856和智本测试_安柔。\n第2轮：只选PRE项目创建人专项；不把任务创建人替换为anna856。\n第3轮：指代仍是创建人专项；已知任务执行人为智本测试_安柔，不是anna856。\n第4轮：临时切换到执行人专项，其已知任务执行人为智本测试_安柔；不能凭项目成员/管理员anna289推断任务执行人。\n第5轮：恢复最初创建人专项和管理员专项的范围，排除插入话题的执行人专项；按OR及task_id去重，冻结快照共2条。\n第6轮：最终清单仅两条任务及正确父项目，截止时间均未设置；不把中途执行人专项的第三条带回，不编造期限。；本轮仅要求精简跟进清单，无需重复首轮所有角色与中间讨论。",
+      "required_fields": [
+        "本轮问题所需的业务结论",
+        "可追溯证据"
+      ],
+      "citation_refs": [
+        "pro_3326954689",
+        "556092402",
+        "pro_3254735137",
+        "pro_3914224247",
+        "task_vx8zsmbk3266",
+        "task_vx8zsbppjai4",
+        "task_vx8zsp7muoyn"
+      ],
+      "scope": "pre/actor_visible/ACC-PRE-LMEM-01",
+      "match_policy": "semantic_per_turn",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "先看“PRE项目创建人专项”和“PRE项目管理员专项”，分别列出任务、创建人和执行人，后面我会接着问。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "建立两个项目范围，各一条已知任务，两条任务均由智本测试_安柔创建并执行，项目创建人分别anna856和智本测试_安柔。"
+          ]
+        },
+        {
+          "step": 3,
+          "message": "这两个里面，哪个项目是anna856创建的？",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "只选PRE项目创建人专项；不把任务创建人替换为anna856。"
+          ]
+        },
+        {
+          "step": 4,
+          "message": "这个项目里的任务也都是她执行的吗？",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "指代仍是创建人专项；已知任务执行人为智本测试_安柔，不是anna856。"
+          ]
+        },
+        {
+          "step": 5,
+          "message": "插一个问题：“PRE项目执行人专项”里的任务又是谁在执行？",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "临时切换到执行人专项，其已知任务执行人为智本测试_安柔；不能凭项目成员/管理员anna289推断任务执行人。"
+          ]
+        },
+        {
+          "step": 6,
+          "message": "好，回到一开始那两个项目，我创建或执行的任务一共几条？按任务去重。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "恢复最初创建人专项和管理员专项的范围，排除插入话题的执行人专项；按OR及task_id去重，冻结快照共2条。"
+          ]
+        },
+        {
+          "step": 7,
+          "message": "把这两条压缩成我的跟进清单，带上项目和截止时间；没有依据的别补。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "最终清单仅两条任务及正确父项目，截止时间均未设置；不把中途执行人专项的第三条带回，不编造期限。",
+            "本轮仅要求精简跟进清单，无需重复首轮所有角色与中间讨论。"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        {
+          "fixture_id": "P-PRE-CREATED",
+          "source_sheet": "项目",
+          "project_id": "pro_3326954689",
+          "space_id": "556092402",
+          "name": "PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]",
+          "creator": "anna856",
+          "recorded_admin": null,
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "P-PRE-ADMIN",
+          "source_sheet": "项目",
+          "project_id": "pro_3254735137",
+          "space_id": "556092402",
+          "name": "PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]",
+          "creator": "智本测试_安柔",
+          "recorded_admin": "anna636",
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "P-PRE-EXECUTED",
+          "source_sheet": "项目",
+          "project_id": "pro_3914224247",
+          "space_id": "556092402",
+          "name": "PRE项目执行人专项 [AEFIX:P-PRE-EXECUTED:v1]",
+          "creator": "智本测试_安柔",
+          "recorded_admin": null,
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "T-PRE-CREATED-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsmbk3266",
+          "project_id": "pro_3326954689",
+          "space_id": "556092402",
+          "name": "PRE创建项目内其他任务 [AEFIX:T-PRE-CREATED-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        },
+        {
+          "fixture_id": "T-PRE-ADMIN-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsbppjai4",
+          "project_id": "pro_3254735137",
+          "space_id": "556092402",
+          "name": "PRE管理项目内其他任务 [AEFIX:T-PRE-ADMIN-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        },
+        {
+          "fixture_id": "T-PRE-EXECUTED-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsp7muoyn",
+          "project_id": "pro_3914224247",
+          "space_id": "556092402",
+          "name": "PRE执行项目内其他任务 [AEFIX:T-PRE-EXECUTED-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        }
+      ],
+      "source_type": "existing_pre_export_and_fixture_readback",
+      "snapshot_policy": "独立预检后冻结；可变字段或全集有漂移时刷新Gold，不能据旧快照误判",
+      "evaluation_scope": "all_answer_turns",
+      "turn_aggregation": "每轮达标才通过；任一确认的关键失败则整例失败；缺轮次/证据则待复核或待复测，不能仅凭最后一轮通过"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "已正式提交问题且收到明确生成失败终态，没有输出两个项目的任务、创建人和执行人，任务未完成；不据此推断角色理解错误。",
+        "evidence_refs": [
+          "turns[step=2]",
+          "trace.runs[turn_step=2]",
+          "trace.errors[step=2]",
+          "trace.tools[seq=27]"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "skip",
+        "reason": "未执行该轮，没有可评价的回答或运行终态。",
+        "evidence_refs": [
+          "turns：仅记录第2步 ask"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "skip",
+        "reason": "未执行该轮，无法核验项目指代和任务执行人判断。",
+        "evidence_refs": [
+          "turns：仅记录第2步 ask"
+        ]
+      },
+      {
+        "step": 5,
+        "status": "skip",
+        "reason": "未执行该轮，无法评价临时切换到执行人专项后的回答。",
+        "evidence_refs": [
+          "turns：仅记录第2步 ask"
+        ]
+      },
+      {
+        "step": 6,
+        "status": "skip",
+        "reason": "未执行该轮，无法评价恢复原范围及按任务去重计数。",
+        "evidence_refs": [
+          "turns：仅记录第2步 ask"
+        ]
+      },
+      {
+        "step": 7,
+        "status": "skip",
+        "reason": "未执行该轮，没有最终跟进清单可供核验。",
+        "evidence_refs": [
+          "turns：仅记录第2步 ask"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-PRE-REAL-012",
+    "environment": "pre",
+    "generated_at": "2026-11-03T07:21:46+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_4615ac118626421e99b9d92033d93805",
+            "arguments_summary": "skills=structured_query,task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "structured_query",
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "structured_query",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_4615ac118626421e99b9d92033d93805",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "entity_resolve",
+            "call_id": "call_659e0608519e4daea64f37c97bb4b15a",
+            "arguments_summary": "requests=2",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "entity_resolve",
+            "call_id": "call_659e0608519e4daea64f37c97bb4b15a",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"project\",\"id\":\"pro_3326954689\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_3326954689:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_3254735137\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_3254735137:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_3326954689\",\"project.name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\"},\"id\":\"pro_3326954689\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"p1\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_3254735137\",\"project.name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\"},\"id\":\"pro_3254735137\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"p2\",\"status\":\"resolved\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+            "turn_step": 2,
+            "seq": 31,
+            "input_tokens": 34588,
+            "output_tokens": 114,
+            "total_tokens": 34702,
+            "estimated_cost_micros": 174650,
+            "cache_hit_ratio": 0,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+          "message_id": "",
+          "request_id": "41d017b1-3cdd-4e46-80aa-909975e36ace",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+          "message_id": "cm_264349e7-bc24-448a-8d04-232eddc4025a",
+          "request_id": "db2ed9a1-fc73-42d9-8d59-0a1c7a23dbe1",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "structured_query,task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 60341,
+      "tool_calls": 2,
+      "retries": 0,
+      "input_tokens": 34588,
+      "output_tokens": 114,
+      "cached_tokens": 0,
+      "cost_usd": 0.17465,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+          "request_id": "41d017b1-3cdd-4e46-80aa-909975e36ace",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_66056934-4967-4676-acaf-d5de96afbf93",
+          "message_id": "cm_264349e7-bc24-448a-8d04-232eddc4025a",
+          "request_id": "db2ed9a1-fc73-42d9-8d59-0a1c7a23dbe1",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "先看“PRE项目创建人专项”和“PRE项目管理员专项”，分别列出任务、创建人和执行人，后面我会接着问。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+          "turn_step": 2,
+          "request_id": "db2ed9a1-fc73-42d9-8d59-0a1c7a23dbe1",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [
+            "structured_query",
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_4615ac118626421e99b9d92033d93805",
+              "arguments_summary": "skills=structured_query,task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_bb09f346c30e40579b53587fe127858a",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "entity_resolve",
+              "call_id": "call_659e0608519e4daea64f37c97bb4b15a",
+              "arguments_summary": "requests=2",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"project\",\"id\":\"pro_3326954689\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_3326954689:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_3254735137\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_3254735137:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_3326954689\",\"project.name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\"},\"id\":\"pro_3326954689\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"p1\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_3254735137\",\"project.name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\"},\"id\":\"pro_3254735137\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"p2\",\"status\":\"resolved\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 32,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "input_tokens": 34588,
+            "output_tokens": 114,
+            "total_tokens": 34702,
+            "estimated_cost_micros": 174650,
+            "cache_hit_ratio": 0,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "db2ed9a1-fc73-42d9-8d59-0a1c7a23dbe1"
+        ],
+        "current_session_ids": [
+          "cs_66056934-4967-4676-acaf-d5de96afbf93"
+        ],
+        "matched_run_ids": [
+          "bar_bb09f346c30e40579b53587fe127858a"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

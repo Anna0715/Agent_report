@@ -1,0 +1,1259 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 4,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-SMEM-PRE-009",
+    "suite": "assistant_agent_followup",
+    "module": "短期记忆与多轮",
+    "scenario": "本周延期项目有哪些？ → 只看高优先级。 → 其中谁负责推进？",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "独立源回读确认当前账号可见本例两个逾期项目，其中“PRE补全·客户安全上线”为高优先级。首轮仅列出另一个项目并断言共1个，第二轮断言没有高优先级项目，第三轮沿用错误空集合而未回答实际高优先级项目的推进负责人。多轮虽保持了自身上下文，但未保持正确的业务对象集合。",
+    "confidence": "high",
+    "latency_ms": 24061,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "title": "本周延期项目有哪些？",
+    "ability": "会话继承/指代/隔离",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 3,
+    "questions": [
+      "本周延期项目有哪些？",
+      "只看高优先级。",
+      "其中谁负责推进？"
+    ],
+    "answer": "按刚才的筛选条件，本周到期且已逾期的**高优先级项目为 0 个**，因此没有对应的项目负责人可列出。\n\n如果你想问的是上一轮提到的“自定义字段项目”，可以再确认一下。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "独立源回读确认当前账号可见本例两个逾期项目，其中“PRE补全·客户安全上线”为高优先级。首轮仅列出另一个项目并断言共1个，第二轮断言没有高优先级项目，第三轮沿用错误空集合而未回答实际高优先级项目的推进负责人。多轮虽保持了自身上下文，但未保持正确的业务对象集合。",
+    "tool_chain_summary": "Skill：output_presentation、task_space；工具链：activate_skills(completed) → project_query(completed) → activate_skills(completed) → project_query(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "本周延期项目有哪些？",
+        "answer": "截至 **11 月 3 日 17:36（东京时间）**，本周到期且已逾期的项目有 **1 个**：\n\n- **自定义字段项目**：状态为进行中，截止时间为 11 月 2 日 00:59。`widget:project:pro_210961939:T1120XCTS`\n\n本周按 11 月 2 日至 11 月 8 日计算；以上按项目当前截止时间和逾期标记统计，不代表本周内发生过延期变更的全部项目。",
+        "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+        "request_id": "b368093a-00d1-496d-ab14-abbecb67256c",
+        "message_id": "cm_2a2f9517-df9c-4a30-9cb8-7333296e6b10",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "只看高优先级。",
+        "answer": "截至 **11 月 3 日 17:36（东京时间）**，本周到期且已逾期的项目中，**没有高优先级项目**。\n\n本周范围为 2026 年 11 月 2 日至 11 月 8 日；这是按当前截止时间和逾期标记查询，不代表本周发生过延期变更的所有项目。",
+        "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+        "request_id": "9a116396-ec2b-45e1-8d78-3fe535913e8f",
+        "message_id": "cm_f70d68e6-11f8-4dba-91a8-ff76eb95b847",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      },
+      {
+        "step": 4,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "其中谁负责推进？",
+        "answer": "按刚才的筛选条件，本周到期且已逾期的**高优先级项目为 0 个**，因此没有对应的项目负责人可列出。\n\n如果你想问的是上一轮提到的“自定义字段项目”，可以再确认一下。",
+        "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+        "request_id": "c6633609-9b6c-4a88-be68-4dc35caac546",
+        "message_id": "cm_68504269-aecc-44b7-b3c1-fed102fd0a6f",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+        "step": 2,
+        "seq": 27,
+        "name": "project_query",
+        "arguments_summary": "page=1 page_size=30",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+        "step": 3,
+        "seq": 16,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+        "step": 3,
+        "seq": 22,
+        "name": "project_query",
+        "arguments_summary": "page=1 page_size=30",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 40,
+        "tool_count": 2,
+        "tokens": 38721
+      },
+      {
+        "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 35,
+        "tool_count": 2,
+        "tokens": 47073
+      },
+      {
+        "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+        "step": 4,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 24,
+        "tool_count": 0,
+        "tokens": 15850
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.3.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.4.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "cross-turn bootstrap repetition is informational: ['activate_skills(skills=task_space) across 2 runs']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-SMEM-PRE-009",
+    "gold": {
+      "type": "memory",
+      "gold_refs": [
+        "PRE2-QA-P-OVERDUE-HI-01",
+        "PRE2-QA-P-OVERDUE-MID-01"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "跨两轮筛选保持高优先级子集",
+        "仅按当前账号、真实对象ID和本轮限定范围回读，不把公司不同当作同邮箱无权限。",
+        "逐轮核验事实、筛选集合及来源；不得把计划当完成，不编造缺失的工时或容量。",
+        "优先级使用真实业务枚举：0=中、1=高、2=低；完成以自身status=3为准。",
+        "没有检索到不等于不存在；缺ACL、分页全集、索引或必要受控准备时待复测，环境已建立后的漏查/答错正常判失败。",
+        "每例会话ID首次为空，由正式执行器prepare并保存；本次只预检，不新建问答会话。",
+        "原始时间以实际服务端created_at/sendTime为准，正文中的历史计划时间不是操作时间。"
+      ],
+      "fixed_fact_truth": "独立预发源数据：[{\"fixture_id\":\"PRE2-QA-P-OVERDUE-HI-01\",\"project_id\":\"pro_3158464897\",\"space_id\":\"1372785484\",\"label\":\"PRE补全·客户安全上线\"},{\"fixture_id\":\"PRE2-QA-P-OVERDUE-MID-01\",\"project_id\":\"pro_2446738835\",\"space_id\":\"1372785484\",\"label\":\"PRE补全·帮助中心改版\"}]",
+      "gold_entities": [
+        {
+          "fixture_id": "PRE2-QA-P-OVERDUE-HI-01",
+          "project_id": "pro_3158464897",
+          "space_id": "1372785484",
+          "label": "PRE补全·客户安全上线"
+        },
+        {
+          "fixture_id": "PRE2-QA-P-OVERDUE-MID-01",
+          "project_id": "pro_2446738835",
+          "space_id": "1372785484",
+          "label": "PRE补全·帮助中心改版"
+        }
+      ],
+      "required_fields": [
+        "依据",
+        "有效时态"
+      ],
+      "citation_refs": [
+        "pro_3158464897",
+        "pro_2446738835"
+      ],
+      "scope": "pre/actor_visible/current_case_scope",
+      "match_policy": "independent_source_after_precheck",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "本周延期项目有哪些？",
+          "qualitative_requirements": [
+            "继承本例统一Gold与规则，仅核验本轮明确要求、对象范围和当前有效事实。"
+          ]
+        },
+        {
+          "step": 3,
+          "message": "只看高优先级。",
+          "qualitative_requirements": [
+            "继承本例统一Gold与规则，仅核验本轮明确要求、对象范围和当前有效事实。"
+          ]
+        },
+        {
+          "step": 4,
+          "message": "其中谁负责推进？",
+          "qualitative_requirements": [
+            "继承本例统一Gold与规则，仅核验本轮明确要求、对象范围和当前有效事实。"
+          ]
+        }
+      ],
+      "oracle_source": "outputs/pre_full_preflight_20261102/fixture-receipt.json",
+      "snapshot_as_of": "2026-11-02",
+      "refresh_policy": "正式执行前刷新ACL、全量业务源、相对日期Gold及AI索引；原始回读不冒充索引验证。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "仅回答“自定义字段项目”且宣称本周逾期项目共1个，遗漏独立源与本例Gold确认的两个目标逾期项目。工具返回单条结果不能替代对已确认可见对象的完整范围核验。",
+        "evidence_refs": [
+          "current_independent_readback.actor_visible_projects.pro_3158464897",
+          "current_independent_readback.actor_visible_projects.pro_2446738835",
+          "trace.runs[turn_step=2].tools[seq=27]",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "回答没有高优先级项目，与独立源确认的高优逾期项目“PRE补全·客户安全上线”不符；空查询结果被直接表述为不存在。",
+        "evidence_refs": [
+          "expected_answer.gold_entities",
+          "current_independent_readback.actor_visible_projects.pro_3158464897.description",
+          "trace.runs[turn_step=3].tools[seq=22]",
+          "turns[step=3].answer"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "fail",
+        "reason": "本轮应沿用实际高优先级子集回答推进负责人。独立回读明确该项目经理为 anna289，回答却沿用前轮错误的零项目结论，未提供所问负责人。",
+        "evidence_refs": [
+          "current_independent_readback.actor_visible_projects.pro_3158464897.managers",
+          "trace.runs[turn_step=4]",
+          "turns[step=4].answer"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-SMEM-PRE-009",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:36:23+00:00",
+    "output": {
+      "text": "按刚才的筛选条件，本周到期且已逾期的**高优先级项目为 0 个**，因此没有对应的项目负责人可列出。\n\n如果你想问的是上一轮提到的“自定义字段项目”，可以再确认一下。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_127645c62384403ca4b0b6e587b40b38",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_127645c62384403ca4b0b6e587b40b38",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.10\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "project_query",
+            "call_id": "call_1ce9d40d4f3a4e6baa504a7603747891",
+            "arguments_summary": "page=1 page_size=30",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "project_query",
+            "call_id": "call_1ce9d40d4f3a4e6baa504a7603747891",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_210961939\",\"tenant_id\":\"T1120XCTS\",\"name\":\"自定义字段项目\",\"space_id\":\"1411225455\",\"space_name\":\"自定义字段\",\"status\":\"in_progress\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":true,\"creator\":{\"user_id\":\"ouvhp9wcj5ynif\",\"name\":\"严光测试\"},\"department\":{\"id\":\"ouv4clcllsr0p1\",\"name\":\"智本测试企业(1)\"},\"company_name\":\"智本测试企业(1)\",\"group_id\":\"210961939\",\"start_time\":\"2026-10-30T01:00:00+09:00\",\"end_time\":\"2026-11-02T00:59:59+09:00\",\"created_at\":\"2026-11-02T11:03:38+09:00\",\"updated_at\":\"2026-11-03T10:40:43+09:00\",\"description\":\"这个是用来做空间自定义字段项目跟踪的\\n[图片]\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 134
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 136,
+            "input_tokens": 38502,
+            "output_tokens": 219,
+            "total_tokens": 38721,
+            "estimated_cost_micros": 195795,
+            "cached_input_tokens": 4608,
+            "cache_hit_ratio": 0.11968209443665265,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+            "turn_step": 2,
+            "seq": 140
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 14
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 16,
+            "name": "activate_skills",
+            "call_id": "call_139e5f32f36546a089f0f45057d16b4a",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 17,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_139e5f32f36546a089f0f45057d16b4a",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "skill task_space is already active; its instructions are in context",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 19
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 20
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 22,
+            "name": "project_query",
+            "call_id": "call_9362f979b9774d12bf1e40dd7a7bb8f9",
+            "arguments_summary": "page=1 page_size=30",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 23,
+            "name": "project_query",
+            "call_id": "call_9362f979b9774d12bf1e40dd7a7bb8f9",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"projects\":[]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 95
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 97,
+            "input_tokens": 46890,
+            "output_tokens": 183,
+            "total_tokens": 47073,
+            "estimated_cost_micros": 237195,
+            "cached_input_tokens": 17664,
+            "cache_hit_ratio": 0.3767114523352527,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 12
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+            "turn_step": 3,
+            "seq": 101
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "seq": 62
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "seq": 64,
+            "input_tokens": 15786,
+            "output_tokens": 64,
+            "total_tokens": 15850,
+            "estimated_cost_micros": 79890,
+            "cached_input_tokens": 2304,
+            "cache_hit_ratio": 0.1459521094640821,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 12
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+            "turn_step": 4,
+            "seq": 68
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "",
+          "request_id": "504e36ea-8070-4c6c-a9c6-3aec060e005d",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_2a2f9517-df9c-4a30-9cb8-7333296e6b10",
+          "request_id": "b368093a-00d1-496d-ab14-abbecb67256c",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_f70d68e6-11f8-4dba-91a8-ff76eb95b847",
+          "request_id": "9a116396-ec2b-45e1-8d78-3fe535913e8f",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 4,
+          "op": "continue",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_68504269-aecc-44b7-b3c1-fed102fd0a6f",
+          "request_id": "c6633609-9b6c-4a88-be68-4dc35caac546",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 3
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 24061,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 101178,
+      "output_tokens": 466,
+      "cached_tokens": 24576,
+      "cost_usd": 0.51288,
+      "usage_runs": 3
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "request_id": "504e36ea-8070-4c6c-a9c6-3aec060e005d",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_2a2f9517-df9c-4a30-9cb8-7333296e6b10",
+          "request_id": "b368093a-00d1-496d-ab14-abbecb67256c",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 **11 月 3 日 17:36（东京时间）**，本周到期且已逾期的项目有 **1 个**：\n\n- **自定义字段项目**：状态为进行中，截止时间为 11 月 2 日 00:59。`widget:project:pro_210961939:T1120XCTS`\n\n本周按 11 月 2 日至 11 月 8 日计算；以上按项目当前截止时间和逾期标记统计，不代表本周内发生过延期变更的全部项目。",
+          "message": "本周延期项目有哪些？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_f70d68e6-11f8-4dba-91a8-ff76eb95b847",
+          "request_id": "9a116396-ec2b-45e1-8d78-3fe535913e8f",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 **11 月 3 日 17:36（东京时间）**，本周到期且已逾期的项目中，**没有高优先级项目**。\n\n本周范围为 2026 年 11 月 2 日至 11 月 8 日；这是按当前截止时间和逾期标记查询，不代表本周发生过延期变更的所有项目。",
+          "message": "只看高优先级。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        },
+        {
+          "step": 4,
+          "op": "continue",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_ce0483cb-47e3-4624-b732-43c36bcfede9",
+          "message_id": "cm_68504269-aecc-44b7-b3c1-fed102fd0a6f",
+          "request_id": "c6633609-9b6c-4a88-be68-4dc35caac546",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "按刚才的筛选条件，本周到期且已逾期的**高优先级项目为 0 个**，因此没有对应的项目负责人可列出。\n\n如果你想问的是上一轮提到的“自定义字段项目”，可以再确认一下。",
+          "message": "其中谁负责推进？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+          "turn_step": 2,
+          "request_id": "b368093a-00d1-496d-ab14-abbecb67256c",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_127645c62384403ca4b0b6e587b40b38",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.10\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_7e829dd945d2427b8b9e92eec0528703",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "project_query",
+              "call_id": "call_1ce9d40d4f3a4e6baa504a7603747891",
+              "arguments_summary": "page=1 page_size=30",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_210961939\",\"tenant_id\":\"T1120XCTS\",\"name\":\"自定义字段项目\",\"space_id\":\"1411225455\",\"space_name\":\"自定义字段\",\"status\":\"in_progress\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":true,\"creator\":{\"user_id\":\"ouvhp9wcj5ynif\",\"name\":\"严光测试\"},\"department\":{\"id\":\"ouv4clcllsr0p1\",\"name\":\"智本测试企业(1)\"},\"company_name\":\"智本测试企业(1)\",\"group_id\":\"210961939\",\"start_time\":\"2026-10-30T01:00:00+09:00\",\"end_time\":\"2026-11-02T00:59:59+09:00\",\"created_at\":\"2026-11-02T11:03:38+09:00\",\"updated_at\":\"2026-11-03T10:40:43+09:00\",\"description\":\"这个是用来做空间自定义字段项目跟踪的\\n[图片]\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 40,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 38502,
+            "output_tokens": 219,
+            "total_tokens": 38721,
+            "estimated_cost_micros": 195795,
+            "cached_input_tokens": 4608,
+            "cache_hit_ratio": 0.11968209443665265,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+          "turn_step": 3,
+          "request_id": "9a116396-ec2b-45e1-8d78-3fe535913e8f",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+              "turn_step": 3,
+              "seq": 16,
+              "name": "activate_skills",
+              "call_id": "call_139e5f32f36546a089f0f45057d16b4a",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "skill task_space is already active; its instructions are in context",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_814d5945e12b4011907b1332af0efee2",
+              "turn_step": 3,
+              "seq": 22,
+              "name": "project_query",
+              "call_id": "call_9362f979b9774d12bf1e40dd7a7bb8f9",
+              "arguments_summary": "page=1 page_size=30",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":0,\"page\":1,\"page_size\":30,\"returned\":0,\"projects\":[]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 35,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 46890,
+            "output_tokens": 183,
+            "total_tokens": 47073,
+            "estimated_cost_micros": 237195,
+            "cached_input_tokens": 17664,
+            "cache_hit_ratio": 0.3767114523352527,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 12
+          }
+        },
+        {
+          "run_id": "bar_f60409c54ece4cc4b9f5ab2e168d71e7",
+          "turn_step": 4,
+          "request_id": "c6633609-9b6c-4a88-be68-4dc35caac546",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 24,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 15786,
+            "output_tokens": 64,
+            "total_tokens": 15850,
+            "estimated_cost_micros": 79890,
+            "cached_input_tokens": 2304,
+            "cache_hit_ratio": 0.1459521094640821,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 12
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "b368093a-00d1-496d-ab14-abbecb67256c",
+          "9a116396-ec2b-45e1-8d78-3fe535913e8f",
+          "c6633609-9b6c-4a88-be68-4dc35caac546"
+        ],
+        "current_session_ids": [
+          "cs_ce0483cb-47e3-4624-b732-43c36bcfede9"
+        ],
+        "matched_run_ids": [
+          "bar_7e829dd945d2427b8b9e92eec0528703",
+          "bar_814d5945e12b4011907b1332af0efee2",
+          "bar_f60409c54ece4cc4b9f5ab2e168d71e7"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

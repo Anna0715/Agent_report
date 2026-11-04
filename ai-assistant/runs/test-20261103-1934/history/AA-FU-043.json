@@ -1,0 +1,708 @@
+{
+  "row": {
+    "asker": "自动化_Anna3",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "自动化_Anna3",
+        "company": "自动化测试公司",
+        "actor_ref": "自动化_Anna3",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "自动化_Anna3",
+        "company": "自动化测试公司",
+        "actor_ref": "自动化_Anna3",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-FU-043",
+    "suite": "assistant_agent_followup",
+    "module": "权限与隔离",
+    "scenario": "下属负责的项目有哪些",
+    "gate_class": "security",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "用户询问下属负责的项目，助手却仅查询自己负责的部门，并以部门查询为空作为无法继续检索的依据。已读取的 Schema 明确区分实线直属上下级与部门负责人，提供 user.direct_reports 关系；未查到负责部门不能排除真实直属下属。助手未沿真实上下级及授权链查询项目，核心对象集合未完成检索。此结论不依赖假定两个可见项目均属于下属。",
+    "confidence": "high",
+    "latency_ms": 11067,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "下属负责的项目有哪些？",
+    "ability": "权限与隔离",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "下属负责的项目有哪些？"
+    ],
+    "answer": "当前可见组织架构中，未查到你负责的部门，因此无法确定部门团队口径的下属，也无法列出他们负责的项目。这不代表下属或相关项目不存在。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "用户询问下属负责的项目，助手却仅查询自己负责的部门，并以部门查询为空作为无法继续检索的依据。已读取的 Schema 明确区分实线直属上下级与部门负责人，提供 user.direct_reports 关系；未查到负责部门不能排除真实直属下属。助手未沿真实上下级及授权链查询项目，核心对象集合未完成检索。此结论不依赖假定两个可见项目均属于下属。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "自动化_Anna3",
+        "question": "下属负责的项目有哪些？",
+        "answer": "当前可见组织架构中，未查到你负责的部门，因此无法确定部门团队口径的下属，也无法列出他们负责的项目。这不代表下属或相关项目不存在。",
+        "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+        "request_id": "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f",
+        "message_id": "cm_b23051b8-8495-4dcc-abbd-e42e191ff30b",
+        "http_status": 200,
+        "error": "",
+        "asker": "自动化_Anna3"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+        "step": 2,
+        "seq": 23,
+        "name": "structured_schema",
+        "arguments_summary": "entities=2",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+        "step": 2,
+        "seq": 28,
+        "name": "structured_select",
+        "arguments_summary": "entity=department fields=4 where_runes=84 order_by=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "structured_query、task_space、output_presentation",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 40,
+        "tool_count": 3,
+        "tokens": 96004
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-FU-043",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失"
+      ],
+      "business_reason": "用户询问下属负责的项目，助手却仅查询自己负责的部门，并以部门查询为空作为无法继续检索的依据。已读取的 Schema 明确区分实线直属上下级与部门负责人，提供 user.direct_reports 关系；未查到负责部门不能排除真实直属下属。助手未沿真实上下级及授权链查询项目，核心对象集合未完成检索。此结论不依赖假定两个可见项目均属于下属。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论。step 2 的 structured_schema 明确说明直属上下级使用 line_manager/direct_reports，且不得与部门团队混同；随后唯一业务查询为 department，返回 complete、count=0。完整工具记录与最终回答足以核验检索口径错误，但不足以确定应返回的具体项目名称。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "仅凭未找到自己负责的部门就停止检索，未查询真实直属下属及其授权可见的负责项目。回答虽保留了“不代表不存在”的边界，没有编造空集合，但仍未完成用户请求。",
+          "evidence_refs": [
+            "trace.runs[0].tools[1]：structured_schema，user.direct_reports 与部门负责人语义区分",
+            "trace.runs[0].tools[2]：structured_select，entity=department，count=0，completeness=complete",
+            "turns[1].answer"
+          ]
+        }
+      ],
+      "suggestions": [
+        "先按当前用户的真实上下级关系识别下属，不将部门负责人身份作为存在下属的必要条件。",
+        "再按项目负责关系和当前用户授权范围检索项目；如关系不可遍历，应采用受支持的分步查询，并明确实际无法核验的边界。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "7005c85ba3c898a13eae5e31e0778424cb879f3970a16bb68bca34bb0e819a0c"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-043",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:41:09+00:00",
+    "output": {
+      "text": "当前可见组织架构中，未查到你负责的部门，因此无法确定部门团队口径的下属，也无法列出他们负责的项目。这不代表下属或相关项目不存在。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_JCq2MAwjz5kVZ3h5mSidSqrT",
+            "arguments_summary": "skills=structured_query,task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 16,
+            "requested": [
+              "structured_query",
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "structured_query",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_JCq2MAwjz5kVZ3h5mSidSqrT",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "structured_schema",
+            "call_id": "call_q7xt8GTElkjH3yNmmHNfR1dr",
+            "arguments_summary": "entities=2",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "structured_schema",
+            "call_id": "call_q7xt8GTElkjH3yNmmHNfR1dr",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"entities\":[{\"access_options\":[{\"allows_unfiltered_query\":true,\"option\":\"option_1\"}],\"aliases\":[\"部门\",\"组织部门\"],\"description\":\"企业组织架构中的部门。部门负责人通过 users._edge.role 判断；部门子树成员通过 subtree_users 查询；空间、项目、任务访问权限继续由现有业务 RPC 判定\",\"display_name\":\"部门\",\"fields\":[{\"display_name\":\"部门ID\",\"name\":\"id\",\"output_visibility\":\"internal\",\"path\":\"department.id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"部门名称\",\"name\":\"name\",\"path\":\"department.name\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"}],\"identity_fields\":[\"department.id\"],\"name\":\"department\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"部门与直接上级、直接下级部门之间的层级关系\",\"display_name\":\"部门层级关系\",\"kind\":\"direct\",\"name\":\"children\",\"path\":\"department.children\",\"target_entity\":\"department\",\"traversable\":false},{\"cardinality\":\"zero_or_one\",\"description\":\"部门与直接上级、直接下级部门之间的层级关系\",\"display_name\":\"部门层级关系\",\"kind\":\"direct\",\"name\":\"parent\",\"path\":\"department.parent\",\"target_entity\":\"department\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目所属空间对应的部门。\",\"display_name\":\"项目部门\",\"kind\":\"direct\",\"name\":\"projects\",\"path\":\"department.projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"本部门及所有可见下级部门的成员去重并集；直属部门归属仍使用 department.users\",\"display_name\":\"可见部门子树成员\",\"kind\":\"association\",\"name\":\"subtree_users\",\"path\":\"department.subtree_users\",\"target_entity\":\"user\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"用户与当前可见组织架构中直属部门之间的关联关系\",\"display_name\":\"部门成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"是否主负责人\",\"name\":\"is_primary_manager\",\"path\":\"department.users._edge.is_primary_manager\",\"type\":\"bool\"},{\"display_name\":\"部门成员角色\",\"enum\":{\"manager\":{\"display_name\":\"负责人\"},\"member\":{\"display_name\":\"普通成员\"}},\"name\":\"role\",\"path\":\"department.users._edge.role\",\"type\":\"enum\"}]},\"kind\":\"association\",\"name\":\"users\",\"path\":\"department.users\",\"target_entity\":\"user\",\"traversable\":true}]},{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.reg_user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_1\",\"required_filters\":[{\"path\":\"user.reg_user.id\",\"required\":true}]},{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_2\"},{\"option\":\"option_3\"},{\"allows_unfiltered_query\":true,\"option\":\"option_4\"}],\"aliases\":[\"用户\",\"成员\",\"员工\",\"人员\"],\"description\":\"租户内的企业用户，可关联公司、群组、会话和消息等业务实体。第一人称会话范围通过 user.conversations 表达；系统分组置顶状态通过 user.conversations._edge.system_group_pinned 表达；收藏消息通过 user.favorite_messages 表达，收藏消息与置顶会话不是同一业务语义。直属上下级使用 line_manager/direct_reports，部门团队与实线汇报不得混同；空间、项目、任务访问权限继续由现有业务 RPC 判定。\",\"display_name\":\"用户\",\"fields\":[{\"display_name\":\"签名\",\"entity_match\":false,\"name\":\"biography\",\"path\":\"user.biography\",\"string\":{\"subtype\":\"text\"},\"type\":\"string\"},{\"display_name\":\"用户ID\",\"name\":\"id\",\"output_visibility\":\"internal\",\"path\":\"user.id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"仅用于内部直连关系，未获授权的上级不写入\",\"display_name\":\"可见实线上级ID（内部关联键）\",\"name\":\"line_manager_id\",\"output_visibility\":\"internal\",\"path\":\"user.line_manager_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"姓名\",\"name\":\"name\",\"path\":\"user.name\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"},{\"display_name\":\"员工账户状态\",\"enum\":{\"activated\":{\"aliases\":[\"active\"],\"display_name\":\"已激活\"},\"deleted\":{\"display_name\":\"删除\"},\"frozen\":{\"display_name\":\"冻结（暂停）\"},\"not_activated\":{\"display_name\":\"未激活\"},\"not_joined\":{\"display_name\":\"未加入\"},\"resigned\":{\"display_name\":\"离职\"}},\"name\":\"status\",\"path\":\"user.status\",\"type\":\"enum\"},{\"description\":\"IANA 时区标识，例如 Asia/Shanghai\",\"display_name\":\"时区\",\"name\":\"timezone\",\"path\":\"user.timezone\",\"type\":\"string\"}],\"filter_capabilities\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.reg_user.id\",\"predicate_form\":\"scalar\"}],\"identity_fields\":[\"user.id\"],\"name\":\"user\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"项目的管理员列表，用户自身租户/公司等资料通过 user 实体查询\",\"display_name\":\"项目管理员\",\"kind\":\"association\",\"name\":\"administered_projects\",\"path\":\"user.administered_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务的执行人\",\"display_name\":\"任务执行人\",\"kind\":\"association\",\"name\":\"assigned_tasks\",\"path\":\"user.assigned_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"分类与其所有者用户之间的关系\",\"display_name\":\"分类所有者\",\"kind\":\"direct\",\"name\":\"categories\",\"path\":\"user.categories\",\"target_entity\":\"category\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"统一评论实体的作者\",\"display_name\":\"评论作者\",\"kind\":\"direct\",\"name\":\"comments\",\"path\":\"user.comments\",\"target_entity\":\"comment\",\"traversable\":false},{\"cardinality\":\"one\",\"display_name\":\"用户公司\",\"kind\":\"direct\",\"name\":\"company\",\"path\":\"user.company\",\"target_entity\":\"company\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"用户视角下的有效会话集合；目标 conversation 使用 source user 作为 viewer_user query-instance binding；系统分组置顶状态属于该 association edge\",\"display_name\":\"用户会话\",\"edge\":{\"fields\":[{\"description\":\"当前用户在系统分组范围内的置顶排序值\",\"display_name\":\"系统分组置顶排序\",\"name\":\"system_group_pin_order\",\"path\":\"user.conversations._edge.system_group_pin_order\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"系统分组置顶更新时间\",\"name\":\"system_group_pin_updated_at\",\"path\":\"user.conversations._edge.system_group_pin_updated_at\",\"type\":\"timestamp\"},{\"description\":\"当前用户是否在系统分组范围内置顶此会话\",\"display_name\":\"是否系统分组置顶\",\"name\":\"system_group_pinned\",\"path\":\"user.conversations._edge.system_group_pinned\",\"type\":\"bool\"},{\"display_name\":\"系统分组置顶时间\",\"name\":\"system_group_pinned_at\",\"path\":\"user.conversations._edge.system_group_pinned_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"conversations\",\"path\":\"user.conversations\",\"target_entity\":\"conversation\",\"traversable\":true},{\"cardinality\":\"many\",\"display_name\":\"群创建人\",\"kind\":\"direct\",\"name\":\"created_groups\",\"path\":\"user.created_groups\",\"target_entity\":\"group\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目的创建人\",\"display_name\":\"项目创建人\",\"kind\":\"direct\",\"name\":\"created_projects\",\"path\":\"user.created_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务对创建人的单值业务引用，底层可通过独立角色 RPC 实现\",\"display_name\":\"任务创建人\",\"kind\":\"direct\",\"name\":\"created_tasks\",\"path\":\"user.created_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户与当前可见组织架构中直属部门之间的关联关系\",\"display_name\":\"部门成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"是否主负责人\",\"name\":\"is_primary_manager\",\"path\":\"user.departments._edge.is_primary_manager\",\"type\":\"bool\"},{\"display_name\":\"部门成员角色\",\"enum\":{\"manager\":{\"display_name\":\"负责人\"},\"member\":{\"display_name\":\"普通成员\"}},\"name\":\"role\",\"path\":\"user.departments._edge.role\",\"type\":\"enum\"}]},\"kind\":\"association\",\"name\":\"departments\",\"path\":\"user.departments\",\"target_entity\":\"department\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"基于可见员工及其直接上级账户派生，与部门负责人不同\",\"display_name\":\"实线直属上下级\",\"kind\":\"direct\",\"name\":\"direct_reports\",\"path\":\"user.direct_reports\",\"target_entity\":\"user\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户当前收藏某条消息的关系；收藏记录本身不是独立 Canonical Entity。该关系对应收藏消息系统入口，不表示置顶会话。\",\"display_name\":\"消息收藏关系\",\"edge\":{\"fields\":[{\"display_name\":\"收藏时间\",\"name\":\"created_at\",\"path\":\"user.favorite_messages._edge.created_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"favorite_messages\",\"path\":\"user.favorite_messages\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"任务的关注人\",\"display_name\":\"任务关注人\",\"kind\":\"association\",\"name\":\"followed_tasks\",\"path\":\"user.followed_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"本次群成员变更事件作用的用户。\",\"display_name\":\"群成员变更事件-成员\",\"kind\":\"direct\",\"name\":\"group_membership_events\",\"path\":\"user.group_membership_events\",\"target_entity\":\"group_membership_event\",\"traversable\":false},{\"cardinality\":\"many\",\"display_name\":\"入群申请-申请人\",\"kind\":\"direct\",\"name\":\"group_requests\",\"path\":\"user.group_requests\",\"target_entity\":\"group_request\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"GroupMember 不是 Canonical Entity；(group,user) 唯一确定当前 membership\",\"display_name\":\"群成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"入群来源\",\"enum\":{\"admi\n[truncated]",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "structured_select",
+            "call_id": "call_RAT8ojznOrJdwJVHiCLuE3EL",
+            "arguments_summary": "entity=department fields=4 where_runes=84 order_by=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 29,
+            "name": "structured_select",
+            "call_id": "call_RAT8ojznOrJdwJVHiCLuE3EL",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"completeness\":\"complete\",\"count\":0,\"rows\":[],\"status\":\"completed\",\"trace_id\":\"sq_1a1a0ff8f72_22e\"}",
+            "orphan": false,
+            "result_preview_client_truncated": false,
+            "payload_status": "completed",
+            "status_conflict": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 58
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 60,
+            "input_tokens": 95850,
+            "output_tokens": 154,
+            "total_tokens": 96004,
+            "estimated_cost_micros": 481560,
+            "cached_input_tokens": 57851,
+            "cache_write_input_tokens": 37548,
+            "cache_hit_ratio": 0.6035576421491915,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+            "turn_step": 2,
+            "seq": 64
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+          "message_id": "cm_b23051b8-8495-4dcc-abbd-e42e191ff30b",
+          "request_id": "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "structured_query,task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 11067,
+      "tool_calls": 3,
+      "retries": 0,
+      "input_tokens": 95850,
+      "output_tokens": 154,
+      "cached_tokens": 57851,
+      "cost_usd": 0.48156,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "自动化_Anna3",
+          "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "自动化_Anna3",
+          "session_id": "cs_5b474918-65e3-4e41-ba28-1e33536c9e49",
+          "message_id": "cm_b23051b8-8495-4dcc-abbd-e42e191ff30b",
+          "request_id": "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "当前可见组织架构中，未查到你负责的部门，因此无法确定部门团队口径的下属，也无法列出他们负责的项目。这不代表下属或相关项目不存在。",
+          "message": "下属负责的项目有哪些？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "下属负责的项目有哪些？",
+          "actor": {
+            "account_ref": "自动化_Anna3",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgljaz6g7ns4",
+            "fixture_actor_ref": "U-A-SUPERIOR"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+          "turn_step": 2,
+          "request_id": "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "structured_query",
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "activate_skills",
+              "call_id": "call_JCq2MAwjz5kVZ3h5mSidSqrT",
+              "arguments_summary": "skills=structured_query,task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "structured_schema",
+              "call_id": "call_q7xt8GTElkjH3yNmmHNfR1dr",
+              "arguments_summary": "entities=2",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"entities\":[{\"access_options\":[{\"allows_unfiltered_query\":true,\"option\":\"option_1\"}],\"aliases\":[\"部门\",\"组织部门\"],\"description\":\"企业组织架构中的部门。部门负责人通过 users._edge.role 判断；部门子树成员通过 subtree_users 查询；空间、项目、任务访问权限继续由现有业务 RPC 判定\",\"display_name\":\"部门\",\"fields\":[{\"display_name\":\"部门ID\",\"name\":\"id\",\"output_visibility\":\"internal\",\"path\":\"department.id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"部门名称\",\"name\":\"name\",\"path\":\"department.name\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"}],\"identity_fields\":[\"department.id\"],\"name\":\"department\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"部门与直接上级、直接下级部门之间的层级关系\",\"display_name\":\"部门层级关系\",\"kind\":\"direct\",\"name\":\"children\",\"path\":\"department.children\",\"target_entity\":\"department\",\"traversable\":false},{\"cardinality\":\"zero_or_one\",\"description\":\"部门与直接上级、直接下级部门之间的层级关系\",\"display_name\":\"部门层级关系\",\"kind\":\"direct\",\"name\":\"parent\",\"path\":\"department.parent\",\"target_entity\":\"department\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目所属空间对应的部门。\",\"display_name\":\"项目部门\",\"kind\":\"direct\",\"name\":\"projects\",\"path\":\"department.projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"本部门及所有可见下级部门的成员去重并集；直属部门归属仍使用 department.users\",\"display_name\":\"可见部门子树成员\",\"kind\":\"association\",\"name\":\"subtree_users\",\"path\":\"department.subtree_users\",\"target_entity\":\"user\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"用户与当前可见组织架构中直属部门之间的关联关系\",\"display_name\":\"部门成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"是否主负责人\",\"name\":\"is_primary_manager\",\"path\":\"department.users._edge.is_primary_manager\",\"type\":\"bool\"},{\"display_name\":\"部门成员角色\",\"enum\":{\"manager\":{\"display_name\":\"负责人\"},\"member\":{\"display_name\":\"普通成员\"}},\"name\":\"role\",\"path\":\"department.users._edge.role\",\"type\":\"enum\"}]},\"kind\":\"association\",\"name\":\"users\",\"path\":\"department.users\",\"target_entity\":\"user\",\"traversable\":true}]},{\"access_options\":[{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.reg_user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_1\",\"required_filters\":[{\"path\":\"user.reg_user.id\",\"required\":true}]},{\"filters\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"}],\"option\":\"option_2\"},{\"option\":\"option_3\"},{\"allows_unfiltered_query\":true,\"option\":\"option_4\"}],\"aliases\":[\"用户\",\"成员\",\"员工\",\"人员\"],\"description\":\"租户内的企业用户，可关联公司、群组、会话和消息等业务实体。第一人称会话范围通过 user.conversations 表达；系统分组置顶状态通过 user.conversations._edge.system_group_pinned 表达；收藏消息通过 user.favorite_messages 表达，收藏消息与置顶会话不是同一业务语义。直属上下级使用 line_manager/direct_reports，部门团队与实线汇报不得混同；空间、项目、任务访问权限继续由现有业务 RPC 判定。\",\"display_name\":\"用户\",\"fields\":[{\"display_name\":\"签名\",\"entity_match\":false,\"name\":\"biography\",\"path\":\"user.biography\",\"string\":{\"subtype\":\"text\"},\"type\":\"string\"},{\"display_name\":\"用户ID\",\"name\":\"id\",\"output_visibility\":\"internal\",\"path\":\"user.id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"description\":\"仅用于内部直连关系，未获授权的上级不写入\",\"display_name\":\"可见实线上级ID（内部关联键）\",\"name\":\"line_manager_id\",\"output_visibility\":\"internal\",\"path\":\"user.line_manager_id\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"姓名\",\"name\":\"name\",\"path\":\"user.name\",\"string\":{\"subtype\":\"name\"},\"type\":\"string\"},{\"display_name\":\"员工账户状态\",\"enum\":{\"activated\":{\"aliases\":[\"active\"],\"display_name\":\"已激活\"},\"deleted\":{\"display_name\":\"删除\"},\"frozen\":{\"display_name\":\"冻结（暂停）\"},\"not_activated\":{\"display_name\":\"未激活\"},\"not_joined\":{\"display_name\":\"未加入\"},\"resigned\":{\"display_name\":\"离职\"}},\"name\":\"status\",\"path\":\"user.status\",\"type\":\"enum\"},{\"description\":\"IANA 时区标识，例如 Asia/Shanghai\",\"display_name\":\"时区\",\"name\":\"timezone\",\"path\":\"user.timezone\",\"type\":\"string\"}],\"filter_capabilities\":[{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.id\",\"predicate_form\":\"scalar\"},{\"candidate_operators\":[\"==\",\"in\"],\"path\":\"user.reg_user.id\",\"predicate_form\":\"scalar\"}],\"identity_fields\":[\"user.id\"],\"name\":\"user\",\"queryable\":true,\"relations\":[{\"cardinality\":\"many\",\"description\":\"项目的管理员列表，用户自身租户/公司等资料通过 user 实体查询\",\"display_name\":\"项目管理员\",\"kind\":\"association\",\"name\":\"administered_projects\",\"path\":\"user.administered_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务的执行人\",\"display_name\":\"任务执行人\",\"kind\":\"association\",\"name\":\"assigned_tasks\",\"path\":\"user.assigned_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"分类与其所有者用户之间的关系\",\"display_name\":\"分类所有者\",\"kind\":\"direct\",\"name\":\"categories\",\"path\":\"user.categories\",\"target_entity\":\"category\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"统一评论实体的作者\",\"display_name\":\"评论作者\",\"kind\":\"direct\",\"name\":\"comments\",\"path\":\"user.comments\",\"target_entity\":\"comment\",\"traversable\":false},{\"cardinality\":\"one\",\"display_name\":\"用户公司\",\"kind\":\"direct\",\"name\":\"company\",\"path\":\"user.company\",\"target_entity\":\"company\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"用户视角下的有效会话集合；目标 conversation 使用 source user 作为 viewer_user query-instance binding；系统分组置顶状态属于该 association edge\",\"display_name\":\"用户会话\",\"edge\":{\"fields\":[{\"description\":\"当前用户在系统分组范围内的置顶排序值\",\"display_name\":\"系统分组置顶排序\",\"name\":\"system_group_pin_order\",\"path\":\"user.conversations._edge.system_group_pin_order\",\"string\":{\"subtype\":\"identifier\"},\"type\":\"string\"},{\"display_name\":\"系统分组置顶更新时间\",\"name\":\"system_group_pin_updated_at\",\"path\":\"user.conversations._edge.system_group_pin_updated_at\",\"type\":\"timestamp\"},{\"description\":\"当前用户是否在系统分组范围内置顶此会话\",\"display_name\":\"是否系统分组置顶\",\"name\":\"system_group_pinned\",\"path\":\"user.conversations._edge.system_group_pinned\",\"type\":\"bool\"},{\"display_name\":\"系统分组置顶时间\",\"name\":\"system_group_pinned_at\",\"path\":\"user.conversations._edge.system_group_pinned_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"conversations\",\"path\":\"user.conversations\",\"target_entity\":\"conversation\",\"traversable\":true},{\"cardinality\":\"many\",\"display_name\":\"群创建人\",\"kind\":\"direct\",\"name\":\"created_groups\",\"path\":\"user.created_groups\",\"target_entity\":\"group\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"项目的创建人\",\"display_name\":\"项目创建人\",\"kind\":\"direct\",\"name\":\"created_projects\",\"path\":\"user.created_projects\",\"target_entity\":\"project\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"任务对创建人的单值业务引用，底层可通过独立角色 RPC 实现\",\"display_name\":\"任务创建人\",\"kind\":\"direct\",\"name\":\"created_tasks\",\"path\":\"user.created_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户与当前可见组织架构中直属部门之间的关联关系\",\"display_name\":\"部门成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"是否主负责人\",\"name\":\"is_primary_manager\",\"path\":\"user.departments._edge.is_primary_manager\",\"type\":\"bool\"},{\"display_name\":\"部门成员角色\",\"enum\":{\"manager\":{\"display_name\":\"负责人\"},\"member\":{\"display_name\":\"普通成员\"}},\"name\":\"role\",\"path\":\"user.departments._edge.role\",\"type\":\"enum\"}]},\"kind\":\"association\",\"name\":\"departments\",\"path\":\"user.departments\",\"target_entity\":\"department\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"基于可见员工及其直接上级账户派生，与部门负责人不同\",\"display_name\":\"实线直属上下级\",\"kind\":\"direct\",\"name\":\"direct_reports\",\"path\":\"user.direct_reports\",\"target_entity\":\"user\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"用户当前收藏某条消息的关系；收藏记录本身不是独立 Canonical Entity。该关系对应收藏消息系统入口，不表示置顶会话。\",\"display_name\":\"消息收藏关系\",\"edge\":{\"fields\":[{\"display_name\":\"收藏时间\",\"name\":\"created_at\",\"path\":\"user.favorite_messages._edge.created_at\",\"type\":\"timestamp\"}]},\"kind\":\"association\",\"name\":\"favorite_messages\",\"path\":\"user.favorite_messages\",\"target_entity\":\"message\",\"traversable\":true},{\"cardinality\":\"many\",\"description\":\"任务的关注人\",\"display_name\":\"任务关注人\",\"kind\":\"association\",\"name\":\"followed_tasks\",\"path\":\"user.followed_tasks\",\"target_entity\":\"task\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"本次群成员变更事件作用的用户。\",\"display_name\":\"群成员变更事件-成员\",\"kind\":\"direct\",\"name\":\"group_membership_events\",\"path\":\"user.group_membership_events\",\"target_entity\":\"group_membership_event\",\"traversable\":false},{\"cardinality\":\"many\",\"display_name\":\"入群申请-申请人\",\"kind\":\"direct\",\"name\":\"group_requests\",\"path\":\"user.group_requests\",\"target_entity\":\"group_request\",\"traversable\":false},{\"cardinality\":\"many\",\"description\":\"GroupMember 不是 Canonical Entity；(group,user) 唯一确定当前 membership\",\"display_name\":\"群成员关系\",\"edge\":{\"fields\":[{\"display_name\":\"入群来源\",\"enum\":{\"admi\n[truncated]",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_3f7d11b25c9d43f4b3a8a5982736fdd3",
+              "turn_step": 2,
+              "seq": 28,
+              "name": "structured_select",
+              "call_id": "call_RAT8ojznOrJdwJVHiCLuE3EL",
+              "arguments_summary": "entity=department fields=4 where_runes=84 order_by=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"completeness\":\"complete\",\"count\":0,\"rows\":[],\"status\":\"completed\",\"trace_id\":\"sq_1a1a0ff8f72_22e\"}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false,
+              "payload_status": "completed",
+              "status_conflict": false
+            }
+          ],
+          "event_count": 40,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 95850,
+            "output_tokens": 154,
+            "total_tokens": 96004,
+            "estimated_cost_micros": 481560,
+            "cached_input_tokens": 57851,
+            "cache_write_input_tokens": 37548,
+            "cache_hit_ratio": 0.6035576421491915,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f"
+        ],
+        "current_session_ids": [
+          "cs_5b474918-65e3-4e41-ba28-1e33536c9e49"
+        ],
+        "matched_run_ids": [
+          "bar_3f7d11b25c9d43f4b3a8a5982736fdd3"
+        ],
+        "excluded_historical_run_count": 3,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

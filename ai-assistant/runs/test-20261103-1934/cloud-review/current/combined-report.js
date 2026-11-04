@@ -17,16 +17,16 @@
   const isFailure = status => ['fail','pending_fix'].includes(status);
   const online = r => !['not_executed','local_fixture_pass','deferred'].includes(r.kind);
   const reviewOrigin = r => {
-    if (r.review_resolution && !r.override) return '本轮补证重评 · 原待复核记录保留';
+    if (r.review_resolution && !r.override) return '本轮重新评测 · 原复核记录保留';
     const source=r.review_reuse;
     if (!source) return '原始判定';
     const from=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.source_url||'')?`<a href="${esc(source.source_url)}" target="_blank" rel="noopener">上一份报告</a>`:'上一份报告';
-    return `${source.mode==='deferred_skip'?'上轮延期，本轮跳过':source.mode==='carried_forward'?'本轮未重跑，保留已保存复核':'结果一致，沿用已保存复核'} · ${from} · r${esc(source.revision)}${source.actor_name?` · ${esc(source.actor_name)}`:''}${source.reviewed_at?` · ${esc(source.reviewed_at)}`:''}`;
+    return `${source.mode==='deferred_skip'?'上轮延期，本轮跳过':source.mode==='carried_forward'?'本轮未重跑，保留已保存复核':source.mode==='same_request_preserved'?'原请求复评，保留已保存人工结论':source.mode==='source_report_merge'?'沿用来源报告已保存人工复核':'结果一致，沿用已保存复核'} · ${from} · r${esc(source.revision)}${source.actor_name?` · ${esc(source.actor_name)}`:''}${source.reviewed_at?` · ${esc(source.reviewed_at)}`:''}`;
   };
   const resolutionDetails = r => {
     const p = r.review_resolution;
     if (!p) return '';
-    return `<details class="resolved-pending-review"><summary>查看原待复核意见及本轮补证来源</summary><p>${esc(p.actor_name)} · 原用例 v${p.case_version} · ${esc(p.updated_at)}</p><p>${esc(label[p.override.business_status])}：${esc(p.override.business_reason)}</p><p>本轮已补证重评，原记录完整保留；后续新保存的人工改判优先。</p><a href="${esc(p.evidence_url)}" target="_blank" rel="noopener">本轮证据归档</a></details>`;
+    return `<details class="resolved-pending-review"><summary>查看原复核意见及本轮复评来源</summary><p>${esc(p.actor_name)} · 原用例 v${p.case_version} · ${esc(p.updated_at)}</p><p>${esc(label[p.override.business_status])}：${esc(p.override.business_reason)}</p><p>本轮已重新评测，原记录完整保留；后续新保存的人工改判优先。</p><a href="${esc(p.evidence_url)}" target="_blank" rel="noopener">本轮证据归档</a></details>`;
   };
   const pct = (n,d) => d ? `${(100*n/d).toFixed(1)}%` : '—';
   const duration = n => Number.isFinite(n)?`${(n/1000).toFixed(1)}s`:'未采集';

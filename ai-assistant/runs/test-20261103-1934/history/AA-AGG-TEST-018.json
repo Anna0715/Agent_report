@@ -1,0 +1,457 @@
+{
+  "row": {
+    "asker": "智本_anrou",
+    "asker_company": "智本科技",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-AGG-TEST-018",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "直接子任务最多和最少的主任务",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "execution_failure",
+    "reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+    "confidence": "high",
+    "latency_ms": 1807,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。哪个主任务直接子任务最多、有多少？最少有多少，多少个主任务并列最少？",
+    "ability": "主子任务聚合",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。哪个主任务直接子任务最多、有多少？最少有多少，多少个主任务并列最少？"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+    "tool_chain_summary": "未取得可观测工具链；不能由此推断没有调用工具。",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "智本_anrou",
+        "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。哪个主任务直接子任务最多、有多少？最少有多少，多少个主任务并列最少？",
+        "answer": "",
+        "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+        "request_id": "1611c0bc-8216-44b9-8aee-790621d14dea",
+        "message_id": "cm_4638d8da-be26-40cd-bc62-dc5807b01b84",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "智本_anrou"
+      }
+    ],
+    "trace_tools": [],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "未激活/未观测",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 18,
+        "tool_count": 0,
+        "tokens": null
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'model.response', 'output.completed']"
+      },
+      {
+        "dimension": "tool.forbidden",
+        "status": "skip",
+        "reason": "absence of forbidden tools cannot be verified from Assistant SSE"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "tool call/results unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "skill activation unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-AGG-TEST-018",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "execution_failure",
+      "confidence": "high",
+      "failure_categories": [
+        "执行错误"
+      ],
+      "business_reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "明确请求及失败终态足以确定任务未完成；不据此判断评论内容对错。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "已发起请求但运行时生成失败：report chat generation failed",
+          "evidence_refs": []
+        }
+      ],
+      "execution_errors": [
+        {
+          "step": 2,
+          "status": "error",
+          "terminal_event": "failed",
+          "http_status": 200,
+          "error": "report chat generation failed",
+          "runtime_errors": [
+            {
+              "step": 2,
+              "stage": "stream",
+              "message": "report chat generation failed"
+            }
+          ]
+        }
+      ],
+      "suggestions": [
+        "排查该请求的服务端生成错误，修复后重跑并保留本次失败记录。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "未取得可观测工具链；不能由此推断没有调用工具。",
+      "judge_attempts": 0,
+      "judge_model": "未调用（执行门禁或明确执行失败）",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "7ed5ff2a0a69c1348fe150bfa746d65edb94b500777fd28e5f328606dde7d7ca"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-AGG-TEST-018",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:51:07+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+            "turn_step": 2,
+            "seq": 5
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+            "turn_step": 2,
+            "seq": 17,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": false,
+        "mcp": false,
+        "memory": true,
+        "model": false,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+          "message_id": "cm_4638d8da-be26-40cd-bc62-dc5807b01b84",
+          "request_id": "1611c0bc-8216-44b9-8aee-790621d14dea",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11"
+    },
+    "metrics": {
+      "e2e_ms": 1807,
+      "tool_calls": 0,
+      "retries": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cached_tokens": 0,
+      "cost_usd": 0.0,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0",
+          "message_id": "cm_4638d8da-be26-40cd-bc62-dc5807b01b84",
+          "request_id": "1611c0bc-8216-44b9-8aee-790621d14dea",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。哪个主任务直接子任务最多、有多少？最少有多少，多少个主任务并列最少？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。哪个主任务直接子任务最多、有多少？最少有多少，多少个主任务并列最少？",
+          "actor": {
+            "account_ref": "智本_anrou",
+            "company": "智本科技",
+            "tenant_id": "T1120BGCN",
+            "user_id": "ouvfhdgghjp37n",
+            "user_name": "智本_anrou",
+            "fixture_actor_ref": "AGG-TEST-U0"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_ec5dd596ddf5435caaea7b0232cd6f79",
+          "turn_step": 2,
+          "request_id": "1611c0bc-8216-44b9-8aee-790621d14dea",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 18,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "1611c0bc-8216-44b9-8aee-790621d14dea"
+        ],
+        "current_session_ids": [
+          "cs_a519d1db-4e99-4c12-bd58-bbc730755ad0"
+        ],
+        "matched_run_ids": [
+          "bar_ec5dd596ddf5435caaea7b0232cd6f79"
+        ],
+        "excluded_historical_run_count": 3,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

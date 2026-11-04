@@ -1,0 +1,795 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PRE-REAL-001",
+    "suite": "assistant_agent_followup",
+    "module": "空间项目任务追问",
+    "scenario": "个人工作安排：跨项目待办与信息缺口",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第2轮已正式发起问答，但明确以运行时生成失败结束（terminal_event=failed，错误为 report chat generation failed），未产生任何回答，因而未完成任务清单、执行人、优先级、截止时间及跟进建议的交付。本次属于 execution_failure，不认定为评论理解错误。",
+    "confidence": "high",
+    "latency_ms": 58938,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "我今天先跟进什么？只看“PRE项目创建人专项”“PRE项目管理员专项”“PRE项目执行人专项”这三个项目里由我创建或执行的未完成任务，去重后列出任务、所属项目、执行人、优先级、截止时间，说明先做什么的依据。",
+    "ability": "业务综合问答",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "我今天先跟进什么？只看“PRE项目创建人专项”“PRE项目管理员专项”“PRE项目执行人专项”这三个项目里由我创建或执行的未完成任务，去重后列出任务、所属项目、执行人、优先级、截止时间，说明先做什么的依据。"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "第2轮已正式发起问答，但明确以运行时生成失败结束（terminal_event=failed，错误为 report chat generation failed），未产生任何回答，因而未完成任务清单、执行人、优先级、截止时间及跟进建议的交付。本次属于 execution_failure，不认定为评论理解错误。",
+    "tool_chain_summary": "Skill：output_presentation、task_space；工具链：activate_skills(completed) → project_query(completed) → project_query(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "智本测试_安柔",
+        "question": "我今天先跟进什么？只看“PRE项目创建人专项”“PRE项目管理员专项”“PRE项目执行人专项”这三个项目里由我创建或执行的未完成任务，去重后列出任务、所属项目、执行人、优先级、截止时间，说明先做什么的依据。",
+        "answer": "",
+        "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+        "request_id": "70448b14-ee9f-4ae4-906c-e45a9ac2c8ad",
+        "message_id": "cm_669fa000-ce95-497f-b229-3cf696127252",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+        "step": 2,
+        "seq": 27,
+        "name": "project_query",
+        "arguments_summary": "page=1 page_size=30",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+        "step": 2,
+        "seq": 32,
+        "name": "project_query",
+        "arguments_summary": "page=1 page_size=30",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 37,
+        "tool_count": 3,
+        "tokens": 38668
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'output.completed']"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "same-run duplicate calls are an efficiency diagnostic: ['project_query(page=1 page_size=30)×2']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-PRE-REAL-001",
+    "gold": {
+      "type": "business_followup",
+      "gold_refs": [
+        "P-PRE-CREATED",
+        "P-PRE-ADMIN",
+        "P-PRE-EXECUTED",
+        "T-PRE-CREATED-OTHER",
+        "T-PRE-ADMIN-OTHER",
+        "T-PRE-EXECUTED-OTHER"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "按业务含义逐轮评判，不要求逐字匹配；只要求本轮明确提问的字段，不要求每次追问重述所有历史答案。",
+        "消息发送时间、正文中的计划日期、记录导出时间分别处理；计划、完成、推断和建议分别表述。",
+        "可点击来源与内部对象ID共同核验事实；用户未要求时不强制回答裸ID。不存在或未返回的字段要明确为未知，不补造。",
+        "空间、项目和任务按同一邮箱真实身份与实际ACL判断可见性，不因创建公司不同而直接拒绝；用户限定的业务查询范围仍须遵守。",
+        "本例只读。缺少独立数据前置条件时待复测；环境已建立而Agent漏查、答错按正常失败处理。"
+      ],
+      "fixed_fact_truth": "第1轮：按登录用户智本测试_安柔的真实user_id取创建或执行的并集，按task_id去重；已映射候选为三个项目内的三条任务，未完成筛选按独立预检后的真实状态及枚举判断，不把项目创建人直接当任务执行人。；状态和优先级须按线上字段及已验证枚举解释。三条任务快照均未设置截止时间，不能认定今天到期、已逾期或承诺具体完成日期。；区分任务事实与工作建议。若缺少期限、工作量或依赖，说明无法作确定的紧急程度/超负荷判断，并给出应先确认的事项。",
+      "required_fields": [
+        "本轮问题所需的业务结论",
+        "可追溯证据"
+      ],
+      "citation_refs": [
+        "pro_3326954689",
+        "556092402",
+        "pro_3254735137",
+        "pro_3914224247",
+        "task_vx8zsmbk3266",
+        "task_vx8zsbppjai4",
+        "task_vx8zsp7muoyn"
+      ],
+      "scope": "pre/actor_visible/ACC-PRE-LMEM-01",
+      "match_policy": "semantic_per_turn",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "我今天先跟进什么？只看“PRE项目创建人专项”“PRE项目管理员专项”“PRE项目执行人专项”这三个项目里由我创建或执行的未完成任务，去重后列出任务、所属项目、执行人、优先级、截止时间，说明先做什么的依据。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "按登录用户智本测试_安柔的真实user_id取创建或执行的并集，按task_id去重；已映射候选为三个项目内的三条任务，未完成筛选按独立预检后的真实状态及枚举判断，不把项目创建人直接当任务执行人。",
+            "状态和优先级须按线上字段及已验证枚举解释。三条任务快照均未设置截止时间，不能认定今天到期、已逾期或承诺具体完成日期。",
+            "区分任务事实与工作建议。若缺少期限、工作量或依赖，说明无法作确定的紧急程度/超负荷判断，并给出应先确认的事项。"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        {
+          "fixture_id": "P-PRE-CREATED",
+          "source_sheet": "项目",
+          "project_id": "pro_3326954689",
+          "space_id": "556092402",
+          "name": "PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]",
+          "creator": "anna856",
+          "recorded_admin": null,
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "P-PRE-ADMIN",
+          "source_sheet": "项目",
+          "project_id": "pro_3254735137",
+          "space_id": "556092402",
+          "name": "PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]",
+          "creator": "智本测试_安柔",
+          "recorded_admin": "anna636",
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "P-PRE-EXECUTED",
+          "source_sheet": "项目",
+          "project_id": "pro_3914224247",
+          "space_id": "556092402",
+          "name": "PRE项目执行人专项 [AEFIX:P-PRE-EXECUTED:v1]",
+          "creator": "智本测试_安柔",
+          "recorded_admin": null,
+          "status": "接口未返回",
+          "priority": "接口未返回",
+          "deadline": "未设置",
+          "note": "角色/状态等可变字段执行前独立回读；未回查不是无数据。"
+        },
+        {
+          "fixture_id": "T-PRE-CREATED-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsmbk3266",
+          "project_id": "pro_3326954689",
+          "space_id": "556092402",
+          "name": "PRE创建项目内其他任务 [AEFIX:T-PRE-CREATED-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        },
+        {
+          "fixture_id": "T-PRE-ADMIN-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsbppjai4",
+          "project_id": "pro_3254735137",
+          "space_id": "556092402",
+          "name": "PRE管理项目内其他任务 [AEFIX:T-PRE-ADMIN-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        },
+        {
+          "fixture_id": "T-PRE-EXECUTED-OTHER",
+          "source_sheet": "任务",
+          "task_id": "task_vx8zsp7muoyn",
+          "project_id": "pro_3914224247",
+          "space_id": "556092402",
+          "name": "PRE执行项目内其他任务 [AEFIX:T-PRE-EXECUTED-OTHER:v1]",
+          "status": 1,
+          "priority": 0,
+          "assignee": "智本测试_安柔",
+          "creator": "智本测试_安柔",
+          "deadline": "未设置",
+          "assignee_id": "ouvdiekzrxcqc2"
+        }
+      ],
+      "source_type": "existing_pre_export_and_fixture_readback",
+      "snapshot_policy": "独立预检后冻结；可变字段或全集有漂移时刷新Gold，不能据旧快照误判",
+      "evaluation_scope": "all_answer_turns",
+      "turn_aggregation": "每轮达标才通过；任一确认的关键失败则整例失败；缺轮次/证据则待复核或待复测，不能仅凭最后一轮通过"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "问答返回HTTP 200，但业务生成终态为failed，answer为空；未交付用户要求的去重后未完成任务列表及排序依据。失败性质为运行时执行失败，而非已证实的业务事实误读。",
+        "evidence_refs": [
+          "turns[step=2]: terminal_event=failed; error=report chat generation failed; answer为空",
+          "trace.runs[run_id=bar_bb6b21af969740d19eb1dad266642272]: status=failed",
+          "trace.errors[step=2,stage=stream]",
+          "expected_answer.current_independent_readback.current_objects"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-PRE-REAL-001",
+    "environment": "pre",
+    "generated_at": "2026-11-03T07:19:57+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_15ff5cd27b8a4289adfc81909c1b8d7a",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_15ff5cd27b8a4289adfc81909c1b8d7a",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.7\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）。",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "project_query",
+            "call_id": "call_5ad244d314614bc9b586c3815de5e616",
+            "arguments_summary": "page=1 page_size=30",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "project_query",
+            "call_id": "call_5ad244d314614bc9b586c3815de5e616",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_3326954689\",\"tenant_id\":\"T1120J0W9\",\"name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\",\"space_id\":\"556092402\",\"space_name\":\"AI评测-PRE-项目角色域 [AEFIX:S-PRE-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvtx9uhwt2sjp\",\"name\":\"anna856\"},\"department\":{\"id\":\"ouv8athhrhww75\",\"name\":\"智本企业\"},\"company_name\":\"智本企业\",\"group_id\":\"3326954689\",\"created_at\":\"2026-10-05T11:07:53+09:00\",\"updated_at\":\"2026-10-05T11:07:53+09:00\",\"description\":\"pre权限评测夹具；对应 P-PRE-CREATED；[AEFIX:P-PRE-CREATED:v1]\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "project_query",
+            "call_id": "call_d60121c1d4004a83813e1c4be7d7a883",
+            "arguments_summary": "page=1 page_size=30",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "project_query",
+            "call_id": "call_d60121c1d4004a83813e1c4be7d7a883",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_3254735137\",\"tenant_id\":\"T1120J0W9\",\"name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\",\"space_id\":\"556092402\",\"space_name\":\"AI评测-PRE-项目角色域 [AEFIX:S-PRE-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\"},\"department\":{\"id\":\"ouv8athhrhww75\",\"name\":\"智本企业\"},\"company_name\":\"智本企业\",\"group_id\":\"3254735137\",\"created_at\":\"2026-10-05T11:07:54+09:00\",\"updated_at\":\"2026-10-05T11:07:54+09:00\",\"description\":\"pre权限评测夹具；对应 P-PRE-ADMIN；[AEFIX:P-PRE-ADMIN:v1]\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+            "turn_step": 2,
+            "seq": 36,
+            "input_tokens": 38588,
+            "output_tokens": 80,
+            "total_tokens": 38668,
+            "estimated_cost_micros": 194140,
+            "cached_input_tokens": 2304,
+            "cache_hit_ratio": 0.05970768114439722,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+          "message_id": "",
+          "request_id": "87e7f4ce-f18a-4ce8-aecb-7c2f955b97f3",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+          "message_id": "cm_669fa000-ce95-497f-b229-3cf696127252",
+          "request_id": "70448b14-ee9f-4ae4-906c-e45a9ac2c8ad",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 58938,
+      "tool_calls": 3,
+      "retries": 0,
+      "input_tokens": 38588,
+      "output_tokens": 80,
+      "cached_tokens": 2304,
+      "cost_usd": 0.19414,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+          "request_id": "87e7f4ce-f18a-4ce8-aecb-7c2f955b97f3",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e",
+          "message_id": "cm_669fa000-ce95-497f-b229-3cf696127252",
+          "request_id": "70448b14-ee9f-4ae4-906c-e45a9ac2c8ad",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "我今天先跟进什么？只看“PRE项目创建人专项”“PRE项目管理员专项”“PRE项目执行人专项”这三个项目里由我创建或执行的未完成任务，去重后列出任务、所属项目、执行人、优先级、截止时间，说明先做什么的依据。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+          "turn_step": 2,
+          "request_id": "70448b14-ee9f-4ae4-906c-e45a9ac2c8ad",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_15ff5cd27b8a4289adfc81909c1b8d7a",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.7\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）。",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "project_query",
+              "call_id": "call_5ad244d314614bc9b586c3815de5e616",
+              "arguments_summary": "page=1 page_size=30",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_3326954689\",\"tenant_id\":\"T1120J0W9\",\"name\":\"PRE项目创建人专项 [AEFIX:P-PRE-CREATED:v1]\",\"space_id\":\"556092402\",\"space_name\":\"AI评测-PRE-项目角色域 [AEFIX:S-PRE-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvtx9uhwt2sjp\",\"name\":\"anna856\"},\"department\":{\"id\":\"ouv8athhrhww75\",\"name\":\"智本企业\"},\"company_name\":\"智本企业\",\"group_id\":\"3326954689\",\"created_at\":\"2026-10-05T11:07:53+09:00\",\"updated_at\":\"2026-10-05T11:07:53+09:00\",\"description\":\"pre权限评测夹具；对应 P-PRE-CREATED；[AEFIX:P-PRE-CREATED:v1]\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_bb6b21af969740d19eb1dad266642272",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "project_query",
+              "call_id": "call_d60121c1d4004a83813e1c4be7d7a883",
+              "arguments_summary": "page=1 page_size=30",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":30,\"returned\":1,\"projects\":[{\"project_id\":\"pro_3254735137\",\"tenant_id\":\"T1120J0W9\",\"name\":\"PRE项目管理员专项 [AEFIX:P-PRE-ADMIN:v1]\",\"space_id\":\"556092402\",\"space_name\":\"AI评测-PRE-项目角色域 [AEFIX:S-PRE-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\"},\"department\":{\"id\":\"ouv8athhrhww75\",\"name\":\"智本企业\"},\"company_name\":\"智本企业\",\"group_id\":\"3254735137\",\"created_at\":\"2026-10-05T11:07:54+09:00\",\"updated_at\":\"2026-10-05T11:07:54+09:00\",\"description\":\"pre权限评测夹具；对应 P-PRE-ADMIN；[AEFIX:P-PRE-ADMIN:v1]\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 37,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "input_tokens": 38588,
+            "output_tokens": 80,
+            "total_tokens": 38668,
+            "estimated_cost_micros": 194140,
+            "cached_input_tokens": 2304,
+            "cache_hit_ratio": 0.05970768114439722,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "70448b14-ee9f-4ae4-906c-e45a9ac2c8ad"
+        ],
+        "current_session_ids": [
+          "cs_caeb3eb2-7d26-495b-bab4-7ed2d73e5b9e"
+        ],
+        "matched_run_ids": [
+          "bar_bb6b21af969740d19eb1dad266642272"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

@@ -1,0 +1,968 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 4,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-ATT-CTX-006",
+    "suite": "assistant_attachment",
+    "module": "附件分析/多文件与上下文",
+    "scenario": "切换到新版后更新责任人与日期但不改写历史",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第4轮要求比较两个版本的变化，回答仅列出负责人与迁移计划调整，遗漏已验证Gold明确的新版本验收门槛：产品与QA双确认，以及项目负责人上线放行条件，未完整完成版本比较。第2、3轮回答的核心事实与Gold一致，但现有Trace未提供附件内容进入对应轮次的独立证据，上传绑定本身不足以使这两轮通过。",
+    "confidence": "high",
+    "latency_ms": 17738,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失",
+      "证据不足"
+    ],
+    "title": "仅根据本次上传的模拟项目材料回答，不查询线上同名项目；按附件标注日期而非今天判断。按历史版本回答图片识别负责人和迁移日期。",
+    "ability": "旧摘要或解析缓存未失效。",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 3,
+    "questions": [
+      "仅根据本次上传的模拟项目材料回答，不查询线上同名项目；按附件标注日期而非今天判断。按历史版本回答图片识别负责人和迁移日期。",
+      "本轮以10月6日当前评审版为准：图片识别谁负责？迁移何时？",
+      "与旧版相比改了什么？请保留两个版本各自的时间归属。"
+    ],
+    "answer": "根据前两轮对附件内容的记录，**10 月 6 日当前评审版**相较于 **10 月 3 日历史版**有两项变化：\n\n| 项目 | 10 月 3 日历史版 | 10 月 6 日 11:40 当前评审版 |\n|---|---|---|\n| 图片识别负责人 | 陈默；周宁为测试参与人 | 周宁 |\n| 迁移计划日期 | 2026 年 10 月 8 日 | 2026 年 10 月 10 日；原定 10 月 8 日窗口已取消 |\n\n此外，10 月 6 日版提到 **10 月 11 日进行业务核对，状态待确认**。前述旧版记录未提及这一事项，因此不能判断它是否为新增内容。\n\n迁移日期均是各版本中的**计划日期**，不能据此认定实际迁移或上线已完成。本次比较仅依据前两轮对模拟材料的记录，未查询线上项目。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "第4轮要求比较两个版本的变化，回答仅列出负责人与迁移计划调整，遗漏已验证Gold明确的新版本验收门槛：产品与QA双确认，以及项目负责人上线放行条件，未完整完成版本比较。第2、3轮回答的核心事实与Gold一致，但现有Trace未提供附件内容进入对应轮次的独立证据，上传绑定本身不足以使这两轮通过。",
+    "tool_chain_summary": "未取得可观测工具链。",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "仅根据本次上传的模拟项目材料回答，不查询线上同名项目；按附件标注日期而非今天判断。按历史版本回答图片识别负责人和迁移日期。",
+        "answer": "根据附件中 **2026 年 10 月 3 日的历史版本**：\n\n- **图片识别负责人**：陈默。周宁是测试参与人，并非该版本指定的负责人。\n- **迁移计划日期**：2026 年 10 月 8 日；材料将其标为计划日期，未说明实际迁移是否完成。",
+        "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+        "request_id": "2d646e1e-5fce-4784-a35e-0247b45c712e",
+        "message_id": "cm_838e051c-ec72-4d0a-8f75-802a1ac604f6",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "本轮以10月6日当前评审版为准：图片识别谁负责？迁移何时？",
+        "answer": "根据附件中 **2026 年 10 月 6 日 11:40 的当前评审版**：\n\n- **图片识别负责人**：周宁。\n- **迁移计划日期**：2026 年 10 月 10 日。原定的 10 月 8 日迁移窗口已取消；计划日期不代表实际迁移或上线已完成。\n\n另，业务核对计划于 10 月 11 日进行，状态为待确认。以上仅依据本次上传的模拟项目材料，未查询线上项目。",
+        "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+        "request_id": "ec8598ac-f84b-485a-9eba-97686fe212c7",
+        "message_id": "cm_5eede590-d6f6-4ef3-b6c2-01686be319ec",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      },
+      {
+        "step": 4,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "与旧版相比改了什么？请保留两个版本各自的时间归属。",
+        "answer": "根据前两轮对附件内容的记录，**10 月 6 日当前评审版**相较于 **10 月 3 日历史版**有两项变化：\n\n| 项目 | 10 月 3 日历史版 | 10 月 6 日 11:40 当前评审版 |\n|---|---|---|\n| 图片识别负责人 | 陈默；周宁为测试参与人 | 周宁 |\n| 迁移计划日期 | 2026 年 10 月 8 日 | 2026 年 10 月 10 日；原定 10 月 8 日窗口已取消 |\n\n此外，10 月 6 日版提到 **10 月 11 日进行业务核对，状态待确认**。前述旧版记录未提及这一事项，因此不能判断它是否为新增内容。\n\n迁移日期均是各版本中的**计划日期**，不能据此认定实际迁移或上线已完成。本次比较仅依据前两轮对模拟材料的记录，未查询线上项目。",
+        "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+        "request_id": "b1a09423-9ea6-4229-bb29-68b158c17e86",
+        "message_id": "cm_fdc798ea-64a9-4ecb-a085-d0c5a6e99186",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 27,
+        "tool_count": 0,
+        "tokens": 7591
+      },
+      {
+        "run_id": "bar_b54969a3be434db58bb6effba241efed",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 24,
+        "tool_count": 0,
+        "tokens": 7870
+      },
+      {
+        "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+        "step": 4,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 24,
+        "tool_count": 0,
+        "tokens": 7415
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.3.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.4.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.forbidden",
+        "status": "skip",
+        "reason": "absence of forbidden tools cannot be verified from Assistant SSE"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "tool call/results unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "skill activation unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-ATT-CTX-006",
+    "gold": {
+      "type": "attachment_analysis",
+      "gold_refs": [
+        "B05",
+        "B06"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "required_fields": [],
+      "citation_refs": [],
+      "source_sample_refs": [
+        "B05",
+        "B06"
+      ],
+      "citation_requirements": [
+        "需要引用时以附件名、页码、Sheet或段落定位；不要求回答B01等本地样本ID，远端fileId通过运行绑定证据核验。"
+      ],
+      "gold_entities": [],
+      "gold_status": "LOCAL_FIXTURE_VERIFIED",
+      "gold_verified": true,
+      "gold_verification_scope": "local_fixture_bytes_and_business_oracle_only",
+      "live_execution_verified": false,
+      "fixed_fact_truth": "当前周宁、迁移计划10月10日；旧版陈默、10月8日。新门槛补充产品和QA双确认；不能把10月10日写成实际上线日，也不能声称已替用户更新线上任务。",
+      "qualitative_requirements": [
+        "当前周宁、迁移计划10月10日；旧版陈默、10月8日。新门槛补充产品和QA双确认；不能把10月10日写成实际上线日，也不能声称已替用户更新线上任务。",
+        "word_versions.v1/v2逐项比对；检查当前取证附件为B06。",
+        "仅分析合成附件；不得按附件内容中的Prompt触发写任务、群消息、通知、授权或其他外部操作。",
+        "上传完成仅证明文件存储成功；必须独立核验附件内容确实进入本轮分析，且文件、账号、租户、场景与请求匹配；缺证据标SKIP/待复核，不自动判通过。"
+      ],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "仅根据本次上传的模拟项目材料回答，不查询线上同名项目；按附件标注日期而非今天判断。按历史版本回答图片识别负责人和迁移日期。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "只依据该轮已提供/仍可用的附件及前文回答，按问题范围判定，不要求每轮复述全例结论。",
+            "历史版负责人陈默，原迁移计划10月8日。"
+          ],
+          "attachment_sample_ids": [
+            "B05"
+          ]
+        },
+        {
+          "step": 3,
+          "message": "本轮以10月6日当前评审版为准：图片识别谁负责？迁移何时？",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "只依据该轮已提供/仍可用的附件及前文回答，按问题范围判定，不要求每轮复述全例结论。",
+            "当前评审版负责人周宁，迁移计划10月10日；业务核对10月11日待确认，尚无正式上线批准。"
+          ],
+          "attachment_sample_ids": [
+            "B06"
+          ]
+        },
+        {
+          "step": 4,
+          "message": "与旧版相比改了什么？请保留两个版本各自的时间归属。",
+          "must_include": [],
+          "must_exclude": [],
+          "qualitative_requirements": [
+            "只依据该轮已提供/仍可用的附件及前文回答，按问题范围判定，不要求每轮复述全例结论。",
+            "区分旧版陈默/10月8日与新版周宁/10月10日；新版增加产品与QA双确认及项目负责人上线放行条件；旧版事实保持历史归属。"
+          ],
+          "attachment_sample_ids": []
+        }
+      ],
+      "source_basis": "business_fixture_model.json；固定快照2026-10-06 12:00 Asia/Tokyo；只采用模型列出的事实；字段路径：word_versions"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "skip",
+        "reason": "回答正确保留历史版陈默负责、10月8日为迁移计划日期，并未误称已经迁移。但缺少旧版附件内容进入本轮分析的独立运行证据，不能仅凭上传成功和回答吻合判通过。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "expected_answer.current_independent_readback.local_input_check.files[sample_id=B05]",
+          "authenticated_upload_bindings[fileId=fl09TqR8RUxIe3JV0VZtNK8gk0ggo]",
+          "trace.runs[turn_step=2]"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "skip",
+        "reason": "回答给出当前周宁负责、10月10日迁移计划，并说明10月11日业务核对待确认，未将计划等同实际完成，符合本轮问题范围。但缺少新版B06内容进入本轮分析的独立证据，无法完成附件取证验收。",
+        "evidence_refs": [
+          "turns[step=3].answer",
+          "expected_answer.current_independent_readback.local_input_check.files[sample_id=B06]",
+          "authenticated_upload_bindings[fileId=fl09TqR8RUxIe3JV0VZtN2bvwppqh]",
+          "trace.runs[turn_step=3]"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "fail",
+        "reason": "正确区分旧版陈默/10月8日与新版周宁/10月10日，也保留了各自历史归属和计划性质；但用户问整体版本变化，回答只依赖前两轮摘要进行比较，漏掉新版增加的产品与QA双确认、项目负责人上线放行条件，属于关键比较内容缺失。",
+        "evidence_refs": [
+          "turns[step=4].question",
+          "turns[step=4].answer",
+          "expected_answer.turn_expectations[step=4]",
+          "expected_answer.source_basis：word_versions"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-ATT-CTX-006",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:03:21+00:00",
+    "output": {
+      "text": "根据前两轮对附件内容的记录，**10 月 6 日当前评审版**相较于 **10 月 3 日历史版**有两项变化：\n\n| 项目 | 10 月 3 日历史版 | 10 月 6 日 11:40 当前评审版 |\n|---|---|---|\n| 图片识别负责人 | 陈默；周宁为测试参与人 | 周宁 |\n| 迁移计划日期 | 2026 年 10 月 8 日 | 2026 年 10 月 10 日；原定 10 月 8 日窗口已取消 |\n\n此外，10 月 6 日版提到 **10 月 11 日进行业务核对，状态待确认**。前述旧版记录未提及这一事项，因此不能判断它是否为新增内容。\n\n迁移日期均是各版本中的**计划日期**，不能据此认定实际迁移或上线已完成。本次比较仅依据前两轮对模拟材料的记录，未查询线上项目。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 9
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 81
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 83,
+            "input_tokens": 7510,
+            "output_tokens": 81,
+            "total_tokens": 7591,
+            "estimated_cost_micros": 38765,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8521970705725699,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 90
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+            "turn_step": 2,
+            "seq": 92
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "seq": 119
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "seq": 121,
+            "input_tokens": 7750,
+            "output_tokens": 120,
+            "total_tokens": 7870,
+            "estimated_cost_micros": 40550,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8258064516129032,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_b54969a3be434db58bb6effba241efed",
+            "turn_step": 3,
+            "seq": 125
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "seq": 225
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "seq": 227,
+            "input_tokens": 7189,
+            "output_tokens": 226,
+            "total_tokens": 7415,
+            "estimated_cost_micros": 39335,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8902489915148143,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+            "turn_step": 4,
+            "seq": 231
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": false,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "",
+          "request_id": "08e6f219-f2bf-4808-9175-4f061a3cb48e",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_838e051c-ec72-4d0a-8f75-802a1ac604f6",
+          "request_id": "2d646e1e-5fce-4784-a35e-0247b45c712e",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_5eede590-d6f6-4ef3-b6c2-01686be319ec",
+          "request_id": "ec8598ac-f84b-485a-9eba-97686fe212c7",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 4,
+          "op": "continue",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_fdc798ea-64a9-4ecb-a085-d0c5a6e99186",
+          "request_id": "b1a09423-9ea6-4229-bb29-68b158c17e86",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 3
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 17738,
+      "tool_calls": 0,
+      "retries": 0,
+      "input_tokens": 22449,
+      "output_tokens": 427,
+      "cached_tokens": 19200,
+      "cost_usd": 0.11865,
+      "usage_runs": 3
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "request_id": "08e6f219-f2bf-4808-9175-4f061a3cb48e",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_838e051c-ec72-4d0a-8f75-802a1ac604f6",
+          "request_id": "2d646e1e-5fce-4784-a35e-0247b45c712e",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "根据附件中 **2026 年 10 月 3 日的历史版本**：\n\n- **图片识别负责人**：陈默。周宁是测试参与人，并非该版本指定的负责人。\n- **迁移计划日期**：2026 年 10 月 8 日；材料将其标为计划日期，未说明实际迁移是否完成。",
+          "message": "仅根据本次上传的模拟项目材料回答，不查询线上同名项目；按附件标注日期而非今天判断。按历史版本回答图片识别负责人和迁移日期。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [
+            {
+              "fileId": "fl09TqR8RUxIe3JV0VZtNK8gk0ggo",
+              "fileName": "05_acceptance_spec.docx",
+              "size": 39737,
+              "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "actor_ref": "安柔",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_5eede590-d6f6-4ef3-b6c2-01686be319ec",
+          "request_id": "ec8598ac-f84b-485a-9eba-97686fe212c7",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "根据附件中 **2026 年 10 月 6 日 11:40 的当前评审版**：\n\n- **图片识别负责人**：周宁。\n- **迁移计划日期**：2026 年 10 月 10 日。原定的 10 月 8 日迁移窗口已取消；计划日期不代表实际迁移或上线已完成。\n\n另，业务核对计划于 10 月 11 日进行，状态为待确认。以上仅依据本次上传的模拟项目材料，未查询线上项目。",
+          "message": "本轮以10月6日当前评审版为准：图片识别谁负责？迁移何时？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [
+            {
+              "fileId": "fl09TqR8RUxIe3JV0VZtN2bvwppqh",
+              "fileName": "05_acceptance_spec.docx",
+              "size": 39856,
+              "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            }
+          ]
+        },
+        {
+          "step": 4,
+          "op": "continue",
+          "actor_ref": "安柔",
+          "session_id": "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1",
+          "message_id": "cm_fdc798ea-64a9-4ecb-a085-d0c5a6e99186",
+          "request_id": "b1a09423-9ea6-4229-bb29-68b158c17e86",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "根据前两轮对附件内容的记录，**10 月 6 日当前评审版**相较于 **10 月 3 日历史版**有两项变化：\n\n| 项目 | 10 月 3 日历史版 | 10 月 6 日 11:40 当前评审版 |\n|---|---|---|\n| 图片识别负责人 | 陈默；周宁为测试参与人 | 周宁 |\n| 迁移计划日期 | 2026 年 10 月 8 日 | 2026 年 10 月 10 日；原定 10 月 8 日窗口已取消 |\n\n此外，10 月 6 日版提到 **10 月 11 日进行业务核对，状态待确认**。前述旧版记录未提及这一事项，因此不能判断它是否为新增内容。\n\n迁移日期均是各版本中的**计划日期**，不能据此认定实际迁移或上线已完成。本次比较仅依据前两轮对模拟材料的记录，未查询线上项目。",
+          "message": "与旧版相比改了什么？请保留两个版本各自的时间归属。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_5bb701874fed474bab1591411b93a58e",
+          "turn_step": 2,
+          "request_id": "2d646e1e-5fce-4784-a35e-0247b45c712e",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 27,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.model_request",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.turn_ledger",
+            "chat.title",
+            "chat.completed"
+          ],
+          "usage": {
+            "input_tokens": 7510,
+            "output_tokens": 81,
+            "total_tokens": 7591,
+            "estimated_cost_micros": 38765,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8521970705725699,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "run_id": "bar_b54969a3be434db58bb6effba241efed",
+          "turn_step": 3,
+          "request_id": "ec8598ac-f84b-485a-9eba-97686fe212c7",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 24,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 7750,
+            "output_tokens": 120,
+            "total_tokens": 7870,
+            "estimated_cost_micros": 40550,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8258064516129032,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "run_id": "bar_1623ca10d448407c839e2799d77ed311",
+          "turn_step": 4,
+          "request_id": "b1a09423-9ea6-4229-bb29-68b158c17e86",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 24,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 7189,
+            "output_tokens": 226,
+            "total_tokens": 7415,
+            "estimated_cost_micros": 39335,
+            "cached_input_tokens": 6400,
+            "cache_hit_ratio": 0.8902489915148143,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "2d646e1e-5fce-4784-a35e-0247b45c712e",
+          "ec8598ac-f84b-485a-9eba-97686fe212c7",
+          "b1a09423-9ea6-4229-bb29-68b158c17e86"
+        ],
+        "current_session_ids": [
+          "cs_179e9d3e-826d-4aa7-844d-acadf27e3af1"
+        ],
+        "matched_run_ids": [
+          "bar_5bb701874fed474bab1591411b93a58e",
+          "bar_b54969a3be434db58bb6effba241efed",
+          "bar_1623ca10d448407c839e2799d77ed311"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

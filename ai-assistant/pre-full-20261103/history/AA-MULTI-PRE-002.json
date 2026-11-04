@@ -1,0 +1,862 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-MULTI-PRE-002",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "多项目持续缩小恢复范围",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "step 2 正确统计项目甲63项、项目乙1项，且明确包含所有层级，分层数量与独立源回读一致。step 3 已正式发起，但运行时以 failed 终止并返回“report chat generation failed”，没有完成按创建人统计的核心任务，属于 execution_failure，而非评论理解错误。step 4 未执行，无法评判。",
+    "confidence": "high",
+    "latency_ms": 53629,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "skip",
+    "automatic_reason": "",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "分别统计这两个项目所有层级的任务数。",
+    "ability": "多对象持续追问",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 2,
+    "questions": [
+      "分别统计这两个项目所有层级的任务数。",
+      "只看第一个项目，按创建人统计。",
+      "回到一开始两个项目，按原全层级口径统计总数。"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "step 2 正确统计项目甲63项、项目乙1项，且明确包含所有层级，分层数量与独立源回读一致。step 3 已正式发起，但运行时以 failed 终止并返回“report chat generation failed”，没有完成按创建人统计的核心任务，属于 execution_failure，而非评论理解错误。step 4 未执行，无法评判。",
+    "tool_chain_summary": "工具链：task_ask(completed)",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "分别统计这两个项目所有层级的任务数。",
+        "answer": "两个项目的任务数如下，均包含所有层级的子任务：\n\n- **聚合验收项目甲：63 项**，其中一级任务 31 项、子任务 32 项。`widget:project:pro_993982662:T1120J0W9`\n- **聚合验收项目乙：1 项**，其中一级任务 1 项、子任务 0 项。`widget:project:pro_1679732559:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+        "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+        "request_id": "8abfd89a-6290-4f62-a455-9c444b16f171",
+        "message_id": "cm_28a8c556-bdca-4117-88c5-155425cc31df",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "error",
+        "actor_ref": "智本测试_安柔",
+        "question": "只看第一个项目，按创建人统计。",
+        "answer": "",
+        "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+        "request_id": "e12ebe73-f053-459e-88fb-3439d553072c",
+        "message_id": "cm_627e94f8-8baa-4d7a-9ffb-7793d849a141",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+        "step": 2,
+        "seq": 19,
+        "name": "task_ask",
+        "arguments_summary": "queries=2 group_by= format=stats detail=false comments=false mode= children=false instruction_runes=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 33,
+        "tool_count": 1,
+        "tokens": 56061
+      },
+      {
+        "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "failed",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 16,
+        "tool_count": 0,
+        "tokens": null
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-MULTI-PRE-002",
+    "gold": {
+      "type": "aggregation_multi_entity",
+      "gold_refs": [
+        "AGG-PRE-SPACE",
+        "AGG-PRE-P-A",
+        "AGG-PRE-P-B",
+        "AGG-PRE-P-Z",
+        "AGG-PRE-T001",
+        "AGG-PRE-T002",
+        "AGG-PRE-T003",
+        "AGG-PRE-T004",
+        "AGG-PRE-T005",
+        "AGG-PRE-T006",
+        "AGG-PRE-T007",
+        "AGG-PRE-T008",
+        "AGG-PRE-T009",
+        "AGG-PRE-T010",
+        "AGG-PRE-T011",
+        "AGG-PRE-T012",
+        "AGG-PRE-T013",
+        "AGG-PRE-T014",
+        "AGG-PRE-T015",
+        "AGG-PRE-T016",
+        "AGG-PRE-T017",
+        "AGG-PRE-T018",
+        "AGG-PRE-T019",
+        "AGG-PRE-T020",
+        "AGG-PRE-T021",
+        "AGG-PRE-T022",
+        "AGG-PRE-T023",
+        "AGG-PRE-T024",
+        "AGG-PRE-T025",
+        "AGG-PRE-T026",
+        "AGG-PRE-T027",
+        "AGG-PRE-T028",
+        "AGG-PRE-T029",
+        "AGG-PRE-T030",
+        "AGG-PRE-T031",
+        "AGG-PRE-T032",
+        "AGG-PRE-T033",
+        "AGG-PRE-T034",
+        "AGG-PRE-T035",
+        "AGG-PRE-T036",
+        "AGG-PRE-T037",
+        "AGG-PRE-T038",
+        "AGG-PRE-T039",
+        "AGG-PRE-T040",
+        "AGG-PRE-T041",
+        "AGG-PRE-T042",
+        "AGG-PRE-T043",
+        "AGG-PRE-T044",
+        "AGG-PRE-T045",
+        "AGG-PRE-T046",
+        "AGG-PRE-T047",
+        "AGG-PRE-T048",
+        "AGG-PRE-T049",
+        "AGG-PRE-T050",
+        "AGG-PRE-T051",
+        "AGG-PRE-T052",
+        "AGG-PRE-T053",
+        "AGG-PRE-T054",
+        "AGG-PRE-T055",
+        "AGG-PRE-T056",
+        "AGG-PRE-T057",
+        "AGG-PRE-T058",
+        "AGG-PRE-T059",
+        "AGG-PRE-T060",
+        "AGG-PRE-T061",
+        "AGG-PRE-T062",
+        "AGG-PRE-T063",
+        "AGG-PRE-T064",
+        "AGG-PRE-U0"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+        "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+        "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+        "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+        "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+        "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+        "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+        "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "第1轮：{\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":63,\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":1}\n第2轮：{\"annaA\":23,\"智本测试_安柔\":21,\"anna289\":19}\n第3轮：{\"总数\":64}",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "分别统计这两个项目所有层级的任务数。",
+          "must_include": [],
+          "qualitative_requirements": [
+            "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+            "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+            "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+            "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+            "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+            "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+            "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+            "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。",
+            "本轮独立Gold={\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\":63,\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\":1}"
+          ]
+        },
+        {
+          "step": 3,
+          "message": "只看第一个项目，按创建人统计。",
+          "must_include": [],
+          "qualitative_requirements": [
+            "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+            "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+            "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+            "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+            "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+            "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+            "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+            "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。",
+            "本轮独立Gold={\"annaA\":23,\"智本测试_安柔\":21,\"anna289\":19}"
+          ]
+        },
+        {
+          "step": 4,
+          "message": "回到一开始两个项目，按原全层级口径统计总数。",
+          "must_include": [],
+          "qualitative_requirements": [
+            "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+            "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+            "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+            "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+            "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+            "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+            "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+            "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。",
+            "本轮独立Gold={\"总数\":64}"
+          ]
+        }
+      ],
+      "numeric_oracle": [
+        {
+          "聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]": 63,
+          "聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]": 1
+        },
+        {
+          "annaA": 23,
+          "智本测试_安柔": 21,
+          "anna289": 19
+        },
+        {
+          "总数": 64
+        }
+      ],
+      "oracle_source": "outputs/aggregation_cases_20261023/pre.oracle.json",
+      "snapshot_policy": "只适用于本次业务源回读；执行前刷新ACL、全树、状态、截止时间及时间依赖统计。",
+      "scope": "pre/actor_visible/AGG-PRE-SPACE",
+      "evaluation_scope": "all_answer_turns"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "回答正确给出两个指定项目的全层级任务数63和1，项目甲一级任务31、子任务32的拆分亦正确，并提供有效项目widget来源。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[turn_step=2].tools[seq=19].result_preview.items[].covered.counts",
+          "expected_answer.current_independent_readback.complete_recursive_task_tree"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "本轮已正式提交按第一个项目创建人分组统计的问题，但生成失败终止且回答为空，未提供annaA 23项、智本测试_安柔21项、anna289 19项的统计结果，属于execution_failure。",
+        "evidence_refs": [
+          "turns[step=3].terminal_event=failed",
+          "turns[step=3].error",
+          "trace.runs[turn_step=3].status=failed",
+          "trace.errors[step=3]"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "skip",
+        "reason": "输入仅包含step 2和step 3的正式问答记录，未见step 4发起或明确执行终态，不能判断是否正确恢复两个项目范围并统计总数64。",
+        "evidence_refs": [
+          "expected_turns[step=4]",
+          "turns",
+          "trace.runs"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-MULTI-PRE-002",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:16:01+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "task_ask",
+            "call_id": "call_300d2d23b8704b80bbc240a862631259",
+            "arguments_summary": "queries=2 group_by= format=stats detail=false comments=false mode= children=false instruction_runes=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 21,
+            "name": "task_ask",
+            "call_id": "call_300d2d23b8704b80bbc240a862631259",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"requested\":2,\"ready\":0,\"cached\":0,\"stats\":2,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"combined\":{\"tasks\":32,\"by\":{\"is_overdue\":{\"false\":{\"count\":23,\"pct\":71},\"true\":{\"count\":9,\"pct\":28}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"low\":{\"count\":11,\"pct\":34},\"medium\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":11,\"pct\":34},\"in_progress\":{\"count\":11,\"pct\":34},\"pending\":{\"count\":10,\"pct\":31}}}},\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"stats\",\"covered\":{\"total\":1,\"tasks\":1,\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"a0436039\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"attempts\":2,\"cache_reuse_allowed\":false},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"stats\",\"covered\":{\"total\":31,\"tasks\":31,\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"22138b0c\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":22,\"pct\":70},\"true\":{\"count\":9,\"pct\":29}},\"priority\":{\"high\":{\"count\":11,\"pct\":35},\"low\":{\"count\":10,\"pct\":32},\"medium\":{\"count\":10,\"pct\":32}},\"status\":{\"completed\":{\"count\":10,\"pct\":32},\"in_progress\":{\"count\":11,\"pct\":35},\"pending\":{\"count\":10,\"pct\":32}}}},\"attempts\":2,\"cache_reuse_allowed\":false}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 138
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 140,
+            "input_tokens": 55855,
+            "output_tokens": 206,
+            "total_tokens": 56061,
+            "estimated_cost_micros": 282365,
+            "cached_input_tokens": 27136,
+            "cache_hit_ratio": 0.48582937964372036,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+            "turn_step": 2,
+            "seq": 144
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+            "turn_step": 3,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+            "turn_step": 3
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+            "turn_step": 3,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+            "turn_step": 3,
+            "seq": 13
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+            "turn_step": 3,
+            "seq": 15,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "message_id": "",
+          "request_id": "de98878f-4a85-476c-9b78-52eec35dce13",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "message_id": "cm_28a8c556-bdca-4117-88c5-155425cc31df",
+          "request_id": "8abfd89a-6290-4f62-a455-9c444b16f171",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "message_id": "cm_627e94f8-8baa-4d7a-9ffb-7793d849a141",
+          "request_id": "e12ebe73-f053-459e-88fb-3439d553072c",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 2
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 53629,
+      "tool_calls": 1,
+      "retries": 0,
+      "input_tokens": 55855,
+      "output_tokens": 206,
+      "cached_tokens": 27136,
+      "cost_usd": 0.282365,
+      "usage_runs": 2
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 3,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "request_id": "de98878f-4a85-476c-9b78-52eec35dce13",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "message_id": "cm_28a8c556-bdca-4117-88c5-155425cc31df",
+          "request_id": "8abfd89a-6290-4f62-a455-9c444b16f171",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "两个项目的任务数如下，均包含所有层级的子任务：\n\n- **聚合验收项目甲：63 项**，其中一级任务 31 项、子任务 32 项。`widget:project:pro_993982662:T1120J0W9`\n- **聚合验收项目乙：1 项**，其中一级任务 1 项、子任务 0 项。`widget:project:pro_1679732559:T1120J0W9`\n\n要不要我帮你长期关注“聚合验收项目甲”和“聚合验收项目乙”？",
+          "message": "分别统计这两个项目所有层级的任务数。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_b7855ce4-0e40-4039-995b-1e9f9361a523",
+          "message_id": "cm_627e94f8-8baa-4d7a-9ffb-7793d849a141",
+          "request_id": "e12ebe73-f053-459e-88fb-3439d553072c",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "",
+          "message": "只看第一个项目，按创建人统计。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+          "turn_step": 2,
+          "request_id": "8abfd89a-6290-4f62-a455-9c444b16f171",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "task_ask",
+              "call_id": "call_300d2d23b8704b80bbc240a862631259",
+              "arguments_summary": "queries=2 group_by= format=stats detail=false comments=false mode= children=false instruction_runes=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"requested\":2,\"ready\":0,\"cached\":0,\"stats\":2,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"combined\":{\"tasks\":32,\"by\":{\"is_overdue\":{\"false\":{\"count\":23,\"pct\":71},\"true\":{\"count\":9,\"pct\":28}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"low\":{\"count\":11,\"pct\":34},\"medium\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":11,\"pct\":34},\"in_progress\":{\"count\":11,\"pct\":34},\"pending\":{\"count\":10,\"pct\":31}}}},\"items\":[{\"query\":{\"project_id\":\"pro_1679732559\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目乙\",\"status\":\"stats\",\"covered\":{\"total\":1,\"tasks\":1,\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"a0436039\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"low\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"attempts\":2,\"cache_reuse_allowed\":false},{\"query\":{\"project_id\":\"pro_993982662\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"项目甲\",\"status\":\"stats\",\"covered\":{\"total\":31,\"tasks\":31,\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"22138b0c\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":22,\"pct\":70},\"true\":{\"count\":9,\"pct\":29}},\"priority\":{\"high\":{\"count\":11,\"pct\":35},\"low\":{\"count\":10,\"pct\":32},\"medium\":{\"count\":10,\"pct\":32}},\"status\":{\"completed\":{\"count\":10,\"pct\":32},\"in_progress\":{\"count\":11,\"pct\":35},\"pending\":{\"count\":10,\"pct\":32}}}},\"attempts\":2,\"cache_reuse_allowed\":false}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 33,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.task_ask",
+            "chat.tool_result",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 55855,
+            "output_tokens": 206,
+            "total_tokens": 56061,
+            "estimated_cost_micros": 282365,
+            "cached_input_tokens": 27136,
+            "cache_hit_ratio": 0.48582937964372036,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "run_id": "bar_9f6f2554d97242ba82c79bdb75ab4a39",
+          "turn_step": 3,
+          "request_id": "e12ebe73-f053-459e-88fb-3439d553072c",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "failed",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 16,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.failed"
+          ],
+          "usage": {
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "8abfd89a-6290-4f62-a455-9c444b16f171",
+          "e12ebe73-f053-459e-88fb-3439d553072c"
+        ],
+        "current_session_ids": [
+          "cs_b7855ce4-0e40-4039-995b-1e9f9361a523"
+        ],
+        "matched_run_ids": [
+          "bar_69a0e1c4f6fb4e58a6e37cab3fc8cb11",
+          "bar_9f6f2554d97242ba82c79bdb75ab4a39"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

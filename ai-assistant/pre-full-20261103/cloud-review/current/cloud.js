@@ -51,7 +51,7 @@
         const r = row.review_resolution;
         if (!plain(r) || r.schema !== 'ai_assistant.pending_resolution.v1' || r.report_id !== i.report_id ||
             !integer(r.case_version) || r.case_version < 1 || !validOverride(r.override) || !r.override ||
-            !['skip','pending_qa'].includes(r.override.business_status) || !['pass','fail','skip'].includes(row.status) ||
+            !['skip','pending_qa','pending_fix','fail'].includes(r.override.business_status) || !['pass','fail','skip'].includes(row.status) ||
             (row.status === 'skip' && row.kind !== 'not_executed') || !text(r.updated_by,128) || !r.updated_by ||
             !text(r.updated_at,100) || !Number.isFinite(Date.parse(r.updated_at)) ||
             !text(r.actor_name,254) || !text(r.resolved_at,100) || !Number.isFinite(Date.parse(r.resolved_at)) ||

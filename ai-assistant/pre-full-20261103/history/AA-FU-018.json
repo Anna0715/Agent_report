@@ -1,0 +1,586 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-FU-018",
+    "suite": "assistant_agent_followup",
+    "module": "任务事实",
+    "scenario": "这个项目的父任务和子任务各有哪些（项目卡片追问）",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第2轮已正式发起，但以 failed 终态结束，明确报错 report chat generation failed。回答仅输出三个任务中的一个且被截断，未完成父子任务清单这一核心请求，属于 execution_failure，而非已确定的评论理解错误。第3轮未见执行记录，无法评价其回答。",
+    "confidence": "high",
+    "latency_ms": 13629,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['structured_select']",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "这个项目的父任务和子任务各有哪些？",
+    "ability": "任务事实",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "这个项目的父任务和子任务各有哪些？",
+      "这个呢"
+    ],
+    "answer": "该项目共有 **3 个父任务，没有子任务**。三个父任务均为待启动：\n\n1. **PRE父项目内无关任务** —",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [],
+    "business_reason": "第2轮已正式发起，但以 failed 终态结束，明确报错 report chat generation failed。回答仅输出三个任务中的一个且被截断，未完成父子任务清单这一核心请求，属于 execution_failure，而非已确定的评论理解错误。第3轮未见执行记录，无法评价其回答。",
+    "tool_chain_summary": "Skill：output_presentation、task_space；工具链：activate_skills(completed) → task_query(completed)；自动断言：missing required tools: ['structured_select']",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "安柔",
+        "question": "这个项目的父任务和子任务各有哪些？",
+        "answer": "该项目共有 **3 个父任务，没有子任务**。三个父任务均为待启动：\n\n1. **PRE父项目内无关任务** —",
+        "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+        "request_id": "efd92a10-3c34-4a27-a23c-c2b961303518",
+        "message_id": "cm_05aafdb9-b691-4657-913d-cae07dcd7e14",
+        "http_status": 200,
+        "error": "report chat generation failed",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+        "step": 2,
+        "seq": 23,
+        "name": "task_query",
+        "arguments_summary": "type=project scope=visible role=all",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "running",
+        "skills": "task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 29,
+        "tool_count": 2,
+        "tokens": null
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'input_tokens', 'output_tokens', 'cached_tokens', 'cost_usd', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check', 'output.completed']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['structured_select']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-FU-018",
+    "gold": {
+      "type": "entity_list",
+      "gold_refs": [
+        "P-PRE-TASK-ONLY",
+        "T-PRE-CREATED-ONLY",
+        "T-PRE-ASSIGNED-ONLY",
+        "T-PRE-OTHER"
+      ],
+      "must_include": [
+        "PRE仅任务关系父项目",
+        "PRE仅由目标用户创建",
+        "PRE仅由目标用户负责",
+        "PRE父项目内无关任务"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "附件指向“PRE仅任务关系父项目”。数据集记录该项目下3个平级任务：PRE仅由目标用户创建、PRE仅由目标用户负责、PRE父项目内无关任务；没有已登记的父子任务关系。应如实说明没有可列出的子任务，不编造层级，也不主动暴露项目或任务内部ID。"
+      ],
+      "fixed_fact_truth": null,
+      "expected_total": 3,
+      "high_priority_total": null,
+      "required_fields": [
+        "项目名称",
+        "任务名称",
+        "父子关系结论"
+      ],
+      "citation_refs": [],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "这个项目的父任务和子任务各有哪些？",
+          "must_include": [],
+          "must_exclude": []
+        },
+        {
+          "step": 3,
+          "message": "这个呢",
+          "must_include": [
+            "PRE仅由目标用户创建",
+            "PRE仅由目标用户负责",
+            "PRE父项目内无关任务"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "运行时生成失败导致回答中断，仅列出 PRE父项目内无关任务，未完整列出项目内三个平级任务及其关系结论。",
+        "evidence_refs": [
+          "turns[step=2].terminal_event=failed",
+          "turns[step=2].error=report chat generation failed",
+          "trace.errors[step=2]",
+          "trace.runs[turn_step=2].tools[seq=23]"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "skip",
+        "reason": "预期追问“这个呢”没有对应的执行问答、附件上下文或回答记录，无法判断本轮是否完成。",
+        "evidence_refs": [
+          "expected_turns[step=3]",
+          "turns 中无 step=3 执行记录"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-018",
+    "environment": "pre",
+    "generated_at": "2026-11-03T07:17:18+00:00",
+    "output": {
+      "text": "该项目共有 **3 个父任务，没有子任务**。三个父任务均为待启动：\n\n1. **PRE父项目内无关任务** —"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_fd65078ce09e433e94bccfeffec557ae",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 16,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_fd65078ce09e433e94bccfeffec557ae",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.7\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）。",
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "task_query",
+            "call_id": "call_738bfd65d3574b69a437bc5da8b5a123",
+            "arguments_summary": "type=project scope=visible role=all",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_query",
+            "call_id": "call_738bfd65d3574b69a437bc5da8b5a123",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":3,\"page\":1,\"page_size\":30,\"returned\":3,\"tasks\":[{\"task_id\":\"task_vx8ztqzc3yps\",\"tenant_id\":\"T1120J0W9\",\"title\":\"PRE父项目内无关任务 [AEFIX:T-PRE-OTHER:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-10-05T11:12:32+09:00\",\"updated_at\":\"2026-10-05T11:12:32+09:00\",\"project_id\":\"pro_981042776\",\"project_name\":\"PRE仅任务关系父项目 [AEFIX:P-PRE-TASK-ONLY:v1]\",\"space_id\":\"4020895805\",\"level\":1,\"child_count\":0,\"owners\":[{\"user_id\":\"ouvd",
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+            "turn_step": 2,
+            "seq": 29
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": false
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+          "message_id": "cm_05aafdb9-b691-4657-913d-cae07dcd7e14",
+          "request_id": "efd92a10-3c34-4a27-a23c-c2b961303518",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 13629,
+      "tool_calls": 2,
+      "retries": 0
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "report chat generation failed"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "session_id": "cs_94147a9d-eb40-4023-b7f5-a7dd5ea4800f",
+          "message_id": "cm_05aafdb9-b691-4657-913d-cae07dcd7e14",
+          "request_id": "efd92a10-3c34-4a27-a23c-c2b961303518",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "failed",
+          "answer": "该项目共有 **3 个父任务，没有子任务**。三个父任务均为待启动：\n\n1. **PRE父项目内无关任务** —",
+          "message": "这个项目的父任务和子任务各有哪些？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "report chat generation failed",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+          "turn_step": 2,
+          "request_id": "efd92a10-3c34-4a27-a23c-c2b961303518",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "running",
+          "skills": [
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "activate_skills",
+              "call_id": "call_fd65078ce09e433e94bccfeffec557ae",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.7\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）。"
+            },
+            {
+              "run_id": "bar_6eff4f425ad74a338d6ea1e63547c7a2",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "task_query",
+              "call_id": "call_738bfd65d3574b69a437bc5da8b5a123",
+              "arguments_summary": "type=project scope=visible role=all",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":3,\"page\":1,\"page_size\":30,\"returned\":3,\"tasks\":[{\"task_id\":\"task_vx8ztqzc3yps\",\"tenant_id\":\"T1120J0W9\",\"title\":\"PRE父项目内无关任务 [AEFIX:T-PRE-OTHER:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-10-05T11:12:32+09:00\",\"updated_at\":\"2026-10-05T11:12:32+09:00\",\"project_id\":\"pro_981042776\",\"project_name\":\"PRE仅任务关系父项目 [AEFIX:P-PRE-TASK-ONLY:v1]\",\"space_id\":\"4020895805\",\"level\":1,\"child_count\":0,\"owners\":[{\"user_id\":\"ouvd"
+            }
+          ],
+          "event_count": 29,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.completion_review"
+          ],
+          "usage": {}
+        }
+      ],
+      "trace_run_turn_mismatch": false
+    }
+  }
+}

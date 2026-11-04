@@ -1,0 +1,1079 @@
+{
+  "row": {
+    "asker": "CFO",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      },
+      {
+        "step": 4,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-SMEM-012",
+    "suite": "assistant_agent_followup",
+    "module": "短期记忆与多轮",
+    "scenario": "列出AI评测项目。 → 新对话后问：第二个谁负责？",
+    "gate_class": "core",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "第2轮将10个项目均称为当前可见，但独立业务源回读确认当前用户可见的AI评测项目仅为空间管理员域、空间创建人域两个，回答包含了额外的不可见及跨租户项目，存在范围错误。第4轮在新会话中未沿用旧列表序位，而是说明无法确认“第二个”并请求提供名称，符合短期记忆隔离要求；该轮正确不能抵消第2轮的错误。",
+    "confidence": "high",
+    "latency_ms": 24632,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "列出AI评测项目。",
+    "ability": "会话继承/指代/隔离",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 2,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "列出AI评测项目。",
+      "第二个谁负责？"
+    ],
+    "answer": "我目前看不到前面的列表，无法确认“第二个”指什么。请把第二项的名称或内容发给我。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "第2轮将10个项目均称为当前可见，但独立业务源回读确认当前用户可见的AI评测项目仅为空间管理员域、空间创建人域两个，回答包含了额外的不可见及跨租户项目，存在范围错误。第4轮在新会话中未沿用旧列表序位，而是说明无法确认“第二个”并请求提供名称，符合短期记忆隔离要求；该轮正确不能抵消第2轮的错误。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → project_query（completed）；步骤 4：activate_skills（completed） → session_recall（failed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "CFO",
+        "question": "列出AI评测项目。",
+        "answer": "截至 2026 年 11 月 3 日 19:42，当前可见、**项目名称含“AI评测”**的项目共 **10 个**，均为待启动、中优先级、未逾期：\n\n1. AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]项目 `widget:project:pro_2121698057:T1120BGCN`\n2. AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]项目 `widget:project:pro_2356324609:T1120BGCN`\n3. AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]项目 `widget:project:pro_1363462506:T1120BFPA`\n4. AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]项目 `widget:project:pro_4197282659:T1120BFPA`\n5. AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]项目 `widget:project:pro_3628214307:T1120BFPA`\n6. AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]项目 `widget:project:pro_3262175138:T1120BFPA`\n7. AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]项目 `widget:project:pro_1228777157:T1120BFPA`\n8. AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]项目 `widget:project:pro_3469538793:T1120BFPA`\n9. AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]项目 `widget:project:pro_439489321:T1120BFPA`\n10. AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]项目 `widget:project:pro_313723135:T1120BFPA`\n\n此前列出的 34 个采用的是“所属空间名称含 AI评测”的不同口径，因此包含项目名称本身不含“AI评测”的项目。",
+        "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+        "request_id": "9215e2ad-bd81-4560-b258-205a810def63",
+        "message_id": "cm_92d6fd70-dcc2-4cf4-9850-1bc10c100063",
+        "http_status": 200,
+        "error": "",
+        "asker": "CFO"
+      },
+      {
+        "step": 4,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "CFO",
+        "question": "第二个谁负责？",
+        "answer": "我目前看不到前面的列表，无法确认“第二个”指什么。请把第二项的名称或内容发给我。",
+        "session_id": "cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+        "request_id": "db834282-ca97-43bf-a84a-fa7f11d647a0",
+        "message_id": "cm_a4b73c47-62d2-4fa0-8ea2-3dc4bb9b057e",
+        "http_status": 200,
+        "error": "",
+        "asker": "CFO"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+        "step": 2,
+        "seq": 23,
+        "name": "project_query",
+        "arguments_summary": "page=1 page_size=30",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+        "step": 4,
+        "seq": 18,
+        "name": "activate_skills",
+        "arguments_summary": "skills=session_history",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+        "step": 4,
+        "seq": 26,
+        "name": "session_recall",
+        "arguments_summary": "unknown tool",
+        "status": "failed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space、output_presentation",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 35,
+        "tool_count": 2,
+        "tokens": 46950
+      },
+      {
+        "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+        "step": 4,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "session_history、output_presentation",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 38,
+        "tool_count": 2,
+        "tokens": 30369
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.4.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['session_recall:failed']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-SMEM-012",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "范围错误"
+      ],
+      "business_reason": "第2轮将10个项目均称为当前可见，但独立业务源回读确认当前用户可见的AI评测项目仅为空间管理员域、空间创建人域两个，回答包含了额外的不可见及跨租户项目，存在范围错误。第4轮在新会话中未沿用旧列表序位，而是说明无法确认“第二个”并请求提供名称，符合短期记忆隔离要求；该轮正确不能抵消第2轮的错误。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论。preflight.current_independent_readback及case_inventory.truth提供当前用户可见项目依据；第2轮project_query完整返回10项，回答照单展示，能够确认工具返回范围与业务源可见范围冲突。第3轮新会话记录、第4轮session_recall返回历史不可用及最终澄清回答，足以核验记忆隔离行为。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "应按当前用户可见范围列出AI评测项目。虽然回答与project_query的10条结果一致，但其中8项不在独立业务源确认的当前可见AI评测项目范围内，不能将工具返回直接等同于已验证的权限范围。",
+          "evidence_refs": [
+            "preflight.current_independent_readback.current_visible_projects",
+            "preflight.case_inventory.truth.current_visible_projects",
+            "trace.runs[0].tools[1]: project_query",
+            "turns step=2 answer"
+          ]
+        },
+        {
+          "step": 4,
+          "status": "pass",
+          "reason": "新会话中未猜测旧列表第二项或编造负责人，明确说明缺少前面的列表并请用户提供第二项名称，正确处理跨会话序位不明确的问题。历史查询失败未导致错误业务结论。",
+          "evidence_refs": [
+            "turns step=3 new_session",
+            "trace.runs[1].tools[1]: session_recall，session history is unavailable",
+            "turns step=4 answer"
+          ]
+        }
+      ],
+      "suggestions": [
+        "核查项目查询的用户身份、租户及权限过滤，确保返回列表与当前用户的业务源可见范围一致。",
+        "保留新会话下对不明确序位先澄清、不继承旧会话列表的处理方式。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed）；步骤 4：activate_skills（completed） → session_recall（failed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "9f2934a998c68ba7915a032b6b69025e029b44c5929439d0e973b65c285606fc"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-SMEM-012",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:42:28+00:00",
+    "output": {
+      "text": "我目前看不到前面的列表，无法确认“第二个”指什么。请把第二项的名称或内容发给我。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_me7RkbWwLiroltEWH8yn0WOV",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 16,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_me7RkbWwLiroltEWH8yn0WOV",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.15\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "project_query",
+            "call_id": "call_7eFHldh5xByxyPor5pqJC3NK",
+            "arguments_summary": "page=1 page_size=30",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "project_query",
+            "call_id": "call_7eFHldh5xByxyPor5pqJC3NK",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":10,\"page\":1,\"page_size\":30,\"returned\":10,\"projects\":[{\"project_id\":\"pro_2121698057\",\"tenant_id\":\"T1120BGCN\",\"name\":\"AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]项目\",\"space_id\":\"3408626863\",\"space_name\":\"AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\"},\"department\":{\"id\":\"ouvfgsdyqruaa8\",\"name\":\"自动化测试部门（勿动）\"},\"company_name\":\"智本科技\",\"group_id\":\"2121698057\",\"created_at\":\"2026-09-15T15:41:08+09:00\",\"updated_at\":\"2026-09-15T15:41:08+09:00\"},{\"project_id\":\"pro_2356324609\",\"tenant_id\":\"T1120BGCN\",\"name\":\"AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]项目\",\"space_id\":\"772677456\",\"space_name\":\"AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\"},\"department\":{\"id\":\"ouvfgsdyqruaa8\",\"name\":\"自动化测试部门（勿动）\"},\"company_name\":\"智本科技\",\"group_id\":\"2356324609\",\"created_at\":\"2026-09-15T15:41:07+09:00\",\"updated_at\":\"2026-09-15T15:41:07+09:00\"},{\"project_id\":\"pro_1363462506\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]项目\",\"space_id\":\"4092568266\",\"space_name\":\"AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"1363462506\",\"created_at\":\"2026-09-15T15:41:06+09:00\",\"updated_at\":\"2026-09-15T15:41:06+09:00\"},{\"project_id\":\"pro_4197282659\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]项目\",\"space_id\":\"3776213054\",\"space_name\":\"AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"4197282659\",\"created_at\":\"2026-09-15T15:41:05+09:00\",\"updated_at\":\"2026-09-15T15:41:05+09:00\"},{\"project_id\":\"pro_3628214307\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]项目\",\"space_id\":\"2916444248\",\"space_name\":\"AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3628214307\",\"created_at\":\"2026-09-15T15:41:05+09:00\",\"updated_at\":\"2026-09-15T15:41:05+09:00\"},{\"project_id\":\"pro_3262175138\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]项目\",\"space_id\":\"3197660864\",\"space_name\":\"AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3262175138\",\"created_at\":\"2026-09-15T15:41:04+09:00\",\"updated_at\":\"2026-09-15T15:41:04+09:00\"},{\"project_id\":\"pro_1228777157\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]项目\",\"space_id\":\"652612805\",\"space_name\":\"AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgljxj7hom5t\",\"name\":\"Tech_Hod\"},\"department\":{\"id\":\"ouvglkd73wzdbh\",\"name\":\"技术中心\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"1228777157\",\"created_at\":\"2026-09-15T15:41:03+09:00\",\"updated_at\":\"2026-09-15T15:41:03+09:00\"},{\"project_id\":\"pro_3469538793\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]项目\",\"space_id\":\"3347773355\",\"space_name\":\"AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3469538793\",\"created_at\":\"2026-09-15T15:40:58+09:00\",\"updated_at\":\"2026-09-15T15:40:58+09:00\"},{\"project_id\":\"pro_439489321\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]项目\",\"space_id\":\"3390847651\",\"space_name\":\"AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"439489321\",\"created_at\":\"2026-09-15T15:40:57+09:00\",\"updated_at\":\"2026-09-15T15:40:57+09:00\"},{\"project_id\":\"pro_313723135\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]项目\",\"space_id\":\"1225340663\",\"space_name\":\"AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgqclqax3z5s\",\"name\":\"自动化_Anna9\"},\"department\":{\"id\":\"ouvglkefxhwkxp\",\"name\":\"自动化二级部门\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"313723135\",\"created_at\":\"2026-09-15T15:40:55+09:00\",\"updated_at\":\"2026-09-15T15:40:55+09:00\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 498
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 500,
+            "input_tokens": 46399,
+            "output_tokens": 551,
+            "total_tokens": 46950,
+            "estimated_cost_micros": 240260,
+            "cached_input_tokens": 34082,
+            "cache_write_input_tokens": 11970,
+            "cache_hit_ratio": 0.7345416927088946,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+            "turn_step": 2,
+            "seq": 504
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 16
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_PNhROxvzYsh2U9TeFl0urZpF",
+            "arguments_summary": "skills=session_history",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 19,
+            "requested": [
+              "session_history"
+            ],
+            "activated": [
+              "output_presentation",
+              "session_history"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 21,
+            "name": "activate_skills",
+            "call_id": "call_PNhROxvzYsh2U9TeFl0urZpF",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"session_history\" version=\"0.2.0\">\n需要本会话更早的内容、而当前上下文里没有时用 session_recall。典型情况：用户说\"刚才那几项\"\"第一次发的那张表\"\"之前查到的那个任务\"，但对应原话、查询结果或附件解读已不在上下文；会话摘要只有结论，需要当时的原话或数字；本轮早先的查询结果已被折叠。上下文里已有的内容不要重查。\n\n先用 mode=list 找轮次，可用 query 按关键词、tool 按工具名过滤，结果从新到旧，用 next_before_turn 翻页；再用 mode=read 加 turn 读详情，只要某一次调用时再加 call。turn=0 表示本轮已完成的调用。\n\n问题要跨多轮找、或某次结果很大而只需要其中的结论、数字、对比时，用 session_ask：写清问题，用 query、tool、from_turn/to_turn 圈范围。它返回结论和 [turn N call K] 引用，不返回原文；引用的轮次需要原话时再用 session_recall read。一轮内最多调用两次",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 23
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 24
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 26,
+            "name": "session_recall",
+            "call_id": "call_5Knpj6r4cl62NJY04tAKMBwU",
+            "arguments_summary": "unknown tool",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 27,
+            "name": "session_recall",
+            "call_id": "call_5Knpj6r4cl62NJY04tAKMBwU",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "session history is unavailable",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 28
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 43
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 45,
+            "input_tokens": 30295,
+            "output_tokens": 74,
+            "total_tokens": 30369,
+            "estimated_cost_micros": 152585,
+            "cached_input_tokens": 27751,
+            "cache_write_input_tokens": 2238,
+            "cache_hit_ratio": 0.916025746822908,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+            "turn_step": 4,
+            "seq": 49
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+          "message_id": "cm_92d6fd70-dcc2-4cf4-9850-1bc10c100063",
+          "request_id": "9215e2ad-bd81-4560-b258-205a810def63",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 2026 年 11 月 3 日 19:42，当前可见、**项目名称含“AI评测”**的项目共 **10 个**，均为待启动、中优先级、未逾期：\n\n1. AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]项目 `widget:project:pro_2121698057:T1120BGCN`\n2. AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]项目 `widget:project:pro_2356324609:T1120BGCN`\n3. AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]项目 `widget:project:pro_1363462506:T1120BFPA`\n4. AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]项目 `widget:project:pro_4197282659:T1120BFPA`\n5. AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]项目 `widget:project:pro_3628214307:T1120BFPA`\n6. AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]项目 `widget:project:pro_3262175138:T1120BFPA`\n7. AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]项目 `widget:project:pro_1228777157:T1120BFPA`\n8. AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]项目 `widget:project:pro_3469538793:T1120BFPA`\n9. AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]项目 `widget:project:pro_439489321:T1120BFPA`\n10. AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]项目 `widget:project:pro_313723135:T1120BFPA`\n\n此前列出的 34 个采用的是“所属空间名称含 AI评测”的不同口径，因此包含项目名称本身不含“AI评测”的项目。",
+          "message": "列出AI评测项目。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "列出AI评测项目。",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        },
+        {
+          "step": 3,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+          "request_id": "a6f13b57-ca83-4625-b6a6-b2c418ff10ce",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 4,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+          "message_id": "cm_a4b73c47-62d2-4fa0-8ea2-3dc4bb9b057e",
+          "request_id": "db834282-ca97-43bf-a84a-fa7f11d647a0",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "我目前看不到前面的列表，无法确认“第二个”指什么。请把第二项的名称或内容发给我。",
+          "message": "第二个谁负责？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "第二个谁负责？",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        }
+      ],
+      "run_count": 2
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "output_presentation,session_history,task_space"
+    },
+    "metrics": {
+      "e2e_ms": 24632,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 76694,
+      "output_tokens": 625,
+      "cached_tokens": 61833,
+      "cost_usd": 0.392845,
+      "usage_runs": 2
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_2241c711-fac5-4e33-819a-7898c9229524",
+          "message_id": "cm_92d6fd70-dcc2-4cf4-9850-1bc10c100063",
+          "request_id": "9215e2ad-bd81-4560-b258-205a810def63",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 2026 年 11 月 3 日 19:42，当前可见、**项目名称含“AI评测”**的项目共 **10 个**，均为待启动、中优先级、未逾期：\n\n1. AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]项目 `widget:project:pro_2121698057:T1120BGCN`\n2. AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]项目 `widget:project:pro_2356324609:T1120BGCN`\n3. AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]项目 `widget:project:pro_1363462506:T1120BFPA`\n4. AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]项目 `widget:project:pro_4197282659:T1120BFPA`\n5. AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]项目 `widget:project:pro_3628214307:T1120BFPA`\n6. AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]项目 `widget:project:pro_3262175138:T1120BFPA`\n7. AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]项目 `widget:project:pro_1228777157:T1120BFPA`\n8. AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]项目 `widget:project:pro_3469538793:T1120BFPA`\n9. AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]项目 `widget:project:pro_439489321:T1120BFPA`\n10. AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]项目 `widget:project:pro_313723135:T1120BFPA`\n\n此前列出的 34 个采用的是“所属空间名称含 AI评测”的不同口径，因此包含项目名称本身不含“AI评测”的项目。",
+          "message": "列出AI评测项目。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "列出AI评测项目。",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        },
+        {
+          "step": 3,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+          "request_id": "a6f13b57-ca83-4625-b6a6-b2c418ff10ce",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 4,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+          "message_id": "cm_a4b73c47-62d2-4fa0-8ea2-3dc4bb9b057e",
+          "request_id": "db834282-ca97-43bf-a84a-fa7f11d647a0",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "我目前看不到前面的列表，无法确认“第二个”指什么。请把第二项的名称或内容发给我。",
+          "message": "第二个谁负责？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "第二个谁负责？",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse_only",
+      "trace_enrichment": {
+        "status": "succeeded",
+        "read_only_backfill": true,
+        "current_request_only": true
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+          "turn_step": 2,
+          "request_id": "9215e2ad-bd81-4560-b258-205a810def63",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "activate_skills",
+              "call_id": "call_me7RkbWwLiroltEWH8yn0WOV",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"task_space\" version=\"0.2.15\">\n任务空间只读：查询项目、任务及操作记录；身份、租户和可见范围由宿主确定。创建任务另激活 task_create；查询不使用补全工具。\n\n对象定位：已有 ID 直接用任务工具；只有名称先用 entity_resolve 的 task.match / project.match，取得 ID 后回本技能，项目名也可用 project_query.name_contains。类型不明且引用未限定时同批查项目、任务；批次失败则分查，两路均完成后按类型回答。一路为空或失败仍查另一路并说明。名称命中不代表已读描述或评论。人员姓名先用 person_search 得 user_id，再填相应人员字段；多人一次传数组，\"我\"用 role。\n\ntask_type 每次选一类，排序分页只在该类内：\n- project：项目任务，project_id 限单个项目。\n- message：非项目消息任务，来源群聊。\n- group：指定群任务，须给 group_id（群 ID 或 sg_ 会话 ID）",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_1aa6b3d427194e068182f6344e393cd0",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "project_query",
+              "call_id": "call_7eFHldh5xByxyPor5pqJC3NK",
+              "arguments_summary": "page=1 page_size=30",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":10,\"page\":1,\"page_size\":30,\"returned\":10,\"projects\":[{\"project_id\":\"pro_2121698057\",\"tenant_id\":\"T1120BGCN\",\"name\":\"AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]项目\",\"space_id\":\"3408626863\",\"space_name\":\"AI评测-外部未授权对照域 [AEFIX:S-B-CANARY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\"},\"department\":{\"id\":\"ouvfgsdyqruaa8\",\"name\":\"自动化测试部门（勿动）\"},\"company_name\":\"智本科技\",\"group_id\":\"2121698057\",\"created_at\":\"2026-09-15T15:41:08+09:00\",\"updated_at\":\"2026-09-15T15:41:08+09:00\"},{\"project_id\":\"pro_2356324609\",\"tenant_id\":\"T1120BGCN\",\"name\":\"AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]项目\",\"space_id\":\"772677456\",\"space_name\":\"AI评测-跨租户授权域 [AEFIX:S-X-AUTHORIZED:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\"},\"department\":{\"id\":\"ouvfgsdyqruaa8\",\"name\":\"自动化测试部门（勿动）\"},\"company_name\":\"智本科技\",\"group_id\":\"2356324609\",\"created_at\":\"2026-09-15T15:41:07+09:00\",\"updated_at\":\"2026-09-15T15:41:07+09:00\"},{\"project_id\":\"pro_1363462506\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]项目\",\"space_id\":\"4092568266\",\"space_name\":\"AI评测-上下级任务隔离域 [AEFIX:S-A-SUB-TASK-ONLY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"1363462506\",\"created_at\":\"2026-09-15T15:41:06+09:00\",\"updated_at\":\"2026-09-15T15:41:06+09:00\"},{\"project_id\":\"pro_4197282659\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]项目\",\"space_id\":\"3776213054\",\"space_name\":\"AI评测-上下级项目域 [AEFIX:S-A-SUBORDINATE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"4197282659\",\"created_at\":\"2026-09-15T15:41:05+09:00\",\"updated_at\":\"2026-09-15T15:41:05+09:00\"},{\"project_id\":\"pro_3628214307\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]项目\",\"space_id\":\"2916444248\",\"space_name\":\"AI评测-任务角色隔离域 [AEFIX:S-A-TASK-ONLY:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3628214307\",\"created_at\":\"2026-09-15T15:41:05+09:00\",\"updated_at\":\"2026-09-15T15:41:05+09:00\"},{\"project_id\":\"pro_3262175138\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]项目\",\"space_id\":\"3197660864\",\"space_name\":\"AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3262175138\",\"created_at\":\"2026-09-15T15:41:04+09:00\",\"updated_at\":\"2026-09-15T15:41:04+09:00\"},{\"project_id\":\"pro_1228777157\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]项目\",\"space_id\":\"652612805\",\"space_name\":\"AI评测-不可见对照空间 [AEFIX:S-A-OTHER:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgljxj7hom5t\",\"name\":\"Tech_Hod\"},\"department\":{\"id\":\"ouvglkd73wzdbh\",\"name\":\"技术中心\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"1228777157\",\"created_at\":\"2026-09-15T15:41:03+09:00\",\"updated_at\":\"2026-09-15T15:41:03+09:00\"},{\"project_id\":\"pro_3469538793\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]项目\",\"space_id\":\"3347773355\",\"space_name\":\"AI评测-空间普通成员域 [AEFIX:S-A-MEMBER:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"3469538793\",\"created_at\":\"2026-09-15T15:40:58+09:00\",\"updated_at\":\"2026-09-15T15:40:58+09:00\"},{\"project_id\":\"pro_439489321\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]项目\",\"space_id\":\"3390847651\",\"space_name\":\"AI评测-空间管理员域 [AEFIX:S-A-ADMIN:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\"},\"department\":{\"id\":\"ouvglfbbkw8vhl\",\"name\":\"自动化测试公司\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"439489321\",\"created_at\":\"2026-09-15T15:40:57+09:00\",\"updated_at\":\"2026-09-15T15:40:57+09:00\"},{\"project_id\":\"pro_313723135\",\"tenant_id\":\"T1120BFPA\",\"name\":\"AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]项目\",\"space_id\":\"1225340663\",\"space_name\":\"AI评测-空间创建人域 [AEFIX:S-A-CREATOR:v1]\",\"status\":\"initialized\",\"priority\":\"medium\",\"is_followed\":false,\"is_overdue\":false,\"creator\":{\"user_id\":\"ouvgqclqax3z5s\",\"name\":\"自动化_Anna9\"},\"department\":{\"id\":\"ouvglkefxhwkxp\",\"name\":\"自动化二级部门\"},\"company_name\":\"自动化测试公司\",\"group_id\":\"313723135\",\"created_at\":\"2026-09-15T15:40:55+09:00\",\"updated_at\":\"2026-09-15T15:40:55+09:00\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 35,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 46399,
+            "output_tokens": 551,
+            "total_tokens": 46950,
+            "estimated_cost_micros": 240260,
+            "cached_input_tokens": 34082,
+            "cache_write_input_tokens": 11970,
+            "cache_hit_ratio": 0.7345416927088946,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+          "turn_step": 4,
+          "request_id": "db834282-ca97-43bf-a84a-fa7f11d647a0",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "session_history",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+              "turn_step": 4,
+              "seq": 18,
+              "name": "activate_skills",
+              "call_id": "call_PNhROxvzYsh2U9TeFl0urZpF",
+              "arguments_summary": "skills=session_history",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"session_history\" version=\"0.2.0\">\n需要本会话更早的内容、而当前上下文里没有时用 session_recall。典型情况：用户说\"刚才那几项\"\"第一次发的那张表\"\"之前查到的那个任务\"，但对应原话、查询结果或附件解读已不在上下文；会话摘要只有结论，需要当时的原话或数字；本轮早先的查询结果已被折叠。上下文里已有的内容不要重查。\n\n先用 mode=list 找轮次，可用 query 按关键词、tool 按工具名过滤，结果从新到旧，用 next_before_turn 翻页；再用 mode=read 加 turn 读详情，只要某一次调用时再加 call。turn=0 表示本轮已完成的调用。\n\n问题要跨多轮找、或某次结果很大而只需要其中的结论、数字、对比时，用 session_ask：写清问题，用 query、tool、from_turn/to_turn 圈范围。它返回结论和 [turn N call K] 引用，不返回原文；引用的轮次需要原话时再用 session_recall read。一轮内最多调用两次",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_9b55afe9f12e4e9692a8d4961ede74cd",
+              "turn_step": 4,
+              "seq": 26,
+              "name": "session_recall",
+              "call_id": "call_5Knpj6r4cl62NJY04tAKMBwU",
+              "arguments_summary": "unknown tool",
+              "status": "failed",
+              "attempts": 1,
+              "result_preview": "session history is unavailable",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 38,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 30295,
+            "output_tokens": 74,
+            "total_tokens": 30369,
+            "estimated_cost_micros": 152585,
+            "cached_input_tokens": 27751,
+            "cache_write_input_tokens": 2238,
+            "cache_hit_ratio": 0.916025746822908,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "request_trace_scope": {
+        "strict": true,
+        "all_accepted_current_requests_matched": true,
+        "current_request_ids": [
+          "9215e2ad-bd81-4560-b258-205a810def63",
+          "db834282-ca97-43bf-a84a-fa7f11d647a0"
+        ],
+        "matched_run_ids": [
+          "bar_1aa6b3d427194e068182f6344e393cd0",
+          "bar_9b55afe9f12e4e9692a8d4961ede74cd"
+        ]
+      }
+    }
+  }
+}

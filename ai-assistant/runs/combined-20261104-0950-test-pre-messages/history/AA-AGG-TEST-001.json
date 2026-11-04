@@ -1,0 +1,703 @@
+{
+  "row": {
+    "asker": "智本_anrou",
+    "asker_company": "智本科技",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-AGG-TEST-001",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "空间主子任务分别计数",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "本轮要求给出三个指定项目的主任务、全部层级子孙任务及全部去重任务数。独立完整递归回读确认结果为32、32、64。回答虽先列出该数字，随后却以展开仅63条、子孙31条为由撤回准确总数结论，未完成核心统计任务。Trace明确呈现统计与展开的差异，但未见继续递归核查以解决缺口；这不是编造，而是全层级读取及核验未完成。",
+    "confidence": "high",
+    "latency_ms": 78262,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务、全部去重任务分别有多少？",
+    "ability": "主子任务聚合",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务、全部去重任务分别有多少？"
+    ],
+    "answer": "截至 2026 年 11 月 3 日，三个指定项目的统计为：**主任务 32 条、子孙任务 32 条、总计 64 条**。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN`\n\n但展开记录按任务身份去重后只有 **63 条**，其中主任务 32 条、子孙任务 31 条；与统计相差 1 条，原因未明。因此，**全部去重任务的准确总数暂不能确认**。范围仅包含项目甲、项目乙和空项目，已排除空间默认项目及其他对象。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "本轮要求给出三个指定项目的主任务、全部层级子孙任务及全部去重任务数。独立完整递归回读确认结果为32、32、64。回答虽先列出该数字，随后却以展开仅63条、子孙31条为由撤回准确总数结论，未完成核心统计任务。Trace明确呈现统计与展开的差异，但未见继续递归核查以解决缺口；这不是编造，而是全层级读取及核验未完成。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本_anrou",
+        "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务、全部去重任务分别有多少？",
+        "answer": "截至 2026 年 11 月 3 日，三个指定项目的统计为：**主任务 32 条、子孙任务 32 条、总计 64 条**。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN`\n\n但展开记录按任务身份去重后只有 **63 条**，其中主任务 32 条、子孙任务 31 条；与统计相差 1 条，原因未明。因此，**全部去重任务的准确总数暂不能确认**。范围仅包含项目甲、项目乙和空项目，已排除空间默认项目及其他对象。",
+        "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+        "request_id": "8c416d2a-f109-4efd-800f-86663a42fa1f",
+        "message_id": "cm_53605734-52d5-45d8-a1c2-6c76233d07d0",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本_anrou"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+        "step": 2,
+        "seq": 18,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+        "step": 2,
+        "seq": 24,
+        "name": "task_ask",
+        "arguments_summary": "queries=1 group_by=project format=text detail=false comments=false mode=focus children=true instruction_runes=42",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+        "step": 2,
+        "seq": 32,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_______-aecd0ec1 offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 45,
+        "tool_count": 3,
+        "tokens": 138060
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-AGG-TEST-001",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本轮要求给出三个指定项目的主任务、全部层级子孙任务及全部去重任务数。独立完整递归回读确认结果为32、32、64。回答虽先列出该数字，随后却以展开仅63条、子孙31条为由撤回准确总数结论，未完成核心统计任务。Trace明确呈现统计与展开的差异，但未见继续递归核查以解决缺口；这不是编造，而是全层级读取及核验未完成。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论。task_ask（seq 24）明确返回counts为total=64、root_total=32、subtask_total=32，同时展开tasks=63、children_rows=31；scratchpad_read（seq 32）确认该差异。独立回读complete_recursive_readback=true，且任务064的父任务为任务033，证明存在更深一级后代。回答诚实披露工具差异，但在差异未解决时结束，业务统计未完成。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "范围及项目引用正确，也未将63条冒充完整总数；但最终明确表示准确去重总数无法确认，没有完成用户要求的确定计数。实际完整树包含32个主任务及32个子孙任务，共64个去重任务，其中任务064为任务033的子任务，需纳入全部后代口径。",
+          "evidence_refs": [
+            "turns[step=2].answer",
+            "trace.runs[0].tools[seq=24].result_preview",
+            "trace.runs[0].tools[seq=32].result_preview",
+            "preflight.current_independent_readback.global_statistics",
+            "preflight.current_independent_readback.tasks[task_id=task_vys0rb6pltjq]"
+          ]
+        }
+      ],
+      "suggestions": [
+        "发现宿主统计64条与展开63条不一致后，继续递归读取子任务的后代并按(task_id, task_tenant_id)去重，核实缺少的更深层任务。",
+        "完成核验后给出唯一明确结果：主任务32条、子孙任务32条、全部去重任务64条，并说明子孙包含全部层级。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "09bf64586f201ff44cb544138469a01e043b305dc7df0ebe7c3a0c9cf5ea26c6"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-AGG-TEST-001",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:49:26+00:00",
+    "output": {
+      "text": "截至 2026 年 11 月 3 日，三个指定项目的统计为：**主任务 32 条、子孙任务 32 条、总计 64 条**。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN`\n\n但展开记录按任务身份去重后只有 **63 条**，其中主任务 32 条、子孙任务 31 条；与统计相差 1 条，原因未明。因此，**全部去重任务的准确总数暂不能确认**。范围仅包含项目甲、项目乙和空项目，已排除空间默认项目及其他对象。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 5
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 16
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_7df96859d0394961a81291fac3b03a6f",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 19,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 20,
+            "name": "activate_skills",
+            "call_id": "call_7df96859d0394961a81291fac3b03a6f",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "skill task_space is already active; its instructions are in context",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_ask",
+            "call_id": "call_3aafd86f09ae445cb26475b36f217d30",
+            "arguments_summary": "queries=1 group_by=project format=text detail=false comments=false mode=focus children=true instruction_runes=42",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "task_ask",
+            "call_id": "call_3aafd86f09ae445cb26475b36f217d30",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_______-aecd0ec1\",\"tenantId\":\"T1120BGCN\"},{\"entityType\":\"task\",\"id\":\"task_vys0jozyje54\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jozyje54:T1120BGCN`\"},{\"entityType\":\"task\",\"id\":\"task_vys0jozyje54\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jozyje54:T1120BGCN`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_ids\":[\"pro_2386389752\",\"pro_2381460569\",\"pro_2926249635\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"三个指定项目\",\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":63,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"154fbe4a\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":47,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":21,\"pct\":33},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"project\":[{\"key\":\"pro_2386389752\",\"name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"count\":62,\"pct\":98},{\"key\":\"pro_2381460569\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]\",\"count\":1,\"pct\":1}],\"status\":{\"completed\":{\"count\":22,\"pct\":34},\"in_progress\":{\"count\":20,\"pct\":31},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project_______-aecd0ec1\",\"chunks\":1,\"answer_tokens\":105,\"attempts\":7,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"citation_gaps\":[\"`widget:task:task_vys0jozyje54:T1120BGCN|task:task_vys0jahhszfy:T1120BGCN`\",\"`widget:task:task_vys0jozyje54:T1120BGCN|task:task_vys0jahhszfy:T1120BGCN`\"]}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "scratchpad_read",
+            "call_id": "call_d49cd069431141df873361c8bbb9d948",
+            "arguments_summary": "path=answers/task_project_______-aecd0ec1 offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "scratchpad_read",
+            "call_id": "call_d49cd069431141df873361c8bbb9d948",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_______-aecd0ec1\",\"revision\":1,\"content\":\"instruction: \\\"统计指定项目主任务、全部层级子孙任务、按身份去重总数，比较统计和展开数据，明确缺口。\\\"\\nrange: {\\\"label\\\":\\\"三个指定项目\\\",\\\"project_ids\\\":[\\\"pro_2386389752\\\",\\\"pro_2381460569\\\",\\\"pro_2926249635\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:154fbe4a\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":63,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"154fbe4a\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":47,\\\"pct\\\":74},\\\"true\\\":{\\\"count\\\":16,\\\"pct\\\":25}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"highest\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"unspecified\\\":{\\\"count\\\":21,\\\"pct\\\":33}},\\\"project\\\":[{\\\"key\\\":\\\"pro_2386389752\\\",\\\"name\\\":\\\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\\\",\\\"count\\\":62,\\\"pct\\\":98},{\\\"key\\\":\\\"pro_2381460569\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":1}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":22,\\\"pct\\\":34},\\\"in_progress\\\":{\\\"count\\\":20,\\\"pct\\\":31},\\\"pending\\\":{\\\"count\\\":21,\\\"pct\\\":33}}}}\\nchunks: 1\\n\\n候选任务 63 条，本次选择 1 条；\\n{\\\"answer\\\":[\\\"- 材料仅列出两个指定项目：项目甲 62 条、项目乙 1 条；项目分布合计 63 条。[引用缺口]\\\",\\\"- 宿主统计为主任务 32 条、子任务 32 条、总计 64 条；但展开统计显示 63 条任务记录、31 条子任务记录，展开中缺 1 条记录。`widget:task:task_vys0jozyje54:T1120BGCN`\\\",\\\"- 按展开行的任务 ID 去重为 63 条；与宿主总数 64 条相差 1 条。材料未提供逐条父子关系，无法核实各项目的主任务及全部层级子孙任务明细，也无法确认缺失记录属于哪个项目或层级。`widget:task:task_vys0jozyje54:T1120BGCN`\\\",\\\"- 因而，依据宿主统计的三项目（实际材料仅列两项目）主任务、子孙任务去重总数为 64；依据展开记录能核验的去重数为 63，二者不一致，缺口为 1。[引用缺口]\\\"]}\",\"next_offset\":2138,\"eof\":true,\"byte_size\":2138}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 185
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 187,
+            "input_tokens": 137055,
+            "output_tokens": 1005,
+            "total_tokens": 138060,
+            "estimated_cost_micros": 700350,
+            "cached_input_tokens": 73088,
+            "cache_hit_ratio": 0.5699091582517837,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+            "turn_step": 2,
+            "seq": 191
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+          "message_id": "cm_53605734-52d5-45d8-a1c2-6c76233d07d0",
+          "request_id": "8c416d2a-f109-4efd-800f-86663a42fa1f",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "task_space"
+    },
+    "metrics": {
+      "e2e_ms": 78262,
+      "tool_calls": 3,
+      "retries": 0,
+      "input_tokens": 137055,
+      "output_tokens": 1005,
+      "cached_tokens": 73088,
+      "cost_usd": 0.70035,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530",
+          "message_id": "cm_53605734-52d5-45d8-a1c2-6c76233d07d0",
+          "request_id": "8c416d2a-f109-4efd-800f-86663a42fa1f",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 2026 年 11 月 3 日，三个指定项目的统计为：**主任务 32 条、子孙任务 32 条、总计 64 条**。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN`\n\n但展开记录按任务身份去重后只有 **63 条**，其中主任务 32 条、子孙任务 31 条；与统计相差 1 条，原因未明。因此，**全部去重任务的准确总数暂不能确认**。范围仅包含项目甲、项目乙和空项目，已排除空间默认项目及其他对象。",
+          "message": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务、全部去重任务分别有多少？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务、全部去重任务分别有多少？",
+          "actor": {
+            "account_ref": "智本_anrou",
+            "company": "智本科技",
+            "tenant_id": "T1120BGCN",
+            "user_id": "ouvfhdgghjp37n",
+            "user_name": "智本_anrou",
+            "fixture_actor_ref": "AGG-TEST-U0"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+          "turn_step": 2,
+          "request_id": "8c416d2a-f109-4efd-800f-86663a42fa1f",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+              "turn_step": 2,
+              "seq": 18,
+              "name": "activate_skills",
+              "call_id": "call_7df96859d0394961a81291fac3b03a6f",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "skill task_space is already active; its instructions are in context",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+              "turn_step": 2,
+              "seq": 24,
+              "name": "task_ask",
+              "call_id": "call_3aafd86f09ae445cb26475b36f217d30",
+              "arguments_summary": "queries=1 group_by=project format=text detail=false comments=false mode=focus children=true instruction_runes=42",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_______-aecd0ec1\",\"tenantId\":\"T1120BGCN\"},{\"entityType\":\"task\",\"id\":\"task_vys0jozyje54\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jozyje54:T1120BGCN`\"},{\"entityType\":\"task\",\"id\":\"task_vys0jozyje54\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jozyje54:T1120BGCN`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_ids\":[\"pro_2386389752\",\"pro_2381460569\",\"pro_2926249635\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"三个指定项目\",\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":63,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"154fbe4a\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":47,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":21,\"pct\":33},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"project\":[{\"key\":\"pro_2386389752\",\"name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"count\":62,\"pct\":98},{\"key\":\"pro_2381460569\",\"name\":\"聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]\",\"count\":1,\"pct\":1}],\"status\":{\"completed\":{\"count\":22,\"pct\":34},\"in_progress\":{\"count\":20,\"pct\":31},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project_______-aecd0ec1\",\"chunks\":1,\"answer_tokens\":105,\"attempts\":7,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"citation_gaps\":[\"`widget:task:task_vys0jozyje54:T1120BGCN|task:task_vys0jahhszfy:T1120BGCN`\",\"`widget:task:task_vys0jozyje54:T1120BGCN|task:task_vys0jahhszfy:T1120BGCN`\"]}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_8fe65497a174490c9494e8d30446bc45",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "scratchpad_read",
+              "call_id": "call_d49cd069431141df873361c8bbb9d948",
+              "arguments_summary": "path=answers/task_project_______-aecd0ec1 offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_______-aecd0ec1\",\"revision\":1,\"content\":\"instruction: \\\"统计指定项目主任务、全部层级子孙任务、按身份去重总数，比较统计和展开数据，明确缺口。\\\"\\nrange: {\\\"label\\\":\\\"三个指定项目\\\",\\\"project_ids\\\":[\\\"pro_2386389752\\\",\\\"pro_2381460569\\\",\\\"pro_2926249635\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:154fbe4a\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":63,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"154fbe4a\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":47,\\\"pct\\\":74},\\\"true\\\":{\\\"count\\\":16,\\\"pct\\\":25}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"highest\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"unspecified\\\":{\\\"count\\\":21,\\\"pct\\\":33}},\\\"project\\\":[{\\\"key\\\":\\\"pro_2386389752\\\",\\\"name\\\":\\\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\\\",\\\"count\\\":62,\\\"pct\\\":98},{\\\"key\\\":\\\"pro_2381460569\\\",\\\"name\\\":\\\"聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]\\\",\\\"count\\\":1,\\\"pct\\\":1}],\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":22,\\\"pct\\\":34},\\\"in_progress\\\":{\\\"count\\\":20,\\\"pct\\\":31},\\\"pending\\\":{\\\"count\\\":21,\\\"pct\\\":33}}}}\\nchunks: 1\\n\\n候选任务 63 条，本次选择 1 条；\\n{\\\"answer\\\":[\\\"- 材料仅列出两个指定项目：项目甲 62 条、项目乙 1 条；项目分布合计 63 条。[引用缺口]\\\",\\\"- 宿主统计为主任务 32 条、子任务 32 条、总计 64 条；但展开统计显示 63 条任务记录、31 条子任务记录，展开中缺 1 条记录。`widget:task:task_vys0jozyje54:T1120BGCN`\\\",\\\"- 按展开行的任务 ID 去重为 63 条；与宿主总数 64 条相差 1 条。材料未提供逐条父子关系，无法核实各项目的主任务及全部层级子孙任务明细，也无法确认缺失记录属于哪个项目或层级。`widget:task:task_vys0jozyje54:T1120BGCN`\\\",\\\"- 因而，依据宿主统计的三项目（实际材料仅列两项目）主任务、子孙任务去重总数为 64；依据展开记录能核验的去重数为 63，二者不一致，缺口为 1。[引用缺口]\\\"]}\",\"next_offset\":2138,\"eof\":true,\"byte_size\":2138}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 45,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 137055,
+            "output_tokens": 1005,
+            "total_tokens": 138060,
+            "estimated_cost_micros": 700350,
+            "cached_input_tokens": 73088,
+            "cache_hit_ratio": 0.5699091582517837,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "8c416d2a-f109-4efd-800f-86663a42fa1f"
+        ],
+        "current_session_ids": [
+          "cs_f6797bb3-d479-4413-ad0f-fea2edf5c530"
+        ],
+        "matched_run_ids": [
+          "bar_8fe65497a174490c9494e8d30446bc45"
+        ],
+        "excluded_historical_run_count": 3,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

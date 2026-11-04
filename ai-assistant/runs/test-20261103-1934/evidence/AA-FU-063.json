@@ -1,0 +1,1189 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-FU-063",
+  "environment": "test",
+  "generated_at": "2026-11-03T10:39:19+00:00",
+  "output": {
+    "text": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 2
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 12
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 15,
+          "name": "activate_skills",
+          "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+          "arguments_summary": "skills=automation",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "skill.activation",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 16,
+          "requested": [
+            "automation"
+          ],
+          "activated": [
+            "automation",
+            "output_presentation"
+          ],
+          "rejected": []
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 18,
+          "name": "activate_skills",
+          "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 20
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 21
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 23,
+          "name": "automation_list",
+          "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+          "arguments_summary": "unknown tool",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 24,
+          "name": "automation_list",
+          "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 25
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 26
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 28,
+          "name": "automation_get",
+          "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+          "arguments_summary": "unknown tool",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 29,
+          "name": "automation_get",
+          "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 30
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 31
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 33,
+          "name": "automation_resume",
+          "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+          "arguments_summary": "unknown tool",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 34,
+          "name": "automation_resume",
+          "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 35
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 57
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 59,
+          "input_tokens": 79431,
+          "output_tokens": 150,
+          "total_tokens": 79581,
+          "estimated_cost_micros": 399405,
+          "cached_input_tokens": 59502,
+          "cache_write_input_tokens": 19419,
+          "cache_hit_ratio": 0.7491029950523096,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 3
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "seq": 63
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": true,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+        "message_id": "",
+        "request_id": "",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+        "message_id": "cm_2e2c53e7-3458-4e02-823e-44e77b156741",
+        "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.11",
+    "skill": "automation,output_presentation"
+  },
+  "metrics": {
+    "e2e_ms": 13729,
+    "tool_calls": 4,
+    "retries": 0,
+    "input_tokens": 79431,
+    "output_tokens": 150,
+    "cached_tokens": 59502,
+    "cost_usd": 0.399405,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "CFO",
+        "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+        "request_id": "",
+        "status": "reused",
+        "reused": true,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "CFO",
+        "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+        "message_id": "cm_2e2c53e7-3458-4e02-823e-44e77b156741",
+        "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。",
+        "message": "每天提醒我项目进度。",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": [],
+        "question": "每天提醒我项目进度。",
+        "actor": {
+          "account_ref": "CFO",
+          "company": "自动化测试公司",
+          "tenant_id": "T1120BFPA",
+          "user_id": "ouvgllrjy9w5yw",
+          "fixture_actor_ref": "ACC-TEST-02"
+        }
+      }
+    ],
+    "data_state": "CONTROLLED_SETUP",
+    "relative_deadline_fixture": {},
+    "recent_owner_fixture": {},
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "turn_step": 2,
+        "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "model": "sub2api/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [
+          "automation",
+          "output_presentation"
+        ],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+            "arguments_summary": "skills=automation",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": true
+          },
+          {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "automation_list",
+            "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+            "arguments_summary": "unknown tool",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          },
+          {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "automation_get",
+            "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+            "arguments_summary": "unknown tool",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          },
+          {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "automation_resume",
+            "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+            "arguments_summary": "unknown tool",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 45,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.skill_activation",
+          "chat.tool_result",
+          "chat.prefix_change",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 79431,
+          "output_tokens": 150,
+          "total_tokens": 79581,
+          "estimated_cost_micros": 399405,
+          "cached_input_tokens": 59502,
+          "cache_write_input_tokens": 19419,
+          "cache_hit_ratio": 0.7491029950523096,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 3
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "c738fc24-815c-4c45-b2f5-7e2df8e3ff79"
+      ],
+      "current_session_ids": [
+        "cs_31316091-8114-4a0c-8386-6e0121ae58cc"
+      ],
+      "matched_run_ids": [
+        "bar_09cdcaeec3c34241a8628f4b2ae03bff"
+      ],
+      "excluded_historical_run_count": 3,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-04T00:17:39.569615+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793702347",
+            "started_at_unix": "1793702347",
+            "finished_at_unix": "1793702359"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "2",
+              "at": "1793702347",
+              "payload": {
+                "bounded_turn_count": 0,
+                "duration_ms": 2,
+                "error_category": "Internal",
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "full_detail_recent_turns": 3,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "degraded",
+                "summary_source": "none",
+                "tool_detail": "digest_only+bounded_recent",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "4",
+              "at": "1793702347",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "5",
+              "at": "1793702347",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "6",
+              "at": "1793702347",
+              "payload": {
+                "activation_block_active": false,
+                "activation_mode": "manifest",
+                "active_skills": [],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 19961,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 3,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [],
+                "profile_context_tokens": 0,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:2e34ac90d52a9ce528905042eceb3f05fe277b4d2d200309a8329ac8fbb4ed30",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.4",
+                  "assistant_core_scope@0.1.2",
+                  "assistant_core_context_entry@0.4.24",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_skills@0.5.3",
+                  "host/automation_run@1",
+                  "host/attachments@2",
+                  "host/context_guards@2",
+                  "host/loop_notices@3",
+                  "host/follow@2",
+                  "host/subagents@2",
+                  "host/chat_copy_i18n@1"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.11",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "7",
+              "at": "1793702347",
+              "payload": {
+                "entity_reference_count": 0,
+                "message_count": 7,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": false,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "8",
+              "at": "1793702347",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "9",
+              "at": "1793702347",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "10",
+              "at": "1793702347",
+              "payload": {
+                "base_reference_count": 0,
+                "history_widget_hits": 0,
+                "merged_reference_count": 0,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "61",
+              "at": "1793702359",
+              "payload": {
+                "anchor_sequence": 2683,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 0,
+                "locator_count": 0,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 4,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "64",
+              "at": "1793702359",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 3,
+                "error_category": "Internal",
+                "phase": "result",
+                "status": "degraded"
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "65",
+              "at": "1793702359",
+              "payload": {
+                "error_category": "Internal",
+                "evidence": null,
+                "failed": 0,
+                "pending": 0,
+                "persistence": "failed",
+                "processed": 0,
+                "total": 0
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "12",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "你希望每天几点提醒？项目范围是你参与的所有项目，还是某几个指定项目？（时间默认按东京时区。）"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "请告诉我每天提醒的时间，以及要跟进的项目范围（全部参与项目或指定项目）。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已创建自动化「每日项目进度提醒」：每天 09:00（Asia/Tokyo）汇总你参与项目的进展、状态变化、风险和待关注事项。本次仅完成创建，尚未执行。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "20",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "你希望每天几点提醒？项目范围是你参与的所有项目，还是某几个指定项目？（时间默认按东京时区。）"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "请告诉我每天提醒的时间，以及要跟进的项目范围（全部参与项目或指定项目）。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已创建自动化「每日项目进度提醒」：每天 09:00（Asia/Tokyo）汇总你参与项目的进展、状态变化、风险和待关注事项。本次仅完成创建，尚未执行。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"automation\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "25",
+              "purpose": null,
+              "invocation_id": "model_3",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "你希望每天几点提醒？项目范围是你参与的所有项目，还是某几个指定项目？（时间默认按东京时区。）"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "请告诉我每天提醒的时间，以及要跟进的项目范围（全部参与项目或指定项目）。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已创建自动化「每日项目进度提醒」：每天 09:00（Asia/Tokyo）汇总你参与项目的进展、状态变化、风险和待关注事项。本次仅完成创建，尚未执行。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"automation\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+                      "name": "automation_list",
+                      "arguments_json": "{\"limit\":50}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "30",
+              "purpose": null,
+              "invocation_id": "model_4",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "你希望每天几点提醒？项目范围是你参与的所有项目，还是某几个指定项目？（时间默认按东京时区。）"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "请告诉我每天提醒的时间，以及要跟进的项目范围（全部参与项目或指定项目）。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已创建自动化「每日项目进度提醒」：每天 09:00（Asia/Tokyo）汇总你参与项目的进展、状态变化、风险和待关注事项。本次仅完成创建，尚未执行。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"automation\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+                      "name": "automation_list",
+                      "arguments_json": "{\"limit\":50}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+                  "tool_call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+                      "name": "automation_get",
+                      "arguments_json": "{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "35",
+              "purpose": null,
+              "invocation_id": "model_5",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "你希望每天几点提醒？项目范围是你参与的所有项目，还是某几个指定项目？（时间默认按东京时区。）"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "请告诉我每天提醒的时间，以及要跟进的项目范围（全部参与项目或指定项目）。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。"
+                },
+                {
+                  "role": "assistant",
+                  "content": "已创建自动化「每日项目进度提醒」：每天 09:00（Asia/Tokyo）汇总你参与项目的进展、状态变化、风险和待关注事项。本次仅完成创建，尚未执行。"
+                },
+                {
+                  "role": "user",
+                  "content": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "每天提醒我项目进度。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:39:07+09:00\",\"timestamp\":1793702347,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"automation\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`；用户明确给出的时间或频率仍然作为 watch 的轮询计划\n3. `watch` 没有明确轮询频率时，默认每 3 小时巡检一次，并使用用户当前时区生成 `DTSTART`\n4. “每天 9 点，如果 xxx 满足条件”表示每天 9 点巡检一次，不要改成每 3 小时\n5. 调度时间、周期、频率全部固化到 `icalendar`；`prompt` 只保留每次执行要完成的业务动作、判断条件、查询范围语义和结果要求\n6. 不要在 `prompt` 中重复“每天 9 点”“每周一”“每 3 小时”等已经由 `icalendar` 权威表达的调度语义\n\n示例：\n\n- “每天 9 点给我项目简报” → `scheduled`，prompt 为“汇总监控项目的当前进展、变化与需要关注的事项并生成简报”\n- “每天 9 点，如果有逾期任务就通知我” → `watch`，prompt 为“检查监控范围内是否存在逾期任务；命中时汇总逾期对象、执行人（负责人）、截止时间和风险依据”\n- “每当项目有任务逾期就告诉我” → `watch` + 默认 3 小时轮询，prompt 同上\n\n## 监控对象预解析\n\n当用户明确指定会话、群或项目作为固定监控对象时，创建 Automation 前必须先激活 `structured_query` 并解析为稳定 ID，再调用 `automation_create`。不能把对象名称仅写入 prompt 后留到每次执行重新解析。\n\n当前 Automation RPC 固化两类监控对象：\n\n- 会话：`conversations[]`，权威字段为 `conversationId`，`title` 是展示快照\n- 项目：`projects[]`，权威字段为 `projectId`，`title` 是展示快照\n\n解析规则：\n\n1. 项目名称先解析为唯一 project，并取得 project ID 和当前名称\n2. 用户指定群聊时，最终需要固化当前用户对应的 conversation ID；若先解析得到 group，应继续通过结构化查询找到当前用户绑定该 group 的 conversation\n3. 出现同名、歧义或多候选时先向用户确认，不得猜测 ID\n4. 无权限或无法唯一解析时不得创建带有该固定对象的自动化\n5. 创建后执行阶段以 ID 为权威，不因对象改名重新按 title/name 解析\n6. Tool 中不要求模型传 tenantId；Business Agent 从可信身份上下文补入当前 tenantId\n\n## 参数与职责\n\n- 创建自动化使用 automation_create，填写一次 name、用户原始意图 prompt、精简 RFC 5545 icalendar，并明确 mode\n- `mode=scheduled` 用于普通定时执行、摘要和周期报告，每次执行都进入通知 Outbox\n- `mode=watch` 用于“如果/一旦/发现变化/出现风险就告诉我”等巡检任务，底层仍由 iCalendar 定时轮询，是否通知由 Automation Runtime 的 Firing Policy 决定\n- 如果用户指定名称，保留其原意；未指定时由 AI 在创建时生成名称；用户后续明确改名时通过 automation_update 的 name 字段修改\n- 查找任务先用 automation_list，明确目标后用 automation_get 读取最新定义\n- 修改时 prompt、icalendar、mode、name 只传用户明确修改的字段；但 `conversations` 和 `projects` 是全量覆盖字段，调用 automation_update 前必须先 automation_get，并把完整当前数组带回；要清空监控对象时传空数组\n- 仅当用户明确要求修改标题时才在 automation_update 中传 name；仅改名时不生成新的执行定义版本\n- 更新前应先读取当前任务定义和监控对象；服务端内部使用聚合乐观锁防止并发覆盖\n- 创建仅保存 Automation 任务定义，不创建用户可见消息\n- 执行时 Automation 直接调用 Business Agent `ExecuteAutomationLoop`，复用现有 Agent Loop；Chat Manager 不作为执行入口\n- Business Agent 只负责查询、分析和生成结构化执行结果，不决定最终是否通知\n- `mode=watch` 时 Agent 必须返回 `evaluation.status=complete|unknown`；complete 的 subject.status 只能是 `matched|not_matched`，matched 必须携带稳定 marker 和展示内容；Automation 按 subject 维护状态并做边沿/变化去重\n- 真正的用户可见通知由 Automation Notification Outbox 和 Dispatcher 投递；同一次有用户可见结果的执行先向绑定 AssistantSession 追加展示任务提示词，再追加完整 `display.content` 结果，最后向统一 AI 助手 Bot 发送与结果消息完全相同的 content 正文和 Session 深链；Agent Loop 不得自行发送消息\n- 用户可见展示文本统一使用受限 Markdown，不增加 format 字段；Agent 同一次执行只返回 `display.content`，它是唯一权威用户可见结果；Session 与 Bot 必须发送完全相同的 content，通知层不得重新拼接、截断或再次调用模型总结\n- AI 助手 Bot 通过 IM `SendMsg` 作为普通 `MarkdownText`（contentType=118）发送与任务 Session 完全相同的 `display.content`，消息体结构为 `{\"content\":\"<display.content>\"}`\n- 聊天内创建 Automation 时允许传入当前 `session_id` 并直接复用原 AI 会话；页面创建不传 `session_id`，首次用户可见通知延迟创建普通无 Context 的 managed Session 并写入 Automation Session Ref\n- 创建时显式绑定的原会话不得被重命名或替换；后续如需同步 managed Session 标题，复用共享 Outbox 的确定事件类型和 Handler\n- 每次真正产生用户可见结果时，任务会话必须按顺序追加两条展示消息：任务展示提示词 + `display.content` 结果；baseline、条件未满足和无状态变化的巡检不得追加任何会话消息\n- 展示提示词固定为 `本次请求是由「{automation.name}」自动化任务触发的。请执行以下任务：` + 原始任务 prompt；它只用于 UI 展示，实际 Agent 执行仍使用 Runtime 构造的执行 prompt，不拼接这段展示前缀\n- `tenant_id`、`user_id`、`run_id`、Firing Policy、通知幂等键等均不属于模型工具参数\n- 时间规则与 Prompt 的实际内容相互独立；不要从旧 Prompt 反推覆盖用户在页面保存的新调度规则\n- `icalendar` 字段名保持不变，填写受限 RFC 5545 调度属性文本，不是完整 iCalendar 文档\n- `icalendar` 第一行必须是 `DTSTART`，只允许 `DTSTART`、`RRULE`、`RDATE`、`EXDATE` 四类属性\n- 严禁输出 `BEGIN:VCALENDAR`、`END:VCALENDAR`、`BEGIN:VEVENT`、`END:VEVENT`、`VERSION`、`PRODID`、`UID`、`DTSTAMP`\n- 必须提供 `DTSTART`，重复任务再提供 `RRULE`，只执行一次只需要 `DTSTART`，按需附加 `RDATE` 和 `EXDATE`\n- 本地时间必须在 `DTSTART` 中指定 IANA `TZID`，UTC 时间使用 `Z` 后缀，避免未明确时区导致执行时间偏移\n- 示例：`DTSTART;TZID=Asia/Shanghai:20260925T080000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`\n- `UID`、`DTSTAMP`、`PRODID`、`BEGIN:VCALENDAR`、`BEGIN:VEVENT` 均不是创建任务的模型输入，后端直接拒绝这些包装\n\n## 结果与状态\n\n- 触发任务成功仅意味着 Run 已进入调度，不表示执行完成\n- Business Agent `ExecuteAutomationLoop` 返回独立的 `output_json`、`state_json` 和 `business_agent_run_id`，Automation 将执行与最终通知分开持久化\n- `scheduled` 每次产生用户可见结果时生成“展示任务提示词 + `display.content` 结果 + Bot 通知”三条有序 delivery；`watch` 仅在首次命中、恢复后再次命中或稳定 marker 变化时生成该组输出，Bot delivery 依赖前两条 Session 消息成功\n- 巡检查询失败、权限不足、分页不完整或关键数据缺失时必须返回 `evaluation.status=unknown`；unknown 不推进 subject 基线和跨次 state，也不产生重要更新通知；上一轮仍 matched 的 key 在 complete 结果中必须显式重新评估\n- 同一自动化同时只能有一个执行占用运行锁；重试和重复触发不能重复生成通知\n\n## 安全\n\n- 用户与租户来自 Business Agent 已鉴权上下文，Tool 不接受模型伪造身份\n- Tool 只管理当前请求人的自动化，按 RPC 服务端鉴权\n- 服务暂时不可用或权限拒绝绝不视作会话被删除\n- 涉及删除前应按产品交互规则向用户确认\n\n\n## 操作回执\n\n创建、修改、暂停、恢复、删除或手动触发后，按工具实际结果回复，不复述整条用户指令：\n\n- 开头写真实状态：已创建/已更新/已暂停/已删除，或未成功、结果暂未确认；超时等未知结果不猜成败。“已提交/已进入调度”不是“执行完成”，手动触发只确认提交时写“已提交本次执行，结果尚未产生”\n- 写明自动化名称和生效规则：执行时间与时区、范围、条件；巡检写“何时检查、满足什么条件才提醒”，不说每次都通知；用了默认频率要说明。不展示 icalendar、ID 等原始参数\n- 下次执行时间只在结果明确返回时写，不自行推算；修改只写变化，暂停/恢复写对象和当前状态；多个对象分别写成功、失败、待确认，部分成功不概括成“全部完成”\n- 创建成功只代表定义已保存，须说明本次尚未执行任务内容；已执行也不等于已送达。不承诺准时、必达或不遗漏，删除不说可恢复\n- 例：“每天 18 点整理我的未读群消息”创建成功 → 已创建自动化「今日未读消息整理」，每天 18:00（北京时间）整理执行时你所在群的未读消息；本次只完成创建，尚未整理消息\n- 聊天中查看、管理自动化或询问通知会写什么，用回执或普通回答，不写成通知正文；真正执行时的通知正文由执行时注入的主动通知规则约束\n</skill_instructions>\n\n<skill_instructions skill=\"output_presentation\" version=\"0.2.2\">\n输出展示：只决定最终回答怎么写；查不查、查什么、查多少按取证规则和各技能，不因要简答而少查。已确认偏好 > 本轮明确格式（如“只用一句话”“按角色分组”“给完整表格”）> 下列默认；任何格式都保留关键事实、来源和影响结论的限制。\n\n通用：\n- 开头 1～3 句直接回答或给最重要变化，不先讲查询过程。按用户目的和业务影响组织，不按工具或材料顺序写流水账；影响结论的限制和缺口随结论说，不放文末。\n- 空的风险、建议、下一步章节不出现，摘要、明细、建议不重复。不展示场景名、工具名、字段名、内部 ID、错误码或检索过程。\n- 像熟悉业务的同事说话：常用词、短句，写清谁、做了什么、现在怎样、有什么影响、需要处理什么；不只说“加强协同”“持续跟进”“形成闭环”，也不为具体而编造；术语首次出现顺带解释。简化不改语义：“未确认”不写成“没有”，“可能”不写成“一定”，建议不写成已执行。\n- 区分事实、材料转述（如“群内提到”“周报中记录”）、【推断】（附依据和不确定性）、建议。讨论≠决策，提出待办≠已建任务，已提交≠已执行，今天到期≠已逾期；材料只能证明“有人说已完成”时写成转述。\n- 清单、汇总、比较写明实际范围或查询时点，相对时间写成具体日期。数量只用实际结果，总数、已读取数、展示数不同要分开说；要求“全部/列全”就列全，受限时说明已覆盖和未覆盖部分。\n\n结果状态（开头用日常话说明能确认什么、还不能确认什么；参考说法按实际改写，不套正常结果模板）：\n- 完整查询无结果：说“在这个范围内没有找到”并写明查的范围，不断言全系统不存在。\n- 只查到部分（如 3 个目标群只读了 2 个）：先说没覆盖的部分，如“部分任务还没查到，暂时不能判断整个项目”，再给已核实内容，不宣称查完。\n- 查询失败或超时：如“这次没能读取相关任务，还不能确认进度和风险”；不猜原因，不说成没有数据或无权限。\n- 明确无权限：说明当前不能访问该对象，不推测不可见内容，不换范围绕开。\n- 字段暂未获得：能补读就补读，否则写“暂未读取/未返回”，不写成用户未填写。\n- 来源冲突（如周报说已完成、任务仍进行中）：并列两个来源各自的状态和时间，不随意选一方为真。\n只说影响答案的限制（如只查了本人参与的任务、缺少完成时间），不用“主题命中”“证据链不足”“查询覆盖”等内部说法。下一步只写具体可行的，不凑“联系管理员”“持续跟进”，不承诺稍后通知。\n\n按用户想得到的结果选结构，不按工具或关键词：同样查任务可以是短答、清单或分析，来源多也不自动写成长文；“总结有多少个”是数量短答，“创建了多少项任务”是数量查询而非创建操作。混合请求以一类为主、嵌入另一类小节，不写两份总结：“列出逾期任务并分析原因”= 清单 + 有依据的原因；“总结本周并给下周建议”= 摘要 + 建议；“暂停提醒并列出其余提醒”= 回执 + 清单。\n- 直接回答（“有几个”“谁负责”“完成了吗”，也含简短解释、澄清和能力说明）：1～3 句直答 + 必要口径/时点 + 来源；不加标题，不套“结论/发现/风险/下一步”。状态给实际状态和时点，不只说“正常”“差不多”；数量不可靠就说还不能确定。多个事实用短列表。\n- 对象清单（“列出我负责的未完成任务”）：先一句数量与范围，再逐项列出并各附来源。字段短且一致用表格（3～4 列，任务常用名称/状态/截止；要执行人或负责人就加列或改条目），描述长改条目，不为减列删用户要的字段。缺字段按原因写“未填写/未返回/暂未读取”；项目、项目任务、消息任务易混时标类型；角色、状态、优先级、逾期分开写，不用创建人顶替执行人/负责人，不用主观“紧急”代替真实字段。排序沿用技能，必要时说明缺日期的放在哪；不擅自截成前几条，也不列几条就说是全部；只要重点时说明依据和总数。\n- 工作摘要（“总结未读消息”“汇总本周周报”）：先重点后范围；按议题合并，不逐条消息或逐人复述；只写实际有的进展、决策、分歧、阻塞、待办，标明“已决定/提出建议/仍有分歧/待确认”，不写“进展顺利”“讨论充分”，不擅自说已闭环，不拿一两个群或一页周报代表全部范围。待办只取材料明确的，负责人、时间未明确就写未明确。内容少时一句结论加关键列表即可；每条附来源。\n- 分析比较（“为什么延期”“两个项目有什么差异”）：先给有依据的判断，证据不足开头就说不能确认什么；列出依据，时间相邻、逾期或记录减少都不等于因果，不评价个人能力，高优先级不等于高风险，不用“必然失败”类说法。用户要原因、影响、建议就逐项答。比较用共同维度，缺数据写缺失，不算成表现差，不打分排名；建议紧跟相关问题、标为建议，无依据不指定负责人和日期。\n\n排版：只加粗核心答案、关键数据、风险和行动。不用装饰 emoji 和“综上”“下面将从几个方面”类套话。引用按组件和各技能强制规则就近附在句子、条目或表格行后，引用优先于精简。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+                      "name": "automation_list",
+                      "arguments_json": "{\"limit\":50}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+                  "tool_call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+                      "name": "automation_get",
+                      "arguments_json": "{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+                  "tool_call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+                      "name": "automation_resume",
+                      "arguments_json": "{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}

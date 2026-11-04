@@ -1,0 +1,1390 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-PROG-PRE-004",
+    "suite": "assistant_agent_followup",
+    "module": "项目/任务进度",
+    "scenario": "评论区分实际卡点、外部依赖与风险",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "回答正确识别了12条重复客户记录修复及复检未结束、业务核对时段未确认和全量核对依赖迁移完成，也未把风险断言为已发生损失。但将“11月7日窗口晚于11月5日计划、计划是否调整未知”作为最大风险，与本批项目评论明确确认原11月5日计划取消、全量迁移改至11月7日的事实冲突。该遗漏直接影响用户所问的当前卡点和后续风险判断，不能以其他来源可能有补充的免责声明弥补。",
+    "confidence": "high",
+    "latency_ms": 101285,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "tool ordering anomalies: ['bar_f3103ffb0a9a4b51888f1bf3dd3e32dd: query before/without structured_schema']",
+    "categories": [
+      "信息缺失",
+      "时序错误"
+    ],
+    "title": "截至2026年11月2日本批数据，“PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]”目前有哪些实际卡点和后续风险？",
+    "ability": "评论内容解析与进展风险判断",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "截至2026年11月2日本批数据，“PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]”目前有哪些实际卡点和后续风险？"
+    ],
+    "answer": "截至 **2026 年 11 月 2 日**，本批任务评论显示：全量迁移尚不能启动，数据清洗仍有问题待修复复检，业务核对时段也未确认。最大的后续风险是：**已确认的导出窗口为 11 月 7 日，晚于评论提到的 11 月 5 日迁移计划**，但材料未说明计划是否已调整。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n\n## 实际卡点\n\n1. **生产导出窗口尚未开放，阻碍全量迁移启动。**11 月 2 日的评论先指出这一阻塞，随后确认窗口可于 11 月 7 日使用；确认可用日期不等于窗口已经开放或迁移已经启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n2. **数据清洗未完成。**抽检发现 12 条重复客户记录，规则问题已定位，但修复和重新抽检尚未结束。材料没有明确说这一问题已经阻止迁移启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n3. **业务核对时段未落实。**核对清单已准备，但业务方尚未确认 11 月 8 日的核对时段；评论称可以先做样本核对，全量核对则需等迁移完成。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n## 后续风险\n\n- **迁移排期风险：**评论原先提示，若 11 月 4 日前窗口仍未开放，11 月 5 日迁移计划将受影响；后来确认的 11 月 7 日窗口晚于该计划。是否已有调整、实际影响多大，尚不能确认。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **数据质量风险：**重复记录如果未及时修复并复检，可能影响迁移数据质量或进度；这是基于未完成事项的判断，并非已发生的损失。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **核对排期风险：**全量核对依赖迁移完成，且业务时段尚未确认；迁移或业务确认延迟都可能影响后续核对。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n以上依据项目下两项任务及其评论。**群消息检索未覆盖完整，相关汇报也未能读取**，因此不能排除其他来源已有补充进展或排期决定。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "回答正确识别了12条重复客户记录修复及复检未结束、业务核对时段未确认和全量核对依赖迁移完成，也未把风险断言为已发生损失。但将“11月7日窗口晚于11月5日计划、计划是否调整未知”作为最大风险，与本批项目评论明确确认原11月5日计划取消、全量迁移改至11月7日的事实冲突。该遗漏直接影响用户所问的当前卡点和后续风险判断，不能以其他来源可能有补充的免责声明弥补。",
+    "tool_chain_summary": "Skill：group_summary、output_presentation、report_chat、structured_query、task_space；工具链：activate_skills(completed) → scratchpad_write(completed) → entity_resolve(completed) → task_ask(completed) → scratchpad_read(completed) → group_message_search(completed) → memory_search(failed) → task_detail(completed) → task_detail(completed) → scratchpad_write(completed)；自动断言：tool ordering anomalies: ['bar_f3103ffb0a9a4b51888f1bf3dd3e32dd: query before/without structured_schema']",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "截至2026年11月2日本批数据，“PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]”目前有哪些实际卡点和后续风险？",
+        "answer": "截至 **2026 年 11 月 2 日**，本批任务评论显示：全量迁移尚不能启动，数据清洗仍有问题待修复复检，业务核对时段也未确认。最大的后续风险是：**已确认的导出窗口为 11 月 7 日，晚于评论提到的 11 月 5 日迁移计划**，但材料未说明计划是否已调整。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n\n## 实际卡点\n\n1. **生产导出窗口尚未开放，阻碍全量迁移启动。**11 月 2 日的评论先指出这一阻塞，随后确认窗口可于 11 月 7 日使用；确认可用日期不等于窗口已经开放或迁移已经启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n2. **数据清洗未完成。**抽检发现 12 条重复客户记录，规则问题已定位，但修复和重新抽检尚未结束。材料没有明确说这一问题已经阻止迁移启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n3. **业务核对时段未落实。**核对清单已准备，但业务方尚未确认 11 月 8 日的核对时段；评论称可以先做样本核对，全量核对则需等迁移完成。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n## 后续风险\n\n- **迁移排期风险：**评论原先提示，若 11 月 4 日前窗口仍未开放，11 月 5 日迁移计划将受影响；后来确认的 11 月 7 日窗口晚于该计划。是否已有调整、实际影响多大，尚不能确认。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **数据质量风险：**重复记录如果未及时修复并复检，可能影响迁移数据质量或进度；这是基于未完成事项的判断，并非已发生的损失。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **核对排期风险：**全量核对依赖迁移完成，且业务时段尚未确认；迁移或业务确认延迟都可能影响后续核对。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n以上依据项目下两项任务及其评论。**群消息检索未覆盖完整，相关汇报也未能读取**，因此不能排除其他来源已有补充进展或排期决定。",
+        "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+        "request_id": "8b345e86-8451-4545-b24c-7c485d33672d",
+        "message_id": "cm_8dd3b740-f13c-4073-a6ae-d4a5d1c12990",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 17,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary,report_chat,structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 27,
+        "name": "scratchpad_write",
+        "arguments_summary": "path=sail/plan expected_revision=0 bytes=305",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 32,
+        "name": "entity_resolve",
+        "arguments_summary": "requests=2",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 37,
+        "name": "task_ask",
+        "arguments_summary": "queries=1 group_by= format=text detail=true comments=true mode=complete children=true instruction_runes=66",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 45,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_pro_885208837-5228f5b5 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 50,
+        "name": "group_message_search",
+        "arguments_summary": "keywords=3 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=true limit=100 time_mode=explicit continuation=false",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 55,
+        "name": "memory_search",
+        "arguments_summary": "query_runes=35 top_k=10",
+        "status": "failed",
+        "attempts": 3
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 60,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vzmyn5bi2lez",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 65,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vzmynhhq8ueo",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "seq": 70,
+        "name": "scratchpad_write",
+        "arguments_summary": "path=sail/plan expected_revision=1 bytes=573",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary、report_chat、structured_query、task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 83,
+        "tool_count": 10,
+        "tokens": 432069
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['memory_search:failed', 'memory_search×3']"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "fail",
+        "reason": "tool ordering anomalies: ['bar_f3103ffb0a9a4b51888f1bf3dd3e32dd: query before/without structured_schema']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-PROG-PRE-004",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "PRE2-P-PROG-SAIL",
+        "PRE2-T-PROG-MIGRATE",
+        "PRE2-T-PROG-RECONCILE",
+        "PRE2-TC-PROG-06",
+        "PRE2-PC-PROG-05",
+        "PRE2-TC-PROG-07",
+        "PRE2-TC-PROG-08"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "12条重复客户记录的规则修复和重新抽检未结束，是迁移前待解决问题。",
+        "业务方尚未确认2026年11月8日核对时段，全量核对依赖迁移完成，存在后续排期风险。",
+        "导出窗口已确认在2026年11月7日可用；截至快照尚未到窗口，但窗口日期未知的问题已经解决。",
+        "说明实际未完成事项与未来可能影响，不把条件性风险说成已发生结果。",
+        "不得得出：最新导出窗口仍未确认。",
+        "不得得出：断言12条重复记录已修复完毕或业务核对 [AEFIX:PRE2-T-PROG-RECONCILE:v1]时间已最终确认。",
+        "不得得出：断言2026年11月8日一定无法核对，或已经发生客户数据丢失。",
+        "按业务含义评估，不要求逐字匹配。必须解析目标评论得出结论，不能仅凭状态或描述。评论检索可通过任一有效只读路径完成；缺少可观测Trace不能断言未调用工具，缺关键评论证据须待复核/SKIP。",
+        "只回答本题所问信息，不额外硬性要求负责人/执行人。项目ID、任务ID、groupID、comment_id等仅用于内部回源和Trace核验，不要求最终自然语言主动展示；可点击来源可替代裸ID。",
+        "评论中的目标日期属于计划内容，不等于评论创建日期；按真实created_at及后续明确修订判断当前有效事实。",
+        "仅按当前账号、真实对象ID和本轮限定范围回读，不把公司不同当作同邮箱无权限。",
+        "逐轮核验事实、筛选集合及来源；不得把计划当完成，不编造缺失的工时或容量。",
+        "优先级使用真实业务枚举：0=中、1=高、2=低；完成以自身status=3为准。",
+        "没有检索到不等于不存在；缺ACL、分页全集、索引或必要受控准备时待复测，环境已建立后的漏查/答错正常判失败。",
+        "每例会话ID首次为空，由正式执行器prepare并保存；本次只预检，不新建问答会话。",
+        "原始时间以实际服务端created_at/sendTime为准，正文中的历史计划时间不是操作时间。"
+      ],
+      "fixed_fact_truth": "独立预发源数据：[{\"fixture_id\":\"PRE2-P-PROG-SAIL\",\"project_id\":\"pro_885208837\",\"space_id\":\"1372785484\",\"label\":\"PRE补全·云帆数据迁移（进度评测）\"},{\"fixture_id\":\"PRE2-T-PROG-MIGRATE\",\"project_id\":\"pro_885208837\",\"task_id\":\"task_vzmyn5bi2lez\",\"space_id\":\"1372785484\",\"label\":\"全量迁移\",\"status\":1,\"priority\":0,\"deadline\":null,\"owner\":{\"user_id\":\"ouvtx9uhuppqs6\",\"tenant_id\":\"T1120J0W9\",\"user_name\":\"anna289\"},\"current_source\":{\"status\":1,\"priority\":0,\"isOverdue\":false,\"end_time\":null,\"create_time\":\"2026-11-02T03:16:48Z\",\"update_time\":\"2026-11-02T03:23:20Z\",\"members\":[{\"added_by_company_id\":\"\",\"added_by_tenant_id\":\"\",\"added_by_user_id\":\"\",\"role\":3,\"user\":{\"company_id\":\"orv8athhpqnxrv\",\"reg_user_id\":\"ruv4qlw2iirwvb\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"user_name\":\"智本测试_安柔\"}},{\"added_by_company_id\":\"\",\"added_by_tenant_id\":\"\",\"added_by_user_id\":\"\",\"role\":1,\"user\":{\"company_id\":\"orv8athhpqnxrv\",\"reg_user_id\":\"ruvtx7tcnl5frd\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"user_name\":\"anna289\"}}]}},{\"fixture_id\":\"PRE2-T-PROG-RECONCILE\",\"project_id\":\"pro_885208837\",\"task_id\":\"task_vzmynhhq8ueo\",\"space_id\":\"1372785484\",\"label\":\"业务核对\",\"status\":1,\"priority\":0,\"deadline\":null,\"owner\":{\"user_id\":\"ouvtx9uhuppqs6\",\"tenant_id\":\"T1120J0W9\",\"user_name\":\"anna289\"},\"current_source\":{\"status\":1,\"priority\":0,\"isOverdue\":false,\"end_time\":null,\"create_time\":\"2026-11-02T03:16:49Z\",\"update_time\":\"2026-11-02T03:23:21Z\",\"members\":[{\"added_by_company_id\":\"\",\"added_by_tenant_id\":\"\",\"added_by_user_id\":\"\",\"role\":3,\"user\":{\"company_id\":\"orv8athhpqnxrv\",\"reg_user_id\":\"ruv4qlw2iirwvb\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"user_name\":\"智本测试_安柔\"}},{\"added_by_company_id\":\"\",\"added_by_tenant_id\":\"\",\"added_by_user_id\":\"\",\"role\":1,\"user\":{\"company_id\":\"orv8athhpqnxrv\",\"reg_user_id\":\"ruvtx7tcnl5frd\",\"tenant_id\":\"T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"user_name\":\"anna289\"}}]}},{\"fixture_id\":\"PRE2-TC-PROG-06\",\"comment_id\":\"cmtvzmytzleglet\",\"entity_id\":\"task_vzmyn5bi2lez\",\"content\":\"供应商尚未开放生产导出窗口，全量迁移无法启动。若2026年11月4日前仍未开放，2026年11月5日迁移计划将受到影响。\",\"current_source\":{}},{\"fixture_id\":\"PRE2-PC-PROG-05\",\"comment_id\":\"cmtvzmyu7r9ennt\",\"entity_id\":\"pro_885208837\",\"content\":\"已确认导出窗口调整到2026年11月7日，原2026年11月5日迁移计划取消。全量迁移改到2026年11月7日，业务核对预计2026年11月8日完成，具体核对时段尚待业务方确认。\",\"current_source\":{}},{\"fixture_id\":\"PRE2-TC-PROG-07\",\"comment_id\":\"cmtvzmyugbs4ggk\",\"entity_id\":\"task_vzmyn5bi2lez\",\"content\":\"导出窗口已确认可以在2026年11月7日使用。数据清洗抽检发现12条重复客户记录，已定位规则问题，修复和重新抽检还未结束。\",\"current_source\":{}},{\"fixture_id\":\"PRE2-TC-PROG-08\",\"comment_id\":\"cmtvzmyuuzpejze\",\"entity_id\":\"task_vzmynhhq8ueo\",\"content\":\"核对清单已经准备好，业务方尚未确认2026年11月8日的核对时段。我们可以先完成样本核对，但全量核对需要迁移完成。\",\"current_source\":{}}]",
+      "gold_entities": [
+        {
+          "fixture_id": "PRE2-P-PROG-SAIL",
+          "project_id": "pro_885208837",
+          "space_id": "1372785484",
+          "label": "PRE补全·云帆数据迁移（进度评测）"
+        },
+        {
+          "fixture_id": "PRE2-T-PROG-MIGRATE",
+          "project_id": "pro_885208837",
+          "task_id": "task_vzmyn5bi2lez",
+          "space_id": "1372785484",
+          "label": "全量迁移",
+          "status": 1,
+          "priority": 0,
+          "deadline": null,
+          "owner": {
+            "user_id": "ouvtx9uhuppqs6",
+            "tenant_id": "T1120J0W9",
+            "user_name": "anna289"
+          },
+          "current_source": {
+            "status": 1,
+            "priority": 0,
+            "isOverdue": false,
+            "end_time": null,
+            "create_time": "2026-11-02T03:16:48Z",
+            "update_time": "2026-11-02T03:23:20Z",
+            "members": [
+              {
+                "added_by_company_id": "",
+                "added_by_tenant_id": "",
+                "added_by_user_id": "",
+                "role": 3,
+                "user": {
+                  "company_id": "orv8athhpqnxrv",
+                  "reg_user_id": "ruv4qlw2iirwvb",
+                  "tenant_id": "T1120J0W9",
+                  "user_id": "ouvdiekzrxcqc2",
+                  "user_name": "智本测试_安柔"
+                }
+              },
+              {
+                "added_by_company_id": "",
+                "added_by_tenant_id": "",
+                "added_by_user_id": "",
+                "role": 1,
+                "user": {
+                  "company_id": "orv8athhpqnxrv",
+                  "reg_user_id": "ruvtx7tcnl5frd",
+                  "tenant_id": "T1120J0W9",
+                  "user_id": "ouvtx9uhuppqs6",
+                  "user_name": "anna289"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fixture_id": "PRE2-T-PROG-RECONCILE",
+          "project_id": "pro_885208837",
+          "task_id": "task_vzmynhhq8ueo",
+          "space_id": "1372785484",
+          "label": "业务核对",
+          "status": 1,
+          "priority": 0,
+          "deadline": null,
+          "owner": {
+            "user_id": "ouvtx9uhuppqs6",
+            "tenant_id": "T1120J0W9",
+            "user_name": "anna289"
+          },
+          "current_source": {
+            "status": 1,
+            "priority": 0,
+            "isOverdue": false,
+            "end_time": null,
+            "create_time": "2026-11-02T03:16:49Z",
+            "update_time": "2026-11-02T03:23:21Z",
+            "members": [
+              {
+                "added_by_company_id": "",
+                "added_by_tenant_id": "",
+                "added_by_user_id": "",
+                "role": 3,
+                "user": {
+                  "company_id": "orv8athhpqnxrv",
+                  "reg_user_id": "ruv4qlw2iirwvb",
+                  "tenant_id": "T1120J0W9",
+                  "user_id": "ouvdiekzrxcqc2",
+                  "user_name": "智本测试_安柔"
+                }
+              },
+              {
+                "added_by_company_id": "",
+                "added_by_tenant_id": "",
+                "added_by_user_id": "",
+                "role": 1,
+                "user": {
+                  "company_id": "orv8athhpqnxrv",
+                  "reg_user_id": "ruvtx7tcnl5frd",
+                  "tenant_id": "T1120J0W9",
+                  "user_id": "ouvtx9uhuppqs6",
+                  "user_name": "anna289"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fixture_id": "PRE2-TC-PROG-06",
+          "comment_id": "cmtvzmytzleglet",
+          "entity_id": "task_vzmyn5bi2lez",
+          "content": "供应商尚未开放生产导出窗口，全量迁移无法启动。若2026年11月4日前仍未开放，2026年11月5日迁移计划将受到影响。",
+          "current_source": {}
+        },
+        {
+          "fixture_id": "PRE2-PC-PROG-05",
+          "comment_id": "cmtvzmyu7r9ennt",
+          "entity_id": "pro_885208837",
+          "content": "已确认导出窗口调整到2026年11月7日，原2026年11月5日迁移计划取消。全量迁移改到2026年11月7日，业务核对预计2026年11月8日完成，具体核对时段尚待业务方确认。",
+          "current_source": {}
+        },
+        {
+          "fixture_id": "PRE2-TC-PROG-07",
+          "comment_id": "cmtvzmyugbs4ggk",
+          "entity_id": "task_vzmyn5bi2lez",
+          "content": "导出窗口已确认可以在2026年11月7日使用。数据清洗抽检发现12条重复客户记录，已定位规则问题，修复和重新抽检还未结束。",
+          "current_source": {}
+        },
+        {
+          "fixture_id": "PRE2-TC-PROG-08",
+          "comment_id": "cmtvzmyuuzpejze",
+          "entity_id": "task_vzmynhhq8ueo",
+          "content": "核对清单已经准备好，业务方尚未确认2026年11月8日的核对时段。我们可以先完成样本核对，但全量核对需要迁移完成。",
+          "current_source": {}
+        }
+      ],
+      "required_fields": [
+        "问题所问的业务结论",
+        "评论依据"
+      ],
+      "citation_refs": [
+        "pro_885208837",
+        "pro_885208837",
+        "task_vzmyn5bi2lez",
+        "pro_885208837",
+        "task_vzmynhhq8ueo",
+        "cmtvzmytzleglet",
+        "cmtvzmyu7r9ennt",
+        "cmtvzmyugbs4ggk",
+        "cmtvzmyuuzpejze"
+      ],
+      "scope": "pre/actor_visible/current_case_scope",
+      "match_policy": "independent_source_after_precheck",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "截至2026年11月2日本批数据，“PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]”目前有哪些实际卡点和后续风险？",
+          "qualitative_requirements": [
+            "继承本例统一Gold与规则，仅核验本轮明确要求、对象范围和当前有效事实。"
+          ]
+        }
+      ],
+      "oracle_source": "outputs/pre_full_preflight_20261102/fixture-receipt.json",
+      "snapshot_as_of": "2026-11-02",
+      "refresh_policy": "正式执行前刷新ACL、全量业务源、相对日期Gold及AI索引；原始回读不冒充索引验证。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "实际未完成事项和条件性数据质量、核对依赖风险基本正确；但遗漏已经明确生效的迁移改期，反复表示是否调整无法确认，并据旧计划构建主要排期风险，未正确汇总当前有效事实。",
+        "evidence_refs": [
+          "current_independent_readback.current_comments.pro_885208837/cmtvzmyu7r9ennt",
+          "trace seq60 task_detail/cmtvzmytzleglet、cmtvzmyugbs4ggk",
+          "trace seq65 task_detail/cmtvzmyuuzpejze",
+          "turns step2 answer"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-PROG-PRE-004",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:40:13+00:00",
+    "output": {
+      "text": "截至 **2026 年 11 月 2 日**，本批任务评论显示：全量迁移尚不能启动，数据清洗仍有问题待修复复检，业务核对时段也未确认。最大的后续风险是：**已确认的导出窗口为 11 月 7 日，晚于评论提到的 11 月 5 日迁移计划**，但材料未说明计划是否已调整。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n\n## 实际卡点\n\n1. **生产导出窗口尚未开放，阻碍全量迁移启动。**11 月 2 日的评论先指出这一阻塞，随后确认窗口可于 11 月 7 日使用；确认可用日期不等于窗口已经开放或迁移已经启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n2. **数据清洗未完成。**抽检发现 12 条重复客户记录，规则问题已定位，但修复和重新抽检尚未结束。材料没有明确说这一问题已经阻止迁移启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n3. **业务核对时段未落实。**核对清单已准备，但业务方尚未确认 11 月 8 日的核对时段；评论称可以先做样本核对，全量核对则需等迁移完成。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n## 后续风险\n\n- **迁移排期风险：**评论原先提示，若 11 月 4 日前窗口仍未开放，11 月 5 日迁移计划将受影响；后来确认的 11 月 7 日窗口晚于该计划。是否已有调整、实际影响多大，尚不能确认。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **数据质量风险：**重复记录如果未及时修复并复检，可能影响迁移数据质量或进度；这是基于未完成事项的判断，并非已发生的损失。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **核对排期风险：**全量核对依赖迁移完成，且业务时段尚未确认；迁移或业务确认延迟都可能影响后续核对。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n以上依据项目下两项任务及其评论。**群消息检索未覆盖完整，相关汇报也未能读取**，因此不能排除其他来源已有补充进展或排期决定。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 17,
+            "name": "activate_skills",
+            "call_id": "call_379e50e3d0b547f0b69067376620eef2",
+            "arguments_summary": "skills=group_summary,report_chat,structured_query,task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 18,
+            "requested": [
+              "group_summary",
+              "report_chat",
+              "structured_query",
+              "task_space"
+            ],
+            "activated": [
+              "group_summary",
+              "output_presentation",
+              "report_chat",
+              "structured_query",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 20,
+            "name": "activate_skills",
+            "call_id": "call_379e50e3d0b547f0b69067376620eef2",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.12\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 23
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "scratchpad_write",
+            "call_id": "call_f9d7e754bc9f49dbbd15d53bbecf8b33",
+            "arguments_summary": "path=sail/plan expected_revision=0 bytes=305",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "scratchpad_write",
+            "call_id": "call_f9d7e754bc9f49dbbd15d53bbecf8b33",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "written path=sail/plan revision=1",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "entity_resolve",
+            "call_id": "call_db8470c437ee4ff794290a7119d29b4b",
+            "arguments_summary": "requests=2",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "entity_resolve",
+            "call_id": "call_db8470c437ee4ff794290a7119d29b4b",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"project\",\"id\":\"pro_885208837\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_885208837:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entity\":\"task\",\"expectation\":{\"count\":1},\"key\":\"task\",\"status\":\"not_found\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_885208837\",\"project.name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\"},\"id\":\"pro_885208837\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"project\",\"status\":\"resolved\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 35
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 37,
+            "name": "task_ask",
+            "call_id": "call_785a5b2b686641debe0def2d9eb04527",
+            "arguments_summary": "queries=1 group_by= format=text detail=true comments=true mode=complete children=true instruction_runes=66",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 38
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 39
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 41,
+            "name": "task_ask",
+            "call_id": "call_785a5b2b686641debe0def2d9eb04527",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_885208837-5228f5b5\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_885208837\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"ready\",\"covered\":{\"total\":2,\"tasks\":2,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":2,\"comments_pages\":4,\"comments_read\":3,\"comments_complete\":true,\"counts\":{\"total\":2,\"root_total\":2,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":2,\"details_truncated\":false,\"fingerprint\":\"7a6fe0e3\",\"by\":{\"is_overdue\":{\"false\":{\"count\":2,\"pct\":100}},\"priority\":{\"medium\":{\"count\":2,\"pct\":100}},\"status\":{\"pending\":{\"count\":2,\"pct\":100}}}},\"key\":\"answers/task_project_pro_885208837-5228f5b5\",\"chunks\":1,\"answer_tokens\":485,\"attempts\":17,\"answer_mode\":\"complete\",\"cited_tasks\":2,\"cache_reuse_allowed\":true}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 42
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 43
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 45,
+            "name": "scratchpad_read",
+            "call_id": "call_23cea2e994a442c2bf7258b506c8b9ce",
+            "arguments_summary": "path=answers/task_project_pro_885208837-5228f5b5 offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 46,
+            "name": "scratchpad_read",
+            "call_id": "call_23cea2e994a442c2bf7258b506c8b9ce",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_885208837-5228f5b5\",\"revision\":1,\"content\":\"instruction: \\\"分析该项目截至2026年11月2日的实际卡点、已解决事项及后续风险；逐项标明证据日期、事实与推断，避免将截止之后的变更当作当时状态。\\\"\\nrange: {\\\"project_id\\\":\\\"pro_885208837\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:7a6fe0e3\\ncovered: {\\\"total\\\":2,\\\"tasks\\\":2,\\\"answer_mode\\\":\\\"complete\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":2,\\\"comments_pages\\\":4,\\\"comments_read\\\":3,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":2,\\\"root_total\\\":2,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":2,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"7a6fe0e3\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":2,\\\"pct\\\":100}},\\\"priority\\\":{\\\"medium\\\":{\\\"count\\\":2,\\\"pct\\\":100}},\\\"status\\\":{\\\"pending\\\":{\\\"count\\\":2,\\\"pct\\\":100}}}}\\nchunks: 1\\n\\n{\\n  \\\"截至日期\\\": \\\"2026-11-02\\\",\\n  \\\"卡点\\\": [\\n    {\\n      \\\"事项\\\": \\\"全量迁移尚未启动。2026-11-02评论称供应商已确认生产导出窗口可于11月7日使用；此前“窗口未开放”的障碍因此有了后续安排，但截至本段材料，迁移仍未显示已启动。\\\",\\n      \\\"事实与推断\\\": \\\"事实：窗口确认可在11月7日使用。推断：迁移启动仍待该窗口实际开放及后续操作，能否按计划完成尚不确定。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:refs:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"数据清洗尚有未结问题：抽检发现12条重复客户记录，规则问题已定位，但修复和重新抽检未结束。\\\",\\n      \\\"事实与推断\\\": \\\"事实：修复、复检未完成。推断：这可能影响全量迁移的数据质量或进度；材料未说明是否已阻止迁移启动。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"业务核对安排未落实：清单已准备，但业务方尚未确认11月8日核对时段。\\\",\\n      \\\"事实与推断\\\": \\\"事实：时段未确认；可先做样本核对，全量核对需等迁移完成。推断：业务确认及迁移完成时间可能影响全量核对安排。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"已解决事项\\\": [\\n    {\\n      \\\"事项\\\": \\\"生产导出窗口的可用时间已确认：供应商确认11月7日可使用。\\\",\\n      \\\"事实与推断\\\": \\\"事实：可用时间得到确认。材料不表明窗口已实际开放或迁移已执行，因此不等同于全量迁移完成。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"数据清洗抽检发现的问题已定位规则原因。\\\",\\n      \\\"事实与推断\\\": \\\"事实：规则问题已定位。修复和重新抽检仍未完成，不能视为问题已彻底解决。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"业务核对清单已准备好。\\\",\\n      \\\"事实与推断\\\": \\\"事实：清单已准备；业务方尚未确认核对时段，核对本身未显示完成。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"后续风险\\\": [\\n    {\\n      \\\"事项\\\": \\\"迁移计划风险：评论明确提示，若供应商未在11月4日前开放窗口，11月5日迁移计划会受影响；同一日期的后续评论又确认窗口可于11月7日使用。\\\",\\n      \\\"事实与推断\\\": \\\"事实：存在上述条件式风险及后续窗口确认。推断：11月7日窗口晚于评论所述11月5日计划，计划是否已调整、是否仍受影响，材料无法判断。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"全量核对依赖迁移完成，且业务方尚未确认11月8日时段；若迁移或确认延迟，全量核对安排可能受影响。\\\",\\n      \\\"事实与推断\\\": \\\"事实：全量核对需在迁移完成后进行，时段未确认。推断：后续排期存在依赖风险；实际影响尚未确定。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"状态说明\\\": \\\"两项任务在材料中的基础状态均为待处理；材料没有显示截至2026-11-02已完成全量迁移或全量核对。仅依据本段截至该日写入的评论，不纳入截止日之后的变更。\\\"\\n}\",\"next_offset\":4541,\"eof\":true,\"byte_size\":4541}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 47
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 48
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 50,
+            "name": "group_message_search",
+            "call_id": "call_6da22b8022554bcdb862603e0d701134",
+            "arguments_summary": "keywords=3 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=true limit=100 time_mode=explicit continuation=false",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 51,
+            "name": "group_message_search",
+            "call_id": "call_6da22b8022554bcdb862603e0d701134",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"search_kind\":\"keyword\",\"status\":\"completed\",\"rows\":[{\"message.content\":\"自动化验收数据：支付联调阻塞任务仍缺测试证书，支付回调联调未完成，将影响交付；正常推进对照没有阻塞、不会延期；准备验收对照尚未通过验收。 [AEFIX:AUTO-PRE-PROJECT-RISK-MESSAGE:v1]\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3007376514\",\"message.send_time\":\"2026-10-07T11:49:20.864Z\",\"message.seq\":1,\"resources\":[],\"sender\":{\"id\":\"ouvdiekzrxcqc2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3194320451\",\"message.send_time\":\"2026-10-26T01:52:14.157Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2199359286\",\"message.send_time\":\"2026-08-31T14:15:54.089Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2027232826\",\"message.send_time\":\"2026-08-29T11:34:46.964Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T02:31:46.43Z\",\"message.seq\":4,\"resources\":[{\"created_at\":\"2026-09-18T02:31:46.43Z\",\"file_extension\":\".docx\",\"kind\":\"file\",\"name\":\"PRD-汇报助手-iPhone端_2.docx\",\"size\":18327,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VVXFNObaqhz9\"}],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_330875210\",\"message.send_time\":\"2026-09-30T10:31:18.093Z\",\"message.seq\":5,\"resources\":[{\"created_at\":\"2026-09-30T10:31:18.093Z\",\"file_extension\":\".jpeg\",\"kind\":\"file\",\"name\":\"images (2).jpeg\",\"size\":24699,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMObPotkvs\"}],\"sender\":{\"id\":\"ouvdizxe4iqvk2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:26.972Z\",\"message.seq\":5,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3778859657\",\"message.send_time\":\"2026-09-29T02:57:37.263Z\",\"message.seq\":6,\"resources\":[],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_1783549516\",\"message.send_time\":\"2026-10-10T14:11:07.137Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouvwmikgmyswx5\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3778859657\",\"message.send_time\":\"2026-09-29T02:57:37.465Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.311Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.596Z\",\"message.seq\":8,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.874Z\",\"message.seq\":9,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2529380633\",\"message.send_time\":\"2026-08-27T06:43:03.228Z\",\"message.seq\":9,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.141Z\",\"message.seq\":10,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.409Z\",\"message.seq\":11,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3090437763\",\"message.send_time\":\"2026-10-13T02:45:59.237Z\",\"message.seq\":12,\"resources\":[{\"created_at\":\"2026-10-13T02:45:59.237Z\",\"file_extension\":\".zip\",\"kind\":\"file\",\"name\":\"2026H2验收文档_数据表_汇报的P0_附件.zip\",\"size\":92521705,\"url\":\"https://pre-saas-api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VXtU0DShx9fn\"}],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"\",\"message.content_type\":\"image\",\"message.conversation_id\":\"sg_330875210\",\"message.send_time\":\"2026-09-30T10:31:31.208Z\",\"message.seq\":12,\"resources\":[{\"created_at\":\"2026-09-30T10:31:31.208Z\",\"file_extension\":\".jpeg\",\"kind\":\"image\",\"name\":\"images (2).jpeg\",\"preview_url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMSuco7lvj\",\"size\":24699,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMSuco7lvj\"}],\"sender\":{\"id\":\"ouvdizxe4iqvk2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.658Z\",\"message.seq\":12,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.868Z\",\"message.seq\":13,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3090437763\",\"message.send_time\":\"2026-10-13T02:45:59.237Z\",\"message.seq\":14,\"resources\":[{\"created_at\":\"2026-10-13T02:45:59.237Z\",\"file_extension\":\".ovpn\",\"kind\":\"file\",\"name\":\"openvpn_kk_client_2026Q2(2).ovpn\",\"size\":8267,\"url\":\"https://pre-saas-api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VXtU0T3v8poe\"}],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:41.132Z\",\"message.seq\":14,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:41.294Z\",\"message.seq\":15,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2529380633\",\"message.send_time\":\"2026-08-27T06:44:08.046Z\",\"message.seq\":15,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:46.593Z\",\"message.seq\":16,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:38.778Z\",\"message.seq\":16,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:46.815Z\",\"message.seq\":17,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:39.128Z\",\"message.seq\":17,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:47.094Z\",\"message.seq\":18,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2621764103\",\"message.send_time\":\"2026-08-31T13:00:42.325Z\",\"message.seq\":18,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:47.335Z\",\"message.seq\":19,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_1783549516\",\"message.send_time\":\"2026-10-10T14:11:13.315Z\",\"message.seq\":20,\"resources\":[],\"sender\":{\"id\":\"ouvwmikgmyswx5\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:39.766Z\",\"message.seq\":20,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.conte\n[truncated]",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 52
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 53
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 55,
+            "name": "memory_search",
+            "call_id": "call_50a22c3785914579a9ed9c690f56dabf",
+            "arguments_summary": "query_runes=35 top_k=10",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 56,
+            "name": "memory_search",
+            "call_id": "call_50a22c3785914579a9ed9c690f56dabf",
+            "status": "failed",
+            "attempts": 3,
+            "result_preview": "memory_search failed (Unavailable)",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 57
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 58
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 60,
+            "name": "task_detail",
+            "call_id": "call_82bc9f4b8472447d872fde62f9b68e0f",
+            "arguments_summary": "task_id=task_vzmyn5bi2lez",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 61,
+            "name": "task_detail",
+            "call_id": "call_82bc9f4b8472447d872fde62f9b68e0f",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vzmyn5bi2lez\",\"tenant_id\":\"T1120J0W9\",\"title\":\"全量迁移 [AEFIX:PRE2-T-PROG-MIGRATE:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-11-02T12:16:48+09:00\",\"updated_at\":\"2026-11-02T12:23:20+09:00\",\"project_id\":\"pro_885208837\",\"project_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"space_id\":\"1372785484\",\"level\":1,\"owners\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"进展以本批实际写入的评论与当前任务状态为准；不能只从标题推断。；[AEFIX:PRE2-T-PROG-MIGRATE:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]},\"comments\":[{\"ID\":\"cmtvzmytzleglet\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:15Z\",\"UpdatedAt\":\"2026-11-02T03:17:15Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"供应商尚未开放生产导出窗口，全量迁移无法启动。若2026年11月4日前仍未开放，2026年11月5日迁移计划将受到影响。 [AEFIX:PRE2-TC-PROG-06:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false},{\"ID\":\"cmtvzmyugbs4ggk\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:16Z\",\"UpdatedAt\":\"2026-11-02T03:17:16Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"导出窗口已确认可以在2026年11月7日使用。数据清洗抽检发现12条重复客户记录，已定位规则问题，修复和重新抽检还未结束。 [AEFIX:PRE2-TC-PROG-07:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false}],\"comments_coverage\":{\"pages\":2,\"read\":2,\"complete\":true,\"truncated\":false}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 62
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 63
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 65,
+            "name": "task_detail",
+            "call_id": "call_65344e3c77144c09a847d7f9c1bb199a",
+            "arguments_summary": "task_id=task_vzmynhhq8ueo",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 66,
+            "name": "task_detail",
+            "call_id": "call_65344e3c77144c09a847d7f9c1bb199a",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vzmynhhq8ueo\",\"tenant_id\":\"T1120J0W9\",\"title\":\"业务核对 [AEFIX:PRE2-T-PROG-RECONCILE:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-11-02T12:16:49+09:00\",\"updated_at\":\"2026-11-02T12:23:21+09:00\",\"project_id\":\"pro_885208837\",\"project_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"space_id\":\"1372785484\",\"level\":1,\"owners\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"进展以本批实际写入的评论与当前任务状态为准；不能只从标题推断。；[AEFIX:PRE2-T-PROG-RECONCILE:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]},\"comments\":[{\"ID\":\"cmtvzmyuuzpejze\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:17Z\",\"UpdatedAt\":\"2026-11-02T03:17:17Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"核对清单已经准备好，业务方尚未确认2026年11月8日的核对时段。我们可以先完成样本核对，但全量核对需要迁移完成。 [AEFIX:PRE2-TC-PROG-08:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false}],\"comments_coverage\":{\"pages\":2,\"read\":1,\"complete\":true,\"truncated\":false}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 67
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 68
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 70,
+            "name": "scratchpad_write",
+            "call_id": "call_b580e4ee053f48c49ffbf05487ceea99",
+            "arguments_summary": "path=sail/plan expected_revision=1 bytes=573",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 71,
+            "name": "scratchpad_write",
+            "call_id": "call_b580e4ee053f48c49ffbf05487ceea99",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "written path=sail/plan revision=2",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 72
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 667
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 669,
+            "input_tokens": 429341,
+            "output_tokens": 2728,
+            "total_tokens": 432069,
+            "estimated_cost_micros": 2187625,
+            "cached_input_tokens": 155520,
+            "cache_hit_ratio": 0.36378351699504335,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+            "turn_step": 2,
+            "seq": 673
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+          "message_id": "",
+          "request_id": "b028bed8-3e20-4314-97aa-342375e49fe9",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+          "message_id": "cm_8dd3b740-f13c-4073-a6ae-d4a5d1c12990",
+          "request_id": "8b345e86-8451-4545-b24c-7c485d33672d",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "group_summary,report_chat,structured_query,task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 101285,
+      "tool_calls": 10,
+      "retries": 2,
+      "input_tokens": 429341,
+      "output_tokens": 2728,
+      "cached_tokens": 155520,
+      "cost_usd": 2.187625,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+          "request_id": "b028bed8-3e20-4314-97aa-342375e49fe9",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a",
+          "message_id": "cm_8dd3b740-f13c-4073-a6ae-d4a5d1c12990",
+          "request_id": "8b345e86-8451-4545-b24c-7c485d33672d",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 **2026 年 11 月 2 日**，本批任务评论显示：全量迁移尚不能启动，数据清洗仍有问题待修复复检，业务核对时段也未确认。最大的后续风险是：**已确认的导出窗口为 11 月 7 日，晚于评论提到的 11 月 5 日迁移计划**，但材料未说明计划是否已调整。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n\n## 实际卡点\n\n1. **生产导出窗口尚未开放，阻碍全量迁移启动。**11 月 2 日的评论先指出这一阻塞，随后确认窗口可于 11 月 7 日使用；确认可用日期不等于窗口已经开放或迁移已经启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n2. **数据清洗未完成。**抽检发现 12 条重复客户记录，规则问题已定位，但修复和重新抽检尚未结束。材料没有明确说这一问题已经阻止迁移启动。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n3. **业务核对时段未落实。**核对清单已准备，但业务方尚未确认 11 月 8 日的核对时段；评论称可以先做样本核对，全量核对则需等迁移完成。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n## 后续风险\n\n- **迁移排期风险：**评论原先提示，若 11 月 4 日前窗口仍未开放，11 月 5 日迁移计划将受影响；后来确认的 11 月 7 日窗口晚于该计划。是否已有调整、实际影响多大，尚不能确认。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **数据质量风险：**重复记录如果未及时修复并复检，可能影响迁移数据质量或进度；这是基于未完成事项的判断，并非已发生的损失。`widget:task:task_vzmyn5bi2lez:T1120J0W9`\n- **核对排期风险：**全量核对依赖迁移完成，且业务时段尚未确认；迁移或业务确认延迟都可能影响后续核对。`widget:task:task_vzmynhhq8ueo:T1120J0W9`\n\n以上依据项目下两项任务及其评论。**群消息检索未覆盖完整，相关汇报也未能读取**，因此不能排除其他来源已有补充进展或排期决定。",
+          "message": "截至2026年11月2日本批数据，“PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]”目前有哪些实际卡点和后续风险？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+          "turn_step": 2,
+          "request_id": "8b345e86-8451-4545-b24c-7c485d33672d",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "group_summary",
+            "report_chat",
+            "structured_query",
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 17,
+              "name": "activate_skills",
+              "call_id": "call_379e50e3d0b547f0b69067376620eef2",
+              "arguments_summary": "skills=group_summary,report_chat,structured_query,task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.12\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "scratchpad_write",
+              "call_id": "call_f9d7e754bc9f49dbbd15d53bbecf8b33",
+              "arguments_summary": "path=sail/plan expected_revision=0 bytes=305",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "written path=sail/plan revision=1",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "entity_resolve",
+              "call_id": "call_db8470c437ee4ff794290a7119d29b4b",
+              "arguments_summary": "requests=2",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"project\",\"id\":\"pro_885208837\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_885208837:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entity\":\"task\",\"expectation\":{\"count\":1},\"key\":\"task\",\"status\":\"not_found\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_885208837\",\"project.name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\"},\"id\":\"pro_885208837\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"project\",\"status\":\"resolved\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 37,
+              "name": "task_ask",
+              "call_id": "call_785a5b2b686641debe0def2d9eb04527",
+              "arguments_summary": "queries=1 group_by= format=text detail=true comments=true mode=complete children=true instruction_runes=66",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_885208837-5228f5b5\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmyn5bi2lez\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vzmynhhq8ueo\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_id\":\"pro_885208837\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"ready\",\"covered\":{\"total\":2,\"tasks\":2,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"comments_requested\":true,\"comments_tasks\":2,\"comments_pages\":4,\"comments_read\":3,\"comments_complete\":true,\"counts\":{\"total\":2,\"root_total\":2,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":2,\"details_truncated\":false,\"fingerprint\":\"7a6fe0e3\",\"by\":{\"is_overdue\":{\"false\":{\"count\":2,\"pct\":100}},\"priority\":{\"medium\":{\"count\":2,\"pct\":100}},\"status\":{\"pending\":{\"count\":2,\"pct\":100}}}},\"key\":\"answers/task_project_pro_885208837-5228f5b5\",\"chunks\":1,\"answer_tokens\":485,\"attempts\":17,\"answer_mode\":\"complete\",\"cited_tasks\":2,\"cache_reuse_allowed\":true}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 45,
+              "name": "scratchpad_read",
+              "call_id": "call_23cea2e994a442c2bf7258b506c8b9ce",
+              "arguments_summary": "path=answers/task_project_pro_885208837-5228f5b5 offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_pro_885208837-5228f5b5\",\"revision\":1,\"content\":\"instruction: \\\"分析该项目截至2026年11月2日的实际卡点、已解决事项及后续风险；逐项标明证据日期、事实与推断，避免将截止之后的变更当作当时状态。\\\"\\nrange: {\\\"project_id\\\":\\\"pro_885208837\\\",\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_type\\\":\\\"project\\\"}|fingerprint:7a6fe0e3\\ncovered: {\\\"total\\\":2,\\\"tasks\\\":2,\\\"answer_mode\\\":\\\"complete\\\",\\\"status_conflicts\\\":0,\\\"comments_requested\\\":true,\\\"comments_tasks\\\":2,\\\"comments_pages\\\":4,\\\"comments_read\\\":3,\\\"comments_complete\\\":true,\\\"counts\\\":{\\\"total\\\":2,\\\"root_total\\\":2,\\\"subtask_total\\\":0,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":2,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"7a6fe0e3\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":2,\\\"pct\\\":100}},\\\"priority\\\":{\\\"medium\\\":{\\\"count\\\":2,\\\"pct\\\":100}},\\\"status\\\":{\\\"pending\\\":{\\\"count\\\":2,\\\"pct\\\":100}}}}\\nchunks: 1\\n\\n{\\n  \\\"截至日期\\\": \\\"2026-11-02\\\",\\n  \\\"卡点\\\": [\\n    {\\n      \\\"事项\\\": \\\"全量迁移尚未启动。2026-11-02评论称供应商已确认生产导出窗口可于11月7日使用；此前“窗口未开放”的障碍因此有了后续安排，但截至本段材料，迁移仍未显示已启动。\\\",\\n      \\\"事实与推断\\\": \\\"事实：窗口确认可在11月7日使用。推断：迁移启动仍待该窗口实际开放及后续操作，能否按计划完成尚不确定。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:refs:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"数据清洗尚有未结问题：抽检发现12条重复客户记录，规则问题已定位，但修复和重新抽检未结束。\\\",\\n      \\\"事实与推断\\\": \\\"事实：修复、复检未完成。推断：这可能影响全量迁移的数据质量或进度；材料未说明是否已阻止迁移启动。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"业务核对安排未落实：清单已准备，但业务方尚未确认11月8日核对时段。\\\",\\n      \\\"事实与推断\\\": \\\"事实：时段未确认；可先做样本核对，全量核对需等迁移完成。推断：业务确认及迁移完成时间可能影响全量核对安排。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"已解决事项\\\": [\\n    {\\n      \\\"事项\\\": \\\"生产导出窗口的可用时间已确认：供应商确认11月7日可使用。\\\",\\n      \\\"事实与推断\\\": \\\"事实：可用时间得到确认。材料不表明窗口已实际开放或迁移已执行，因此不等同于全量迁移完成。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"数据清洗抽检发现的问题已定位规则原因。\\\",\\n      \\\"事实与推断\\\": \\\"事实：规则问题已定位。修复和重新抽检仍未完成，不能视为问题已彻底解决。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"业务核对清单已准备好。\\\",\\n      \\\"事实与推断\\\": \\\"事实：清单已准备；业务方尚未确认核对时段，核对本身未显示完成。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"后续风险\\\": [\\n    {\\n      \\\"事项\\\": \\\"迁移计划风险：评论明确提示，若供应商未在11月4日前开放窗口，11月5日迁移计划会受影响；同一日期的后续评论又确认窗口可于11月7日使用。\\\",\\n      \\\"事实与推断\\\": \\\"事实：存在上述条件式风险及后续窗口确认。推断：11月7日窗口晚于评论所述11月5日计划，计划是否已调整、是否仍受影响，材料无法判断。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmyn5bi2lez:T1120J0W9`\\\"\\n    },\\n    {\\n      \\\"事项\\\": \\\"全量核对依赖迁移完成，且业务方尚未确认11月8日时段；若迁移或确认延迟，全量核对安排可能受影响。\\\",\\n      \\\"事实与推断\\\": \\\"事实：全量核对需在迁移完成后进行，时段未确认。推断：后续排期存在依赖风险；实际影响尚未确定。\\\",\\n      \\\"证据日期\\\": \\\"2026-11-02\\\",\\n      \\\"引用\\\": \\\"`widget:task:task_vzmynhhq8ueo:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"状态说明\\\": \\\"两项任务在材料中的基础状态均为待处理；材料没有显示截至2026-11-02已完成全量迁移或全量核对。仅依据本段截至该日写入的评论，不纳入截止日之后的变更。\\\"\\n}\",\"next_offset\":4541,\"eof\":true,\"byte_size\":4541}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 50,
+              "name": "group_message_search",
+              "call_id": "call_6da22b8022554bcdb862603e0d701134",
+              "arguments_summary": "keywords=3 group_ids=0 conversation_ids=0 sender_ids=0 from_time=false to_time=true limit=100 time_mode=explicit continuation=false",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"search_kind\":\"keyword\",\"status\":\"completed\",\"rows\":[{\"message.content\":\"自动化验收数据：支付联调阻塞任务仍缺测试证书，支付回调联调未完成，将影响交付；正常推进对照没有阻塞、不会延期；准备验收对照尚未通过验收。 [AEFIX:AUTO-PRE-PROJECT-RISK-MESSAGE:v1]\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3007376514\",\"message.send_time\":\"2026-10-07T11:49:20.864Z\",\"message.seq\":1,\"resources\":[],\"sender\":{\"id\":\"ouvdiekzrxcqc2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3194320451\",\"message.send_time\":\"2026-10-26T01:52:14.157Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2199359286\",\"message.send_time\":\"2026-08-31T14:15:54.089Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2027232826\",\"message.send_time\":\"2026-08-29T11:34:46.964Z\",\"message.seq\":3,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T02:31:46.43Z\",\"message.seq\":4,\"resources\":[{\"created_at\":\"2026-09-18T02:31:46.43Z\",\"file_extension\":\".docx\",\"kind\":\"file\",\"name\":\"PRD-汇报助手-iPhone端_2.docx\",\"size\":18327,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VVXFNObaqhz9\"}],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_330875210\",\"message.send_time\":\"2026-09-30T10:31:18.093Z\",\"message.seq\":5,\"resources\":[{\"created_at\":\"2026-09-30T10:31:18.093Z\",\"file_extension\":\".jpeg\",\"kind\":\"file\",\"name\":\"images (2).jpeg\",\"size\":24699,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMObPotkvs\"}],\"sender\":{\"id\":\"ouvdizxe4iqvk2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:26.972Z\",\"message.seq\":5,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3778859657\",\"message.send_time\":\"2026-09-29T02:57:37.263Z\",\"message.seq\":6,\"resources\":[],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_1783549516\",\"message.send_time\":\"2026-10-10T14:11:07.137Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouvwmikgmyswx5\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3778859657\",\"message.send_time\":\"2026-09-29T02:57:37.465Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.311Z\",\"message.seq\":7,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.596Z\",\"message.seq\":8,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:39.874Z\",\"message.seq\":9,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2529380633\",\"message.send_time\":\"2026-08-27T06:43:03.228Z\",\"message.seq\":9,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.141Z\",\"message.seq\":10,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.409Z\",\"message.seq\":11,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3090437763\",\"message.send_time\":\"2026-10-13T02:45:59.237Z\",\"message.seq\":12,\"resources\":[{\"created_at\":\"2026-10-13T02:45:59.237Z\",\"file_extension\":\".zip\",\"kind\":\"file\",\"name\":\"2026H2验收文档_数据表_汇报的P0_附件.zip\",\"size\":92521705,\"url\":\"https://pre-saas-api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VXtU0DShx9fn\"}],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"\",\"message.content_type\":\"image\",\"message.conversation_id\":\"sg_330875210\",\"message.send_time\":\"2026-09-30T10:31:31.208Z\",\"message.seq\":12,\"resources\":[{\"created_at\":\"2026-09-30T10:31:31.208Z\",\"file_extension\":\".jpeg\",\"kind\":\"image\",\"name\":\"images (2).jpeg\",\"preview_url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMSuco7lvj\",\"size\":24699,\"url\":\"https://saas.api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VWhMSuco7lvj\"}],\"sender\":{\"id\":\"ouvdizxe4iqvk2\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.658Z\",\"message.seq\":12,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:40.868Z\",\"message.seq\":13,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"\",\"message.content_type\":\"file\",\"message.conversation_id\":\"sg_3090437763\",\"message.send_time\":\"2026-10-13T02:45:59.237Z\",\"message.seq\":14,\"resources\":[{\"created_at\":\"2026-10-13T02:45:59.237Z\",\"file_extension\":\".ovpn\",\"kind\":\"file\",\"name\":\"openvpn_kk_client_2026Q2(2).ovpn\",\"size\":8267,\"url\":\"https://pre-saas-api.saas-api.org/api/oa/v1/file/fl09TqR8RUxgTXQH0VXtU0T3v8poe\"}],\"sender\":{\"id\":\"ouver3gg0msfrn\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:41.132Z\",\"message.seq\":14,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:41.294Z\",\"message.seq\":15,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2529380633\",\"message.send_time\":\"2026-08-27T06:44:08.046Z\",\"message.seq\":15,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:46.593Z\",\"message.seq\":16,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:38.778Z\",\"message.seq\":16,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:46.815Z\",\"message.seq\":17,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:39.128Z\",\"message.seq\":17,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:47.094Z\",\"message.seq\":18,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_2621764103\",\"message.send_time\":\"2026-08-31T13:00:42.325Z\",\"message.seq\":18,\"resources\":[],\"sender\":{\"id\":\"ouvgwgrfflowyh\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_3488359605\",\"message.send_time\":\"2026-09-18T10:01:47.335Z\",\"message.seq\":19,\"resources\":[],\"sender\":{\"id\":\"ouvdizwytrogdw\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_1783549516\",\"message.send_time\":\"2026-10-10T14:11:13.315Z\",\"message.seq\":20,\"resources\":[],\"sender\":{\"id\":\"ouvwmikgmyswx5\"}},{\"message.content\":\"2\",\"message.content_type\":\"text\",\"message.conversation_id\":\"sg_767489206\",\"message.send_time\":\"2026-08-27T06:46:39.766Z\",\"message.seq\":20,\"resources\":[],\"sender\":{\"id\":\"ouvhpvekzjwngs\"}},{\"message.content\":\"2\",\"message.conte\n[truncated]",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 55,
+              "name": "memory_search",
+              "call_id": "call_50a22c3785914579a9ed9c690f56dabf",
+              "arguments_summary": "query_runes=35 top_k=10",
+              "status": "failed",
+              "attempts": 3,
+              "result_preview": "memory_search failed (Unavailable)",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 60,
+              "name": "task_detail",
+              "call_id": "call_82bc9f4b8472447d872fde62f9b68e0f",
+              "arguments_summary": "task_id=task_vzmyn5bi2lez",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vzmyn5bi2lez\",\"tenant_id\":\"T1120J0W9\",\"title\":\"全量迁移 [AEFIX:PRE2-T-PROG-MIGRATE:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-11-02T12:16:48+09:00\",\"updated_at\":\"2026-11-02T12:23:20+09:00\",\"project_id\":\"pro_885208837\",\"project_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"space_id\":\"1372785484\",\"level\":1,\"owners\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"进展以本批实际写入的评论与当前任务状态为准；不能只从标题推断。；[AEFIX:PRE2-T-PROG-MIGRATE:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]},\"comments\":[{\"ID\":\"cmtvzmytzleglet\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:15Z\",\"UpdatedAt\":\"2026-11-02T03:17:15Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"供应商尚未开放生产导出窗口，全量迁移无法启动。若2026年11月4日前仍未开放，2026年11月5日迁移计划将受到影响。 [AEFIX:PRE2-TC-PROG-06:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false},{\"ID\":\"cmtvzmyugbs4ggk\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:16Z\",\"UpdatedAt\":\"2026-11-02T03:17:16Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"导出窗口已确认可以在2026年11月7日使用。数据清洗抽检发现12条重复客户记录，已定位规则问题，修复和重新抽检还未结束。 [AEFIX:PRE2-TC-PROG-07:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false}],\"comments_coverage\":{\"pages\":2,\"read\":2,\"complete\":true,\"truncated\":false}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 65,
+              "name": "task_detail",
+              "call_id": "call_65344e3c77144c09a847d7f9c1bb199a",
+              "arguments_summary": "task_id=task_vzmynhhq8ueo",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vzmynhhq8ueo\",\"tenant_id\":\"T1120J0W9\",\"title\":\"业务核对 [AEFIX:PRE2-T-PROG-RECONCILE:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"medium\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-11-02T12:16:49+09:00\",\"updated_at\":\"2026-11-02T12:23:21+09:00\",\"project_id\":\"pro_885208837\",\"project_name\":\"PRE补全·云帆数据迁移（进度评测） [AEFIX:PRE2-P-PROG-SAIL:v1]\",\"space_id\":\"1372785484\",\"level\":1,\"owners\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\"}],\"creator\":{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\"},\"source_unit_name\":\"智本企业\",\"company_name\":\"智本企业\",\"description\":\"进展以本批实际写入的评论与当前任务状态为准；不能只从标题推断。；[AEFIX:PRE2-T-PROG-RECONCILE:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"role\":\"owner\"},{\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"role\":\"creator\"}]},\"comments\":[{\"ID\":\"cmtvzmyuuzpejze\",\"Author\":\"智本测试_安柔\",\"CreatedAt\":\"2026-11-02T03:17:17Z\",\"UpdatedAt\":\"2026-11-02T03:17:17Z\",\"Body\":\"[{\\\"text\\\":{\\\"text\\\":\\\"核对清单已经准备好，业务方尚未确认2026年11月8日的核对时段。我们可以先完成样本核对，但全量核对需要迁移完成。 [AEFIX:PRE2-TC-PROG-08:v1]\\\"}}]\",\"Deleted\":false,\"Placeholder\":false}],\"comments_coverage\":{\"pages\":2,\"read\":1,\"complete\":true,\"truncated\":false}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd",
+              "turn_step": 2,
+              "seq": 70,
+              "name": "scratchpad_write",
+              "call_id": "call_b580e4ee053f48c49ffbf05487ceea99",
+              "arguments_summary": "path=sail/plan expected_revision=1 bytes=573",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "written path=sail/plan revision=2",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 83,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.title",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 429341,
+            "output_tokens": 2728,
+            "total_tokens": 432069,
+            "estimated_cost_micros": 2187625,
+            "cached_input_tokens": 155520,
+            "cache_hit_ratio": 0.36378351699504335,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "8b345e86-8451-4545-b24c-7c485d33672d"
+        ],
+        "current_session_ids": [
+          "cs_d185e1da-45dc-4207-832b-d593f7aa3d7a"
+        ],
+        "matched_run_ids": [
+          "bar_f3103ffb0a9a4b51888f1bf3dd3e32dd"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

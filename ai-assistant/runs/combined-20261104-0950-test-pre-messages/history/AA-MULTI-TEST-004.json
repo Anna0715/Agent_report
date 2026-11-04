@@ -1,0 +1,788 @@
+{
+  "row": {
+    "asker": "智本_anrou",
+    "asker_company": "智本科技",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-MULTI-TEST-004",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "父子孙卡片重叠集合去重",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "用户要求三个所选任务及全部后代的去重准确总数。独立完整递归回读确认结果为33条，即T001本身、31个直接子任务及1个孙任务；回答仅给出“至少33条”并明确表示未完成汇总，未完成核心计数任务。此判断不将诚实说明检索边界视为编造，也不追溯评价未提供的此前回答。",
+    "confidence": "high",
+    "latency_ms": 43688,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "这三个所选任务及其全部后代共有多少条不同任务？父子卡片覆盖重叠的部分只能算一次。",
+    "ability": "多对象持续追问",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "这三个所选任务及其全部后代共有多少条不同任务？父子卡片覆盖重叠的部分只能算一次。"
+    ],
+    "answer": "目前**不能确认准确总数**；之前两次给出“33 条”作为完整结果是不严谨的，抱歉。\n\n已核实任务 033 是任务 001 的子任务，任务 064 是任务 033 的子任务，因此三张所选卡片有重叠，不能分别累计。此前已识别出至少 33 条不同任务，但尚未核实其他子任务是否还有后代；本次完整汇总也未能完成，所以不能把 33 当作最终总数。`widget:refs:task:task_vys0cmflxzvr:T1120BGCN|task:task_vys0jonjw57b:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "用户要求三个所选任务及全部后代的去重准确总数。独立完整递归回读确认结果为33条，即T001本身、31个直接子任务及1个孙任务；回答仅给出“至少33条”并明确表示未完成汇总，未完成核心计数任务。此判断不将诚实说明检索边界视为编造，也不追溯评价未提供的此前回答。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（completed） → activate_skills（completed） → task_children（completed） → task_ask（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本_anrou",
+        "question": "这三个所选任务及其全部后代共有多少条不同任务？父子卡片覆盖重叠的部分只能算一次。",
+        "answer": "目前**不能确认准确总数**；之前两次给出“33 条”作为完整结果是不严谨的，抱歉。\n\n已核实任务 033 是任务 001 的子任务，任务 064 是任务 033 的子任务，因此三张所选卡片有重叠，不能分别累计。此前已识别出至少 33 条不同任务，但尚未核实其他子任务是否还有后代；本次完整汇总也未能完成，所以不能把 33 当作最终总数。`widget:refs:task:task_vys0cmflxzvr:T1120BGCN|task:task_vys0jonjw57b:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+        "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+        "request_id": "8bd75370-3b7d-41ab-ba88-9aeaa2a34244",
+        "message_id": "cm_11a66503-a390-4634-8068-e494fca5625a",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本_anrou"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+        "step": 2,
+        "seq": 18,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project-d8f3c673 offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+        "step": 2,
+        "seq": 23,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+        "step": 2,
+        "seq": 29,
+        "name": "task_children",
+        "arguments_summary": "parent_task_id=task_vys0cmflxzvr page=1",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+        "step": 2,
+        "seq": 34,
+        "name": "task_ask",
+        "arguments_summary": "queries=1 group_by= format=text detail=true comments=false mode=complete children=true instruction_runes=130",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 52,
+        "tool_count": 4,
+        "tokens": 189146
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-MULTI-TEST-004",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "用户要求三个所选任务及全部后代的去重准确总数。独立完整递归回读确认结果为33条，即T001本身、31个直接子任务及1个孙任务；回答仅给出“至少33条”并明确表示未完成汇总，未完成核心计数任务。此判断不将诚实说明检索边界视为编造，也不追溯评价未提供的此前回答。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论。preflight.current_independent_readback提供完整任务父子关系且complete_recursive_readback=true，足以核验33条的真实结果。Trace seq18确认所选三个真实任务ID，seq29实际返回子任务数据；seq34明确返回coverage_insufficient及汇总生成失败原因，而非采集缺失。最终回答明确承认未完成准确计数。工具预览的局部截断不作为未读取数据的证明。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "正确识别了T001、T033、T064的祖孙覆盖重叠并给出对应来源，但未交付所问的准确去重总数33条。内部汇总失败后未恢复完成任务，仅报告下界，不能视为正确完成。",
+          "evidence_refs": [
+            "preflight.current_independent_readback：T033—T063的parent_task_id为T001，T064的parent_task_id为T033",
+            "preflight.current_independent_readback.complete_recursive_readback=true",
+            "trace.tools seq18 scratchpad_read：所选三个task_ids",
+            "trace.tools seq29 task_children",
+            "trace.tools seq34 task_ask：coverage_insufficient",
+            "turns[step=2].answer"
+          ]
+        }
+      ],
+      "suggestions": [
+        "汇总工具失败后，按所选任务范围继续分页读取直接子任务并递归核验后代直至叶节点，以(task_id, task_tenant_id)维护去重集合。",
+        "核验完整后直接回答共33条，并说明构成为T001本身加31个直接子任务、1个孙任务；所选T033和T064已被祖先覆盖，不另加计数。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：scratchpad_read（completed） → activate_skills（completed） → task_children（completed） → task_ask（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "ef05823255fa8e397e19b5901549d2052bdf5428872df008564c67f5b5983f36"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-MULTI-TEST-004",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:46:01+00:00",
+    "output": {
+      "text": "目前**不能确认准确总数**；之前两次给出“33 条”作为完整结果是不严谨的，抱歉。\n\n已核实任务 033 是任务 001 的子任务，任务 064 是任务 033 的子任务，因此三张所选卡片有重叠，不能分别累计。此前已识别出至少 33 条不同任务，但尚未核实其他子任务是否还有后代；本次完整汇总也未能完成，所以不能把 33 当作最终总数。`widget:refs:task:task_vys0cmflxzvr:T1120BGCN|task:task_vys0jonjw57b:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 5
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 16
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "scratchpad_read",
+            "call_id": "call_f796ba2675cf4ede99c6e03003701ecd",
+            "arguments_summary": "path=answers/task_project-d8f3c673 offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "scratchpad_read",
+            "call_id": "call_f796ba2675cf4ede99c6e03003701ecd",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project-d8f3c673\",\"revision\":1,\"content\":\"instruction: \\\"统计所选任务和全部层级后代按任务ID去重的并集，明确是否递归覆盖所有后代、是否截断。\\\"\\nrange: {\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_ids\\\":[\\\"task_vys0cmflxzvr\\\",\\\"task_vys0jonjw57b\\\",\\\"task_vys0rb6pltjq\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:e6aebb20\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":32,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":3,\\\"root_total\\\":1,\\\"subtask_total\\\":2,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"e6aebb20\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":23,\\\"pct\\\":71},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":28}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"low\\\":{\\\"count\\\":10,\\\"pct\\\":31},\\\"medium\\\":{\\\"count\\\":11,\\\"pct\\\":34}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":31},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"pending\\\":{\\\"count\\\":11,\\\"pct\\\":34}}}}\\nchunks: 1\\n\\n候选任务 32 条，本次选择 0 条；\\n{\\\"答复\\\":\\\"材料中没有依据\\\"}\",\"next_offset\":1075,\"eof\":true,\"byte_size\":1075}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "activate_skills",
+            "call_id": "call_9348dfec4fb84fa99d1d6a6ed5ac6ca6",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 24,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 25,
+            "name": "activate_skills",
+            "call_id": "call_9348dfec4fb84fa99d1d6a6ed5ac6ca6",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "skill task_space is already active; its instructions are in context",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 29,
+            "name": "task_children",
+            "call_id": "call_f5980817a7544650819de821414d5ebc",
+            "arguments_summary": "parent_task_id=task_vys0cmflxzvr page=1",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "task_children",
+            "call_id": "call_f5980817a7544650819de821414d5ebc",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\",\"creator\",\"parent_task_id\",\"level\",\"space_id\"],\"page\":1,\"page_size\":30,\"returned\":30,\"tasks\":[{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"has_matched_descendant\":true,\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"self_matched\":false,\"status\":\"pending\",\"task_id\":\"task_vys0jonjw57b\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务033 [AEFIX:AGG-TEST-T033:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0k481bnbm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务034 [AEFIX:AGG-TEST-T034:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0kmmtjhxc\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务035 [AEFIX:AGG-TEST-T035:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0kg5fqnp7\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务036 [AEFIX:AGG-TEST-T036:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0kyyb2zge\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务037 [AEFIX:AGG-TEST-T037:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0lnz10rgd\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务038 [AEFIX:AGG-TEST-T038:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0lehss2sb\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务039 [AEFIX:AGG-TEST-T039:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0lxbqjlci\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务040 [AEFIX:AGG-TEST-T040:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0mdfnkkni\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务041 [AEFIX:AGG-TEST-T041:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0mthv4qbx\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务042 [AEFIX:AGG-TEST-T042:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0midmhzno\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务043 [AEFIX:AGG-TEST-T043:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0mvwiafxo\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务044 [AEFIX:AGG-TEST-T044:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0n7bicyvp\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务045 [AEFIX:AGG-TEST-T045:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0nm7nexle\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务046 [AEFIX:AGG-TEST-T046:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0nzrax5a7\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务047 [AEFIX:AGG-TEST-T047:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0nlw33g5a\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务048 [AEFIX:AGG-TEST-T048:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0nzfd7rqm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务049 [AEFIX:AGG-TEST-T049:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0ogkaqams\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务050 [AEFIX:AGG-TEST-T050:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0ovuopo7d\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务051 [AEFIX:AGG-TEST-T051:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0okzxqxzo\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务052 [AEFIX:AGG-TEST-T052:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0oyx1zyd8\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务053 [AEFIX:AGG-TEST-T053:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0pb09hpby\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务054 [AEFIX:AGG-TEST-T054:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0ppyyvxbe\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务055 [AEFIX:AGG-TEST-T055:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0pcuhzc6a\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务056 [AEFIX:AGG-TEST-T056:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0pqcpxjvm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务057 [AEFIX:AGG-TEST-T057:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\"\n[truncated]",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 32
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 34,
+            "name": "task_ask",
+            "call_id": "call_6e6177ff2754488b9a534ffc7c6856cc",
+            "arguments_summary": "queries=1 group_by= format=text detail=true comments=false mode=complete children=true instruction_runes=130",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 35
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 36
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 37
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 38
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 40,
+            "name": "task_ask",
+            "call_id": "call_6e6177ff2754488b9a534ffc7c6856cc",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"requested\":1,\"ready\":0,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":1,\"remaining\":[],\"truncated\":true,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"coverage_insufficient\",\"covered\":{\"total\":31,\"tasks\":62,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":62,\"details_truncated\":false,\"fingerprint\":\"25db3c33\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":46,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":20,\"pct\":32},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":20,\"pct\":32},\"pending\":{\"count\":21,\"pct\":33}}}},\"attempts\":203,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":true,\"error\":\"complete answer cited 0 of 62 tasks after one retry; no partial list published\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 41
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 191
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 193,
+            "input_tokens": 187710,
+            "output_tokens": 1436,
+            "total_tokens": 189146,
+            "estimated_cost_micros": 960090,
+            "cached_input_tokens": 78080,
+            "cache_hit_ratio": 0.4659712109999761,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+            "turn_step": 2,
+            "seq": 197
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+          "message_id": "cm_11a66503-a390-4634-8068-e494fca5625a",
+          "request_id": "8bd75370-3b7d-41ab-ba88-9aeaa2a34244",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "task_space"
+    },
+    "metrics": {
+      "e2e_ms": 43688,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 187710,
+      "output_tokens": 1436,
+      "cached_tokens": 78080,
+      "cost_usd": 0.96009,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb",
+          "message_id": "cm_11a66503-a390-4634-8068-e494fca5625a",
+          "request_id": "8bd75370-3b7d-41ab-ba88-9aeaa2a34244",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "目前**不能确认准确总数**；之前两次给出“33 条”作为完整结果是不严谨的，抱歉。\n\n已核实任务 033 是任务 001 的子任务，任务 064 是任务 033 的子任务，因此三张所选卡片有重叠，不能分别累计。此前已识别出至少 33 条不同任务，但尚未核实其他子任务是否还有后代；本次完整汇总也未能完成，所以不能把 33 当作最终总数。`widget:refs:task:task_vys0cmflxzvr:T1120BGCN|task:task_vys0jonjw57b:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+          "message": "这三个所选任务及其全部后代共有多少条不同任务？父子卡片覆盖重叠的部分只能算一次。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "这三个所选任务及其全部后代共有多少条不同任务？父子卡片覆盖重叠的部分只能算一次。",
+          "actor": {
+            "account_ref": "智本_anrou",
+            "company": "智本科技",
+            "tenant_id": "T1120BGCN",
+            "user_id": "ouvfhdgghjp37n",
+            "user_name": "智本_anrou",
+            "fixture_actor_ref": "AGG-TEST-U0"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+          "turn_step": 2,
+          "request_id": "8bd75370-3b7d-41ab-ba88-9aeaa2a34244",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+              "turn_step": 2,
+              "seq": 18,
+              "name": "scratchpad_read",
+              "call_id": "call_f796ba2675cf4ede99c6e03003701ecd",
+              "arguments_summary": "path=answers/task_project-d8f3c673 offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project-d8f3c673\",\"revision\":1,\"content\":\"instruction: \\\"统计所选任务和全部层级后代按任务ID去重的并集，明确是否递归覆盖所有后代、是否截断。\\\"\\nrange: {\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"task_ids\\\":[\\\"task_vys0cmflxzvr\\\",\\\"task_vys0jonjw57b\\\",\\\"task_vys0rb6pltjq\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:e6aebb20\\ncovered: {\\\"total\\\":1,\\\"tasks\\\":32,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":3,\\\"root_total\\\":1,\\\"subtask_total\\\":2,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"e6aebb20\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":23,\\\"pct\\\":71},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":28}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"low\\\":{\\\"count\\\":10,\\\"pct\\\":31},\\\"medium\\\":{\\\"count\\\":11,\\\"pct\\\":34}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":10,\\\"pct\\\":31},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"pending\\\":{\\\"count\\\":11,\\\"pct\\\":34}}}}\\nchunks: 1\\n\\n候选任务 32 条，本次选择 0 条；\\n{\\\"答复\\\":\\\"材料中没有依据\\\"}\",\"next_offset\":1075,\"eof\":true,\"byte_size\":1075}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "activate_skills",
+              "call_id": "call_9348dfec4fb84fa99d1d6a6ed5ac6ca6",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "skill task_space is already active; its instructions are in context",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+              "turn_step": 2,
+              "seq": 29,
+              "name": "task_children",
+              "call_id": "call_f5980817a7544650819de821414d5ebc",
+              "arguments_summary": "parent_task_id=task_vys0cmflxzvr page=1",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"omitted_fields\":[\"source_unit_name\",\"company_name\",\"created_at\",\"updated_at\",\"owners\",\"creator\",\"parent_task_id\",\"level\",\"space_id\"],\"page\":1,\"page_size\":30,\"returned\":30,\"tasks\":[{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"has_matched_descendant\":true,\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"self_matched\":false,\"status\":\"pending\",\"task_id\":\"task_vys0jonjw57b\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务033 [AEFIX:AGG-TEST-T033:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0k481bnbm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务034 [AEFIX:AGG-TEST-T034:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0kmmtjhxc\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务035 [AEFIX:AGG-TEST-T035:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0kg5fqnp7\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务036 [AEFIX:AGG-TEST-T036:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0kyyb2zge\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务037 [AEFIX:AGG-TEST-T037:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0lnz10rgd\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务038 [AEFIX:AGG-TEST-T038:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0lehss2sb\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务039 [AEFIX:AGG-TEST-T039:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0lxbqjlci\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务040 [AEFIX:AGG-TEST-T040:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0mdfnkkni\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务041 [AEFIX:AGG-TEST-T041:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0mthv4qbx\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务042 [AEFIX:AGG-TEST-T042:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0midmhzno\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务043 [AEFIX:AGG-TEST-T043:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0mvwiafxo\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务044 [AEFIX:AGG-TEST-T044:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0n7bicyvp\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务045 [AEFIX:AGG-TEST-T045:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0nm7nexle\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务046 [AEFIX:AGG-TEST-T046:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0nzrax5a7\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务047 [AEFIX:AGG-TEST-T047:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0nlw33g5a\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务048 [AEFIX:AGG-TEST-T048:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0nzfd7rqm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务049 [AEFIX:AGG-TEST-T049:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0ogkaqams\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务050 [AEFIX:AGG-TEST-T050:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0ovuopo7d\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务051 [AEFIX:AGG-TEST-T051:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0okzxqxzo\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务052 [AEFIX:AGG-TEST-T052:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0oyx1zyd8\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务053 [AEFIX:AGG-TEST-T053:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0pb09hpby\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务054 [AEFIX:AGG-TEST-T054:v1]\"},{\"is_followed\":false,\"is_overdue\":false,\"priority\":\"highest\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"in_progress\",\"task_id\":\"task_vys0ppyyvxbe\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务055 [AEFIX:AGG-TEST-T055:v1]\"},{\"end_time\":\"2026-10-20T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"high\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"completed\",\"task_id\":\"task_vys0pcuhzc6a\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务056 [AEFIX:AGG-TEST-T056:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":false,\"priority\":\"unspecified\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"status\":\"pending\",\"task_id\":\"task_vys0pqcpxjvm\",\"task_type\":\"project\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务057 [AEFIX:AGG-TEST-T057:v1]\"},{\"end_time\":\"2026-10-30T18:00:00+09:00\",\"is_followed\":false,\"is_overdue\":true,\"priority\"\n[truncated]",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_b2ddf391119b4d5da4fd70d79f9d502f",
+              "turn_step": 2,
+              "seq": 34,
+              "name": "task_ask",
+              "call_id": "call_6e6177ff2754488b9a534ffc7c6856cc",
+              "arguments_summary": "queries=1 group_by= format=text detail=true comments=false mode=complete children=true instruction_runes=130",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"requested\":1,\"ready\":0,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":1,\"remaining\":[],\"truncated\":true,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"coverage_insufficient\",\"covered\":{\"total\":31,\"tasks\":62,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":62,\"details_truncated\":false,\"fingerprint\":\"25db3c33\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":46,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":20,\"pct\":32},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":20,\"pct\":32},\"pending\":{\"count\":21,\"pct\":33}}}},\"attempts\":203,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":true,\"error\":\"complete answer cited 0 of 62 tasks after one retry; no partial list published\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 52,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.tool_result",
+            "chat.skill_activation",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 187710,
+            "output_tokens": 1436,
+            "total_tokens": 189146,
+            "estimated_cost_micros": 960090,
+            "cached_input_tokens": 78080,
+            "cache_hit_ratio": 0.4659712109999761,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "8bd75370-3b7d-41ab-ba88-9aeaa2a34244"
+        ],
+        "current_session_ids": [
+          "cs_595f12d6-18c8-492f-9922-718b6b2e1dcb"
+        ],
+        "matched_run_ids": [
+          "bar_b2ddf391119b4d5da4fd70d79f9d502f"
+        ],
+        "excluded_historical_run_count": 3,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

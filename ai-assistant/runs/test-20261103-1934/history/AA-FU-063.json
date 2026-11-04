@@ -1,0 +1,769 @@
+{
+  "row": {
+    "asker": "CFO",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-FU-063",
+    "suite": "assistant_agent_followup",
+    "module": "自动化追问",
+    "scenario": "每天提醒我项目进度",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "用户仅提出“每天提醒我项目进度”，未明确每日时间、项目范围及通知条件。助手未补问，而是直接恢复既有暂停提醒，沿用东京时间09:00及“我参与项目”的范围，未完成本例要求的澄清任务。恢复操作及原暂停状态有工具证据支持，不属于虚构执行，但既有配置不能替代本轮对缺失参数的确认。",
+    "confidence": "high",
+    "latency_ms": 13729,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "每天提醒我项目进度。",
+    "ability": "自动化追问",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "每天提醒我项目进度。"
+    ],
+    "answer": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "用户仅提出“每天提醒我项目进度”，未明确每日时间、项目范围及通知条件。助手未补问，而是直接恢复既有暂停提醒，沿用东京时间09:00及“我参与项目”的范围，未完成本例要求的澄清任务。恢复操作及原暂停状态有工具证据支持，不属于虚构执行，但既有配置不能替代本轮对缺失参数的确认。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → automation_list（completed） → automation_get（completed） → automation_resume（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "CFO",
+        "question": "每天提醒我项目进度。",
+        "answer": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。",
+        "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+        "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+        "message_id": "cm_2e2c53e7-3458-4e02-823e-44e77b156741",
+        "http_status": 200,
+        "error": "",
+        "asker": "CFO"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=automation",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "step": 2,
+        "seq": 23,
+        "name": "automation_list",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "step": 2,
+        "seq": 28,
+        "name": "automation_get",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "step": 2,
+        "seq": 33,
+        "name": "automation_resume",
+        "arguments_summary": "unknown tool",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "automation、output_presentation",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 45,
+        "tool_count": 4,
+        "tokens": 79581
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-FU-063",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "指令未遵循"
+      ],
+      "business_reason": "用户仅提出“每天提醒我项目进度”，未明确每日时间、项目范围及通知条件。助手未补问，而是直接恢复既有暂停提醒，沿用东京时间09:00及“我参与项目”的范围，未完成本例要求的澄清任务。恢复操作及原暂停状态有工具证据支持，不属于虚构执行，但既有配置不能替代本轮对缺失参数的确认。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本例不涉及评论解析。step 2的问题、完整回答及automation_get、automation_resume结果足以确认：助手读取了暂停的旧配置，并实际将其恢复为ACTIVE，而非先向用户澄清。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "没有询问每日提醒时间、目标项目及通知条件，直接恢复旧提醒。虽然未新建自动化，且“已恢复”的表述与工具结果一致，但仍未经确认实施了自动化状态变更，不满足澄清且不自行配置的任务要求。",
+          "evidence_refs": [
+            "turns[step=2].question",
+            "turns[step=2].answer",
+            "trace.runs[0].tools[seq=28].automation_get",
+            "trace.runs[0].tools[seq=33].automation_resume"
+          ]
+        }
+      ],
+      "suggestions": [
+        "先询问每天几点及所用时区、关注哪个或哪些项目，以及每天固定汇总还是仅有变化或风险时通知。",
+        "发现同名暂停提醒时，可展示原配置并询问是否沿用和恢复，在用户确认前不要改变其状态。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → automation_list（completed） → automation_get（completed） → automation_resume（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "5c782b6fb426d54230bed6ef86119d5455c8f0027e845d4d4b8778d637b5eb7e"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-063",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:39:19+00:00",
+    "output": {
+      "text": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+            "arguments_summary": "skills=automation",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 16,
+            "requested": [
+              "automation"
+            ],
+            "activated": [
+              "automation",
+              "output_presentation"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "automation_list",
+            "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+            "arguments_summary": "unknown tool",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "automation_list",
+            "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "automation_get",
+            "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+            "arguments_summary": "unknown tool",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 29,
+            "name": "automation_get",
+            "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 33,
+            "name": "automation_resume",
+            "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+            "arguments_summary": "unknown tool",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 34,
+            "name": "automation_resume",
+            "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 35
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 57
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 59,
+            "input_tokens": 79431,
+            "output_tokens": 150,
+            "total_tokens": 79581,
+            "estimated_cost_micros": 399405,
+            "cached_input_tokens": 59502,
+            "cache_write_input_tokens": 19419,
+            "cache_hit_ratio": 0.7491029950523096,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+            "turn_step": 2,
+            "seq": 63
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+          "message_id": "cm_2e2c53e7-3458-4e02-823e-44e77b156741",
+          "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "automation,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 13729,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 79431,
+      "output_tokens": 150,
+      "cached_tokens": 59502,
+      "cost_usd": 0.399405,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_31316091-8114-4a0c-8386-6e0121ae58cc",
+          "message_id": "cm_2e2c53e7-3458-4e02-823e-44e77b156741",
+          "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "已恢复「每日项目进度提醒」：每天 09:00（东京时间）汇总你参与项目的进展和风险。之前该提醒处于暂停状态。",
+          "message": "每天提醒我项目进度。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "每天提醒我项目进度。",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        }
+      ],
+      "data_state": "CONTROLLED_SETUP",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+          "turn_step": 2,
+          "request_id": "c738fc24-815c-4c45-b2f5-7e2df8e3ff79",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "automation",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "activate_skills",
+              "call_id": "call_9BPI4Qz9EwC4LILErTwyi3O1",
+              "arguments_summary": "skills=automation",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"automation\" version=\"1.11.2\">\n# Automation 管理 Skill\n\n本 Skill 的唯一权威来源位于 automation/contract/SKILL.md\n仅负责通过 AI 对话创建、查询和管理自动化，不通过 Tool 发送执行通知或暴露运行期幂等信息\n\n\n## 自动化意图识别与创建决策\n\n当用户表达未来重复执行、定时执行或条件监控意图时，应主动判断是否需要创建 Automation，而不是要求用户必须说“创建自动化任务”。\n\n典型信号包括但不限于：\n\n- 明确定时或周期：每天、每周、每月、工作日、每隔 N 分钟/小时、每天 9 点、下周一开始每周执行\n- 条件监控：每当、如果、一旦、出现、变成、超过、低于、发生变化、存在风险时提醒/通知/告诉我\n- 定时 + 条件组合：每天 9 点如果有逾期任务就通知我、每周一检查项目是否存在风险\n\n判定规则：\n\n1. 用户给出明确时间或频率且没有条件判断时，使用 `mode=scheduled`\n2. 用户给出条件判断时，使用 `mode=watch`",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "automation_list",
+              "call_id": "call_iITFqr5zUB8OPEKybCEy6GqZ",
+              "arguments_summary": "unknown tool",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"items\":[{\"id\":\"aut_a798fdd0d44a4ca38b9beed773aba277\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793693916135\",\"updatedAt\":\"1793693928242\",\"name\":\"每周三项目进展：自动化监控验收空间项目\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_c0b75b40-2d87-4e53-8e79-f0e2107e7e8f\"},{\"id\":\"aut_acb91ef18d8f4e43b9671216fb6faae7\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261103T171000\\nRRULE:FREQ=WEEKLY;BYDAY=TU\",\"summary\":\"FREQ=WEEKLY;BYDAY=TU Asia/Tokyo\"},\"createdAt\":\"1793693460145\",\"updatedAt\":\"1793694640273\",\"name\":\"自动化监控验收空间进展汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0763dc27-02e4-40d8-92d2-be57f1f68371\"},{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"},{\"id\":\"aut_ccc5d4e4daee4e97b5ffd733555b664d\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261106T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1793693361279\",\"updatedAt\":\"1793693376613\",\"name\":\"每周空间项目与完成事项简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_dc178f45-e693-4153-89f1-d9d04564d9a1\"},{\"id\":\"aut_1aca28a4c9164cf58200946b35e22e19\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693308710\",\"updatedAt\":\"1793693322958\",\"name\":\"空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_384231d4-9c65-44a3-9bdd-843d1103f6bd\"},{\"id\":\"aut_d2536cddbe1b485e8c596b400e7a8104\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1793693242035\",\"updatedAt\":\"1793693253891\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_a1be9f34-88de-42ad-9501-d60844b38885\"},{\"id\":\"aut_6065c9231cfc4293a2d7381951509415\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T140129\\nRRULE:FREQ=HOURLY;INTERVAL=1\",\"summary\":\"FREQ=HOURLY;INTERVAL=1 Asia/Tokyo\"},\"createdAt\":\"1793592097765\",\"updatedAt\":\"1793592154656\",\"name\":\"验收完成对照巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_06a312c1-0546-4a27-8de3-aa48f002d386\"},{\"id\":\"aut_78c2a092875d4e71b3685aa400356758\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132931\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591988109\",\"updatedAt\":\"1793592384975\",\"name\":\"支付联调阻塞评论风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_6c3fcd3c-7129-4980-b0d7-a759f791e11b\"},{\"id\":\"aut_b16c830eb97e45deaa18fc7b3511973e\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T135742\\nRRULE:FREQ=HOURLY\",\"summary\":\"FREQ=HOURLY Asia/Tokyo\"},\"createdAt\":\"1793591882416\",\"updatedAt\":\"1793591937450\",\"name\":\"支付联调阻塞截止前提醒\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_560ef049-d19b-4142-8269-f99d8f33f3a5\"},{\"id\":\"aut_4099c1eda61c401e9d0287f3f3bdffba\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T170000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793591775546\",\"updatedAt\":\"1793591830075\",\"name\":\"支付联调阻塞任务进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_e33468d5-4497-4fc6-99f8-044786b8d809\"},{\"id\":\"aut_c555b5f693174b318219a4733806f464\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T132329\\nRRULE:FREQ=MINUTELY;INTERVAL=30\",\"summary\":\"FREQ=MINUTELY;INTERVAL=30 Asia/Tokyo\"},\"createdAt\":\"1793591631293\",\"updatedAt\":\"1793591729410\",\"name\":\"支付联调阻塞风险监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7e333603-0ce0-41bb-84ac-78323388120f\"},{\"id\":\"aut_606ca0bbcb144431ba6e12dd604f5f21\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T110000\\nRRULE:FREQ=WEEKLY;BYDAY=WE\",\"summary\":\"FREQ=WEEKLY;BYDAY=WE Asia/Tokyo\"},\"createdAt\":\"1793591537826\",\"updatedAt\":\"1793591570229\",\"name\":\"自动化交付验收项目进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_4defea32-93b0-4995-8b8b-c2bd41c8cc62\"},{\"id\":\"aut_a55a8b2c852f40048af936f3492ed639\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T155048\\nRRULE:FREQ=HOURLY;INTERVAL=3\",\"summary\":\"FREQ=HOURLY;INTERVAL=3 Asia/Tokyo\"},\"createdAt\":\"1793591458484\",\"updatedAt\":\"1793591469104\",\"name\":\"自动化交付验收项目风险巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_5e4d76fc-6569-4274-b21b-41b8b54cd9bd\"},{\"id\":\"aut_7a54778babea4fc0b38a5b18835418fd\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261102T150000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,15;BYMINUTE=0;BYSECOND=0 Asia/Tokyo\"},\"createdAt\":\"1793591338292\",\"updatedAt\":\"1793591398405\",\"name\":\"交付验收项目临期阻塞巡检\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_7cb9d5fe-9ab3-42e2-81bd-0b1827f45bbc\"},{\"id\":\"aut_272e78c4f1b8443d86dd078b5123c45b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T100000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425390213\",\"updatedAt\":\"1793592166067\",\"name\":\"验收空间逾期任务监控\",\"mode\":\"AUTOMATION_MODE_WATCH\",\"session_id\":\"cs_86a7bff0-2ac3-456d-84e0-31ff3fa2112d\"},{\"id\":\"aut_20510588a87e4df08147d79cefbcddb4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261008T180000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1791425221762\",\"updatedAt\":\"1793591297672\",\"name\":\"自动化交付验收项目每日 18 点汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_19ed38c8-6cbd-41fc-b8ce-862a99d3faec\"},{\"id\":\"aut_9e131222285f4919a29f4ee7c96af6f4\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261012T100000\\nRRULE:FREQ=WEEKLY;BYDAY=MO\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO Asia/Tokyo\"},\"createdAt\":\"1791425139009\",\"updatedAt\":\"1793591215303\",\"name\":\"自动化监控验收空间周度进展\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_d70f5712-1c67-458d-972c-8df91ea35475\"},{\"id\":\"aut_6013fb2342514c3cb8289f4da994b536\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791425017096\",\"updatedAt\":\"1793591114829\",\"name\":\"每周自动化验收空间简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_0010230b-4c56-4d90-bba7-bc07507db88a\"},{\"id\":\"aut_aab766e204524fe4936cc5450c3b145b\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T090000\\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR Asia/Tokyo\"},\"createdAt\":\"1791424933721\",\"updatedAt\":\"1793590820442\",\"name\":\"工作日项目进展与风险汇总\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_9b43e566-d56e-4727-af3f-c87835dba022\"},{\"id\":\"aut_80edabe1faec4a94b1e966e4fa8ab8fe\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261009T170000\\nRRULE:FREQ=WEEKLY;BYDAY=FR\",\"summary\":\"FREQ=WEEKLY;BYDAY=FR Asia/Tokyo\"},\"createdAt\":\"1791374471656\",\"updatedAt\":\"1791374485375\",\"name\":\"每周自动化监控验收空间近7天简报\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_ff77dd17-29e8-4387-ac63-5aaeb5083ea7\"}],\"page\":1,\"pageSize\":50,\"total\":\"20\"}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+              "turn_step": 2,
+              "seq": 28,
+              "name": "automation_get",
+              "call_id": "call_ePqhlqYq8oqmdiAo8YrZWe43",
+              "arguments_summary": "unknown tool",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_PAUSED\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793694440199\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_09cdcaeec3c34241a8628f4b2ae03bff",
+              "turn_step": 2,
+              "seq": 33,
+              "name": "automation_resume",
+              "call_id": "call_mCWcLzZwK85NHA3J1Yr4w0uC",
+              "arguments_summary": "unknown tool",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"automation\":{\"id\":\"aut_8fcb890991d04acaac2eefb55bad2aa9\",\"status\":\"AUTOMATION_STATUS_ACTIVE\",\"prompt\":\"汇总我参与项目的当前进展、状态变化、关键风险与需要我关注的事项，并生成项目进度提醒。\",\"schedule\":{\"icalendar\":\"DTSTART;TZID=Asia/Tokyo:20261104T090000\\nRRULE:FREQ=DAILY\",\"summary\":\"FREQ=DAILY Asia/Tokyo\",\"nextRunAt\":\"1793750400000\"},\"createdAt\":\"1793693386722\",\"updatedAt\":\"1793702357062\",\"name\":\"每日项目进度提醒\",\"mode\":\"AUTOMATION_MODE_SCHEDULED\",\"session_id\":\"cs_31316091-8114-4a0c-8386-6e0121ae58cc\"}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 45,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 79431,
+            "output_tokens": 150,
+            "total_tokens": 79581,
+            "estimated_cost_micros": 399405,
+            "cached_input_tokens": 59502,
+            "cache_write_input_tokens": 19419,
+            "cache_hit_ratio": 0.7491029950523096,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "c738fc24-815c-4c45-b2f5-7e2df8e3ff79"
+        ],
+        "current_session_ids": [
+          "cs_31316091-8114-4a0c-8386-6e0121ae58cc"
+        ],
+        "matched_run_ids": [
+          "bar_09cdcaeec3c34241a8628f4b2ae03bff"
+        ],
+        "excluded_historical_run_count": 3,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

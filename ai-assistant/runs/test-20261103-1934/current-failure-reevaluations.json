@@ -1,0 +1,3345 @@
+{
+  "AA-FU-043": {
+    "business_status": "skip",
+    "kind": "not_executed",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次完整验收未执行：已补查原生组织接口：部门管理列表为空，实线下属列表有自动化_Anna6，但该追问账号读取两项受控下属项目均被 NoPermissionError 拒绝。现有材料无法同时核验历史时点的下属口径、目标集合和授权链；不能把受限夹具或两种组织口径的差异直接判作产品失败。 历史问答已经正常完成，原回答、会话、请求与 Trace 全部保留；本状态表示完整验收条件仍未具备，不表示历史未发过请求。",
+    "evidence_assessment": {
+      "sufficient": false,
+      "comment_grounding": "not_applicable",
+      "reason": "原请求 call_RAT8ojznOrJdwJVHiCLuE3EL 的参数和完整空集结果可核验，足以支持回答中的部门查询结论。独立预检仅提供可见项目总数2，未提供历史上下级及项目角色、授权明细。2026-11-04的组织和项目回源不是2026-11-03请求时刻的权限快照，无法据此确定应返回的下属项目集合。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "skip",
+        "reason": "回答与实际部门负责人查询的完整空集一致，且保留了推断边界；不能因未走另一种上下级关系就确定失败。仍需历史真实下属关系和项目可访问性，才能判断此限制回答是否遗漏本可返回的项目。",
+        "evidence_refs": [
+          "trace.runs[0].tools[seq=28]",
+          "recovered_business_evidence.message_pool: call_RAT8ojznOrJdwJVHiCLuE3EL及其工具返回",
+          "turns[step=2].answer",
+          "authenticated_supplementary_source.managed_department_members",
+          "authenticated_supplementary_source.controlled_subordinate_project_details",
+          "authenticated_supplementary_source.historical_scope_note"
+        ]
+      }
+    ],
+    "suggestions": [
+      "补充原请求时刻同身份的真实下属关系、组织管理范围及下属项目角色和授权快照，再核定应返回的对象集合。",
+      "核验管理部门查询为空但管理部门成员接口返回成员的业务语义差异，避免将两种接口结果未经核实视为等价。"
+    ],
+    "input_sha256": "0037a2c751d43f33d3ae4f109ccfeba72a2503907acbe75ad6487edcdba143f0",
+    "evidence_sha256": "382f86327ab3baa104f24ba0e5cd63e6d952e91e8dfd82e54ebcf5765768e047",
+    "reviewed_at": "2026-11-04T00:35:58.965221+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed）",
+    "review_observation": {
+      "basis": "95df6422c87f113adf9b9421d25fd5048ed8e0dbd03a469a4e59028f6dd5ab2f",
+      "result": "b06a852b32f47a508982222228bd5b28c2bc25f4eefe613d42c7a8d8fe8f4d18",
+      "requests": [
+        "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    },
+    "condition_diagnosis": {
+      "disposition": "not_executed",
+      "full_acceptance_conditions_met": false,
+      "historical_business_request_existed": true,
+      "new_question_resent": false,
+      "supplementary_readback_completed": true,
+      "unresolved_conditions": "已补查原生组织接口：部门管理列表为空，实线下属列表有自动化_Anna6，但该追问账号读取两项受控下属项目均被 NoPermissionError 拒绝。现有材料无法同时核验历史时点的下属口径、目标集合和授权链；不能把受限夹具或两种组织口径的差异直接判作产品失败。",
+      "classification_basis": "用户要求：补足证据及执行前提，无法补足则标为未执行；待复核与未执行分开。"
+    }
+  },
+  "AA-REAL-TEST-006": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循",
+      "时序错误"
+    ],
+    "business_reason": "本次请求已正常生成回答，但未完成用户要求的两项目完整排名及高优先级、逾期统计。完整Trace明确显示本轮查询未展开Anna的子孙任务，最终仅报告其11项一级任务，并以尚未核实为由停止，未满足默认包含全部子孙层级的验收要求。此外，回答将anrou的逾期数写为0，但已读任务正文中多项未完成任务的截止时间为2026-10-20或2026-10-30，均早于本轮2026-11-03的冻结时间；返回的overdue=false与截止日期存在明确冲突，不能直接作为当前逾期结论。负荷判断保持了不确定性边界，这部分合理，但不能弥补核心统计未完成。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为任务分布统计，不要求评论分析。同请求认证Trace包含完整查询参数、覆盖统计、任务材料及最终回答，足以确认未完成递归统计和逾期时间冲突；无需采用旧Gold的动态数量作为当前事实。seq42显示Anna counts.total=24但tasks=11、children_rows=0，本轮两次task_ask均未启用子任务展开。已读anrou材料包含未完成任务task_vys0rjsaemtc、task_vys0nlw33g5a等的明确历史截止时间，与汇总中的全部未逾期相冲突。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答诚实披露Anna子任务未核实，且没有武断断言人员已超负荷，但没有继续完成全部子孙任务的读取、去重和分组，因而未回答谁最多及其完整优先级、逾期数量。anrou“逾期0项”的明确结论还忽略了已读截止日期与当前时间的冲突。属于结果不满足验收，并非生成执行失败或裁判证据缺失。",
+        "evidence_refs": [
+          "trace.tools seq24 task_ask：children=false，项目甲tasks=20、counts.total=42",
+          "trace.tools seq42 task_ask：Anna tasks=11、counts.total=24、subtask_total=13、children_rows=0",
+          "recovered_business_evidence：anrou任务材料task_vys0rjsaemtc截止2026-10-30T18:00:00+09:00",
+          "recovered_business_evidence：anrou任务材料task_vys0nlw33g5a截止2026-10-20T18:00:00+09:00",
+          "current_datetime：2026-11-03T19:54:11+09:00",
+          "turns step2 answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "对所选两个项目完整递归读取全部子孙任务，按tenant_id与task_id去重，再按未完成状态及执行人分组，补齐完整排名和优先级统计。",
+      "当逾期标记与明确截止日期冲突时，按冻结时间核验并重新计算；无法消解时明确报告冲突，不将全部overdue=false直接表述为当前逾期0项。",
+      "保留当前负荷判断的谨慎边界，将工作量、容量和依赖核验继续明确标为建议。"
+    ],
+    "input_sha256": "a85035796342be2ce48bf075a759161cd7b212451b9fd6d146c1ac805d6963a1",
+    "evidence_sha256": "d5a4932212bb3b75eb371e80894a887b17174c3149c106fd0fff11b454972639",
+    "reviewed_at": "2026-11-04T00:21:59.630072+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "7340e025b52a5ad85294428ea84d07979a2fc21a494c22f04c656ed8143fe31d",
+      "result": "9aa2d7cb9cfd1d4d3f7378edd211ca5975474445e12b175f5dd2a0635a905930",
+      "requests": [
+        "bffcee0e-0352-400e-bc37-7a89acaaca88"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-010": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "本次问答正常完成，但结果未满足完整项目进度汇总的验收条件。默认范围包含全部子孙任务，实际工具仅展开至62/63项，遗漏任务033下的三级任务064；回答转而以一级任务完成11项、剩余20项作为主要结论，并明确无法给出项目甲全部任务的完成与剩余数。诚实披露缺口不能替代完成核心任务。执行前后同身份完整递归回源一致，项目甲实际为63项、完成21项、剩余42项。回答提供具体一级关注任务、正确最高优先级及截止时间，并区分当前状态与本周新增完成，这些正确部分不足以弥补范围缺失。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "partial",
+      "reason": "认证当前请求Trace的task_ask seq41明确显示counts.total=63、tasks=62、children_rows=31，恢复的原生业务材料确实缺少任务064；最终回答也承认该缺口。执行前后bracketed_reexecution_source完整递归读取均包含task_vys0rb6pltjq，且rows_unchanged_during_execution=true，足以确定漏读及未完成汇总。评论仅有comments_complete元数据、未呈现正文，不据此额外认定评论误读；本次失败可独立由完整层级范围遗漏确认。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "已识别两个指定项目并列出8项可追溯关注任务，但没有完成全部子孙层级的统计和风险筛选。项目甲只读取62项，遗漏最高优先级、进行中、截止2026-10-20 18:00东京时间的三级任务064；最终未回答完整项目的完成21项、剩余42项。属于正常生成后结果不满足验收，并非空回答或生成执行失败。",
+        "evidence_refs": [
+          "trace.runs[0].tools seq41 task_ask",
+          "trace.runs[0].tools seq49 scratchpad_read",
+          "recovered_business_evidence.message_pool：project材料62项任务行",
+          "independent_historical_sources.bracketed_reexecution_source.before/after：task_vys0rb6pltjq及完整递归分页",
+          "turns step2 answer",
+          "independent_historical_sources.reexecution_session_readback"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将子任务展开实现为递归遍历，继续读取任务033的子任务，直到去重后的已读数量与项目总数一致。",
+      "在完整任务集合上重新汇总完成与剩余数量，再依据截止时间、状态和优先级筛选跨全部层级的关注任务；不要用一级任务口径替代默认项目口径。",
+      "保留现有的时间冻结、来源引用和本周新增完成数不可确认的边界说明。"
+    ],
+    "input_sha256": "98ec6372a4026dc9f3363689b24335ddcac267dc4b8945f0cbaf985aa0bf954e",
+    "evidence_sha256": "7486fc21bef446a81cc91d4edbeb861dab7d7b8914c2a8d910733a555c90f8b8",
+    "reviewed_at": "2026-11-04T00:16:14.148226+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：task_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "59b8b9fb5fae3c0a46a53dc48813b89696592a74bf7be2e9e2d069d1f04dd2fe",
+      "result": "7e8d7294d58c6c158017d661a721a2aa297514117d408b788dc5ecb1dddff0ba",
+      "requests": [
+        "2e827d57-1cc9-4fee-8d74-86662494b384"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-024": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已正常生成回答，但结果不满足四项分层统计的验收条件。执行前后同身份、同三个项目的完整递归回源一致：主任务未设置截止时间6项、逾期8项；全部子孙任务未设置截止时间6项、逾期9项。回答仅正确给出主任务逾期8项，两项未设置截止时间数量均未完成，子孙任务逾期停留在8或10项。旧Gold的逾期3项、2项不适用于本轮时点。回答谨慎披露工具冲突、没有把未返回字段当作空值，这一点合理，但不能替代完成核心统计；这是实际业务链路结果不满足验收，不是生成失败或裁判证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题是任务字段聚合，不要求评论证据。认证当前请求Trace及会话回读确认了实际回答；bracketed_reexecution_source在13:07:26和13:08:29 UTC完整读取三个项目，包含第三级任务064及空项目零结果，并确认执行期间数据未变。Trace seq34实际仅展开31条直接子任务，累计63行而服务端全树总数64；seq42明确暴露字段和层级缺口，seq47又返回子孙逾期10的冲突统计，最终未补齐。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围定位正确，未混入默认项目，也正确区分未排期与逾期；但未提供主任务和子孙任务各6项的未设置截止时间数量，也未核实包含第三级任务064的子孙逾期9项，未完成用户要求的四项准确统计。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=34,42,47]",
+          "independent_historical_sources.bracketed_reexecution_source.before",
+          "independent_historical_sources.bracketed_reexecution_source.after",
+          "independent_historical_sources.reexecution_session_readback"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复聚合工具的递归展开，继续读取任务033下的第三级任务064，并校验去重后实际行数与全树总数一致。",
+      "保留截止时间明确为空与字段未返回的区别，补读真实截止字段后按主任务、全部后代分别统计。",
+      "对服务端计数与逐行统计冲突执行同范围核验，完成后输出四项确定数字及统计时点，不以冲突说明代替统计结果。"
+    ],
+    "input_sha256": "bf7e64e03c9f9e9887d361ea1fe7f497f0e807367b7600fcad874ef3862ead25",
+    "evidence_sha256": "9eb6572251b0c56ad9bb4bb88c9a447d47b3af499e9e90d182c1e8b1ab90ad68",
+    "reviewed_at": "2026-11-04T00:16:01.009063+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → entity_resolve（completed） → task_ask（completed） → scratchpad_read（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "382a75b4f49dd60929f9066133525e17a77b8d07237cffd99d3a4bcb5825fc96",
+      "result": "38ad4cd56ce5bcc81d6dd26e152446900c3a1e4828a0edf9c7d5eadd305a3a60",
+      "requests": [
+        "e1e8cf2f-d61f-4526-b83d-1acb5a279d82"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-063": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "指令未遵循"
+    ],
+    "business_reason": "本例要求在提醒时间、项目范围等信息缺失时补问。认证历史输入中虽有助手此前声称已创建每日09:00提醒，但没有用户确认时间及项目范围的回答；本轮用户也未明确要求恢复该既有配置。助手未作澄清，直接将暂停的自动化恢复为启用状态，因此执行已完成但结果不满足澄清验收。恢复动作、原暂停状态及配置均有工具支持，不属于编造。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "当前请求的认证Trace完整记录用户输入、历史业务消息、automation_get读取的暂停配置，以及automation_resume返回ACTIVE。足以确认未补问且实际改变了自动化状态；本例不涉及项目评论解析。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "用户仅说“每天提醒我项目进度”，未确认具体时刻及项目范围。历史中助手自行给出的09:00及参与项目范围不能替代用户确认。回答直接回执已恢复，且工具证实恢复成功，未完成本轮应有的澄清。",
+        "evidence_refs": [
+          "recovered_business_evidence.message_pool：历史澄清问题及助手创建回执，无用户参数确认",
+          "trace.runs[0].tools seq=28：automation_get返回PAUSED、每天09:00 Asia/Tokyo及参与项目范围",
+          "trace.runs[0].tools seq=33：automation_resume返回ACTIVE",
+          "turns step=2：最终回答已恢复每日项目进度提醒"
+        ]
+      }
+    ],
+    "suggestions": [
+      "先询问每日提醒时刻、项目范围，以及是否每天均通知或仅有变化/风险时通知。",
+      "发现同会话已有暂停提醒时，可展示其现有时间与范围，询问是否按该配置恢复；获得确认前保持暂停。"
+    ],
+    "input_sha256": "b44bd107907c0eaeb0fde69f837b41fac580498ea61b62e4be81972cbf27998e",
+    "evidence_sha256": "c0492c3ebb99863691db0894c288c981056a6022e1a622d90171eb58427f640d",
+    "reviewed_at": "2026-11-04T00:19:42.276321+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → automation_list（completed） → automation_get（completed） → automation_resume（completed）",
+    "review_observation": {
+      "basis": "0ff07d259d7da25a38f65ea691630a623d2354986706f9d81017b88ea21ab08e",
+      "result": "9aec9ee01948d59445b45a59b052d51b33f7542e22fa13e9cd687e3a031a47a9",
+      "requests": [
+        "c738fc24-815c-4c45-b2f5-7e2df8e3ff79"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-009": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "本轮已正常执行并生成回答，三个项目的范围、总任务数、主任务数、子孙任务数及已完成数均符合本轮回源结果，但项目甲逾期数未完成统计，仅回答“至少16，完整数待确认”。执行前后同身份完整递归回读一致，甲项目实际有17项逾期。实际工具展开只覆盖62项，遗漏任务033下的三级任务064；发现63项总数与62项分布的差异后未补齐便结束。披露缺口合理且不属编造，但结果仍不满足完整计数验收；不是生成失败或裁判证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为业务字段聚合，无需评论。认证当前请求Trace的task_ask seq44及scratchpad_read seq52明确显示counts.total=63、tasks=62、逾期16；seq57返回过滤计数18，证实工具结果存在冲突。bracketed_reexecution_source.before/after完整递归分页且rows_unchanged_during_execution=true，核实遗漏的任务064为逾期，甲项目完整逾期数为17。最终回答及新会话认证回读均确认未提供完整逾期计数。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确限定三个项目，甲为63/31/32/21，乙为1/1/0/1/0，空项目各项为0；但甲项目逾期数只提供下界16，没有完成用户所求的完整统计。本轮应依据动态回源核验为17，不沿用旧Gold的5。",
+        "evidence_refs": [
+          "trace.runs[0].tools seq29、34、44、52、57",
+          "independent_historical_sources.bracketed_reexecution_source.before/after",
+          "bracketed_reexecution_source.after.rows.task_vys0rb6pltjq",
+          "turns[step=2].answer",
+          "independent_historical_sources.reexecution_session_readback"
+        ]
+      }
+    ],
+    "suggestions": [
+      "当全树总数与已读任务数不一致时，递归补读仍有后代的节点，尤其任务033下的任务064，直至去重实体数与63项一致。",
+      "对过滤计数18与逐项逾期16的冲突，使用完整全树逐实体业务字段重新核算，确认17项后再输出完整统计。"
+    ],
+    "input_sha256": "50ce5531b3f81cf96e0efcdc960677d9b9ff2dd872e3731c0feb162b3254fe1f",
+    "evidence_sha256": "08d24cb435f4a68b89fd689abf19db145bffb65dd655c720b8ea50b738c2e208",
+    "reviewed_at": "2026-11-04T00:15:42.279251+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → entity_resolve（completed） → task_ask（completed） → task_ask（completed） → scratchpad_read（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "e00f9f89dd48a633e0dff009786240337b848a0cdce7c6bcd770e2765363e3cf",
+      "result": "f4461dcf84702a0f8a7ba0b7bd6c9b9a0471528c0839335d3ed7e0281fb1b4b1",
+      "requests": [
+        "5a145205-cac0-40e7-ab7c-5ff039160fb1"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-019": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误"
+    ],
+    "business_reason": "本轮已实际执行并完成回答，两条必需任务均已召回，状态和东京时间截止时间与工具返回一致。但检索及回答采用11月3日至9日的自然日窗口，而验收要求以本次时刻T为锚点的[T,T+7天)滚动窗口；该查询遗漏11月10日截止边界之前的时段，不能满足指定检索口径。LOW任务被纳入是否构成额外事实错误暂不可确定：实际工具返回其优先级为high，而材料未提供本次刷新后的独立source_gold，不能仅凭名称或历史Gold认定其当前为低优先级。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace完整展示本轮问题、查询参数、结果与最终回答，足以确认时间窗口错误。本题为任务事实清单，无须评论取证。六条样本的现有独立回读均为权限拒绝，且缺少本轮刷新核验的source_gold，因此不足以独立核实LOW优先级及全部负例当前属性；该缺口不影响已明确的窗口错误判定。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "实际查询project及message均使用end_time.from=2026-11-03、to=2026-11-09，最终也明确采用该范围，不符合滚动7天窗口。两条必需任务已正确展示；LOW的纳入有工具high字段支持，不认定为助手编造，但其负例验收仍缺独立动态源核验。",
+        "evidence_refs": [
+          "recovered_business_evidence：current_datetime=2026-11-03T19:40:40+09:00",
+          "call_a6c94d4f072b485caf18446b77b156e3：项目任务查询参数及3条结果",
+          "call_56c2e2e0cf3949a7a630a57fe9d6a692：消息任务查询参数及空结果",
+          "turns[step=2].answer",
+          "preflight.truth.current_tasks：六条独立回读均未通过权限核验"
+        ]
+      }
+    ],
+    "suggestions": [
+      "使用覆盖滚动7天窗口的候选日期范围，再按实际截止时间过滤至[T,T+7天)，不要以今天至第六天的自然日范围代替。",
+      "补充本轮六条样本刷新后的独立source_gold，核实LOW的原始优先级与工具枚举映射；独立回读未通过时，不应声称已完成负例验收。"
+    ],
+    "input_sha256": "c5882fc759df771b58c0c5f9808a10edda34898f3b9acec7a39d3ab579614c4b",
+    "evidence_sha256": "6e16c2f2eacb847f6961af0e106628a209f6a5ce6849595ee0357029affca815",
+    "reviewed_at": "2026-11-04T00:19:02.325194+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_query（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "5649d8c4e2282a931c3c78306d9ca783c08f3ebd935bdb26744eea30f650b5ab",
+      "result": "53f1f591286fbe75f24f36d036b4d0195921e9d032ed03b73968d8bd74ab0b58",
+      "requests": [
+        "53ff6339-e102-49b9-b053-041250352342"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-058": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次已完成实际问答，返回14个项目名包含“评测”的候选，每项均带真实项目引用及ID，并明确采用名称包含“评测”的字面匹配口径，最后请用户确认目标。候选与完整工具结果及本轮同身份可见项目回源一致。用户只记得项目名关键词，未要求语义扩展，因此不应因未列出标题不含“评测”的“知识召回质量治理”等背景参考项目判失败；也不能仅凭项目名称中的“未授权”“不可见”认定当前CFO无权访问。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace中project_query以name_contains=评测查询，完整返回total=14、returned=14，回答逐项覆盖。fresh_rerun_sources.before与after均验证当前CFO身份及候选所在的可见项目集合，跨公司可见对象亦在回源清单内。本题为候选定位，不涉及评论进度解析。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "正确返回14个字面匹配项目候选，名称、项目ID、租户引用及状态分组与工具返回相符，匹配口径清楚且未擅自选定唯一项目。此次有完整有效回答，不再沿用历史限流失败原因。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=26]:project_query",
+          "recovered_business_evidence.message_pool:call_7TTxfz7n8cHYeRyWyJ5ZFbTR",
+          "fresh_rerun_sources.before.actor_visible_projects",
+          "fresh_rerun_sources.after.actor_visible_projects"
+        ]
+      }
+    ],
+    "suggestions": [],
+    "input_sha256": "4039fe5b15cf2d477ceb47afd5991c0774724b4819a5789cb6ff21d1079a3c4c",
+    "evidence_sha256": "4041c9c0f792390df4024f053fdc4ebed3e0726dacf3340fa4c7c66d5d4ca7a6",
+    "reviewed_at": "2026-11-04T00:19:42.232724+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed）",
+    "review_observation": {
+      "basis": "6ba19b0b0569285e6a63f19550e4d124ccd8cb1c55ae0baac9e09d214c31b833",
+      "result": "6e505f37ff4f3c021b1852b5ccd0d998b96e41835308a372e510ea3b3bb68935",
+      "requests": [
+        "47b5e330-aa78-4a17-8092-47365b7c6b37"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-011": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "本次请求已正常生成回答，但未完成两个指定项目全部主任务及子孙任务的排查，属于结果不满足验收，而非生成失败或裁判证据不足。助手确认了项目甲20个未完成主任务均有执行人，却最终回答“暂时不能确认”。认证Trace显示子任务033存在后代标记，但未继续读取其下第三级任务064；项目乙仅查询未完成状态，未补查已完成根任务及其子任务范围。执行前后同身份完整递归回源一致：两个指定项目符合“未完成且无执行人”的任务为0。披露检索缺口是诚实的，但不能替代完成用户要求的检查。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题判断任务状态、层级和执行人关系，不需要评论。当前请求认证输入及会话回读核实附件仅为项目甲、乙；structured_select返回20个根任务的有效执行人数据；task_children及恢复的materials明确显示任务033仍有后代，而实际工具链未补齐该层。bracketed_reexecution_source在13:10:06与13:12:17的全量递归读取覆盖执行时段，成员角色及任务行保持不变，支持0命中结论。turn_ledger将structured_select记为failed与其内层completed、20条有效rows存在记录冲突，不能将其视为无数据；本次失败依据是递归核查未完成及最终未给出所问结果。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答范围正确、主任务有执行人的结论有依据，也未把缺失执行人字段当作无人执行；但未完成全部子孙层级和项目乙完整范围核验，最终没有回答实际可验证的0命中结果。工具中途的coverage_insufficient未被充分恢复。",
+        "evidence_refs": [
+          "recovered_business_evidence.message_pool：当前用户问题及两个project引用",
+          "trace.tools seq=46 structured_select：completed，count=20，assignees均非空",
+          "trace.tools seq=51 task_children：任务033 has_matched_descendant=true",
+          "trace.tools seq=64 scratchpad_read：仍声明未覆盖完整各级子任务",
+          "independent_historical_sources.bracketed_reexecution_source：before/after完整递归回源，rows_unchanged_during_execution=true",
+          "independent_historical_sources.reexecution_session_readback：messageSequence=11681最终回答"
+        ]
+      }
+    ],
+    "suggestions": [
+      "先读取两个所选项目的全部根任务，再完整分页递归子孙任务，避免根任务状态筛选阻断后代覆盖。",
+      "对任务033继续展开至任务064，并补齐每个待核验任务的执行人关系；不要用details_read为0否定已经返回的有效executors数据。",
+      "完成去重和角色核验后，明确报告符合条件任务共0项，主任务0项、子孙任务0项，并附两个项目来源。"
+    ],
+    "input_sha256": "ff807487c57cbbd315018f1b2bf27c431f926f0676ae89db15086dbcd04563f3",
+    "evidence_sha256": "7f31d3c771d49ee3824dff4da031b8c6b1883f77ee471f9a99f168a2d2594f2b",
+    "reviewed_at": "2026-11-04T00:16:21.196292+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：task_ask（completed） → scratchpad_list（completed） → task_query（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed） → task_children（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "2db1eb0bba7145f9a693e4467c54cb06a7cb463cd370fbc38a83537570458b1d",
+      "result": "37d5530e90751a91a9f2a63fd9ab3fec528c2bfe79278acc500c43ce7bf4e6c6",
+      "requests": [
+        "14a54367-1396-44df-9a65-519cf0d6e51e"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-039": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已实际执行并生成回答，不再适用旧的限流原因。用户要求区分待本人拍板的任务与仅抄送项，实际回答未给出任何任务分类，仅说明无法可靠列出。完整Trace确认任务分析未产出可用结果、项目任务查询失败、汇报检索不可用，最终核心业务未完成；这是实际检索执行失败导致的结果不满足验收，而非已证实的评论理解错误。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "partial",
+      "reason": "认证Trace完整记录了本轮回答及工具结果。seq 62的task_ask显示消息任务已读取26项详情及17条评论，但因答案引用覆盖不足未发布结果，项目任务分支明确失败；seq 77的memory_search返回不可用。恢复材料包含消息任务评论正文，但没有可支持具体拍板或仅抄送分类的明确业务内容。独立回源核实当前身份及可访问项目，不能把历史Gold两项任务的标题或CFO关注角色直接推断为当前用户待拍板事项。另，turn_ledger将两次structured_select记为failed，与实际工具内层completed且返回有效行或完整空集冲突；本裁决采用实际工具结果，不将这两次查询视为失败。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答准确披露了查询限制，也未将“[YES]”误判为具体决策，未将执行人或关注人自动等同拍板人。但任务、汇报检索失败后，没有恢复获得所问分类，最终未交付待拍板与仅抄送的对象集合，核心任务未完成。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=62]",
+          "trace.runs[0].tools[seq=77]",
+          "trace.runs[0].tools[seq=57]",
+          "recovered_business_evidence.message_pool：materials kind=task query=message",
+          "fresh_rerun_sources.before.identity_verified"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复任务分析因全量引用校验而丢弃已读分类结果的问题，保留可核实的部分结论与待核验项。",
+      "项目任务查询失败后进行有界重试或分批读取，并结合明确决策请求及后续确认区分待决、知会和无法判断，避免仅凭任务角色分类。"
+    ],
+    "input_sha256": "28cdd3a4885d0b21cd236d1c3632058458afccb28572d81d3912c15d91c1f0c4",
+    "evidence_sha256": "90e476ba54178315b1fafe5f706c9937c8836c1958606defcb363e68f2de28a4",
+    "reviewed_at": "2026-11-04T00:24:30.146999+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → scratchpad_write（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed） → structured_select（外层 completed / 内层 completed） → material_ask（completed） → scratchpad_read（completed） → task_ask（completed） → group_message_search（外层 completed / 内层 completed） → memory_search（failed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "0244692ed5e5bd1fa01e4a84dbecf1c93b10bd73aee5bfc5aba20b98febde77c",
+      "result": "7a5317ea50eb78fcf6d932f6152868580801d84ce536abbbf43a79490ea65866",
+      "requests": [
+        "53e7673d-ebc0-4078-b93b-0013427556be"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-005": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次问答已正常完成执行，但核心主任务状态计数不满足验收。独立完整业务源回读显示主任务已完成11、未开始10、进行中11，回答却为12、10、10。子孙任务10、11、11及指定三个项目、包含三级后代的范围口径正确，不能抵消主任务计数错误。认证Trace表明错误数值来自工具聚合返回，并非助手凭空编造。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题仅要求按自身状态分层计数，无需评论证据。执行前2026-11-03T10:35:09Z独立回源已完整递归读取64项任务；认证当前请求Trace的task_ask seq=34返回主任务completed=12、in_progress=10，与独立逐任务源数据及同轮材料明细不一致。回答沿用了该错误聚合。证据足以判定业务结果错误，但不应将其归为评论误读或无依据编造。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确结果按已完成、未开始、进行中顺序应为：主任务11、10、11；子孙任务10、11、11。实际回答仅主任务已完成多计1、进行中少计1。执行正常终止，属于结果不满足验收，而非生成失败或验收条件缺失。",
+        "evidence_refs": [
+          "expected_answer.current_independent_readback.tasks及complete_recursive_readback=true",
+          "preflight.truth：主任务001状态2，031状态3，032状态3及其余根任务自身状态",
+          "trace.runs[0].tools seq=34：task_ask root_only主任务聚合",
+          "recovered_business_evidence.message_pool：甲项目逐任务materials明细",
+          "turns step=2 answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复主任务状态聚合，使分组结果与按(task_id, task_tenant_id)去重后的根任务自身状态一致。",
+      "当逐任务明细与聚合统计冲突时，核验差异后再输出确定计数；同时校验各层级状态分组之和及全树覆盖数量。"
+    ],
+    "input_sha256": "95190cb587533ba2414dcef52137a6da02b723aa3d4e00f4ed93f7cdcb683fa1",
+    "evidence_sha256": "a602a42908f7923d8069d061d10ba6c57102adcca2a7398a34a97595a8c17fd8",
+    "reviewed_at": "2026-11-04T00:20:35.115996+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed） → task_detail（completed）",
+    "review_observation": {
+      "basis": "41721ed424ff41e1493d983c3550aa1f9d7b9b8b5fe3263b0866e282f124fefd",
+      "result": "44f6bb7642fa03748d73de5c0d84f23a2a5982e7c80474a958a10478cd0147a4",
+      "requests": [
+        "b27dba5a-eb78-4952-a390-2566a9a48712"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-008": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本次请求已正常完成生成，但结果未完成两个项目负责人的比较：正确回答项目执行人专项的项目经理为自动化_Anna2，却未回答项目管理员专项由自动化_Anna7担任项目管理员。助手仅依据项目列表未返回项目经理字段便停止，将经理字段的缺口当成负责人查询的终点。独立认证项目详情及成员记录明确列出自动化_Anna7为管理员，与Gold一致。这是核心信息遗漏，不是生成执行失败，也不是编造。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为负责人查询，不要求评论证据。当前请求Trace的project_query（seq 23、24）及最终回答完整可核验；独立认证回源中pro_2165909172的projectInfo.administrators与project_members均列出自动化_Anna7、roleLevel=60，加入时间为项目创建时，项目updateTime保持创建时间，支持Gold中的角色事实。该回源不被当作助手实际已检索的证据。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "两个项目定位和引用正确，自动化_Anna2回答正确；但第二个项目仅答“暂不能确认负责人”，遗漏已核验的管理员自动化_Anna7，未满足用户分别询问谁负责的核心要求。其“未返回项目经理”的限制说明本身符合列表结果，但不能使未完成的查询通过。",
+        "evidence_refs": [
+          "trace.runs[0].tools: seq 23、24，project_query",
+          "turns: step 2，message_id cm_18a9ee71-10be-47bb-b467-0efdd4fcfa7a",
+          "independent_historical_sources.fresh_business_readback.project_details.pro_2165909172.response.data.projectInfo.administrators",
+          "independent_historical_sources.fresh_business_readback.project_members.pro_2165909172",
+          "expected_answer.gold_entities"
+        ]
+      }
+    ],
+    "suggestions": [
+      "项目列表未返回经理时，继续核验项目详情中的管理员等实际角色，不将“谁负责”仅限于经理字段。",
+      "分别回答自动化_Anna2为项目执行人专项的项目经理、自动化_Anna7为项目管理员专项的项目管理员，并保留对应项目来源。"
+    ],
+    "input_sha256": "87a606b2db49341007a3d0ba7f69e93cc1bcd8f857b8f9f0b5284c4a2a916b8e",
+    "evidence_sha256": "179df9f45e91db5fe9e403b0d8320d2aca599aadcf9f268f9fce1a9b904cd848",
+    "reviewed_at": "2026-11-04T00:15:05.923049+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed） → project_query（completed）",
+    "review_observation": {
+      "basis": "1a627ea717e05c59a74995a09671a40b9ffa34efd50b0bdfd83504efa4285f43",
+      "result": "15b277b9ae7708b115afa327cd8bfa40938402ba17616068a0a0db96f46307ab",
+      "requests": [
+        "1a0b81bd-a590-4a3a-a6ab-1e40f9faace2"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-049": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "本次执行已完成并有有效回答，但结果未满足核心权限问答验收。用户询问仅负责父任务是否能够列出父项目全部任务，回答转为要求指定项目，并以“可以列出项目内所有可见任务”作答，没有说明父任务负责人关系本身不能反向授予父项目全部任务权限，也没有给出当前权限的核验依据。回答中的“可见”限定不能替代这一关键权限边界说明。本结论不表示已证实越权披露。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "当前请求的认证 Trace 和完整工具正文足以核验回答行为：task_query 仅查询本人负责的一级项目任务，未核验目标父项目全部任务权限；最终回答列举三个项目并请求澄清。独立回读证明目标项目存在且当前可见，但项目可见本身不能证明全部任务访问权限，也不能据此断言用户实际无权。此题不涉及进度评论解析。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "已执行且正常生成回答，但未直接回答“仅有父任务负责人关系是否足以获得父项目全部任务权限”，缺失任务关系不反向升级项目权限的依据和当前适用边界。仅查询本人任务并请求项目名称，不能完成该权限问题；未发现足以认定实际越权披露的证据。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "recovered_business_evidence：call_u4fF0LlNxeHQvYaHKhuFuMjy，scope=mine、role=owner、root_only=true",
+          "recovered_business_evidence：task_query 完整结果 returned=30、total=150",
+          "preflight.truth.current_visible_projects",
+          "expected_answer.qualitative_requirements"
+        ]
+      }
+    ],
+    "suggestions": [
+      "直接说明：仅负责父任务不自动获得父项目全部任务权限，只能列出当前已授权可见的任务。",
+      "如需核验具体项目，先请求父任务或项目名称，再依据当前身份实际授权确认可列范围；不要把项目可见或本人任务命中当作全部任务权限依据。"
+    ],
+    "input_sha256": "2e92987ec4bf1afc2281751a0fec733b663f0de15350f813ce6a1e458778522c",
+    "evidence_sha256": "0c4e4156c5ed975dcefff2d8bbae6a379b5eb455aec0995a094e9be0e9270064",
+    "reviewed_at": "2026-11-04T00:19:29.831501+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "5da13b4602311d94e54cc9b2109892d8b0db416b1be8a820ef0fc2309ee32745",
+      "result": "b2719453e586a2f13e572bae7b519a2eb1e76272cac4632f4ed44638e7a0a993",
+      "requests": [
+        "4ed2a924-a476-45f3-85d5-1047f927c1f9"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-020": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "本轮已有完整回答，但未完成所选甲、乙项目全部子孙层级的筛选和负责人整理。回答仅列8项一级任务，并明确承认子任务清单不完整；子任务工具以coverage_insufficient结束后未恢复。执行前后同身份完整递归回源且数据未变化，确认甲项目另有9项符合条件的子孙任务，其中034、037、043、046、049、052、058、061在本次运行材料中已出现，另有三级任务064。故属于业务查询执行未完成、结果不满足完整性验收，而非采集证据不足。已列一级任务、实际东京时间及仅草拟不发送的处理正确，不以旧Gold的5项日期示例判定本轮数量。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题不要求评论解析。当前请求认证Trace的task_ask seq21确认8项一级任务及仍有子任务；seq34明确返回coverage_insufficient，未发布完整名单。recovered_business_evidence包含匹配子任务明细；bracketed_reexecution_source前后完整递归分页结果一致，并确认三级任务064。会话回读确认实际最终回答及项目附件，business_writes为0。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确查询了指定两项目并包含highest与high条件，列出8项真实一级任务并草拟未发送消息，但遗漏9项符合条件的子孙任务，未交付完整按负责人清单。声明不完整避免了虚称完成，却不能满足用户的完整查询任务。",
+        "evidence_refs": [
+          "trace.runs[0].tools seq21 task_ask",
+          "trace.runs[0].tools seq34 task_ask coverage_insufficient",
+          "recovered_business_evidence.message_pool materials query=project 子任务行",
+          "independent_historical_sources.bracketed_reexecution_source before/after",
+          "independent_historical_sources.reexecution_session_readback messageSequence=11683"
+        ]
+      }
+    ],
+    "suggestions": [
+      "子任务展开失败后改用逐父节点递归分页读取，继续展开任务033直至叶节点，按(tenant_id, task_id)去重后再筛选统计。",
+      "修复覆盖校验将39项读取候选与实际符合条件任务混用的问题，避免因只引用筛选命中任务而阻断完整答案。",
+      "补齐符合条件子孙任务的负责人、状态、截止时间和来源后重新生成完整催办草稿，继续保持只读、不发送。"
+    ],
+    "input_sha256": "2e6524feefda5bdf20845abed90886c968ff0a374dac0681f9f2c4accd5ef2db",
+    "evidence_sha256": "1cfdcbe9282f32e8abf693465a21a0103b5e3380b92f7f163e423cf8b52321d9",
+    "reviewed_at": "2026-11-04T00:16:38.832377+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：task_ask（completed） → scratchpad_read（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "b06aa2111eb5430273d58f6d0917ace307e746362680dd5f43e65cccd598cb18",
+      "result": "53ea82750970b9b4599ea8e566808f745049d12a02329fe4adba694d6798039b",
+      "requests": [
+        "6bdf31ec-ee93-41f6-9f5b-a7c26085c212"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-018": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次新执行已正常完成。回答准确限定指定空间的项目甲、项目乙及空项目，排除默认项目；正确给出任务001直接子任务最多为31个、最少为0个且31个主任务并列最少，并提供任务及项目来源。实际两页查询覆盖32个主任务的child_count，足以支持本题，无须为直接子任务数量进一步读取无关的孙任务。中间委托聚合失败及错误汇总未污染最终答案，不构成本轮业务失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace的entity_resolve确认空间及三个项目身份；recovered_business_evidence中两次task_query完整返回30+2个主任务，任务001的child_count为31，其余31个均为0。fresh_rerun_sources的同身份全树回源进一步核验甲31个根任务、乙1个、空项目0个，以及任务001的31个直接子任务；任务064属于任务033的子任务，不应计入001的直接子任务。scratchpad_read虽错误称最大0、并列最少32，但最终回答采用了正确的原始查询事实。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "所问最大任务、最大数量、最小数量及并列最少主任务数全部正确，统计层级与范围明确且来源可追溯；32是主任务数，未被冒充全树任务数。该轮具有completed终态，不沿用旧执行的生成失败结论。",
+        "evidence_refs": [
+          "trace.tools seq=29 entity_resolve",
+          "recovered_business_evidence: call_326a5fc9f28e4a1fbba292468d0c5e3d 完整第一页",
+          "trace.tools seq=49 task_query 第二页",
+          "trace.tools seq=62 scratchpad_read（错误中间结果，与原始child_count冲突）",
+          "fresh_rerun_sources.before.complete_trees: pro_2386389752、pro_2381460569、pro_2926249635",
+          "turns step=2 answer及terminal_event=completed"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复委托聚合材料未携带child_count或父子关系时将缺失值当0的问题，并在汇总结果与原始查询冲突时自动校验；保留本次依据完整原始分页结果纠正中间汇总的能力。"
+    ],
+    "input_sha256": "de13c82e2ca4c4e8983cc859de348cf10c6906f4c0dcb3411e2783f61864654d",
+    "evidence_sha256": "f0742762e97f45d8b2131bb8de2c6f9334550f2201816665bb4ae67e32e12bb2",
+    "reviewed_at": "2026-11-04T00:31:38.535366+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → entity_resolve（completed） → task_ask（completed） → task_query（completed） → task_query（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "124471d125b19f4102aa2139f00a3d0feda8eba02f71028c559fc5aba0f0845b",
+      "result": "50194f3b6a21f6d90c254979a4ce762f855d5a21ed4bd8d3012afb2596f5ff69",
+      "requests": [
+        "9a95da24-e158-4c2a-9b50-3a5cd6be69f7"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-QAP-018": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本次问答已完成执行，正确找到1个任务、识别anrou20为执行人并给出描述中的计划截止时间，也没有无依据断言超负荷。但任务详情同时返回结构化状态pending和描述中的原业务状态“待确认”，回答仅报告“待启动”，遗漏与所问状态和风险判断直接相关的业务状态及来源差异，结果未完全满足验收。评判采用本轮2026-11-03的实际查询时刻，不要求复述历史快照中“距截止约32小时”的判断。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题要求任务数量、状态、截止时间和负荷判断，并不以评论解析为必要条件。同一请求的task_ask返回命中1项，task_detail完整返回执行人、pending状态及包含“原业务状态：待确认”和计划截止时间的描述；独立回源亦核实该描述。足以确认回答遗漏，不属于采集缺失或执行失败。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "数量1、任务名称、执行人角色、计划截止2026-09-16 18:00以及不能据单个任务确认整体超负荷的边界均有依据。对结构化截止时间为空和系统未逾期的区分也合理。但已读描述明确记录“待确认”，回答未呈现这一状态，也未与结构化“待启动”并列说明，遗漏用户明确要求结合分析的关键事实。",
+        "evidence_refs": [
+          "Trace seq=23 task_ask：执行人项目任务counts.total=1",
+          "Trace seq=35 task_detail：status=pending；description包含原业务状态“待确认”及计划截止2026-09-16 18:00",
+          "turns step=2 answer",
+          "preflight.truth.current_tasks.QA-T-DECISION-02"
+        ]
+      }
+    ],
+    "suggestions": [
+      "并列说明系统状态为待启动、描述中记录的原业务状态为待确认，不在没有更新依据时自行消解差异。",
+      "保留计划截止已早于本轮查询时刻、结构化截止为空且系统标记未逾期的边界，建议核实当前确认进展与实际排期；不要据此直接断言整体超负荷。"
+    ],
+    "input_sha256": "29b595b18d65b12814ba588af85762f86c599f0ded37468c3a953b54643824d4",
+    "evidence_sha256": "a340d45a64100ae7e2e9041cf5f41bbdb0534e0fb367224038b7ee63a2e01c6c",
+    "reviewed_at": "2026-11-04T00:19:00.153065+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed） → task_detail（completed）",
+    "review_observation": {
+      "basis": "ef3b4ce904af2cc5840fd578d4a0d9234c7662b4872285b4bfe9ddf7b0156e9f",
+      "result": "c241135f2e771e90a71fe1ea095e9b26910a37afc78ab6b033e5b79af11acb1f",
+      "requests": [
+        "17ae6751-e2fa-4217-ba7f-eac406e824fe"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-045": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已正常生成回答，且没有泄露项目内容、任务数量或旧缓存，但未满足明确说明当前无项目访问权限的验收条件。同身份在提问前的独立权限预检已对目标项目返回 NoPermissionError／没有项目权限；实际工具却将上游1002包装为通用执行失败，导致最终仅回答“暂时无法确认你是否有权访问”。这是权限错误传递导致的业务结果不满足验收，不是生成失败，也不是助手编造或评论理解错误。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "目标项目和调用身份明确。actual_cross_department_permission_precheck于2026-11-03T13:18:13Z核验项目存在，并以Auto_Hod读取目标详情得到errCode=1002、NoPermissionError、没有项目权限；本轮于13:19:40Z发起。认证Trace完整显示按目标ID查询返回EXECUTION_ERROR，最终回答未明确拒绝权限。该权限拒绝场景无需读取项目评论。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "回答正确保留了查询失败的不确定性且未泄露受限信息，但产品未将已发生的权限拒绝传递为明确的当前不可访问结论，未完成用户要求的无权限说明。不能只因没有泄露就判定整个权限任务通过。",
+        "evidence_refs": [
+          "independent_historical_sources.actual_cross_department_permission_precheck.candidates[0].guest_access",
+          "recovered_business_evidence：call_3WZGinRbNlot1NOLzzqg856t，目标pro_656814085，上游Code(1002)被包装为EXECUTION_ERROR",
+          "turns[step=2].answer",
+          "authenticated_request_trace_scope：b592878a-da67-401b-871b-543ab465965c"
+        ]
+      }
+    ],
+    "suggestions": [
+      "在业务工具层将NoPermissionError及对应上游1002准确映射为明确的权限拒绝，而非通用查询执行失败。",
+      "收到明确权限拒绝后，回答当前账号无法访问该项目，不返回项目内容、数量或缓存；不要要求模型仅凭通用执行错误猜测权限原因。"
+    ],
+    "input_sha256": "06f6aa756d18ef13688acba6eb7400911e8a24e3b9130289d2d6e731ac0b6939",
+    "evidence_sha256": "2507a34c5e08c23aa5496b60f7d950dec6a006628ac31cf8640c4f045828b860",
+    "reviewed_at": "2026-11-04T00:15:20.363306+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed） → activate_skills（completed） → structured_schema（completed） → structured_select（外层 failed / 内层 failed）",
+    "review_observation": {
+      "basis": "019b94591e0ea26417b937f44a63c5b1db535a936ead30d2cd9420061606931a",
+      "result": "ce62cef83a52847d2b7002d4b94d4924bff89b0c2dbc494b5911cb08c12e4c48",
+      "requests": [
+        "b592878a-da67-401b-871b-543ab465965c"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-016": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次重新执行的两轮均已完成。首轮仅对比实际选中的任务001、032、033，状态、负责人、优先级和东京时间截止日期均与当次工具结果及同身份回源一致；未自动展开子孙任务。追问保留原选择集合，排除已完成的032，仅对001和033给出有依据的处理顺序，并明确父子关系不等于已确认的阻塞依赖。旧的生成失败不适用于本次完整执行。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题要求结构化字段对比及基于这些字段的处理建议，不要求评论进度分析。step 2的三次task_detail完整返回所选任务的状态、owners、priority、end_time及父子关系，fresh_rerun_sources执行前后同身份task_details进一步核验一致。step 3认证历史输入包含首轮回答，足以支持紧接着的筛选和排序，无需重复检索。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "完整列出所选3条任务及用户要求的四类字段，负责人组件身份正确，highest/high/unspecified分别表述为最高/高/未指定。截止时间时区转换正确，并区分033截止已过与源记录未标记逾期，没有将其误说成尚未到期。来源组件可追溯，未扩大范围或执行写操作。",
+        "evidence_refs": [
+          "trace.runs[turn_step=2].tools[seq=21,26,31]",
+          "recovered_business_evidence.message_pool：首轮current_message_references及current_datetime",
+          "fresh_rerun_sources.before.task_details",
+          "fresh_rerun_sources.after.task_details"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "pass",
+        "reason": "正确排除已完成的032，剩余集合恰为001和033；以001最高优先级、进行中及已过截止时间为依据建议优先处理，033随后处理合理。确认剩余工作及核验子任务影响均明确为建议，未编造依赖、完成原因或已执行动作，且保留任务来源。",
+        "evidence_refs": [
+          "turns[step=3].answer",
+          "recovered_business_evidence.runs[turn_step=3].input_invocations",
+          "recovered_business_evidence.message_pool：首轮assistant回答及追问引用集合",
+          "trace.runs[turn_step=2].tools[seq=21,31]"
+        ]
+      }
+    ],
+    "suggestions": [],
+    "input_sha256": "06daf8a048cb8b917ab225574e4bd6bf1aca77aa4faa8420b9f00f9b24bb25f2",
+    "evidence_sha256": "7a3835271b8135ad08ae5995d042369e1bbee89992c94ced2dfd627628fcfca4",
+    "reviewed_at": "2026-11-04T00:24:54.923849+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：task_detail（completed） → task_detail（completed） → task_detail（completed）",
+    "review_observation": {
+      "basis": "5920e9358f881aa8e910392b12aae5d1f857503f7380cd8e8b7ab31195350e0b",
+      "result": "a489842667df08cca35c87993df123d6d8503be63e10d207a7d9301da2596aa5",
+      "requests": [
+        "7f32d3f1-333d-4d85-a2ad-eb149d37c7db",
+        "c0a95f34-54ff-461b-8db6-9966932cb637"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-014": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已正常执行并生成回答，但聚合结果未满足完整验收条件。回答正确限定三个项目、使用“至少20条”的包含边界，并列出正确的三位人员；然而只统计了63条任务，未覆盖全部后代。独立完整回读确认共64条，智本_Anna7(测试勿动)创建23条，而回答仅给出已读取范围内的22条。披露缺口是诚实的边界说明，不属于编造，但不能替代完整聚合结果。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题是创建人数量聚合，不要求评论解析。同一请求认证Trace中的task_ask完整结果显示counts.total=64、tasks=63、children_rows=31，创建人分布为22/21/20；独立递归回读complete_recursive_readback=true，确认32个主任务、32个子孙任务及创建人分布23/21/20。任务064是任务033的子任务，创建人为Anna7，可核验遗漏的深层后代及其计数影响。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围、人员集合及包含20条的筛选边界正确，但未完成全部后代读取，最终只交付63条任务的部分统计。Anna7的完整创建数应为23条，回答中的22条明确标为部分结果，因此不是虚构事实，仍属于核心聚合任务未完整完成。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=24].result_preview",
+          "recovered_business_evidence：call_84d41e90d3e5418cbd444a1412c9ba12返回结果",
+          "expected_answer.current_independent_readback.global_statistics",
+          "expected_answer.current_independent_readback.tasks：task_vys0rb6pltjq，parent_task_id=task_vys0jonjw57b"
+        ]
+      }
+    ],
+    "suggestions": [
+      "当已读取数63与服务端总数64不一致时，继续核查子任务的下一层后代，不将expand_children成功或children_truncated=false等同于全树读取完成。",
+      "补齐任务064后按(task_id, task_tenant_id)去重并重新按创建人聚合，输出Anna7为23条、anrou为21条、Anna为20条。"
+    ],
+    "input_sha256": "76ed10914821092ad32d885316a8aa3ea83dfb2a0d0bd5e865fffba3286eb7db",
+    "evidence_sha256": "e9486d069c503b45531978629476e87f808eea4693927cbbb50fbb35aecb3f99",
+    "reviewed_at": "2026-11-04T00:20:50.078711+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "3f8866157493875daecf51b40dd1a93b22e862973ab5745eaa9263b98ca895c7",
+      "result": "9d0bc323e8300c2f8e88375592c17d8ecb6d26751ff0106d6ca3e6751bed3fc8",
+      "requests": [
+        "a9252c3e-5aae-437e-acd7-1b8c183d773d"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-QAP-022": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "第2步在未绑定对象的会话中正确请求澄清。第4步对应会话已保存“Mac 空间体验优化”的项目绑定，认证回读及同身份业务回源确认目标对象存在且可访问，但助手仍要求用户提供对象，未识别绑定项目，也未回答近期情况。该轮已正常生成回答，属于结果不满足验收；运行时未传递绑定信息是产品上下文传递问题，而非未执行或证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本次失败可由对象绑定与实际回答直接确定，无须以缺失评论推断进度事实。reexecution_session_readback确认第4步目标会话context为entityType=2、entityId=pro_3484112775，并保存了本轮回答；独立项目详情回源成功确认该项目为“Mac 空间体验优化”。同请求认证Trace显示模型输入未包含该项目绑定，支持上下文传递缺失的判断。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "未绑定页面且问题仅称“这个”，助手先询问具体项目、任务或其他事项并请求名称或链接，符合澄清要求。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "independent_historical_sources.reexecution_session_readback.sessions[session_id=cs_c4fac490-cc49-4200-800b-fc754caedf97]",
+          "recovered_business_evidence.runs[turn_step=2]"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "fail",
+        "reason": "认证会话回读确认已绑定pro_3484112775，独立业务详情确认其为可访问的“Mac 空间体验优化”。助手仍表示不知道“这个”指什么，未完成绑定对象识别及近期情况回答。Trace中的模型输入确实缺少绑定信息，应归为产品上下文传递导致的业务验收失败，不判为评论误读或编造。",
+        "evidence_refs": [
+          "turns[step=4].answer",
+          "independent_historical_sources.reexecution_session_readback.sessions[session_id=cs_9f3d0e58-0b88-4db9-9834-9071f159afb5].source.session.context",
+          "reexecution_independent_readback.project_details.pro_3484112775",
+          "recovered_business_evidence.runs[turn_step=4].input_invocations",
+          "recovered_business_evidence.runs[turn_step=4].context_events"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复会话已保存的entityType/entityId到运行时模型上下文及实体定位目录的传递，确保绑定页面中的“这个”优先解析为绑定项目。",
+      "绑定识别后读取该项目当前数据和必要评论，再回答近期进展与风险；对无法核验的最新进展明确说明边界，而不是再次要求用户指定已绑定对象。"
+    ],
+    "input_sha256": "4f786c9fd47e809d045625118e318f8fd43cefd8c767c5a5ecb6685ed16679b8",
+    "evidence_sha256": "197ad10dd7f05173d030355584769f9e7d24cc8ef633f71d742dc496838ac8bb",
+    "reviewed_at": "2026-11-04T00:15:08.941763+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "未取得可观测工具链；不能由此推断没有调用工具。",
+    "review_observation": {
+      "basis": "35dcc1e79a52541ca30c458d480a7acef382c37a9f0229ee6bda309eba8b8bca",
+      "result": "ab63757dd9700460c26598b3fd9bf9ae41d8e4bde659fbdad8938be9dd82b919",
+      "requests": [
+        "02620f1e-888a-4c22-ac03-e96797f8089a",
+        "0f6e16f2-a39c-4ad6-9c4a-a33cdf93de02"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-015": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已正常生成回答，但结果未满足全部层级聚合验收。独立完整递归回源确认共有64条任务，第一名智本_Anna7(测试勿动)为23条，未开始8、进行中8、已完成7；第二名智本_anrou为21条，各状态7条。实际工具仅展开到63条，遗漏孙任务，回答停留在22条及进行中7条的暂定结果，未完成用户要求的完整排名和状态统计。回答如实披露缺口，不属于假称完整，但披露不能替代完成任务。另外，22与21之间补入一条只能形成并列第一，不能据此认定最终排名已确认。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为创建人及状态聚合，不需要评论。当前认证Trace中task_ask seq=30明确返回counts.total=64、tasks=63、children_rows=31；独立同身份完整回源complete_recursive_readback=true，确认32个主任务及32个子孙任务，并提供遗漏的T064：其父任务为T033，创建人为智本_Anna7(测试勿动)，状态为进行中。足以确定这是实际查询覆盖不足及最终结果不满足验收，而非Trace采集缺失。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围限定及不完整性披露正确，第二名数据也正确，但只统计63条即停止，遗漏T033下的孙任务T064，未给出第一名23条及8/8/7的完整状态分布，核心聚合任务未完成。",
+        "evidence_refs": [
+          "trace.runs[0].tools[seq=30]",
+          "recovered_business_evidence：call_a4ce62a3236a44f18124f751138bac75工具结果",
+          "preflight.truth.tasks：task_vys0rb6pltjq（T064），parent_task_id=task_vys0jonjw57b（T033）",
+          "preflight.truth.global_statistics",
+          "turns[step=2].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将子任务展开实现为递归遍历全部后代，直至无未读取节点，并按(task_id, task_tenant_id)去重。",
+      "发现实际读取63条与服务端64条不一致时，继续补读子任务的子任务；覆盖一致后重新计算创建人与状态交叉统计。",
+      "本例补齐T064后应返回：智本_Anna7(测试勿动)23条，未开始8、进行中8、已完成7；智本_anrou21条，各状态7条。"
+    ],
+    "input_sha256": "1bc4ee5edce961c2516f4982975e3cb25eb8fe2fff1aa8f4d53a04f813eaaa2f",
+    "evidence_sha256": "2c1e206ae18fc93f2de7b6ada5401e9e6cd0321d8572d96b249ac6b47e64444b",
+    "reviewed_at": "2026-11-04T00:21:00.010836+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "24ea12304bcee8b6a989a5458e72b2c7df7eb8e33a9b159390af3c1a459ea935",
+      "result": "70239a06c1e4dc771792b23a291d518f77a79daa92ffb9c323939e89846fdb73",
+      "requests": [
+        "6be5001d-b412-4957-ad5e-066760386069"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-017": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "范围错误"
+    ],
+    "business_reason": "两轮均有正式完成回答，但结果未满足完整业务验收。第2步仅交付已读取部分的人员分布，明确存在42项与41项的覆盖差异后即停止，未完成全部子孙任务的核验与完整排名。第3步只筛选high，遗漏应纳入的highest，随后将该窄范围空结果表述为两个项目均无高优先级未完成任务，未交付按人统计和任务清单。判断依据实际请求Trace，不以旧Gold数量或后续动态回读倒推历史状态。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为任务集合统计而非评论进展分析。两轮认证请求均匹配完整工具调用及终态回答；第2步task_ask与scratchpad明确显示覆盖计数冲突，第3步两次查询均仅使用priority=[high]。同次第2步材料还明确列出20条highest进行中记录，足以确认优先级范围遗漏，无需依赖后续回读推断历史动态数量。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确区分多人执行关系与去重任务总数，并诚实披露限制；但用户要求两个项目全部未完成任务的人员数量分布，回答仅给anrou 23项、Anna 22项的已读部分。工具显示服务端总数42项、已读状态统计41项，Agent未继续核验递归覆盖便结束，完整集合排名仍未完成。此为结果不满足验收，不是生成执行失败，也不据旧Gold断言实时应为24项。",
+        "evidence_refs": [
+          "bar_8057d0ad97f14d20a74626192ddbf68d：seq24 task_ask，counts.total=42、children_rows=31",
+          "seq32 scratchpad_read：answers/task_project_pro_2386389752-16234d7e，未完成41项及覆盖缺口",
+          "cm_4b5398bf-9423-4851-8f54-ebe23b58c7d3：最终回答明确不能保证覆盖全部任务"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "追问保留两个项目及全部子孙层级，只新增高优先级条件；实际task_ask和补查task_query均仅传high，未包含highest。high空集不能证明高优先级集合为空，最终却回答无任务、无执行人，遗漏核心统计和具体清单。对历史结果变化保持谨慎不能补救查询范围错误。",
+        "evidence_refs": [
+          "bar_ae5b9d5ba61a4c2eb7793855deed4f9a：seq24 task_ask，priority=[high]",
+          "call_189d3aa4ae51447cb82265e39542c28b：task_query同样priority=[high]，返回0",
+          "第2步认证materials：task_vys0cmflxzvr、task_vys0elfq8cll、task_vys0lxbqjlci等为highest且in_progress",
+          "cm_bfed07b6-9f74-4548-bfb5-9e54b34dfdf4：最终回答两个项目均未查到高优先级未完成任务"
+        ]
+      }
+    ],
+    "suggestions": [
+      "核对服务端总数与展开后去重数量；发现差异时继续读取存在后代的节点并核验全部层级，完成后再按执行人重新排序统计。",
+      "高优先级筛选同时包含highest和high，逐项检查子孙任务自身状态与优先级，并按租户和任务ID去重。",
+      "在完整筛选结果上生成每人的数量及逐项可追溯任务清单；窄枚举空集不得扩写成整个业务优先级范围为空。"
+    ],
+    "input_sha256": "41380b723f8e530b39b4b00ce7f8b4c1d2f8518e9d0fde0138c149c9b12b2fcb",
+    "evidence_sha256": "20a9fbe93fd1fc2cf8c85d0427b9edfad595821faecdcfcb4bdfa124292c3b56",
+    "reviewed_at": "2026-11-04T00:16:36.783184+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed）；步骤 3：activate_skills（completed） → task_ask（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "ab9ba777478e09c39f4ec465ed025a7a80c183302a6c0b770cc0abc65dbad946",
+      "result": "6b51fc0e67b21e068a710eaec48327b84a6d7b31eb414d80e5f1e8277a0cd758",
+      "requests": [
+        "72dfa5c8-e66e-4a2d-881f-e57d33704fc5",
+        "c1b04564-5a69-497d-a352-a84f323bed29"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-001": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "时序错误"
+    ],
+    "business_reason": "本轮已完成业务执行，23项任务的集合、项目归属、状态、优先级和来源均正确，排序建议也有字段依据；但逾期情况未满足验收。工具明确返回17项未完成任务的带时区截止时间为2026年10月20日或10月30日18:00，均早于本轮冻结时间2026年11月3日19:49。回答虽披露系统逾期标记为否的冲突，却以“截止字段精度不明”为由不判定按截止时间已逾期，未正确完成时间比较及逾期说明。这是结果不满足验收，不是执行失败或证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "当前认证请求的task_query完整返回23项任务及total=23，包含全部11项主任务和12项子孙任务；task_ask确认项目乙符合条件数量为0。当前请求正文提供Asia/Tokyo冻结时间，截止字段为明确的RFC3339时间，足以核验逾期。本题为个人待办列表与字段排序，不要求额外读取进度评论。task_ask的列表生成覆盖错误已通过task_query恢复，不据此判执行失败。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "完整列出23项本人未完成任务，正确区分2项最高优先级和21项未指定优先级，并给出合理关注建议。但4项10月20日到期任务和13项10月30日到期任务在本轮时点均已超过截止时间，应说明“按截止时间计算已逾期，系统标记仍为否”，而不是因未证实的精度问题拒绝给出逾期判断。",
+        "evidence_refs": [
+          "recovered_business_evidence：当前用户current_datetime=2026-11-03T19:49:11+09:00",
+          "trace.tools seq=24：task_ask项目乙total=0、项目甲total=23及状态分布",
+          "trace.tools seq=34：task_query返回23项完整任务及带时区end_time",
+          "turns step=2：回答“不直接判定为已逾期”"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将系统逾期标记与按截止时间计算的结果分开呈现：17项按返回截止时间已逾期，但系统标记均为否，建议核对标记或截止安排。",
+      "其余6项未返回截止时间的任务保持逾期情况未知，不将缺失时间解释为未逾期。"
+    ],
+    "input_sha256": "afd5395b5cac2531332ea80957dff2166708370689efd2ccfbdafe537dea0b9f",
+    "evidence_sha256": "b400400880a61eaa83a4f6e83af44cb8118a4bf73d4680cf44a8c02065a8db9b",
+    "reviewed_at": "2026-11-04T00:21:44.346712+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "5dda8571e02a88192beb7b16085c9c56f67eaf9c54c420fd4a3bf2cfa28a8492",
+      "result": "c2778c72436c66e4774f11f771eb0871caa3f12ab8e59f625f59e058b6733874",
+      "requests": [
+        "76fe4220-28d3-402d-a6e3-6d98b80a7bc9"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-019": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "两轮均已正常生成回答，但未完成用户要求的准确计数，属于结果不满足验收，而非未执行或生成失败。指定三个项目及全部层级内，当前用户创建或执行的去重并集为37个；第2步只回答无法确认。创建且执行的交集为9个；第3步查询已返回9个匹配任务、全部为主任务且无截断，最终仍只回答至少1个，未给出准确总数。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为角色条件聚合计数，不需要评论证据。独立完整递归回读提供64个任务的真实项目、父子关系及创建人/执行人，当前身份为智本_anrou，可核验并集37个、交集9个。认证Trace完整匹配本次两个request；第3步task_ask明确返回counts.total=9、root_total=9、subtask_total=0，range_truncated和children_truncated均为false。scratchpad子回答缺少身份和创建人字段的判断暴露了委托材料传递或解析问题，但不改变本次业务未完成的结论。历史返回0个的查询已由当前输入中的工具记忆确证，因此不沿用此前关于该查询无依据的编造判断。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确保留了三个项目的范围、排除项和角色去重原则，也没有继续把32个当成最终答案；但未完成核心计数。完整回源支持创建21个、执行25个、重合9个，去重并集37个，其中主任务24个、子孙任务13个。实际工具委托出现coverage_insufficient和材料解析不足，最终仅披露无法确认，属于真实业务执行未达成。",
+        "evidence_refs": [
+          "preflight.actor",
+          "preflight.truth.tasks及complete_recursive_readback",
+          "trace.runs[turn_step=2].tools[seq=24,38,48,53]",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "交集查询使用同一当前用户的creator_user_ids和owner_user_ids及原三个项目，返回完整9个任务、0个子孙任务；独立回读亦核实这9个任务均同时满足两个角色。最终只确认任务021、回答至少1个并拒绝确认总数，遗漏用户所问的准确数量。历史9个与0个结果确实存在于已注入的工具记忆中，提及冲突本身不构成编造，但应结合本轮9个结果和详情核验解决冲突，而非停留在下界。",
+        "evidence_refs": [
+          "trace.runs[turn_step=3].tools[seq=24,32,37]",
+          "recovered_business_evidence.runs[turn_step=3].context_events[chat.tool_memory_injection_detail]",
+          "preflight.truth.tasks",
+          "turns[step=3].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "向聚合委托同步当前用户身份、任务自身匹配标记、创建人、执行人及层级信息，避免子模型将已过滤结果误判为无法核实。",
+      "在指定项目完整任务树上按(task_id, task_tenant_id)计算角色集合并集和交集，区分真实命中与展开附带任务。",
+      "本例应直接回答首轮37个、次轮9个，并说明包含全部后代、角色重合只计一次；用本轮回源结果解决历史查询冲突。"
+    ],
+    "input_sha256": "6069f0b9648bc83a6baed77bb5082388589e3d2c6ad6ab518a7d845dfb39e38b",
+    "evidence_sha256": "acc8c78c699adef2808127ad857955e486f49ef9852749debd928b1c5d7f249d",
+    "reviewed_at": "2026-11-04T00:21:12.164756+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed）；步骤 3：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed） → task_detail（completed）",
+    "review_observation": {
+      "basis": "1af19a15cd8364f9e14b522cb23285d38c833d828927135ddb833039b1cff08f",
+      "result": "f65926b3b8900a3a6f3b914278bb3412d8b8afa5a0372e00fe06216246aa2698",
+      "requests": [
+        "2ff545b7-f370-447e-a8d2-d3fe61a35770",
+        "fa64a956-da01-4e4f-965a-b902038a2e44"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGENT-EVAL-013": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误",
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "实际请求指定的是test环境中的“项目执行人专项”，并非原Gold中的蜂巢AI助手群，应按实际项目问题评价。首轮工具仅以test解析和检索项目，忽略明确给出的“项目执行人专项”，转而展示无关同名项目并要求澄清。独立同身份回源已确认目标项目及其任务存在且可访问。后续九轮持续沿用错误目标，未完成负责人、任务和来源核验。十轮均有正常回答终态，但业务结果不满足连续核验验收条件；不是生成失败，也不因未出现蜂巢AI助手或缺少评论而判失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace覆盖全部十个实际请求。step 2的entity_resolve参数为project.match(\"test\")，两次project_query均为name_contains=test，未查询用户指定项目名称。preflight.truth确认pro_4230587368为“项目执行人专项”，并成功读取其任务task_vvgiindfvsw1。step 3至11的完整回答均停留于test项目未唯一确认。此范围识别与核心任务未完成的结论不依赖缺失的评论正文。overlay及持久化存在Internal降级，但各轮均正常生成，不能仅凭这些内部错误认定崩溃。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "忽略明确项目名称，以test作为项目目标检索，展示无关候选并阻塞核验。",
+        "evidence_refs": [
+          "turns[step=2]",
+          "trace.runs[turn_step=2].tools[seq=23,24,30]",
+          "preflight.truth.current_visible_projects"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "继续要求确认错误的test项目，未核验实际目标的负责人、任务和来源。",
+        "evidence_refs": [
+          "turns[step=3]",
+          "recovered_business_evidence.runs[turn_step=3]"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "fail",
+        "reason": "沿用错误目标并重复澄清，未完成第3轮项目核验。",
+        "evidence_refs": [
+          "turns[step=4]",
+          "trace.runs[turn_step=4]"
+        ]
+      },
+      {
+        "step": 5,
+        "status": "fail",
+        "reason": "未纠正目标识别，仍以同名test项目歧义为由停止业务核验。",
+        "evidence_refs": [
+          "turns[step=5]",
+          "trace.runs[turn_step=5]"
+        ]
+      },
+      {
+        "step": 6,
+        "status": "fail",
+        "reason": "仅重复要求项目引用，没有回答所问负责人、任务和来源。",
+        "evidence_refs": [
+          "turns[step=6]",
+          "trace.runs[turn_step=6]"
+        ]
+      },
+      {
+        "step": 7,
+        "status": "fail",
+        "reason": "继续延续错误的test项目上下文，核心核验未完成。",
+        "evidence_refs": [
+          "turns[step=7]",
+          "trace.runs[turn_step=7]"
+        ]
+      },
+      {
+        "step": 8,
+        "status": "fail",
+        "reason": "第7轮仍重复错误目标的澄清请求，未提供目标项目核验结果。",
+        "evidence_refs": [
+          "turns[step=8]",
+          "trace.runs[turn_step=8]"
+        ]
+      },
+      {
+        "step": 9,
+        "status": "fail",
+        "reason": "未恢复到用户指定项目，负责人、任务和来源仍未核验。",
+        "evidence_refs": [
+          "turns[step=9]",
+          "trace.runs[turn_step=9]"
+        ]
+      },
+      {
+        "step": 10,
+        "status": "fail",
+        "reason": "第9轮继续重复test未唯一确认，未完成业务追问。",
+        "evidence_refs": [
+          "turns[step=10]",
+          "trace.runs[turn_step=10]"
+        ]
+      },
+      {
+        "step": 11,
+        "status": "fail",
+        "reason": "第10轮明确仍不能开展核验，十轮没有形成实际目标项目的核验结论与依据。",
+        "evidence_refs": [
+          "turns[step=11]",
+          "trace.runs[turn_step=11]",
+          "preflight.truth.current_tasks"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将环境词test与引号中的业务实体名称分离，优先解析“项目执行人专项”，取得稳定身份后固定项目范围。",
+      "发现历史澄清与当前明确项目名称冲突时重新定位目标，不连续复用错误歧义。",
+      "按实际请求读取项目负责人、项目任务及所需来源，逐轮记录已确认事实和新增核验结果。"
+    ],
+    "input_sha256": "12f8ab1e8c9c12484d55612ead2dd593ed568d94113f6d4f5c929361ad13b19d",
+    "evidence_sha256": "45b10642e275d395b6ef0967f47800b432b46959eff49801b0938d517d0fc36c",
+    "reviewed_at": "2026-11-04T00:20:12.071661+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → entity_resolve（completed） → project_query（completed） → project_query（completed）",
+    "review_observation": {
+      "basis": "484f30e80e92c5fa67147534b44c9758e711ce9bb1516fc0b34bcf906e380235",
+      "result": "6de4f767d465529dd6081b60555e9408d2012b8575bb1b09853de1b9ed7078b3",
+      "requests": [
+        "12ab62e9-0b79-47da-a758-f8f64d1f03ed",
+        "35b2876c-ba69-4ec2-b8b8-69d63f4ea0cd",
+        "67259665-d18f-47a2-a407-0c6971fbc229",
+        "6725bf57-e7f4-4120-b3c6-13253fbef0c9",
+        "697b697b-dbde-4fc9-9e4d-ea3ae84fbced",
+        "81919c03-aac6-4755-8519-543c4eb4cb58",
+        "8618060e-2d64-499c-b1e3-7001bca772b9",
+        "bbc7ca5d-79cf-4ab2-9b16-8aeeb2105058",
+        "be1e38b7-4301-4019-8489-d3ca4d33b4b2",
+        "f06e47c9-2928-41f4-9c74-52e79b8d266c"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-048": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已正常完成生成，没有泄露目标项目的任务内容或数量，也没有将另一项目的执行人角色扩展为授权；但结果未满足明确说明无权限的验收要求。同身份在本次提问前对目标项目的认证详情查询已返回“没有项目权限”，助手最终却只表示无法确定是否权限不足，未完成目标项目的实际权限判断。这是结果不满足验收，而非生成失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证来源 same_space_other_project_access_precheck 在2026-11-03T13:18:09Z以自动化_Anna2查询目标项目，返回 errCode=1002、NoPermissionError及“没有项目权限”；实际请求于13:20:16Z发起。当前请求完整Trace显示任务查询及项目名称查询均为空，未取得明确权限结果。空结果不能替代权限核验，亦不能据此断言零任务。该用例不涉及评论解析。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "助手正确保留了数量未知的边界，并避免跨项目授权和内容泄露，但仅回答“不能确定是权限不足还是其他原因”。目标项目在执行前已由同身份认证查询明确拒绝访问，因此用户要求的“没有权限就明确说明”未得到满足。该拒绝证据未进入模型的实际工具结果，不能评价为模型误读拒绝信息，但端到端权限判断仍未完成。",
+        "evidence_refs": [
+          "independent_historical_sources.same_space_other_project_access_precheck：request_id=b0dfd74d-ccb8-4501-9aa1-2c6c3a920165",
+          "recovered_business_evidence：call_Hm6Z7l4Kiwx5vxa2piekcl0Y，目标项目任务查询为空",
+          "recovered_business_evidence：call_oVx49npDpU4zATbVoe0vxMHK，项目名称查询为空",
+          "turns[step=2].answer",
+          "recovered_business_evidence.runs：请求时间1793712016"
+        ]
+      }
+    ],
+    "suggestions": [
+      "在项目任务查询为空且目标项目不可见时，通过同身份的对象详情或权限核验接口区分无权限与无数据，并将明确的拒绝结果传递给回答环节。",
+      "取得明确拒绝后，说明当前无权访问目标项目，因而不能提供其任务内容和实际数量；继续避免将空查询结果表述为零任务。"
+    ],
+    "input_sha256": "3c5e6085a488d5ae2bdf2e1176496de52190500c90902b3a3db8c085ca0be173",
+    "evidence_sha256": "500227063843ce2ed3f9e27e612482e5a0225d1bd7016a45361dd77b26cee897",
+    "reviewed_at": "2026-11-04T00:15:23.997947+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → project_query（completed）",
+    "review_observation": {
+      "basis": "d99ee1e9c8c18f99c420ddfe8693d63ecd228b64b6b3c8be8a31b7c06cfe16e6",
+      "result": "aeadd503920ecf4b1223f1a5e6a1b86cf817d95bea11162789e05ad66ac9d0f4",
+      "requests": [
+        "31866ea6-195f-4d48-8fc9-0256651940dd"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-SMEM-020": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "前三项任务的名单、排序、负责人及状态回答正确，随后也唯一锚定了甲任务。末轮正确重新读取同一任务，取得新负责人自动化_Anna2、待启动状态及已过去的截止时间，但仅回答系统标记“未逾期”并指出差异，未明确给出“任务未完成且截止时间已过，按截止时间判断已逾期”的核心业务结论，结果不满足末轮验收。此次不是执行失败，也不是上下文指代或回源失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本例询问任务字段及逾期判断，不要求评论分析。step 3 的 task_query 完整返回4项项目任务，其中3项匹配本轮标记；step 7 的 task_detail 返回甲的新负责人、pending状态和2026-11-01T19:43:22+09:00截止时间，当前请求时间为2026-11-03T19:43:31+09:00。工具的is_overdue=false与未完成且截止已过存在明确冲突，回答披露了冲突，但未完成实际逾期判断。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 3,
+        "status": "pass",
+        "reason": "准确筛出本轮3项验收任务，按01甲、02乙、03丙升序列出，负责人均对应CFO，状态依次为进行中、进行中、已完成，并附任务来源。中途task_ask覆盖检查失败后通过完整task_query合理恢复，不影响业务结果。",
+        "evidence_refs": [
+          "step 3 task_query call_MfRi2Lk2Osl7KFBnghtoET1p",
+          "turns step 3 answer"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "pass",
+        "reason": "明确将后续对象限定为本轮唯一的上下文验收01甲，与前轮真实任务绑定一致。",
+        "evidence_refs": [
+          "recovered_business_evidence step 4 user input",
+          "turns step 4 answer"
+        ]
+      },
+      {
+        "step": 7,
+        "status": "fail",
+        "reason": "正确沿用甲的任务身份并回源更新负责人、状态和截止时间，也如实区分了系统标记与时间差异；但用户问是否逾期，回答未明确指出待启动任务截止已过，应按截止时间判断已逾期。仅报告系统未逾期标记和差异不足以完成该项判断。",
+        "evidence_refs": [
+          "step 7 task_detail call_fBDsRCkNMiLoFsBwf3XlcmW6",
+          "recovered_business_evidence current_datetime 2026-11-03T19:43:31+09:00",
+          "turns step 7 answer",
+          "expected_answer.turn_expectations step 7"
+        ]
+      }
+    ],
+    "suggestions": [
+      "末轮明确回答：现由自动化_Anna2负责，基础状态为待启动；截止时间已过去且尚未完成，按截止时间判断已逾期。同时说明系统逾期标记仍显示未逾期，与日期判断不一致，需核验该标记。"
+    ],
+    "input_sha256": "157f0b452aff22163289493f5aed7ca65ff41e5f4fb7640727eff12813b3e485",
+    "evidence_sha256": "bfa742c666a36370b15675b19037370790cb16cc70c6cf2214665419bedfc6d2",
+    "reviewed_at": "2026-11-04T00:20:20.396541+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 3：activate_skills（completed） → entity_resolve（completed） → structured_schema（completed） → task_ask（completed） → task_query（completed）；步骤 7：activate_skills（completed） → task_detail（completed）",
+    "review_observation": {
+      "basis": "b202eea3042d9a844bf3d9cf25c46a82c6d8e94f57c7437941281f9e153b8813",
+      "result": "c63127f508ebb1d7224644a0c7860a5dbf36471aa4356b28e495609d2c81cff8",
+      "requests": [
+        "96453c64-6086-42cd-b0c8-b9b65483421a",
+        "ca691fc8-f4a0-4ea1-9ee1-a431f94757c5",
+        "e4c48a70-7070-489a-b1f8-94a1c47f710e"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-018": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误",
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "三轮均已正常生成回答，但结果未满足完整验收：step 3 查询结果明确提示存在命中子孙任务，助手未展开便将11项一级任务作为完整集合；step 4 虽正确恢复本人及项目、未完成条件，却仅筛选high并明确排除highest，遗漏已由本次step 2实时结果确认的任务010和040。此结论不依赖旧Gold的动态数量。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace覆盖全部三个当前request，包含原始项目引用、完整工具参数、结果和最终回答。本例为任务清单筛选，不要求评论解析。step 3结果中任务001具有has_matched_descendant=true，完整调用链无子任务展开；step 2实时返回任务010和040的priority=highest，足以核验step 4的遗漏。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "按当前登录用户负责人关系查询项目甲、乙的未完成任务，返回23项且已全部列出，包含一级及二级任务；21项待启动、2项进行中与实时结果一致，逐项提供来源，缺失截止时间保持未知，并正确区分日期和系统逾期标记的冲突。",
+        "evidence_refs": [
+          "call_029c9a5de7db47228ecc815b473bb846",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "正确将人员替换为Anna并保留项目及未完成条件，但返回的11项均为一级任务，其中任务001明确提示has_matched_descendant=true。助手未继续读取子孙任务，也未披露范围不完整，直接宣称共11项，不能满足默认包含全部子孙层级的清单要求。无需用历史24项强行替代实时总数即可确定此缺陷。",
+        "evidence_refs": [
+          "call_88710da519a442f68f253eea799cd0b9",
+          "task_vys0cmflxzvr: has_matched_descendant=true",
+          "bar_7612f1445a2a4baca8361ee751746c29完整工具链",
+          "turns[step=3].answer"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "fail",
+        "reason": "恢复本人身份正确，但将高优先级限定为high并排除最高优先级highest，不符合本例高优先级集合口径。当前同一执行的step 2已确认本人未完成任务010和040为highest，分别为一级和二级任务；因此零项回答遗漏了应保留的两项，不是旧快照数量变化造成。",
+        "evidence_refs": [
+          "call_b18d880f6c574cb29e9598113a75dfd7: priority=[high]",
+          "call_029c9a5de7db47228ecc815b473bb846: task_vys0elfq8cll、task_vys0lxbqjlci priority=highest",
+          "turns[step=4].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "发现has_matched_descendant时展开全部子孙层级，按人员和未完成条件筛选并去重，再计算总数；无法展开时明确披露未覆盖范围。",
+      "高优先级集合同时纳入最高与高，保留两者的真实枚举标签；不要用仅high的空结果排除已核实的highest任务。"
+    ],
+    "input_sha256": "76ac8c1933f3e8d36a4d384d822c46f2c5f65372accd607f39d1eddfc3c40aa5",
+    "evidence_sha256": "5879b5f95b6c9bca326520a40045406e418de13d4bb969cc2206a28d9652cba9",
+    "reviewed_at": "2026-11-04T00:22:40.532844+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_query（completed）；步骤 3：activate_skills（completed） → task_query（completed）；步骤 4：activate_skills（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "41a11e1c64efb97dfc29364acf3a98dd5f8099a581326213156400fdf433f38a",
+      "result": "02e0bf1d6b1d2e1b67dc1ec47c2236b7b2a15ad191cc0f4e1863ee942db8217e",
+      "requests": [
+        "2f6e0317-457a-4905-87a9-9416228b2a3c",
+        "ad6ed856-61f3-4379-90ea-df3ed9b10f3a",
+        "d6cbbcab-b02b-47a7-ad5b-bfe0e904d527"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-016": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "实际回答未提供用户要求的东京截止日期分组数量及未设置截止时间数量。执行前后同身份认证全树回读确认数据未变：2026-10-20为13项、2026-10-30为39项、未设置为12项，共64项。实际聚合仅读取63项，后续查询仅取得32个根任务，未补齐全部后代便结束。回答如实披露读取缺口，不属编造，但属于检索与聚合未完成、结果不满足验收，而非裁判证据不足或运行时生成失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题仅要求截止日期聚合，无须评论证据。认证Trace完整记录目标解析、task_ask的coverage_insufficient结果及structured_select返回32个根任务；bracketed_reexecution_source的before/after完整递归回读覆盖三个项目，确认64项及执行期间数据不变。turn_ledger将structured_select记为failed，与实际工具内层completed且返回32行存在冲突；按有效行判断该查询成功但仅覆盖根任务，仍未完成全树统计。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围定位正确且诚实说明63/64项缺口，但没有给出任何所求日期分组数或未设置数量。缺失的第三层任务064可由任务033继续递归读取；实际后续查询只返回根任务，未恢复完整覆盖。",
+        "evidence_refs": [
+          "trace.tools.seq29/entity_resolve",
+          "trace.tools.seq34/task_ask",
+          "trace.tools.seq49/structured_select",
+          "independent_historical_sources.bracketed_reexecution_source.before",
+          "independent_historical_sources.bracketed_reexecution_source.after",
+          "independent_historical_sources.reexecution_session_readback/messages/11675"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复全部层级展开逻辑，递归读取仍有子任务的节点，尤其任务033下的第三层任务064，并核对去重后实体数与64项总数一致。",
+      "补齐并确认截止字段的空值语义后，按(task_id, task_tenant_id)去重，将截止时间转换为Asia/Tokyo自然日再聚合，输出13、39、12及可追溯来源。",
+      "将聚合统计与逐项引用覆盖校验分离，避免完整列表引用失败阻断本可确定的分组统计。"
+    ],
+    "input_sha256": "f26caca5e8dbb46821734ccc98c18cb7dc9bc0fca36a754fb7c99591ef8894c7",
+    "evidence_sha256": "8d5251784a45bcdc466316af3506a45277702cd9329a0ac17ca759cc9e709b21",
+    "reviewed_at": "2026-11-04T00:15:54.890843+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → entity_resolve（completed） → task_ask（completed） → structured_schema（completed） → structured_select（外层 completed / 内层 completed）",
+    "review_observation": {
+      "basis": "883ca51afda8d033a775774b8ce0b355dcd01155a3b68ea78a60b3c4cdb036ef",
+      "result": "f01f0b406de2857cbaa2bf20ed82b4eaf8dae4183cf7e6fc85d43dd839b6a9f3",
+      "requests": [
+        "d30d4291-06b4-4db6-a398-7ab5c78aaec6"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-002": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "本次两轮均已正常生成回答，不再属于原限流失败，但结果不满足验收。首轮仅按系统逾期标记列出17项进行中任务，遗漏截止时间已早于本轮时刻的未开始任务；已读材料中任务036、048等明确存在截止日期与逾期标记冲突，不能直接排除。第二轮正确保留未完成、逾期条件并包含最高和高优先级，但将不一致的聚合统计18直接解释为符合条件总数，声称另有1项子任务未核实；独立完整任务树与逐项结果支持17项高优先级逾期未完成任务，不能确认其所称第18项。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题是任务清单筛选，不要求评论分析。同一请求认证Trace包含实际项目引用、冻结时间、查询参数及任务结果；fresh_rerun_sources.before.complete_trees提供同身份、执行前完整递归任务树。任务036、048为未开始，截止2026-10-20日本时间18:00，却返回is_overdue=false，足以核验首轮错误。第二轮8项根任务与9项子孙任务逐项返回，聚合counts.total=18与明细存在冲突，回答未正确处理。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "按负责人分组和逐项引用符合要求，实际执行日期也正确；但未完整按截止时间与未完成状态筛选。任务036、048等已读未开始任务截止于10月20日，按11月4日冻结时刻应属于逾期，不能因系统标记false漏列。声明清单不完整不能替代完成逐个跟进所需清单。",
+        "evidence_refs": [
+          "bar_dcb00a12f5ba40df832ee9e2ea5ab3be/task_children seq49",
+          "recovered_business_evidence：09:15:53 materials rows任务036、048",
+          "fresh_rerun_sources.before.complete_trees.pro_2386389752",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "正确按项目整理，保留原筛选条件，且high与highest均包含；所列17项均有逐项依据。但回答明确断言共18项且另有1项子任务未核实，未解决统计与明细冲突。完整回源任务树支持17项符合高优先级、未完成且截止已过条件的任务，所谓第18项没有对应任务依据。",
+        "evidence_refs": [
+          "bar_850987371d4d41f2b9914d41e1708909/task_ask seq29",
+          "bar_850987371d4d41f2b9914d41e1708909/task_query seq39、44",
+          "fresh_rerun_sources.before.complete_trees.pro_2386389752",
+          "turns[step=3].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "先读取所选项目完整任务树，再以冻结时刻、实际截止时间和未完成状态统一筛选；系统逾期标记与日期冲突时应核验并说明，不能静默漏列。",
+      "保持分页大小一致，递归读取全部子孙任务，按租户与任务ID去重后进行分组统计。",
+      "聚合总数与逐项明细不一致时先核对统计语义及任务集合，不能把差值直接解释为存在一项尚未核实的匹配任务。"
+    ],
+    "input_sha256": "af2d52896c8cc5ab3064e2c18229b8c4634b74d934a7439e34c33e39e5305e13",
+    "evidence_sha256": "f4f4d888392f02dd7ab631c4ef100539af64169e108fc67364025a50ad05c349",
+    "reviewed_at": "2026-11-04T00:24:35.946128+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：task_ask（completed） → scratchpad_read（completed） → task_ask（completed） → task_query（completed） → task_children（completed） → task_query（completed） → task_children（completed） → task_children（completed）；步骤 3：scratchpad_read（completed） → activate_skills（completed） → task_ask（completed） → task_query（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "b3319b9a976f52f668b4fed97011c8465c09e795f9ef6b085476f5865cb1f76d",
+      "result": "a235f92d748adce57bbade93df69d318299660c8a830fe4213272d3c3823337e",
+      "requests": [
+        "1a6b016b-91be-4390-8cfc-afe4d0ad88d3",
+        "8a5689d4-b2d9-423f-9f98-64a43621167e"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-001": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本次请求已正常生成回答，但结果未满足完整聚合验收。指定三个项目的同身份完整递归回读确认主任务32条、全部层级子孙任务32条、去重总数64条。回答虽列出这些统计值，却随后以展开仅63条、子孙31条为由明确表示准确去重总数不能确认，未解决核心统计缺口。该限制忠实反映工具返回的冲突，不属于编造或评论误读；失败在于业务读取链未覆盖全部后代且最终未完成确定计数，而非生成执行失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题仅要求任务树计数，无需评论。预检的complete_recursive_readback=true及64条任务父子关系提供完整核验依据，其中任务064是任务033的子任务，属于必须纳入的第二层后代。当前认证Trace中task_ask返回counts为32/32/64，但tasks=63、children_rows=31；scratchpad_read及实际材料均确认展开缺1条。足以确定实际业务链读取不完整，而非Trace采集缺失。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围及项目来源正确，也如实披露了统计与展开差异；但未完成全部层级后代核验，并在最终回答中撤回准确总数结论。完整回源可确认32个主任务、32个子孙任务、64个去重任务，因此不能仅凭开头出现正确数字认定任务完成。",
+        "evidence_refs": [
+          "preflight.truth.complete_recursive_readback",
+          "preflight.truth.global_statistics",
+          "preflight.truth.tasks：task_vys0rb6pltjq.parent_task_id=task_vys0jonjw57b",
+          "trace.runs[0].tools：seq=24 task_ask",
+          "trace.runs[0].tools：seq=32 scratchpad_read",
+          "turns：step=2.answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复或补充子任务展开的递归读取，确保读取任务033的子任务064，而不止读取根任务的直接子任务。",
+      "统计数与展开数不一致时继续按父子关系核对缺失实体，按(task_id, task_tenant_id)去重后再给出确定的三项计数；保留对真实工具冲突的说明，但不要将未完成核验视为任务已完成。"
+    ],
+    "input_sha256": "14da25fd117ebe47f4f93d2473e51d40a78756342866a10e84f9275f3a6940b7",
+    "evidence_sha256": "1fa45c417bdf0e0a8169e2848ba8099710986426fc6fe5c67a76235717a7ad6e",
+    "reviewed_at": "2026-11-04T00:20:27.713069+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "6ea90f945f944a304992c299edf7f8e5dd19664b158ef532ef3675a15a61a4d9",
+      "result": "caf07e022bc1edbb49dc76b9032f521ddbae7b6b34f08ce56a4a7b49f3b10bd7",
+      "requests": [
+        "8c416d2a-f109-4efd-800f-86663a42fa1f"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-015": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "认证 Trace 证明本次复用的会话历史中，用户已经明确选择项目乙且排除其他项目，该历史业务输入实际送入了首轮模型。因此本次简称可依据既有上下文定位，并非未经澄清擅自选取项目乙。两轮均仅查询项目乙的待启动、进行中和暂停任务，工具完整返回 total=0；回答准确说明未查到未完成任务，提供项目来源，并未将任务记录为空扩大为项目验收完成。原失败结论未充分考虑已认证的历史消歧上下文。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "recovered_business_evidence 的历史 user 消息明确指定项目乙，首轮 input_invocations 包含该消息，且 chat.history_source、tool_memory_injection_detail 确证历史注入成功。两轮 task_query 的完整参数均限定 pro_2381460569、visible、role=all、status=[pending,in_progress,paused]，结果均为 total=0、returned=0，无截断。本题查询未完成任务清单，空集合不需要额外读取评论来证明验收完成，回答也明确保留了这一边界。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "实际请求已有此前用户明确选择项目乙的有效会话上下文，故无需重复澄清。助手按该范围重新读取当前未完成任务，完整空结果支持其回答；未混入项目甲或空项目。",
+        "evidence_refs": [
+          "recovered_business_evidence.message_pool：历史用户明确指定项目乙、不包括其他项目",
+          "recovered_business_evidence.runs[0].input_invocations：历史消息实际进入模型输入",
+          "bar_ea400ede0a6d46a6a5b5e17f770a8405：chat.history_source、chat.tool_memory_injection_detail",
+          "call_fb8e0fb96b4741a5abe0679f4fd49117：限定项目乙及未完成状态，total=0"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "pass",
+        "reason": "用户再次明确指定项目乙并附实体引用，助手仅查询该项目，工具完整返回未完成任务0项。回答范围、状态口径、东京时间和项目引用均与证据一致，且未宣称全部验收事项已完成。",
+        "evidence_refs": [
+          "recovered_business_evidence.message_pool：19:47 用户消息及 current_message_references",
+          "call_a70df1a24f3d478087f98de74bac930f：project_id=pro_2381460569，未完成状态查询 total=0",
+          "turns[step=3].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "若要独立验证“首次简称歧义必须澄清”，应使用无历史选择记录的新会话；复用会话时应将已经发生的明确消歧纳入验收判断。"
+    ],
+    "input_sha256": "d149fda67eb66259f78044f6beddbd6f72cce0385537ba3b2463ac860364e5e1",
+    "evidence_sha256": "0ad66faa291a4ea85dbfbbf6779680e637dbd3a16c836d7007a076868a2f2eb9",
+    "reviewed_at": "2026-11-04T00:22:23.938269+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_query（completed）；步骤 3：activate_skills（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "ae3f8b111be37cf83d56591e6c7c9161601948f4684db96341cc259e794091a0",
+      "result": "2e38559ccb131d57777f8bf6fadc138c478f305178a411b4c41368ccebfb59b9",
+      "requests": [
+        "3361481e-09aa-4e80-80ae-37e2db4e1311",
+        "943cb1b4-262d-423e-b28a-62c67b6a7a1c"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-MULTI-TEST-002": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "三轮均已实际执行并生成回答，范围缩小和恢复正确。第2轮分别给出项目甲63项、项目乙1项，第4轮恢复两项目并给出总数64项，均有服务端全层级计数支持。第3轮却只完成62项的创建人分组，未补齐第三级后代任务，Anna7仅统计22项，而完整回源为23项；虽如实披露缺口、没有编造，但仍未完成用户要求的全层级按创建人统计，属于结果不满足验收，而非生成失败或裁判证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本例为数量聚合，不涉及评论解析。当前请求认证Trace提供两次task_ask的完整参数与结果：项目甲counts.total=63、root_total=31、subtask_total=32，但covered.tasks=62；创建人分组为22/21/19。独立完整递归回源确认项目甲63项，并包含任务064（task_vys0rb6pltjq），其父任务为任务033、创建人为Anna7，支持正确分组23/21/19。关键差异可核验，不是Trace截断或采集缺失。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "正确定位所选两个项目，明确包含所有层级，分别回答63项和1项，并提供项目来源。采用的是服务端counts.total及根/子任务计数，而非把展示根节点total=31当全树总数；同时准确披露明细仅覆盖62项。就本轮所问总数量而言，已有权威计数足以支撑答案。",
+        "evidence_refs": [
+          "trace turn_step=2 task_ask call_fc97a8001c0349ffb732819d831fd507",
+          "expected_answer.current_independent_readback",
+          "turns step=2 answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "正确缩小至第一个项目、按创建人分组且披露不完整，但停留在62项部分结果，未提供所需63项的完整分布。Anna7应为23项而非已读集合的22项；另两位21项和19项正确。公开工具已显示counts.total与covered.tasks不一致，回答没有恢复缺失后代，核心统计任务未完成。",
+        "evidence_refs": [
+          "trace turn_step=3 task_ask call_7ac6fa344d644d8e81ea4ccf9a5a7b53",
+          "expected_answer.current_independent_readback.tasks task_vys0rb6pltjq",
+          "expected_answer.turn_expectations step=3",
+          "turns step=3 answer"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "pass",
+        "reason": "恢复最初两个项目，沿用已发生且明确注明时间的服务端全层级计数，正确给出63+1=64项，并保留来源与明细覆盖限制；未把上一轮单项目或62项已读集合误作总范围。",
+        "evidence_refs": [
+          "turns step=4 answer",
+          "trace turn_step=2 task_ask counts",
+          "recovered_business_evidence.runs turn_step=4 历史上下文注入",
+          "expected_answer.current_independent_readback.global_statistics"
+        ]
+      }
+    ],
+    "suggestions": [
+      "在创建人分组数量之和与服务端全层级总数不一致时，继续核对递归深度并补读缺失后代，尤其是任务033下的任务064。",
+      "补齐后按(task_id, task_tenant_id)去重并重新聚合，确认创建人分布为Anna7 23项、anrou 21项、Anna 19项，总和63项。"
+    ],
+    "input_sha256": "6f7155f898eaf81ea2ec8fc04dbeca3a2e7f024cd40482dbfd30c9529327e3cb",
+    "evidence_sha256": "e668f3815dbc034b6d0ee9eddad969f40582d575b9cc5bbbff2bf89ba707e6d2",
+    "reviewed_at": "2026-11-04T00:21:22.938850+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed）；步骤 3：activate_skills（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "964f8e165d0cb1000556c3309f4a1019d77e6a1825408413b3ed76de80172c44",
+      "result": "b6c4bec6fb0a8902303bfa22c67e368727c825231c5520633ec25804d7c229e9",
+      "requests": [
+        "213ee556-ddc8-4be3-a6ba-c12daa760837",
+        "ac6ab3c7-ea96-4a10-be7b-17cb662c3c51",
+        "e040ba19-95fa-4b4e-b1db-f924f4200412"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-MULTI-TEST-009": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮已成功生成回答，但未完成用户要求的全部层级完成率统计。项目甲总数63项及空项目0项、完成率不适用均回答正确；然而工具实际只读取62项，遗漏更深层后代，助手发现缺口后未补读，最终仅给出33.3%或34.9%的条件结果，未提供准确完成率。这是结果不满足验收，而非生成失败或裁判证据不足。按本轮独立回源任务状态，项目甲实际已完成21项，完成率为21/63≈33.33%；不应沿用旧Gold的20项。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "当前请求认证Trace完整显示task_ask及scratchpad_read均成功返回：counts.total=63、tasks=62、children_rows=31、subtask_total=32，状态分布已完成21项。独立完整递归回源确认项目甲63项，且任务064为任务033的子任务、状态2，证明存在可访问的更深层后代；本题为数量和完成率统计，无须评论证据。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确区分所选两个项目并披露读取缺口，但没有补齐全部后代，因而未交付项目甲准确完成率。空项目统计与零分母处理正确，不能抵消非空项目核心统计未完成。",
+        "evidence_refs": [
+          "trace.runs[0].tools[1]：task_ask，seq=24，counts.total=63、tasks=62",
+          "trace.runs[0].tools[2]：scratchpad_read，seq=32，明确记载尚缺1项材料行",
+          "expected_answer.current_independent_readback：complete_recursive_readback=true",
+          "current_independent_readback.tasks：task_vys0rb6pltjq，parent_task_id=task_vys0jonjw57b，status=2",
+          "turns[1].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "当服务端总数与已读行数不一致时，继续读取子任务的后代，尤其核查任务033下的任务064，再按任务ID与租户ID去重核对。",
+      "补齐后按每项自身状态计算完成率；本轮回源对应项目甲63项、完成21项、完成率约33.33%，空项目0项、完成率不适用。"
+    ],
+    "input_sha256": "b6d8b5a57a7f055564e6cdd50dad78083104d3157096baeb914fe52797f50a96",
+    "evidence_sha256": "b4b676e8332d1f592f6608d87d072f1b877d1875ed9511964edb799a23ecc35e",
+    "reviewed_at": "2026-11-04T00:21:40.083581+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → scratchpad_read（completed）",
+    "review_observation": {
+      "basis": "2b942160cc34da7bf783b8ee3ed7bc045d33ca7ffb357973f0d0a71fc11ac67d",
+      "result": "e96325dcbbfca34ae66896f32f9f8bd3766915f907353ecaef0a2377fc1cfaf9",
+      "requests": [
+        "85211883-79c5-4877-bab6-09fa6d67fa4d"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-SMEM-005": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "认证回读确认本次实际会话已绑定“项目执行人专项”，同身份业务回源确认目标项目及其任务可访问。两轮均已正常生成回答，却都要求用户重新提供项目名称或引用，既未回答项目风险，也未查询同一项目的任务及子任务。运行时输入未承接服务端保存的项目绑定，属于产品上下文传递与延续失败，结果不满足验收；不是生成失败，也没有证据表明存在跨项目污染或编造。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "reexecution_session_readback明确显示本次会话context为entityType=2、entityId=pro_4230587368，且保存了两轮对应回答。独立项目详情及完整递归任务树确认目标可访问。当前请求Trace显示两轮page_type为空、定位目录为空，模型业务输入未包含项目锚点。上述证据足以判断上下文绑定未生效及任务未完成，无需以缺少风险评论来推迟此判断；不据此评判具体风险事实。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "项目页会话已保存明确项目绑定，但回答仅要求提供项目名称或引用，未利用该绑定完成风险查询或给出有依据的风险判断。属于上下文传递失败导致结果不满足验收。",
+        "evidence_refs": [
+          "independent_historical_sources.reexecution_session_readback.sessions[0].source.session.context",
+          "turns[step=2].answer",
+          "recovered_business_evidence.runs[turn_step=2].context_events",
+          "reexecution_independent_readback.project_details.pro_4230587368"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "同一会话追问“它的子任务呢”时仍要求重新提供项目，未承接已绑定项目并返回其任务或子任务情况。虽未串入其他项目，但未完成本轮核心查询，不能仅因没有跨项目污染判通过。",
+        "evidence_refs": [
+          "independent_historical_sources.reexecution_session_readback.sessions[0]",
+          "turns[step=3].answer",
+          "recovered_business_evidence.runs[turn_step=3].input_invocations",
+          "reexecution_independent_readback.trees.pro_4230587368"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将会话保存的项目context可靠注入首轮及后续轮次的实体定位上下文，并对绑定存在但定位目录为空的情况增加监测。",
+      "修复后使用同一项目页会话复测：首轮基于实际证据回答风险并说明判断边界，次轮沿用同一项目查询完整任务层级，区分项目内任务与任务下的子任务。"
+    ],
+    "input_sha256": "c852a7311e4f869473d81593f4013bff0b4fb00ab5ff737ec4f0282a4c9ed958",
+    "evidence_sha256": "70ad9ba0c3b487624b8ecc995fd40a2937b4d627d4afabbf0146a8c964ddb776",
+    "reviewed_at": "2026-11-04T00:15:36.614956+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "未取得可观测工具链；不能由此推断没有调用工具。",
+    "review_observation": {
+      "basis": "f0ae9bb90c13441132fa229e2bafe7cb1118fed139ebffb2e93c7cb613c577c3",
+      "result": "1612ce36f01f150552fefa4a390e25009fb9ab9f08808704ce4e7cf3e27c2036",
+      "requests": [
+        "0497d1d4-5250-4655-827b-4de38934df46",
+        "cab3c89c-24d7-4e7d-844a-c71cbdc600fa"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-012": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误",
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "两轮均已实际完成生成，不属于空回答或运行失败。第2轮列出了8项待排期任务，负责人、项目、状态和引用与证据相符。第3轮却将“高优先级的先给我”自行收窄为严格枚举 high，并明确排除 highest，未交付已读取到的4项最高优先级任务，属于结果不满足追问验收，而非证据不足。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为任务字段筛选，不要求评论解析。认证Trace包含两轮实际输入、完整回答及工具结果；第2轮task_query返回8项任务及其负责人、项目和优先级，第3轮历史工具结果也已完整注入。4项任务010、025、040、055明确为highest。task_ask存在coverage_insufficient及引用覆盖错误，但不影响确认第3轮主动排除highest这一实质错误。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "正确列出8项未完成且无截止时间的待排期任务，包含4项一级任务和4项子任务；各项负责人、所属项目及可追溯引用均与已验证集合及本轮工具结果一致。对全层级核验限制进行了披露，没有据此虚称完整覆盖或修改排期。",
+        "evidence_refs": [
+          "bar_4204cb040a46438ab63e33b6b8bca9e1 / seq39 task_query",
+          "bar_4204cb040a46438ab63e33b6b8bca9e1 / seq34 task_children",
+          "recovered_business_evidence中的历史task_detail读取记录",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "保留了未完成、无截止时间和指定项目条件，但错误地把自然语言高优先级限定为high且不含highest。工具调用明确要求排除highest，最终回答仅称没有“高”任务，未列出应优先排期的任务010、025、040、055；这4项均已读到且为highest，不能以枚举区分或覆盖限制免除遗漏。",
+        "evidence_refs": [
+          "call_c2ee6b1091624cee8a62c757489dfaaf 的instruction：严格为high、不含highest",
+          "call_777cac2f046140ee95ef9bc3ca1d2b0f 返回的4项highest任务",
+          "bar_bbb881e62f7e4cf9aa79d2d594a49dc2 / chat.tool_memory_injection_detail",
+          "turns[step=3].answer"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将本次“高优先级先给我”按高及最高优先级理解，保留未完成、缺截止时间、项目和全部子孙层级条件，列出任务010、025、040、055，并准确标注其优先级为“最高”。",
+      "区分业务自然语言筛选与严格枚举等值筛选，不应自行添加“不含最高”的限制。"
+    ],
+    "input_sha256": "5394695aa0eee94197ebba1e04e47e2df8685308088badfb0d1b2cea48d285e3",
+    "evidence_sha256": "c871f1a47dec299d73db5fdea161a2263476bfde364d6436f1b47dc37ffa4ea4",
+    "reviewed_at": "2026-11-04T00:22:03.653452+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_children（completed） → task_query（completed）；步骤 3：activate_skills（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "dff1d716fc27877d25df7c0f7805a376dbe6411ada6e8977eeeb41582f927ef6",
+      "result": "6bca34fc4e9c5a9ad753db94802ff0afa88ccd77cad55236679e4393e86b236d",
+      "requests": [
+        "264cb6bc-2411-4119-9d21-bd7c95cee3cd",
+        "f0ad04fc-445f-4776-890f-84f2600cc195"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-AGG-TEST-006": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误",
+      "信息缺失"
+    ],
+    "business_reason": "本轮已完成执行，但结果不满足验收。用户要求指定三个项目内高优先级且未完成的主任务及全部子孙任务数量；执行前同身份完整递归回源及本轮Gold确认分别为11项、11项，实际回答为0项、0项。认证Trace显示两次查询均仅筛选high，遗漏实际优先级枚举中的highest，且未展开全部后代。工具确实返回零统计，但错误筛选所得空集不能代表用户要求的集合。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题是字段条件计数，不要求评论解析。preflight.truth与current_independent_readback提供执行前当前身份可见的64项完整递归任务树，包含各任务自身优先级、状态和父子关系；认证当前请求Trace的seq 24、30及恢复的完整工具消息明确证明仅使用priority=[high]并返回零计数，足以核验结果错误，无需推定索引同步或权限异常。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "指定项目范围及未完成状态口径基本正确，但高优筛选遗漏highest，未核实全部子孙层级，最终两类均报0，与本轮独立核验的主任务11项、子孙任务11项不符。属于已执行后的业务结果错误，而非生成失败或验收证据缺失。",
+        "evidence_refs": [
+          "preflight.truth：2026-11-03T10:35:09.852668+00:00，complete_recursive_readback=true",
+          "expected_answer.numeric_oracle：主任务11、子孙任务11",
+          "trace.runs[0].tools：seq 24、seq 30，priority=[high]，children=false，counts均为0",
+          "turns[1].answer：主任务0项、子孙任务0项",
+          "authenticated_request_trace_scope：当前request f81e4267-fa78-4e1b-83f0-d9272925b140已匹配"
+        ]
+      }
+    ],
+    "suggestions": [
+      "将高优条件覆盖highest与high，保持实际枚举1最高、2高的语义。",
+      "完整读取指定项目全部后代，按各任务自身状态筛选，并按(task_id, task_tenant_id)去重后分别统计根任务与子孙任务。",
+      "发现当前统计与既有结果明显冲突时，核验优先级映射与层级覆盖，不直接将错误条件下的零结果表述为完整业务计数。"
+    ],
+    "input_sha256": "6a3d97609f17e8f6f89b3bc3e926d46f7d2f1c65e99412e3f30b760292ec9dcd",
+    "evidence_sha256": "a4cd87324ff0ea3468bf01fede030744a21dab12f4115f866edc7f6fe25f5bdf",
+    "reviewed_at": "2026-11-04T00:20:43.772931+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "23509dfad8d3934913eef0514c75d8b239fa717a2a18e1d9c66725b538912b5b",
+      "result": "555ca6ff856221f7c6dc63c14a555ac1de2938b0e14e73b7fc0c5210725bcdd1",
+      "requests": [
+        "f81e4267-fa78-4e1b-83f0-d9272925b140"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-FU-041": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [],
+    "business_reason": "本次重新执行已正常完成。回答列出的12个项目按实际项目ID去重后，与执行前后同身份独立回源的可见项目集合完全一致，精确率和召回率均为100%。回答说明检索范围包含所在空间内的项目，未将无显式项目角色的项目排除，并保留了当前可见的智本科技跨租户项目。历史Gold的19个项目是旧时刻动态集合，不应覆盖本轮实际可见的12个项目。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为项目清单查询，无须评论证据。fresh_rerun_sources.before和after均已验证自动化_Anna2身份，返回相同的12个可见项目；Trace seq=26的project_query完整返回total=12、returned=12，且无截断。实际回答逐项引用的项目ID与上述集合一致。缺少policy.check调用不影响本题验收。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "完整列出本轮账号可见的12个项目，未遗漏或增加项目；三个同名公司空间项目通过不同项目引用分别保留，未错误合并。检索范围说明符合可见集合口径，所附状态和项目经理信息与工具结果一致。本次有明确completed终态，不再沿用旧限流失败结论。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "trace.runs[0].tools[seq=26].project_query",
+          "fresh_rerun_sources.before.actor_visible_projects",
+          "fresh_rerun_sources.after.actor_visible_projects",
+          "recovered_business_evidence.message_pool：project_query完整结果"
+        ]
+      }
+    ],
+    "suggestions": [],
+    "input_sha256": "f1bdc7f11d9e452cf31bf9411b3588313f3371d179b89e3e96e8649f26228c1f",
+    "evidence_sha256": "e6ffb05707c034510f810846e7c6f7611214f9b3057f592380919d054e64e974",
+    "reviewed_at": "2026-11-04T00:31:24.650111+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "fail",
+    "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed）",
+    "review_observation": {
+      "basis": "a0184c1202b83eea165e641f1a3981684915ad244571c724157c22104acf8a3a",
+      "result": "9af71c07ed68c39de3c8b06c7a20fc0fc8908cfce9135a39891ce12a1b1601d7",
+      "requests": [
+        "78f39c85-ad41-40b8-a244-da12e69de3bc"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": true,
+      "same_historical_request": false,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-MULTI-TEST-013": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失",
+      "指令未遵循"
+    ],
+    "business_reason": "主任务的创建人排序和状态交叉表正确，但包含全部层级子任务的统计未完成。两个实际所选项目经原账号完整分页、递归回源分别为1045项（主1043、子2）和2316项（主220、子2096），创建人×状态汇总在执行前后保持一致。本次回答只覆盖1044项和285项，明确无法给出完整排名。诚实说明覆盖不足避免了编造，但仍未交付用例要求的全量结果；这是实际聚合覆盖/任务未完成，已不缺目标、权限或独立全集证据。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "当前请求完整认证Trace、实际两项目引用、完整树分页回执、执行前后相同创建人×状态计数及原回答共同支持该结论。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "主任务的创建人排序和状态交叉表正确，但包含全部层级子任务的统计未完成。两个实际所选项目经原账号完整分页、递归回源分别为1045项（主1043、子2）和2316项（主220、子2096），创建人×状态汇总在执行前后保持一致。本次回答只覆盖1044项和285项，明确无法给出完整排名。诚实说明覆盖不足避免了编造，但仍未交付用例要求的全量结果；这是实际聚合覆盖/任务未完成，已不缺目标、权限或独立全集证据。",
+        "evidence_refs": [
+          "same current request Trace",
+          "real_selected_projects_after_reexecution.tree",
+          "fresh_business_readback.trees.pro_1389744567",
+          "fresh_business_readback.trees.pro_2570483637"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复全量子孙任务聚合覆盖与创建人×状态交叉计数，完整交付两个项目的排名。"
+    ],
+    "input_sha256": "5b9d4f7444e18a6856f9221be4a8285b6bc9876aafdcb7f4f8f6e70e0634f0bc",
+    "evidence_sha256": "0cf7172eb3e87ce0e19365b4e9fb29634043b3941a86167a037a86888bbe6d00",
+    "reviewed_at": "2026-11-04T00:14:51.625833+00:00",
+    "judge_model": "本会话证据复核",
+    "judge_stream": null,
+    "judge_execution_note": "独立裁判接口多次返回上下文限制，错误和各次输入摘要保留；本条由当前会话依据完整业务证据作出结论，不生成云端人工改判事件。",
+    "protected_api_judge_completed": false,
+    "tool_chain": "步骤 2：task_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed） → task_ask（completed） → scratchpad_read（completed） → scratchpad_read（completed）",
+    "current_gold": {
+      "type": "dynamic_large_multi_project_aggregation",
+      "gold_refs": [
+        "AGG-EXT-PROJECT-1000",
+        "AGG-EXT-PROJECT-COPY"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+        "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+        "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+        "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+        "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+        "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+        "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+        "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "执行前以当前test智本_anrou权限完整分页读取两个项目及子孙任务，独立冻结按创建人×状态及主子层级的数量Gold。标题1000+不是计数证据，不预设具体总数。仅只读，不创建、修改、删除或复制原项目任何数据。缺ACL/全量源数据时待预检，不判Agent通过或失败。",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "帮我按照任务创建人从高到低排列，并给出其创建的任务状态的统计数。请分别说明主任务及全部子任务的统计口径。",
+          "qualitative_requirements": [
+            "执行前以当前test智本_anrou权限完整分页读取两个项目及子孙任务，独立冻结按创建人×状态及主子层级的数量Gold。标题1000+不是计数证据，不预设具体总数。仅只读，不创建、修改、删除或复制原项目任何数据。缺ACL/全量源数据时待预检，不判Agent通过或失败。"
+          ]
+        }
+      ],
+      "numeric_oracle": [],
+      "oracle_source": "待执行前独立全树采集并冻结，不复用合成64条快照",
+      "snapshot_policy": "只适用于本次业务源回读；执行前刷新ACL、全树、状态、截止时间及时间依赖统计。",
+      "scope": "test/actor_visible/user_supplied_projects",
+      "evaluation_scope": "all_answer_turns",
+      "current_verified_numeric_oracle": {
+        "selected_project_full_trees": {
+          "pro_1389744567": {
+            "read_at": "2026-11-03T13:18:29.392986+00:00",
+            "complete_recursive_readback": true,
+            "source_sha256": "4b3dc01d94401ca7a6fe2bc419cd5420c8b14c279932632bb80c2b039bdac3c1",
+            "exact_task_id_set_sha256": "454e05f63a1a006054092d037c9b5380cb776ade5bde221209c6958fc7739b14",
+            "task_count": 1045,
+            "pagination_receipt_count": 23,
+            "pagination_request_ids_sha256": "9d819fb4422c1e94d70384e58d6b186536e17039ff2d5010861e2b13da4c3bdc",
+            "pagination_boundary_receipts": [
+              {
+                "request_id": "022e09e5-4a64-4d2c-8a1e-009f23efb6f4",
+                "page": 1,
+                "total": 1043,
+                "returned": 50,
+                "parent": "",
+                "query": {
+                  "query_scope": 2,
+                  "project_id": "pro_1389744567",
+                  "space_id": "3790950067"
+                }
+              },
+              {
+                "request_id": "0db7db7e-5468-4380-9e0e-8a099dbae3d5",
+                "page": 1,
+                "total": 1,
+                "returned": 1,
+                "parent": "taskvmjfpcvntwd3",
+                "query": {
+                  "parent_task_id": "taskvmjfpcvntwd3",
+                  "parent_task_tenant_id": "T1120TIXH",
+                  "parent_task_depth": 2,
+                  "has_matched_descendant": true
+                }
+              }
+            ],
+            "creator_names": {
+              "ouvgljxj7hom5t@T1120BFPA": "Tech_Hod",
+              "ouvglfbcbndhqu@T1120BFPA": "CEO",
+              "ouvfgssx4omv6n@T1120BGCN": "zhaoxu222",
+              "ouvg4qcep4kf3k@T1120MCR9": "昆仑_anrou",
+              "ouvfhdf8rsbrfv@T1120BGCN": "智本_Anna5(测试勿动)",
+              "ouvfzptwcvb3kw@T1120MCR9": "Zhao Xu"
+            },
+            "creator_status_counts": [
+              {
+                "project_id": "pro_1389744567",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfzptwcvb3kw@T1120MCR9"
+                ],
+                "native_status": 1,
+                "count": 1
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfzptwcvb3kw@T1120MCR9"
+                ],
+                "native_status": 4,
+                "count": 1
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfgssx4omv6n@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 4
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfhdf8rsbrfv@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 2
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvg4qcep4kf3k@T1120MCR9"
+                ],
+                "native_status": 1,
+                "count": 1
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvglfbcbndhqu@T1120BFPA"
+                ],
+                "native_status": 1,
+                "count": 1029
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvglfbcbndhqu@T1120BFPA"
+                ],
+                "native_status": 2,
+                "count": 2
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvglfbcbndhqu@T1120BFPA"
+                ],
+                "native_status": 3,
+                "count": 3
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvglfbcbndhqu@T1120BFPA"
+                ],
+                "native_status": 4,
+                "count": 1
+              },
+              {
+                "project_id": "pro_1389744567",
+                "level": "root",
+                "creator_keys": [
+                  "ouvgljxj7hom5t@T1120BFPA"
+                ],
+                "native_status": 1,
+                "count": 1
+              }
+            ],
+            "projection": "Every source row contributes once to project×root/descendant×creator×native-status. No sampling. All original rows/parents/pagination retained in the cited source file."
+          },
+          "pro_2570483637": {
+            "read_at": "2026-11-03T12:53:35.699712+00:00",
+            "complete_recursive_readback": true,
+            "source_sha256": "99e220be99b1f76212921219cec7ae44d738f586fd96b76d538195ef493476e1",
+            "exact_task_id_set_sha256": "171d90cfaa6f1fea86c623b9d3a977e81cf12a3077c75322d9790ce4305039ae",
+            "task_count": 2316,
+            "pagination_receipt_count": 538,
+            "pagination_request_ids_sha256": "80f1752620b49c609a94044bc0def550ef43600eed2b097438a7a03313e60386",
+            "pagination_boundary_receipts": [
+              {
+                "request_id": "33a96dde-3eb9-4933-b793-5b35a8da4e85",
+                "page": 1,
+                "total": 220,
+                "returned": 50,
+                "parent": "",
+                "query": {
+                  "query_scope": 2,
+                  "project_id": "pro_2570483637",
+                  "space_id": "2304493434"
+                }
+              },
+              {
+                "request_id": "c77a9dbf-1cbc-46b8-b347-dd5e429cddaa",
+                "page": 1,
+                "total": 1,
+                "returned": 1,
+                "parent": "taskvshy27ygixhk",
+                "query": {
+                  "parent_task_id": "taskvshy27ygixhk",
+                  "parent_task_tenant_id": "T1120BGCN",
+                  "parent_task_depth": 1,
+                  "has_matched_descendant": true
+                }
+              }
+            ],
+            "creator_names": {
+              "ouvfhdf8rsbrfv@T1120BGCN": "智本_Anna5(测试勿动)",
+              "ouvfhdgghjp37n@T1120BGCN": "智本_anrou",
+              "ouvfgsrnr8lzji@T1120BGCN": "李振民",
+              "ouvj1aqmkdcdwb@T1120J27R": "振民"
+            },
+            "creator_status_counts": [
+              {
+                "project_id": "pro_2570483637",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfgsrnr8lzji@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 908
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfhdf8rsbrfv@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 3
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfhdgghjp37n@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 1180
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "descendant",
+                "creator_keys": [
+                  "ouvfhdgghjp37n@T1120BGCN"
+                ],
+                "native_status": 3,
+                "count": 5
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfgsrnr8lzji@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 4
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfhdf8rsbrfv@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 1
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfhdgghjp37n@T1120BGCN"
+                ],
+                "native_status": 1,
+                "count": 212
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvfhdgghjp37n@T1120BGCN"
+                ],
+                "native_status": 3,
+                "count": 1
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvj1aqmkdcdwb@T1120J27R"
+                ],
+                "native_status": 1,
+                "count": 1
+              },
+              {
+                "project_id": "pro_2570483637",
+                "level": "root",
+                "creator_keys": [
+                  "ouvj1aqmkdcdwb@T1120J27R"
+                ],
+                "native_status": 2,
+                "count": 1
+              }
+            ],
+            "projection": "Every source row contributes once to project×root/descendant×creator×native-status. No sampling. All original rows/parents/pagination retained in the cited source file."
+          }
+        },
+        "creator_status_counts_unchanged_after_execution": true,
+        "original_gold_and_legacy_preflight_preserved_at": "/Users/barry/Desktop/Agent-Evaluation/outputs/pending_recheck_20261103/test/rerun/AA-MULTI-TEST-013/case.json"
+      }
+    },
+    "review_observation": {
+      "basis": "3d74421ae5dd4aa5cf11a6a66c038f8b76342effc1ca6253735d9a246cad249c",
+      "result": "ce91999dfb64f8f7c3c22455abec208b3deb3db5f9e753f9b838f48437146838",
+      "requests": [
+        "deaa055a-1435-4484-ba21-d83a50c5d651"
+      ]
+    },
+    "evidence_repair": {
+      "question_resent": true,
+      "original_attempt_preserved": true,
+      "independent_complete_source_verified": true
+    },
+    "condition_diagnosis": {
+      "disposition": "evaluated",
+      "source": "new isolated business reexecution",
+      "previous_pending_reason": "本轮要求按创建数量降序给出创建人×状态统计，并区分主任务与全部子任务。回答中的主任务表与实际工具交叉统计一致，也明确披露子任务读取不完整，未将部分统计冒充全量。但独立预检仍为其他两个项目的64条合成夹具，而非本例真实双项目的全树Gold；缺少所选真实项目的独立ACL及完整后代回读，无法确定子任务未完成统计属于环境读取能力限制还是Agent未继续检索，按本例预检要求待复核，不能判通过或失败。",
+      "evidence_gap_closed": true,
+      "historical_business_request_existed": true
+    },
+    "reevaluation": {
+      "question_resent": false,
+      "scope": "Rechecked unchanged full authorized source and original answer; incomplete full descendants ranking remains a failure.",
+      "source_sha256": "bff0afde9e6bb8ea5dbb729a312c47ed10d625f781b2760a86a144f154df337f",
+      "previous_judge_failure_preserved": true
+    }
+  },
+  "AA-FU-037": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "范围错误"
+    ],
+    "business_reason": "本次请求已完成并返回回答，但核心统计不符合验收：回答为1个高优先级未完成任务；独立业务源显示“确定灰度比例”原始priority=2，按本例已验证的业务定义属于低优先级，应排除，正确数量为0个。认证Trace中的task_detail和task_ask均将其映射为high，表明存在工具语义映射与业务源冲突，回答沿用了错误映射。这属于结果错误，而非执行失败或证据不足。关于没有足够超负荷证据、不能将描述计划日期等同系统截止日期的表述合理，但不能抵消数量错误。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题是任务数量及负荷证据判断，不要求评论解析。preflight.truth.current_tasks.QA-T-DECISION-02的同身份业务回源确认原始priority=2、status=1、end_time=null，执行人为anrou20、创建人为CFO；Trace seq24及seq30却返回priority=high。实际请求、完整工具结果及终态回答均可核验，足以确认错误纳入低优先级任务。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "将低优先级的“确定灰度比例”计入高优先级未完成任务，导致回答1个而非0个，并错误宣称此前低优先级判断有误。负荷结论保留了证据边界，没有据此断言整体负荷正常，但核心数量仍错误。",
+        "evidence_refs": [
+          "preflight.truth.current_tasks.QA-T-DECISION-02.source.response.data.task",
+          "trace.runs[0].tools seq24 task_detail",
+          "trace.runs[0].tools seq30 task_ask",
+          "turns step2 answer",
+          "expected_answer.fixed_fact_truth：业务优先级0=中、1=高、2=低"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修正任务工具的优先级转换，按saas-server业务定义将原始priority=2映射为低优先级，并为枚举映射添加回归测试。",
+      "对指定项目全部相关任务按创建人或执行人取并集、去重后统计，排除该低优先级任务，回答高优先级未完成任务为0个。",
+      "保留负荷判断边界：缺少工时和容量数据，无法判断整体是否超负荷，0个高优先级任务也不能证明负荷正常。"
+    ],
+    "input_sha256": "c4ce6040b52211b557af01536c2913ddee6ff5e9caef3cd360ca0570b32b0dcc",
+    "evidence_sha256": "bf93bb3095cf31dec61d349859259c26b547d5ee6fd9cffb45cac8b50c95d7a6",
+    "reviewed_at": "2026-11-04T00:19:16.142541+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → person_search（completed） → task_detail（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "7225e2199611f61675b5ed6b9ea0adb879c06c5aee3f1bcd4bc187100e63cdf8",
+      "result": "2f58e53ff4511757e3204f5c975ed99e68581527ca9e00538e395d73aac7eab8",
+      "requests": [
+        "8b072e44-9bd5-4580-b537-8e9f86f49eff"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-MULTI-TEST-004": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮要求准确统计三个所选任务及全部后代的去重并集。独立完整递归回源确认共有33条，即任务001本身、31个直接子任务及1个孙任务064；任务033和064均已被任务001的后代集合覆盖。实际回答仅确认“至少33条”，并明确表示不能确认准确总数，未完成核心计数要求。这是已有实际回答但结果不满足验收，不是空回答或生成失败；诚实披露覆盖不足不属于编造，也不能替代完成统计。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本题为任务集合计数，无须评论证据。preflight.truth及current_independent_readback提供完整任务父子关系，并标记complete_recursive_readback=true，足以核验33条的结果。认证当前请求Trace确认三个目标引用已进入模型输入；task_children读取了任务001的第一页，task_ask最终返回coverage_insufficient及引用覆盖错误，未完成可发布汇总。工具摘要存在截断，但失败判断不依赖将截断内容视为空，而依据独立完整回源及本轮明确未给出准确总数的终态回答。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "正确识别了001→033→064的重叠关系，也没有把检索失败说成空集合；但未完成全后代覆盖核验及准确去重计数，最终拒绝确认应为33条的总数，未满足用户所问。历史上下文中的其他回答不作为本轮已完成统计的替代。",
+        "evidence_refs": [
+          "turns[step=2].answer",
+          "preflight.truth.complete_recursive_readback",
+          "expected_answer.current_independent_readback.tasks父子关系",
+          "trace.runs[0].tools[seq=29]: task_children",
+          "trace.runs[0].tools[seq=34]: task_ask coverage_insufficient",
+          "recovered_business_evidence当前请求current_message_references"
+        ]
+      }
+    ],
+    "suggestions": [
+      "修复聚合工具把纯计数请求绑定到逐条引用完整清单验收的问题，避免已有任务数据却因引用覆盖失败无法返回统计。",
+      "对所选任务递归翻页读取后代，以(task_id, tenant_id)维护已访问集合并验证遍历完成，再返回“共33条：001本身1条、直接子任务31条、孙任务1条；033和064不重复累计”。"
+    ],
+    "input_sha256": "26e0f5730fcaa3050fed3367e776ce458763cb4b736a7e648a1b888a9a971f73",
+    "evidence_sha256": "35b92fc42363eff31ddcb85c4f591d96bf26bdeee9b09134ccc740b36340ffad",
+    "reviewed_at": "2026-11-04T00:21:27.704426+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：scratchpad_read（completed） → activate_skills（completed） → task_children（completed） → task_ask（completed）",
+    "review_observation": {
+      "basis": "3160d7814101277ba3105dca8f8b87f84bb2bd5cb036a5bab7e8d2558918acd8",
+      "result": "7dd0f65309c752cce8b960f8df6c358dacad38e535291d615c0503a8bebf98b9",
+      "requests": [
+        "8bd75370-3b7d-41ab-ba88-9aeaa2a34244"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-SMEM-012": {
+    "business_status": "pass",
+    "kind": "business_review",
+    "confidence": "medium",
+    "failure_categories": [],
+    "business_reason": "第2轮按项目名称含“AI评测”查询，工具完整返回10个项目，回答的数量、项目名称及状态均与当轮结果一致，并提供逐项来源。独立回读仅列出两个项目，与当轮工具范围存在差异，但不足以证明其余项目在实际请求时无权访问，不能仅凭测试域名称或不同时间的可见清单判定越权。第4轮确在新会话执行，未继承旧列表序位，明确说明无法确认“第二个”并请求补充名称，满足本例记忆隔离要求。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "本例不涉及进度评论。认证Trace中，第2轮project_query完整返回total=10、returned=10，与回答逐项相符；第4轮history_source仅有当前一条消息，tool_memory_injection为空，实际模型输入不含前会话列表。独立源两项清单与当轮查询存在范围差异，但没有实际请求时的完整ACL证据，不能据此确定范围错误。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "pass",
+        "reason": "实际查询明确使用name_contains=\"AI评测\"，完整返回10项；回答列全10项，正确说明名称筛选口径、查询时点和工具返回的状态。此前34项的不同统计口径也有历史业务输入支撑。没有充分证据将工具返回的额外项目确定为未授权对象。",
+        "evidence_refs": [
+          "bar_1aa6b3d427194e068182f6344e393cd0：project_query，call_7eFHldh5xByxyPor5pqJC3NK",
+          "recovered_business_evidence：第2轮input_invocations及历史34项回答",
+          "preflight.truth：2026-11-03T10:34:30.398395+00:00独立可见清单"
+        ]
+      },
+      {
+        "step": 4,
+        "status": "pass",
+        "reason": "新会话与第2轮会话不同，认证输入确认未带入旧列表。回答未猜测第二项项目或负责人，而是请求提供第二项名称，符合新会话清空短期序位的验收要求。session_recall不可用没有导致错误结论，不构成业务失败。",
+        "evidence_refs": [
+          "actual_turn_metadata：step 3、step 4新会话cs_e9cc4083-78f7-42ef-8082-e762f5939504",
+          "bar_9b55afe9f12e4e9692a8d4961ede74cd：chat.history_source，message_count=1",
+          "bar_9b55afe9f12e4e9692a8d4961ede74cd：input_invocations及空tool_memory_injection",
+          "turns：step 4实际回答"
+        ]
+      }
+    ],
+    "suggestions": [
+      "若需单独判断项目可见范围问题，应补充与实际请求同身份、同查询范围、同时点的完整授权或业务源证据，核对独立清单与project_query返回差异。"
+    ],
+    "input_sha256": "81263256899cc7f21a380e833e28e532d1b3228b7c22a1711ceffe2e4274989e",
+    "evidence_sha256": "7de63c3bd1c1b9b0b8618a117abd7383ddd43ff01da42e38dd56b37653c526a7",
+    "reviewed_at": "2026-11-04T00:20:01.181926+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → project_query（completed）；步骤 4：activate_skills（completed） → session_recall（failed）",
+    "review_observation": {
+      "basis": "af56666ec049ba5ed82b0f7635e3a74e7e6efeec4e5757ee0852ff982728b971",
+      "result": "d1a06db60fe77b8d25ab52a588719c375f5d7c810509b05b6c5e250ec335a5ba",
+      "requests": [
+        "9215e2ad-bd81-4560-b258-205a810def63",
+        "db834282-ca97-43bf-a84a-fa7f11d647a0"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  },
+  "AA-REAL-TEST-013": {
+    "business_status": "fail",
+    "kind": "business_review",
+    "confidence": "high",
+    "failure_categories": [
+      "时序错误",
+      "指令未遵循"
+    ],
+    "business_reason": "两轮均已正常生成回答，但结果不满足时间筛选验收条件。第2轮实际执行时刻为2026-11-03 19:51:18（Asia/Tokyo），最近7天应从2026-10-27 19:51:18向前界定；实际却按10月28日至11月3日的自然日查询，遗漏了10月27日晚间的有效窗口，并未按执行时刻设置上界。第3轮明确继续沿用该错误范围。现有独立回源没有实时任务数据，不能据历史43条、22条断言当前空结果错误，但明确的时间口径错误已足以判定失败。",
+    "evidence_assessment": {
+      "sufficient": true,
+      "comment_grounding": "not_applicable",
+      "reason": "认证Trace提供了当前请求时间、两个项目的完整查询参数及空结果，也提供了第3轮继承这些结果的上下文。本题只要求按更新时间列举，不要求解析进度评论。证据足以核实时间口径错误；current_tasks为空不足以核实正确滚动窗口内的实际任务数量，不据此作额外事实判断。"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "实际将滚动7天改为7个自然日：在2026-11-03 19:51:18执行时，两个查询均设置updated_at为2026-10-28至2026-11-03，回答也明确称“最近7个自然日”。查询成功且返回空集，不属于生成失败，但没有完成要求的时间窗口查询。",
+        "evidence_refs": [
+          "recovered_business_evidence：当前用户消息current_datetime=2026-11-03T19:51:18+09:00",
+          "call_9c1fb58838644666a1d146352cb3ca25：updated_at及total=0",
+          "call_60854c39d04449748836117997ba11b4：updated_at及total=0",
+          "turns[step=2].answer"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "回答明确沿用10月28日至11月3日这一错误窗口，从该范围的空集推导高优先级为空，未完成继承正确滚动7天条件的筛选。空集上增加优先级条件无需机械重复查询，因此不以本轮没有工具调用单独判错；问题在于所继承的范围不符合要求。",
+        "evidence_refs": [
+          "turns[step=3].answer",
+          "bar_a3178e1f05c840d0ac6eed69b8f57201：chat.tool_memory_injection_detail seq=12",
+          "recovered_business_evidence：当前用户消息current_datetime=2026-11-03T19:51:36+09:00"
+        ]
+      }
+    ],
+    "suggestions": [
+      "按Asia/Tokyo冻结执行时刻，将最近7天计算为该时刻向前7天的滚动窗口，而非包含今天的7个自然日。",
+      "若查询接口仅支持整天，先读取覆盖滚动窗口的日期范围及最后更新时间，再做精确时间过滤；无法获得时间精度时应说明限制，不能宣称已完整查询。",
+      "后续高优先级筛选应继承正确窗口，并保留最高与高优先级的实际枚举语义；不要使用历史Gold数量替代实时结果。"
+    ],
+    "input_sha256": "1564692df48c5c57a0ba310904652d1cdecb3df78dbd91ca330089d1c9f89c49",
+    "evidence_sha256": "7d8843843e6ff63be83a2e74f75d115adddf517295e7e42c9613457b91d6161b",
+    "reviewed_at": "2026-11-04T00:22:19.012069+00:00",
+    "judge_model": "gpt-6.1-sol",
+    "judge_stream": true,
+    "automatic_status": "skip",
+    "tool_chain": "步骤 2：activate_skills（completed） → task_query（completed） → task_query（completed）",
+    "review_observation": {
+      "basis": "308591ebb74f3d02edab09fb8f45870fea6fdca8fbcaa1b7d07bed4d54631812",
+      "result": "7020e4d4bf98a842c48aaebcd2c0676f5e2433432560bdc581cc1968f4b87194",
+      "requests": [
+        "7db09716-f0ae-46c7-872e-198be90a6262",
+        "a836b9ce-c60c-4cfc-8f98-4b7575b951e9"
+      ]
+    },
+    "reevaluation": {
+      "source_report": {
+        "contract": "ai_assistant.review_baseline.v1",
+        "environment": "test",
+        "identity": {
+          "report_id": "review-b00e238ad1570ffcf4b8f490",
+          "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+          "environment": "test",
+          "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+        },
+        "revision": 17,
+        "fetched_at": "2026-11-04T00:05:27.688846+00:00",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+      },
+      "question_resent": false,
+      "same_historical_request": true,
+      "original_evidence_preserved": true
+    }
+  }
+}

@@ -1,0 +1,765 @@
+{
+  "row": {
+    "asker": "CEO",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "CEO",
+        "company": "自动化测试公司",
+        "actor_ref": "CEO",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "CEO",
+        "company": "自动化测试公司",
+        "actor_ref": "CEO",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-FU-037",
+    "suite": "assistant_agent_followup",
+    "module": "跨源分析与风险",
+    "scenario": "anrou20在指定项目的高优先级未完成任务与负荷证据",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "核心数量回答错误：经独立业务源核验，“确定灰度比例”的原始 priority=2，按业务定义为低优先级，应排除，因此 anrou20 在指定项目作为创建人或执行人的高优先级未完成任务为0条，而回答为1条。Trace 中 task_detail 和 task_ask 将该任务映射为 high，与业务源存在明确冲突；回答沿用了错误映射。关于缺乏足够超负荷证据及不能将描述中的计划日期当作系统截止日期的边界表述合理，但不能抵消核心统计错误。",
+    "confidence": "high",
+    "latency_ms": 30546,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+    "ability": "跨源分析与风险",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？"
+    ],
+    "answer": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "核心数量回答错误：经独立业务源核验，“确定灰度比例”的原始 priority=2，按业务定义为低优先级，应排除，因此 anrou20 在指定项目作为创建人或执行人的高优先级未完成任务为0条，而回答为1条。Trace 中 task_detail 和 task_ask 将该任务映射为 high，与业务源存在明确冲突；回答沿用了错误映射。关于缺乏足够超负荷证据及不能将描述中的计划日期当作系统截止日期的边界表述合理，但不能抵消核心统计错误。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → person_search（completed） → task_detail（completed） → task_ask（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "CEO",
+        "question": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+        "answer": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。",
+        "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+        "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+        "message_id": "cm_b950d888-01bf-4f55-b9ef-6edf481ab655",
+        "http_status": 200,
+        "error": "",
+        "asker": "CEO"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "step": 2,
+        "seq": 15,
+        "name": "activate_skills",
+        "arguments_summary": "skills=group_summary",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "step": 2,
+        "seq": 23,
+        "name": "person_search",
+        "arguments_summary": "keywords=\"anrou20\"",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "step": 2,
+        "seq": 24,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vvh8rk2dfqfh",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "step": 2,
+        "seq": 30,
+        "name": "task_ask",
+        "arguments_summary": "queries=2 group_by=priority,status format=text detail=true comments=false mode=complete children=false instruction_runes=111",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "group_summary",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 46,
+        "tool_count": 4,
+        "tokens": 129709
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-FU-037",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "核心数量回答错误：经独立业务源核验，“确定灰度比例”的原始 priority=2，按业务定义为低优先级，应排除，因此 anrou20 在指定项目作为创建人或执行人的高优先级未完成任务为0条，而回答为1条。Trace 中 task_detail 和 task_ask 将该任务映射为 high，与业务源存在明确冲突；回答沿用了错误映射。关于缺乏足够超负荷证据及不能将描述中的计划日期当作系统截止日期的边界表述合理，但不能抵消核心统计错误。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本题不依赖评论。preflight.current_independent_readback.current_tasks.QA-T-DECISION-02 的已验证业务源返回 priority=2、status=1、end_time=null，执行人为anrou20、创建人为CFO。Trace seq=24却返回priority=high，seq=30进一步统计high为1，足以定位业务源与工具优先级映射冲突及最终错误结论。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "应回答高优先级未完成任务去重后为0条，却将低优先级的“确定灰度比例”计入并回答1条，且错误宣称此前将其判断为低优先级的结论有误。超负荷证据不足的判断及日期字段区分基本正确。",
+          "evidence_refs": [
+            "preflight.current_independent_readback.current_tasks.QA-T-DECISION-02.source.response.data.task",
+            "trace.runs[0].tools[seq=24].result_preview",
+            "trace.runs[0].tools[seq=30].result_preview",
+            "turns[step=2].answer",
+            "expected_answer.fixed_fact_truth"
+          ]
+        }
+      ],
+      "suggestions": [
+        "修正任务工具的优先级转换，统一采用业务定义0=中、1=高、2=低，并增加原始值与展示值映射测试。",
+        "将本轮结论更正为0条；说明“确定灰度比例”为低优先级未开始任务，不计入统计，同时保留缺少工时与容量数据、无法判断整体是否超负荷的边界。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → person_search（completed） → task_detail（completed） → task_ask（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "fda9a5ff20f6a5b01e94359f8d0c6790f96b7b72735753d025114be49229b39e"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-037",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:41:21+00:00",
+    "output": {
+      "text": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+            "arguments_summary": "skills=group_summary",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 16,
+            "requested": [
+              "group_summary"
+            ],
+            "activated": [
+              "group_summary"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "person_search",
+            "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+            "arguments_summary": "keywords=\"anrou20\"",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_detail",
+            "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+            "arguments_summary": "task_id=task_vvh8rk2dfqfh",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 25,
+            "name": "person_search",
+            "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 26,
+            "name": "task_detail",
+            "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\"}],\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\"},\"source_unit_name\":\"技术中心\",\"company_name\":\"自动化测试公司\",\"description\":\"整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\",\"role\":\"owner\"},{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\",\"role\":\"creator\"}]}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 28
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "task_ask",
+            "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+            "arguments_summary": "queries=2 group_by=priority,status format=text detail=true comments=false mode=complete children=false instruction_runes=111",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 32
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 35,
+            "name": "task_ask",
+            "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"task\",\"id\":\"task_vvh8rk2dfqfh\",\"tenantId\":\"T1120BFPA\",\"widget\":\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"创建人\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":false},{\"query\":{\"owner_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"执行人\",\"status\":\"inline_fallback\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"971393af\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"pending\":{\"count\":1,\"pct\":100}}}},\"chunks\":1,\"answer_tokens\":140,\"attempts\":7,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"answer\":\"{\\n  \\\"统计口径\\\": \\\"按本次执行人查询材料；任务按任务条目去重。创建人信息未提供，因此无法与创建人任务对照。\\\",\\n  \\\"执行人任务\\\": {\\n    \\\"未完成数量\\\": \\\"1项（材料统计为待处理1项）\\\",\\n    \\\"high数量\\\": \\\"1项\\\",\\n    \\\"highest数量\\\": \\\"0项\\\",\\n    \\\"任务\\\": [\\n      {\\n        \\\"标题\\\": \\\"确定灰度比例\\\",\\n        \\\"执行人\\\": \\\"材料记录为 anrou20(ouvux80krpgwpq)，无法对应现实身份\\\",\\n        \\\"状态\\\": \\\"待处理，未逾期\\\",\\n        \\\"系统截止日期\\\": \\\"未返回\\\",\\n        \\\"日期说明\\\": \\\"描述中的计划截止为2026-09-16 18:00；这不是系统截止字段，不能据此判断系统截止日期。\\\",\\n        \\\"负荷证据\\\": \\\"有1项待处理的高优先级任务；本段未见其他任务，无法据此判断是否存在任务堆积。\\\",\\n        \\\"引用\\\": \\\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\\\"\\n      }\\n    ]\\n  },\\n  \\\"创建人任务\\\": \\\"材料中没有依据；无法统计未完成、high或highest数量，也无法与执行人任务对照。\\\"\\n}\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 36
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 236
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 238,
+            "input_tokens": 128531,
+            "output_tokens": 1178,
+            "total_tokens": 129709,
+            "estimated_cost_micros": 660325,
+            "cached_input_tokens": 64715,
+            "cache_write_input_tokens": 49812,
+            "cache_hit_ratio": 0.5092902281437645,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 242
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+          "message_id": "cm_b950d888-01bf-4f55-b9ef-6edf481ab655",
+          "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "group_summary"
+    },
+    "metrics": {
+      "e2e_ms": 30546,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 128531,
+      "output_tokens": 1178,
+      "cached_tokens": 64715,
+      "cost_usd": 0.660325,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CEO",
+          "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CEO",
+          "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+          "message_id": "cm_b950d888-01bf-4f55-b9ef-6edf481ab655",
+          "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。",
+          "message": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+          "actor": {
+            "account_ref": "CEO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvglfbcbndhqu",
+            "fixture_actor_ref": "ACC-TEST-01"
+          }
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "group_summary"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "activate_skills",
+              "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+              "arguments_summary": "skills=group_summary",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+              "turn_step": 2,
+              "seq": 23,
+              "name": "person_search",
+              "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+              "arguments_summary": "keywords=\"anrou20\"",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+              "turn_step": 2,
+              "seq": 24,
+              "name": "task_detail",
+              "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+              "arguments_summary": "task_id=task_vvh8rk2dfqfh",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\"}],\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\"},\"source_unit_name\":\"技术中心\",\"company_name\":\"自动化测试公司\",\"description\":\"整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\",\"role\":\"owner\"},{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\",\"role\":\"creator\"}]}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+              "turn_step": 2,
+              "seq": 30,
+              "name": "task_ask",
+              "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+              "arguments_summary": "queries=2 group_by=priority,status format=text detail=true comments=false mode=complete children=false instruction_runes=111",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"task\",\"id\":\"task_vvh8rk2dfqfh\",\"tenantId\":\"T1120BFPA\",\"widget\":\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"创建人\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":false},{\"query\":{\"owner_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"执行人\",\"status\":\"inline_fallback\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"971393af\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"pending\":{\"count\":1,\"pct\":100}}}},\"chunks\":1,\"answer_tokens\":140,\"attempts\":7,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"answer\":\"{\\n  \\\"统计口径\\\": \\\"按本次执行人查询材料；任务按任务条目去重。创建人信息未提供，因此无法与创建人任务对照。\\\",\\n  \\\"执行人任务\\\": {\\n    \\\"未完成数量\\\": \\\"1项（材料统计为待处理1项）\\\",\\n    \\\"high数量\\\": \\\"1项\\\",\\n    \\\"highest数量\\\": \\\"0项\\\",\\n    \\\"任务\\\": [\\n      {\\n        \\\"标题\\\": \\\"确定灰度比例\\\",\\n        \\\"执行人\\\": \\\"材料记录为 anrou20(ouvux80krpgwpq)，无法对应现实身份\\\",\\n        \\\"状态\\\": \\\"待处理，未逾期\\\",\\n        \\\"系统截止日期\\\": \\\"未返回\\\",\\n        \\\"日期说明\\\": \\\"描述中的计划截止为2026-09-16 18:00；这不是系统截止字段，不能据此判断系统截止日期。\\\",\\n        \\\"负荷证据\\\": \\\"有1项待处理的高优先级任务；本段未见其他任务，无法据此判断是否存在任务堆积。\\\",\\n        \\\"引用\\\": \\\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\\\"\\n      }\\n    ]\\n  },\\n  \\\"创建人任务\\\": \\\"材料中没有依据；无法统计未完成、high或highest数量，也无法与执行人任务对照。\\\"\\n}\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 46,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.answer_persist",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 128531,
+            "output_tokens": 1178,
+            "total_tokens": 129709,
+            "estimated_cost_micros": 660325,
+            "cached_input_tokens": 64715,
+            "cache_write_input_tokens": 49812,
+            "cache_hit_ratio": 0.5092902281437645,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "8b072e44-9bd5-4580-b537-8e9f86f49eff"
+        ],
+        "current_session_ids": [
+          "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530"
+        ],
+        "matched_run_ids": [
+          "bar_6871b63134c0402b8076df07b6b0f76a"
+        ],
+        "excluded_historical_run_count": 2,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

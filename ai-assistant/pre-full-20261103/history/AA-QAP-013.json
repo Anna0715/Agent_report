@@ -1,0 +1,1022 @@
+{
+  "row": {
+    "asker": "安柔",
+    "asker_company": "Zelto",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "安柔",
+        "company": "Zelto",
+        "actor_ref": "安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-QAP-013",
+    "suite": "assistant_agent_followup",
+    "module": "跨源事实与风险",
+    "scenario": "pre真实消息/多消息风险盘点",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "回答完成了跨群风险归并并保留引用，也明确没有证据确认最终对客延期；但将“PRE起测延后”认定为已发生的进度事实，误读了后续修订消息。9月15日消息称当时尚未测上，次日消息明确回复“昨晚就可以了”，不能据此确认起测晚于原定当晚。此外，将条件性的加人提议写成“临时加人”，把资源建议写成了已执行动作。",
+    "confidence": "high",
+    "latency_ms": 25248,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "missing required tools: ['hive.im.search']",
+    "categories": [
+      "时序错误",
+      "评论解析错误"
+    ],
+    "title": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+    "ability": "合并多条项目风险证据",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+    ],
+    "answer": "按已读消息中的潜在交付影响排序，主要风险是：**核心答案链路出错、真实数据安全、主动提醒不可靠，以及范围扩张挤压验证时间**。以下是消息当时反映的状态，不代表这些问题截至现在仍未解决；“预计”“计划支持”不作为完成证据。\n\n1. **核心检索和引用缺陷：可能给出错误范围的答案，或无法追溯依据。**  \n   消息中反馈过“选择某个群后结果不变化”，并称其为“大问题”；PRE 引用异常当时定位为 Agent 未输出租户 ID，仍在修复。历史消息无法继续上翻的问题也仍需复现确认。群筛选、引用和历史上下文一旦失效，会直接影响答案可信度与对客核验。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **真实数据和权限耦合：可能带来敏感信息外发或超范围访问。**  \n   群内说明 PRE 与线上共用权限、使用与线上一致的数据；另一群提出邮箱、银行卡号、证件号等敏感字段不应发送给 GPT，而前置脱敏方案在该讨论时仍需调研。**风险是可能发生的数据事故，并非已有泄露证据。**此外，消息称 PRE 功能和 Agent 效果与线上不完全一致，因此 PRE 验证结果也不能直接等同于线上表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读识别与提醒闭环未稳定：可能漏提醒或让用户看不到提醒。**  \n   按用户—消息维度识别未读状态当时仍“在支持中”，部分测试者也未在会话列表看到提醒入口。群内提到的次日新包是计划，不能证明问题已解决。如果识别或入口不可靠，定时总结和待办提醒的交付价值会受影响。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **文件能力临近对客扩范围：可能挤压修复与回归，并引入质量风险。**  \n   DOCX/PDF 原先因解析复杂未纳入一期，之后改为要求对客前支持并临时加人；Excel 等格式也被提出。文件解析方案仍在评测，多轮追问时图片细节能否保留也受到质疑。这些是**范围要求及待验证事项**，不是已交付能力的证明；若解析效果或格式覆盖不达预期，可能影响整体对客体验。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量与复杂场景不确定：可能影响首批演示和使用口碑。**  \n   虽已有可使用版本，技术侧当时仍评价效果“粗糙、不说人话”，并称持续优化；另一群对一期复杂问答能否达到预期表示“不敢保证”。因此，入口可用不等于回答质量和复杂任务可靠性已达到对客标准。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **起测延后与资源竞争：可能压缩回归窗口，造成延期或带风险对客。**  \n   原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时尚未测上，之后才确认可以开始；更早讨论还记录了成员被周报、假勤等并行工作占用，并已判断提测及对客节点有风险。起测延后是当时的进度事实；最终是否导致延期，已读证据不足以确认。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**覆盖与时效：**以上依据此前已读的两个群消息，主要证据截至 10 月 5 日；此前群语义检索有失败、部分消息范围截断，本轮案卷回读也失败。因此不能据此断言风险清单完整，或判断后续修复、验收是否已经完成。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "时序错误",
+      "评论解析错误"
+    ],
+    "business_reason": "回答完成了跨群风险归并并保留引用，也明确没有证据确认最终对客延期；但将“PRE起测延后”认定为已发生的进度事实，误读了后续修订消息。9月15日消息称当时尚未测上，次日消息明确回复“昨晚就可以了”，不能据此确认起测晚于原定当晚。此外，将条件性的加人提议写成“临时加人”，把资源建议写成了已执行动作。",
+    "tool_chain_summary": "步骤 2：scratchpad_read（failed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "安柔",
+        "question": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+        "answer": "按已读消息中的潜在交付影响排序，主要风险是：**核心答案链路出错、真实数据安全、主动提醒不可靠，以及范围扩张挤压验证时间**。以下是消息当时反映的状态，不代表这些问题截至现在仍未解决；“预计”“计划支持”不作为完成证据。\n\n1. **核心检索和引用缺陷：可能给出错误范围的答案，或无法追溯依据。**  \n   消息中反馈过“选择某个群后结果不变化”，并称其为“大问题”；PRE 引用异常当时定位为 Agent 未输出租户 ID，仍在修复。历史消息无法继续上翻的问题也仍需复现确认。群筛选、引用和历史上下文一旦失效，会直接影响答案可信度与对客核验。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **真实数据和权限耦合：可能带来敏感信息外发或超范围访问。**  \n   群内说明 PRE 与线上共用权限、使用与线上一致的数据；另一群提出邮箱、银行卡号、证件号等敏感字段不应发送给 GPT，而前置脱敏方案在该讨论时仍需调研。**风险是可能发生的数据事故，并非已有泄露证据。**此外，消息称 PRE 功能和 Agent 效果与线上不完全一致，因此 PRE 验证结果也不能直接等同于线上表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读识别与提醒闭环未稳定：可能漏提醒或让用户看不到提醒。**  \n   按用户—消息维度识别未读状态当时仍“在支持中”，部分测试者也未在会话列表看到提醒入口。群内提到的次日新包是计划，不能证明问题已解决。如果识别或入口不可靠，定时总结和待办提醒的交付价值会受影响。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **文件能力临近对客扩范围：可能挤压修复与回归，并引入质量风险。**  \n   DOCX/PDF 原先因解析复杂未纳入一期，之后改为要求对客前支持并临时加人；Excel 等格式也被提出。文件解析方案仍在评测，多轮追问时图片细节能否保留也受到质疑。这些是**范围要求及待验证事项**，不是已交付能力的证明；若解析效果或格式覆盖不达预期，可能影响整体对客体验。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量与复杂场景不确定：可能影响首批演示和使用口碑。**  \n   虽已有可使用版本，技术侧当时仍评价效果“粗糙、不说人话”，并称持续优化；另一群对一期复杂问答能否达到预期表示“不敢保证”。因此，入口可用不等于回答质量和复杂任务可靠性已达到对客标准。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **起测延后与资源竞争：可能压缩回归窗口，造成延期或带风险对客。**  \n   原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时尚未测上，之后才确认可以开始；更早讨论还记录了成员被周报、假勤等并行工作占用，并已判断提测及对客节点有风险。起测延后是当时的进度事实；最终是否导致延期，已读证据不足以确认。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**覆盖与时效：**以上依据此前已读的两个群消息，主要证据截至 10 月 5 日；此前群语义检索有失败、部分消息范围截断，本轮案卷回读也失败。因此不能据此断言风险清单完整，或判断后续修复、验收是否已经完成。",
+        "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+        "request_id": "c8cf5ed4-520b-4b3f-8787-74c1fc245a17",
+        "message_id": "cm_62eef585-076d-4978-a192-d99635c9739a",
+        "http_status": 200,
+        "error": "",
+        "asker": "安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+        "step": 2,
+        "seq": 15,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=cases/ai-project-pre-risk.md offset=0",
+        "status": "failed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 28,
+        "tool_count": 1,
+        "tokens": 31401
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "literal Gold mismatch requires semantic review: ['研发投入不足', '9月15']"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.must_include",
+        "status": "skip",
+        "reason": "turn 2 literal Gold mismatch requires semantic review: ['研发投入不足', '9月15']"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "fail",
+        "reason": "missing required tools: ['hive.im.search']"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "non-required/recovered tool anomalies do not fail the task: ['scratchpad_read:failed']"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "trace has no explicit skill activation surface"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "gold": {
+      "type": "summary",
+      "gold_refs": [
+        "2122635335",
+        "2658892958",
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "must_include": [
+        "研发投入不足",
+        "9月15",
+        "周报",
+        "假勤"
+      ],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "按影响归并风险，保留来源与时态，不声称已发生延期。"
+      ],
+      "fixed_fact_truth": "主要风险包括核心成员仍被周报/假勤占用、研发投入不足、核心方案和结构化查询尚未充分验证、9月15提测与10月中旬对客存在较大风险、测试投入尚未开始、空间数据和多模态/定时任务能力仍在推进。",
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "结论",
+        "依据",
+        "groupID",
+        "clientMsgID"
+      ],
+      "citation_refs": [
+        "08b37af7758288b1b1271b27dadd969a",
+        "c3586cea400d3296b229e400abd92219",
+        "a8da46922cb64d37c3b3debfe361938c"
+      ],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+          "must_include": [
+            "研发投入不足",
+            "9月15",
+            "周报",
+            "假勤"
+          ],
+          "must_exclude": []
+        }
+      ]
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "按影响说明风险、周报和假勤占用及9月15节点的覆盖基本符合所问，也没有将计划能力写成已完成。但第6项明确声称“起测延后是当时的进度事实”，与次日“昨晚就可以了”的回溯确认不符；第4项“临时加人”也超出了原文的条件性建议。对最终延期的谨慎声明不能消除前述已发生事实的错误。",
+        "evidence_refs": [
+          "independent_answer_citation_readback：sg_2122635335:452，clientMsgID=69461e7e473ea72c4f3281b5287d18ef",
+          "independent_answer_citation_readback：sg_2122635335:454，clientMsgID=90a4cb793c2a04fbd2455c789d503c08，正文“昨晚就可以了～”",
+          "independent_answer_citation_readback：sg_2122635335:525，clientMsgID=39bcff67a04649aa4641f576c72e9556",
+          "turns[step=2].answer：第4项及第6项"
+        ]
+      }
+    ],
+    "review_observation": {
+      "basis": "ba861c85bf0fa05332736298cfff0520014a52638e8b3c44e2450bc0b5cd489e",
+      "result": "f09b7dc8f4547a06fc0a2e5999faa1c6569fa58e10bc6d9b883ac19cc115797a",
+      "requests": [
+        "c8cf5ed4-520b-4b3f-8787-74c1fc245a17"
+      ]
+    },
+    "current_batch_scope": "恢复原请求证据并重新评估",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "回答按影响归并了两个群的交付风险，提到了周报、假勤占用及9月15日起测节点，并明确区分计划、当时状态和最终延期。但本例认证Trace仅包含一次失败的案卷读取，未提供回答所引用群消息的实际内容，无法核验新增的检索缺陷、数据安全、提醒及文件范围风险，也无法判断其对Gold中研发投入、方案验证和节点风险的覆盖是否充分。不能仅凭引用标记或助手自述此前已读认定证据已核实，也不能把本次读取失败直接判为业务失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": false,
+      "current_scope": "恢复原请求证据并重新评估",
+      "original_execution_preserved": true,
+      "new_sessions": [],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答按影响归并了两个群的交付风险，提到了周报、假勤占用及9月15日起测节点，并明确区分计划、当时状态和最终延期。但本例认证Trace仅包含一次失败的案卷读取，未提供回答所引用群消息的实际内容，无法核验新增的检索缺陷、数据安全、提醒及文件范围风险，也无法判断其对Gold中研发投入、方案验证和节点风险的覆盖是否充分。不能仅凭引用标记或助手自述此前已读认定证据已核实，也不能把本次读取失败直接判为业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-QAP-013.json",
+        "independent_readback": "sources/AA-QAP-013.json"
+      },
+      "prior_saved_review": null
+    },
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "时序错误",
+        "评论解析错误"
+      ],
+      "business_reason": "回答完成了跨群风险归并并保留引用，也明确没有证据确认最终对客延期；但将“PRE起测延后”认定为已发生的进度事实，误读了后续修订消息。9月15日消息称当时尚未测上，次日消息明确回复“昨晚就可以了”，不能据此确认起测晚于原定当晚。此外，将条件性的加人提议写成“临时加人”，把资源建议写成了已执行动作。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "verified",
+        "reason": "认证独立回源提供了两个群的原消息正文、真实引用ID及sendTime，足以核验上述明确错误。sg_2122635335:452与454共同限定起测时序；525仅提出时间不够时增加同学支持的条件性建议。当前Trace中的scratchpad_read确实失败，历史输入主要是助手既往总结，不能单凭这些总结证明实际读取原文；但独立原文已足以确定本次回答存在事实性误读，无需因工具失败或其他引用上下文尚不完整而整体待核验。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "按影响说明风险、周报和假勤占用及9月15节点的覆盖基本符合所问，也没有将计划能力写成已完成。但第6项明确声称“起测延后是当时的进度事实”，与次日“昨晚就可以了”的回溯确认不符；第4项“临时加人”也超出了原文的条件性建议。对最终延期的谨慎声明不能消除前述已发生事实的错误。",
+          "evidence_refs": [
+            "independent_answer_citation_readback：sg_2122635335:452，clientMsgID=69461e7e473ea72c4f3281b5287d18ef",
+            "independent_answer_citation_readback：sg_2122635335:454，clientMsgID=90a4cb793c2a04fbd2455c789d503c08，正文“昨晚就可以了～”",
+            "independent_answer_citation_readback：sg_2122635335:525，clientMsgID=39bcff67a04649aa4641f576c72e9556",
+            "turns[step=2].answer：第4项及第6项"
+          ]
+        }
+      ],
+      "suggestions": [
+        "将起测时序改为：9月15日反馈时尚未测上，次日确认15日晚已可使用；不能据此认定起测发生延期。",
+        "将“临时加人”改为“提出必要时增加人力支持”，在没有执行确认前不写成人员已投入。",
+        "保留研发投入有限及验证窗口受挤压的风险判断，但分别注明历史风险、后续确认和仍待核验的结果。"
+      ],
+      "input_sha256": "42cf3787c0f9bbfa0a6606cdfdefd8e5dad798e3c1879e09a8dc7e964f7099da",
+      "evidence_sha256": "21c2094099fc729335a50bac36de2f7362482f51b5153111499d57bd2e0a3f8b",
+      "reviewed_at": "2026-11-03T13:11:36.971794+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "fail",
+      "tool_chain": "步骤 2：scratchpad_read（failed）",
+      "review_observation": {
+        "basis": "ba861c85bf0fa05332736298cfff0520014a52638e8b3c44e2450bc0b5cd489e",
+        "result": "f09b7dc8f4547a06fc0a2e5999faa1c6569fa58e10bc6d9b883ac19cc115797a",
+        "requests": [
+          "c8cf5ed4-520b-4b3f-8787-74c1fc245a17"
+        ]
+      },
+      "evidence_repair": {
+        "previous_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "pre",
+          "identity": {
+            "report_id": "review-5f79026481b594937e92b0b6",
+            "run_id": "AI助手-2026-11-03-pre-full",
+            "environment": "pre",
+            "source_digest": "f0f494e25850ff68c27111fa3faf536d72af234a9a670a0fe4cc5b4b6b87d00e"
+          },
+          "revision": 5,
+          "fetched_at": "2026-11-03T12:37:36.5114+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/pre-full-20261103/"
+        },
+        "question_resent": false,
+        "original_attempt_preserved": true,
+        "recovered_original_request_trace": true
+      },
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "recovered exact-request authenticated Trace and independent source evidence",
+        "previous_pending_reason": "回答按影响归并了两个群的交付风险，提到了周报、假勤占用及9月15日起测节点，并明确区分计划、当时状态和最终延期。但本例认证Trace仅包含一次失败的案卷读取，未提供回答所引用群消息的实际内容，无法核验新增的检索缺陷、数据安全、提醒及文件范围风险，也无法判断其对Gold中研发投入、方案验证和节点风险的覆盖是否充分。不能仅凭引用标记或助手自述此前已读认定证据已核实，也不能把本次读取失败直接判为业务失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      }
+    },
+    "detail_anchor": "failure-pre-AA-QAP-013"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-QAP-013",
+    "environment": "pre",
+    "generated_at": "2026-11-03T07:10:25+00:00",
+    "output": {
+      "text": "按已读消息中的潜在交付影响排序，主要风险是：**核心答案链路出错、真实数据安全、主动提醒不可靠，以及范围扩张挤压验证时间**。以下是消息当时反映的状态，不代表这些问题截至现在仍未解决；“预计”“计划支持”不作为完成证据。\n\n1. **核心检索和引用缺陷：可能给出错误范围的答案，或无法追溯依据。**  \n   消息中反馈过“选择某个群后结果不变化”，并称其为“大问题”；PRE 引用异常当时定位为 Agent 未输出租户 ID，仍在修复。历史消息无法继续上翻的问题也仍需复现确认。群筛选、引用和历史上下文一旦失效，会直接影响答案可信度与对客核验。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **真实数据和权限耦合：可能带来敏感信息外发或超范围访问。**  \n   群内说明 PRE 与线上共用权限、使用与线上一致的数据；另一群提出邮箱、银行卡号、证件号等敏感字段不应发送给 GPT，而前置脱敏方案在该讨论时仍需调研。**风险是可能发生的数据事故，并非已有泄露证据。**此外，消息称 PRE 功能和 Agent 效果与线上不完全一致，因此 PRE 验证结果也不能直接等同于线上表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读识别与提醒闭环未稳定：可能漏提醒或让用户看不到提醒。**  \n   按用户—消息维度识别未读状态当时仍“在支持中”，部分测试者也未在会话列表看到提醒入口。群内提到的次日新包是计划，不能证明问题已解决。如果识别或入口不可靠，定时总结和待办提醒的交付价值会受影响。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **文件能力临近对客扩范围：可能挤压修复与回归，并引入质量风险。**  \n   DOCX/PDF 原先因解析复杂未纳入一期，之后改为要求对客前支持并临时加人；Excel 等格式也被提出。文件解析方案仍在评测，多轮追问时图片细节能否保留也受到质疑。这些是**范围要求及待验证事项**，不是已交付能力的证明；若解析效果或格式覆盖不达预期，可能影响整体对客体验。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量与复杂场景不确定：可能影响首批演示和使用口碑。**  \n   虽已有可使用版本，技术侧当时仍评价效果“粗糙、不说人话”，并称持续优化；另一群对一期复杂问答能否达到预期表示“不敢保证”。因此，入口可用不等于回答质量和复杂任务可靠性已达到对客标准。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **起测延后与资源竞争：可能压缩回归窗口，造成延期或带风险对客。**  \n   原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时尚未测上，之后才确认可以开始；更早讨论还记录了成员被周报、假勤等并行工作占用，并已判断提测及对客节点有风险。起测延后是当时的进度事实；最终是否导致延期，已读证据不足以确认。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**覆盖与时效：**以上依据此前已读的两个群消息，主要证据截至 10 月 5 日；此前群语义检索有失败、部分消息范围截断，本轮案卷回读也失败。因此不能据此断言风险清单完整，或判断后续修复、验收是否已经完成。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "scratchpad_read",
+            "call_id": "call_11aedf4981ff4c5ead819e7469d69ceb",
+            "arguments_summary": "path=cases/ai-project-pre-risk.md offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": ""
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 16,
+            "name": "scratchpad_read",
+            "call_id": "call_11aedf4981ff4c5ead819e7469d69ceb",
+            "status": "failed",
+            "attempts": 1,
+            "result_preview": "scratchpad_read failed (Internal)",
+            "orphan": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 1354
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 1356,
+            "input_tokens": 29984,
+            "output_tokens": 1417,
+            "total_tokens": 31401,
+            "estimated_cost_micros": 171175,
+            "cached_input_tokens": 14848,
+            "cache_hit_ratio": 0.4951974386339381,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "turn_step": 2,
+            "seq": 1360
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+          "message_id": "cm_62eef585-076d-4978-a192-d99635c9739a",
+          "request_id": "c8cf5ed4-520b-4b3f-8787-74c1fc245a17",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10"
+    },
+    "metrics": {
+      "e2e_ms": 25248,
+      "tool_calls": 1,
+      "retries": 0,
+      "input_tokens": 29984,
+      "output_tokens": 1417,
+      "cached_tokens": 14848,
+      "cost_usd": 0.171175,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "安柔",
+          "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "安柔",
+          "session_id": "cs_19545553-5060-49ac-929c-fc39163d85b2",
+          "message_id": "cm_62eef585-076d-4978-a192-d99635c9739a",
+          "request_id": "c8cf5ed4-520b-4b3f-8787-74c1fc245a17",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "按已读消息中的潜在交付影响排序，主要风险是：**核心答案链路出错、真实数据安全、主动提醒不可靠，以及范围扩张挤压验证时间**。以下是消息当时反映的状态，不代表这些问题截至现在仍未解决；“预计”“计划支持”不作为完成证据。\n\n1. **核心检索和引用缺陷：可能给出错误范围的答案，或无法追溯依据。**  \n   消息中反馈过“选择某个群后结果不变化”，并称其为“大问题”；PRE 引用异常当时定位为 Agent 未输出租户 ID，仍在修复。历史消息无法继续上翻的问题也仍需复现确认。群筛选、引用和历史上下文一旦失效，会直接影响答案可信度与对客核验。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **真实数据和权限耦合：可能带来敏感信息外发或超范围访问。**  \n   群内说明 PRE 与线上共用权限、使用与线上一致的数据；另一群提出邮箱、银行卡号、证件号等敏感字段不应发送给 GPT，而前置脱敏方案在该讨论时仍需调研。**风险是可能发生的数据事故，并非已有泄露证据。**此外，消息称 PRE 功能和 Agent 效果与线上不完全一致，因此 PRE 验证结果也不能直接等同于线上表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读识别与提醒闭环未稳定：可能漏提醒或让用户看不到提醒。**  \n   按用户—消息维度识别未读状态当时仍“在支持中”，部分测试者也未在会话列表看到提醒入口。群内提到的次日新包是计划，不能证明问题已解决。如果识别或入口不可靠，定时总结和待办提醒的交付价值会受影响。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **文件能力临近对客扩范围：可能挤压修复与回归，并引入质量风险。**  \n   DOCX/PDF 原先因解析复杂未纳入一期，之后改为要求对客前支持并临时加人；Excel 等格式也被提出。文件解析方案仍在评测，多轮追问时图片细节能否保留也受到质疑。这些是**范围要求及待验证事项**，不是已交付能力的证明；若解析效果或格式覆盖不达预期，可能影响整体对客体验。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量与复杂场景不确定：可能影响首批演示和使用口碑。**  \n   虽已有可使用版本，技术侧当时仍评价效果“粗糙、不说人话”，并称持续优化；另一群对一期复杂问答能否达到预期表示“不敢保证”。因此，入口可用不等于回答质量和复杂任务可靠性已达到对客标准。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **起测延后与资源竞争：可能压缩回归窗口，造成延期或带风险对客。**  \n   原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时尚未测上，之后才确认可以开始；更早讨论还记录了成员被周报、假勤等并行工作占用，并已判断提测及对客节点有风险。起测延后是当时的进度事实；最终是否导致延期，已读证据不足以确认。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**覆盖与时效：**以上依据此前已读的两个群消息，主要证据截至 10 月 5 日；此前群语义检索有失败、部分消息范围截断，本轮案卷回读也失败。因此不能据此断言风险清单完整，或判断后续修复、验收是否已经完成。",
+          "message": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "LIVE_VERIFIED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+          "turn_step": 2,
+          "request_id": "c8cf5ed4-520b-4b3f-8787-74c1fc245a17",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+              "turn_step": 2,
+              "seq": 15,
+              "name": "scratchpad_read",
+              "call_id": "call_11aedf4981ff4c5ead819e7469d69ceb",
+              "arguments_summary": "path=cases/ai-project-pre-risk.md offset=0",
+              "status": "failed",
+              "attempts": 1,
+              "result_preview": "scratchpad_read failed (Internal)",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 28,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.tool_result",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 29984,
+            "output_tokens": 1417,
+            "total_tokens": 31401,
+            "estimated_cost_micros": 171175,
+            "cached_input_tokens": 14848,
+            "cache_hit_ratio": 0.4951974386339381,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 6
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "c8cf5ed4-520b-4b3f-8787-74c1fc245a17"
+        ],
+        "current_session_ids": [
+          "cs_19545553-5060-49ac-929c-fc39163d85b2"
+        ],
+        "matched_run_ids": [
+          "bar_8520639a16eb438ba2a0a6fa45345f4c"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      },
+      "evidence_recovery": {
+        "collected_at": "2026-11-03T12:42:04.520084+00:00",
+        "read_only": true,
+        "question_resent": false,
+        "same_historical_requests": true,
+        "system_developer_prompts_saved": false,
+        "binary_content_saved": false,
+        "runs": [
+          {
+            "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+            "request_id": "c8cf5ed4-520b-4b3f-8787-74c1fc245a17",
+            "turn_step": 2,
+            "server_times": {
+              "created_at_unix": "1793689801",
+              "started_at_unix": "1793689801",
+              "finished_at_unix": "1793689819"
+            },
+            "context_events": [
+              {
+                "event_type": "chat.session_overlay_read",
+                "seq": "2",
+                "at": "1793689801",
+                "payload": {
+                  "duration_ms": 4,
+                  "error_category": "Internal",
+                  "fallback_status": "empty",
+                  "fallback_used": true,
+                  "operation": "get_window",
+                  "recent_turn_limit": 128,
+                  "status": "degraded",
+                  "summary_source": "none",
+                  "tool_detail": "bounded",
+                  "turn_count": 0
+                }
+              },
+              {
+                "event_type": "context.organization",
+                "seq": "4",
+                "at": "1793689801",
+                "payload": {
+                  "status": "loaded"
+                }
+              },
+              {
+                "event_type": "context.current_user",
+                "seq": "5",
+                "at": "1793689801",
+                "payload": {
+                  "name_present": true,
+                  "status": "available"
+                }
+              },
+              {
+                "event_type": "chat.started",
+                "seq": "6",
+                "at": "1793689801",
+                "payload": {
+                  "activation_block_active": true,
+                  "activation_mode": "manifest",
+                  "active_skills": [],
+                  "answer_count": 0,
+                  "assembled_prompt_bytes": 30123,
+                  "carried_skills": [],
+                  "entry": "",
+                  "entry_tool_count": 6,
+                  "historical_active_skills": [],
+                  "page_type": "",
+                  "prior_skills": [],
+                  "profile_context_tokens": 288,
+                  "profile_render_mode": "skills",
+                  "prompt_digest": "sha256:a3612ba6450bad3b25b8251ac0ac34de4f64b55f7445a0a3ea92e57e0053b92e",
+                  "prompt_fragments": [
+                    "assistant_core_identity@0.1.3",
+                    "assistant_core_output@0.3.1",
+                    "assistant_core_scope@0.1.0",
+                    "assistant_core_context_entry@0.4.21",
+                    "assistant_core_domain_map@0.6.2",
+                    "assistant_core_widgets@0.1.8",
+                    "assistant_core_scratchpad@0.5.0",
+                    "assistant_core_evidence@0.3.8",
+                    "assistant_core_skills@0.5.1"
+                  ],
+                  "prompt_key": "assistant_chat_agent",
+                  "prompt_source": "embedded",
+                  "prompt_version": "0.22.10",
+                  "request_datetime": "{\"local_datetime\":\"2026-11-03T16:10:01+09:00\",\"timestamp\":1793689801,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                  "run_id": "bar_8520639a16eb438ba2a0a6fa45345f4c",
+                  "suggestion_category": ""
+                }
+              },
+              {
+                "event_type": "chat.history_source",
+                "seq": "7",
+                "at": "1793689801",
+                "payload": {
+                  "entity_reference_count": 0,
+                  "message_count": 10,
+                  "overlay_history_disabled": false,
+                  "overlay_turn_count": 0,
+                  "overlay_window_read": false,
+                  "source": "chat_manager_fallback",
+                  "status": "succeeded"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection",
+                "seq": "8",
+                "at": "1793689801",
+                "payload": {
+                  "digest_only_turn_count": 0,
+                  "downgraded_turn_count": 0,
+                  "empty_turn_count": 0,
+                  "full_detail_turn_count": 0,
+                  "injected_bytes": 0,
+                  "injected_turn_count": 0,
+                  "missing_anchor_count": 0,
+                  "missing_anchor_sequences": null,
+                  "overlay_turn_count": 0,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection_detail",
+                "seq": "9",
+                "at": "1793689801",
+                "payload": {
+                  "injections": null,
+                  "missing_anchor_sequences": null,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.session_locator_catalog",
+                "seq": "10",
+                "at": "1793689801",
+                "payload": {
+                  "base_reference_count": 0,
+                  "history_widget_hits": 0,
+                  "merged_reference_count": 0,
+                  "overlay_locator_enabled": true,
+                  "overlay_locator_hits": 0,
+                  "status": "succeeded",
+                  "widget_fallback_available": true
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "1358",
+                "at": "1793689819",
+                "payload": {
+                  "anchor_sequence": 7548,
+                  "async": true,
+                  "blocking": false,
+                  "bounded_result_bytes": 0,
+                  "locator_count": 34,
+                  "omitted_tool_activity_count": 0,
+                  "phase": "schedule",
+                  "status": "scheduled",
+                  "timeout_ms": 3000,
+                  "tool_activity_count": 1,
+                  "tool_activity_truncated": false
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "1361",
+                "at": "1793689819",
+                "payload": {
+                  "async": true,
+                  "blocking": false,
+                  "duration_ms": 42,
+                  "phase": "result",
+                  "status": "succeeded",
+                  "turn_order": 7548
+                }
+              },
+              {
+                "event_type": "chat.turn_ledger",
+                "seq": "1363",
+                "at": "1793689819",
+                "payload": {
+                  "error_category": "Internal",
+                  "evidence": null,
+                  "failed": 0,
+                  "pending": 0,
+                  "persistence": "failed",
+                  "processed": 0,
+                  "total": 0
+                }
+              }
+            ],
+            "business_input": [
+              {
+                "seq": "12",
+                "purpose": null,
+                "invocation_id": "model_1",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "暂无法完成风险盘点：已确认范围是“Agent 小分队”和“蜂巢AI助手”两个群，但当前未能读取到其中的 **pre 相关消息原文**。\n\n- 两个群均已成功定位；但群消息语义检索连续失败，未返回可核实的消息、时间或上下文。\n- 结构化消息查询也因当前查询能力限制未能回读群内消息；这**不表示**两个群没有讨论过 pre 或 AI 助手项目。\n- 因缺少证据，我不能据计划推定交付已完成，也不能编造“主要风险”或其影响。\n\n待消息检索恢复后，应在这两个群内按 **pre / 预发布 / 发布前** 回读原文和上下文，再按“风险—影响—证据时间—状态（已发生/计划中）”输出盘点。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "基于两个群中已读取到的 **pre/预发相关讨论**，当前主要交付风险集中在“可测但尚未稳定、范围仍在变、真实数据与权限风险高”。其中，部分原定节点已发生延后；后续“会修复 / 新包支持 / 预计完成”均不视为已完成。\n\n1. **高：核心检索与任务流仍有阻塞性缺陷，直接影响用户是否能正确使用**\n   - 9 月 30 日反馈“选择某个群后结果不变化”，并被明确称为“大问题”；同日虽称支持多群选择，但当前交互不易辨识。10 月 5 日又出现引用异常，技术定位为 Agent 少输出租户 ID，仍处于修复中。\n   - 历史消息上翻无法看到更早内容，也仍在请求复现；这会削弱回答可追溯性和连续使用体验。\n   - **影响：** 群筛选、检索、引用与历史回看是 AI 助手的核心闭环，错误结果或无法定位证据会直接损害客户信任，并可能造成错误判断。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE|msg:sg_2122635335:657:T112053RE`\n\n2. **高：预发测试与生产数据/权限耦合，存在数据与权限事故风险**\n   - 预发被说明为使用与线上一致的数据；同时 pre 与线上共用一套权限，预发虽有更多功能和优化，但 Agent 效果与生产不同。\n   - 项目群早前还明确过：数据库中的邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT；前置脱敏方案当时仍需调研。\n   - **影响：** 真实数据测试能提高验证价值，但若权限配置、脱敏或环境切换出错，可能造成超范围访问或敏感信息外发；而预发与线上效果差异也会使验收结果不能完全代表生产表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **高：自动化提醒与未读消息闭环尚未稳定**\n   - 10 月 5 日，按用户—消息维度识别未读状态仍“在支持中”，群内仅称预计次日有新包；自动化虽有设计的触发与推送逻辑，但当时未读状态获取仍计划在 pre 发布，且部分测试者未在会话列表看到提醒入口。\n   - **影响：** 如果未读状态、触发条件或消息入口不可靠，定时总结/待处理提醒容易漏发、错发或不可见，影响一期“主动助手”的关键卖点。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:649:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **中高：对客范围临近交付仍扩展，多模态文件能力效果未验明**\n   - DOCX/PDF 原本未纳入一期，原因是解析复杂；10 月 2 日改为要求对客前必须支持，并临时加人。后续还提出 Excel 等主流格式也需要支持。\n   - 技术路径仍在“解析转文本”与“直接喂模型”间评测、优化；对多轮追问下的图片细节保留效果也存在明确质疑，尚无已验证结论。\n   - **影响：** 临近对客增加高复杂度能力，会挤压缺陷修复与回归测试时间；若文件解析质量、上下文继承或格式覆盖不符合预期，客户会按整体体验而非技术边界评价产品。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **中高：回答质量尚未达到对客可用标准，模型/路由调优未收口**\n   - 10 月 1 日虽已发出可使用版本，但技术侧明确称效果“还比较粗糙、不说人话，还在持续优化”，并提出可能换模型以优先保障高管首批体验。\n   - 此前项目群也记录：复杂问答在一期达到预期“目前不敢保证”，部分复杂场景拟不作为一期上线门槛；真实数据的空间数据、定时任务联动与工具选择/路由调优仍是待完成项。\n   - **影响：** 即使功能入口可用，若回答准确性、表达和复杂问题处理不稳定，对客演示与口碑会受损，并可能导致一期承诺与实际可用能力不一致。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **中：测试窗口曾被进度与并行项目挤压，预发起测也实际晚于原计划**\n   - 8 月底已记录多个核心成员仍被周报、假勤占用，研发投入不足；当时判断 9 月 15 日提测与 10 月中旬对客风险较高，且测试加内测估计至少需要一个月。\n   - 实际到 9 月 15 日，原计划当晚在 pre 用真实数据测试仍未跑通，翌日才确认可开始；这说明测试启动已发生延后，而非只是计划风险。\n   - **影响：** 在缺陷与范围扩展并存的情况下，回归、真实数据验证和体验调优时间进一步被压缩，最可能的后果是延期或带风险对客。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**当前判断：** 项目已具备 pre/线上试用条件，但不等同于交付稳定。优先级应是先收口权限与脱敏、群/任务检索与引用、未读自动化和历史回看等核心闭环，再评估文件多模态扩展是否会挤压对客前的完整回归。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "基于已读的两个群内 pre/预发相关消息，交付风险主要集中在**核心闭环稳定性、真实数据与权限、范围扩张及测试窗口**；“预计修复”“新包支持”等均未视为已完成。\n\n1. **高｜群检索、引用与历史回看仍有缺陷，可能直接造成错误结果或不可追溯**\n   - 已出现“选定群后结果不变化”的问题，并被明确称为“大问题”；随后 PRE 引用异常仍在修复，定位为 Agent 未输出租户 ID。历史消息无法继续上翻也仍待复现确认。\n   - **影响：** 群筛选、检索、引用是 AI 助手回答的基础闭环；若结果未按群生效、引用失效或上下文缺失，对客场景中会直接影响答案可信度与问题追溯。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **高｜预发与线上共用权限、使用同源数据，存在数据安全与验收偏差风险**\n   - 群内明确说明 PRE 与线上共用一套权限，PRE 使用与线上一致的数据；但 PRE 有更多功能和优化，Agent 效果又与线上不完全一致。另一群还提出数据库中的邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT，脱敏方案当时仍需调研。\n   - **影响：** 权限、脱敏或环境配置一旦出错，可能带来超范围访问或敏感数据外发；同时，PRE 上验证通过也不能完全证明生产体验一致。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **高｜未读消息和自动化提醒的关键能力尚未稳定**\n   - 按用户—消息维度识别未读状态仍处于支持中；提醒入口在部分测试者的会话列表中不可见。群内提到的“次日新包”属于计划，不能作为已解决处理。\n   - **影响：** 若未读识别、触发条件或入口不可用，定时总结、待办提醒等“主动助手”能力可能漏发、错发或用户根本无法看到，削弱一期核心价值。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **中高｜临近对客新增 DOCX/PDF/Excel 等文件能力，效果与范围未收口**\n   - DOCX/PDF 起初未纳入一期，原因是解析复杂；之后改为要求在对客前支持，并临时补充人力。文件解析仍在评测“转文本”与其他处理方式的效果，多轮追问时图片细节是否保留也被提出质疑；Excel 等格式也被追加。\n   - **影响：** 高复杂度能力后插入会压缩核心缺陷修复和回归时间；若格式覆盖、解析质量或上下文保留不足，对客会把它视为整体产品体验问题。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **中高｜回答质量与复杂场景的可靠性尚未达到可放心对客的程度**\n   - 已有可使用版本，但技术侧明确评价效果仍“粗糙、不说人话”，并在持续优化。此前也说明复杂问答在一期能否达到预期“不敢保证”，真实空间数据、定时任务联动与工具选择/路由调优仍有未完成项。\n   - **影响：** 即使入口和基础功能可用，若回答准确性、表达质量或复杂问题处理不稳定，对客演示与首批使用口碑都会受影响。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **中｜预发起测已发生延后，且测试窗口持续受资源与并行工作挤压**\n   - 原定在 9 月 15 日晚于 PRE 用真实数据测试，但当时尚未测上，后续才确认可以开始。更早的讨论还记录了研发人员被周报、假勤等并行事项占用，且当时已判断提测和中旬对客存在较高风险。\n   - **影响：** 当核心缺陷、能力扩展和真实数据验证并行出现时，回归与体验调优时间被进一步压缩，风险会表现为延期，或带着未充分验证的问题进入对客阶段。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**结论：** 当前不宜仅以“PRE 可用”判断项目已具备稳定交付条件。应优先收口权限与脱敏、群检索/引用、未读提醒和历史回看等核心闭环，再评估文件多模态扩展是否挤压必要的回归验证。\n\n*覆盖说明：本次结论基于已读消息；两个群的语义检索目前仍失败，未将检索失败解释为不存在其他风险。*"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "**PRE 已具备试用信号，但尚不能等同于稳定交付。** 已读消息显示，核心闭环缺陷、真实数据与权限耦合、临近对客的范围扩张，以及测试窗口受挤压，均可能影响对客质量；所有“预计修复/将支持/新包”均仅按计划或在处理中描述。\n\n1. **核心检索、引用与历史上下文存在缺陷，可能直接造成错误答案或无法追溯。**\n   - 已出现“选择群后结果不变化”，并被称为“大问题”；PRE 引用异常当时仍在修复，定位为 Agent 未输出租户 ID。历史消息无法继续上翻也需要复现确认。\n   - **影响：** 群筛选、检索和引用是回答可信度的基础。若筛选未生效、引用失效或历史上下文丢失，对客时可能输出错误范围的结论，且无法核验依据。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **PRE 与线上共用权限、使用同源数据，存在敏感数据与验收偏差风险。**\n   - 消息明确 PRE 与线上使用同一套权限，数据与线上一致；同时 PRE 的功能和优化多于线上，Agent 实际效果并不完全相同。另一群还提出邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT，而脱敏方案当时仍需调研。\n   - **影响：** 权限、脱敏或环境配置出错，可能造成超范围访问或敏感信息外发；另外，PRE 验证通过也不能直接证明线上体验和效果一致。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读消息识别与自动化提醒闭环尚未验证稳定。**\n   - 按用户—消息维度识别未读状态当时仍“在支持中”；部分测试者的会话列表看不到提醒入口。群内提到的“次日新包”是后续计划，不能视为问题已关闭。\n   - **影响：** 未读状态、触发条件或入口不稳定，会导致定时总结、待办提醒等主动能力漏发、错发或不可见，直接削弱一期卖点。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **临近对客新增 DOCX/PDF/Excel 等文件能力，范围和质量尚未收口。**\n   - DOCX/PDF 原先未纳入一期，原因是解析复杂；随后改为要求在对客前支持并临时加人。解析方案仍在评测与优化，多轮追问时图片细节是否保留也被质疑，Excel 等格式又被追加。\n   - **影响：** 后插入的高复杂度能力会挤压核心缺陷修复和回归时间；若格式覆盖、解析质量或上下文保留不达预期，对客会将其视为整体产品体验问题。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量和复杂场景可靠性尚未达到可放心对客的程度。**\n   - 已有可使用版本，但技术侧评价效果仍“粗糙、不说人话”，并在持续优化；复杂问答一期是否达到预期“目前不敢保证”。真实空间数据、定时任务联动、工具选择与路由调优也仍有待完成项。\n   - **影响：** 即使入口可用，若准确性、表达质量或复杂问题处理不稳定，首批客户演示和实际使用口碑都会受影响。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **PRE 起测实际晚于原节点，回归窗口还受到并行工作与资源占用挤压。**\n   - 原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时“还没测上”，之后才确认可以开始；更早消息也记录了成员被周报、假勤等工作占用，并判断提测及 10 月中旬对客存在较高风险。\n   - **影响：** 在核心缺陷、功能扩展、真实数据验证并发的情况下，回归和体验调优时间被压缩，最终可能表现为延期或带着未充分验证的问题对客。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**建议的交付门槛：** 先验收权限与脱敏、群检索/引用、未读提醒和历史回看四个核心闭环；文件多模态扩展应单列兼容性和回归验证，不应以“计划支持”替代验收结果。\n\n覆盖说明：结论基于两个群已读的 PRE 相关消息，主要证据时间截至 10 月 5 日。群语义检索仍有失败、部分消息范围存在截断，因此以上是已证实风险盘点，不代表不存在其他后续讨论或风险。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:10:01+09:00\",\"timestamp\":1793689801,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:10:01+09:00\",\"timestamp\":1793689801,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              },
+              {
+                "seq": "17",
+                "purpose": null,
+                "invocation_id": "model_2",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "暂无法完成风险盘点：已确认范围是“Agent 小分队”和“蜂巢AI助手”两个群，但当前未能读取到其中的 **pre 相关消息原文**。\n\n- 两个群均已成功定位；但群消息语义检索连续失败，未返回可核实的消息、时间或上下文。\n- 结构化消息查询也因当前查询能力限制未能回读群内消息；这**不表示**两个群没有讨论过 pre 或 AI 助手项目。\n- 因缺少证据，我不能据计划推定交付已完成，也不能编造“主要风险”或其影响。\n\n待消息检索恢复后，应在这两个群内按 **pre / 预发布 / 发布前** 回读原文和上下文，再按“风险—影响—证据时间—状态（已发生/计划中）”输出盘点。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "基于两个群中已读取到的 **pre/预发相关讨论**，当前主要交付风险集中在“可测但尚未稳定、范围仍在变、真实数据与权限风险高”。其中，部分原定节点已发生延后；后续“会修复 / 新包支持 / 预计完成”均不视为已完成。\n\n1. **高：核心检索与任务流仍有阻塞性缺陷，直接影响用户是否能正确使用**\n   - 9 月 30 日反馈“选择某个群后结果不变化”，并被明确称为“大问题”；同日虽称支持多群选择，但当前交互不易辨识。10 月 5 日又出现引用异常，技术定位为 Agent 少输出租户 ID，仍处于修复中。\n   - 历史消息上翻无法看到更早内容，也仍在请求复现；这会削弱回答可追溯性和连续使用体验。\n   - **影响：** 群筛选、检索、引用与历史回看是 AI 助手的核心闭环，错误结果或无法定位证据会直接损害客户信任，并可能造成错误判断。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE|msg:sg_2122635335:657:T112053RE`\n\n2. **高：预发测试与生产数据/权限耦合，存在数据与权限事故风险**\n   - 预发被说明为使用与线上一致的数据；同时 pre 与线上共用一套权限，预发虽有更多功能和优化，但 Agent 效果与生产不同。\n   - 项目群早前还明确过：数据库中的邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT；前置脱敏方案当时仍需调研。\n   - **影响：** 真实数据测试能提高验证价值，但若权限配置、脱敏或环境切换出错，可能造成超范围访问或敏感信息外发；而预发与线上效果差异也会使验收结果不能完全代表生产表现。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **高：自动化提醒与未读消息闭环尚未稳定**\n   - 10 月 5 日，按用户—消息维度识别未读状态仍“在支持中”，群内仅称预计次日有新包；自动化虽有设计的触发与推送逻辑，但当时未读状态获取仍计划在 pre 发布，且部分测试者未在会话列表看到提醒入口。\n   - **影响：** 如果未读状态、触发条件或消息入口不可靠，定时总结/待处理提醒容易漏发、错发或不可见，影响一期“主动助手”的关键卖点。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:649:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **中高：对客范围临近交付仍扩展，多模态文件能力效果未验明**\n   - DOCX/PDF 原本未纳入一期，原因是解析复杂；10 月 2 日改为要求对客前必须支持，并临时加人。后续还提出 Excel 等主流格式也需要支持。\n   - 技术路径仍在“解析转文本”与“直接喂模型”间评测、优化；对多轮追问下的图片细节保留效果也存在明确质疑，尚无已验证结论。\n   - **影响：** 临近对客增加高复杂度能力，会挤压缺陷修复与回归测试时间；若文件解析质量、上下文继承或格式覆盖不符合预期，客户会按整体体验而非技术边界评价产品。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **中高：回答质量尚未达到对客可用标准，模型/路由调优未收口**\n   - 10 月 1 日虽已发出可使用版本，但技术侧明确称效果“还比较粗糙、不说人话，还在持续优化”，并提出可能换模型以优先保障高管首批体验。\n   - 此前项目群也记录：复杂问答在一期达到预期“目前不敢保证”，部分复杂场景拟不作为一期上线门槛；真实数据的空间数据、定时任务联动与工具选择/路由调优仍是待完成项。\n   - **影响：** 即使功能入口可用，若回答准确性、表达和复杂问题处理不稳定，对客演示与口碑会受损，并可能导致一期承诺与实际可用能力不一致。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **中：测试窗口曾被进度与并行项目挤压，预发起测也实际晚于原计划**\n   - 8 月底已记录多个核心成员仍被周报、假勤占用，研发投入不足；当时判断 9 月 15 日提测与 10 月中旬对客风险较高，且测试加内测估计至少需要一个月。\n   - 实际到 9 月 15 日，原计划当晚在 pre 用真实数据测试仍未跑通，翌日才确认可开始；这说明测试启动已发生延后，而非只是计划风险。\n   - **影响：** 在缺陷与范围扩展并存的情况下，回归、真实数据验证和体验调优时间进一步被压缩，最可能的后果是延期或带风险对客。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**当前判断：** 项目已具备 pre/线上试用条件，但不等同于交付稳定。优先级应是先收口权限与脱敏、群/任务检索与引用、未读自动化和历史回看等核心闭环，再评估文件多模态扩展是否会挤压对客前的完整回归。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "基于已读的两个群内 pre/预发相关消息，交付风险主要集中在**核心闭环稳定性、真实数据与权限、范围扩张及测试窗口**；“预计修复”“新包支持”等均未视为已完成。\n\n1. **高｜群检索、引用与历史回看仍有缺陷，可能直接造成错误结果或不可追溯**\n   - 已出现“选定群后结果不变化”的问题，并被明确称为“大问题”；随后 PRE 引用异常仍在修复，定位为 Agent 未输出租户 ID。历史消息无法继续上翻也仍待复现确认。\n   - **影响：** 群筛选、检索、引用是 AI 助手回答的基础闭环；若结果未按群生效、引用失效或上下文缺失，对客场景中会直接影响答案可信度与问题追溯。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **高｜预发与线上共用权限、使用同源数据，存在数据安全与验收偏差风险**\n   - 群内明确说明 PRE 与线上共用一套权限，PRE 使用与线上一致的数据；但 PRE 有更多功能和优化，Agent 效果又与线上不完全一致。另一群还提出数据库中的邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT，脱敏方案当时仍需调研。\n   - **影响：** 权限、脱敏或环境配置一旦出错，可能带来超范围访问或敏感数据外发；同时，PRE 上验证通过也不能完全证明生产体验一致。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **高｜未读消息和自动化提醒的关键能力尚未稳定**\n   - 按用户—消息维度识别未读状态仍处于支持中；提醒入口在部分测试者的会话列表中不可见。群内提到的“次日新包”属于计划，不能作为已解决处理。\n   - **影响：** 若未读识别、触发条件或入口不可用，定时总结、待办提醒等“主动助手”能力可能漏发、错发或用户根本无法看到，削弱一期核心价值。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **中高｜临近对客新增 DOCX/PDF/Excel 等文件能力，效果与范围未收口**\n   - DOCX/PDF 起初未纳入一期，原因是解析复杂；之后改为要求在对客前支持，并临时补充人力。文件解析仍在评测“转文本”与其他处理方式的效果，多轮追问时图片细节是否保留也被提出质疑；Excel 等格式也被追加。\n   - **影响：** 高复杂度能力后插入会压缩核心缺陷修复和回归时间；若格式覆盖、解析质量或上下文保留不足，对客会把它视为整体产品体验问题。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **中高｜回答质量与复杂场景的可靠性尚未达到可放心对客的程度**\n   - 已有可使用版本，但技术侧明确评价效果仍“粗糙、不说人话”，并在持续优化。此前也说明复杂问答在一期能否达到预期“不敢保证”，真实空间数据、定时任务联动与工具选择/路由调优仍有未完成项。\n   - **影响：** 即使入口和基础功能可用，若回答准确性、表达质量或复杂问题处理不稳定，对客演示与首批使用口碑都会受影响。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **中｜预发起测已发生延后，且测试窗口持续受资源与并行工作挤压**\n   - 原定在 9 月 15 日晚于 PRE 用真实数据测试，但当时尚未测上，后续才确认可以开始。更早的讨论还记录了研发人员被周报、假勤等并行事项占用，且当时已判断提测和中旬对客存在较高风险。\n   - **影响：** 当核心缺陷、能力扩展和真实数据验证并行出现时，回归与体验调优时间被进一步压缩，风险会表现为延期，或带着未充分验证的问题进入对客阶段。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**结论：** 当前不宜仅以“PRE 可用”判断项目已具备稳定交付条件。应优先收口权限与脱敏、群检索/引用、未读提醒和历史回看等核心闭环，再评估文件多模态扩展是否挤压必要的回归验证。\n\n*覆盖说明：本次结论基于已读消息；两个群的语义检索目前仍失败，未将检索失败解释为不存在其他风险。*"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "**PRE 已具备试用信号，但尚不能等同于稳定交付。** 已读消息显示，核心闭环缺陷、真实数据与权限耦合、临近对客的范围扩张，以及测试窗口受挤压，均可能影响对客质量；所有“预计修复/将支持/新包”均仅按计划或在处理中描述。\n\n1. **核心检索、引用与历史上下文存在缺陷，可能直接造成错误答案或无法追溯。**\n   - 已出现“选择群后结果不变化”，并被称为“大问题”；PRE 引用异常当时仍在修复，定位为 Agent 未输出租户 ID。历史消息无法继续上翻也需要复现确认。\n   - **影响：** 群筛选、检索和引用是回答可信度的基础。若筛选未生效、引用失效或历史上下文丢失，对客时可能输出错误范围的结论，且无法核验依据。`widget:refs:msg:sg_2122635335:461:T112053RE|msg:sg_2122635335:463:T112053RE|msg:sg_2122635335:622:T112053RE|msg:sg_2122635335:633:T112053RE|msg:sg_2122635335:654:T112053RE`\n\n2. **PRE 与线上共用权限、使用同源数据，存在敏感数据与验收偏差风险。**\n   - 消息明确 PRE 与线上使用同一套权限，数据与线上一致；同时 PRE 的功能和优化多于线上，Agent 实际效果并不完全相同。另一群还提出邮箱、银行卡号、证件号、公司/部门名称等敏感字段不应发送给 GPT，而脱敏方案当时仍需调研。\n   - **影响：** 权限、脱敏或环境配置出错，可能造成超范围访问或敏感信息外发；另外，PRE 验证通过也不能直接证明线上体验和效果一致。`widget:refs:msg:sg_2122635335:592:T112053RE|msg:sg_2122635335:594:T112053RE|msg:sg_2122635335:603:T112053RE|msg:sg_2122635335:606:T112053RE|msg:sg_2658892958:63:T112053RE|msg:sg_2658892958:68:T112053RE`\n\n3. **未读消息识别与自动化提醒闭环尚未验证稳定。**\n   - 按用户—消息维度识别未读状态当时仍“在支持中”；部分测试者的会话列表看不到提醒入口。群内提到的“次日新包”是后续计划，不能视为问题已关闭。\n   - **影响：** 未读状态、触发条件或入口不稳定，会导致定时总结、待办提醒等主动能力漏发、错发或不可见，直接削弱一期卖点。`widget:refs:msg:sg_2122635335:641:T112053RE|msg:sg_2122635335:642:T112053RE|msg:sg_2122635335:644:T112053RE|msg:sg_2122635335:646:T112053RE|msg:sg_2122635335:685:T112053RE|msg:sg_2122635335:691:T112053RE`\n\n4. **临近对客新增 DOCX/PDF/Excel 等文件能力，范围和质量尚未收口。**\n   - DOCX/PDF 原先未纳入一期，原因是解析复杂；随后改为要求在对客前支持并临时加人。解析方案仍在评测与优化，多轮追问时图片细节是否保留也被质疑，Excel 等格式又被追加。\n   - **影响：** 后插入的高复杂度能力会挤压核心缺陷修复和回归时间；若格式覆盖、解析质量或上下文保留不达预期，对客会将其视为整体产品体验问题。`widget:refs:msg:sg_2122635335:519:T112053RE|msg:sg_2122635335:523:T112053RE|msg:sg_2122635335:525:T112053RE|msg:sg_2122635335:536:T112053RE|msg:sg_2122635335:544:T112053RE|msg:sg_2122635335:552:T112053RE|msg:sg_2122635335:582:T112053RE`\n\n5. **回答质量和复杂场景可靠性尚未达到可放心对客的程度。**\n   - 已有可使用版本，但技术侧评价效果仍“粗糙、不说人话”，并在持续优化；复杂问答一期是否达到预期“目前不敢保证”。真实空间数据、定时任务联动、工具选择与路由调优也仍有待完成项。\n   - **影响：** 即使入口可用，若准确性、表达质量或复杂问题处理不稳定，首批客户演示和实际使用口碑都会受影响。`widget:refs:msg:sg_2122635335:493:T112053RE|msg:sg_2122635335:500:T112053RE|msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:61:T112053RE`\n\n6. **PRE 起测实际晚于原节点，回归窗口还受到并行工作与资源占用挤压。**\n   - 原定 9 月 15 日晚在 PRE 使用真实数据测试，但当时“还没测上”，之后才确认可以开始；更早消息也记录了成员被周报、假勤等工作占用，并判断提测及 10 月中旬对客存在较高风险。\n   - **影响：** 在核心缺陷、功能扩展、真实数据验证并发的情况下，回归和体验调优时间被压缩，最终可能表现为延期或带着未充分验证的问题对客。`widget:refs:msg:sg_2122635335:322:T112053RE|msg:sg_2122635335:327:T112053RE|msg:sg_2122635335:333:T112053RE|msg:sg_2122635335:334:T112053RE|msg:sg_2122635335:452:T112053RE|msg:sg_2122635335:454:T112053RE`\n\n**建议的交付门槛：** 先验收权限与脱敏、群检索/引用、未读提醒和历史回看四个核心闭环；文件多模态扩展应单列兼容性和回归验证，不应以“计划支持”替代验收结果。\n\n覆盖说明：结论基于两个群已读的 PRE 相关消息，主要证据时间截至 10 月 5 日。群语义检索仍有失败、部分消息范围存在截断，因此以上是已证实风险盘点，不代表不存在其他后续讨论或风险。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:10:01+09:00\",\"timestamp\":1793689801,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "跨“Agent 小分队”和“蜂巢AI助手”两个群，盘点pre消息里AI助手项目的主要交付风险，按影响说明证据，不要把计划写成已完成。\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T16:10:01+09:00\",\"timestamp\":1793689801,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "role": "assistant",
+                    "tool_calls": [
+                      {
+                        "id": "call_11aedf4981ff4c5ead819e7469d69ceb",
+                        "name": "scratchpad_read",
+                        "arguments_json": "{\"path\":\"cases/ai-project-pre-risk.md\"}"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "tool",
+                    "content": "scratchpad_read failed (Internal)",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "scratchpad_read failed (Internal)",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ],
+                    "tool_call_id": "call_11aedf4981ff4c5ead819e7469d69ceb"
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              }
+            ]
+          }
+        ]
+      },
+      "tool_preview_policy": {
+        "collector_client_truncation": false,
+        "server_truncation_preserved": true,
+        "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+      }
+    }
+  }
+}

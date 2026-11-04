@@ -1,0 +1,787 @@
+{
+  "row": {
+    "asker": "智本_anrou",
+    "asker_company": "智本科技",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本_anrou",
+        "company": "智本科技",
+        "actor_ref": "智本_anrou",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-AGG-TEST-005",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "完成状态按主子层级计数",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "主任务状态计数错误：独立业务源完整回读及本轮Gold均为已完成11、未开始10、进行中11，回答却为已完成12、未开始10、进行中10。子孙任务的已完成10、未开始11、进行中11正确，指定项目范围及三级后代口径也正确，但不能抵消核心计数错误。Trace显示回答沿用了工具返回的错误主任务聚合值，属于业务结果失败，并非无依据编造。",
+    "confidence": "high",
+    "latency_ms": 22375,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务分别有多少已完成、未开始、进行中？按各自状态计算。",
+    "ability": "主子任务聚合",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务分别有多少已完成、未开始、进行中？按各自状态计算。"
+    ],
+    "answer": "截至 2026 年 11 月 3 日 19:46（东京时间），三个指定项目合计：\n\n| 任务层级 | 已完成 | 未开始 | 进行中 |\n|---|---:|---:|---:|\n| 主任务 | **12** | **10** | **10** |\n| 子孙任务 | **10** | **11** | **11** |\n\n按每项任务自身状态统计，不继承父任务状态；逾期不改变基础状态。子孙任务包含三级任务。空项目未查到任务，空间默认项目及其他对象未纳入。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "主任务状态计数错误：独立业务源完整回读及本轮Gold均为已完成11、未开始10、进行中11，回答却为已完成12、未开始10、进行中10。子孙任务的已完成10、未开始11、进行中11正确，指定项目范围及三级后代口径也正确，但不能抵消核心计数错误。Trace显示回答沿用了工具返回的错误主任务聚合值，属于业务结果失败，并非无依据编造。",
+    "tool_chain_summary": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed） → task_detail（completed）",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本_anrou",
+        "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务分别有多少已完成、未开始、进行中？按各自状态计算。",
+        "answer": "截至 2026 年 11 月 3 日 19:46（东京时间），三个指定项目合计：\n\n| 任务层级 | 已完成 | 未开始 | 进行中 |\n|---|---:|---:|---:|\n| 主任务 | **12** | **10** | **10** |\n| 子孙任务 | **10** | **11** | **11** |\n\n按每项任务自身状态统计，不继承父任务状态；逾期不改变基础状态。子孙任务包含三级任务。空项目未查到任务，空间默认项目及其他对象未纳入。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+        "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+        "request_id": "b27dba5a-eb78-4952-a390-2566a9a48712",
+        "message_id": "cm_2806b73e-a769-4d74-8b0f-94e887b31e78",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本_anrou"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+        "step": 2,
+        "seq": 18,
+        "name": "activate_skills",
+        "arguments_summary": "skills=task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+        "step": 2,
+        "seq": 24,
+        "name": "task_ask",
+        "arguments_summary": "queries=3 group_by=status format=text detail=false comments=false mode=focus children=true instruction_runes=43",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+        "step": 2,
+        "seq": 34,
+        "name": "task_ask",
+        "arguments_summary": "queries=2 group_by=status format=stats detail=false comments=false mode= children=false instruction_runes=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+        "step": 2,
+        "seq": 40,
+        "name": "task_detail",
+        "arguments_summary": "task_id=task_vys0rb6pltjq",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "task_space",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 53,
+        "tool_count": 4,
+        "tokens": 179690
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-AGG-TEST-005",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "主任务状态计数错误：独立业务源完整回读及本轮Gold均为已完成11、未开始10、进行中11，回答却为已完成12、未开始10、进行中10。子孙任务的已完成10、未开始11、进行中11正确，指定项目范围及三级后代口径也正确，但不能抵消核心计数错误。Trace显示回答沿用了工具返回的错误主任务聚合值，属于业务结果失败，并非无依据编造。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "本题不涉及评论。preflight.current_independent_readback提供64项任务的自身状态与父子关系，并标记complete_recursive_readback=true；可核实32项主任务的正确分布。Trace seq=34的task_ask返回completed=12、in_progress=10，与独立业务源及Gold冲突，最终回答照用了该值；无需以Trace缺失或评论证据不足跳过。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "三个项目的主任务应为已完成11、未开始10、进行中11，回答将1项进行中计入已完成。子孙任务计数正确，且明确按自身状态、包含三级任务并排除默认项目，但主任务两项关键计数不正确。",
+          "evidence_refs": [
+            "expected_answer.numeric_oracle[0]",
+            "preflight.current_independent_readback.tasks",
+            "preflight.current_independent_readback.complete_recursive_readback",
+            "trace.runs[0].tools[seq=34].result_preview.combined.by.status",
+            "turns[step=2].answer"
+          ]
+        }
+      ],
+      "suggestions": [
+        "核验主任务聚合工具的状态映射或索引同步，针对独立业务源与聚合值的差异逐项定位。",
+        "出现全树计数与状态聚合不一致时，读取任务实体自身状态并按(task_id, task_tenant_id)去重重算，再输出确定计数。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "步骤 2：activate_skills（completed） → task_ask（completed） → task_ask（completed） → task_detail（completed）",
+      "judge_attempts": 1,
+      "judge_model": "gpt-6.1-sol",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "706239dd9e143ff692db0a4c1c3cba9404ee4b3b66c1de7b599f22c75feda03d"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-AGG-TEST-005",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:47:05+00:00",
+    "output": {
+      "text": "截至 2026 年 11 月 3 日 19:46（东京时间），三个指定项目合计：\n\n| 任务层级 | 已完成 | 未开始 | 进行中 |\n|---|---:|---:|---:|\n| 主任务 | **12** | **10** | **10** |\n| 子孙任务 | **10** | **11** | **11** |\n\n按每项任务自身状态统计，不继承父任务状态；逾期不改变基础状态。子孙任务包含三级任务。空项目未查到任务，空间默认项目及其他对象未纳入。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 5
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 16
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 18,
+            "name": "activate_skills",
+            "call_id": "call_6b46da3e37824882bfb98e0c04168b9e",
+            "arguments_summary": "skills=task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 19,
+            "requested": [
+              "task_space"
+            ],
+            "activated": [],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 20,
+            "name": "activate_skills",
+            "call_id": "call_6b46da3e37824882bfb98e0c04168b9e",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "skill task_space is already active; its instructions are in context",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 21
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 22
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_ask",
+            "call_id": "call_48b74940ecc8477497cf7be1ee7671c7",
+            "arguments_summary": "queries=3 group_by=status format=text detail=false comments=false mode=focus children=true instruction_runes=43",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 26
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 27
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 28
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "task_ask",
+            "call_id": "call_48b74940ecc8477497cf7be1ee7671c7",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_2381460569-bb4407f0\",\"tenantId\":\"T1120BGCN\"},{\"entityType\":\"task\",\"id\":\"task_vys0jahhszfy\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jahhszfy:T1120BGCN`\"},{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_2386389752-3d735359\",\"tenantId\":\"T1120BGCN\"}],\"requested\":3,\"ready\":2,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_id\":\"pro_2381460569\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"f9cab08d\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_2381460569-bb4407f0\",\"chunks\":1,\"answer_tokens\":40,\"attempts\":7,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"甲\",\"status\":\"ready\",\"covered\":{\"total\":31,\"tasks\":62,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"ffbfcc37\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":46,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":20,\"pct\":32},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":20,\"pct\":32},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project_pro_2386389752-3d735359\",\"chunks\":1,\"answer_tokens\":62,\"attempts\":7,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_2926249635\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"空项目\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":false}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 31
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 32
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 34,
+            "name": "task_ask",
+            "call_id": "call_70b2cac0c3574902b31f96fb0f1ad97e",
+            "arguments_summary": "queries=2 group_by=status format=stats detail=false comments=false mode= children=false instruction_runes=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 36,
+            "name": "task_ask",
+            "call_id": "call_70b2cac0c3574902b31f96fb0f1ad97e",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"requested\":2,\"ready\":0,\"cached\":0,\"stats\":2,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"combined\":{\"tasks\":32,\"by\":{\"is_overdue\":{\"false\":{\"count\":24,\"pct\":75},\"true\":{\"count\":8,\"pct\":25}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"highest\":{\"count\":11,\"pct\":34},\"unspecified\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":12,\"pct\":37},\"in_progress\":{\"count\":10,\"pct\":31},\"pending\":{\"count\":10,\"pct\":31}}}},\"items\":[{\"query\":{\"project_id\":\"pro_2381460569\",\"role\":\"all\",\"root_only\":true,\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"stats\",\"covered\":{\"total\":1,\"tasks\":1,\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"f9cab08d\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"attempts\":2,\"cache_reuse_allowed\":false},{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"root_only\":true,\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"stats\",\"covered\":{\"total\":31,\"tasks\":31,\"status_conflicts\":0,\"counts\":{\"total\":31,\"root_total\":31,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"dad589e1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":23,\"pct\":74},\"true\":{\"count\":8,\"pct\":25}},\"priority\":{\"high\":{\"count\":10,\"pct\":32},\"highest\":{\"count\":11,\"pct\":35},\"unspecified\":{\"count\":10,\"pct\":32}},\"status\":{\"completed\":{\"count\":11,\"pct\":35},\"in_progress\":{\"count\":10,\"pct\":32},\"pending\":{\"count\":10,\"pct\":32}}}},\"attempts\":2,\"cache_reuse_allowed\":false}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 37
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 38
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 40,
+            "name": "task_detail",
+            "call_id": "call_caa36658db1c4a68b27ab86bfd5d9441",
+            "arguments_summary": "task_id=task_vys0rb6pltjq",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 41,
+            "name": "task_detail",
+            "call_id": "call_caa36658db1c4a68b27ab86bfd5d9441",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vys0rb6pltjq\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务064 [AEFIX:AGG-TEST-T064:v1]\",\"task_type\":\"project\",\"status\":\"in_progress\",\"priority\":\"highest\",\"is_overdue\":true,\"is_followed\":false,\"end_time\":\"2026-10-20T18:00:00+09:00\",\"created_at\":\"2026-10-23T20:12:28+09:00\",\"updated_at\":\"2026-10-23T20:12:28+09:00\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"space_id\":\"3978866903\",\"parent_task_id\":\"task_vys0jonjw57b\",\"level\":3,\"owners\":[{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\",\"tenant_id\":\"T1120BGCN\"}],\"creator\":{\"user_id\":\"ouvfhdf8rrjfa6\",\"name\":\"智本_Anna7(测试勿动)\",\"tenant_id\":\"T1120BGCN\"},\"source_unit_name\":\"新增test部门\",\"company_name\":\"智本科技\",\"description\":\"聚合统计测试夹具；[AEFIX:AGG-TEST-T064:v1]\",\"source_type\":\"direct\",\"task_path\":\"/task_vys0cmflxzvr/task_vys0jonjw57b/\",\"members\":[{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\",\"tenant_id\":\"T1120BGCN\",\"role\":\"owner\"},{\"user_id\":\"ouvfhdf8rrjfa6\",\"name\":\"智本_Anna7(测试勿动)\",\"tenant_id\":\"T1120BGCN\",\"role\":\"creator\"}]}}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 42
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 221
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 223,
+            "input_tokens": 178655,
+            "output_tokens": 1035,
+            "total_tokens": 179690,
+            "estimated_cost_micros": 908800,
+            "cached_input_tokens": 51712,
+            "cache_hit_ratio": 0.30657773825403883,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+            "turn_step": 2,
+            "seq": 227
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+          "message_id": "cm_2806b73e-a769-4d74-8b0f-94e887b31e78",
+          "request_id": "b27dba5a-eb78-4952-a390-2566a9a48712",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11",
+      "skill": "task_space"
+    },
+    "metrics": {
+      "e2e_ms": 22375,
+      "tool_calls": 4,
+      "retries": 0,
+      "input_tokens": 178655,
+      "output_tokens": 1035,
+      "cached_tokens": 51712,
+      "cost_usd": 0.9088,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本_anrou",
+          "session_id": "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d",
+          "message_id": "cm_2806b73e-a769-4d74-8b0f-94e887b31e78",
+          "request_id": "b27dba5a-eb78-4952-a390-2566a9a48712",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "截至 2026 年 11 月 3 日 19:46（东京时间），三个指定项目合计：\n\n| 任务层级 | 已完成 | 未开始 | 进行中 |\n|---|---:|---:|---:|\n| 主任务 | **12** | **10** | **10** |\n| 子孙任务 | **10** | **11** | **11** |\n\n按每项任务自身状态统计，不继承父任务状态；逾期不改变基础状态。子孙任务包含三级任务。空项目未查到任务，空间默认项目及其他对象未纳入。`widget:refs:project:pro_2386389752:T1120BGCN|project:pro_2381460569:T1120BGCN|project:pro_2926249635:T1120BGCN|task:task_vys0rb6pltjq:T1120BGCN`",
+          "message": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务分别有多少已完成、未开始、进行中？按各自状态计算。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "只看“聚合问答验收空间 [AEFIX:AGG-TEST-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-TEST-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-TEST-P-Z:v1]”三个项目，排除空间默认项目和其他对象。主任务、子孙任务分别有多少已完成、未开始、进行中？按各自状态计算。",
+          "actor": {
+            "account_ref": "智本_anrou",
+            "company": "智本科技",
+            "tenant_id": "T1120BGCN",
+            "user_id": "ouvfhdgghjp37n",
+            "user_name": "智本_anrou",
+            "fixture_actor_ref": "AGG-TEST-U0"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+          "turn_step": 2,
+          "request_id": "b27dba5a-eb78-4952-a390-2566a9a48712",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "task_space"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+              "turn_step": 2,
+              "seq": 18,
+              "name": "activate_skills",
+              "call_id": "call_6b46da3e37824882bfb98e0c04168b9e",
+              "arguments_summary": "skills=task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "skill task_space is already active; its instructions are in context",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+              "turn_step": 2,
+              "seq": 24,
+              "name": "task_ask",
+              "call_id": "call_48b74940ecc8477497cf7be1ee7671c7",
+              "arguments_summary": "queries=3 group_by=status format=text detail=false comments=false mode=focus children=true instruction_runes=43",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_2381460569-bb4407f0\",\"tenantId\":\"T1120BGCN\"},{\"entityType\":\"task\",\"id\":\"task_vys0jahhszfy\",\"tenantId\":\"T1120BGCN\",\"widget\":\"`widget:task:task_vys0jahhszfy:T1120BGCN`\"},{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_pro_2386389752-3d735359\",\"tenantId\":\"T1120BGCN\"}],\"requested\":3,\"ready\":2,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"project_id\":\"pro_2381460569\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"乙\",\"status\":\"ready\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"f9cab08d\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"key\":\"answers/task_project_pro_2381460569-bb4407f0\",\"chunks\":1,\"answer_tokens\":40,\"attempts\":7,\"answer_mode\":\"focus\",\"cited_tasks\":1,\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"甲\",\"status\":\"ready\",\"covered\":{\"total\":31,\"tasks\":62,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":63,\"root_total\":31,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"ffbfcc37\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":46,\"pct\":74},\"true\":{\"count\":16,\"pct\":25}},\"priority\":{\"high\":{\"count\":20,\"pct\":32},\"highest\":{\"count\":21,\"pct\":33},\"unspecified\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":20,\"pct\":32},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project_pro_2386389752-3d735359\",\"chunks\":1,\"answer_tokens\":62,\"attempts\":7,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":true},{\"query\":{\"project_id\":\"pro_2926249635\",\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"label\":\"空项目\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":false}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+              "turn_step": 2,
+              "seq": 34,
+              "name": "task_ask",
+              "call_id": "call_70b2cac0c3574902b31f96fb0f1ad97e",
+              "arguments_summary": "queries=2 group_by=status format=stats detail=false comments=false mode= children=false instruction_runes=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"requested\":2,\"ready\":0,\"cached\":0,\"stats\":2,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"combined\":{\"tasks\":32,\"by\":{\"is_overdue\":{\"false\":{\"count\":24,\"pct\":75},\"true\":{\"count\":8,\"pct\":25}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"highest\":{\"count\":11,\"pct\":34},\"unspecified\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":12,\"pct\":37},\"in_progress\":{\"count\":10,\"pct\":31},\"pending\":{\"count\":10,\"pct\":31}}}},\"items\":[{\"query\":{\"project_id\":\"pro_2381460569\",\"role\":\"all\",\"root_only\":true,\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"stats\",\"covered\":{\"total\":1,\"tasks\":1,\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"f9cab08d\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-20T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"completed\":{\"count\":1,\"pct\":100}}}},\"attempts\":2,\"cache_reuse_allowed\":false},{\"query\":{\"project_id\":\"pro_2386389752\",\"role\":\"all\",\"root_only\":true,\"scope\":\"visible\",\"sort_order\":\"desc\",\"task_type\":\"project\"},\"status\":\"stats\",\"covered\":{\"total\":31,\"tasks\":31,\"status_conflicts\":0,\"counts\":{\"total\":31,\"root_total\":31,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"dad589e1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"is_overdue\":{\"false\":{\"count\":23,\"pct\":74},\"true\":{\"count\":8,\"pct\":25}},\"priority\":{\"high\":{\"count\":10,\"pct\":32},\"highest\":{\"count\":11,\"pct\":35},\"unspecified\":{\"count\":10,\"pct\":32}},\"status\":{\"completed\":{\"count\":11,\"pct\":35},\"in_progress\":{\"count\":10,\"pct\":32},\"pending\":{\"count\":10,\"pct\":32}}}},\"attempts\":2,\"cache_reuse_allowed\":false}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_17fef17cbae844ac95167eb368154eca",
+              "turn_step": 2,
+              "seq": 40,
+              "name": "task_detail",
+              "call_id": "call_caa36658db1c4a68b27ab86bfd5d9441",
+              "arguments_summary": "task_id=task_vys0rb6pltjq",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vys0rb6pltjq\",\"tenant_id\":\"T1120BGCN\",\"title\":\"聚合验收任务064 [AEFIX:AGG-TEST-T064:v1]\",\"task_type\":\"project\",\"status\":\"in_progress\",\"priority\":\"highest\",\"is_overdue\":true,\"is_followed\":false,\"end_time\":\"2026-10-20T18:00:00+09:00\",\"created_at\":\"2026-10-23T20:12:28+09:00\",\"updated_at\":\"2026-10-23T20:12:28+09:00\",\"project_id\":\"pro_2386389752\",\"project_name\":\"聚合验收项目甲 [AEFIX:AGG-TEST-P-A:v1]\",\"space_id\":\"3978866903\",\"parent_task_id\":\"task_vys0jonjw57b\",\"level\":3,\"owners\":[{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\",\"tenant_id\":\"T1120BGCN\"}],\"creator\":{\"user_id\":\"ouvfhdf8rrjfa6\",\"name\":\"智本_Anna7(测试勿动)\",\"tenant_id\":\"T1120BGCN\"},\"source_unit_name\":\"新增test部门\",\"company_name\":\"智本科技\",\"description\":\"聚合统计测试夹具；[AEFIX:AGG-TEST-T064:v1]\",\"source_type\":\"direct\",\"task_path\":\"/task_vys0cmflxzvr/task_vys0jonjw57b/\",\"members\":[{\"user_id\":\"ouvfhdf8sidmrl\",\"name\":\"智本_Anna(测试勿动)\",\"tenant_id\":\"T1120BGCN\",\"role\":\"owner\"},{\"user_id\":\"ouvfhdf8rrjfa6\",\"name\":\"智本_Anna7(测试勿动)\",\"tenant_id\":\"T1120BGCN\",\"role\":\"creator\"}]}}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 53,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 178655,
+            "output_tokens": 1035,
+            "total_tokens": 179690,
+            "estimated_cost_micros": 908800,
+            "cached_input_tokens": 51712,
+            "cache_hit_ratio": 0.30657773825403883,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 15
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "b27dba5a-eb78-4952-a390-2566a9a48712"
+        ],
+        "current_session_ids": [
+          "cs_db5c4712-668b-42a0-b3eb-f37b80993b6d"
+        ],
+        "matched_run_ids": [
+          "bar_17fef17cbae844ac95167eb368154eca"
+        ],
+        "excluded_historical_run_count": 2,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

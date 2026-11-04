@@ -70,14 +70,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
         "actor_name": "公台",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:20:21.479916+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 19127,
@@ -162,10 +162,18 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "回答正确统计到1个高优先级任务，识别anrou20为执行人，列出计划截止时间，并合理避免无依据断言超负荷。但已读取的任务详情明确包含业务状态“待确认”，回答却仅报告“待启动”，未说明结构化状态与描述中业务状态的差异，遗漏了用户要求结合分析的关键状态事实。",
-      "failure_categories": [],
+      "reason": "找到了任务，但状态没说全：只回答“待启动”，漏掉描述里明确写的“待确认”，也没解释两处状态为什么不同，影响了风险判断。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "ef3b4ce904af2cc5840fd578d4a0d9234c7662b4872285b4bfe9ddf7b0156e9f",
+        "result": "c241135f2e771e90a71fe1ea095e9b26910a37afc78ab6b033e5b79af11acb1f",
+        "requests": [
+          "17ae6751-e2fa-4217-ba7f-eac406e824fe"
+        ]
+      },
       "latency_ms": 148293,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -186,7 +194,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "本次问答已完成执行，正确找到1个任务、识别anrou20为执行人并给出描述中的计划截止时间，也没有无依据断言超负荷。但任务详情同时返回结构化状态pending和描述中的原业务状态“待确认”，回答仅报告“待启动”，遗漏与所问状态和风险判断直接相关的业务状态及来源差异，结果未完全满足验收。评判采用本轮2026-11-03的实际查询时刻，不要求复述历史快照中“距截止约32小时”的判断。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-QAP-022",
@@ -205,7 +217,7 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "第2步未绑定对象，助手正确请求澄清。第4步的同一目标会话经认证回读确认保存了pro_3484112775项目绑定，独立业务回读确认该对象为可访问的“Mac 空间体验优化”；助手仍要求用户提供对象，未识别绑定项目，也未回答近期情况。运行时未向模型呈现项目绑定属于产品上下文传递问题，不是继续待核验的理由。",
+      "reason": "会话已经绑定“Mac 空间体验优化”项目，助手却仍要求用户提供项目，没有回答该项目的近期情况。项目绑定信息没有传到本轮问答。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -240,7 +252,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "第2步在未绑定对象的会话中正确请求澄清。第4步对应会话已保存“Mac 空间体验优化”的项目绑定，认证回读及同身份业务回源确认目标对象存在且可访问，但助手仍要求用户提供对象，未识别绑定项目，也未回答近期情况。该轮已正常生成回答，属于结果不满足验收；运行时未传递绑定信息是产品上下文传递问题，而非未执行或证据不足。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-QAP-023",
@@ -750,7 +764,7 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮要求分别说明两个项目由谁负责。回答正确确认项目执行人专项由自动化_Anna2负责，但未回答项目管理员专项的自动化_Anna7。补充认证业务详情已核实该项目的administrators中明确列有自动化_Anna7（roleLevel=60），与Gold一致；助手仅依据项目列表未返回经理字段便停止，未完成第二个项目的核心查询。此处是负责人信息遗漏，不是虚构或评论理解错误。",
+      "reason": "两个项目只答出了一个负责人。漏掉“项目管理员专项”的管理员自动化_Anna7；项目详情里能查到这条信息。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -784,7 +798,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "本次请求已正常完成生成，但结果未完成两个项目负责人的比较：正确回答项目执行人专项的项目经理为自动化_Anna2，却未回答项目管理员专项由自动化_Anna7担任项目管理员。助手仅依据项目列表未返回项目经理字段便停止，将经理字段的缺口当成负责人查询的终点。独立认证项目详情及成员记录明确列出自动化_Anna7为管理员，与Gold一致。这是核心信息遗漏，不是生成执行失败，也不是编造。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-009",
@@ -936,14 +952,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
         "actor_name": "公台",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:19:36.079947+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 13280,
@@ -1206,10 +1222,18 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "回答召回了两条必需任务，截止时间与状态正确，也排除了已完成、远期和逾期样本；但将本次动态业务源已核验为低优先级的 LOW 任务纳入，导致清单及“3项”结论错误。此外，将临期窗口表述为11月3日至9日，未准确表达截至11月10日19:40:22（不含）的滚动7天窗口。优先级错误有工具字段映射冲突作为来源，不认定为助手凭空编造，但业务结果仍未正确完成。",
-      "failure_categories": [],
+      "reason": "“未来7天”的时间范围用错了。应从本次提问时刻往后算满7天，实际按11月3日至9日的自然日查询，漏了11月10日截止前的一段时间。",
+      "failure_categories": [
+        "范围错误"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "5649d8c4e2282a931c3c78306d9ca783c08f3ebd935bdb26744eea30f650b5ab",
+        "result": "53f1f591286fbe75f24f36d036b4d0195921e9d032ed03b73968d8bd74ab0b58",
+        "requests": [
+          "53ff6339-e102-49b9-b053-041250352342"
+        ]
+      },
       "latency_ms": 26650,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -1230,7 +1254,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误"
+      ],
+      "evaluation_detail_reason": "本轮已实际执行并完成回答，两条必需任务均已召回，状态和东京时间截止时间与工具返回一致。但检索及回答采用11月3日至9日的自然日窗口，而验收要求以本次时刻T为锚点的[T,T+7天)滚动窗口；该查询遗漏11月10日截止边界之前的时段，不能满足指定检索口径。LOW任务被纳入是否构成额外事实错误暂不可确定：实际工具返回其优先级为high，而材料未提供本次刷新后的独立source_gold，不能仅凭名称或历史Gold认定其当前为低优先级。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-030",
@@ -1347,10 +1375,18 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "核心数量回答错误：经独立业务源核验，“确定灰度比例”的原始 priority=2，按业务定义为低优先级，应排除，因此 anrou20 在指定项目作为创建人或执行人的高优先级未完成任务为0条，而回答为1条。Trace 中 task_detail 和 task_ask 将该任务映射为 high，与业务源存在明确冲突；回答沿用了错误映射。关于缺乏足够超负荷证据及不能将描述中的计划日期当作系统截止日期的边界表述合理，但不能抵消核心统计错误。",
-      "failure_categories": [],
+      "reason": "应返回0个高优先级未完成任务，却回答1个。工具把低优先级任务“确定灰度比例”错误地当成了高优先级。",
+      "failure_categories": [
+        "范围错误"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "7225e2199611f61675b5ed6b9ea0adb879c06c5aee3f1bcd4bc187100e63cdf8",
+        "result": "2f58e53ff4511757e3204f5c975ed99e68581527ca9e00538e395d73aac7eab8",
+        "requests": [
+          "8b072e44-9bd5-4580-b537-8e9f86f49eff"
+        ]
+      },
       "latency_ms": 30546,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -1371,7 +1407,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误"
+      ],
+      "evaluation_detail_reason": "本次请求已完成并返回回答，但核心统计不符合验收：回答为1个高优先级未完成任务；独立业务源显示“确定灰度比例”原始priority=2，按本例已验证的业务定义属于低优先级，应排除，正确数量为0个。认证Trace中的task_detail和task_ask均将其映射为high，表明存在工具语义映射与业务源冲突，回答沿用了错误映射。这属于结果错误，而非执行失败或证据不足。关于没有足够超负荷证据、不能将描述计划日期等同系统截止日期的表述合理，但不能抵消数量错误。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-039",
@@ -1382,36 +1422,32 @@
       "scenario": "哪些任务正在等我拍板，哪些只是抄送我",
       "gate_class": "quality",
       "ability": "跨源分析与风险",
-      "kind": "execution_failure",
-      "result_status": "pending_fix",
+      "kind": "business_review",
+      "result_status": "fail",
       "confidence": "high",
       "priority": "P1",
       "asker": "智本_anrou",
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
-      "status": "pending_fix",
-      "reason": "被限流了",
+      "status": "fail",
+      "reason": "重跑后有回答了，但仍没有把“需要我拍板”和“仅抄送我”的任务分出来。任务查询和分析报错，最终没有给出分类结果。",
       "failure_categories": [
-        "执行错误"
+        "信息缺失"
       ],
-      "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
-        "report_id": "review-b00e238ad1570ffcf4b8f490",
-        "revision": 17,
-        "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
-        "actor_name": "公台",
-        "case_version": 1,
-        "reviewed_at": "2026-11-03T12:01:43.918397+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "0244692ed5e5bd1fa01e4a84dbecf1c93b10bd73aee5bfc5aba20b98febde77c",
+        "result": "7a5317ea50eb78fcf6d932f6152868580801d84ce536abbbf43a79490ea65866",
+        "requests": [
+          "53e7673d-ebc0-4078-b93b-0013427556be"
+        ]
       },
-      "review_observation": null,
-      "latency_ms": 424,
-      "trace_runs": 0,
-      "trace_status": "业务回答已采集；Trace 补全失败",
+      "latency_ms": 131014,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "task_completion_rate": 0,
-      "model": "未观测",
-      "prompt_version": "未观测",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
         "eligible": false,
         "verdict": "not_comparable",
@@ -1419,16 +1455,38 @@
       },
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": false,
-        "tool_calls": false,
-        "tokens": false,
-        "cache_token_ratio": false,
-        "cost_usd": false,
-        "retries": false
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
       },
       "display_failure_categories": [
-        "执行错误"
-      ]
+        "信息缺失"
+      ],
+      "review_resolution": {
+        "schema": "ai_assistant.pending_resolution.v1",
+        "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "case_version": 1,
+        "override": {
+          "business_reason": "被限流了",
+          "business_status": "pending_fix",
+          "failure_categories": [
+            "执行错误"
+          ]
+        },
+        "updated_by": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
+        "updated_at": "2026-11-03T12:01:43.918397+00:00",
+        "actor_name": "公台",
+        "source_report_revision": 17,
+        "evidence_report_id": "review-b00e238ad1570ffcf4b8f490",
+        "evidence_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-FU-039",
+        "resolved_at": "2026-11-04T00:24:30.146999+00:00",
+        "reason": "原无结果执行已被本轮完整新会话实际问答替换；原人工意见及审计保留。"
+      },
+      "evaluation_detail_reason": "本轮已实际执行并生成回答，不再适用旧的限流原因。用户要求区分待本人拍板的任务与仅抄送项，实际回答未给出任何任务分类，仅说明无法可靠列出。完整Trace确认任务分析未产出可用结果、项目任务查询失败、汇报检索不可用，最终核心业务未完成；这是实际检索执行失败导致的结果不满足验收，而非已证实的评论理解错误。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-040",
@@ -1482,36 +1540,30 @@
       "scenario": "我参与了哪些项目",
       "gate_class": "security",
       "ability": "权限与隔离",
-      "kind": "execution_failure",
-      "result_status": "pending_fix",
+      "kind": "business_review",
+      "result_status": "pass",
       "confidence": "high",
       "priority": "P0",
       "asker": "自动化_Anna2",
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
-      "status": "pending_fix",
-      "reason": "被限流了",
-      "failure_categories": [
-        "执行错误"
-      ],
-      "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
-        "report_id": "review-b00e238ad1570ffcf4b8f490",
-        "revision": 17,
-        "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
-        "actor_name": "公台",
-        "case_version": 1,
-        "reviewed_at": "2026-11-03T12:02:10.36409+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+      "status": "pass",
+      "reason": "本次重新执行已正常完成。回答列出的12个项目按实际项目ID去重后，与执行前后同身份独立回源的可见项目集合完全一致，精确率和召回率均为100%。回答说明检索范围包含所在空间内的项目，未将无显式项目角色的项目排除，并保留了当前可见的智本科技跨租户项目。历史Gold的19个项目是旧时刻动态集合，不应覆盖本轮实际可见的12个项目。",
+      "failure_categories": [],
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "a0184c1202b83eea165e641f1a3981684915ad244571c724157c22104acf8a3a",
+        "result": "9af71c07ed68c39de3c8b06c7a20fc0fc8908cfce9135a39891ce12a1b1601d7",
+        "requests": [
+          "78f39c85-ad41-40b8-a244-da12e69de3bc"
+        ]
       },
-      "review_observation": null,
-      "latency_ms": 428,
-      "trace_runs": 0,
-      "trace_status": "业务回答已采集；Trace 补全失败",
-      "task_completion_rate": 0,
-      "model": "未观测",
-      "prompt_version": "未观测",
+      "latency_ms": 15380,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
         "eligible": false,
         "verdict": "not_comparable",
@@ -1519,16 +1571,34 @@
       },
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": false,
-        "tool_calls": false,
-        "tokens": false,
-        "cache_token_ratio": false,
-        "cost_usd": false,
-        "retries": false
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
       },
-      "display_failure_categories": [
-        "执行错误"
-      ]
+      "display_failure_categories": [],
+      "review_resolution": {
+        "schema": "ai_assistant.pending_resolution.v1",
+        "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "case_version": 1,
+        "override": {
+          "business_reason": "被限流了",
+          "business_status": "pending_fix",
+          "failure_categories": [
+            "执行错误"
+          ]
+        },
+        "updated_by": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
+        "updated_at": "2026-11-03T12:02:10.36409+00:00",
+        "actor_name": "公台",
+        "source_report_revision": 17,
+        "evidence_report_id": "review-b00e238ad1570ffcf4b8f490",
+        "evidence_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-FU-041",
+        "resolved_at": "2026-11-04T00:31:24.650111+00:00",
+        "reason": "原无结果执行已被本轮完整新会话实际问答替换；原人工意见及审计保留。"
+      }
     },
     {
       "case_id": "AA-FU-042",
@@ -1588,22 +1658,28 @@
       "scenario": "下属负责的项目有哪些",
       "gate_class": "security",
       "ability": "权限与隔离",
-      "kind": "business_review",
-      "result_status": "fail",
+      "kind": "not_executed",
+      "result_status": "not_executed",
       "confidence": "high",
       "priority": "P0",
       "asker": "自动化_Anna3",
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
-      "status": "fail",
-      "reason": "用户询问下属负责的项目，助手却仅查询自己负责的部门，并以部门查询为空作为无法继续检索的依据。已读取的 Schema 明确区分实线直属上下级与部门负责人，提供 user.direct_reports 关系；未查到负责部门不能排除真实直属下属。助手未沿真实上下级及授权链查询项目，核心对象集合未完成检索。此结论不依赖假定两个可见项目均属于下属。",
+      "status": "skip",
+      "reason": "本次完整验收未执行：已补查原生组织接口：部门管理列表为空，实线下属列表有自动化_Anna6，但该追问账号读取两项受控下属项目均被 NoPermissionError 拒绝。现有材料无法同时核验历史时点的下属口径、目标集合和授权链；不能把受限夹具或两种组织口径的差异直接判作产品失败。 历史问答已经正常完成，原回答、会话、请求与 Trace 全部保留；本状态表示完整验收条件仍未具备，不表示历史未发过请求。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "95df6422c87f113adf9b9421d25fd5048ed8e0dbd03a469a4e59028f6dd5ab2f",
+        "result": "b06a852b32f47a508982222228bd5b28c2bc25f4eefe613d42c7a8d8fe8f4d18",
+        "requests": [
+          "d5900c71-cb22-4b4a-96ec-3aa3d268aa3f"
+        ]
+      },
       "latency_ms": 11067,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
+      "task_completion_rate": null,
       "model": "sub2api/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
@@ -1612,13 +1688,13 @@
         "reason": "未提供两轮可核验实测"
       },
       "resource_coverage": {
-        "e2e_ms": true,
-        "steps": true,
-        "tool_calls": true,
-        "tokens": true,
-        "cache_token_ratio": true,
-        "cost_usd": true,
-        "retries": true
+        "e2e_ms": false,
+        "steps": false,
+        "tool_calls": false,
+        "tokens": false,
+        "cache_token_ratio": false,
+        "cost_usd": false,
+        "retries": false
       },
       "display_failure_categories": []
     },
@@ -1682,7 +1758,7 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮目标和调用身份均明确。独立权限预检在本次提问前已确认目标项目存在，且 Auto_Hod 访问返回 NoPermissionError（没有项目权限）。实际工具将同一上游 1002 错误包装为通用查询执行失败，最终回答仅称“暂时无法确认你是否有权访问”，未完成用户要求的明确权限拒绝。回答未泄露项目内容、任务数量或旧缓存，但不能仅凭未泄露认定本次权限任务正确完成。",
+      "reason": "账号确实没有目标项目的访问权限，但助手只回答“暂时无法确认是否有权访问”。权限错误被工具转成了普通报错，导致权限结论没说清楚。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -1716,7 +1792,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "本轮已正常生成回答，且没有泄露项目内容、任务数量或旧缓存，但未满足明确说明当前无项目访问权限的验收条件。同身份在提问前的独立权限预检已对目标项目返回 NoPermissionError／没有项目权限；实际工具却将上游1002包装为通用执行失败，导致最终仅回答“暂时无法确认你是否有权访问”。这是权限错误传递导致的业务结果不满足验收，不是生成失败，也不是助手编造或评论理解错误。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-046",
@@ -1821,7 +1899,7 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮没有泄露目标项目的任务内容或数量，也没有将前一项目的执行人身份扩展为跨项目授权；但未完成用户要求的权限判断。执行前同账号对目标项目的认证详情访问已明确返回“没有项目权限”，实际回答却仅称无法区分权限不足和其他原因，没有明确说明当前无权访问目标项目。",
+      "reason": "应明确告诉用户“没有目标项目的访问权限”，实际只说“无法确定是否权限不足”。没有泄露项目内容，但权限问题没有答清楚。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -1855,7 +1933,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "本轮已正常完成生成，没有泄露目标项目的任务内容或数量，也没有将另一项目的执行人角色扩展为授权；但结果未满足明确说明无权限的验收要求。同身份在本次提问前对目标项目的认证详情查询已返回“没有项目权限”，助手最终却只表示无法确定是否权限不足，未完成目标项目的实际权限判断。这是结果不满足验收，而非生成失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-049",
@@ -1874,10 +1954,19 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮核心是确认“仅负责父任务”是否足以获得父项目全部任务的访问权限。回答虽限定为“可见任务”，没有直接宣称已获得全部任务权限，但未明确说明任务关系不能反向授予父项目全部任务权限，也未给出当前权限依据，而转为列举其他项目并要求指定项目，未完成核心权限问题的回答。此结论不代表已经发生越权披露。",
-      "failure_categories": [],
+      "reason": "用户问“只负责父任务，能否查看整个项目的任务”，助手没有解释：负责一个任务不会自动获得整个项目的权限，而是转去要求指定项目。",
+      "failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "5da13b4602311d94e54cc9b2109892d8b0db416b1be8a820ef0fc2309ee32745",
+        "result": "b2719453e586a2f13e572bae7b519a2eb1e76272cac4632f4ed44638e7a0a993",
+        "requests": [
+          "4ed2a924-a476-45f3-85d5-1047f927c1f9"
+        ]
+      },
       "latency_ms": 16574,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -1898,7 +1987,12 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失",
+        "范围错误"
+      ],
+      "evaluation_detail_reason": "本次执行已完成并有有效回答，但结果未满足核心权限问答验收。用户询问仅负责父任务是否能够列出父项目全部任务，回答转为要求指定项目，并以“可以列出项目内所有可见任务”作答，没有说明父任务负责人关系本身不能反向授予父项目全部任务权限，也没有给出当前权限的核验依据。回答中的“可见”限定不能替代这一关键权限边界说明。本结论不表示已证实越权披露。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-050",
@@ -2094,36 +2188,30 @@
       "scenario": "我只记得项目名里有“评测”，你能帮我找候选吗",
       "gate_class": "core",
       "ability": "冲突澄清与安全",
-      "kind": "execution_failure",
-      "result_status": "pending_fix",
+      "kind": "business_review",
+      "result_status": "pass",
       "confidence": "high",
       "priority": "P0",
       "asker": "CFO",
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
-      "status": "pending_fix",
-      "reason": "被限流了",
-      "failure_categories": [
-        "执行错误"
-      ],
-      "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
-        "report_id": "review-b00e238ad1570ffcf4b8f490",
-        "revision": 17,
-        "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
-        "actor_name": "公台",
-        "case_version": 1,
-        "reviewed_at": "2026-11-03T12:01:58.476454+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+      "status": "pass",
+      "reason": "本次已完成实际问答，返回14个项目名包含“评测”的候选，每项均带真实项目引用及ID，并明确采用名称包含“评测”的字面匹配口径，最后请用户确认目标。候选与完整工具结果及本轮同身份可见项目回源一致。用户只记得项目名关键词，未要求语义扩展，因此不应因未列出标题不含“评测”的“知识召回质量治理”等背景参考项目判失败；也不能仅凭项目名称中的“未授权”“不可见”认定当前CFO无权访问。",
+      "failure_categories": [],
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "6ba19b0b0569285e6a63f19550e4d124ccd8cb1c55ae0baac9e09d214c31b833",
+        "result": "6e505f37ff4f3c021b1852b5ccd0d998b96e41835308a372e510ea3b3bb68935",
+        "requests": [
+          "47b5e330-aa78-4a17-8092-47365b7c6b37"
+        ]
       },
-      "review_observation": null,
-      "latency_ms": 435,
-      "trace_runs": 0,
-      "trace_status": "业务回答已采集；Trace 补全失败",
-      "task_completion_rate": 0,
-      "model": "未观测",
-      "prompt_version": "未观测",
+      "latency_ms": 14889,
+      "trace_runs": 1,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "task_completion_rate": 100,
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
         "eligible": false,
         "verdict": "not_comparable",
@@ -2131,16 +2219,34 @@
       },
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": false,
-        "tool_calls": false,
-        "tokens": false,
-        "cache_token_ratio": false,
-        "cost_usd": false,
-        "retries": false
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
       },
-      "display_failure_categories": [
-        "执行错误"
-      ]
+      "display_failure_categories": [],
+      "review_resolution": {
+        "schema": "ai_assistant.pending_resolution.v1",
+        "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "case_version": 1,
+        "override": {
+          "business_reason": "被限流了",
+          "business_status": "pending_fix",
+          "failure_categories": [
+            "执行错误"
+          ]
+        },
+        "updated_by": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
+        "updated_at": "2026-11-03T12:01:58.476454+00:00",
+        "actor_name": "公台",
+        "source_report_revision": 17,
+        "evidence_report_id": "review-b00e238ad1570ffcf4b8f490",
+        "evidence_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-FU-058",
+        "resolved_at": "2026-11-04T00:19:42.232724+00:00",
+        "reason": "原无结果执行已被本轮完整新会话实际问答替换；原人工意见及审计保留。"
+      }
     },
     {
       "case_id": "AA-FU-060",
@@ -2206,14 +2312,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
         "actor_name": "公台",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:41:22.250806+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 10172,
@@ -2255,10 +2361,18 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "用户仅提出“每天提醒我项目进度”，未明确每日时间、项目范围及通知条件。助手未补问，而是直接恢复既有暂停提醒，沿用东京时间09:00及“我参与项目”的范围，未完成本例要求的澄清任务。恢复操作及原暂停状态有工具证据支持，不属于虚构执行，但既有配置不能替代本轮对缺失参数的确认。",
-      "failure_categories": [],
+      "reason": "提醒时间和项目范围还没得到用户确认，助手就直接恢复了已暂停的提醒。这里应先补问缺失信息，再启用。",
+      "failure_categories": [
+        "指令未遵循"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "0ff07d259d7da25a38f65ea691630a623d2354986706f9d81017b88ea21ab08e",
+        "result": "9aec9ee01948d59445b45a59b052d51b33f7542e22fa13e9cd687e3a031a47a9",
+        "requests": [
+          "c738fc24-815c-4c45-b2f5-7e2df8e3ff79"
+        ]
+      },
       "latency_ms": 13729,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -2279,7 +2393,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "指令未遵循"
+      ],
+      "evaluation_detail_reason": "本例要求在提醒时间、项目范围等信息缺失时补问。认证历史输入中虽有助手此前声称已创建每日09:00提醒，但没有用户确认时间及项目范围的回答；本轮用户也未明确要求恢复该既有配置。助手未作澄清，直接将暂停的自动化恢复为启用状态，因此执行已完成但结果不满足澄清验收。恢复动作、原暂停状态及配置均有工具支持，不属于编造。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-FU-067",
@@ -2345,14 +2463,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
         "actor_name": "安柔",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:41:16.921164+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 21660,
@@ -2504,7 +2622,7 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮新会话的认证回读确认会话已绑定“项目执行人专项”，独立业务回读也确认该项目及其任务对调用人可访问。两轮却均要求用户另行提供项目名称或引用，未完成项目风险查询或后续任务查询。运行时模型输入未获得已保存的项目绑定，属于产品上下文传递及延续失败，而非夹具未绑定或合理消歧；没有证据表明发生跨项目污染或编造。",
+      "reason": "会话已绑定“项目执行人专项”，助手两轮都要求重新提供项目名称，没有查项目风险和子任务。项目上下文没有接上。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -2539,7 +2657,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "认证回读确认本次实际会话已绑定“项目执行人专项”，同身份业务回源确认目标项目及其任务可访问。两轮均已正常生成回答，却都要求用户重新提供项目名称或引用，既未回答项目风险，也未查询同一项目的任务及子任务。运行时输入未承接服务端保存的项目绑定，属于产品上下文传递与延续失败，结果不满足验收；不是生成失败，也没有证据表明存在跨项目污染或编造。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-SMEM-006",
@@ -2766,21 +2886,28 @@
       "gate_class": "core",
       "ability": "会话继承/指代/隔离",
       "kind": "business_review",
-      "result_status": "fail",
-      "confidence": "high",
+      "result_status": "pass",
+      "confidence": "medium",
       "priority": "P0",
       "asker": "CFO",
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
-      "status": "fail",
-      "reason": "第2轮将10个项目均称为当前可见，但独立业务源回读确认当前用户可见的AI评测项目仅为空间管理员域、空间创建人域两个，回答包含了额外的不可见及跨租户项目，存在范围错误。第4轮在新会话中未沿用旧列表序位，而是说明无法确认“第二个”并请求提供名称，符合短期记忆隔离要求；该轮正确不能抵消第2轮的错误。",
+      "status": "pass",
+      "reason": "第2轮按项目名称含“AI评测”查询，工具完整返回10个项目，回答的数量、项目名称及状态均与当轮结果一致，并提供逐项来源。独立回读仅列出两个项目，与当轮工具范围存在差异，但不足以证明其余项目在实际请求时无权访问，不能仅凭测试域名称或不同时间的可见清单判定越权。第4轮确在新会话执行，未继承旧列表序位，明确说明无法确认“第二个”并请求补充名称，满足本例记忆隔离要求。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "af56666ec049ba5ed82b0f7635e3a74e7e6efeec4e5757ee0852ff982728b971",
+        "result": "d1a06db60fe77b8d25ab52a588719c375f5d7c810509b05b6c5e250ec335a5ba",
+        "requests": [
+          "9215e2ad-bd81-4560-b258-205a810def63",
+          "db834282-ca97-43bf-a84a-fa7f11d647a0"
+        ]
+      },
       "latency_ms": 24632,
       "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
+      "task_completion_rate": 100,
       "model": "sub2api/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
@@ -3117,10 +3244,29 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "实际提交的问题是围绕 test 环境中的“项目执行人专项”连续核验，而非 Gold 中的蜂巢AI助手群。首轮助手将环境词 test 当作目标项目名称，查询并展示多个无关 test 项目，未围绕用户明确给出的“项目执行人专项”检索。随后九轮持续要求澄清同一个错误目标，十轮虽均正常生成回答，但没有完成任何一轮目标项目核验。此结论不以缺少“蜂巢AI助手”或未读取评论为依据。",
-      "failure_categories": [],
+      "reason": "一开始就找错了项目：用户指定“项目执行人专项”，助手却按“test”查到别的项目，后面九轮一直沿用错误对象，没完成目标项目的核验。",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "484f30e80e92c5fa67147534b44c9758e711ce9bb1516fc0b34bcf906e380235",
+        "result": "6de4f767d465529dd6081b60555e9408d2012b8575bb1b09853de1b9ed7078b3",
+        "requests": [
+          "12ab62e9-0b79-47da-a758-f8f64d1f03ed",
+          "35b2876c-ba69-4ec2-b8b8-69d63f4ea0cd",
+          "67259665-d18f-47a2-a407-0c6971fbc229",
+          "6725bf57-e7f4-4120-b3c6-13253fbef0c9",
+          "697b697b-dbde-4fc9-9e4d-ea3ae84fbced",
+          "81919c03-aac6-4755-8519-543c4eb4cb58",
+          "8618060e-2d64-499c-b1e3-7001bca772b9",
+          "bbc7ca5d-79cf-4ab2-9b16-8aeeb2105058",
+          "be1e38b7-4301-4019-8489-d3ca4d33b4b2",
+          "f06e47c9-2928-41f4-9c74-52e79b8d266c"
+        ]
+      },
       "latency_ms": 49312,
       "trace_runs": 10,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -3141,7 +3287,13 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
+      "evaluation_detail_reason": "实际请求指定的是test环境中的“项目执行人专项”，并非原Gold中的蜂巢AI助手群，应按实际项目问题评价。首轮工具仅以test解析和检索项目，忽略明确给出的“项目执行人专项”，转而展示无关同名项目并要求澄清。独立同身份回源已确认目标项目及其任务存在且可访问。后续九轮持续沿用错误目标，未完成负责人、任务和来源核验。十轮均有正常回答终态，但业务结果不满足连续核验验收条件；不是生成失败，也不因未出现蜂巢AI助手或缺少评论而判失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGENT-EVAL-014",
@@ -4472,10 +4624,20 @@
       "asker_company": "自动化测试公司",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "前两轮正确列出本轮3项任务并唯一锚定上下文验收甲；末轮也重新回源取得了新负责人和截止时间。但面对是否逾期的问题，仅报告系统标记“未逾期”并指出时间差异，没有依据任务尚未完成且截止时间已过去明确回答实际已逾期，未完成该轮核心判断。",
-      "failure_categories": [],
+      "reason": "已读到任务未完成、截止时间也已经过去，却只转述系统“未逾期”的标记，没有明确说明“按截止时间判断已经逾期”。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "b202eea3042d9a844bf3d9cf25c46a82c6d8e94f57c7437941281f9e153b8813",
+        "result": "c63127f508ebb1d7224644a0c7860a5dbf36471aa4356b28e495609d2c81cff8",
+        "requests": [
+          "96453c64-6086-42cd-b0c8-b9b65483421a",
+          "ca691fc8-f4a0-4ea1-9ee1-a431f94757c5",
+          "e4c48a70-7070-489a-b1f8-94a1c47f710e"
+        ]
+      },
       "latency_ms": 72391,
       "trace_runs": 3,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -4496,7 +4658,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "前三项任务的名单、排序、负责人及状态回答正确，随后也唯一锚定了甲任务。末轮正确重新读取同一任务，取得新负责人自动化_Anna2、待启动状态及已过去的截止时间，但仅回答系统标记“未逾期”并指出差异，未明确给出“任务未完成且截止时间已过，按截止时间判断已逾期”的核心业务结论，结果不满足末轮验收。此次不是执行失败，也不是上下文指代或回源失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-SMEM-021",
@@ -4598,13 +4764,21 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮要求给出三个指定项目的主任务、全部层级子孙任务及全部去重任务数。独立完整递归回读确认结果为32、32、64。回答虽先列出该数字，随后却以展开仅63条、子孙31条为由撤回准确总数结论，未完成核心统计任务。Trace明确呈现统计与展开的差异，但未见继续递归核查以解决缺口；这不是编造，而是全层级读取及核验未完成。",
-      "failure_categories": [],
+      "reason": "三个项目应统计64条任务：32条主任务、32条子孙任务。实际只读全了63条，漏了更深一层任务，最后没有给出确定的总数。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "6ea90f945f944a304992c299edf7f8e5dd19664b158ef532ef3675a15a61a4d9",
+        "result": "caf07e022bc1edbb49dc76b9032f521ddbae7b6b34f08ce56a4a7b49f3b10bd7",
+        "requests": [
+          "8c416d2a-f109-4efd-800f-86663a42fa1f"
+        ]
+      },
       "latency_ms": 78262,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -4625,7 +4799,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "本次请求已正常生成回答，但结果未满足完整聚合验收。指定三个项目的同身份完整递归回读确认主任务32条、全部层级子孙任务32条、去重总数64条。回答虽列出这些统计值，却随后以展开仅63条、子孙31条为由明确表示准确去重总数不能确认，未解决核心统计缺口。该限制忠实反映工具返回的冲突，不属于编造或评论误读；失败在于业务读取链未覆盖全部后代且最终未完成确定计数，而非生成执行失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-002",
@@ -4776,13 +4954,19 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "主任务状态计数错误：独立业务源完整回读及本轮Gold均为已完成11、未开始10、进行中11，回答却为已完成12、未开始10、进行中10。子孙任务的已完成10、未开始11、进行中11正确，指定项目范围及三级后代口径也正确，但不能抵消核心计数错误。Trace显示回答沿用了工具返回的错误主任务聚合值，属于业务结果失败，并非无依据编造。",
+      "reason": "主任务状态数量算错了：已完成应为11条，却答12条；进行中应为11条，却答10条。错误来自工具的统计结果。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "41721ed424ff41e1493d983c3550aa1f9d7b9b8b5fe3263b0866e282f124fefd",
+        "result": "44f6bb7642fa03748d73de5c0d84f23a2a5982e7c80474a958a10478cd0147a4",
+        "requests": [
+          "b27dba5a-eb78-4952-a390-2566a9a48712"
+        ]
+      },
       "latency_ms": 22375,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -4803,7 +4987,9 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [],
+      "evaluation_detail_reason": "本次问答已正常完成执行，但核心主任务状态计数不满足验收。独立完整业务源回读显示主任务已完成11、未开始10、进行中11，回答却为12、10、10。子孙任务10、11、11及指定三个项目、包含三级后代的范围口径正确，不能抵消主任务计数错误。认证Trace表明错误数值来自工具聚合返回，并非助手凭空编造。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-006",
@@ -4819,13 +5005,22 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "用户要求统计指定三个项目内高优先级且未完成的主任务及全部子孙任务。独立完整递归回读与本轮Gold均确认两类各11项，回答却明确给出各0项，核心计数错误。Trace确实返回了零计数，但这只能说明本次助手查询未命中，不能消除其与已核验业务事实的冲突；不将错误归因为评论理解，也不推定索引已同步。",
-      "failure_categories": [],
+      "reason": "高优先级未完成任务应为主任务11条、子孙任务11条，却都答成0条。查询漏了“最高优先级”，也没有查全所有层级。",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "23509dfad8d3934913eef0514c75d8b239fa717a2a18e1d9c66725b538912b5b",
+        "result": "555ca6ff856221f7c6dc63c14a555ac1de2938b0e14e73b7fc0c5210725bcdd1",
+        "requests": [
+          "f81e4267-fa78-4e1b-83f0-d9272925b140"
+        ]
+      },
       "latency_ms": 32406,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -4846,7 +5041,12 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误",
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "本轮已完成执行，但结果不满足验收。用户要求指定三个项目内高优先级且未完成的主任务及全部子孙任务数量；执行前同身份完整递归回源及本轮Gold确认分别为11项、11项，实际回答为0项、0项。认证Trace显示两次查询均仅筛选high，遗漏实际优先级枚举中的highest，且未展开全部后代。工具确实返回零统计，但错误筛选所得空集不能代表用户要求的集合。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-007",
@@ -4951,7 +5151,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮正确限定三个项目，并正确返回总任务数、主任务数、子孙任务数及已完成数，但未完成项目甲逾期数的完整统计。执行前后认证全树回读一致，项目甲为17项逾期；实际回答仅给出“至少16，完整数待确认”。Trace明确显示展开后只读取62项而全树为63项，遗漏三级任务064，之后未补齐递归读取便结束。披露缺口是恰当的边界说明，不属编造，但不能替代用户要求的完整计数。",
+      "reason": "项目甲应有17条逾期任务，实际只回答“至少16条，完整数待确认”。漏查了任务033下面的三级任务064，没完成准确统计。",
       "failure_categories": [
         "信息缺失",
         "指令未遵循"
@@ -4987,7 +5187,9 @@
       "display_failure_categories": [
         "信息缺失",
         "指令未遵循"
-      ]
+      ],
+      "evaluation_detail_reason": "本轮已正常执行并生成回答，三个项目的范围、总任务数、主任务数、子孙任务数及已完成数均符合本轮回源结果，但项目甲逾期数未完成统计，仅回答“至少16，完整数待确认”。执行前后同身份完整递归回读一致，甲项目实际有17项逾期。实际工具展开只覆盖62项，遗漏任务033下的三级任务064；发现63项总数与62项分布的差异后未补齐便结束。披露缺口合理且不属编造，但结果仍不满足完整计数验收；不是生成失败或裁判证据不足。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-010",
@@ -5175,13 +5377,21 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "回答正确限定三个项目、采用至少20条的包含边界，并列出了正确的三位人员；但未完成全后代统计，最终仅提供63条任务的部分结果。独立完整回读确认共64条，Anna7创建23条，而回答仅给出22条并声明尚未核实。透明披露不完整避免了编造，但不能替代本轮所需的完整聚合结果。",
-      "failure_categories": [],
+      "reason": "应统计64条任务，实际只统计63条。智本_Anna7(测试勿动)创建的任务应为23条，却只答22条，漏了更深一层任务。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "3f8866157493875daecf51b40dd1a93b22e862973ab5745eaa9263b98ca895c7",
+        "result": "9d0bc323e8300c2f8e88375592c17d8ecb6d26751ff0106d6ca3e6751bed3fc8",
+        "requests": [
+          "a9252c3e-5aae-437e-acd7-1b8c183d773d"
+        ]
+      },
       "latency_ms": 13907,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -5202,7 +5412,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "本轮已正常执行并生成回答，但聚合结果未满足完整验收条件。回答正确限定三个项目、使用“至少20条”的包含边界，并列出正确的三位人员；然而只统计了63条任务，未覆盖全部后代。独立完整回读确认共64条，智本_Anna7(测试勿动)创建23条，而回答仅给出已读取范围内的22条。披露缺口是诚实的边界说明，不属于编造，但不能替代完整聚合结果。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-015",
@@ -5218,7 +5432,7 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "pending_fix",
       "reason": "需要支持 查询 子任务的子任务",
@@ -5226,17 +5440,23 @@
         "信息缺失"
       ],
       "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
+        "mode": "same_request_preserved",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
         "actor_name": "浩澜",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:50:39.77724+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "保留同一历史执行上已保存的人工结论。"
       },
-      "review_observation": null,
+      "review_observation": {
+        "basis": "24ea12304bcee8b6a989a5458e72b2c7df7eb8e33a9b159390af3c1a459ea935",
+        "result": "70239a06c1e4dc771792b23a291d518f77a79daa92ffb9c323939e89846fdb73",
+        "requests": [
+          "6be5001d-b412-4957-ad5e-066760386069"
+        ]
+      },
       "latency_ms": 15953,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -5278,7 +5498,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮核心任务是统计三个指定项目全部层级任务的东京截止日期分布。执行前后同账号认证全树回读一致，正确结果为2026-10-20：13项、2026-10-30：39项、未设置：12项，共64项。实际task_ask仅读取63项，后续structured_select仅返回32个根任务，未补齐第三层任务，最终没有给出任何所求分组数量。回答如实披露缺口，不属于编造，但检索与聚合未完成构成实际业务失败，而非裁判证据不足。",
+      "reason": "没有完成按截止日期分组：10月20日应为13条、10月30日39条、未设截止时间12条。实际少读了1条任务，最后没给出这三组的完整数量。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -5312,7 +5532,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "实际回答未提供用户要求的东京截止日期分组数量及未设置截止时间数量。执行前后同身份认证全树回读确认数据未变：2026-10-20为13项、2026-10-30为39项、未设置为12项，共64项。实际聚合仅读取63项，后续查询仅取得32个根任务，未补齐全部后代便结束。回答如实披露读取缺口，不属编造，但属于检索与聚合未完成、结果不满足验收，而非裁判证据不足或运行时生成失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-017",
@@ -5366,22 +5588,28 @@
       "scenario": "直接子任务最多和最少的主任务",
       "gate_class": "quality",
       "ability": "主子任务聚合",
-      "kind": "execution_failure",
-      "result_status": "fail",
+      "kind": "business_review",
+      "result_status": "pass",
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
-      "status": "fail",
-      "reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+      "status": "pass",
+      "reason": "本次新执行已正常完成。回答准确限定指定空间的项目甲、项目乙及空项目，排除默认项目；正确给出任务001直接子任务最多为31个、最少为0个且31个主任务并列最少，并提供任务及项目来源。实际两页查询覆盖32个主任务的child_count，足以支持本题，无须为直接子任务数量进一步读取无关的孙任务。中间委托聚合失败及错误汇总未污染最终答案，不构成本轮业务失败。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
-      "latency_ms": 1807,
+      "review_observation": {
+        "basis": "124471d125b19f4102aa2139f00a3d0feda8eba02f71028c559fc5aba0f0845b",
+        "result": "50194f3b6a21f6d90c254979a4ce762f855d5a21ed4bd8d3012afb2596f5ff69",
+        "requests": [
+          "9a95da24-e158-4c2a-9b50-3a5cd6be69f7"
+        ]
+      },
+      "latency_ms": 77660,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
+      "task_completion_rate": 100,
       "model": "sub2api/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
@@ -5391,10 +5619,10 @@
       },
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": false,
+        "steps": true,
         "tool_calls": true,
         "tokens": true,
-        "cache_token_ratio": false,
+        "cache_token_ratio": true,
         "cost_usd": true,
         "retries": true
       },
@@ -5414,13 +5642,22 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "两轮均未完成用户要求的去重计数。第2步应为37个（24个主任务、13个子孙任务），却仅回答无法确认；第3步针对创建且执行的查询已明确返回完整的9个匹配任务、无截断、子任务0个，最终仍只确认至少1个并拒绝给出总数。此外，第3步声称两次查询分别返回9个和0个，当前逐轮回答及Trace没有第二次返回0个的查询依据；scratchpad中的“不能确认”不等于查询返回0个。",
-      "failure_categories": [],
+      "reason": "“我创建或执行的任务”应有37条，助手没给出总数；“我既创建又执行的任务”应有9条，查询已经返回9条，回答却只说“至少1条”。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "1af19a15cd8364f9e14b522cb23285d38c833d828927135ddb833039b1cff08f",
+        "result": "f65926b3b8900a3a6f3b914278bb3412d8b8afa5a0372e00fe06216246aa2698",
+        "requests": [
+          "2ff545b7-f370-447e-a8d2-d3fe61a35770",
+          "fa64a956-da01-4e4f-965a-b902038a2e44"
+        ]
+      },
       "latency_ms": 93378,
       "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -5441,7 +5678,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "两轮均已正常生成回答，但未完成用户要求的准确计数，属于结果不满足验收，而非未执行或生成失败。指定三个项目及全部层级内，当前用户创建或执行的去重并集为37个；第2步只回答无法确认。创建且执行的交集为9个；第3步查询已返回9个匹配任务、全部为主任务且无截断，最终仍只回答至少1个，未给出准确总数。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-AGG-TEST-020",
@@ -5550,14 +5791,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 2,
         "actor": "3252c4ab-f117-4a87-b819-0e436548d1c8",
         "actor_name": "安柔",
-        "case_version": 2,
         "reviewed_at": "2026-11-03T11:53:57.419917+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 30627,
@@ -5642,7 +5883,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮未完成用户要求的四项分层统计：两个层级的未设置截止时间数量均未给出，子孙任务逾期数量也停留在8或10项。执行前后同账号、同三个项目的完整递归回源结果一致，实际为主任务未设置截止时间6项、逾期8项，子孙任务未设置截止时间6项、逾期9项。旧固定Gold的逾期3项、2项不适用于本轮时间。助手正确区分了字段未返回与未设置截止时间，也披露了工具冲突，但这不能替代完成统计；实际工具链存在字段遗漏和递归漏读，属于本次业务执行未完成，而非裁判证据缺失。",
+      "reason": "四项统计只答对一项。应为主任务未设截止时间6条、逾期8条，子孙任务未设截止时间6条、逾期9条；实际只确定了主任务逾期8条。",
       "failure_categories": [
         "信息缺失"
       ],
@@ -5676,7 +5917,9 @@
       },
       "display_failure_categories": [
         "信息缺失"
-      ]
+      ],
+      "evaluation_detail_reason": "本轮已正常生成回答，但结果不满足四项分层统计的验收条件。执行前后同身份、同三个项目的完整递归回源一致：主任务未设置截止时间6项、逾期8项；全部子孙任务未设置截止时间6项、逾期9项。回答仅正确给出主任务逾期8项，两项未设置截止时间数量均未完成，子孙任务逾期停留在8或10项。旧Gold的逾期3项、2项不适用于本轮时点。回答谨慎披露工具冲突、没有把未返回字段当作空值，这一点合理，但不能替代完成核心统计；这是实际业务链路结果不满足验收，不是生成失败或裁判证据不足。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-MULTI-TEST-001",
@@ -5699,14 +5942,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
         "actor_name": "公台",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:33:52.715469+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 27543,
@@ -5745,7 +5988,7 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "pending_fix",
       "reason": "聚合时需要整合 子任务",
@@ -5753,17 +5996,25 @@
         "信息缺失"
       ],
       "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
+        "mode": "same_request_preserved",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
         "actor_name": "浩澜",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T12:06:20.480786+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "保留同一历史执行上已保存的人工结论。"
       },
-      "review_observation": null,
+      "review_observation": {
+        "basis": "964f8e165d0cb1000556c3309f4a1019d77e6a1825408413b3ed76de80172c44",
+        "result": "b6c4bec6fb0a8902303bfa22c67e368727c825231c5520633ec25804d7c229e9",
+        "requests": [
+          "213ee556-ddc8-4be3-a6ba-c12daa760837",
+          "ac6ab3c7-ea96-4a10-be7b-17cb662c3c51",
+          "e040ba19-95fa-4b4e-b1db-f924f4200412"
+        ]
+      },
       "latency_ms": 29444,
       "trace_runs": 3,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -5845,13 +6096,21 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "用户要求三个所选任务及全部后代的去重准确总数。独立完整递归回读确认结果为33条，即T001本身、31个直接子任务及1个孙任务；回答仅给出“至少33条”并明确表示未完成汇总，未完成核心计数任务。此判断不将诚实说明检索边界视为编造，也不追溯评价未提供的此前回答。",
-      "failure_categories": [],
+      "reason": "三个所选任务连同全部后代，去重后应为33条。助手只回答“至少33条”，没有查全后给出用户要求的准确总数。",
+      "failure_categories": [
+        "信息缺失"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "3160d7814101277ba3105dca8f8b87f84bb2bd5cb036a5bab7e8d2558918acd8",
+        "result": "7dd0f65309c752cce8b960f8df6c358dacad38e535291d615c0503a8bebf98b9",
+        "requests": [
+          "8bd75370-3b7d-41ab-ba88-9aeaa2a34244"
+        ]
+      },
       "latency_ms": 43688,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -5872,7 +6131,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "信息缺失"
+      ],
+      "evaluation_detail_reason": "本轮要求准确统计三个所选任务及全部后代的去重并集。独立完整递归回源确认共有33条，即任务001本身、31个直接子任务及1个孙任务064；任务033和064均已被任务001的后代集合覆盖。实际回答仅确认“至少33条”，并明确表示不能确认准确总数，未完成核心计数要求。这是已有实际回答但结果不满足验收，不是空回答或生成失败；诚实披露覆盖不足不属于编造，也不能替代完成统计。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-MULTI-TEST-005",
@@ -6060,7 +6323,7 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "pending_fix",
       "reason": "聚合时需要整合子任务",
@@ -6068,17 +6331,23 @@
         "信息缺失"
       ],
       "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
+        "mode": "same_request_preserved",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
         "actor_name": "浩澜",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T12:06:42.002414+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "保留同一历史执行上已保存的人工结论。"
       },
-      "review_observation": null,
+      "review_observation": {
+        "basis": "2b942160cc34da7bf783b8ee3ed7bc045d33ca7ffb357973f0d0a71fc11ac67d",
+        "result": "e96325dcbbfca34ae66896f32f9f8bd3766915f907353ecaef0a2377fc1cfaf9",
+        "requests": [
+          "85211883-79c5-4877-bab6-09fa6d67fa4d"
+        ]
+      },
       "latency_ms": 34154,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -6249,7 +6518,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "主任务的创建人排序和状态交叉表正确，但包含全部层级子任务的统计未完成。两个实际所选项目经原账号完整分页、递归回源分别为1045项（主1043、子2）和2316项（主220、子2096），创建人×状态汇总在执行前后保持一致。本次回答只覆盖1044项和285项，明确无法给出完整排名。诚实说明覆盖不足避免了编造，但仍未交付用例要求的全量结果；这是实际聚合覆盖/任务未完成，已不缺目标、权限或独立全集证据。",
+      "reason": "两个项目分别应统计1045条和2316条任务，实际只覆盖1044条和285条，子孙任务大量漏查，没有完成全量创建人排名和状态统计。",
       "failure_categories": [
         "信息缺失",
         "指令未遵循"
@@ -6285,7 +6554,9 @@
       "display_failure_categories": [
         "信息缺失",
         "指令未遵循"
-      ]
+      ],
+      "evaluation_detail_reason": "主任务的创建人排序和状态交叉表正确，但包含全部层级子任务的统计未完成。两个实际所选项目经原账号完整分页、递归回源分别为1045项（主1043、子2）和2316项（主220、子2096），创建人×状态汇总在执行前后保持一致。本次回答只覆盖1044项和285项，明确无法给出完整排名。诚实说明覆盖不足避免了编造，但仍未交付用例要求的全量结果；这是实际聚合覆盖/任务未完成，已不缺目标、权限或独立全集证据。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-001",
@@ -6301,13 +6572,21 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "回答完整列出了23项未完成任务，数量、状态、优先级及任务集合与查询结果一致，关注顺序也有字段依据。但逾期判断未正确完成：17项未完成任务的截止时间明确为东京时间2026年10月20日或10月30日18:00，均早于回答冻结的11月3日19:49。回答以“截止字段精度不明”和系统逾期标记为否为由拒绝判定逾期，错误处理了明确时间与派生标记之间的冲突。",
-      "failure_categories": [],
+      "reason": "任务清单本身正确，但逾期判断没答对：17条未完成任务的截止时间都已过去，助手仍因系统标记冲突而不确认逾期。",
+      "failure_categories": [
+        "时序错误"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "5dda8571e02a88192beb7b16085c9c56f67eaf9c54c420fd4a3bf2cfa28a8492",
+        "result": "c2778c72436c66e4774f11f771eb0871caa3f12ab8e59f625f59e058b6733874",
+        "requests": [
+          "76fe4220-28d3-402d-a6e3-6d98b80a7bc9"
+        ]
+      },
       "latency_ms": 61672,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -6328,7 +6607,11 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "时序错误"
+      ],
+      "evaluation_detail_reason": "本轮已完成业务执行，23项任务的集合、项目归属、状态、优先级和来源均正确，排序建议也有字段依据；但逾期情况未满足验收。工具明确返回17项未完成任务的带时区截止时间为2026年10月20日或10月30日18:00，均早于本轮冻结时间2026年11月3日19:49。回答虽披露系统逾期标记为否的冲突，却以“截止字段精度不明”为由不判定按截止时间已逾期，未正确完成时间比较及逾期说明。这是结果不满足验收，不是执行失败或证据不足。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-002",
@@ -6339,36 +6622,34 @@
       "scenario": "催办逾期任务并收紧到高优先级",
       "gate_class": "quality",
       "ability": "真实工作查询",
-      "kind": "execution_failure",
-      "result_status": "pending_fix",
+      "kind": "business_review",
+      "result_status": "fail",
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
-      "status": "pending_fix",
-      "reason": "被限流了",
+      "status": "fail",
+      "reason": "首轮漏掉了已过截止时间但尚未开始的任务；追问时，高优先级逾期未完成任务应为17条，却把工具有冲突的统计值18当成总数。",
       "failure_categories": [
-        "执行错误"
+        "信息缺失",
+        "指令未遵循"
       ],
-      "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
-        "report_id": "review-b00e238ad1570ffcf4b8f490",
-        "revision": 17,
-        "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
-        "actor_name": "公台",
-        "case_version": 1,
-        "reviewed_at": "2026-11-03T12:01:13.183262+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "b3319b9a976f52f668b4fed97011c8465c09e795f9ef6b085476f5865cb1f76d",
+        "result": "a235f92d748adce57bbade93df69d318299660c8a830fe4213272d3c3823337e",
+        "requests": [
+          "1a6b016b-91be-4390-8cfc-afe4d0ad88d3",
+          "8a5689d4-b2d9-423f-9f98-64a43621167e"
+        ]
       },
-      "review_observation": null,
-      "latency_ms": 395,
-      "trace_runs": 0,
-      "trace_status": "业务回答已采集；Trace 补全失败",
+      "latency_ms": 287563,
+      "trace_runs": 2,
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
       "task_completion_rate": 0,
-      "model": "未观测",
-      "prompt_version": "未观测",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
         "eligible": false,
         "verdict": "not_comparable",
@@ -6376,16 +6657,39 @@
       },
       "resource_coverage": {
         "e2e_ms": true,
-        "steps": false,
-        "tool_calls": false,
-        "tokens": false,
-        "cache_token_ratio": false,
-        "cost_usd": false,
-        "retries": false
+        "steps": true,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
       },
       "display_failure_categories": [
-        "执行错误"
-      ]
+        "信息缺失",
+        "指令未遵循"
+      ],
+      "review_resolution": {
+        "schema": "ai_assistant.pending_resolution.v1",
+        "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "case_version": 1,
+        "override": {
+          "business_reason": "被限流了",
+          "business_status": "pending_fix",
+          "failure_categories": [
+            "执行错误"
+          ]
+        },
+        "updated_by": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
+        "updated_at": "2026-11-03T12:01:13.183262+00:00",
+        "actor_name": "公台",
+        "source_report_revision": 17,
+        "evidence_report_id": "review-b00e238ad1570ffcf4b8f490",
+        "evidence_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/#failure-test-AA-REAL-TEST-002",
+        "resolved_at": "2026-11-04T00:24:35.946128+00:00",
+        "reason": "原无结果执行已被本轮完整新会话实际问答替换；原人工意见及审计保留。"
+      },
+      "evaluation_detail_reason": "本次两轮均已正常生成回答，不再属于原限流失败，但结果不满足验收。首轮仅按系统逾期标记列出17项进行中任务，遗漏截止时间已早于本轮时刻的未开始任务；已读材料中任务036、048等明确存在截止日期与逾期标记冲突，不能直接排除。第二轮正确保留未完成、逾期条件并包含最高和高优先级，但将不一致的聚合统计18直接解释为符合条件总数，声称另有1项子任务未核实；独立完整任务树与逐项结果支持17项高优先级逾期未完成任务，不能确认其所称第18项。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-003",
@@ -6544,7 +6848,7 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "pending_fix",
       "reason": "子孙任务的聚合",
@@ -6553,17 +6857,23 @@
         "指令未遵循"
       ],
       "review_reuse": {
-        "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
+        "mode": "same_request_preserved",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
         "actor_name": "浩澜",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T12:09:38.172107+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "保留同一历史执行上已保存的人工结论。"
       },
-      "review_observation": null,
+      "review_observation": {
+        "basis": "7340e025b52a5ad85294428ea84d07979a2fc21a494c22f04c656ed8143fe31d",
+        "result": "9aa2d7cb9cfd1d4d3f7378edd211ca5975474445e12b175f5dd2a0635a905930",
+        "requests": [
+          "bffcee0e-0352-400e-bc37-7a89acaaca88"
+        ]
+      },
       "latency_ms": 59819,
       "trace_runs": 1,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -6748,7 +7058,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮已正确识别两个指定项目，提供了具体关注任务、截止时间和来源，也明确区分当前完成状态与本周新增完成。但未完成默认包含全部子孙层级的项目进度汇总：项目甲实际只读取62/63项，遗漏三级任务064，最终改用一级任务完成11项、剩余20项作为主要结论，并明确无法回答全部任务的完成与剩余数量。披露缺口是诚实的，但不能代替完成核心统计任务。",
+      "reason": "用户要整个项目的进度，助手主要只汇总了一级任务。项目甲实际完成21条、剩余42条，回答却只给一级任务的完成11条、剩余20条，整体统计没完成。",
       "failure_categories": [
         "信息缺失",
         "范围错误"
@@ -6784,7 +7094,9 @@
       "display_failure_categories": [
         "信息缺失",
         "范围错误"
-      ]
+      ],
+      "evaluation_detail_reason": "本次问答正常完成，但结果未满足完整项目进度汇总的验收条件。默认范围包含全部子孙任务，实际工具仅展开至62/63项，遗漏任务033下的三级任务064；回答转而以一级任务完成11项、剩余20项作为主要结论，并明确无法给出项目甲全部任务的完成与剩余数。诚实披露缺口不能替代完成核心任务。执行前后同身份完整递归回源一致，项目甲实际为63项、完成21项、剩余42项。回答提供具体一级关注任务、正确最高优先级及截止时间，并区分当前状态与本周新增完成，这些正确部分不足以弥补范围缺失。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-011",
@@ -6803,7 +7115,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮项目甲、乙的附件范围已由同一请求的认证输入核实。助手只确认项目甲20个未完成主任务有执行人，最终仍答“暂时不能确认”，没有完成用户要求的全部子孙任务排查。完整Trace显示其读取子任务第一页后，未继续核验任务033下的第三级任务064，也未补齐全部任务的成员角色；项目乙则先按未完成状态筛选，未读取已完成根任务及其层级。执行前后独立全量回读一致，两个指定项目的任务均有执行人，符合条件的任务为0。此处是实际检索覆盖不足导致任务未完成，而非裁判证据不足。",
+      "reason": "应检查两个项目所有层级里有没有“未完成且无执行人”的任务，正确结果是0条。助手没查全子孙任务，最终只说“暂时不能确认”。",
       "failure_categories": [
         "信息缺失",
         "指令未遵循"
@@ -6839,7 +7151,9 @@
       "display_failure_categories": [
         "信息缺失",
         "指令未遵循"
-      ]
+      ],
+      "evaluation_detail_reason": "本次请求已正常生成回答，但未完成两个指定项目全部主任务及子孙任务的排查，属于结果不满足验收，而非生成失败或裁判证据不足。助手确认了项目甲20个未完成主任务均有执行人，却最终回答“暂时不能确认”。认证Trace显示子任务033存在后代标记，但未继续读取其下第三级任务064；项目乙仅查询未完成状态，未补查已完成根任务及其子任务范围。执行前后同身份完整递归回源一致：两个指定项目符合“未完成且无执行人”的任务为0。披露检索缺口是诚实的，但不能替代完成用户要求的检查。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-012",
@@ -6855,13 +7169,24 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "第2步正确列出8项未完成且无截止时间的任务、负责人和项目，任务集合与Gold及实时工具结果一致。第3步将用户自然语言的“高优先级”机械限定为枚举值“高”，排除了已读取的4项“最高”优先级任务，没有交付应优先排期的4项清单，未完成追问任务。",
-      "failure_categories": [],
+      "reason": "追问“高优先级的先给我”时，助手把“最高优先级”排除掉了，漏掉已查到的4条任务。",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "dff1d716fc27877d25df7c0f7805a376dbe6411ada6e8977eeeb41582f927ef6",
+        "result": "6bca34fc4e9c5a9ad753db94802ff0afa88ccd77cad55236679e4393e86b236d",
+        "requests": [
+          "264cb6bc-2411-4119-9d21-bd7c95cee3cd",
+          "f0ad04fc-445f-4776-890f-84f2600cc195"
+        ]
+      },
       "latency_ms": 74346,
       "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -6882,7 +7207,13 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
+      "evaluation_detail_reason": "两轮均已实际完成生成，不属于空回答或运行失败。第2轮列出了8项待排期任务，负责人、项目、状态和引用与证据相符。第3轮却将“高优先级的先给我”自行收窄为严格枚举 high，并明确排除 highest，未交付已读取到的4项最高优先级任务，属于结果不满足追问验收，而非证据不足。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-013",
@@ -6898,13 +7229,23 @@
       "confidence": "high",
       "priority": "P1",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "第2轮明确把“最近7天”改成10月28日至11月3日的7个自然日，违背按实际执行时刻向前滚动7天的筛选要求；第3轮继续沿用该错误时间范围。实时任务快照缺失，因此不能用旧Gold的43条、22条判定当前空结果错误，但已明确发生的时间口径错误足以判定失败。",
-      "failure_categories": [],
+      "reason": "“最近7天”被算成10月28日至11月3日的自然日。应从提问时刻往前算7天，实际漏了10月27日晚的一段时间；追问也沿用了这个错误范围。",
+      "failure_categories": [
+        "时序错误",
+        "指令未遵循"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "308591ebb74f3d02edab09fb8f45870fea6fdca8fbcaa1b7d07bed4d54631812",
+        "result": "7020e4d4bf98a842c48aaebcd2c0676f5e2433432560bdc581cc1968f4b87194",
+        "requests": [
+          "7db09716-f0ae-46c7-872e-198be90a6262",
+          "a836b9ce-c60c-4cfc-8f98-4b7575b951e9"
+        ]
+      },
       "latency_ms": 21367,
       "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -6925,7 +7266,12 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "时序错误",
+        "指令未遵循"
+      ],
+      "evaluation_detail_reason": "两轮均已正常生成回答，但结果不满足时间筛选验收条件。第2轮实际执行时刻为2026-11-03 19:51:18（Asia/Tokyo），最近7天应从2026-10-27 19:51:18向前界定；实际却按10月28日至11月3日的自然日查询，遗漏了10月27日晚间的有效窗口，并未按执行时刻设置上界。第3轮明确继续沿用该错误范围。现有独立回源没有实时任务数据，不能据历史43条、22条断言当前空结果错误，但明确的时间口径错误已足以判定失败。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-014",
@@ -6980,21 +7326,28 @@
       "gate_class": "quality",
       "ability": "真实工作查询",
       "kind": "business_review",
-      "result_status": "fail",
+      "result_status": "pass",
       "confidence": "high",
       "priority": "P1",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
-      "status": "fail",
-      "reason": "首轮“聚合验收项目”不能唯一定位，当前可见项目中同时存在项目甲和项目乙，助手却未经澄清直接选择项目乙作答，违反本例核心要求。第二轮用户明确限定项目乙后，助手仅回答该项目没有未完成任务，与工具返回空集合及参考结果一致；但后续明确范围不能消除首轮擅自选取项目的错误。",
+      "status": "pass",
+      "reason": "认证 Trace 证明本次复用的会话历史中，用户已经明确选择项目乙且排除其他项目，该历史业务输入实际送入了首轮模型。因此本次简称可依据既有上下文定位，并非未经澄清擅自选取项目乙。两轮均仅查询项目乙的待启动、进行中和暂停任务，工具完整返回 total=0；回答准确说明未查到未完成任务，提供项目来源，并未将任务记录为空扩大为项目验收完成。原失败结论未充分考虑已认证的历史消歧上下文。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "ae3f8b111be37cf83d56591e6c7c9161601948f4684db96341cc259e794091a0",
+        "result": "2e38559ccb131d57777f8bf6fadc138c478f305178a411b4c41368ccebfb59b9",
+        "requests": [
+          "3361481e-09aa-4e80-80ae-37e2db4e1311",
+          "943cb1b4-262d-423e-b28a-62c67b6a7a1c"
+        ]
+      },
       "latency_ms": 19352,
       "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
+      "task_completion_rate": 100,
       "model": "sub2api/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
@@ -7022,22 +7375,29 @@
       "scenario": "对比多个任务并排除已完成项",
       "gate_class": "quality",
       "ability": "真实工作查询",
-      "kind": "execution_failure",
-      "result_status": "fail",
+      "kind": "business_review",
+      "result_status": "pass",
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
-      "status": "fail",
-      "reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+      "status": "pass",
+      "reason": "本次重新执行的两轮均已完成。首轮仅对比实际选中的任务001、032、033，状态、负责人、优先级和东京时间截止日期均与当次工具结果及同身份回源一致；未自动展开子孙任务。追问保留原选择集合，排除已完成的032，仅对001和033给出有依据的处理顺序，并明确父子关系不等于已确认的阻塞依赖。旧的生成失败不适用于本次完整执行。",
       "failure_categories": [],
       "review_reuse": null,
-      "review_observation": null,
-      "latency_ms": 21490,
-      "trace_runs": 1,
+      "review_observation": {
+        "basis": "5920e9358f881aa8e910392b12aae5d1f857503f7380cd8e8b7ab31195350e0b",
+        "result": "a489842667df08cca35c87993df123d6d8503be63e10d207a7d9301da2596aa5",
+        "requests": [
+          "7f32d3f1-333d-4d85-a2ad-eb149d37c7db",
+          "c0a95f34-54ff-461b-8db6-9966932cb637"
+        ]
+      },
+      "latency_ms": 22561,
+      "trace_runs": 2,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "task_completion_rate": 0,
+      "task_completion_rate": 100,
       "model": "sub2api/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.22.11",
       "execution_comparison": {
@@ -7073,7 +7433,7 @@
       "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "两轮均未完成核心业务要求。首轮只给出已读部分的人员分布，发现42项与41项冲突后未继续递归核验，无法给出完整排名；第二轮仅以priority=high查询并将空结果作为最终结论，遗漏此前同次执行材料中明确存在的highest优先级进行中任务，未交付按人统计和具体任务清单。该判断不依赖将旧Gold计数或后续回读的动态状态直接当作执行时事实。",
+      "reason": "首轮少查了子孙任务，没有完成按人的完整排名；追问又漏筛“最高优先级”，错误回答两个项目都没有高优先级未完成任务。",
       "failure_categories": [
         "信息缺失",
         "范围错误"
@@ -7110,7 +7470,9 @@
       "display_failure_categories": [
         "信息缺失",
         "范围错误"
-      ]
+      ],
+      "evaluation_detail_reason": "两轮均有正式完成回答，但结果未满足完整业务验收。第2步仅交付已读取部分的人员分布，明确存在42项与41项的覆盖差异后即停止，未完成全部子孙任务的核验与完整排名。第3步只筛选high，遗漏应纳入的highest，随后将该窄范围空结果表述为两个项目均无高优先级未完成任务，未交付按人统计和任务清单。判断依据实际请求Trace，不以旧Gold数量或后续动态回读倒推历史状态。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-018",
@@ -7126,13 +7488,25 @@
       "confidence": "high",
       "priority": "P0",
       "asker": "智本_anrou",
-      "asker_company": "智本科技",
+      "asker_company": "",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "切换到 Anna 后，助手仅列出11项一级任务，未继续读取命中的子孙任务，却将11项作为完整总数。该轮工具明确返回 has_matched_descendant=true，而后续没有展开或递归查询，违反默认包含全部子孙层级的范围要求。首轮23项与工具一致；末轮恢复本人并区分实时返回的“高”和“最高”，不能仅依据旧快照的两项结果判错。",
-      "failure_categories": [],
+      "reason": "切换人员后，只把11条一级任务当作完整清单，漏了子孙任务；切回本人后，又排除了“最高优先级”，漏掉任务010和040。",
+      "failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
       "review_reuse": null,
-      "review_observation": null,
+      "review_observation": {
+        "basis": "41a11e1c64efb97dfc29364acf3a98dd5f8099a581326213156400fdf433f38a",
+        "result": "02e0bf1d6b1d2e1b67dc1ec47c2236b7b2a15ad191cc0f4e1863ee942db8217e",
+        "requests": [
+          "2f6e0317-457a-4905-87a9-9416228b2a3c",
+          "ad6ed856-61f3-4379-90ea-df3ed9b10f3a",
+          "d6cbbcab-b02b-47a7-ad5b-bfe0e904d527"
+        ]
+      },
       "latency_ms": 70872,
       "trace_runs": 3,
       "trace_status": "内部工具链已采集；权限/引用仍未观测",
@@ -7153,7 +7527,13 @@
         "cost_usd": true,
         "retries": true
       },
-      "display_failure_categories": []
+      "display_failure_categories": [
+        "范围错误",
+        "信息缺失",
+        "指令未遵循"
+      ],
+      "evaluation_detail_reason": "三轮均已正常生成回答，但结果未满足完整验收：step 3 查询结果明确提示存在命中子孙任务，助手未展开便将11项一级任务作为完整集合；step 4 虽正确恢复本人及项目、未完成条件，却仅筛选high并明确排除highest，遗漏已由本次step 2实时结果确认的任务010和040。此结论不依赖旧Gold的动态数量。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-REAL-TEST-019",
@@ -7222,7 +7602,7 @@
       "asker_company": "智本科技",
       "asker_source": "execution_turn",
       "status": "fail",
-      "reason": "本轮实际任务是完整查询所选甲、乙项目中含全部子孙层级的高优先级逾期未完成任务，并按负责人整理及仅草拟催办文案。回答正确展示了8项一级任务、使用实际东京时间并仅拟稿，但明确止于不完整名单。当前请求的子任务查询以coverage_insufficient结束，未恢复完成递归查询和分组；同次运行材料已包含034、037、043、046、049、052、058、061等符合条件的子任务，最终均未列出。独立完整递归源还确认存在三级任务064。因此这是已确定的业务完成不足，而非证据采集缺失；不以旧Gold的5项日期示例作为本轮数量标准。",
+      "reason": "只列了8条一级逾期任务，漏掉另外9条符合条件的子孙任务，也没把它们按负责人整理进催办草稿。查询报错后没有补查完成。",
       "failure_categories": [
         "信息缺失",
         "指令未遵循"
@@ -7258,7 +7638,9 @@
       "display_failure_categories": [
         "信息缺失",
         "指令未遵循"
-      ]
+      ],
+      "evaluation_detail_reason": "本轮已有完整回答，但未完成所选甲、乙项目全部子孙层级的筛选和负责人整理。回答仅列8项一级任务，并明确承认子任务清单不完整；子任务工具以coverage_insufficient结束后未恢复。执行前后同身份完整递归回源且数据未变化，确认甲项目另有9项符合条件的子孙任务，其中034、037、043、046、049、052、058、061在本次运行材料中已出现，另有三级任务064。故属于业务查询执行未完成、结果不满足完整性验收，而非采集证据不足。已列一级任务、实际东京时间及仅草拟不发送的处理正确，不以旧Gold的5项日期示例判定本轮数量。",
+      "reason_style": "plain_chinese_v1"
     },
     {
       "case_id": "AA-RPT-TEST-001",
@@ -7281,14 +7663,14 @@
       "failure_categories": [],
       "review_reuse": {
         "mode": "carried_forward",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "report_id": "review-b00e238ad1570ffcf4b8f490",
+        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
         "revision": 17,
+        "case_version": 1,
         "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
         "actor_name": "公台",
-        "case_version": 1,
         "reviewed_at": "2026-11-03T11:49:04.453508+00:00",
-        "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+        "note": "本轮未重新执行；保留来源报告同一历史证据上已保存的人工复核。"
       },
       "review_observation": null,
       "latency_ms": 84158,
@@ -7320,33 +7702,46 @@
       "suppressed_test_failure_attempts": 0
     },
     "report_date": "2026-11-03",
-    "generated_at": "2026-11-03T13:43:06.374637+00:00",
+    "generated_at": "2026-11-04T01:00:39.526203+00:00",
     "pre_case_count": 0,
     "test_scope": {
       "active_total": 159,
       "online_executed": 136,
-      "online_assessed": 132,
+      "online_assessed": 131,
       "online_pending_retest": 0,
-      "not_executed": 21,
+      "not_executed": 22,
       "local_executed": 3,
       "executed": 136,
       "business": {
-        "pass": 89,
-        "fail": 43
+        "pass": 95,
+        "fail": 36
       },
       "counts": {
-        "通过": 89,
-        "失败": 35,
-        "未执行": 21,
+        "通过": 95,
+        "失败": 32,
+        "未执行": 22,
         "延期": 3,
-        "待修复": 8,
-        "本地回放通过": 3
-      }
+        "本地回放通过": 3,
+        "待修复": 4
+      },
+      "not_executed_by_state": {
+        "SPEC_PENDING": 2,
+        "PRECHECK_REQUIRED": 2,
+        "CONTROLLED_SETUP": 5,
+        "LIVE_VERIFIED": 13
+      },
+      "trace_missing": 0
     },
     "pre_scope": {
       "active_total": 0,
       "executed": 0,
-      "not_executed": 0
+      "not_executed": 0,
+      "business": {
+        "pass": 0,
+        "fail": 0
+      },
+      "counts": {},
+      "trace_missing": 0
     },
     "local_fixture": {
       "source": "/Users/barry/Desktop/Agent-Evaluation/outputs/test_full_20261103_1934/local-replay/run.json",
@@ -7536,16 +7931,9 @@
     "trace_gate": {
       "required": true,
       "executed": 136,
-      "captured": 132,
-      "complete": false,
-      "missing": {
-        "test": [
-          "AA-FU-039",
-          "AA-FU-041",
-          "AA-FU-058",
-          "AA-REAL-TEST-002"
-        ]
-      }
+      "captured": 136,
+      "complete": true,
+      "missing": {}
     },
     "metrics": {
       "tool_accuracy": {
@@ -7747,85 +8135,85 @@
         },
         "resource_cost": {
           "test": {
-            "definition": "保留证据的实际业务尝试所观测资源÷当前业务通过数；含失败及部分尝试消耗，缺失数据不补零。本轮新增执行与历史保留来源逐例标注。",
+            "definition": "每条用例当前展示的业务尝试之已观测资源÷当前业务通过数；失败尝试纳入，缺失值不补零。重跑前历史尝试另行保留，不与当前尝试重复相加。",
             "metrics": {
               "e2e_ms": {
                 "valid_n": 136,
                 "attempted_n": 136,
                 "coverage_rate": 1.0,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "total": 5202821.0,
-                "average": 38256.03676470588,
-                "p50": 24616.0,
-                "p95": 112687.25,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "total": 5726909.0,
+                "average": 42109.625,
+                "p50": 26343.0,
+                "p95": 124249.75,
                 "per_success_is_lower_bound": false
               },
               "steps": {
-                "valid_n": 125,
+                "valid_n": 130,
                 "attempted_n": 136,
-                "coverage_rate": 0.9191176470588235,
-                "successful_valid_n": 87,
-                "successful_n": 89,
-                "total": 649.0,
-                "average": 5.192,
+                "coverage_rate": 0.9558823529411765,
+                "successful_valid_n": 93,
+                "successful_n": 95,
+                "total": 685.0,
+                "average": 5.269230769230769,
                 "p50": 4.0,
-                "p95": 12.0,
+                "p95": 12.549999999999997,
                 "per_success_is_lower_bound": true
               },
               "tool_calls": {
-                "valid_n": 131,
+                "valid_n": 135,
                 "attempted_n": 136,
-                "coverage_rate": 0.9632352941176471,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "total": 657.0,
-                "average": 5.015267175572519,
+                "coverage_rate": 0.9926470588235294,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "total": 693.0,
+                "average": 5.133333333333334,
                 "p50": 4.0,
-                "p95": 12.0,
+                "p95": 12.299999999999997,
                 "per_success_is_lower_bound": true
               },
               "tokens": {
-                "valid_n": 131,
+                "valid_n": 135,
                 "attempted_n": 136,
-                "coverage_rate": 0.9632352941176471,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "total": 21345980.0,
-                "average": 162946.41221374046,
-                "p50": 132457.0,
-                "p95": 403975.0,
+                "coverage_rate": 0.9926470588235294,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "total": 22945541.0,
+                "average": 169966.97037037037,
+                "p50": 133611.0,
+                "p95": 420419.9999999999,
                 "per_success_is_lower_bound": true
               },
               "cache_token_ratio": {
-                "valid_n": 131,
+                "valid_n": 135,
                 "attempted_n": 136,
-                "coverage_rate": 0.9632352941176471,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "ratio": 0.5440262625335781,
+                "coverage_rate": 0.9926470588235294,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "ratio": 0.5396033807601597,
                 "per_success_is_lower_bound": false
               },
               "cost_usd": {
-                "valid_n": 131,
+                "valid_n": 135,
                 "attempted_n": 136,
-                "coverage_rate": 0.9632352941176471,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "total": 108.54523,
-                "average": 0.8285895419847328,
-                "p50": 0.671485,
-                "p95": 2.045995,
+                "coverage_rate": 0.9926470588235294,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "total": 116.744325,
+                "average": 0.8647727777777778,
+                "p50": 0.673675,
+                "p95": 2.1322479999999993,
                 "per_success_is_lower_bound": true
               },
               "retries": {
-                "valid_n": 131,
+                "valid_n": 135,
                 "attempted_n": 136,
-                "coverage_rate": 0.9632352941176471,
-                "successful_valid_n": 89,
-                "successful_n": 89,
-                "total": 7.0,
-                "average": 0.05343511450381679,
+                "coverage_rate": 0.9926470588235294,
+                "successful_valid_n": 95,
+                "successful_n": 95,
+                "total": 9.0,
+                "average": 0.06666666666666667,
                 "p50": 0.0,
                 "p95": 0.0,
                 "per_success_is_lower_bound": true
@@ -7833,7 +8221,7 @@
             }
           },
           "pre": {
-            "definition": "单条成功用例成本=本轮所有已观测资源消耗÷业务成功用例数；包含失败尝试消耗。覆盖不全时为观测下限。",
+            "definition": "每条用例当前展示的业务尝试之已观测资源÷当前业务通过数；失败尝试纳入，缺失值不补零。重跑前历史尝试另行保留，不与当前尝试重复相加。",
             "metrics": {
               "e2e_ms": {
                 "valid_n": 0,
@@ -7928,8 +8316,8 @@
           "prompts": [
             "assistant_chat_agent@0.22.11"
           ],
-          "model_covered_cases": 131,
-          "prompt_covered_cases": 131,
+          "model_covered_cases": 136,
+          "prompt_covered_cases": 136,
           "total_cases": 136
         },
         "test_judge": {
@@ -7984,8 +8372,8 @@
     }
   },
   "source_revision": {
-    "run_id": "AI助手-2026-11-03-test-pending-recheck-2242-combined",
-    "source_digest": "4cb69a8f2da01e33f73b5efcf1dc232872e662f2c305965a624b0bfcef43e1ba",
+    "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+    "source_digest": "c559e791941821654fd74750a719b40b66625e65db6b269413469c7131d1a75b",
     "original_source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a",
     "note": "原始批次身份与云端复核保持不变；本次原始评测修订单独记录摘要。"
   }

@@ -1,0 +1,349 @@
+{
+  "row": {
+    "asker": "CFO",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-FU-058",
+    "suite": "assistant_agent_followup",
+    "module": "冲突澄清与安全",
+    "scenario": "我只记得项目名里有“评测”，你能帮我找候选吗",
+    "gate_class": "core",
+    "priority": "P0",
+    "status": "pending_fix",
+    "kind": "execution_failure",
+    "reason": "被限流了",
+    "confidence": "high",
+    "latency_ms": 435,
+    "model": "未观测",
+    "prompt_version": "未观测",
+    "title": "我只记得项目名里有“评测”，你能帮我找候选吗？",
+    "ability": "冲突澄清与安全",
+    "task_completion_rate": 0,
+    "trace_status": "业务回答已采集；Trace 补全失败",
+    "trace_runs": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "我只记得项目名里有“评测”，你能帮我找候选吗？"
+    ],
+    "answer": "",
+    "execution_completed": false,
+    "execution_completion_rate": 0,
+    "failure_categories": [
+      "执行错误"
+    ],
+    "business_reason": "被限流了",
+    "tool_chain_summary": "未取得可观测工具链；不能由此推断没有调用工具。",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "error",
+        "actor_ref": "CFO",
+        "question": "我只记得项目名里有“评测”，你能帮我找候选吗？",
+        "answer": "",
+        "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+        "request_id": "cd0f4865-8e9e-4156-9b73-7ce860bf5510",
+        "message_id": "",
+        "http_status": 200,
+        "error": "assistant stream ended with no terminal event",
+        "asker": "CFO"
+      }
+    ],
+    "trace_tools": [],
+    "trace_run_summaries": [],
+    "failed_checks": [
+      {
+        "dimension": "output.non_empty",
+        "status": "skip",
+        "reason": "Assistant request did not complete; no final answer to grade"
+      },
+      {
+        "dimension": "answer.available",
+        "status": "skip",
+        "reason": "Assistant request did not complete; Gold answer cannot be graded"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model', 'model_policy', 'prompt', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'input_tokens', 'output_tokens', 'cached_tokens', 'cost_usd', 'retries', 'tool_calls', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['request.received', 'intent.route', 'policy.check', 'model.request', 'model.response', 'output.completed']"
+      },
+      {
+        "dimension": "tool.required",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE: ['hive.project.query']"
+      },
+      {
+        "dimension": "tool.forbidden",
+        "status": "skip",
+        "reason": "absence of forbidden tools cannot be verified from Assistant SSE"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "tool call/results unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "skill activation unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-FU-058",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "execution_failure",
+      "confidence": "high",
+      "failure_categories": [
+        "执行错误"
+      ],
+      "business_reason": "已正式发起问答，步骤 2 出现明确运行时生成失败，未完成本次任务；这是执行错误，不是 Gold 误判或评论解析错误。Trace 采集状态不改变已观测的失败终态。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "明确请求及失败终态足以确定任务未完成；不据此判断评论内容对错。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "已发起请求但运行时生成失败：assistant stream ended with no terminal event",
+          "evidence_refs": []
+        }
+      ],
+      "execution_errors": [
+        {
+          "step": 2,
+          "status": "error",
+          "terminal_event": "",
+          "http_status": 200,
+          "error": "assistant stream ended with no terminal event",
+          "runtime_errors": [
+            {
+              "step": 2,
+              "stage": "stream",
+              "message": "assistant stream ended with no terminal event"
+            }
+          ]
+        }
+      ],
+      "suggestions": [
+        "排查该请求的服务端生成错误，修复后重跑并保留本次失败记录。"
+      ],
+      "automatic_status": "skip",
+      "tool_chain": "未取得可观测工具链；不能由此推断没有调用工具。",
+      "judge_attempts": 0,
+      "judge_model": "未调用（执行门禁或明确执行失败）",
+      "review_provenance": "当前会话执行编排；独立裁判沿用受保护的固定模型、路由及SSE配置；未使用work API",
+      "evidence_sha256": "8f04a493ffcd085553325bf3119f4e1a5890035b51b1adadf3ee8a229ff1d778"
+    },
+    "review_reuse": {
+      "mode": "carried_forward",
+      "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/",
+      "report_id": "review-b00e238ad1570ffcf4b8f490",
+      "revision": 17,
+      "actor": "38bc2ded-070a-4b2c-95b1-9f9e41e9fb4a",
+      "actor_name": "公台",
+      "case_version": 1,
+      "reviewed_at": "2026-11-03T12:01:58.476454+00:00",
+      "note": "本轮未重跑；保留同一份历史证据及上轮已保存复核，不表示做过新证据一致性比较。"
+    },
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-FU-058",
+    "environment": "test",
+    "generated_at": "2026-11-03T10:44:20+00:00",
+    "output": {
+      "text": ""
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "业务回答已采集；Trace 补全失败",
+      "source": "chat/assistant/stream",
+      "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+      "events": [],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": false,
+        "route": false,
+        "skill": false,
+        "mcp": false,
+        "memory": false
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+          "message_id": "",
+          "request_id": "",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+          "message_id": "",
+          "request_id": "cd0f4865-8e9e-4156-9b73-7ce860bf5510",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": false,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ]
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace"
+    },
+    "metrics": {
+      "e2e_ms": 435
+    },
+    "semantic_verdict": null,
+    "errors": [
+      {
+        "step": 2,
+        "stage": "stream",
+        "message": "assistant stream ended with no terminal event"
+      }
+    ],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+          "request_id": "",
+          "status": "reused",
+          "reused": true,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_e0c96bb5-4859-4a45-a89e-0daf7d50c023",
+          "message_id": "",
+          "request_id": "cd0f4865-8e9e-4156-9b73-7ce860bf5510",
+          "status": "error",
+          "http_status": 200,
+          "terminal_event": "",
+          "answer": "",
+          "message": "我只记得项目名里有“评测”，你能帮我找候选吗？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "assistant stream ended with no terminal event",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": false,
+            "output": false,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "question": "我只记得项目名里有“评测”，你能帮我找候选吗？",
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          }
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse_only",
+      "trace_enrichment": {
+        "status": "failed",
+        "reason": "AA-FU-058: authenticated current-request Trace missing (1 turn(s)); no history fallback",
+        "business_answer_preserved": true
+      }
+    }
+  }
+}

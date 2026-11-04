@@ -1,0 +1,1964 @@
+{
+  "row": {
+    "asker": "CFO",
+    "asker_company": "自动化测试公司",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      },
+      {
+        "step": 3,
+        "name": "CFO",
+        "company": "自动化测试公司",
+        "actor_ref": "CFO",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "test",
+    "case_id": "AA-SMEM-005",
+    "suite": "assistant_agent_followup",
+    "module": "短期记忆与多轮",
+    "scenario": "在项目页问：这个项目风险是什么？ → 它的子任务呢？",
+    "gate_class": "quality",
+    "priority": "P1",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "本轮新会话的认证回读确认会话已绑定“项目执行人专项”，独立业务回读也确认该项目及其任务对调用人可访问。两轮却均要求用户另行提供项目名称或引用，未完成项目风险查询或后续任务查询。运行时模型输入未获得已保存的项目绑定，属于产品上下文传递及延续失败，而非夹具未绑定或合理消歧；没有证据表明发生跨项目污染或编造。",
+    "confidence": "high",
+    "latency_ms": 5609,
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.11",
+    "title": "这个项目风险是什么？",
+    "ability": "会话继承/指代/隔离",
+    "task_completion_rate": 0,
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 2,
+    "operational_review": {},
+    "planning_review": {},
+    "questions": [
+      "这个项目风险是什么？",
+      "它的子任务呢？"
+    ],
+    "answer": "请提供项目名称或引用该项目，我才能查看项目任务及其子任务，并分析风险。",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [
+      "信息缺失"
+    ],
+    "business_reason": "本轮新会话的认证回读确认会话已绑定“项目执行人专项”，独立业务回读也确认该项目及其任务对调用人可访问。两轮却均要求用户另行提供项目名称或引用，未完成项目风险查询或后续任务查询。运行时模型输入未获得已保存的项目绑定，属于产品上下文传递及延续失败，而非夹具未绑定或合理消歧；没有证据表明发生跨项目污染或编造。",
+    "tool_chain_summary": "未取得可观测工具链；不能由此推断没有调用工具。",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "CFO",
+        "question": "这个项目风险是什么？",
+        "answer": "请提供项目名称，或引用该项目，我才能查询并分析风险。",
+        "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+        "request_id": "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+        "message_id": "cm_ff302d72-8260-444c-bf97-86c041cb6941",
+        "http_status": 200,
+        "error": "",
+        "asker": "CFO"
+      },
+      {
+        "step": 3,
+        "op": "continue",
+        "status": "completed",
+        "actor_ref": "CFO",
+        "question": "它的子任务呢？",
+        "answer": "请提供项目名称或引用该项目，我才能查看项目任务及其子任务，并分析风险。",
+        "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+        "request_id": "0497d1d4-5250-4655-827b-4de38934df46",
+        "message_id": "cm_6bed36b9-9ce7-48cb-abdc-92e1f99f6b16",
+        "http_status": 200,
+        "error": "",
+        "asker": "CFO"
+      }
+    ],
+    "trace_tools": [],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 25,
+        "tool_count": 0,
+        "tokens": 6454
+      },
+      {
+        "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+        "step": 3,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "未激活/未观测",
+        "model": "sub2api/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "event_count": 22,
+        "tool_count": 0,
+        "tokens": 6491
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.3.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'skill', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.forbidden",
+        "status": "skip",
+        "reason": "absence of forbidden tools cannot be verified from Assistant SSE"
+      },
+      {
+        "dimension": "tool.result_integrity",
+        "status": "skip",
+        "reason": "tool call/results unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.duplicate",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "skip",
+        "reason": "tool calls unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "skill.activation",
+        "status": "skip",
+        "reason": "skill activation unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "policy.checked",
+        "status": "skip",
+        "reason": "policy decision unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "assertion.policy.checked",
+        "status": "skip",
+        "reason": "policy assertion unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-test-AA-SMEM-005",
+    "current_session_review": {
+      "business_status": "fail",
+      "kind": "business_review",
+      "confidence": "high",
+      "failure_categories": [
+        "信息缺失"
+      ],
+      "business_reason": "本轮新会话的认证回读确认会话已绑定“项目执行人专项”，独立业务回读也确认该项目及其任务对调用人可访问。两轮却均要求用户另行提供项目名称或引用，未完成项目风险查询或后续任务查询。运行时模型输入未获得已保存的项目绑定，属于产品上下文传递及延续失败，而非夹具未绑定或合理消歧；没有证据表明发生跨项目污染或编造。",
+      "evidence_assessment": {
+        "sufficient": true,
+        "comment_grounding": "not_applicable",
+        "reason": "reexecution_session_readback核验了当前实际会话cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd的context.entityId为pro_4230587368，并回读了两轮匹配的回答。独立项目详情及任务树证明目标存在且可访问。当前认证Trace显示两轮输入均缺少该项目锚点，page_type为空、locator数为0。上述证据足以判断上下文传递导致任务未完成，无须以缺失的风险评论推断具体项目风险。"
+      },
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "用户在已绑定项目的会话询问风险，回答仅要求重新提供项目，未利用会话项目锚点进行查询或给出有依据的风险判断。认证回读已排除项目未绑定的疑点。",
+          "evidence_refs": [
+            "independent_evidence_supplement.reexecution_session_readback.sessions[0].source.session.context",
+            "recovered_business_evidence.runs[0].input_invocations",
+            "recovered_business_evidence.runs[0].context_events: chat.started、chat.session_locator_catalog",
+            "turns[step=2].answer",
+            "reexecution_independent_readback.project_details.pro_4230587368"
+          ]
+        },
+        {
+          "step": 3,
+          "status": "fail",
+          "reason": "追问应继续锚定同一项目并查询其任务及子任务，回答仍要求用户提供项目名称，没有完成查询。虽然未串入其它项目，但仅避免串项目不足以满足本轮任务；已保存项目上下文未向后续轮次有效传递。",
+          "evidence_refs": [
+            "independent_evidence_supplement.reexecution_session_readback.sessions[0]",
+            "recovered_business_evidence.runs[1].input_invocations",
+            "recovered_business_evidence.runs[1].context_events: chat.history_source、chat.session_locator_catalog",
+            "turns[step=3].answer",
+            "reexecution_independent_readback.trees.pro_4230587368"
+          ]
+        }
+      ],
+      "suggestions": [
+        "修复会话context中的项目实体向首轮模型输入及后续轮次的传递，并在历史回退或overlay降级时保留项目锚点。",
+        "基于绑定项目查询任务树和相关讨论后回答；区分项目直属任务与任务下级子任务，风险结论注明证据与有效时态。"
+      ],
+      "input_sha256": "1cb35836c53d9ace0b49271df50124855ff46af7498e0632ae50684a0b3d9e81",
+      "evidence_sha256": "70ad9ba0c3b487624b8ecc995fd40a2937b4d627d4afabbf0146a8c964ddb776",
+      "reviewed_at": "2026-11-03T13:10:58.687004+00:00",
+      "judge_model": "gpt-6.1-sol",
+      "judge_stream": true,
+      "automatic_status": "skip",
+      "tool_chain": "未取得可观测工具链；不能由此推断没有调用工具。",
+      "review_observation": {
+        "basis": "f0ae9bb90c13441132fa229e2bafe7cb1118fed139ebffb2e93c7cb613c577c3",
+        "result": "1612ce36f01f150552fefa4a390e25009fb9ab9f08808704ce4e7cf3e27c2036",
+        "requests": [
+          "0497d1d4-5250-4655-827b-4de38934df46",
+          "cab3c89c-24d7-4e7d-844a-c71cbdc600fa"
+        ]
+      },
+      "evidence_repair": {
+        "previous_report": {
+          "contract": "ai_assistant.review_baseline.v1",
+          "environment": "test",
+          "identity": {
+            "report_id": "review-b00e238ad1570ffcf4b8f490",
+            "run_id": "AI助手-2026-11-03-test-full-1934-combined",
+            "environment": "test",
+            "source_digest": "d5f6828f3255f849131941e9f0b1dc94e103f2814ccc6c6adae56404c1f9601a"
+          },
+          "revision": 17,
+          "fetched_at": "2026-11-03T12:37:36.5114+00:00",
+          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/test-20261103-1934/"
+        },
+        "question_resent": true,
+        "original_attempt_preserved": true,
+        "recovered_original_request_trace": true
+      },
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "new isolated business reexecution",
+        "previous_pending_reason": "两轮均已正常生成回答，但输入未提供项目页绑定项目的请求上下文或可核验历史。独立回读仅能证明目标项目及任务存在且可见，不能证明助手已收到该项目锚点。因此无法确定两轮请求澄清属于合理消歧还是遗漏项目上下文，不能据此判定记忆任务通过或失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      }
+    },
+    "categories": [
+      "信息缺失"
+    ],
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "用户在已绑定项目的会话询问风险，回答仅要求重新提供项目，未利用会话项目锚点进行查询或给出有依据的风险判断。认证回读已排除项目未绑定的疑点。",
+        "evidence_refs": [
+          "independent_evidence_supplement.reexecution_session_readback.sessions[0].source.session.context",
+          "recovered_business_evidence.runs[0].input_invocations",
+          "recovered_business_evidence.runs[0].context_events: chat.started、chat.session_locator_catalog",
+          "turns[step=2].answer",
+          "reexecution_independent_readback.project_details.pro_4230587368"
+        ]
+      },
+      {
+        "step": 3,
+        "status": "fail",
+        "reason": "追问应继续锚定同一项目并查询其任务及子任务，回答仍要求用户提供项目名称，没有完成查询。虽然未串入其它项目，但仅避免串项目不足以满足本轮任务；已保存项目上下文未向后续轮次有效传递。",
+        "evidence_refs": [
+          "independent_evidence_supplement.reexecution_session_readback.sessions[0]",
+          "recovered_business_evidence.runs[1].input_invocations",
+          "recovered_business_evidence.runs[1].context_events: chat.history_source、chat.session_locator_catalog",
+          "turns[step=3].answer",
+          "reexecution_independent_readback.trees.pro_4230587368"
+        ]
+      }
+    ],
+    "gold": {
+      "type": "memory",
+      "gold_refs": [
+        "P-A-EXECUTED",
+        "T-A-EXECUTED-OTHER"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "项目页锚定同一项目，第二轮不串入同空间其它项目"
+      ],
+      "fixed_fact_truth": null,
+      "expected_total": null,
+      "high_priority_total": null,
+      "required_fields": [
+        "依据",
+        "有效时态"
+      ],
+      "citation_refs": [],
+      "scope": "actor_visible",
+      "match_policy": "minimum",
+      "gold_entities": [],
+      "forbidden_entities": [],
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "这个项目风险是什么？",
+          "must_include": [],
+          "must_exclude": []
+        },
+        {
+          "step": 3,
+          "message": "它的子任务呢？",
+          "must_include": [],
+          "must_exclude": []
+        }
+      ],
+      "current_independent_readback": {
+        "current_visible_projects": [
+          {
+            "projectID": "pro_4230587368",
+            "spaceID": "3197660864",
+            "projectName": "项目执行人专项 [AEFIX:P-A-EXECUTED:v1]",
+            "description": "AI助手权限评测数据；[AEFIX:P-A-EXECUTED:v1]",
+            "creatorUserID": "ouvgllrjy9w5yw",
+            "managerUserIDs": [
+              "ouvglith8aaa0g"
+            ],
+            "groupID": "4230587368",
+            "createTime": 1789454481932,
+            "updateTime": 1793693784358,
+            "tenantID": "T1120BFPA",
+            "companyID": "orvglfbb9yi5to",
+            "projectTenantID": "T1120BFPA",
+            "creatorNickName": "CFO",
+            "creatorFaceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VHVWS8ynljm6",
+            "ownerName": "自动化测试公司",
+            "ownerID": "ouvglfbbkw8vhl",
+            "spaceName": "AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]",
+            "managers": [
+              {
+                "userID": "ouvglith8aaa0g",
+                "nickname": "自动化_Anna2",
+                "faceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VJYNxLjimsaq",
+                "status": 3
+              }
+            ],
+            "spaceType": 2,
+            "companyName": "自动化测试公司",
+            "descriptionUpdateTime": 1789454481932
+          }
+        ],
+        "actor_visible_project_total": 204,
+        "source_read_at": "2026-11-03T10:34:30.398395+00:00",
+        "current_tasks": {
+          "T-A-EXECUTED-OTHER": {
+            "verified": true,
+            "source": {
+              "ok": true,
+              "request_id": "e6a9bce4-b18c-4937-9e53-0c525b98918d",
+              "status_code": 200,
+              "error": "",
+              "response": {
+                "businessCode": 0,
+                "businessMsg": "success",
+                "code": 0,
+                "data": {
+                  "task": {
+                    "attachments": [],
+                    "company_id": "orvglfbb9yi5to",
+                    "company_name": "自动化测试公司",
+                    "completed_at": null,
+                    "completed_child_count": 0,
+                    "createTime": "1789454499000",
+                    "created_at": "2026-09-15T06:41:39Z",
+                    "customFieldValues": [],
+                    "description": "AI助手权限评测数据；[AEFIX:T-A-EXECUTED-OTHER:v1]",
+                    "descriptionUpdateTime": "0",
+                    "end_time": null,
+                    "folder_id": "",
+                    "isFollow": false,
+                    "isNew": false,
+                    "isOverdue": false,
+                    "level": 1,
+                    "members": [
+                      {
+                        "added_by_company_id": "orvglfbb9yi5to",
+                        "added_by_tenant_id": "T1120BFPA",
+                        "added_by_user_id": "",
+                        "role": 1,
+                        "user": {
+                          "company_id": "orvglfbb9yi5to",
+                          "reg_user_id": "ruvfhdfgu550uw",
+                          "tenant_id": "T1120BFPA",
+                          "user_id": "ouvgllrjy9w5yw",
+                          "user_name": "CFO"
+                        }
+                      },
+                      {
+                        "added_by_company_id": "orvglfbb9yi5to",
+                        "added_by_tenant_id": "T1120BFPA",
+                        "added_by_user_id": "",
+                        "role": 3,
+                        "user": {
+                          "company_id": "orvglfbb9yi5to",
+                          "reg_user_id": "ruvfhdfgu550uw",
+                          "tenant_id": "T1120BFPA",
+                          "user_id": "ouvgllrjy9w5yw",
+                          "user_name": "CFO"
+                        }
+                      }
+                    ],
+                    "priority": 0,
+                    "progress_child_count": 0,
+                    "project_id": "pro_4230587368",
+                    "project_name": "项目执行人专项 [AEFIX:P-A-EXECUTED:v1]",
+                    "related_group_id": "",
+                    "remind_time": null,
+                    "source_chat_id": "",
+                    "source_type": 1,
+                    "source_unit_id": "ouvglfbbkw8vhl",
+                    "source_unit_name": "自动化测试公司",
+                    "space_id": "3197660864",
+                    "space_name": "AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]",
+                    "start_time": null,
+                    "status": 1,
+                    "taskStatus": 0,
+                    "task_id": "task_vvgiindfvsw1",
+                    "task_path": "/",
+                    "tenant_id": "T1120BFPA",
+                    "title": "执行项目内其他任务 [AEFIX:T-A-EXECUTED-OTHER:v1]",
+                    "updateTime": "1789454499000",
+                    "updated_at": "2026-09-15T06:41:39Z"
+                  }
+                },
+                "message": "success"
+              }
+            }
+          }
+        },
+        "current_comments": {}
+      },
+      "reexecution_independent_readback": {
+        "read_at": "2026-11-03T12:49:21.012269+00:00",
+        "actor": {
+          "user_name": "CFO",
+          "company_name": "自动化测试公司",
+          "tenant_id": "T1120BFPA",
+          "user_id": "ouvgllrjy9w5yw",
+          "account_ref": "CFO",
+          "company": "自动化测试公司"
+        },
+        "inventory_request_id": "08a9bdd7-274c-4e2a-84dc-fe4529db0ca0",
+        "timestamp_scope": "Read now; not retroactive proof of historical mutable counts/status/ACL",
+        "actor_visible_project_ids": [
+          "pro_3077299267",
+          "pro_1837123939",
+          "pro_1473092209",
+          "pro_1429017860",
+          "pro_3220266099",
+          "pro_3331611924",
+          "pro_2772526642",
+          "pro_1806668820",
+          "pro_3481220880",
+          "pro_236126043",
+          "pro_2740426386",
+          "pro_1541924987",
+          "pro_2634944166",
+          "pro_1101577998",
+          "pro_691219830",
+          "pro_3832532419",
+          "pro_126043490",
+          "pro_4104530665",
+          "pro_3048240491",
+          "pro_904236816",
+          "pro_2294709262",
+          "pro_1211356330",
+          "pro_567452398",
+          "pro_613237179",
+          "pro_2192058291",
+          "pro_2174015056",
+          "pro_306083898",
+          "pro_3484112775",
+          "pro_3504369423",
+          "pro_2166350633",
+          "pro_1772166087",
+          "pro_919786629",
+          "pro_293318509",
+          "pro_2897101496",
+          "pro_3155268939",
+          "pro_1785089223",
+          "pro_3324877850",
+          "pro_685443775",
+          "pro_3296111193",
+          "pro_1123682008",
+          "pro_1193157511",
+          "pro_1029789867",
+          "pro_3233122051",
+          "pro_4230587368",
+          "pro_2165909172",
+          "pro_4052376851",
+          "pro_2323673571",
+          "pro_2078321853",
+          "pro_4079505748",
+          "pro_1363462506",
+          "pro_4197282659",
+          "pro_3628214307",
+          "pro_3262175138",
+          "pro_1228777157",
+          "pro_3469538793",
+          "pro_439489321",
+          "pro_313723135",
+          "pro_2054831125",
+          "pro_723722545",
+          "pro_850951264",
+          "pro_2673913310",
+          "pro_3087138408",
+          "pro_1055953944",
+          "pro_3816649770",
+          "pro_3827385901",
+          "pro_766313227",
+          "pro_2428020349",
+          "pro_595611977",
+          "pro_195798063",
+          "pro_656814085",
+          "pro_2525615433",
+          "pro_91164281",
+          "pro_2791964949",
+          "pro_3668263056",
+          "pro_775426194",
+          "pro_609237596",
+          "pro_3455684169",
+          "pro_3996499339",
+          "pro_2692419451",
+          "pro_2414370149",
+          "pro_2554792233",
+          "pro_2555572230",
+          "pro_2222147905",
+          "pro_2837042421",
+          "pro_3170201235",
+          "pro_2106838602",
+          "pro_3846320586",
+          "pro_723184447",
+          "pro_441489004",
+          "pro_473390282",
+          "pro_1588542550",
+          "pro_439750546",
+          "pro_696822664",
+          "pro_18492177",
+          "pro_3312055617",
+          "pro_1431506727",
+          "pro_61096040",
+          "pro_2333423646",
+          "pro_3076404297",
+          "pro_3861165093",
+          "pro_3623243614",
+          "pro_768676617",
+          "pro_3106379324",
+          "pro_3492904654",
+          "pro_1219886224",
+          "pro_1571909837",
+          "pro_2926249635",
+          "pro_2381460569",
+          "pro_2386389752",
+          "pro_3544896839",
+          "pro_553585460",
+          "pro_2499968085",
+          "pro_481574159",
+          "pro_2416711122",
+          "pro_566501066",
+          "pro_3297736118",
+          "pro_2121698057",
+          "pro_2356324609",
+          "pro_624058534",
+          "pro_2213349878",
+          "pro_2570483637",
+          "pro_1365663973",
+          "pro_7141229",
+          "pro_3533735429",
+          "pro_3156189807",
+          "pro_3044553723",
+          "pro_1047963214",
+          "pro_1913907653",
+          "pro_662638982",
+          "pro_4010964093",
+          "pro_2514230930",
+          "pro_3117284563",
+          "pro_3069456055",
+          "pro_2966970868",
+          "pro_777840675",
+          "pro_1617867722",
+          "pro_292028101",
+          "pro_2051392958",
+          "pro_923820811",
+          "pro_3645878894",
+          "pro_3936649593",
+          "pro_3806509318",
+          "pro_4069587605",
+          "pro_2618691912",
+          "pro_471163931",
+          "pro_787674607",
+          "pro_1893199030",
+          "pro_4166589218",
+          "pro_595876213",
+          "pro_2531049357",
+          "pro_1345117164",
+          "pro_3201662373",
+          "pro_2563562916",
+          "pro_846373277",
+          "pro_785501635",
+          "pro_3504968474",
+          "pro_225517460",
+          "pro_3482043139",
+          "pro_4143360960",
+          "pro_160498922",
+          "pro_2242756487",
+          "pro_339243707",
+          "pro_1050127651",
+          "pro_954612381",
+          "pro_4099676888",
+          "pro_2857796652",
+          "pro_2791818938",
+          "pro_2297705382",
+          "pro_577263899",
+          "pro_3101980428",
+          "pro_1543744682",
+          "pro_4123605276",
+          "pro_3365040334",
+          "pro_4217455445",
+          "pro_1923134063",
+          "pro_1689801049",
+          "pro_2662747383",
+          "pro_4288584178",
+          "pro_2613141220",
+          "pro_2567044144",
+          "pro_3900142149",
+          "pro_2862767068",
+          "pro_2700870517",
+          "pro_2031090587",
+          "pro_4264611880",
+          "pro_991094465",
+          "pro_1031225013",
+          "pro_1233785638",
+          "pro_1918317577",
+          "pro_564661834",
+          "pro_1802241680",
+          "pro_1627792345",
+          "pro_2209045466",
+          "pro_2363933025",
+          "pro_789966631",
+          "pro_3843332321",
+          "pro_3652997857",
+          "pro_2807727676",
+          "pro_2251965576",
+          "pro_332432115",
+          "pro_2499353827",
+          "pro_133062554",
+          "pro_617644574",
+          "pro_271019440"
+        ],
+        "project_details": {
+          "pro_4230587368": {
+            "ok": true,
+            "service": "im",
+            "endpoint": "/project/get_project_detail",
+            "request_id": "92fac3f8-5d66-4722-9ffb-85ae655bc91e",
+            "status_code": 200,
+            "curl_code": 0,
+            "error": "",
+            "response": {
+              "errCode": 0,
+              "errMsg": "",
+              "errDlt": "",
+              "data": {
+                "projectInfo": {
+                  "projectID": "pro_4230587368",
+                  "spaceID": "3197660864",
+                  "projectName": "项目执行人专项 [AEFIX:P-A-EXECUTED:v1]",
+                  "description": "AI助手权限评测数据；[AEFIX:P-A-EXECUTED:v1]",
+                  "creatorUserID": "ouvgllrjy9w5yw",
+                  "managerUserIDs": [
+                    "ouvglith8aaa0g"
+                  ],
+                  "groupID": "4230587368",
+                  "createTime": 1789454481932,
+                  "updateTime": 1793702863057,
+                  "tenantID": "T1120BFPA",
+                  "companyID": "orvglfbb9yi5to",
+                  "memberCount": 2,
+                  "memberIDs": [
+                    "ouvglith8aaa0g",
+                    "ouvgllrjy9w5yw"
+                  ],
+                  "projectTenantID": "T1120BFPA",
+                  "creatorNickName": "CFO",
+                  "creatorFaceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VHVWS8ynljm6",
+                  "ownerName": "自动化测试公司",
+                  "ownerID": "ouvglfbbkw8vhl",
+                  "spaceName": "AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]",
+                  "managers": [
+                    {
+                      "userID": "ouvglith8aaa0g",
+                      "nickname": "自动化_Anna2",
+                      "faceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VJYNxLjimsaq",
+                      "status": 3
+                    }
+                  ],
+                  "members": [
+                    {
+                      "groupID": "4230587368",
+                      "userID": "ouvglith8aaa0g",
+                      "roleLevel": 20,
+                      "joinTime": 1789454481932,
+                      "nickname": "自动化_Anna2",
+                      "faceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VJYNxLjimsaq",
+                      "joinSource": 2,
+                      "operatorUserID": "ouvgllrjy9w5yw",
+                      "muteEndTime": -62135596800000,
+                      "inviterUserID": "ouvgllrjy9w5yw",
+                      "userTenantID": "T1120BFPA",
+                      "userCompanyID": "orvglfbb9yi5to"
+                    },
+                    {
+                      "groupID": "4230587368",
+                      "userID": "ouvgllrjy9w5yw",
+                      "roleLevel": 100,
+                      "joinTime": 1789454481932,
+                      "nickname": "CFO",
+                      "faceURL": "https://test-saas-api.oa-test.org/api/oa/v1/file/fl09TqR8RUxXUPs90VHVWS8ynljm6",
+                      "joinSource": 2,
+                      "operatorUserID": "ouvgllrjy9w5yw",
+                      "muteEndTime": -62135596800000,
+                      "inviterUserID": "ouvgllrjy9w5yw",
+                      "userTenantID": "T1120BFPA",
+                      "userCompanyID": "orvglfbb9yi5to"
+                    }
+                  ],
+                  "joinUserIDs": [
+                    "ouvgllrjy9w5yw"
+                  ],
+                  "spaceType": 2,
+                  "companyName": "自动化测试公司",
+                  "descriptionUpdateTime": 1789454481932
+                },
+                "folderId": "847128291"
+              }
+            }
+          }
+        },
+        "project_members": {},
+        "task_details": {
+          "task_path": {
+            "ok": false,
+            "request_id": "1c72124d-7454-446c-bdd7-cf27af70b502",
+            "status_code": 200,
+            "error": "code: 2001005, message: 任务不存在",
+            "response": {
+              "businessCode": 0,
+              "businessMsg": "code: 2001005, message: 任务不存在",
+              "code": 2,
+              "message": "code: 2001005, message: 任务不存在"
+            }
+          },
+          "task_id": {
+            "ok": false,
+            "request_id": "2b897b87-632a-455b-8c06-4c57319686fb",
+            "status_code": 200,
+            "error": "code: 2001005, message: 任务不存在",
+            "response": {
+              "businessCode": 0,
+              "businessMsg": "code: 2001005, message: 任务不存在",
+              "code": 2,
+              "message": "code: 2001005, message: 任务不存在"
+            }
+          },
+          "task_vvgiindfvsw1": {
+            "ok": true,
+            "request_id": "dd70f49a-4411-4a87-be81-3da693f2aa6d",
+            "status_code": 200,
+            "error": "",
+            "response": {
+              "businessCode": 0,
+              "businessMsg": "success",
+              "code": 0,
+              "data": {
+                "task": {
+                  "attachments": [],
+                  "company_id": "orvglfbb9yi5to",
+                  "company_name": "自动化测试公司",
+                  "completed_at": null,
+                  "completed_child_count": 0,
+                  "createTime": "1789454499000",
+                  "created_at": "2026-09-15T06:41:39Z",
+                  "customFieldValues": [],
+                  "description": "AI助手权限评测数据；[AEFIX:T-A-EXECUTED-OTHER:v1]",
+                  "descriptionUpdateTime": "0",
+                  "end_time": null,
+                  "folder_id": "",
+                  "isFollow": false,
+                  "isNew": false,
+                  "isOverdue": false,
+                  "level": 1,
+                  "members": [
+                    {
+                      "added_by_company_id": "orvglfbb9yi5to",
+                      "added_by_tenant_id": "T1120BFPA",
+                      "added_by_user_id": "",
+                      "role": 1,
+                      "user": {
+                        "company_id": "orvglfbb9yi5to",
+                        "reg_user_id": "ruvfhdfgu550uw",
+                        "tenant_id": "T1120BFPA",
+                        "user_id": "ouvgllrjy9w5yw",
+                        "user_name": "CFO"
+                      }
+                    },
+                    {
+                      "added_by_company_id": "orvglfbb9yi5to",
+                      "added_by_tenant_id": "T1120BFPA",
+                      "added_by_user_id": "",
+                      "role": 3,
+                      "user": {
+                        "company_id": "orvglfbb9yi5to",
+                        "reg_user_id": "ruvfhdfgu550uw",
+                        "tenant_id": "T1120BFPA",
+                        "user_id": "ouvgllrjy9w5yw",
+                        "user_name": "CFO"
+                      }
+                    }
+                  ],
+                  "priority": 0,
+                  "progress_child_count": 0,
+                  "project_id": "pro_4230587368",
+                  "project_name": "项目执行人专项 [AEFIX:P-A-EXECUTED:v1]",
+                  "related_group_id": "",
+                  "remind_time": null,
+                  "source_chat_id": "",
+                  "source_type": 1,
+                  "source_unit_id": "ouvglfbbkw8vhl",
+                  "source_unit_name": "自动化测试公司",
+                  "space_id": "3197660864",
+                  "space_name": "AI评测-项目角色域 [AEFIX:S-A-PROJECT-ROLE:v1]",
+                  "start_time": null,
+                  "status": 1,
+                  "taskStatus": 0,
+                  "task_id": "task_vvgiindfvsw1",
+                  "task_path": "/",
+                  "tenant_id": "T1120BFPA",
+                  "title": "执行项目内其他任务 [AEFIX:T-A-EXECUTED-OTHER:v1]",
+                  "updateTime": "1789454499000",
+                  "updated_at": "2026-09-15T06:41:39Z"
+                }
+              },
+              "message": "success"
+            }
+          }
+        },
+        "trees": {
+          "pro_4230587368": {
+            "read_at": "2026-11-03T12:49:21.010614+00:00",
+            "rows": {
+              "task_vvgiindfvsw1": {
+                "attachments": [],
+                "child_count": 0,
+                "company_name": "自动化测试公司",
+                "completed_child_count": 0,
+                "createTime": "1789454499000",
+                "create_time": "2026-09-15T06:41:39Z",
+                "customFieldValues": [],
+                "end_time": null,
+                "group_id": "",
+                "has_matched_descendant": false,
+                "isFollow": false,
+                "isNew": false,
+                "isOverdue": false,
+                "level": 1,
+                "matched_path_node_ids": [],
+                "members": [
+                  {
+                    "added_by_company_id": "",
+                    "added_by_tenant_id": "",
+                    "added_by_user_id": "",
+                    "role": 3,
+                    "user": {
+                      "company_id": "orvglfbb9yi5to",
+                      "reg_user_id": "ruvfhdfgu550uw",
+                      "tenant_id": "T1120BFPA",
+                      "user_id": "ouvgllrjy9w5yw",
+                      "user_name": "CFO"
+                    }
+                  },
+                  {
+                    "added_by_company_id": "",
+                    "added_by_tenant_id": "",
+                    "added_by_user_id": "",
+                    "role": 1,
+                    "user": {
+                      "company_id": "orvglfbb9yi5to",
+                      "reg_user_id": "ruvfhdfgu550uw",
+                      "tenant_id": "T1120BFPA",
+                      "user_id": "ouvgllrjy9w5yw",
+                      "user_name": "CFO"
+                    }
+                  }
+                ],
+                "priority": 0,
+                "progress_child_count": 0,
+                "project_id": "pro_4230587368",
+                "project_name": "项目执行人专项 [AEFIX:P-A-EXECUTED:v1]",
+                "self_matched": false,
+                "source_type": 1,
+                "source_unit_name": "自动化测试公司",
+                "space_id": "3197660864",
+                "start_time": null,
+                "status": 1,
+                "taskStatus": 0,
+                "task_company_id": "orvglfbb9yi5to",
+                "task_id": "task_vvgiindfvsw1",
+                "task_tenant_id": "T1120BFPA",
+                "title": "执行项目内其他任务 [AEFIX:T-A-EXECUTED-OTHER:v1]",
+                "updateTime": "1789454499000",
+                "update_time": "2026-09-15T06:41:39Z"
+              }
+            },
+            "parents": {
+              "task_vvgiindfvsw1": ""
+            },
+            "pagination": [
+              {
+                "request_id": "9591a2af-a33f-47b3-abe2-41e4fd701679",
+                "page": 1,
+                "total": 1,
+                "returned": 1,
+                "parent": "",
+                "query": {
+                  "query_scope": 2,
+                  "project_id": "pro_4230587368",
+                  "space_id": "3197660864"
+                }
+              }
+            ],
+            "complete_recursive_readback": true,
+            "source": "independent authenticated business API, exact actor, full recursive pagination"
+          }
+        }
+      }
+    },
+    "review_observation": {
+      "basis": "f0ae9bb90c13441132fa229e2bafe7cb1118fed139ebffb2e93c7cb613c577c3",
+      "result": "1612ce36f01f150552fefa4a390e25009fb9ab9f08808704ce4e7cf3e27c2036",
+      "requests": [
+        "0497d1d4-5250-4655-827b-4de38934df46",
+        "cab3c89c-24d7-4e7d-844a-c71cbdc600fa"
+      ]
+    },
+    "current_batch_scope": "补条件后新会话重跑",
+    "pending_recheck": {
+      "previous_status": "skip",
+      "previous_reason": "两轮均已正常生成回答，但输入未提供项目页绑定项目的请求上下文或可核验历史。独立回读仅能证明目标项目及任务存在且可见，不能证明助手已收到该项目锚点。因此无法确定两轮请求澄清属于合理消歧还是遗漏项目上下文，不能据此判定记忆任务通过或失败。",
+      "previous_kind": "evidence_insufficient",
+      "current_status": "失败",
+      "question_resent": true,
+      "current_scope": "补条件后新会话重跑",
+      "original_execution_preserved": true,
+      "new_sessions": [
+        "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd"
+      ],
+      "condition_diagnosis": {
+        "disposition": "evaluated",
+        "source": "new isolated business reexecution",
+        "previous_pending_reason": "两轮均已正常生成回答，但输入未提供项目页绑定项目的请求上下文或可核验历史。独立回读仅能证明目标项目及任务存在且可见，不能证明助手已收到该项目锚点。因此无法确定两轮请求澄清属于合理消歧还是遗漏项目上下文，不能据此判定记忆任务通过或失败。",
+        "evidence_gap_closed": true,
+        "historical_business_request_existed": true
+      },
+      "evidence_sources": {
+        "original_request_recovery": "evidence/AA-SMEM-005.json",
+        "independent_readback": "sources/AA-SMEM-005.json"
+      },
+      "prior_saved_review": null
+    }
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-SMEM-005",
+    "environment": "test",
+    "generated_at": "2026-11-03T12:54:24+00:00",
+    "output": {
+      "text": "请提供项目名称或引用该项目，我才能查看项目任务及其子任务，并分析风险。"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 20
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 22,
+            "input_tokens": 6435,
+            "output_tokens": 19,
+            "total_tokens": 6454,
+            "estimated_cost_micros": 32460,
+            "cached_input_tokens": 6239,
+            "cache_write_input_tokens": 94,
+            "cache_hit_ratio": 0.9695415695415696,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 28
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "seq": 2
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "seq": 12
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "seq": 24
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "seq": 26,
+            "input_tokens": 6467,
+            "output_tokens": 24,
+            "total_tokens": 6491,
+            "estimated_cost_micros": 32695,
+            "cached_input_tokens": 6239,
+            "cache_write_input_tokens": 126,
+            "cache_hit_ratio": 0.964744085356425,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "turn_step": 3,
+            "seq": 30
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": false,
+        "mcp": false,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "message_id": "",
+          "request_id": "27493925-6319-4a19-baea-e100193a37c0",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "message_id": "cm_ff302d72-8260-444c-bf97-86c041cb6941",
+          "request_id": "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "message_id": "cm_6bed36b9-9ce7-48cb-abdc-92e1f99f6b16",
+          "request_id": "0497d1d4-5250-4655-827b-4de38934df46",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 2
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "sub2api/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.11"
+    },
+    "metrics": {
+      "e2e_ms": 5609,
+      "tool_calls": 0,
+      "retries": 0,
+      "input_tokens": 12902,
+      "output_tokens": 43,
+      "cached_tokens": 12478,
+      "cost_usd": 0.065155,
+      "usage_runs": 2
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "CFO",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "request_id": "27493925-6319-4a19-baea-e100193a37c0",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "CFO",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "message_id": "cm_ff302d72-8260-444c-bf97-86c041cb6941",
+          "request_id": "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "请提供项目名称，或引用该项目，我才能查询并分析风险。",
+          "message": "这个项目风险是什么？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          },
+          "question": "这个项目风险是什么？"
+        },
+        {
+          "step": 3,
+          "op": "continue",
+          "actor_ref": "CFO",
+          "session_id": "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd",
+          "message_id": "cm_6bed36b9-9ce7-48cb-abdc-92e1f99f6b16",
+          "request_id": "0497d1d4-5250-4655-827b-4de38934df46",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "请提供项目名称或引用该项目，我才能查看项目任务及其子任务，并分析风险。",
+          "message": "它的子任务呢？",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": [],
+          "actor": {
+            "account_ref": "CFO",
+            "company": "自动化测试公司",
+            "tenant_id": "T1120BFPA",
+            "user_id": "ouvgllrjy9w5yw",
+            "fixture_actor_ref": "ACC-TEST-02"
+          },
+          "question": "它的子任务呢？"
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "relative_deadline_fixture": {},
+      "recent_owner_fixture": {},
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+          "turn_step": 2,
+          "request_id": "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 25,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.turn_ledger",
+            "chat.title",
+            "chat.completed"
+          ],
+          "usage": {
+            "input_tokens": 6435,
+            "output_tokens": 19,
+            "total_tokens": 6454,
+            "estimated_cost_micros": 32460,
+            "cached_input_tokens": 6239,
+            "cache_write_input_tokens": 94,
+            "cache_hit_ratio": 0.9695415695415696,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+          "turn_step": 3,
+          "request_id": "0497d1d4-5250-4655-827b-4de38934df46",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.11",
+          "model": "sub2api/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [],
+          "rejected_skills": [],
+          "tools": [],
+          "event_count": 22,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.text_delta",
+            "chat.model_response",
+            "chat.cache_stats",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 6467,
+            "output_tokens": 24,
+            "total_tokens": 6491,
+            "estimated_cost_micros": 32695,
+            "cached_input_tokens": 6239,
+            "cache_write_input_tokens": 126,
+            "cache_hit_ratio": 0.964744085356425,
+            "prefix_rewrites": 0,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+          "0497d1d4-5250-4655-827b-4de38934df46"
+        ],
+        "current_session_ids": [
+          "cs_2e69cf2d-7bc0-44d1-9b5d-bc4c76bb31dd"
+        ],
+        "matched_run_ids": [
+          "bar_d6648311ab644157b1c376e9fd01b279",
+          "bar_278ffd190df54f7486084be34b6129cb"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      },
+      "evidence_recovery": {
+        "collected_at": "2026-11-03T12:54:26.742403+00:00",
+        "read_only": true,
+        "question_resent": false,
+        "same_historical_requests": true,
+        "system_developer_prompts_saved": false,
+        "binary_content_saved": false,
+        "runs": [
+          {
+            "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+            "request_id": "cab3c89c-24d7-4e7d-844a-c71cbdc600fa",
+            "turn_step": 2,
+            "server_times": {
+              "created_at_unix": "1793710460",
+              "started_at_unix": "1793710460",
+              "finished_at_unix": "1793710462"
+            },
+            "context_events": [
+              {
+                "event_type": "chat.session_overlay_read",
+                "seq": "2",
+                "at": "1793710460",
+                "payload": {
+                  "bounded_turn_count": 0,
+                  "duration_ms": 2,
+                  "error_category": "Internal",
+                  "fallback_status": "empty",
+                  "fallback_used": true,
+                  "full_detail_recent_turns": 3,
+                  "operation": "get_window",
+                  "recent_turn_limit": 128,
+                  "status": "degraded",
+                  "summary_source": "none",
+                  "tool_detail": "digest_only+bounded_recent",
+                  "turn_count": 0
+                }
+              },
+              {
+                "event_type": "context.organization",
+                "seq": "4",
+                "at": "1793710460",
+                "payload": {
+                  "status": "loaded"
+                }
+              },
+              {
+                "event_type": "context.current_user",
+                "seq": "5",
+                "at": "1793710460",
+                "payload": {
+                  "name_present": true,
+                  "status": "available"
+                }
+              },
+              {
+                "event_type": "chat.started",
+                "seq": "6",
+                "at": "1793710460",
+                "payload": {
+                  "activation_block_active": false,
+                  "activation_mode": "manifest",
+                  "active_skills": [],
+                  "answer_count": 0,
+                  "assembled_prompt_bytes": 19961,
+                  "carried_skills": [],
+                  "entry": "",
+                  "entry_tool_count": 3,
+                  "historical_active_skills": [],
+                  "page_type": "",
+                  "prior_skills": [],
+                  "profile_context_tokens": 0,
+                  "profile_render_mode": "skills",
+                  "prompt_digest": "sha256:2e34ac90d52a9ce528905042eceb3f05fe277b4d2d200309a8329ac8fbb4ed30",
+                  "prompt_fragments": [
+                    "assistant_core_identity@0.1.3",
+                    "assistant_core_output@0.3.4",
+                    "assistant_core_scope@0.1.2",
+                    "assistant_core_context_entry@0.4.24",
+                    "assistant_core_domain_map@0.6.2",
+                    "assistant_core_skills@0.5.3",
+                    "host/automation_run@1",
+                    "host/attachments@2",
+                    "host/context_guards@2",
+                    "host/loop_notices@3",
+                    "host/follow@2",
+                    "host/subagents@2",
+                    "host/chat_copy_i18n@1"
+                  ],
+                  "prompt_key": "assistant_chat_agent",
+                  "prompt_source": "embedded",
+                  "prompt_version": "0.22.11",
+                  "request_datetime": "{\"local_datetime\":\"2026-11-03T21:54:20+09:00\",\"timestamp\":1793710460,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                  "run_id": "bar_d6648311ab644157b1c376e9fd01b279",
+                  "suggestion_category": ""
+                }
+              },
+              {
+                "event_type": "chat.history_source",
+                "seq": "7",
+                "at": "1793710460",
+                "payload": {
+                  "entity_reference_count": 1,
+                  "message_count": 1,
+                  "overlay_history_disabled": false,
+                  "overlay_turn_count": 0,
+                  "overlay_window_read": false,
+                  "source": "chat_manager_fallback",
+                  "status": "succeeded"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection",
+                "seq": "8",
+                "at": "1793710460",
+                "payload": {
+                  "digest_only_turn_count": 0,
+                  "downgraded_turn_count": 0,
+                  "empty_turn_count": 0,
+                  "full_detail_turn_count": 0,
+                  "injected_bytes": 0,
+                  "injected_turn_count": 0,
+                  "missing_anchor_count": 0,
+                  "missing_anchor_sequences": null,
+                  "overlay_turn_count": 0,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection_detail",
+                "seq": "9",
+                "at": "1793710460",
+                "payload": {
+                  "injections": null,
+                  "missing_anchor_sequences": null,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.session_locator_catalog",
+                "seq": "10",
+                "at": "1793710460",
+                "payload": {
+                  "base_reference_count": 0,
+                  "history_widget_hits": 0,
+                  "merged_reference_count": 0,
+                  "overlay_locator_enabled": true,
+                  "overlay_locator_hits": 0,
+                  "status": "succeeded",
+                  "widget_fallback_available": true
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "24",
+                "at": "1793710462",
+                "payload": {
+                  "anchor_sequence": 2847,
+                  "async": true,
+                  "blocking": false,
+                  "bounded_result_bytes": 0,
+                  "locator_count": 0,
+                  "omitted_tool_activity_count": 0,
+                  "phase": "schedule",
+                  "status": "scheduled",
+                  "timeout_ms": 3000,
+                  "tool_activity_count": 0,
+                  "tool_activity_truncated": false
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "26",
+                "at": "1793710462",
+                "payload": {
+                  "async": true,
+                  "blocking": false,
+                  "duration_ms": 4,
+                  "error_category": "Internal",
+                  "phase": "result",
+                  "status": "degraded"
+                }
+              },
+              {
+                "event_type": "chat.turn_ledger",
+                "seq": "27",
+                "at": "1793710462",
+                "payload": {
+                  "error_category": "Internal",
+                  "evidence": null,
+                  "failed": 0,
+                  "pending": 0,
+                  "persistence": "failed",
+                  "processed": 0,
+                  "total": 0
+                }
+              }
+            ],
+            "business_input": [
+              {
+                "seq": "12",
+                "purpose": null,
+                "invocation_id": "model_1",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "这个项目风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T21:54:20+09:00\",\"timestamp\":1793710460,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "这个项目风险是什么？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T21:54:20+09:00\",\"timestamp\":1793710460,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              },
+              {
+                "seq": "13",
+                "purpose": "title",
+                "invocation_id": "title_model_1",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "这个项目风险是什么？"
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              }
+            ]
+          },
+          {
+            "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+            "request_id": "0497d1d4-5250-4655-827b-4de38934df46",
+            "turn_step": 3,
+            "server_times": {
+              "created_at_unix": "1793710462",
+              "started_at_unix": "1793710462",
+              "finished_at_unix": "1793710465"
+            },
+            "context_events": [
+              {
+                "event_type": "chat.session_overlay_read",
+                "seq": "2",
+                "at": "1793710462",
+                "payload": {
+                  "bounded_turn_count": 0,
+                  "duration_ms": 2,
+                  "error_category": "Internal",
+                  "fallback_status": "empty",
+                  "fallback_used": true,
+                  "full_detail_recent_turns": 3,
+                  "operation": "get_window",
+                  "recent_turn_limit": 128,
+                  "status": "degraded",
+                  "summary_source": "none",
+                  "tool_detail": "digest_only+bounded_recent",
+                  "turn_count": 0
+                }
+              },
+              {
+                "event_type": "context.organization",
+                "seq": "4",
+                "at": "1793710462",
+                "payload": {
+                  "status": "loaded"
+                }
+              },
+              {
+                "event_type": "context.current_user",
+                "seq": "5",
+                "at": "1793710462",
+                "payload": {
+                  "name_present": true,
+                  "status": "available"
+                }
+              },
+              {
+                "event_type": "chat.started",
+                "seq": "6",
+                "at": "1793710462",
+                "payload": {
+                  "activation_block_active": false,
+                  "activation_mode": "manifest",
+                  "active_skills": [],
+                  "answer_count": 0,
+                  "assembled_prompt_bytes": 19961,
+                  "carried_skills": [],
+                  "entry": "",
+                  "entry_tool_count": 3,
+                  "historical_active_skills": [],
+                  "page_type": "",
+                  "prior_skills": [],
+                  "profile_context_tokens": 0,
+                  "profile_render_mode": "skills",
+                  "prompt_digest": "sha256:2e34ac90d52a9ce528905042eceb3f05fe277b4d2d200309a8329ac8fbb4ed30",
+                  "prompt_fragments": [
+                    "assistant_core_identity@0.1.3",
+                    "assistant_core_output@0.3.4",
+                    "assistant_core_scope@0.1.2",
+                    "assistant_core_context_entry@0.4.24",
+                    "assistant_core_domain_map@0.6.2",
+                    "assistant_core_skills@0.5.3",
+                    "host/automation_run@1",
+                    "host/attachments@2",
+                    "host/context_guards@2",
+                    "host/loop_notices@3",
+                    "host/follow@2",
+                    "host/subagents@2",
+                    "host/chat_copy_i18n@1"
+                  ],
+                  "prompt_key": "assistant_chat_agent",
+                  "prompt_source": "embedded",
+                  "prompt_version": "0.22.11",
+                  "request_datetime": "{\"local_datetime\":\"2026-11-03T21:54:22+09:00\",\"timestamp\":1793710462,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                  "run_id": "bar_278ffd190df54f7486084be34b6129cb",
+                  "suggestion_category": ""
+                }
+              },
+              {
+                "event_type": "chat.history_source",
+                "seq": "7",
+                "at": "1793710462",
+                "payload": {
+                  "entity_reference_count": 1,
+                  "message_count": 3,
+                  "overlay_history_disabled": false,
+                  "overlay_turn_count": 0,
+                  "overlay_window_read": false,
+                  "source": "chat_manager_fallback",
+                  "status": "succeeded"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection",
+                "seq": "8",
+                "at": "1793710462",
+                "payload": {
+                  "digest_only_turn_count": 0,
+                  "downgraded_turn_count": 0,
+                  "empty_turn_count": 0,
+                  "full_detail_turn_count": 0,
+                  "injected_bytes": 0,
+                  "injected_turn_count": 0,
+                  "missing_anchor_count": 0,
+                  "missing_anchor_sequences": null,
+                  "overlay_turn_count": 0,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.tool_memory_injection_detail",
+                "seq": "9",
+                "at": "1793710462",
+                "payload": {
+                  "injections": null,
+                  "missing_anchor_sequences": null,
+                  "status": "empty"
+                }
+              },
+              {
+                "event_type": "chat.session_locator_catalog",
+                "seq": "10",
+                "at": "1793710462",
+                "payload": {
+                  "base_reference_count": 0,
+                  "history_widget_hits": 0,
+                  "merged_reference_count": 0,
+                  "overlay_locator_enabled": true,
+                  "overlay_locator_hits": 0,
+                  "status": "succeeded",
+                  "widget_fallback_available": true
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "28",
+                "at": "1793710465",
+                "payload": {
+                  "anchor_sequence": 2849,
+                  "async": true,
+                  "blocking": false,
+                  "bounded_result_bytes": 0,
+                  "locator_count": 0,
+                  "omitted_tool_activity_count": 0,
+                  "phase": "schedule",
+                  "status": "scheduled",
+                  "timeout_ms": 3000,
+                  "tool_activity_count": 0,
+                  "tool_activity_truncated": false
+                }
+              },
+              {
+                "event_type": "chat.session_overlay_append",
+                "seq": "31",
+                "at": "1793710465",
+                "payload": {
+                  "async": true,
+                  "blocking": false,
+                  "duration_ms": 4,
+                  "error_category": "Internal",
+                  "phase": "result",
+                  "status": "degraded"
+                }
+              },
+              {
+                "event_type": "chat.turn_ledger",
+                "seq": "32",
+                "at": "1793710465",
+                "payload": {
+                  "error_category": "Internal",
+                  "evidence": null,
+                  "failed": 0,
+                  "pending": 0,
+                  "persistence": "failed",
+                  "processed": 0,
+                  "total": 0
+                }
+              }
+            ],
+            "business_input": [
+              {
+                "seq": "12",
+                "purpose": null,
+                "invocation_id": "model_1",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "这个项目风险是什么？"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "请提供项目名称，或引用该项目，我才能查询并分析风险。"
+                  },
+                  {
+                    "role": "user",
+                    "content": "它的子任务呢？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T21:54:22+09:00\",\"timestamp\":1793710462,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                    "content_parts": [
+                      {
+                        "type": "text",
+                        "text": "它的子任务呢？\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T21:54:22+09:00\",\"timestamp\":1793710462,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                        "cache_control": {
+                          "type": "ephemeral"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "excluded_roles": [
+                  "system",
+                  "developer"
+                ],
+                "source": "authenticated Trace, extracted business input only"
+              }
+            ]
+          }
+        ]
+      },
+      "tool_preview_policy": {
+        "collector_client_truncation": false,
+        "server_truncation_preserved": true,
+        "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+      }
+    }
+  }
+}

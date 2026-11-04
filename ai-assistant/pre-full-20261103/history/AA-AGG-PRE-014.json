@@ -1,0 +1,1046 @@
+{
+  "row": {
+    "asker": "智本测试_安柔",
+    "asker_company": "智本企业",
+    "asker_source": "execution_turn",
+    "askers": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "asker_turns": [
+      {
+        "step": 2,
+        "name": "智本测试_安柔",
+        "company": "智本企业",
+        "actor_ref": "智本测试_安柔",
+        "source": "execution_turn"
+      }
+    ],
+    "environment": "pre",
+    "case_id": "AA-AGG-PRE-014",
+    "suite": "assistant_agent_followup",
+    "module": "空间任务聚合问答",
+    "scenario": "HAVING至少20条边界",
+    "gate_class": "quality",
+    "priority": "P0",
+    "status": "fail",
+    "kind": "business_review",
+    "reason": "助手正确限定了三个项目，并将恰好20条的anna289纳入，但未完成全树统计。独立Gold为annaA 23条、智本测试_安柔21条、anna289 20条；回答仅给出已读取的22、21、20条，并明确表示最终数量未确认。Trace显示助手已发现64条总数与63条读取记录不一致，却未继续读取更深层后代。诚实披露不完整避免了虚构最终结果，但不能替代完成用户要求。",
+    "confidence": "high",
+    "latency_ms": 72359,
+    "model": "openai/gpt-6.1-terra",
+    "prompt_version": "assistant_chat_agent@0.22.10",
+    "automatic_status": "fail",
+    "automatic_reason": "tool ordering anomalies: ['bar_d614e16a773f40f99418ead9fe04b9d7: query before/without structured_schema']",
+    "categories": [
+      "信息缺失"
+    ],
+    "title": "只看“聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]”三个项目，排除空间默认项目和其他对象。改为创建任务数至少20条的人员，恰好20条也算。",
+    "ability": "主子任务聚合",
+    "task_completion_rate": 0,
+    "operational_review": {},
+    "planning_review": {},
+    "trace_status": "内部工具链已采集；权限/引用仍未观测",
+    "trace_runs": 1,
+    "questions": [
+      "只看“聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]”三个项目，排除空间默认项目和其他对象。改为创建任务数至少20条的人员，恰好20条也算。"
+    ],
+    "answer": "按三个指定项目合并统计，**已读取的任务和子任务中，有 3 人创建了至少 20 条**：\n\n| 创建人 | 已读取数量 |\n|---|---:|\n| `widget:mention:ouvdieyaga1igt:T1120J0W9` | 22 条 |\n| `widget:mention:ouvdiekzrxcqc2:T1120J0W9` | 21 条 |\n| `widget:mention:ouvtx9uhuppqs6:T1120J0W9` | 20 条 |\n\n统计范围仅限指定空间内的项目甲、项目乙和空项目，排除了空间默认项目及其他对象。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|project:pro_1737047575:T1120J0W9`\n\n**完整性限制：**统计显示共有 64 条任务，其中子任务总数为 32 条，但实际只读取到 31 条子任务。因此，上表是已读取的 63 条记录的统计，尚有 1 条子任务未核实，不能确认各人的最终数量或符合条件人员是否已列全。\n\n要不要我帮你长期关注“聚合验收项目甲”“聚合验收项目乙”和“聚合验收空项目”？",
+    "execution_completed": true,
+    "execution_completion_rate": 100,
+    "failure_categories": [],
+    "business_reason": "助手正确限定了三个项目，并将恰好20条的anna289纳入，但未完成全树统计。独立Gold为annaA 23条、智本测试_安柔21条、anna289 20条；回答仅给出已读取的22、21、20条，并明确表示最终数量未确认。Trace显示助手已发现64条总数与63条读取记录不一致，却未继续读取更深层后代。诚实披露不完整避免了虚构最终结果，但不能替代完成用户要求。",
+    "tool_chain_summary": "Skill：output_presentation、structured_query、task_space；工具链：activate_skills(completed) → entity_resolve(completed) → task_ask(completed) → scratchpad_read(completed) → task_ask(completed) → scratchpad_read(completed)；自动断言：tool ordering anomalies: ['bar_d614e16a773f40f99418ead9fe04b9d7: query before/without structured_schema']",
+    "turns": [
+      {
+        "step": 2,
+        "op": "ask",
+        "status": "completed",
+        "actor_ref": "智本测试_安柔",
+        "question": "只看“聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]”三个项目，排除空间默认项目和其他对象。改为创建任务数至少20条的人员，恰好20条也算。",
+        "answer": "按三个指定项目合并统计，**已读取的任务和子任务中，有 3 人创建了至少 20 条**：\n\n| 创建人 | 已读取数量 |\n|---|---:|\n| `widget:mention:ouvdieyaga1igt:T1120J0W9` | 22 条 |\n| `widget:mention:ouvdiekzrxcqc2:T1120J0W9` | 21 条 |\n| `widget:mention:ouvtx9uhuppqs6:T1120J0W9` | 20 条 |\n\n统计范围仅限指定空间内的项目甲、项目乙和空项目，排除了空间默认项目及其他对象。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|project:pro_1737047575:T1120J0W9`\n\n**完整性限制：**统计显示共有 64 条任务，其中子任务总数为 32 条，但实际只读取到 31 条子任务。因此，上表是已读取的 63 条记录的统计，尚有 1 条子任务未核实，不能确认各人的最终数量或符合条件人员是否已列全。\n\n要不要我帮你长期关注“聚合验收项目甲”“聚合验收项目乙”和“聚合验收空项目”？",
+        "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+        "request_id": "e6ae10e7-6261-443a-a46d-58b501016e2c",
+        "message_id": "cm_904137b2-f638-4f28-a804-6d5fee319310",
+        "http_status": 200,
+        "error": "",
+        "asker": "智本测试_安柔"
+      }
+    ],
+    "trace_tools": [
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 19,
+        "name": "activate_skills",
+        "arguments_summary": "skills=structured_query,task_space",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 27,
+        "name": "entity_resolve",
+        "arguments_summary": "requests=4",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 32,
+        "name": "task_ask",
+        "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=false instruction_runes=84",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 40,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project_______-5709c6ea offset=0",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 45,
+        "name": "task_ask",
+        "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=true instruction_runes=58",
+        "status": "completed",
+        "attempts": 1
+      },
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "seq": 53,
+        "name": "scratchpad_read",
+        "arguments_summary": "path=answers/task_project-ef7935c6 offset=0",
+        "status": "completed",
+        "attempts": 1
+      }
+    ],
+    "trace_run_summaries": [
+      {
+        "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+        "step": 2,
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "status": "succeeded",
+        "skills": "structured_query、task_space、output_presentation",
+        "model": "openai/gpt-6.1-terra",
+        "prompt": "assistant_chat_agent@0.22.10",
+        "event_count": 66,
+        "tool_count": 6,
+        "tokens": 200613
+      }
+    ],
+    "failed_checks": [
+      {
+        "dimension": "answer.must_include",
+        "status": "skip",
+        "reason": "must_include has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.must_exclude",
+        "status": "skip",
+        "reason": "must_exclude has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.turn.2.semantic",
+        "status": "skip",
+        "reason": "turn has no literal oracle; semantic review required"
+      },
+      {
+        "dimension": "answer.semantic_structure",
+        "status": "skip",
+        "reason": "structured Gold facts require a recorded semantic or entity verdict"
+      },
+      {
+        "dimension": "version.provenance",
+        "status": "skip",
+        "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+      },
+      {
+        "dimension": "resource.capture",
+        "status": "skip",
+        "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+      },
+      {
+        "dimension": "trace.completeness",
+        "status": "skip",
+        "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+      },
+      {
+        "dimension": "tool.sequence",
+        "status": "fail",
+        "reason": "tool ordering anomalies: ['bar_d614e16a773f40f99418ead9fe04b9d7: query before/without structured_schema']"
+      },
+      {
+        "dimension": "privacy.protected_surfaces",
+        "status": "skip",
+        "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "citation.validity",
+        "status": "skip",
+        "reason": "citation validity internals unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "side_effect.write_safety",
+        "status": "skip",
+        "reason": "write side effects unavailable in Assistant SSE"
+      },
+      {
+        "dimension": "semantic.quality",
+        "status": "skip",
+        "reason": "semantic judge evidence unavailable"
+      }
+    ],
+    "harness": "assistant-chat-live+trace",
+    "detail_anchor": "failure-pre-AA-AGG-PRE-014",
+    "gold": {
+      "type": "aggregation_task_tree",
+      "gold_refs": [
+        "AGG-PRE-SPACE",
+        "AGG-PRE-P-A",
+        "AGG-PRE-P-B",
+        "AGG-PRE-P-Z",
+        "AGG-PRE-T001",
+        "AGG-PRE-T002",
+        "AGG-PRE-T003",
+        "AGG-PRE-T004",
+        "AGG-PRE-T005",
+        "AGG-PRE-T006",
+        "AGG-PRE-T007",
+        "AGG-PRE-T008",
+        "AGG-PRE-T009",
+        "AGG-PRE-T010",
+        "AGG-PRE-T011",
+        "AGG-PRE-T012",
+        "AGG-PRE-T013",
+        "AGG-PRE-T014",
+        "AGG-PRE-T015",
+        "AGG-PRE-T016",
+        "AGG-PRE-T017",
+        "AGG-PRE-T018",
+        "AGG-PRE-T019",
+        "AGG-PRE-T020",
+        "AGG-PRE-T021",
+        "AGG-PRE-T022",
+        "AGG-PRE-T023",
+        "AGG-PRE-T024",
+        "AGG-PRE-T025",
+        "AGG-PRE-T026",
+        "AGG-PRE-T027",
+        "AGG-PRE-T028",
+        "AGG-PRE-T029",
+        "AGG-PRE-T030",
+        "AGG-PRE-T031",
+        "AGG-PRE-T032",
+        "AGG-PRE-T033",
+        "AGG-PRE-T034",
+        "AGG-PRE-T035",
+        "AGG-PRE-T036",
+        "AGG-PRE-T037",
+        "AGG-PRE-T038",
+        "AGG-PRE-T039",
+        "AGG-PRE-T040",
+        "AGG-PRE-T041",
+        "AGG-PRE-T042",
+        "AGG-PRE-T043",
+        "AGG-PRE-T044",
+        "AGG-PRE-T045",
+        "AGG-PRE-T046",
+        "AGG-PRE-T047",
+        "AGG-PRE-T048",
+        "AGG-PRE-T049",
+        "AGG-PRE-T050",
+        "AGG-PRE-T051",
+        "AGG-PRE-T052",
+        "AGG-PRE-T053",
+        "AGG-PRE-T054",
+        "AGG-PRE-T055",
+        "AGG-PRE-T056",
+        "AGG-PRE-T057",
+        "AGG-PRE-T058",
+        "AGG-PRE-T059",
+        "AGG-PRE-T060",
+        "AGG-PRE-T061",
+        "AGG-PRE-T062",
+        "AGG-PRE-T063",
+        "AGG-PRE-T064",
+        "AGG-PRE-U0"
+      ],
+      "must_include": [],
+      "must_exclude": [],
+      "qualitative_requirements": [
+        "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+        "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+        "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+        "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+        "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+        "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+        "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+        "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。"
+      ],
+      "required_fields": [
+        "指定集合/层级/筛选口径",
+        "计数或分组结果",
+        "完整数据范围及可追溯来源"
+      ],
+      "citation_refs": [],
+      "gold_entities": [],
+      "fixed_fact_truth": "第1轮：{\"annaA\":23,\"智本测试_安柔\":21,\"anna289\":20}",
+      "turn_expectations": [
+        {
+          "step": 2,
+          "message": "只看“聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]”三个项目，排除空间默认项目和其他对象。改为创建任务数至少20条的人员，恰好20条也算。",
+          "must_include": [],
+          "qualitative_requirements": [
+            "只统计本轮明确选择的空间/项目/任务，先确认主任务、直接子任务、全部后代的口径；不可混用。",
+            "按(task_id, task_tenant_id)去重；多人执行、一人多角色、多卡片和父子重复命中均不得重复计任务。",
+            "完整翻页及递归读取所有指定层级后再计数；主任务查询total是展示根节点数，不能冒充全树任务数。",
+            "关联子任务命中的展示父节点不是额外命中；计数针对实际满足条件的实体。",
+            "主任务和子任务的完成/逾期各按自身业务字段，不用父任务状态推断全部子任务，未设置截止时间不等于逾期。",
+            "按当前账号真实ACL与同邮箱共享规则核验，不因创建公司/tenant不同直接判无权限；但跨环境ID不可混用。",
+            "空集合计数为0；均值/完成率的零分母为不适用，不能当0%或猜测；无权限和不完整不是空集合。",
+            "卡片标题只是展示元数据，对象定位以真实ID/tenant及回源结果为准；引用、统计集合和分组归属必须可追溯。",
+            "本轮独立Gold={\"annaA\":23,\"智本测试_安柔\":21,\"anna289\":20}"
+          ]
+        }
+      ],
+      "numeric_oracle": [
+        {
+          "annaA": 23,
+          "智本测试_安柔": 21,
+          "anna289": 20
+        }
+      ],
+      "oracle_source": "outputs/aggregation_cases_20261023/pre.oracle.json",
+      "snapshot_policy": "只适用于本次业务源回读；执行前刷新ACL、全树、状态、截止时间及时间依赖统计。",
+      "scope": "pre/actor_visible/AGG-PRE-SPACE",
+      "evaluation_scope": "all_answer_turns"
+    },
+    "turn_verdicts": [
+      {
+        "step": 2,
+        "status": "fail",
+        "reason": "范围和至少20条的包含边界处理正确，但停留在不完整的63条记录统计，没有补读剩余后代并提供最终结果，annaA完整数量23条未答出。",
+        "evidence_refs": [
+          "trace.runs[0].tools seq27：三个项目及空间定位成功",
+          "trace.runs[0].tools seq45、53：覆盖63条，创建人统计22/21/20，总数64",
+          "expected_answer.current_independent_readback.complete_recursive_task_tree.calls：任务033的query-children返回1条第三级任务",
+          "expected_answer.turn_expectations step2：独立Gold为annaA23、智本测试_安柔21、anna28920",
+          "turns step2.answer：明确声明尚有1条子任务未核实"
+        ]
+      }
+    ],
+    "current_batch_scope": "本轮未重跑；历史结果原样保留"
+  },
+  "record": {
+    "contract": "agent_evaluation.evidence.v2",
+    "case_id": "AA-AGG-PRE-014",
+    "environment": "pre",
+    "generated_at": "2026-11-03T08:12:07+00:00",
+    "output": {
+      "text": "按三个指定项目合并统计，**已读取的任务和子任务中，有 3 人创建了至少 20 条**：\n\n| 创建人 | 已读取数量 |\n|---|---:|\n| `widget:mention:ouvdieyaga1igt:T1120J0W9` | 22 条 |\n| `widget:mention:ouvdiekzrxcqc2:T1120J0W9` | 21 条 |\n| `widget:mention:ouvtx9uhuppqs6:T1120J0W9` | 20 条 |\n\n统计范围仅限指定空间内的项目甲、项目乙和空项目，排除了空间默认项目及其他对象。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|project:pro_1737047575:T1120J0W9`\n\n**完整性限制：**统计显示共有 64 条任务，其中子任务总数为 32 条，但实际只读取到 31 条子任务。因此，上表是已读取的 63 条记录的统计，尚有 1 条子任务未核实，不能确认各人的最终数量或符合条件人员是否已列全。\n\n要不要我帮你长期关注“聚合验收项目甲”“聚合验收项目乙”和“聚合验收空项目”？"
+    },
+    "trace": {
+      "contract": "ai_assistant.trace.v1",
+      "status": "内部工具链已采集；权限/引用仍未观测",
+      "source": "chat/assistant/stream+business-agent/full-trace",
+      "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+      "events": [
+        {
+          "type": "intent.route",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "workflow": "weekly_report.recipient_summary",
+            "scenario": "assistant_chat"
+          }
+        },
+        {
+          "type": "request.received",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2
+          }
+        },
+        {
+          "type": "memory.session.read",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 3
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 13
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 14
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 15
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 17
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 19,
+            "name": "activate_skills",
+            "call_id": "call_7216a108d613464493013d1dd05d2eed",
+            "arguments_summary": "skills=structured_query,task_space",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "skill.activation",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 20,
+            "requested": [
+              "structured_query",
+              "task_space"
+            ],
+            "activated": [
+              "output_presentation",
+              "structured_query",
+              "task_space"
+            ],
+            "rejected": []
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 22,
+            "name": "activate_skills",
+            "call_id": "call_7216a108d613464493013d1dd05d2eed",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+            "orphan": false,
+            "result_preview_client_truncated": true
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 24
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 25
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 27,
+            "name": "entity_resolve",
+            "call_id": "call_1b25b98c5db5418eae410fd0fe41feae",
+            "arguments_summary": "requests=4",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 28,
+            "name": "entity_resolve",
+            "call_id": "call_1b25b98c5db5418eae410fd0fe41feae",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"space\",\"id\":\"4012016751\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:space:4012016751:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_993982662\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_993982662:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_1679732559\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_1679732559:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_1737047575\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_1737047575:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]\",\"entity\":\"space\",\"fields\":{\"space.id\":\"4012016751\",\"space.name\":\"聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]\"},\"id\":\"4012016751\"}],\"entity\":\"space\",\"expectation\":{\"count\":1},\"key\":\"space\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_993982662\",\"project.name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\"},\"id\":\"pro_993982662\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"a\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_1679732559\",\"project.name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\"},\"id\":\"pro_1679732559\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"b\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_1737047575\",\"project.name\":\"聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]\"},\"id\":\"pro_1737047575\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"z\",\"status\":\"resolved\"}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 29
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 30
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 32,
+            "name": "task_ask",
+            "call_id": "call_49d975c931db4c54abbafbf6174f5f3b",
+            "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=false instruction_runes=84",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 33
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 34
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 36,
+            "name": "task_ask",
+            "call_id": "call_49d975c931db4c54abbafbf6174f5f3b",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_______-5709c6ea\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1qrzhi9js\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qm7cc8tw\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qrzhi9js\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qm7cc8tw\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_ids\":[\"pro_993982662\",\"pro_1679732559\",\"pro_1737047575\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"space_ids\":[\"4012016751\"],\"task_type\":\"project\"},\"label\":\"三个指定项目\",\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":32,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"556ed5b1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"creator\":[{\"key\":\"ouvdiekzrxcqc2@T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"count\":21,\"pct\":65},{\"key\":\"ouvtx9uhuppqs6@T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"count\":11,\"pct\":34}],\"is_overdue\":{\"false\":{\"count\":23,\"pct\":71},\"true\":{\"count\":9,\"pct\":28}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"low\":{\"count\":11,\"pct\":34},\"medium\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":11,\"pct\":34},\"in_progress\":{\"count\":11,\"pct\":34},\"pending\":{\"count\":10,\"pct\":31}}}},\"key\":\"answers/task_project_______-5709c6ea\",\"chunks\":1,\"answer_tokens\":108,\"attempts\":5,\"answer_mode\":\"focus\",\"cited_tasks\":2,\"cache_reuse_allowed\":true}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 37
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 38
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 40,
+            "name": "scratchpad_read",
+            "call_id": "call_d1a6d8e06fba49ecbc5c278f6ddb3a4e",
+            "arguments_summary": "path=answers/task_project_______-5709c6ea offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 41,
+            "name": "scratchpad_read",
+            "call_id": "call_d1a6d8e06fba49ecbc5c278f6ddb3a4e",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_______-5709c6ea\",\"revision\":1,\"content\":\"instruction: \\\"统计三个指定项目合计每位任务创建人的任务数量，列出合计至少20条（含20条）的所有人员及其数量。只用宿主分组统计，不自行数行；说明覆盖和截断情况，并给出可用的任务来源。\\\"\\nrange: {\\\"label\\\":\\\"三个指定项目\\\",\\\"project_ids\\\":[\\\"pro_993982662\\\",\\\"pro_1679732559\\\",\\\"pro_1737047575\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"space_ids\\\":[\\\"4012016751\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:556ed5b1\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":32,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"556ed5b1\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"creator\\\":[{\\\"key\\\":\\\"ouvdiekzrxcqc2@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdiekzrxcqc2\\\",\\\"name\\\":\\\"智本测试_安柔\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":21,\\\"pct\\\":65},{\\\"key\\\":\\\"ouvtx9uhuppqs6@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvtx9uhuppqs6\\\",\\\"name\\\":\\\"anna289\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":11,\\\"pct\\\":34}],\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":23,\\\"pct\\\":71},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":28}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"low\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"medium\\\":{\\\"count\\\":10,\\\"pct\\\":31}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":31}}}}\\nchunks: 1\\n\\n候选任务 32 条，本次选择 2 条；\\n{\\n  \\\"结果\\\": [\\n    {\\n      \\\"创建人\\\": \\\"智本测试_安柔\\\",\\n      \\\"数量\\\": 21,\\n      \\\"引用\\\": \\\"`widget:refs:task:task_vys1qrzhi9js:T1120J0W9|task:task_vys1qm7cc8tw:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"覆盖与截断\\\": \\\"宿主分组统计显示共32条任务、1页，range_truncated=false；创建人候选共2人，本次符合“至少20条”的有1人。材料行可见聚合验收项目甲、乙，未能核实第三个指定项目是否纳入；因此三项目的具体覆盖情况材料中没有依据。\\\",\\n  \\\"可用任务来源\\\": [\\n    \\\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\\\",\\n    \\\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\\\"\\n  ]\\n}\",\"next_offset\":2123,\"eof\":true,\"byte_size\":2123}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 42
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 43
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 45,
+            "name": "task_ask",
+            "call_id": "call_ac7eba0202ee41a0becd73ebd2434dbc",
+            "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=true instruction_runes=58",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 46
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 47
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 49,
+            "name": "task_ask",
+            "call_id": "call_ac7eba0202ee41a0becd73ebd2434dbc",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project-ef7935c6\",\"tenantId\":\"T1120J0W9\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_ids\":[\"pro_993982662\",\"pro_1679732559\",\"pro_1737047575\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"space_ids\":[\"4012016751\"],\"task_type\":\"project\"},\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":63,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"9bc8a7ee\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"creator\":[{\"key\":\"ouvdieyaga1igt@T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"count\":22,\"pct\":34},{\"key\":\"ouvdiekzrxcqc2@T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"count\":21,\"pct\":33},{\"key\":\"ouvtx9uhuppqs6@T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"count\":20,\"pct\":31}],\"is_overdue\":{\"false\":{\"count\":46,\"pct\":73},\"true\":{\"count\":17,\"pct\":26}},\"priority\":{\"high\":{\"count\":21,\"pct\":33},\"low\":{\"count\":21,\"pct\":33},\"medium\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":21,\"pct\":33},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project-ef7935c6\",\"chunks\":1,\"answer_tokens\":113,\"attempts\":7,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":true}]}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 50
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 51
+          }
+        },
+        {
+          "type": "tool.call",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 53,
+            "name": "scratchpad_read",
+            "call_id": "call_b0086130e39641d58bc0f3f5adcdc15d",
+            "arguments_summary": "path=answers/task_project-ef7935c6 offset=0",
+            "status": "missing_result",
+            "attempts": null,
+            "result_preview": "",
+            "arguments_summary_client_truncated": false
+          }
+        },
+        {
+          "type": "tool.result",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 54,
+            "name": "scratchpad_read",
+            "call_id": "call_b0086130e39641d58bc0f3f5adcdc15d",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project-ef7935c6\",\"revision\":1,\"content\":\"instruction: \\\"统计指定三个项目中任务及子任务按创建人分组的数量，列出至少20条含20的人员；使用宿主统计并说明子任务读取是否完整。\\\"\\nrange: {\\\"project_ids\\\":[\\\"pro_993982662\\\",\\\"pro_1679732559\\\",\\\"pro_1737047575\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"space_ids\\\":[\\\"4012016751\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:9bc8a7ee\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":63,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"9bc8a7ee\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"creator\\\":[{\\\"key\\\":\\\"ouvdieyaga1igt@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdieyaga1igt\\\",\\\"name\\\":\\\"annaA\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":22,\\\"pct\\\":34},{\\\"key\\\":\\\"ouvdiekzrxcqc2@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdiekzrxcqc2\\\",\\\"name\\\":\\\"智本测试_安柔\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":21,\\\"pct\\\":33},{\\\"key\\\":\\\"ouvtx9uhuppqs6@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvtx9uhuppqs6\\\",\\\"name\\\":\\\"anna289\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":20,\\\"pct\\\":31}],\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":46,\\\"pct\\\":73},\\\"true\\\":{\\\"count\\\":17,\\\"pct\\\":26}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"low\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"medium\\\":{\\\"count\\\":21,\\\"pct\\\":33}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"in_progress\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"pending\\\":{\\\"count\\\":21,\\\"pct\\\":33}}}}\\nchunks: 1\\n\\n候选任务 63 条，本次选择 0 条；\\n{\\n  \\\"统计口径\\\": \\\"使用宿主 summary 的创建人统计；材料未列出指定三个项目的名称或逐项目统计，无法确认这些人数是否仅对应所指的三个项目。\\\",\\n  \\\"候选数量\\\": 3,\\n  \\\"选中数量\\\": 3,\\n  \\\"按创建人分组\\\": [\\n    {\\\"创建人\\\": \\\"annaA\\\", \\\"user_id\\\": \\\"ouvdieyaga1igt\\\", \\\"数量\\\": 22},\\n    {\\\"创建人\\\": \\\"智本测试_安柔\\\", \\\"user_id\\\": \\\"ouvdiekzrxcqc2\\\", \\\"数量\\\": 21},\\n    {\\\"创建人\\\": \\\"anna289\\\", \\\"user_id\\\": \\\"ouvtx9uhuppqs6\\\", \\\"数量\\\": 20}\\n  ],\\n  \\\"子任务读取\\\": \\\"宿主统计显示子任务总数为32、读取行数为31，且 children_truncated=false；读取行数与总数不一致，因此无法确认子任务读取完整。\\\",\\n  \\\"引用\\\": \\\"summary 未提供可用的任务行级引用。\\\"\\n}\",\"next_offset\":2249,\"eof\":true,\"byte_size\":2249}",
+            "orphan": false,
+            "result_preview_client_truncated": false
+          }
+        },
+        {
+          "type": "model.request",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 55
+          }
+        },
+        {
+          "type": "model.response",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 334
+          }
+        },
+        {
+          "type": "usage.summary",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 336,
+            "input_tokens": 198671,
+            "output_tokens": 1942,
+            "total_tokens": 200613,
+            "estimated_cost_micros": 1022485,
+            "cached_input_tokens": 100736,
+            "cache_hit_ratio": 0.5446779059833681,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        },
+        {
+          "type": "output.completed",
+          "data": {
+            "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+            "turn_step": 2,
+            "seq": 340
+          }
+        }
+      ],
+      "coverage": {
+        "input": true,
+        "session": true,
+        "output": true,
+        "route": true,
+        "skill": true,
+        "mcp": true,
+        "memory": true,
+        "model": true,
+        "policy": false,
+        "citation": false,
+        "side_effect": false,
+        "version": true,
+        "metrics": true
+      },
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+          "message_id": "",
+          "request_id": "f8a6e7ea-ce2a-4e45-aa98-0de2e4f351ef",
+          "coverage": {}
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+          "message_id": "cm_904137b2-f638-4f28-a804-6d5fee319310",
+          "request_id": "e6ae10e7-6261-443a-a46d-58b501016e2c",
+          "coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          }
+        }
+      ],
+      "run_count": 1
+    },
+    "citations": [],
+    "side_effects": [],
+    "versions": {
+      "harness": "assistant-chat-live+trace",
+      "model": "openai/gpt-6.1-terra",
+      "prompt": "assistant_chat_agent@0.22.10",
+      "skill": "structured_query,task_space,output_presentation"
+    },
+    "metrics": {
+      "e2e_ms": 72359,
+      "tool_calls": 6,
+      "retries": 0,
+      "input_tokens": 198671,
+      "output_tokens": 1942,
+      "cached_tokens": 100736,
+      "cost_usd": 1.022485,
+      "usage_runs": 1
+    },
+    "semantic_verdict": null,
+    "errors": [],
+    "metadata": {
+      "turns": [
+        {
+          "step": 1,
+          "op": "new_session",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+          "request_id": "f8a6e7ea-ce2a-4e45-aa98-0de2e4f351ef",
+          "status": "prepared",
+          "reused": false,
+          "error": ""
+        },
+        {
+          "step": 2,
+          "op": "ask",
+          "actor_ref": "智本测试_安柔",
+          "session_id": "cs_48762065-d475-408e-a0d9-b56b59aa772b",
+          "message_id": "cm_904137b2-f638-4f28-a804-6d5fee319310",
+          "request_id": "e6ae10e7-6261-443a-a46d-58b501016e2c",
+          "status": "completed",
+          "http_status": 200,
+          "terminal_event": "completed",
+          "answer": "按三个指定项目合并统计，**已读取的任务和子任务中，有 3 人创建了至少 20 条**：\n\n| 创建人 | 已读取数量 |\n|---|---:|\n| `widget:mention:ouvdieyaga1igt:T1120J0W9` | 22 条 |\n| `widget:mention:ouvdiekzrxcqc2:T1120J0W9` | 21 条 |\n| `widget:mention:ouvtx9uhuppqs6:T1120J0W9` | 20 条 |\n\n统计范围仅限指定空间内的项目甲、项目乙和空项目，排除了空间默认项目及其他对象。`widget:refs:project:pro_993982662:T1120J0W9|project:pro_1679732559:T1120J0W9|project:pro_1737047575:T1120J0W9`\n\n**完整性限制：**统计显示共有 64 条任务，其中子任务总数为 32 条，但实际只读取到 31 条子任务。因此，上表是已读取的 63 条记录的统计，尚有 1 条子任务未核实，不能确认各人的最终数量或符合条件人员是否已列全。\n\n要不要我帮你长期关注“聚合验收项目甲”“聚合验收项目乙”和“聚合验收空项目”？",
+          "message": "只看“聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]”中“聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]”“聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]”“聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]”三个项目，排除空间默认项目和其他对象。改为创建任务数至少20条的人员，恰好20条也算。",
+          "source_gold": {},
+          "credential_redacted": false,
+          "error": "",
+          "trace_coverage": {
+            "input": true,
+            "session": true,
+            "message": true,
+            "output": true,
+            "route": false,
+            "skill": false,
+            "mcp": false
+          },
+          "trace_status": "部分可观测",
+          "attachment_files": []
+        }
+      ],
+      "data_state": "PRECHECK_REQUIRED",
+      "credential_redacted_turns": [],
+      "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+      "trace_auth": {
+        "contract": "ai_assistant.trace_auth.v1",
+        "mode": "bearer",
+        "credential_persisted": false
+      },
+      "trace_runs": [
+        {
+          "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+          "turn_step": 2,
+          "request_id": "e6ae10e7-6261-443a-a46d-58b501016e2c",
+          "trace_id": "",
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "prompt": "assistant_chat_agent@0.22.10",
+          "model": "openai/gpt-6.1-terra",
+          "status": "succeeded",
+          "skills": [
+            "structured_query",
+            "task_space",
+            "output_presentation"
+          ],
+          "rejected_skills": [],
+          "tools": [
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 19,
+              "name": "activate_skills",
+              "call_id": "call_7216a108d613464493013d1dd05d2eed",
+              "arguments_summary": "skills=structured_query,task_space",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "<skill_instructions skill=\"structured_query\" version=\"1.2.8\">\n# 结构化业务查询\n\n使用 Canonical Business Schema 对企业业务数据执行确定性查询。仅在用户请求能够映射到当前 **Business Entity Catalog** 时启用本 Skill。Entity Catalog 由宿主基于 Schema Registry 动态注入；本文件不维护第二份实体、字段或 Provider 清单。具体 Tool 参数以尾部自动生成的 ToolDefinition 接口说明为准；当前 Entity 名称及关键必需条件由 Schema、Provider Definition 自动生成，不手工复制维护。\n\n## 1. 工具选择\n\n| 工具 | 使用场景 | 不负责 |\n|---|---|---|\n| `structured_schema` | 已确定 Canonical Entity，但当前上下文缺少其字段、关系、基数或枚举定义 | 自然语言 Schema 搜索、业务数据检索 |\n| `entity_resolv",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": true
+            },
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 27,
+              "name": "entity_resolve",
+              "call_id": "call_1b25b98c5db5418eae410fd0fe41feae",
+              "arguments_summary": "requests=4",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"space\",\"id\":\"4012016751\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:space:4012016751:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_993982662\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_993982662:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_1679732559\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_1679732559:T1120J0W9`\"},{\"entityType\":\"project\",\"id\":\"pro_1737047575\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:project:pro_1737047575:T1120J0W9`\"}],\"results\":[{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]\",\"entity\":\"space\",\"fields\":{\"space.id\":\"4012016751\",\"space.name\":\"聚合问答验收空间 [AEFIX:AGG-PRE-SPACE:v1]\"},\"id\":\"4012016751\"}],\"entity\":\"space\",\"expectation\":{\"count\":1},\"key\":\"space\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_993982662\",\"project.name\":\"聚合验收项目甲 [AEFIX:AGG-PRE-P-A:v1]\"},\"id\":\"pro_993982662\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"a\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_1679732559\",\"project.name\":\"聚合验收项目乙 [AEFIX:AGG-PRE-P-B:v1]\"},\"id\":\"pro_1679732559\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"b\",\"status\":\"resolved\"},{\"completeness\":\"complete\",\"entities\":[{\"display_name\":\"聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]\",\"entity\":\"project\",\"fields\":{\"project.id\":\"pro_1737047575\",\"project.name\":\"聚合验收空项目 [AEFIX:AGG-PRE-P-Z:v1]\"},\"id\":\"pro_1737047575\"}],\"entity\":\"project\",\"expectation\":{\"count\":1},\"key\":\"z\",\"status\":\"resolved\"}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 32,
+              "name": "task_ask",
+              "call_id": "call_49d975c931db4c54abbafbf6174f5f3b",
+              "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=false instruction_runes=84",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project_______-5709c6ea\",\"tenantId\":\"T1120J0W9\"},{\"entityType\":\"task\",\"id\":\"task_vys1qrzhi9js\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qm7cc8tw\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qrzhi9js\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\"},{\"entityType\":\"task\",\"id\":\"task_vys1qm7cc8tw\",\"tenantId\":\"T1120J0W9\",\"widget\":\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_ids\":[\"pro_993982662\",\"pro_1679732559\",\"pro_1737047575\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"space_ids\":[\"4012016751\"],\"task_type\":\"project\"},\"label\":\"三个指定项目\",\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":32,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"556ed5b1\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"creator\":[{\"key\":\"ouvdiekzrxcqc2@T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"count\":21,\"pct\":65},{\"key\":\"ouvtx9uhuppqs6@T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"count\":11,\"pct\":34}],\"is_overdue\":{\"false\":{\"count\":23,\"pct\":71},\"true\":{\"count\":9,\"pct\":28}},\"priority\":{\"high\":{\"count\":11,\"pct\":34},\"low\":{\"count\":11,\"pct\":34},\"medium\":{\"count\":10,\"pct\":31}},\"status\":{\"completed\":{\"count\":11,\"pct\":34},\"in_progress\":{\"count\":11,\"pct\":34},\"pending\":{\"count\":10,\"pct\":31}}}},\"key\":\"answers/task_project_______-5709c6ea\",\"chunks\":1,\"answer_tokens\":108,\"attempts\":5,\"answer_mode\":\"focus\",\"cited_tasks\":2,\"cache_reuse_allowed\":true}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 40,
+              "name": "scratchpad_read",
+              "call_id": "call_d1a6d8e06fba49ecbc5c278f6ddb3a4e",
+              "arguments_summary": "path=answers/task_project_______-5709c6ea offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project_______-5709c6ea\",\"revision\":1,\"content\":\"instruction: \\\"统计三个指定项目合计每位任务创建人的任务数量，列出合计至少20条（含20条）的所有人员及其数量。只用宿主分组统计，不自行数行；说明覆盖和截断情况，并给出可用的任务来源。\\\"\\nrange: {\\\"label\\\":\\\"三个指定项目\\\",\\\"project_ids\\\":[\\\"pro_993982662\\\",\\\"pro_1679732559\\\",\\\"pro_1737047575\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"space_ids\\\":[\\\"4012016751\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:556ed5b1\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":32,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":0,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"556ed5b1\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"creator\\\":[{\\\"key\\\":\\\"ouvdiekzrxcqc2@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdiekzrxcqc2\\\",\\\"name\\\":\\\"智本测试_安柔\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":21,\\\"pct\\\":65},{\\\"key\\\":\\\"ouvtx9uhuppqs6@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvtx9uhuppqs6\\\",\\\"name\\\":\\\"anna289\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":11,\\\"pct\\\":34}],\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":23,\\\"pct\\\":71},\\\"true\\\":{\\\"count\\\":9,\\\"pct\\\":28}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"low\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"medium\\\":{\\\"count\\\":10,\\\"pct\\\":31}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"in_progress\\\":{\\\"count\\\":11,\\\"pct\\\":34},\\\"pending\\\":{\\\"count\\\":10,\\\"pct\\\":31}}}}\\nchunks: 1\\n\\n候选任务 32 条，本次选择 2 条；\\n{\\n  \\\"结果\\\": [\\n    {\\n      \\\"创建人\\\": \\\"智本测试_安柔\\\",\\n      \\\"数量\\\": 21,\\n      \\\"引用\\\": \\\"`widget:refs:task:task_vys1qrzhi9js:T1120J0W9|task:task_vys1qm7cc8tw:T1120J0W9`\\\"\\n    }\\n  ],\\n  \\\"覆盖与截断\\\": \\\"宿主分组统计显示共32条任务、1页，range_truncated=false；创建人候选共2人，本次符合“至少20条”的有1人。材料行可见聚合验收项目甲、乙，未能核实第三个指定项目是否纳入；因此三项目的具体覆盖情况材料中没有依据。\\\",\\n  \\\"可用任务来源\\\": [\\n    \\\"`widget:task:task_vys1qrzhi9js:T1120J0W9`\\\",\\n    \\\"`widget:task:task_vys1qm7cc8tw:T1120J0W9`\\\"\\n  ]\\n}\",\"next_offset\":2123,\"eof\":true,\"byte_size\":2123}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 45,
+              "name": "task_ask",
+              "call_id": "call_ac7eba0202ee41a0becd73ebd2434dbc",
+              "arguments_summary": "queries=1 group_by=creator format=text detail=false comments=false mode=focus children=true instruction_runes=58",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"locators\":[{\"entityType\":\"scratchpad\",\"id\":\"answers/task_project-ef7935c6\",\"tenantId\":\"T1120J0W9\"}],\"requested\":1,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":0,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"10\",\"items\":[{\"query\":{\"project_ids\":[\"pro_993982662\",\"pro_1679732559\",\"pro_1737047575\"],\"role\":\"all\",\"scope\":\"visible\",\"sort_order\":\"desc\",\"space_ids\":[\"4012016751\"],\"task_type\":\"project\"},\"status\":\"ready\",\"covered\":{\"total\":32,\"tasks\":63,\"answer_mode\":\"focus\",\"status_conflicts\":0,\"counts\":{\"total\":64,\"root_total\":32,\"subtask_total\":32,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":31,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"9bc8a7ee\",\"earliest_end\":\"2026-10-20T18:00:00+09:00\",\"latest_end\":\"2026-10-30T18:00:00+09:00\",\"by\":{\"creator\":[{\"key\":\"ouvdieyaga1igt@T1120J0W9\",\"user_id\":\"ouvdieyaga1igt\",\"name\":\"annaA\",\"tenant_id\":\"T1120J0W9\",\"count\":22,\"pct\":34},{\"key\":\"ouvdiekzrxcqc2@T1120J0W9\",\"user_id\":\"ouvdiekzrxcqc2\",\"name\":\"智本测试_安柔\",\"tenant_id\":\"T1120J0W9\",\"count\":21,\"pct\":33},{\"key\":\"ouvtx9uhuppqs6@T1120J0W9\",\"user_id\":\"ouvtx9uhuppqs6\",\"name\":\"anna289\",\"tenant_id\":\"T1120J0W9\",\"count\":20,\"pct\":31}],\"is_overdue\":{\"false\":{\"count\":46,\"pct\":73},\"true\":{\"count\":17,\"pct\":26}},\"priority\":{\"high\":{\"count\":21,\"pct\":33},\"low\":{\"count\":21,\"pct\":33},\"medium\":{\"count\":21,\"pct\":33}},\"status\":{\"completed\":{\"count\":21,\"pct\":33},\"in_progress\":{\"count\":21,\"pct\":33},\"pending\":{\"count\":21,\"pct\":33}}}},\"key\":\"answers/task_project-ef7935c6\",\"chunks\":1,\"answer_tokens\":113,\"attempts\":7,\"answer_mode\":\"focus\",\"cache_reuse_allowed\":true}]}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            },
+            {
+              "run_id": "bar_d614e16a773f40f99418ead9fe04b9d7",
+              "turn_step": 2,
+              "seq": 53,
+              "name": "scratchpad_read",
+              "call_id": "call_b0086130e39641d58bc0f3f5adcdc15d",
+              "arguments_summary": "path=answers/task_project-ef7935c6 offset=0",
+              "status": "completed",
+              "attempts": 1,
+              "result_preview": "{\"source\":\"host_answer\",\"path\":\"answers/task_project-ef7935c6\",\"revision\":1,\"content\":\"instruction: \\\"统计指定三个项目中任务及子任务按创建人分组的数量，列出至少20条含20的人员；使用宿主统计并说明子任务读取是否完整。\\\"\\nrange: {\\\"project_ids\\\":[\\\"pro_993982662\\\",\\\"pro_1679732559\\\",\\\"pro_1737047575\\\"],\\\"role\\\":\\\"all\\\",\\\"scope\\\":\\\"visible\\\",\\\"sort_order\\\":\\\"desc\\\",\\\"space_ids\\\":[\\\"4012016751\\\"],\\\"task_type\\\":\\\"project\\\"}|fingerprint:9bc8a7ee\\ncovered: {\\\"total\\\":32,\\\"tasks\\\":63,\\\"answer_mode\\\":\\\"focus\\\",\\\"status_conflicts\\\":0,\\\"counts\\\":{\\\"total\\\":64,\\\"root_total\\\":32,\\\"subtask_total\\\":32,\\\"available\\\":true},\\\"pages\\\":1,\\\"range_truncated\\\":false,\\\"children_rows\\\":31,\\\"children_truncated\\\":false,\\\"details_read\\\":0,\\\"details_truncated\\\":false,\\\"fingerprint\\\":\\\"9bc8a7ee\\\",\\\"earliest_end\\\":\\\"2026-10-20T18:00:00+09:00\\\",\\\"latest_end\\\":\\\"2026-10-30T18:00:00+09:00\\\",\\\"by\\\":{\\\"creator\\\":[{\\\"key\\\":\\\"ouvdieyaga1igt@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdieyaga1igt\\\",\\\"name\\\":\\\"annaA\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":22,\\\"pct\\\":34},{\\\"key\\\":\\\"ouvdiekzrxcqc2@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvdiekzrxcqc2\\\",\\\"name\\\":\\\"智本测试_安柔\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":21,\\\"pct\\\":33},{\\\"key\\\":\\\"ouvtx9uhuppqs6@T1120J0W9\\\",\\\"user_id\\\":\\\"ouvtx9uhuppqs6\\\",\\\"name\\\":\\\"anna289\\\",\\\"tenant_id\\\":\\\"T1120J0W9\\\",\\\"count\\\":20,\\\"pct\\\":31}],\\\"is_overdue\\\":{\\\"false\\\":{\\\"count\\\":46,\\\"pct\\\":73},\\\"true\\\":{\\\"count\\\":17,\\\"pct\\\":26}},\\\"priority\\\":{\\\"high\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"low\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"medium\\\":{\\\"count\\\":21,\\\"pct\\\":33}},\\\"status\\\":{\\\"completed\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"in_progress\\\":{\\\"count\\\":21,\\\"pct\\\":33},\\\"pending\\\":{\\\"count\\\":21,\\\"pct\\\":33}}}}\\nchunks: 1\\n\\n候选任务 63 条，本次选择 0 条；\\n{\\n  \\\"统计口径\\\": \\\"使用宿主 summary 的创建人统计；材料未列出指定三个项目的名称或逐项目统计，无法确认这些人数是否仅对应所指的三个项目。\\\",\\n  \\\"候选数量\\\": 3,\\n  \\\"选中数量\\\": 3,\\n  \\\"按创建人分组\\\": [\\n    {\\\"创建人\\\": \\\"annaA\\\", \\\"user_id\\\": \\\"ouvdieyaga1igt\\\", \\\"数量\\\": 22},\\n    {\\\"创建人\\\": \\\"智本测试_安柔\\\", \\\"user_id\\\": \\\"ouvdiekzrxcqc2\\\", \\\"数量\\\": 21},\\n    {\\\"创建人\\\": \\\"anna289\\\", \\\"user_id\\\": \\\"ouvtx9uhuppqs6\\\", \\\"数量\\\": 20}\\n  ],\\n  \\\"子任务读取\\\": \\\"宿主统计显示子任务总数为32、读取行数为31，且 children_truncated=false；读取行数与总数不一致，因此无法确认子任务读取完整。\\\",\\n  \\\"引用\\\": \\\"summary 未提供可用的任务行级引用。\\\"\\n}\",\"next_offset\":2249,\"eof\":true,\"byte_size\":2249}",
+              "arguments_summary_client_truncated": false,
+              "result_preview_client_truncated": false
+            }
+          ],
+          "event_count": 66,
+          "event_types": [
+            "chat.session_overlay_read_detail",
+            "chat.session_overlay_read",
+            "session.scratchpad_index",
+            "context.organization",
+            "context.current_user",
+            "chat.started",
+            "chat.history_source",
+            "chat.tool_memory_injection",
+            "chat.tool_memory_injection_detail",
+            "chat.session_locator_catalog",
+            "chat.tool_exposure",
+            "chat.model_request",
+            "chat.model_response",
+            "chat.title",
+            "chat.cache_stats",
+            "chat.tool_call",
+            "chat.skill_activation",
+            "chat.tool_result",
+            "chat.prefix_change",
+            "chat.task_ask",
+            "chat.text_delta",
+            "chat.usage",
+            "chat.session_overlay_append_detail",
+            "chat.session_overlay_append",
+            "chat.session_overlay_compaction",
+            "chat.completed",
+            "chat.turn_ledger"
+          ],
+          "usage": {
+            "input_tokens": 198671,
+            "output_tokens": 1942,
+            "total_tokens": 200613,
+            "estimated_cost_micros": 1022485,
+            "cached_input_tokens": 100736,
+            "cache_hit_ratio": 0.5446779059833681,
+            "prefix_rewrites": 1,
+            "entry_tool_count": 3
+          }
+        }
+      ],
+      "trace_run_turn_mismatch": false,
+      "tool_preview_policy": {
+        "arguments_limit": 6000,
+        "result_limit": 24000,
+        "raw_model_prompts_saved": false,
+        "note": "Server result_preview may itself be abbreviated; absence is not proof of no retrieval."
+      },
+      "request_trace_scope": {
+        "contract": "ai_assistant.current_request_trace.v1",
+        "strict": true,
+        "current_request_ids": [
+          "e6ae10e7-6261-443a-a46d-58b501016e2c"
+        ],
+        "current_session_ids": [
+          "cs_48762065-d475-408e-a0d9-b56b59aa772b"
+        ],
+        "matched_run_ids": [
+          "bar_d614e16a773f40f99418ead9fe04b9d7"
+        ],
+        "excluded_historical_run_count": 0,
+        "all_current_requests_matched": true,
+        "derived_trace_metrics_recomputed": true,
+        "session_policy": "reuse_workbook_session_id"
+      }
+    }
+  }
+}

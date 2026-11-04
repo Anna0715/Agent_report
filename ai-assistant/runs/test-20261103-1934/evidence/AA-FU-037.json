@@ -1,0 +1,1136 @@
+{
+  "contract": "agent_evaluation.evidence.v2",
+  "case_id": "AA-FU-037",
+  "environment": "test",
+  "generated_at": "2026-11-03T10:41:21+00:00",
+  "output": {
+    "text": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。"
+  },
+  "trace": {
+    "contract": "ai_assistant.trace.v1",
+    "status": "内部工具链已采集；权限/引用仍未观测",
+    "source": "chat/assistant/stream+business-agent/full-trace",
+    "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+    "events": [
+      {
+        "type": "intent.route",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat"
+        }
+      },
+      {
+        "type": "request.received",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2
+        }
+      },
+      {
+        "type": "memory.session.read",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 2
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 12
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 13
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 15,
+          "name": "activate_skills",
+          "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+          "arguments_summary": "skills=group_summary",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "skill.activation",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 16,
+          "requested": [
+            "group_summary"
+          ],
+          "activated": [
+            "group_summary"
+          ],
+          "rejected": []
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 18,
+          "name": "activate_skills",
+          "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 20
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 21
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 23,
+          "name": "person_search",
+          "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+          "arguments_summary": "keywords=\"anrou20\"",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 24,
+          "name": "task_detail",
+          "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+          "arguments_summary": "task_id=task_vvh8rk2dfqfh",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 25,
+          "name": "person_search",
+          "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+          "orphan": false
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 26,
+          "name": "task_detail",
+          "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anro",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 27
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 28
+        }
+      },
+      {
+        "type": "tool.call",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 30,
+          "name": "task_ask",
+          "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+          "arguments_summary": "queries=2 group_by=priority,status format=text detail=true comments=false mode=complete children=false instruction_runes=111",
+          "status": "missing_result",
+          "attempts": null,
+          "result_preview": ""
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 31
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 32
+        }
+      },
+      {
+        "type": "tool.result",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 35,
+          "name": "task_ask",
+          "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+          "status": "completed",
+          "attempts": 1,
+          "result_preview": "{\"locators\":[{\"entityType\":\"task\",\"id\":\"task_vvh8rk2dfqfh\",\"tenantId\":\"T1120BFPA\",\"widget\":\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"创建人\",",
+          "orphan": false
+        }
+      },
+      {
+        "type": "model.request",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 36
+        }
+      },
+      {
+        "type": "model.response",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 236
+        }
+      },
+      {
+        "type": "usage.summary",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 238,
+          "input_tokens": 128531,
+          "output_tokens": 1178,
+          "total_tokens": 129709,
+          "estimated_cost_micros": 660325,
+          "cached_input_tokens": 64715,
+          "cache_write_input_tokens": 49812,
+          "cache_hit_ratio": 0.5092902281437645,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 15
+        }
+      },
+      {
+        "type": "output.completed",
+        "data": {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "turn_step": 2,
+          "seq": 242
+        }
+      }
+    ],
+    "coverage": {
+      "input": true,
+      "session": true,
+      "output": true,
+      "route": true,
+      "skill": true,
+      "mcp": true,
+      "memory": true,
+      "model": true,
+      "policy": false,
+      "citation": false,
+      "side_effect": false,
+      "version": true,
+      "metrics": true
+    },
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+        "message_id": "",
+        "request_id": "",
+        "coverage": {}
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+        "message_id": "cm_b950d888-01bf-4f55-b9ef-6edf481ab655",
+        "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+        "coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        }
+      }
+    ],
+    "run_count": 1
+  },
+  "citations": [],
+  "side_effects": [],
+  "versions": {
+    "harness": "assistant-chat-live+trace",
+    "model": "sub2api/gpt-6.1-terra",
+    "prompt": "assistant_chat_agent@0.22.11",
+    "skill": "group_summary"
+  },
+  "metrics": {
+    "e2e_ms": 30546,
+    "tool_calls": 4,
+    "retries": 0,
+    "input_tokens": 128531,
+    "output_tokens": 1178,
+    "cached_tokens": 64715,
+    "cost_usd": 0.660325,
+    "usage_runs": 1
+  },
+  "semantic_verdict": null,
+  "errors": [],
+  "metadata": {
+    "turns": [
+      {
+        "step": 1,
+        "op": "new_session",
+        "actor_ref": "CEO",
+        "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+        "request_id": "",
+        "status": "reused",
+        "reused": true,
+        "error": ""
+      },
+      {
+        "step": 2,
+        "op": "ask",
+        "actor_ref": "CEO",
+        "session_id": "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530",
+        "message_id": "cm_b950d888-01bf-4f55-b9ef-6edf481ab655",
+        "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+        "status": "completed",
+        "http_status": 200,
+        "terminal_event": "completed",
+        "answer": "**1 个。**截至 2026 年 11 月 3 日 19:40（东京时间），anrou20 作为执行人的高优先级未完成任务是“确定灰度比例”，状态为待启动；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n**没有足以证明超负荷的证据。**项目内目前只查到这 1 项未完成任务，系统标记为未逾期；任务描述中的计划截止时间为 2026 年 9 月 16 日 18:00，但系统截止字段未返回，不能据此判断系统逾期状态。其他项目和实际工时不在此次判断范围内。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n此前回答将该任务误判为低优先级或未查到任务，结论有误，以上以本次核查为准。",
+        "message": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+        "source_gold": {},
+        "credential_redacted": false,
+        "error": "",
+        "trace_coverage": {
+          "input": true,
+          "session": true,
+          "message": true,
+          "output": true,
+          "route": false,
+          "skill": false,
+          "mcp": false
+        },
+        "trace_status": "部分可观测",
+        "attachment_files": [],
+        "question": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？",
+        "actor": {
+          "account_ref": "CEO",
+          "company": "自动化测试公司",
+          "tenant_id": "T1120BFPA",
+          "user_id": "ouvglfbcbndhqu",
+          "fixture_actor_ref": "ACC-TEST-01"
+        }
+      }
+    ],
+    "data_state": "LIVE_VERIFIED",
+    "relative_deadline_fixture": {},
+    "recent_owner_fixture": {},
+    "credential_redacted_turns": [],
+    "live_trace_scope": "public_sse+authenticated_business_agent_trace",
+    "trace_auth": {
+      "contract": "ai_assistant.trace_auth.v1",
+      "mode": "bearer",
+      "credential_persisted": false
+    },
+    "trace_runs": [
+      {
+        "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+        "turn_step": 2,
+        "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+        "trace_id": "",
+        "workflow": "weekly_report.recipient_summary",
+        "scenario": "assistant_chat",
+        "prompt": "assistant_chat_agent@0.22.11",
+        "model": "sub2api/gpt-6.1-terra",
+        "status": "succeeded",
+        "skills": [
+          "group_summary"
+        ],
+        "rejected_skills": [],
+        "tools": [
+          {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 15,
+            "name": "activate_skills",
+            "call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+            "arguments_summary": "skills=group_summary",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": true
+          },
+          {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 23,
+            "name": "person_search",
+            "call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+            "arguments_summary": "keywords=\"anrou20\"",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          },
+          {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 24,
+            "name": "task_detail",
+            "call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+            "arguments_summary": "task_id=task_vvh8rk2dfqfh",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\"}],\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\"},\"source_unit_name\":\"技术中心\",\"company_name\":\"自动化测试公司\",\"description\":\"整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\",\"role\":\"owner\"},{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\",\"role\":\"creator\"}]}}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          },
+          {
+            "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+            "turn_step": 2,
+            "seq": 30,
+            "name": "task_ask",
+            "call_id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+            "arguments_summary": "queries=2 group_by=priority,status format=text detail=true comments=false mode=complete children=false instruction_runes=111",
+            "status": "completed",
+            "attempts": 1,
+            "result_preview": "{\"locators\":[{\"entityType\":\"task\",\"id\":\"task_vvh8rk2dfqfh\",\"tenantId\":\"T1120BFPA\",\"widget\":\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"创建人\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":false},{\"query\":{\"owner_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"执行人\",\"status\":\"inline_fallback\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"971393af\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"pending\":{\"count\":1,\"pct\":100}}}},\"chunks\":1,\"answer_tokens\":140,\"attempts\":7,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"answer\":\"{\\n  \\\"统计口径\\\": \\\"按本次执行人查询材料；任务按任务条目去重。创建人信息未提供，因此无法与创建人任务对照。\\\",\\n  \\\"执行人任务\\\": {\\n    \\\"未完成数量\\\": \\\"1项（材料统计为待处理1项）\\\",\\n    \\\"high数量\\\": \\\"1项\\\",\\n    \\\"highest数量\\\": \\\"0项\\\",\\n    \\\"任务\\\": [\\n      {\\n        \\\"标题\\\": \\\"确定灰度比例\\\",\\n        \\\"执行人\\\": \\\"材料记录为 anrou20(ouvux80krpgwpq)，无法对应现实身份\\\",\\n        \\\"状态\\\": \\\"待处理，未逾期\\\",\\n        \\\"系统截止日期\\\": \\\"未返回\\\",\\n        \\\"日期说明\\\": \\\"描述中的计划截止为2026-09-16 18:00；这不是系统截止字段，不能据此判断系统截止日期。\\\",\\n        \\\"负荷证据\\\": \\\"有1项待处理的高优先级任务；本段未见其他任务，无法据此判断是否存在任务堆积。\\\",\\n        \\\"引用\\\": \\\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\\\"\\n      }\\n    ]\\n  },\\n  \\\"创建人任务\\\": \\\"材料中没有依据；无法统计未完成、high或highest数量，也无法与执行人任务对照。\\\"\\n}\"}]}",
+            "arguments_summary_client_truncated": false,
+            "result_preview_client_truncated": false
+          }
+        ],
+        "event_count": 46,
+        "event_types": [
+          "chat.session_overlay_read_detail",
+          "chat.session_overlay_read",
+          "session.scratchpad_index",
+          "context.organization",
+          "context.current_user",
+          "chat.started",
+          "chat.history_source",
+          "chat.tool_memory_injection",
+          "chat.tool_memory_injection_detail",
+          "chat.session_locator_catalog",
+          "chat.tool_exposure",
+          "chat.model_request",
+          "chat.model_response",
+          "chat.cache_stats",
+          "chat.tool_call",
+          "chat.skill_activation",
+          "chat.tool_result",
+          "chat.prefix_change",
+          "chat.answer_persist",
+          "chat.task_ask",
+          "chat.text_delta",
+          "chat.usage",
+          "chat.session_overlay_append_detail",
+          "chat.session_overlay_append",
+          "chat.session_overlay_compaction",
+          "chat.completed",
+          "chat.turn_ledger"
+        ],
+        "usage": {
+          "input_tokens": 128531,
+          "output_tokens": 1178,
+          "total_tokens": 129709,
+          "estimated_cost_micros": 660325,
+          "cached_input_tokens": 64715,
+          "cache_write_input_tokens": 49812,
+          "cache_hit_ratio": 0.5092902281437645,
+          "prefix_rewrites": 1,
+          "entry_tool_count": 15
+        }
+      }
+    ],
+    "trace_run_turn_mismatch": false,
+    "request_trace_scope": {
+      "contract": "ai_assistant.current_request_trace.v1",
+      "strict": true,
+      "current_request_ids": [
+        "8b072e44-9bd5-4580-b537-8e9f86f49eff"
+      ],
+      "current_session_ids": [
+        "cs_a14b66b5-7e84-40b5-acfd-5c1b82139530"
+      ],
+      "matched_run_ids": [
+        "bar_6871b63134c0402b8076df07b6b0f76a"
+      ],
+      "excluded_historical_run_count": 2,
+      "all_current_requests_matched": true,
+      "derived_trace_metrics_recomputed": true,
+      "session_policy": "reuse_workbook_session_id"
+    },
+    "evidence_recovery": {
+      "collected_at": "2026-11-04T00:17:33.512558+00:00",
+      "read_only": true,
+      "question_resent": false,
+      "same_historical_requests": true,
+      "system_developer_prompts_saved": false,
+      "binary_content_saved": false,
+      "runs": [
+        {
+          "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+          "request_id": "8b072e44-9bd5-4580-b537-8e9f86f49eff",
+          "turn_step": 2,
+          "server_times": {
+            "created_at_unix": "1793702451",
+            "started_at_unix": "1793702451",
+            "finished_at_unix": "1793702475"
+          },
+          "context_events": [
+            {
+              "event_type": "chat.session_overlay_read",
+              "seq": "2",
+              "at": "1793702451",
+              "payload": {
+                "bounded_turn_count": 0,
+                "duration_ms": 2,
+                "error_category": "Internal",
+                "fallback_status": "empty",
+                "fallback_used": true,
+                "full_detail_recent_turns": 3,
+                "operation": "get_window",
+                "recent_turn_limit": 128,
+                "status": "degraded",
+                "summary_source": "none",
+                "tool_detail": "digest_only+bounded_recent",
+                "turn_count": 0
+              }
+            },
+            {
+              "event_type": "context.organization",
+              "seq": "4",
+              "at": "1793702451",
+              "payload": {
+                "status": "loaded"
+              }
+            },
+            {
+              "event_type": "context.current_user",
+              "seq": "5",
+              "at": "1793702451",
+              "payload": {
+                "name_present": true,
+                "status": "available"
+              }
+            },
+            {
+              "event_type": "chat.started",
+              "seq": "6",
+              "at": "1793702451",
+              "payload": {
+                "activation_block_active": true,
+                "activation_mode": "manifest",
+                "active_skills": [
+                  "output_presentation",
+                  "structured_query",
+                  "task_space"
+                ],
+                "answer_count": 0,
+                "assembled_prompt_bytes": 30725,
+                "carried_skills": [],
+                "entry": "",
+                "entry_tool_count": 15,
+                "historical_active_skills": [],
+                "page_type": "",
+                "prior_skills": [
+                  "output_presentation",
+                  "structured_query",
+                  "task_space"
+                ],
+                "profile_context_tokens": 0,
+                "profile_render_mode": "skills",
+                "prompt_digest": "sha256:c610373252f3730bddeddd85f9e6b81295778fb32d3bbe3b8cdfe28d9a560dcb",
+                "prompt_fragments": [
+                  "assistant_core_identity@0.1.3",
+                  "assistant_core_output@0.3.4",
+                  "assistant_core_scope@0.1.2",
+                  "assistant_core_context_entry@0.4.24",
+                  "assistant_core_domain_map@0.6.2",
+                  "assistant_core_widgets@0.1.8",
+                  "assistant_core_scratchpad@0.5.0",
+                  "assistant_core_evidence@0.3.10",
+                  "assistant_core_skills@0.5.3",
+                  "host/automation_run@1",
+                  "host/attachments@2",
+                  "host/context_guards@2",
+                  "host/loop_notices@3",
+                  "host/follow@2",
+                  "host/subagents@2",
+                  "host/chat_copy_i18n@1"
+                ],
+                "prompt_key": "assistant_chat_agent",
+                "prompt_source": "embedded",
+                "prompt_version": "0.22.11",
+                "request_datetime": "{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}",
+                "run_id": "bar_6871b63134c0402b8076df07b6b0f76a",
+                "suggestion_category": ""
+              }
+            },
+            {
+              "event_type": "chat.history_source",
+              "seq": "7",
+              "at": "1793702451",
+              "payload": {
+                "entity_reference_count": 1,
+                "message_count": 9,
+                "overlay_history_disabled": false,
+                "overlay_turn_count": 0,
+                "overlay_window_read": false,
+                "source": "chat_manager_fallback",
+                "status": "succeeded"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection",
+              "seq": "8",
+              "at": "1793702451",
+              "payload": {
+                "digest_only_turn_count": 0,
+                "downgraded_turn_count": 0,
+                "empty_turn_count": 0,
+                "full_detail_turn_count": 0,
+                "injected_bytes": 0,
+                "injected_turn_count": 0,
+                "missing_anchor_count": 0,
+                "missing_anchor_sequences": null,
+                "overlay_turn_count": 0,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.tool_memory_injection_detail",
+              "seq": "9",
+              "at": "1793702451",
+              "payload": {
+                "injections": null,
+                "missing_anchor_sequences": null,
+                "status": "empty"
+              }
+            },
+            {
+              "event_type": "chat.session_locator_catalog",
+              "seq": "10",
+              "at": "1793702451",
+              "payload": {
+                "base_reference_count": 1,
+                "history_widget_hits": 0,
+                "merged_reference_count": 1,
+                "overlay_locator_enabled": true,
+                "overlay_locator_hits": 0,
+                "status": "succeeded",
+                "widget_fallback_available": true
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "240",
+              "at": "1793702475",
+              "payload": {
+                "anchor_sequence": 2721,
+                "async": true,
+                "blocking": false,
+                "bounded_result_bytes": 100,
+                "locator_count": 2,
+                "omitted_tool_activity_count": 0,
+                "phase": "schedule",
+                "status": "scheduled",
+                "timeout_ms": 3000,
+                "tool_activity_count": 4,
+                "tool_activity_truncated": false
+              }
+            },
+            {
+              "event_type": "chat.session_overlay_append",
+              "seq": "243",
+              "at": "1793702475",
+              "payload": {
+                "async": true,
+                "blocking": false,
+                "duration_ms": 4,
+                "error_category": "Internal",
+                "phase": "result",
+                "status": "degraded"
+              }
+            },
+            {
+              "event_type": "chat.turn_ledger",
+              "seq": "244",
+              "at": "1793702475",
+              "payload": {
+                "error_category": "Internal",
+                "evidence": {
+                  "task_ask": {
+                    "empty": 0,
+                    "failed": 0,
+                    "succeeded": 1,
+                    "incomplete": 0
+                  },
+                  "task_detail": {
+                    "empty": 0,
+                    "failed": 0,
+                    "succeeded": 1,
+                    "incomplete": 0
+                  }
+                },
+                "failed": 0,
+                "pending": 1,
+                "persistence": "failed",
+                "processed": 1,
+                "total": 2
+              }
+            }
+          ],
+          "business_input": [
+            {
+              "seq": "12",
+              "purpose": null,
+              "invocation_id": "model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**在“桌面端发版准备”项目中，anrou20 作为**创建人或执行人**的高优先级未完成任务均未查到。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内的超负荷证据。**当前仅查到 anrou20 作为执行人有 1 个未完成任务：“确定灰度比例”，为**低优先级、待启动、未逾期**；其作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这项判断仅覆盖该项目内、任务状态为待启动/进行中/暂停的任务；未覆盖其他项目、工时投入或截止日期密集度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**anrou20 在“桌面端发版准备”项目中，作为**执行人**或**创建人**的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有发现项目内超负荷证据。**其仅有 1 个未完成执行任务“确定灰度比例”，状态为待启动、低优先级且未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n该判断覆盖此项目中状态为待启动、进行中或暂停的任务；不涵盖其他项目的任务量、工时或排期密度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 2 日，anrou20 在“桌面端发版准备”项目中，作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**未发现足以证明超负荷的证据，但也不能据此断定其工作负荷正常。**项目内查到其作为执行人有 1 个未完成任务“确定灰度比例”，为低优先级、待启动，系统标记为未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这里的未完成包括待启动、进行中和暂停；判断未涵盖其他项目、工时或实际投入。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 3 日 17:05（Asia/Tokyo），anrou20 在“桌面端发版准备”中作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内超负荷证据。**其作为创建人、执行人的全部未完成任务（待启动、进行中、暂停）也均为 0；因此不存在待办堆积或逾期任务的直接迹象。该判断仅限该项目任务，不涵盖其他项目、工时或会议排期。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "20",
+              "purpose": null,
+              "invocation_id": "model_2",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**在“桌面端发版准备”项目中，anrou20 作为**创建人或执行人**的高优先级未完成任务均未查到。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内的超负荷证据。**当前仅查到 anrou20 作为执行人有 1 个未完成任务：“确定灰度比例”，为**低优先级、待启动、未逾期**；其作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这项判断仅覆盖该项目内、任务状态为待启动/进行中/暂停的任务；未覆盖其他项目、工时投入或截止日期密集度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**anrou20 在“桌面端发版准备”项目中，作为**执行人**或**创建人**的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有发现项目内超负荷证据。**其仅有 1 个未完成执行任务“确定灰度比例”，状态为待启动、低优先级且未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n该判断覆盖此项目中状态为待启动、进行中或暂停的任务；不涵盖其他项目的任务量、工时或排期密度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 2 日，anrou20 在“桌面端发版准备”项目中，作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**未发现足以证明超负荷的证据，但也不能据此断定其工作负荷正常。**项目内查到其作为执行人有 1 个未完成任务“确定灰度比例”，为低优先级、待启动，系统标记为未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这里的未完成包括待启动、进行中和暂停；判断未涵盖其他项目、工时或实际投入。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 3 日 17:05（Asia/Tokyo），anrou20 在“桌面端发版准备”中作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内超负荷证据。**其作为创建人、执行人的全部未完成任务（待启动、进行中、暂停）也均为 0；因此不存在待办堆积或逾期任务的直接迹象。该判断仅限该项目任务，不涵盖其他项目、工时或会议排期。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"group_summary\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "27",
+              "purpose": null,
+              "invocation_id": "model_3",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**在“桌面端发版准备”项目中，anrou20 作为**创建人或执行人**的高优先级未完成任务均未查到。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内的超负荷证据。**当前仅查到 anrou20 作为执行人有 1 个未完成任务：“确定灰度比例”，为**低优先级、待启动、未逾期**；其作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这项判断仅覆盖该项目内、任务状态为待启动/进行中/暂停的任务；未覆盖其他项目、工时投入或截止日期密集度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**anrou20 在“桌面端发版准备”项目中，作为**执行人**或**创建人**的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有发现项目内超负荷证据。**其仅有 1 个未完成执行任务“确定灰度比例”，状态为待启动、低优先级且未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n该判断覆盖此项目中状态为待启动、进行中或暂停的任务；不涵盖其他项目的任务量、工时或排期密度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 2 日，anrou20 在“桌面端发版准备”项目中，作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**未发现足以证明超负荷的证据，但也不能据此断定其工作负荷正常。**项目内查到其作为执行人有 1 个未完成任务“确定灰度比例”，为低优先级、待启动，系统标记为未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这里的未完成包括待启动、进行中和暂停；判断未涵盖其他项目、工时或实际投入。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 3 日 17:05（Asia/Tokyo），anrou20 在“桌面端发版准备”中作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内超负荷证据。**其作为创建人、执行人的全部未完成任务（待启动、进行中、暂停）也均为 0；因此不存在待办堆积或逾期任务的直接迹象。该判断仅限该项目任务，不涵盖其他项目、工时或会议排期。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"group_summary\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+                      "name": "person_search",
+                      "arguments_json": "{\"keywords\":\"anrou20\"}"
+                    },
+                    {
+                      "id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+                      "name": "task_detail",
+                      "arguments_json": "{\"task_id\":\"task_vvh8rk2dfqfh\",\"task_tenant_id\":\"T1120BFPA\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+                  "tool_call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC"
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\"}],\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\"},\"source_unit_name\":\"技术中心\",\"company_name\":\"自动化测试公司\",\"description\":\"整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\",\"role\":\"owner\"},{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\",\"role\":\"creator\"}]}}",
+                  "tool_call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "31",
+              "purpose": "ask",
+              "invocation_id": "condense_model_1",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "<citation_metadata>{\"kind\":\"task\"}</citation_metadata>\n\n<materials kind=\"task\" query=\"执行人\" chunk=\"1/1\">\n<summary>\n{\"answer_mode\":\"complete\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"pending\":{\"count\":1,\"pct\":100}}},\"children_rows\":0,\"children_truncated\":false,\"counts\":{\"available\":true,\"root_total\":1,\"subtask_total\":0,\"total\":1},\"details_read\":1,\"details_truncated\":false,\"pages\":1,\"pivot\":{\"priority×status\":{\"high\":{\"pending\":{\"count\":1,\"pct\":100}}}},\"range_truncated\":false,\"status_conflicts\":0,\"tasks\":1,\"total\":1}\n</summary>\n<rows>\ntask_vvh8rk2dfqfh@T1120BFPA | title=确定灰度比例 [AEFIX:QA-T-DECISION-02:v1] | base_status=pending | overdue=false | priority=high | executors=anrou20(ouvux80krpgwpq) | end_time=not_returned | source=技术中心 | project=桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1] | description=整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\n</rows>\n</materials>\n\n只在以下标记之间返回答案：\n<<<ANSWER {nonce}>>>\n<<<END {nonce}>>>"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            },
+            {
+              "seq": "36",
+              "purpose": null,
+              "invocation_id": "model_4",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**在“桌面端发版准备”项目中，anrou20 作为**创建人或执行人**的高优先级未完成任务均未查到。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内的超负荷证据。**当前仅查到 anrou20 作为执行人有 1 个未完成任务：“确定灰度比例”，为**低优先级、待启动、未逾期**；其作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这项判断仅覆盖该项目内、任务状态为待启动/进行中/暂停的任务；未覆盖其他项目、工时投入或截止日期密集度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**anrou20 在“桌面端发版准备”项目中，作为**执行人**或**创建人**的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有发现项目内超负荷证据。**其仅有 1 个未完成执行任务“确定灰度比例”，状态为待启动、低优先级且未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n该判断覆盖此项目中状态为待启动、进行中或暂停的任务；不涵盖其他项目的任务量、工时或排期密度。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 2 日，anrou20 在“桌面端发版准备”项目中，作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**未发现足以证明超负荷的证据，但也不能据此断定其工作负荷正常。**项目内查到其作为执行人有 1 个未完成任务“确定灰度比例”，为低优先级、待启动，系统标记为未逾期；作为创建人的未完成任务为 0。`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\n\n这里的未完成包括待启动、进行中和暂停；判断未涵盖其他项目、工时或实际投入。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\"}]</current_message_references>"
+                },
+                {
+                  "role": "assistant",
+                  "content": "**0 个。**截至 2026 年 11 月 3 日 17:05（Asia/Tokyo），anrou20 在“桌面端发版准备”中作为创建人或执行人的高优先级未完成任务均为 0。`widget:project:pro_2174015056:T1120BFPA`\n\n**没有项目内超负荷证据。**其作为创建人、执行人的全部未完成任务（待启动、进行中、暂停）也均为 0；因此不存在待办堆积或逾期任务的直接迹象。该判断仅限该项目任务，不涵盖其他项目、工时或会议排期。"
+                },
+                {
+                  "role": "user",
+                  "content": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "在“桌面端发版准备”项目中，anrou20作为创建人或执行人有多少个高优先级未完成任务？有超负荷证据吗？\n\n<current_message_references>[{\"entity_type\":\"project\",\"entity_id\":\"pro_2174015056\",\"title\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\"}]</current_message_references>\n\n<current_datetime>{\"local_datetime\":\"2026-11-03T19:40:51+09:00\",\"timestamp\":1793702451,\"time_source\":\"host_received\",\"timezone_source\":\"x-iana-timezone\",\"date\":\"2026-11-03\",\"weekday\":\"Tuesday\",\"timezone\":\"Asia/Tokyo\",\"utc_offset\":\"+09:00\",\"iso_week\":\"2026-W45\"}</current_datetime>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_qaEtp3ivi8rgAb3c7B1G7aq4",
+                      "name": "activate_skills",
+                      "arguments_json": "{\"skills\":[\"group_summary\"]}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                  "content_parts": [
+                    {
+                      "type": "text",
+                      "text": "<skill_instructions skill=\"group_summary\" version=\"0.12.13\">\n群聊：已知会话用 material_ask，群 ID 用 group_scope，不猜前缀。名称/组织/项目/类型先 group_search；仅主题用 group_message_search 定位。group_types：normal 普通、department 部门、space_project 空间项目、project_task 项目任务；无依据不限定。\n\n查询“艾特 / @”先区分发送人和被 @ 人：\n\n- “X 艾特我”：发送人是 X，被 @ 人是当前用户，两项条件同时保留。\n- “我艾特 X”：发送人是当前用户，被 @ 人是 X，两项条件同时保留。\n- “谁艾特 X”：被 @ 人是 X，发送人是待查询结果，不预设为 X 或当前用户。\n\n本人使用 current_user.id，X 使用已核实的真实 user_id；具体谓词按 structured_query 的“消息 @ 方向”规则。语法修正、上下文读取及委托分析均保留原方向、人物身份、时间和会话范围；上下文中其他人的 @ 不能算作符合原条件的事项。\n\n无命中/歧义先追加词/换路径，再澄清。关键词用 group_message_search；group_message_vector_search 召回提炼记忆及证据，失败/不足保留主题/范围转关键词，禁止最新100条代主题。组织线索不转成员发言，明确问成员活动才 group_scope(department)，保留 sender_ids。失败/复杂条件用 structured_query，保留条件，不绕权。\n\n今天各群/未点名工作群概览用 group_scope(my_groups)，默认当地今天零点到本轮截止；明确关注群用 followed_groups，仅 confirmed_follow。未读用 group_scope(my_groups,unread)，本人有效群；线索先定位，保留 unread。普通总结默认24小时，固定时区边界；未读无默认时间，显式时间取交集，不扩成已读。按 covered 统计，不作游标差、不标已读，每次新快照。总结的群 ID 与 attention.groups 中 suggest_follow 条目相同时，按推荐关注规则在末尾问一次是否长期关注，已关注不问；问的这一轮不调用 memory_settle，用户同意后才调用。\n\n语义用 material_ask(ranges,instruction)，保留原问题及 sender_ids/read_status。默认 text；结构化 json/schema。群范围按窗口内可见消息数降序，零消息群不返回；默认50群一页，原参数加 next_cursor 续页至空。每批最多16范围交小模型总结，下步并行 scratchpad_read 答案 key，缺口才读 key/cN；持久化失败用 inline_fallback。沿用答案 widget 围栏；citation_gaps 不拼引用。核验 group_message_lookup，原文才 include_content=true。\n\nmaterial_ask 读取群聊或私聊时，须显式提供完整的 from_seq/to_seq 或 from_time/to_time，不混传、不只传单侧边界。确实遗漏全部边界时，宿主兜底读取截至本轮固定时刻的最近7天，返回实际范围、default_window_days 和 range_notice；回答必须说明该范围，不能当作全部历史或据此排除更早未答事项。已有明确范围时不得主动省略。read_status=unread 沿用未读范围，不套用一周默认窗口。\n\nmaterial_ask 的各范围独立分析，同批其他群的材料不会自动进入该范围的小模型上下文。跨群指代、承诺与后续的关联由主模型读齐相关答案后，结合已读原文、历史与笔记按 core 取证规则综合判断；不能让单群答案替其他群作否定判断，也不能把没有直接引用连接当成唯一判断门槛。已有线索支持关联时给出有依据的推断；需核实时按已知人物、主题和时间衔接补读相关消息，不只重读原群。\n\n“这个/该方案/我问下”等指代未明时，先用 material_ask 读取同群连续上下文：默认锚点前30条、后60条，序号从1起，用户时间/范围/未读边界优先，预算内不足再扩。窗口必须包含锚点，不能只读锚点之前的材料、把前文单独交子模型解指代，或以少量 lookup 代替上下文；已有前文而缺后文时优先补后文。委托保留原问题，要求按人物、对象、动作延续比较候选、支持/冲突证据及后续，不把“缺直接回复引用就无法确认”写成前提。插入其他话题不自动切断关联，相邻也不证明同一事项；证据充分即停。\n\n主模型已有其他来源的具体候选时，须在 material_ask.instruction 中带上候选名称并标为待核实，要求用本群前后文比较支持/冲突及后续，不能只问“这个是什么”而丢掉已有线索；候选不是事实，不要求子模型迎合。时间和 seq 范围二选一，不混传；有用户时间限制时选其内的上下文时间窗。answer_truncated 表示答案不完整，先按已出现线索核验相关原文，必要时用 group_message_lookup 读窗口后部（每次总计最多16条）；不能缩回前半段重问后据此说无后续或无法确认。\n\n委托核对本人或指定人的承诺时，instruction 带已核实的 user_id，不只写昵称；同时要求保留询问、反馈等后续事实，与新增承诺分开。已有待核事项时带其锚点和具体动作供核对，不把“只列本人承诺”误传成“只保留承诺句、丢弃他人反馈及本人实际动作”。\n\n以“无法确认”收尾前，逐项复核当前上下文中已读的其他群答案及笔记：是否已有候选名称、同一人实际询问或反馈；旧的“待确认”必须随这些事实重评。子答案截断、旧笔记读取失败或补查前文无命中，都不能覆盖已读事实。已出现候选却缺直接连线时，先用其消息 ID 核验该候选和后续，不能只回查锚点前文；仍有缺口时分别说明“指代可能是什么”“已发生什么”“结果尚缺什么”，不能把三者一起否定。\n\n统计数量/活跃度/发送人分布不传 instruction，按 covered 回答，零子模型。精确@等筛选用 structured_query。\n\n关键词无指定时间省略边界，默认3天，完整空自动扩7→30天。命中不等于充分：主模型定范围，按 analysis.ranges 委托小模型读无关键词回复；remaining_conversations 分批。结论缺进展/决定/负责人/下一步，再定范围下钻或原样传 next_cursor 为 cursor、重复原参数续查7/30天；宿主固定截止/主题/范围/发送人和180秒总预算；30天仍不足说明缺口，按 coverage.windows 报实查范围。用户明确时间不扩；失败/受限/截断先诊断兜底或细化。默认总结完整且 covered.messages=0 才按24小时→3→7→30天扩窗；用户明确限定的时间/seq及未读边界不扩。助手自选或工具返回的局部 seq 窗口不是用户限制，指代缺证可在用户范围内继续扩窗；引用某条消息本身不等于要求只查该条。\n\n有内容才展示群，不向用户列举零结果群或其数量；全部为空仅简短说明该时段无可汇总内容。先完成当前页分批及答案读取，再续页；预算不足保存原窗口、游标、当前页未处理范围和答案 key，续轮按台账继续。\n\n按输出展示的工作摘要组织，注明范围/截止/快照及失败/权限/分页缺口。按 core 写依据/定位/时间案卷。\n</skill_instructions>",
+                      "cache_control": {
+                        "type": "ephemeral"
+                      }
+                    }
+                  ],
+                  "tool_call_id": "call_qaEtp3ivi8rgAb3c7B1G7aq4"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_GYb4hh7oC3FfqkSKaQE0NDoC",
+                      "name": "person_search",
+                      "arguments_json": "{\"keywords\":\"anrou20\"}"
+                    },
+                    {
+                      "id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX",
+                      "name": "task_detail",
+                      "arguments_json": "{\"task_id\":\"task_vvh8rk2dfqfh\",\"task_tenant_id\":\"T1120BFPA\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"ambiguous\":false,\"contacts\":[{\"name\":\"anrou20\",\"userId\":\"ouvux80krpgwpq\",\"tenantId\":\"T1120BFPA\"}]}",
+                  "tool_call_id": "call_GYb4hh7oC3FfqkSKaQE0NDoC"
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"total\":1,\"page\":1,\"page_size\":1,\"returned\":1,\"task\":{\"task_id\":\"task_vvh8rk2dfqfh\",\"tenant_id\":\"T1120BFPA\",\"title\":\"确定灰度比例 [AEFIX:QA-T-DECISION-02:v1]\",\"task_type\":\"project\",\"status\":\"pending\",\"priority\":\"high\",\"is_overdue\":false,\"is_followed\":false,\"created_at\":\"2026-09-15T17:25:32+09:00\",\"updated_at\":\"2026-09-15T17:25:32+09:00\",\"project_id\":\"pro_2174015056\",\"project_name\":\"桌面端发版准备 [AEFIX:QA-P-RELEASE-01:v1]\",\"space_id\":\"1737627372\",\"level\":1,\"owners\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\"}],\"creator\":{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\"},\"source_unit_name\":\"技术中心\",\"company_name\":\"自动化测试公司\",\"description\":\"整理10%和30%灰度方案及观察指标，提交决策材料并记录最终确认。 计划开始：2026-09-14 09:00；计划截止：2026-09-16 18:00；原业务状态：待确认；[AEFIX:QA-T-DECISION-02:v1]\",\"source_type\":\"direct\",\"task_path\":\"/\",\"members\":[{\"user_id\":\"ouvux80krpgwpq\",\"name\":\"anrou20\",\"tenant_id\":\"T1120BFPA\",\"role\":\"owner\"},{\"user_id\":\"ouvgllrjy9w5yw\",\"name\":\"CFO\",\"tenant_id\":\"T1120BFPA\",\"role\":\"creator\"}]}}",
+                  "tool_call_id": "call_Ioe0KPDjBH8ua6Afh4hpnsWX"
+                },
+                {
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call_TFLccb0b0gQioJ3wumnN5m8N",
+                      "name": "task_ask",
+                      "arguments_json": "{\"queries\":[{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"label\":\"创建人\",\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},{\"label\":\"执行人\",\"owner_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"}],\"group_by\":[\"priority\",\"status\"],\"instruction\":\"统计并对照执行人和创建人的未完成项目任务，按任务去重，给出高优先级（high）和最高优先级（highest）各自数量，识别逾期、截止日期、任务堆积等可能的负荷证据，逐项给出任务引用，不将描述中的计划日期等同于系统截止字段。\",\"output\":{\"format\":\"text\"},\"include_detail\":true,\"answer_mode\":\"complete\"}"
+                    }
+                  ]
+                },
+                {
+                  "role": "tool",
+                  "content": "{\"locators\":[{\"entityType\":\"task\",\"id\":\"task_vvh8rk2dfqfh\",\"tenantId\":\"T1120BFPA\",\"widget\":\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\"}],\"requested\":2,\"ready\":1,\"cached\":0,\"stats\":0,\"empty\":1,\"failed\":0,\"remaining\":[],\"truncated\":false,\"frame_version\":\"14\",\"items\":[{\"query\":{\"creator_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"创建人\",\"status\":\"empty\",\"covered\":{\"total\":0,\"tasks\":0,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":0,\"root_total\":0,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":0,\"details_truncated\":false,\"fingerprint\":\"77ee1e87\",\"by\":{\"is_overdue\":{},\"priority\":{},\"status\":{}}},\"attempts\":2,\"answer_mode\":\"complete\",\"cache_reuse_allowed\":false},{\"query\":{\"owner_user_ids\":[\"ouvux80krpgwpq\"],\"project_id\":\"pro_2174015056\",\"role\":\"all\",\"scope\":\"visible\",\"sort_by\":\"update_time\",\"sort_order\":\"desc\",\"status\":[\"pending\",\"in_progress\",\"paused\"],\"task_type\":\"project\"},\"label\":\"执行人\",\"status\":\"inline_fallback\",\"covered\":{\"total\":1,\"tasks\":1,\"answer_mode\":\"complete\",\"status_conflicts\":0,\"counts\":{\"total\":1,\"root_total\":1,\"subtask_total\":0,\"available\":true},\"pages\":1,\"range_truncated\":false,\"children_rows\":0,\"children_truncated\":false,\"details_read\":1,\"details_truncated\":false,\"fingerprint\":\"971393af\",\"by\":{\"is_overdue\":{\"false\":{\"count\":1,\"pct\":100}},\"priority\":{\"high\":{\"count\":1,\"pct\":100}},\"status\":{\"pending\":{\"count\":1,\"pct\":100}}}},\"chunks\":1,\"answer_tokens\":140,\"attempts\":7,\"answer_mode\":\"complete\",\"cited_tasks\":1,\"cache_reuse_allowed\":true,\"answer\":\"{\\n  \\\"统计口径\\\": \\\"按本次执行人查询材料；任务按任务条目去重。创建人信息未提供，因此无法与创建人任务对照。\\\",\\n  \\\"执行人任务\\\": {\\n    \\\"未完成数量\\\": \\\"1项（材料统计为待处理1项）\\\",\\n    \\\"high数量\\\": \\\"1项\\\",\\n    \\\"highest数量\\\": \\\"0项\\\",\\n    \\\"任务\\\": [\\n      {\\n        \\\"标题\\\": \\\"确定灰度比例\\\",\\n        \\\"执行人\\\": \\\"材料记录为 anrou20(ouvux80krpgwpq)，无法对应现实身份\\\",\\n        \\\"状态\\\": \\\"待处理，未逾期\\\",\\n        \\\"系统截止日期\\\": \\\"未返回\\\",\\n        \\\"日期说明\\\": \\\"描述中的计划截止为2026-09-16 18:00；这不是系统截止字段，不能据此判断系统截止日期。\\\",\\n        \\\"负荷证据\\\": \\\"有1项待处理的高优先级任务；本段未见其他任务，无法据此判断是否存在任务堆积。\\\",\\n        \\\"引用\\\": \\\"`widget:task:task_vvh8rk2dfqfh:T1120BFPA`\\\"\\n      }\\n    ]\\n  },\\n  \\\"创建人任务\\\": \\\"材料中没有依据；无法统计未完成、high或highest数量，也无法与执行人任务对照。\\\"\\n}\"}]}",
+                  "tool_call_id": "call_TFLccb0b0gQioJ3wumnN5m8N"
+                }
+              ],
+              "excluded_roles": [
+                "system",
+                "developer"
+              ],
+              "source": "authenticated Trace, extracted business input only"
+            }
+          ]
+        }
+      ]
+    },
+    "tool_preview_policy": {
+      "collector_client_truncation": false,
+      "server_truncation_preserved": true,
+      "note": "Absent tool/current auth events are not proof of no retrieval or no ACL enforcement."
+    }
+  }
+}
