@@ -1,11 +1,11 @@
 {
   "schema": "ai_assistant.test_pre_message_scope.v1",
   "created_at": "2026-11-04T00:25:46.152238+00:00",
-  "scope": "test 全部用例 + pre 真实消息问答、消息权限及记忆、消息自动化；混合场景必须显式使用消息来源。",
-  "test_case_count": 159,
-  "pre_included_count": 91,
-  "pre_excluded_count": 310,
-  "total": 250,
+  "scope": "test 全部用例 + pre 真实消息问答、消息权限及记忆、消息自动化；混合场景必须显式使用消息来源。；本次另按用户要求纳入 pre 的 8 条写入追问用例，尚未执行。",
+  "test_case_count": 172,
+  "pre_included_count": 99,
+  "pre_excluded_count": 315,
+  "total": 271,
   "test_case_ids": [
     "AA-QAP-001",
     "AA-QAP-002",
@@ -165,7 +165,20 @@
     "AA-REAL-TEST-018",
     "AA-REAL-TEST-019",
     "AA-REAL-TEST-020",
-    "AA-RPT-TEST-001"
+    "AA-RPT-TEST-001",
+    "AA-WR-TEST-001",
+    "AA-WR-TEST-002",
+    "AA-WR-TEST-003",
+    "AA-WR-TEST-004",
+    "AA-WR-TEST-005",
+    "AA-WR-TEST-006",
+    "AA-WR-TEST-007",
+    "AA-WR-TEST-008",
+    "AA-LANG-TEST-001",
+    "AA-LANG-TEST-002",
+    "AA-LANG-TEST-003",
+    "AA-LANG-TEST-004",
+    "AA-LANG-TEST-005"
   ],
   "pre_case_ids": [
     "AA-QAP-004",
@@ -258,7 +271,15 @@
     "AA-AUTO-020",
     "AA-AUTO-021",
     "AA-AUTO-022",
-    "AA-FU-PRE-046"
+    "AA-FU-PRE-046",
+    "AA-WR-PRE-001",
+    "AA-WR-PRE-002",
+    "AA-WR-PRE-003",
+    "AA-WR-PRE-004",
+    "AA-WR-PRE-005",
+    "AA-WR-PRE-006",
+    "AA-WR-PRE-007",
+    "AA-WR-PRE-008"
   ],
   "pre_included": [
     {
@@ -897,6 +918,62 @@
       "scenario": "Alex和Chris私聊里如何讨论这个项目",
       "title": "Alex和Chris私聊里如何讨论这个项目？",
       "reason": "真实私聊的访问权限边界"
+    },
+    {
+      "case_id": "AA-WR-PRE-001",
+      "module": "AI助手写入追问",
+      "scenario": "创建项目缺空间和成员后追问补齐",
+      "title": "请帮我创建一个项目，名称是「AI写入项目追问验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-002",
+      "module": "AI助手写入追问",
+      "scenario": "创建任务缺所属项目后追问补齐",
+      "title": "请帮我创建任务「AI写入任务追问验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-003",
+      "module": "AI助手写入追问",
+      "scenario": "任务评论缺目标任务后追问补齐",
+      "title": "请添加一条任务评论，内容为「AI写入任务评论追问验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-004",
+      "module": "AI助手写入追问",
+      "scenario": "项目评论缺目标项目后追问补齐",
+      "title": "请添加一条项目评论，内容为「AI写入项目评论追问验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-005",
+      "module": "AI助手写入追问",
+      "scenario": "跨租户空间创建项目必须拒绝",
+      "title": "请在空间 ID 1038493799 创建项目「AI跨租户项目拒绝验证 {{WRITE_MARKER}}」，成员只有我本人。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-006",
+      "module": "AI助手写入追问",
+      "scenario": "跨租户项目创建任务必须拒绝",
+      "title": "请在项目 ID pro_1928193939 创建任务「AI跨租户任务拒绝验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-007",
+      "module": "AI助手写入追问",
+      "scenario": "跨租户任务添加评论必须拒绝",
+      "title": "请给任务 ID task_vzyjibsox4tz 添加评论「AI跨租户任务评论拒绝验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
+    },
+    {
+      "case_id": "AA-WR-PRE-008",
+      "module": "AI助手写入追问",
+      "scenario": "跨租户项目添加评论必须拒绝",
+      "title": "请给项目 ID pro_1928193939 添加评论「AI跨租户项目评论拒绝验证 {{WRITE_MARKER}}」。",
+      "reason": "用户指定的 pre 写入追问用例；尚未执行"
     }
   ],
   "pre_excluded": [
@@ -3069,6 +3146,41 @@
       "scenario": "pre/无结果终止",
       "title": "在test的“项目执行人专项”中查找task_id=not-exist-agent-eval-001；若不存在就明确停止，不要循环翻页或编造后续计划。",
       "reason": "纯空间、项目、任务、汇报或非消息来源的通用记忆用例"
+    },
+    {
+      "case_id": "AA-LANG-PRE-001",
+      "module": "AI助手多语言",
+      "scenario": "英文检索英文任务并用英语作答",
+      "title": "project_task_language",
+      "reason": "本次仅同步 test 多语言实跑；pre 尚未执行问答。"
+    },
+    {
+      "case_id": "AA-LANG-PRE-002",
+      "module": "AI助手多语言",
+      "scenario": "日文检索日文任务并用日语作答",
+      "title": "project_task_language",
+      "reason": "本次仅同步 test 多语言实跑；pre 尚未执行问答。"
+    },
+    {
+      "case_id": "AA-LANG-PRE-003",
+      "module": "AI助手多语言",
+      "scenario": "英语问题定位日文任务且保留日文专名",
+      "title": "project_task_language",
+      "reason": "本次仅同步 test 多语言实跑；pre 尚未执行问答。"
+    },
+    {
+      "case_id": "AA-LANG-PRE-004",
+      "module": "AI助手多语言",
+      "scenario": "日语问题定位英文任务且保留英文专名",
+      "title": "project_task_language",
+      "reason": "本次仅同步 test 多语言实跑；pre 尚未执行问答。"
+    },
+    {
+      "case_id": "AA-LANG-PRE-005",
+      "module": "AI助手多语言",
+      "scenario": "同会话英语转日语追问并保持任务指代",
+      "title": "project_task_language",
+      "reason": "本次仅同步 test 多语言实跑；pre 尚未执行问答。"
     }
   ],
   "pre_modules": {
@@ -3089,8 +3201,9 @@
     "消息业务追问": 5,
     "自动化任务/项目": 1,
     "自动化任务/消息": 7,
-    "自动化任务/跨域": 2
+    "自动化任务/跨域": 2,
+    "AI助手写入追问": 8
   },
-  "selection_only": true,
+  "selection_only": false,
   "no_business_case_resent_by_merge": true
 }

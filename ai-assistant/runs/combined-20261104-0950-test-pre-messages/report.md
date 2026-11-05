@@ -1,11 +1,13 @@
-# AI助手 test + pre 综合评测报告
+# AI助手 test 全量 + pre 消息评测报告
+
+test 多语言专项：AA-LANG-TEST-001～005 已实跑，5/5 业务通过；自动断言经同证据修正后为 5/5 skip。pre 对应 5 条尚未执行。
 
 - 报告日期：2026-11-04
-- test：有效范围 167 条；线上已发起 147 条，其中有效判定 140 条、待复测 2 条；Task Success Rate 80.0%（112/140）
+- test：有效范围 172 条；线上已发起 152 条，其中有效判定 145 条、待复测 2 条；Task Success Rate 80.7%（117/145）
 - test 未执行：22 条（不进入线上通过率）
 - pre：数据集 99 条；本轮实跑 69 条、未执行 32 条；Task Success Rate 62.5%（40/64）；
 - 本地 fixture：0/0 通过（固定证据回放，单列且不混入线上通过率）
-- 综合 Task Success Rate：74.5%（152/204）
+- 综合 Task Success Rate：75.1%（157/209）
 - 失败用例展示：同一 Case ID 的 test 失败若 pre 有对应结果，仅展示 pre；本轮隐藏 0 条 test 明细。环境指标仍按全部实际执行分别统计。
 - pre 回答完成率：95.7%
 - pre 证据断言状态：通过 0、失败 37、人工复核 32、执行错误 0（九维分缺失时不伪造 68/75 总分）
@@ -290,5 +292,10 @@
 | pre | AA-WR-PRE-006 | 智本测试_安柔（用例配置） |
 | pre | AA-WR-PRE-007 | 智本测试_安柔（用例配置） |
 | pre | AA-WR-PRE-008 | 智本测试_安柔（用例配置） |
+| test | AA-LANG-TEST-001 | CFO |
+| test | AA-LANG-TEST-002 | CFO |
+| test | AA-LANG-TEST-003 | CFO |
+| test | AA-LANG-TEST-004 | CFO |
+| test | AA-LANG-TEST-005 | CFO |
 
 报告网页提供 test/pre 环境筛选、状态筛选、优先级筛选、分页和逐 Case 关键原因。工具与稳定性使用已关联 Trace 的实测数据；计划质量由 GPT 基于可观测 Trace 复评。参数、Token 等没有可验证断言或采集值的维度保持未覆盖，不作假通过。连续完成只认多次独立运行证据，配置中的 repeats 不作为执行证据。
