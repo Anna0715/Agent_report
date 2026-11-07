@@ -1,0 +1,530 @@
+{
+  "identity": {
+    "report_id": "review-2af8dc96cdd5e100a2efa499",
+    "run_id": "AI助手-2026-11-07-pre-memory-failure-rerun",
+    "environment": "pre",
+    "source_digest": "9fe95ca115aab9a82385534365742426ae669191bd54b96c5aa65e7fca9a88c9"
+  },
+  "rows": [
+    {
+      "case_id": "AA-LMEM-028",
+      "source_environment": "pre",
+      "suite": "assistant_agent_followup",
+      "title": "跨群默认检索窗口与未覆盖范围",
+      "module": "长期记忆与群消息检索",
+      "scenario": "跨群默认检索窗口与未覆盖范围",
+      "gate_class": "core",
+      "ability": "群别时间范围与跨会话偏好",
+      "kind": "evidence_insufficient",
+      "result_status": "skip",
+      "confidence": "medium",
+      "priority": "P0",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "skip",
+      "reason": "列出的线索有群消息支持，但搜索结果被截断，无法确认有没有漏项。",
+      "failure_categories": [],
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "fe8d85c28bc10966e6b75576109ef9b131e6c5d1ab84ab9caefe9b22ea741638",
+        "result": "a5674d2e5eb602a666b66099475575bc0a36896e16e45a4fcb48885fd9771cb9",
+        "requests": [
+          "265e8bd5-decd-4ac4-9cac-76e8ef9db783"
+        ]
+      },
+      "original_ai_review": null,
+      "latency_ms": 86591,
+      "trace_runs": 1,
+      "trace_status": "已匹配；搜索预览截断",
+      "task_completion_rate": null,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。",
+        "latest_status": null,
+        "previous_status": "pass"
+      },
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": false,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-LMEM-029",
+      "source_environment": "pre",
+      "suite": "assistant_agent_followup",
+      "title": "同会话确认后扩大到60天",
+      "module": "长期记忆与群消息检索",
+      "scenario": "同会话确认后扩大到60天",
+      "gate_class": "core",
+      "ability": "群别时间范围与跨会话偏好",
+      "kind": "evidence_insufficient",
+      "result_status": "skip",
+      "confidence": "medium",
+      "priority": "P0",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "skip",
+      "reason": "首轮问了扩到60天；对含糊的“要”先澄清合理。搜索结果被截断，首轮清单仍待核实。",
+      "failure_categories": [],
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "e674829337c3b5687df0fce62be0e7fbc1dfba71554e579c225abed8b346e227",
+        "result": "8dbd7776af12b61a42d0a21bcb987a444e97e1ea9de5df205294f8503a641536",
+        "requests": [
+          "3c76e99d-e7bb-4221-85b4-6067be12e735",
+          "d96ec138-160d-4708-8d7f-0ece70321b8e"
+        ]
+      },
+      "original_ai_review": null,
+      "latency_ms": 88354,
+      "trace_runs": 2,
+      "trace_status": "已匹配；搜索预览截断",
+      "task_completion_rate": null,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。",
+        "latest_status": null,
+        "previous_status": "fail"
+      },
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": false,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": []
+    },
+    {
+      "case_id": "AA-LMEM-031",
+      "source_environment": "pre",
+      "suite": "assistant_agent_followup",
+      "title": "一次性80天检索不形成长期偏好",
+      "module": "长期记忆与群消息检索",
+      "scenario": "一次性80天检索不形成长期偏好",
+      "gate_class": "quality",
+      "ability": "群别时间范围与跨会话偏好",
+      "kind": "business_review",
+      "result_status": "fail",
+      "confidence": "high",
+      "priority": "P1",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "fail",
+      "reason": "只查了指定群，也没保存80天设置；但承认范围内的讨论没查完，让用户再说“继续”。",
+      "failure_categories": [
+        "查询覆盖不完整"
+      ],
+      "review_reuse": null,
+      "review_observation": {
+        "basis": "6c46ffb17fb3e03fc54791fe6374789ddd9d94afbe868240c67619d222f1679a",
+        "result": "195dbfb4e97e1934cfc2c0290c9bf234672358d4438637a0a7ab4b6d243d76a7",
+        "requests": [
+          "47b26168-c151-43c3-be9e-879bb52f8649"
+        ]
+      },
+      "original_ai_review": null,
+      "latency_ms": 229988,
+      "trace_runs": 1,
+      "trace_status": "已匹配",
+      "task_completion_rate": 0,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。",
+        "latest_status": "fail",
+        "previous_status": "pass"
+      },
+      "resource_coverage": {
+        "e2e_ms": true,
+        "steps": false,
+        "tool_calls": true,
+        "tokens": true,
+        "cache_token_ratio": true,
+        "cost_usd": true,
+        "retries": true
+      },
+      "display_failure_categories": [
+        "查询覆盖不完整"
+      ]
+    }
+  ],
+  "summary": {
+    "report_environment": "pre",
+    "report_display": {
+      "suppressed_test_failure_attempts": 0
+    },
+    "report_date": "2026-11-07",
+    "generated_at": "2026-11-07T18:40:05+09:00",
+    "pre_case_count": 3,
+    "test_scope": {
+      "active_total": 0,
+      "online_executed": 0,
+      "online_assessed": 0,
+      "online_pending_retest": 0,
+      "local_executed": 0,
+      "not_executed": 0
+    },
+    "pre_scope": {
+      "active_total": 3,
+      "executed": 3,
+      "not_executed": 0,
+      "pending": 2,
+      "business": {
+        "pass": 0,
+        "fail": 1,
+        "skip": 2
+      }
+    },
+    "local_fixture": {
+      "executed": 0,
+      "pass": 0,
+      "fail": 0,
+      "skip": 0,
+      "error": 0
+    },
+    "reaudit": {
+      "previous_pre_failures": 3,
+      "still_failed": 1,
+      "old_fail_to_pass": [],
+      "old_failure_gated": []
+    },
+    "source_basis": {
+      "summary": {},
+      "judge": {}
+    },
+    "trace_gate": {
+      "required": true,
+      "executed": 3,
+      "captured": 3,
+      "complete": true,
+      "missing": {}
+    },
+    "metrics": {
+      "tool_accuracy": {
+        "test": {
+          "selection": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "parameters": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "output_understanding": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "chain_completeness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          }
+        },
+        "pre": {
+          "selection": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "parameters": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "output_understanding": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "chain_completeness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          }
+        },
+        "pre_observation": "禁用写入和非持久化记忆断言 3/3 通过；截断搜索结果不计为检索覆盖通过。"
+      },
+      "planning_quality": {
+        "test": {
+          "step_correctness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "order": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "minimality": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "deadloop_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          }
+        },
+        "pre": {
+          "step_correctness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "order": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "minimality": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "deadloop_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "hallucinated_plan_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          }
+        },
+        "pre_observation": "本次未独立评测计划质量。"
+      },
+      "robustness": {
+        "pre_answer_completion": {
+          "pass": 3,
+          "total": 3,
+          "rate": 1.0
+        },
+        "continuous_completion": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "trace_pre": {
+          "error_recovery": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "loop_avoidance": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "step_robustness": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          },
+          "survived_10_steps": {
+            "pass": 0,
+            "total": 0,
+            "rate": null
+          }
+        }
+      },
+      "efficiency": {
+        "test": {
+          "covered": 0
+        },
+        "pre": {
+          "covered": 3,
+          "avg_latency_ms": 134977.66666666666,
+          "p50_latency_ms": 88354.0,
+          "p95_latency_ms": 215824.59999999998
+        },
+        "resource_cost": {
+          "test": {
+            "definition": "单条成功用例成本按本轮所有已观测资源消耗除以业务成功数计算；资源缺失不按零处理。",
+            "metrics": {
+              "e2e_ms": {},
+              "steps": {},
+              "tool_calls": {},
+              "tokens": {},
+              "cache_token_ratio": {},
+              "cost_usd": {},
+              "retries": {}
+            }
+          },
+          "pre": {
+            "definition": "仅按本次 3 条实测统计；没有业务通过，单次成功成本不计算。",
+            "metrics": {
+              "e2e_ms": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": 404933.0,
+                "average": 134977.66666666666,
+                "p50": 88354.0,
+                "p95": 215824.59999999998,
+                "per_success_is_lower_bound": false
+              },
+              "steps": {
+                "valid_n": 0,
+                "attempted_n": 3,
+                "coverage_rate": 0.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "per_success_is_lower_bound": true
+              },
+              "tool_calls": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": 34.0,
+                "average": 11.333333333333334,
+                "p50": 11.0,
+                "p95": 11.9,
+                "per_success_is_lower_bound": false
+              },
+              "tokens": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": 1399575.0,
+                "average": 466525.0,
+                "p50": 427594.0,
+                "p95": 633568.9,
+                "per_success_is_lower_bound": false
+              },
+              "cache_token_ratio": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": null,
+                "average": null,
+                "p50": null,
+                "p95": null,
+                "ratio": 0.3882023676354127,
+                "per_success_is_lower_bound": true
+              },
+              "cost_usd": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": 7.280365,
+                "average": 2.4267883333333335,
+                "p50": 2.1682,
+                "p95": 3.3742945,
+                "per_success_is_lower_bound": false
+              },
+              "retries": {
+                "valid_n": 3,
+                "attempted_n": 3,
+                "coverage_rate": 1.0,
+                "successful_valid_n": 0,
+                "successful_n": 0,
+                "total": 0.0,
+                "average": 0.0,
+                "p50": 0.0,
+                "p95": 0.0,
+                "per_success_is_lower_bound": false
+              }
+            }
+          }
+        }
+      },
+      "versions": {
+        "test_assistant": {
+          "models": [],
+          "prompts": [],
+          "model_covered_cases": 0,
+          "prompt_covered_cases": 0,
+          "total_cases": 0
+        },
+        "test_judge": {},
+        "pre_assistant": {
+          "models": [
+            "openai/gpt-6.1-terra"
+          ],
+          "prompts": [
+            "assistant_chat_agent@0.23.2"
+          ],
+          "model_covered_cases": 3,
+          "prompt_covered_cases": 3,
+          "total_cases": 3
+        },
+        "judge": {
+          "model": "gpt-6.1-sol",
+          "prompt_version": "ai-assistant-business-review-v6-historical-expansion"
+        },
+        "planning_judge": {},
+        "operational_judge": {}
+      },
+      "automatic_pre": {
+        "pass": 0,
+        "fail": 0,
+        "skip": 3,
+        "error": 0
+      },
+      "planning_judge": {
+        "environment": "",
+        "summary": {},
+        "unavailable": 0
+      },
+      "operational_judge": {
+        "environment": "",
+        "summary": {},
+        "assessment": "",
+        "recommendations": [],
+        "unavailable": 0,
+        "resource_efficiency_review": {
+          "rating": "",
+          "assessment": "",
+          "findings": [],
+          "model": "",
+          "prompt_version": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1060 @@
+{
+  "contract": "ai_assistant.combined_report.v1",
+  "report_date": "2026-11-07",
+  "report_environment": "pre",
+  "report_title": "PRE 群聊时间窗记忆 · 失败用例重跑报告",
+  "review_run_id": "AI助手-2026-11-07-pre-memory-failure-rerun",
+  "generated_at": "2026-11-07T18:40:05+09:00",
+  "pre_case_count": 3,
+  "result_sync": {
+    "main_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/pre-memory-failure-rerun-20261107/"
+  },
+  "execution_notice": "上一版失败的 3 条记忆用例独立重跑；本轮 1 条未通过、2 条待复核。",
+  "focused_review": {
+    "assistant_model": "openai/gpt-6.1-terra",
+    "assistant_prompt": "assistant_chat_agent@0.23.2",
+    "judge_prompt": "ai-assistant-business-review-v6-historical-expansion",
+    "trace_limit": "认证 Trace 的关键搜索结果在服务端只提供 8192 字预览，虽未标记截断，但 JSON 未闭合；完整群消息导出不能还原助手当时拿到的完整工具结果。"
+  },
+  "rows": [
+    {
+      "environment": "pre",
+      "case_id": "AA-LMEM-028",
+      "suite": "assistant_agent_followup",
+      "title": "跨群默认检索窗口与未覆盖范围",
+      "module": "长期记忆与群消息检索",
+      "scenario": "跨群默认检索窗口与未覆盖范围",
+      "ability": "群别时间范围与跨会话偏好",
+      "priority": "P0",
+      "gate_class": "core",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "skip",
+      "kind": "evidence_insufficient",
+      "reason": "列出的线索有群消息支持，但搜索结果被截断，无法确认有没有漏项。",
+      "business_reason": "回答所列用户限额 PRD、任务问答交互和日程逻辑均有追问前的消息支持，也谨慎区分了历史评审邀请、已有结论与当前状态未知。关键工具结果被截断，无法核实实际检索窗口、后续状态覆盖及自述的检索截断情况，因此暂不能确定整体通过。",
+      "failure_categories": [],
+      "confidence": "medium",
+      "latency_ms": 86591,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "task_completion_rate": null,
+      "execution_completion_rate": 100,
+      "trace_runs": 1,
+      "trace_status": "已匹配；搜索预览截断",
+      "tool_chain_summary": "11 次工具调用；3 个关键搜索结果预览截断。",
+      "questions": [
+        "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？"
+      ],
+      "turns": [
+        {
+          "step": 2,
+          "op": "提问",
+          "asker": "安柔",
+          "question": "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
+          "answer": "目前能明确找到一项**曾提出另约评审的 PRD**，以及两类仍需确认后续的问答或交互问题；但还不能把它们认定为截至现在都“待评审”。「蜂巢AI助手」近 30 天按相关关键词未找到消息；研发群的较早消息检索有截断，部分上下文未能完整读取，因此这不是两群的完整清单。\n\n- **用户限额 PRD**：10 月 19 日发出文档，请相关人员先看，并提出另约时间评审。已读取的后续消息没有确认评审是否举行或完成，需核实当前状态。`widget:refs:msg:sg_3981594831:1822:T112053RE|msg:sg_3981594831:1849:T112053RE`\n- **创建任务的复杂问答：中断与恢复交互**：讨论过切换页面导致回答中断、关闭选项框后的处理。后续已有处理意见：未发送的输入应保留，退出 App 再进入也保留，但不保证回到上次回答页面；尚未看到正式评审完成的记录。`widget:refs:msg:sg_3981594831:1874:T112053RE|msg:sg_3981594831:1875:T112053RE|msg:sg_3981594831:1880:T112053RE|msg:sg_3981594831:1881:T112053RE|msg:sg_3981594831:1882:T112053RE`\n- **创建日程 PRD：冲突与会议创建逻辑**：11 月 7 日提出日程冲突时如何交互、会议创建失败是否阻断日程创建。群内已回复“**不阻断创建，但要先告知用户**”；会议逻辑另约沟通，已读消息未确认最终讨论结果或文档是否更新。这是待澄清问题，不等同于已安排正式评审。`widget:refs:msg:sg_3981594831:2409:T112053RE|msg:sg_3981594831:2410:T112053RE|msg:sg_3981594831:2411:T112053RE|msg:sg_3981594831:2412:T112053RE`\n\n另外，研发群 11 月 4 日有人表示正在出一份 PRD，孙文说出后看看；由于相关上下文未完整读取，**无法可靠确认这份 PRD 的具体主题及后续评审状态**。`widget:refs:msg:sg_3981594831:2325:T112053RE|msg:sg_3981594831:2329:T112053RE|msg:sg_3981594831:2336:T112053RE`",
+          "session_id": "cs_f0bd58de-a8dc-402b-92a2-be4c23165044",
+          "request_id": "265e8bd5-decd-4ac4-9cac-76e8ef9db783",
+          "status": "completed",
+          "review_status": "skip",
+          "review_reason": "以2026年11月7日18:13:48（东京时间）为上界，已展示引用均在追问前存在，回答没有直接把旧邀请认定为当前待评审，也没有将蜂巢群旧复杂问答讨论强行列为当前待办。仍需完整检索结果确认3→7→30天窗口及后续状态覆盖，不能仅凭截断预览判定清单充分或存在漏答。",
+          "asked_at_jst": "2026-11-07 18:13:48",
+          "gold_checked_at_jst": "2026-11-07 18:12:23",
+          "gold_groups": [
+            {
+              "group_id": "3981594831",
+              "name": "AI助手·一期 研发群",
+              "authenticated_message_count": 2420,
+              "keyword_candidate_counts": {
+                "3": 2,
+                "7": 7,
+                "30": 13,
+                "60": 19,
+                "80": 23
+              },
+              "cited_message_sequences": [
+                1822,
+                1849,
+                1874,
+                1875,
+                1880,
+                1881,
+                1882,
+                2325,
+                2329,
+                2336,
+                2409,
+                2410,
+                2411,
+                2412
+              ]
+            },
+            {
+              "group_id": "2658892958",
+              "name": "蜂巢AI助手",
+              "authenticated_message_count": 90,
+              "keyword_candidate_counts": {
+                "3": 0,
+                "7": 0,
+                "30": 0,
+                "60": 0,
+                "80": 5
+              },
+              "cited_message_sequences": []
+            }
+          ]
+        }
+      ],
+      "trace_tools": [
+        {
+          "step": 2,
+          "seq": 19,
+          "name": "activate_skills",
+          "arguments_summary": "skills=group_summary,structured_query",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 29,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 34,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 39,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 44,
+          "name": "material_ask",
+          "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=39",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 52,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20261104T091356Z-20261107T091356Z-52abb549 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 57,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 62,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 67,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=1 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 72,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=57",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 80,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_1792-1882-f592fd06 offset=0",
+          "status": "completed",
+          "attempts": 1
+        }
+      ],
+      "trace_run_summaries": [
+        {
+          "run_id": "bar_bb7e4020e035410795998c7826268f24",
+          "step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "skills": "group_summary、structured_query、output_presentation",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.2",
+          "status": "succeeded",
+          "event_count": 93,
+          "tool_count": 11,
+          "tokens": 427594
+        }
+      ],
+      "detail_anchor": "failure-pre-AA-LMEM-028",
+      "review_observation": {
+        "basis": "fe8d85c28bc10966e6b75576109ef9b131e6c5d1ab84ab9caefe9b22ea741638",
+        "result": "a5674d2e5eb602a666b66099475575bc0a36896e16e45a4fcb48885fd9771cb9",
+        "requests": [
+          "265e8bd5-decd-4ac4-9cac-76e8ef9db783"
+        ]
+      },
+      "automatic_status": "skip",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "latest_status": null,
+        "previous_status": "pass",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。"
+      }
+    },
+    {
+      "environment": "pre",
+      "case_id": "AA-LMEM-029",
+      "suite": "assistant_agent_followup",
+      "title": "同会话确认后扩大到60天",
+      "module": "长期记忆与群消息检索",
+      "scenario": "同会话确认后扩大到60天",
+      "ability": "群别时间范围与跨会话偏好",
+      "priority": "P0",
+      "gate_class": "core",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "skip",
+      "kind": "evidence_insufficient",
+      "reason": "首轮问了扩到60天；对含糊的“要”先澄清合理。搜索结果被截断，首轮清单仍待核实。",
+      "business_reason": "首轮有两群检索证据，也明确提出扩到60天，并谨慎区分历史评审邀请与当前待确认状态；但关键工具结果被截断，无法核实清单及后续状态是否完整。首轮末尾同时询问扩窗和长期关注，因此第二轮对“要”进行指代澄清合理，未擅自保存长期设置。",
+      "failure_categories": [],
+      "confidence": "medium",
+      "latency_ms": 88354,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "task_completion_rate": null,
+      "execution_completion_rate": 100,
+      "trace_runs": 2,
+      "trace_status": "已匹配；搜索预览截断",
+      "tool_chain_summary": "11 次工具调用；2 个关键搜索结果预览截断。",
+      "questions": [
+        "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
+        "要"
+      ],
+      "turns": [
+        {
+          "step": 2,
+          "op": "提问",
+          "asker": "安柔",
+          "question": "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
+          "answer": "目前能整理出 **1 份曾提出另约评审的 PRD，以及几项问答和日程交互待确认问题**；但研发群部分后续上下文未能完整读取，不能确认它们现在仍全部待评审，也不能给出完整清单。\n\n- **用户限额 PRD**：10 月 19 日发出文档，请相关人员先看、另约时间评审；已读到的后续讨论没有确认评审是否完成或形成结论。[PRD 文档](https://pcnpuds47gj5.feishu.cn/wiki/Uuh8wmA34iJkkhk5ZFEcjATGnMc?create_from=copy_within_wiki) `widget:refs:msg:sg_3981594831:1822:T112053RE|msg:sg_3981594831:1849:T112053RE`\n- **创建任务过程中的问答中断**：10 月 21 日提出，切换页面断开后，中途问答和已输入信息如何处理；当时描述的预期是问答丢失且无法重新拉起。后续有人建议保留输入框中已输入但未发送的内容，但已读材料没有记录最终方案。`widget:refs:msg:sg_3981594831:1874:T112053RE|msg:sg_3981594831:1875:T112053RE|msg:sg_3981594831:1879:T112053RE|msg:sg_3981594831:1880:T112053RE`\n- **创建日程的问答与会议处理**：11 月 7 日提出，日程冲突时是否先确认再创建，以及创建会议失败时如何处理。回复已澄清原则是**不阻断创建，但先告知用户**；后续仍追问是否需用户确认、是否提醒手动创建会议并填写链接，暂未核实到最终答复。这是待确认的交互问题，不等同于已安排评审。`widget:refs:msg:sg_3981594831:2409:T112053RE|msg:sg_3981594831:2410:T112053RE|msg:sg_3981594831:2411:T112053RE`\n- **另一份新 PRD**：11 月 4 日有人表示正在编写，另有人说出稿后会看；关联内容主要在图片中，暂不能确认具体主题、是否出稿或已评审。`widget:refs:msg:sg_3981594831:2325:T112053RE|msg:sg_3981594831:2329:T112053RE|msg:sg_3981594831:2336:T112053RE`\n\n以上检索覆盖两群 **10 月 8 日至 11 月 7 日**的相关消息；「蜂巢AI助手」在已读取内容中没有确认到相关待评审事项。研发群部分后续上下文读取不完整，尤其**复杂问答是否还有其他待评审项、上述事项是否已解决**，目前不能下结论。\n\n10 月 8 日之前还有相关讨论没覆盖到，要往前查到 60 天吗？\n\n要不要我帮你长期关注“AI助手·一期 研发群”？",
+          "session_id": "cs_9c496823-5709-4d7b-a003-27a1cfc728ad",
+          "request_id": "d96ec138-160d-4708-8d7f-0ece70321b8e",
+          "status": "completed",
+          "review_status": "skip",
+          "review_reason": "以2026年11月7日18:16:42（东京时间）为上界，已证明按默认窗口检索两群并提出60天扩窗。引用原文大体支持所述历史事实，但缺少完整检索结果及相关后续线程，无法核实新PRD和复杂问答的当前状态与重要漏项。",
+          "asked_at_jst": "2026-11-07 18:16:42",
+          "gold_checked_at_jst": "2026-11-07 18:16:18",
+          "gold_groups": [
+            {
+              "group_id": "3981594831",
+              "name": "AI助手·一期 研发群",
+              "authenticated_message_count": 2420,
+              "keyword_candidate_counts": {
+                "3": 2,
+                "7": 7,
+                "30": 13,
+                "60": 19,
+                "80": 23
+              },
+              "cited_message_sequences": [
+                1822,
+                1849,
+                1874,
+                1875,
+                1879,
+                1880,
+                2325,
+                2329,
+                2336,
+                2409,
+                2410,
+                2411
+              ]
+            },
+            {
+              "group_id": "2658892958",
+              "name": "蜂巢AI助手",
+              "authenticated_message_count": 90,
+              "keyword_candidate_counts": {
+                "3": 0,
+                "7": 0,
+                "30": 0,
+                "60": 0,
+                "80": 5
+              },
+              "cited_message_sequences": []
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "op": "继续追问",
+          "asker": "安柔",
+          "question": "要",
+          "answer": "你是想**往前查到 60 天**，还是**长期关注“AI助手·一期 研发群”**？也可以两项都要。",
+          "session_id": "cs_9c496823-5709-4d7b-a003-27a1cfc728ad",
+          "request_id": "3c76e99d-e7bb-4221-85b4-6067be12e735",
+          "status": "completed",
+          "review_status": "pass",
+          "review_reason": "上轮实际同时提出“扩到60天”和“长期关注”两个问题，本轮“要”存在真实歧义。助手先澄清所指，未将模糊同意直接解释为长期保存授权，也未声称已完成扩窗检索，处理合理。",
+          "asked_at_jst": "2026-11-07 18:18:04",
+          "gold_checked_at_jst": "2026-11-07 18:16:18",
+          "gold_groups": [
+            {
+              "group_id": "3981594831",
+              "name": "AI助手·一期 研发群",
+              "authenticated_message_count": 2420,
+              "keyword_candidate_counts": {
+                "3": 2,
+                "7": 7,
+                "30": 13,
+                "60": 19,
+                "80": 23
+              },
+              "cited_message_sequences": []
+            },
+            {
+              "group_id": "2658892958",
+              "name": "蜂巢AI助手",
+              "authenticated_message_count": 90,
+              "keyword_candidate_counts": {
+                "3": 0,
+                "7": 0,
+                "30": 0,
+                "60": 0,
+                "80": 5
+              },
+              "cited_message_sequences": []
+            }
+          ]
+        }
+      ],
+      "trace_tools": [
+        {
+          "step": 2,
+          "seq": 19,
+          "name": "activate_skills",
+          "arguments_summary": "skills=group_summary",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 29,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 34,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 39,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 44,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 49,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=100 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 54,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=54",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 62,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_2658892958_20261008T091653Z-20261107T091653Z-6011c844 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 67,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=69",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 75,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_1780-1880-baf1c2c0 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 80,
+          "name": "memory_settle",
+          "arguments_summary": "hint_present=false",
+          "status": "completed",
+          "attempts": 1
+        }
+      ],
+      "trace_run_summaries": [
+        {
+          "run_id": "bar_cf793b75e4774d6d84aaca05c98b5781",
+          "step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "skills": "group_summary、output_presentation",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.2",
+          "status": "succeeded",
+          "event_count": 93,
+          "tool_count": 11,
+          "tokens": 295504
+        },
+        {
+          "run_id": "bar_9020374b20614958b7a17d91ba6d320e",
+          "step": 3,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "skills": "未激活/未观测",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.2",
+          "status": "succeeded",
+          "event_count": 26,
+          "tool_count": 0,
+          "tokens": 20022
+        }
+      ],
+      "detail_anchor": "failure-pre-AA-LMEM-029",
+      "review_observation": {
+        "basis": "e674829337c3b5687df0fce62be0e7fbc1dfba71554e579c225abed8b346e227",
+        "result": "8dbd7776af12b61a42d0a21bcb987a444e97e1ea9de5df205294f8503a641536",
+        "requests": [
+          "3c76e99d-e7bb-4221-85b4-6067be12e735",
+          "d96ec138-160d-4708-8d7f-0ece70321b8e"
+        ]
+      },
+      "automatic_status": "skip",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "latest_status": null,
+        "previous_status": "fail",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。"
+      }
+    },
+    {
+      "environment": "pre",
+      "case_id": "AA-LMEM-031",
+      "suite": "assistant_agent_followup",
+      "title": "一次性80天检索不形成长期偏好",
+      "module": "长期记忆与群消息检索",
+      "scenario": "一次性80天检索不形成长期偏好",
+      "ability": "群别时间范围与跨会话偏好",
+      "priority": "P1",
+      "gate_class": "quality",
+      "asker": "安柔",
+      "asker_company": "Zelto",
+      "asker_source": "recorded_turn",
+      "status": "fail",
+      "kind": "business_review",
+      "reason": "只查了指定群，也没保存80天设置；但承认范围内的讨论没查完，让用户再说“继续”。",
+      "business_reason": "回答限定了正确的群和80天边界，引用的历史评审线索与当轮来源相符，也没有把旧讨论直接断言为当前待评审。可是回答明确承认最近5天及部分较早讨论尚未完成核查，并要求用户回复“继续”，未在本轮完成用户指定范围的查询。",
+      "failure_categories": [
+        "查询覆盖不完整"
+      ],
+      "confidence": "high",
+      "latency_ms": 229988,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.2",
+      "task_completion_rate": 0,
+      "execution_completion_rate": 100,
+      "trace_runs": 1,
+      "trace_status": "已匹配",
+      "tool_chain_summary": "12 次工具调用，认证 Trace 已匹配。",
+      "questions": [
+        "这次只查「AI助手·一期 研发群」过去80天的PRD待评审讨论，不用记住这个时间范围。"
+      ],
+      "turns": [
+        {
+          "step": 2,
+          "op": "提问",
+          "asker": "安柔",
+          "question": "这次只查「AI助手·一期 研发群」过去80天的PRD待评审讨论，不用记住这个时间范围。",
+          "answer": "**目前只能确认部分 PRD 评审线索，还不能给出完整的待评审清单或确认它们现在仍未评审。** 11 月 2 日 18:19 至 11 月 7 日 18:19 的连续讨论未能完整读取，较早一段的分析结果也有截断。\n\n已查到的明确评审线索：\n\n- **用户限额 PRD**：10 月 19 日发出需求文档，请大家先看，并提出另约时间评审；之后有人追问限额后台部分是否已约时间澄清。现有材料不能确认评审是否举行或完成。`widget:refs:msg:sg_3981594831:1822:T112053RE|msg:sg_3981594831:1919:T112053RE|msg:sg_3981594831:1922:T112053RE`\n- **一份名称尚不明确的 PRD**：9 月 9 日有人请 SuChen 先看，提出当日晚些时候或次日上午评审；SuChen 表示“没啥问题”，希望尽早澄清。现有材料不能确认正式评审是否举行，也不能确定它是否与同日讨论的另一项 AI 助手需求相同。`widget:refs:msg:sg_3981594831:81:T112053RE|msg:sg_3981594831:82:T112053RE`\n- **11 月 4 日正在撰写的 PRD**：群内有人询问是否需要出 PRD，随后有人说正在写，另有人表示写完后会看。**具体需求及后续评审状态尚未核实**；这些消息本身也不能证明已安排正式评审。`widget:refs:msg:sg_3981594831:2325:T112053RE|msg:sg_3981594831:2329:T112053RE|msg:sg_3981594831:2336:T112053RE`\n\n本次范围仅限「AI助手·一期 研发群」2026 年 8 月 19 日 18:19 至 11 月 7 日 18:19（东京时间）。已读取至 11 月 2 日 18:19 的分段讨论，但其中一段分析结果不完整；之后仅找到部分关键词消息，尚未读完整上下文。**没有记住这次的 80 天范围。**\n\n回复“继续”，我会在相同群和时间范围内补查剩余讨论及评审后续。",
+          "session_id": "cs_ba5ee2c7-2207-4c7d-8a1d-d375ce3195b4",
+          "request_id": "47b26168-c151-43c3-be9e-879bb52f8649",
+          "status": "completed",
+          "review_status": "fail",
+          "review_reason": "以2026年11月7日18:19东京时间为上界，80天窗口表述正确，历史线索也保留了状态不确定性。但助手明确只给出部分结果，未完成已指定窗口内的讨论及后续核查。",
+          "asked_at_jst": "2026-11-07 18:19:03",
+          "gold_checked_at_jst": "2026-11-07 18:18:40",
+          "gold_groups": [
+            {
+              "group_id": "3981594831",
+              "name": "AI助手·一期 研发群",
+              "authenticated_message_count": 2420,
+              "keyword_candidate_counts": {
+                "3": 2,
+                "7": 7,
+                "30": 13,
+                "60": 19,
+                "80": 23
+              },
+              "cited_message_sequences": [
+                81,
+                82,
+                1822,
+                1919,
+                1922,
+                2325,
+                2329,
+                2336
+              ]
+            },
+            {
+              "group_id": "2658892958",
+              "name": "蜂巢AI助手",
+              "authenticated_message_count": 90,
+              "keyword_candidate_counts": {
+                "3": 0,
+                "7": 0,
+                "30": 0,
+                "60": 0,
+                "80": 5
+              },
+              "cited_message_sequences": []
+            }
+          ]
+        }
+      ],
+      "trace_tools": [
+        {
+          "step": 2,
+          "seq": 19,
+          "name": "activate_skills",
+          "arguments_summary": "skills=group_summary",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 29,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 34,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=2 group_ids=1 conversation_ids=0 sender_ids=0 from_time=true to_time=true limit=20 time_mode=explicit continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 39,
+          "name": "material_ask",
+          "arguments_summary": "invalid arguments",
+          "status": "failed",
+          "attempts": 0
+        },
+        {
+          "step": 2,
+          "seq": 44,
+          "name": "material_ask",
+          "arguments_summary": "ranges=3 message=3 report=0 format=text instruction_runes=66",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 72,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20260819T091904Z-20260918T091904Z-56d5f588 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 77,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20260918T091904Z-20261018T091904Z-de132808 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 82,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=75",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 94,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20261018T091904Z-20261028T091904Z-8f0efd1c offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 99,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=64",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 107,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20261028T091904Z-20261102T091904Z-d26b3b74 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "step": 2,
+          "seq": 112,
+          "name": "scratchpad_write",
+          "arguments_summary": "path=cases/prd-review expected_revision=0 bytes=689",
+          "status": "completed",
+          "attempts": 1
+        }
+      ],
+      "trace_run_summaries": [
+        {
+          "run_id": "bar_8c2c82a507a14482aab87c0c0f49303d",
+          "step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "skills": "group_summary、output_presentation",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.2",
+          "status": "succeeded",
+          "event_count": 125,
+          "tool_count": 12,
+          "tokens": 656455
+        }
+      ],
+      "detail_anchor": "failure-pre-AA-LMEM-031",
+      "review_observation": {
+        "basis": "6c46ffb17fb3e03fc54791fe6374789ddd9d94afbe868240c67619d222f1679a",
+        "result": "195dbfb4e97e1934cfc2c0290c9bf234672358d4438637a0a7ab4b6d243d76a7",
+        "requests": [
+          "47b26168-c151-43c3-be9e-879bb52f8649"
+        ]
+      },
+      "automatic_status": "skip",
+      "execution_comparison": {
+        "eligible": false,
+        "verdict": "not_comparable",
+        "latest_status": "fail",
+        "previous_status": "pass",
+        "reason": "上一版是原批次证据复评，不能当作两次独立实测。"
+      }
+    }
+  ],
+  "pre_scope": {
+    "active_total": 3,
+    "executed": 3,
+    "not_executed": 0,
+    "pending": 2,
+    "business": {
+      "pass": 0,
+      "fail": 1,
+      "skip": 2
+    }
+  },
+  "test_scope": {
+    "active_total": 0,
+    "online_executed": 0,
+    "online_assessed": 0,
+    "online_pending_retest": 0,
+    "local_executed": 0,
+    "not_executed": 0
+  },
+  "trace_gate": {
+    "required": true,
+    "executed": 3,
+    "captured": 3,
+    "complete": true,
+    "missing": {}
+  },
+  "metrics": {
+    "task_success": {
+      "test": {
+        "pass": 0,
+        "attempted": 0,
+        "rate": null
+      },
+      "pre": {
+        "pass": 0,
+        "attempted": 1,
+        "rate": 0.0,
+        "denominator": "only definitive pass/fail; pending review excluded"
+      },
+      "combined": {
+        "pass": 0,
+        "attempted": 1,
+        "rate": 0.0,
+        "denominator": "only definitive pass/fail; pending review excluded"
+      }
+    },
+    "tool_accuracy": {
+      "test": {
+        "selection": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "parameters": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "output_understanding": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "chain_completeness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        }
+      },
+      "pre": {
+        "selection": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "parameters": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "output_understanding": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "chain_completeness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        }
+      },
+      "pre_observation": "禁用写入和非持久化记忆断言 3/3 通过；截断搜索结果不计为检索覆盖通过。"
+    },
+    "planning_quality": {
+      "test": {
+        "step_correctness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "order": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "minimality": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "deadloop_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "hallucinated_plan_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        }
+      },
+      "pre": {
+        "step_correctness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "order": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "minimality": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "deadloop_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "hallucinated_plan_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        }
+      },
+      "pre_observation": "本次未独立评测计划质量。"
+    },
+    "robustness": {
+      "pre_answer_completion": {
+        "pass": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "continuous_completion": {
+        "pass": 0,
+        "total": 0,
+        "rate": null
+      },
+      "trace_pre": {
+        "error_recovery": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "loop_avoidance": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "step_robustness": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        },
+        "survived_10_steps": {
+          "pass": 0,
+          "total": 0,
+          "rate": null
+        }
+      }
+    },
+    "efficiency": {
+      "test": {
+        "covered": 0
+      },
+      "pre": {
+        "covered": 3,
+        "avg_latency_ms": 134977.66666666666,
+        "p50_latency_ms": 88354.0,
+        "p95_latency_ms": 215824.59999999998
+      },
+      "resource_cost": {
+        "test": {
+          "metrics": {}
+        },
+        "pre": {
+          "definition": "仅按本次 3 条实测统计；没有业务通过，单次成功成本不计算。",
+          "metrics": {
+            "e2e_ms": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": 404933.0,
+              "average": 134977.66666666666,
+              "p50": 88354.0,
+              "p95": 215824.59999999998,
+              "per_business_success": null,
+              "per_success_is_lower_bound": false
+            },
+            "steps": {
+              "valid_n": 0,
+              "attempted_n": 3,
+              "coverage_rate": 0.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": null,
+              "average": null,
+              "p50": null,
+              "p95": null,
+              "per_business_success": null,
+              "per_success_is_lower_bound": true
+            },
+            "tool_calls": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": 34.0,
+              "average": 11.333333333333334,
+              "p50": 11.0,
+              "p95": 11.9,
+              "per_business_success": null,
+              "per_success_is_lower_bound": false
+            },
+            "tokens": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": 1399575.0,
+              "average": 466525.0,
+              "p50": 427594.0,
+              "p95": 633568.9,
+              "per_business_success": null,
+              "per_success_is_lower_bound": false
+            },
+            "cache_token_ratio": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": null,
+              "average": null,
+              "p50": null,
+              "p95": null,
+              "per_business_success": null,
+              "per_success_is_lower_bound": true,
+              "ratio": 0.3882023676354127
+            },
+            "cost_usd": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": 7.280365,
+              "average": 2.4267883333333335,
+              "p50": 2.1682,
+              "p95": 3.3742945,
+              "per_business_success": null,
+              "per_success_is_lower_bound": false
+            },
+            "retries": {
+              "valid_n": 3,
+              "attempted_n": 3,
+              "coverage_rate": 1.0,
+              "successful_valid_n": 0,
+              "successful_n": 0,
+              "total": 0.0,
+              "average": 0.0,
+              "p50": 0.0,
+              "p95": 0.0,
+              "per_business_success": null,
+              "per_success_is_lower_bound": false
+            }
+          }
+        }
+      }
+    },
+    "versions": {
+      "test_assistant": {
+        "models": [],
+        "prompts": [],
+        "model_covered_cases": 0,
+        "prompt_covered_cases": 0,
+        "total_cases": 0
+      },
+      "pre_assistant": {
+        "models": [
+          "openai/gpt-6.1-terra"
+        ],
+        "prompts": [
+          "assistant_chat_agent@0.23.2"
+        ],
+        "model_covered_cases": 3,
+        "prompt_covered_cases": 3,
+        "total_cases": 3
+      },
+      "judge": {
+        "model": "gpt-6.1-sol",
+        "prompt_version": "ai-assistant-business-review-v6-historical-expansion"
+      },
+      "test_judge": {},
+      "planning_judge": {},
+      "operational_judge": {}
+    },
+    "automatic_pre": {
+      "pass": 0,
+      "fail": 0,
+      "skip": 3,
+      "error": 0
+    },
+    "planning_judge": {},
+    "operational_judge": {}
+  },
+  "reaudit": {
+    "previous_pre_failures": 3,
+    "still_failed": 1,
+    "old_fail_to_pass": [],
+    "old_failure_gated": []
+  },
+  "local_fixture": {
+    "executed": 0,
+    "pass": 0,
+    "fail": 0,
+    "skip": 0,
+    "error": 0
+  },
+  "source_basis_review": {}
+}
