@@ -15,7 +15,14 @@
   const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const label = {pass:'通过',fail:'失败',skip:'待复核',pending_qa:'待 QA 复核',deferred:'延期',pending_fix:'待修复'};
   const isFailure = status => ['fail','pending_fix'].includes(status);
-  const online = r => !['not_executed','local_fixture_pass'].includes(r.kind);
+  const online = r => !['not_executed','local_fixture_pass','deferred'].includes(r.kind);
+  const reviewOrigin = r => {
+    const source=r.review_reuse;
+    if (!source) return '原始判定';
+    if(source.mode==='live_source')return `${source.source_workflow_released?'来源复核流程已解除，显示本轮评测':source.source_deferral_released?'来源延期已解除，显示本轮评测':source.source_same_request_workflow?'保留同一业务请求的人工复核状态':'来源报告实时复核'} · <a href="${esc(source.source_url)}" target="_blank" rel="noopener">原批次</a> · r${source.revision} · ${esc(source.actor_name)} · ${esc(source.reviewed_at)}${source.source_reset&&!source.source_deferral_released&&!source.source_workflow_released?' · 已恢复来源原判':''}`;
+    const from=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.source_url||'')?`<a href="${esc(source.source_url)}" target="_blank" rel="noopener">上一份报告</a>`:'上一份报告';
+    return `${source.mode==='deferred_skip'?'上轮延期，本轮跳过':'结果一致，沿用已保存复核'} · ${from} · r${esc(source.revision)}${source.actor_name?` · ${esc(source.actor_name)}`:''}${source.reviewed_at?` · ${esc(source.reviewed_at)}`:''}`;
+  };
   const pct = (n,d) => d ? `${(100*n/d).toFixed(1)}%` : '—';
   const duration = n => Number.isFinite(n)?`${(n/1000).toFixed(1)}s`:'未采集';
   const anchor = r => `failure-${r.source_environment}-${r.case_id}`;
@@ -31,13 +38,19 @@
     const previous = comparison.previous_status ? `上轮 ${label[comparison.previous_status] || '不可判定'}` : '上轮无可比实测';
     return `<b>${comparison.eligible ? esc(result[comparison.verdict] || '不可直接比较') : '不可直接比较'}</b><br><small>${esc(latest)} · ${esc(previous)}</small><br><small>${esc(comparison.reason || '证据不足')}</small>`;
   };
+  const originalAIReviewDetails = r => {
+    const review=r.original_ai_review;
+    if (!review?.business_reason) return '';
+    const source=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(review.source_url||'')?`<a href="${esc(review.source_url)}">查看来源报告</a>`:'';
+    return `<details class="original-ai-review"><summary>原报告 AI 裁判（历史）：${esc(label[review.business_status]||'未记录')}</summary><p class="original-ai-reason">${esc(review.business_reason)}</p><small>裁判模型：${esc(review.judge_model||'未记录')} · ${source}</small></details>`;
+  };
   let rows=[],base=null,state=null,writable=false,page=1,initialized=false;
   const originalEvidence = new Map();
   function summary(current, source, snapshot) {
     rows=current; base=source; state=snapshot;
     const counts = Object.fromEntries(['test','pre'].map(env=>{
-      const group=rows.filter(r=>r.source_environment===env&&online(r));
-      return [env,{attempted:group.length,pass:group.filter(r=>r.status==='pass').length,fail:group.filter(r=>isFailure(r.status)).length,pending:group.filter(r=>r.status==='skip').length,pendingQa:group.filter(r=>r.status==='pending_qa').length,deferred:group.filter(r=>r.status==='deferred').length,pendingFix:group.filter(r=>r.status==='pending_fix').length}];
+      const environmentRows=rows.filter(r=>r.source_environment===env),group=environmentRows.filter(online);
+      return [env,{attempted:group.length,pass:group.filter(r=>r.status==='pass').length,fail:group.filter(r=>isFailure(r.status)).length,pending:group.filter(r=>r.status==='skip').length,pendingQa:group.filter(r=>r.status==='pending_qa').length,deferred:environmentRows.filter(r=>r.status==='deferred').length,pendingFix:group.filter(r=>r.status==='pending_fix').length}];
     }));
     const hiddenTestFailures=Number(base.summary.report_display?.suppressed_test_failure_attempts||0);
     counts.test.attempted+=hiddenTestFailures;
@@ -49,6 +62,7 @@
     const singleEnvironment=['test','pre'].includes(reportEnvironment);
     $('current-conclusion').querySelector('p').innerHTML=`${state?`云端复核 r${state.revision}`:'原始执行快照（未连接云端）'}：线上执行 ${total.attempted} 条，当前通过 <b>${total.pass}</b>、失败 <b>${total.fail}</b>、待复核/复测 ${total.pending}、待 QA 复核 <b>${total.pendingQa}</b>、延期 <b>${total.deferred}</b>、待修复 <b>${total.pendingFix}</b>（已计入失败）。综合成功率 <b>${pct(total.pass,total.assessed)}</b>（${total.pass}/${total.assessed} 个有效判定）。${rows.filter(r=>r.kind==='not_executed').length} 条未执行、${rows.filter(r=>r.kind==='local_fixture_pass').length} 条本地 fixture 单列，不计入线上通过率。内部 Trace ${trace.captured??'—'}/${trace.executed??'—'}，原始执行证据不变。`;
     const kpis=$('current-kpis').querySelectorAll('.kpi');
+    for(const kpi of kpis)if(!kpi.querySelector('small'))kpi.appendChild(document.createElement('small'));
     for(const [i,value,note] of [[1,total.attempted,`test ${counts.test.attempted} + pre ${counts.pre.attempted}`],[2,total.pass,'当前已保存判定'],[3,pct(total.pass,total.assessed),`有效判定 ${total.assessed}；待复核 ${total.pending}，待 QA 复核 ${total.pendingQa}，延期 ${total.deferred} 均不计分母；待修复计入失败`]]){
       kpis[i].querySelector('b').textContent=value; kpis[i].querySelector('small').textContent=note;
     }
@@ -141,7 +155,7 @@
     const visible=filtered(),pages=Math.max(1,Math.ceil(visible.length/20));page=Math.max(1,Math.min(page,pages));
     const names=new Map((state?.history||[]).map(h=>[h.actor,h.actor_name]));
     const action=r=>document.body.dataset.reviewMode==='edit'?`<button data-edit-case="${esc(r.case_id)}" ${writable?'':'disabled'}>修改结果</button>`:'<a href="./cloud-review/current/">前往复核页</a>';
-    $('body').innerHTML=visible.slice((page-1)*20,page*20).map(r=>`<tr data-case-id="${esc(r.case_id)}"><td><span class="badge ${r.source_environment}">${r.source_environment}</span></td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.asker||'未记录')}${r.asker_source==='case_config'?'<br><small>用例配置</small>':''}</td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.suite)}</td><td>${esc(r.gate_class)}</td><td><span class="status ${r.status}" data-case-status>${status(r)}</span><br><small>${r.override?'云端人工复核':'原始判定'}</small></td><td>${comparisonCell(r.execution_comparison)}</td><td>${taskRate(r)}</td><td>${r.trace_runs} Run<br>${esc(r.trace_status)}</td><td>${esc(r.model)}<br><small>${esc(r.prompt_version)}</small></td><td>${duration(r.latency_ms)}</td><td><p>${esc(r.title)}</p><p class="case-reason">${esc(r.reason)}</p><small>${esc(r.failure_categories.join('、'))}</small>${r.override?`<details><summary>原始判定：${label[r.original_status]}</summary>${esc(r.original_reason)}</details>`:''}</td><td>${esc(names.get(r.updated_by)||'—')}<br><small>${r.updated_at?esc(new Date(r.updated_at).toLocaleString('zh-CN')):''} · v${r.version}</small></td><td>${action(r)}</td></tr>`).join('');
+    $('body').innerHTML=visible.slice((page-1)*20,page*20).map(r=>`<tr data-case-id="${esc(r.case_id)}"><td><span class="badge ${r.source_environment}">${r.source_environment}</span></td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.asker||'未记录')}${r.asker_source==='case_config'?'<br><small>用例配置</small>':''}</td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.suite)}</td><td>${esc(r.gate_class)}</td><td><span class="status ${r.status}" data-case-status>${status(r)}</span><br><small>${r.override?'云端人工复核':reviewOrigin(r)}</small></td><td>${comparisonCell(r.execution_comparison)}</td><td>${taskRate(r)}</td><td>${r.trace_runs} Run<br>${esc(r.trace_status)}</td><td>${esc(r.model)}<br><small>${esc(r.prompt_version)}</small></td><td>${duration(r.latency_ms)}</td><td><p>${esc(r.title)}</p><p class="case-reason">${esc(r.reason)}</p>${originalAIReviewDetails(r)}<small>${esc(r.failure_categories.join('、'))}</small>${r.override?`<details><summary>原始判定：${label[r.original_status]}</summary>${esc(r.original_reason)}</details>`:''}</td><td>${esc(names.get(r.updated_by)||r.review_reuse?.actor_name||'—')}<br><small>${r.updated_at?esc(new Date(r.updated_at).toLocaleString('zh-CN')):''} · v${r.version}</small></td><td>${action(r)}</td></tr>`).join('');
     $('page').textContent=`第 ${page} / ${pages} 页 · ${visible.length} 条`;$('result-count').textContent=`显示 ${visible.length} / ${rows.length} 条`;$('prev').disabled=page<=1;$('next').disabled=page>=pages;
     $('failure-count').textContent=visible.length;
     $('failure-index').querySelector('tbody').innerHTML=visible.map(r=>`<tr data-index-case="${esc(r.case_id)}" data-result-status="${esc(resultStatus(r))}"><td>${r.source_environment}</td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.asker||'未记录')}${r.asker_source==='case_config'?'<br><small>用例配置</small>':''}</td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.ability||r.title)}</td><td>${esc(status(r))}</td><td>${esc(r.failure_categories.join('、')||'—')}</td><td>${duration(r.latency_ms)}</td><td>${taskRate(r)}</td></tr>`).join('');
@@ -166,7 +180,7 @@
       select.title=writable?'选择状态后填写复核理由并保存':'请先登录有修改权限的复核账号';
       const rate=card.querySelector('.failure-stats .bad-rate');rate.textContent=taskRate(r);
       card.querySelector('.failure-tags').innerHTML=`<b>当前失败分类：</b>${esc(r.failure_categories.join('、')||'—')}`;
-      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
+      card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.review_reuse?.source_workflow_released?'来源复核流程已解除，显示本轮评测':r.review_reuse?.source_deferral_released?'来源延期已解除，显示本轮评测':r.review_reuse?.mode==='live_source'?'来源报告已保存复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
   }

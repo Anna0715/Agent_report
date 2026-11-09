@@ -14,6 +14,7 @@
   let config = null, base = null, state = null, session = null, busy = false, syncing = false, currentEdit = null;
   let configured = false, connected = false, configError = '';
   let auth = null, stale = false, lastSynced = null;
+  let sourceStates = [];
   const full = window.AICombinedReport;
   let channel;
   try { channel = new BroadcastChannel('ai-review-report-updates'); } catch { /* polling fallback */ }
@@ -23,8 +24,8 @@
     $('status-message').textContent = message;
     $('status-message').classList.toggle('error', error);
   }
-  function identityEqual(value) {
-    return plain(value) && ['report_id','run_id','environment','source_digest'].every(key => value[key] === base.identity[key]);
+  function identityEqual(value, expected = base.identity) {
+    return plain(value) && ['report_id','run_id','environment','source_digest'].every(key => value[key] === expected[key]);
   }
   function validOverride(value) {
     if (value === null) return true;
@@ -49,6 +50,50 @@
       if (row.display_failure_categories !== undefined && (!Array.isArray(row.display_failure_categories) || !row.display_failure_categories.every(x=>text(x,1000)))) throw Error('原始问题分类无效。');
       ids.add(row.case_id);
     }
+    const sources = value.review_sources || [];
+    if (!Array.isArray(sources) || sources.length > 5) throw Error('复核来源配置无效。');
+    const sourceIds = new Set();
+    for (const source of sources) {
+      const identity = source?.identity;
+      if (!plain(source) || source.schema !== 'ai_assistant.review_source.v1' || !plain(identity) ||
+          !/^review-[a-f0-9]{24}$/.test(identity.report_id) || identity.report_id === i.report_id || sourceIds.has(identity.report_id) ||
+          !text(identity.run_id,200) || !identity.run_id || !['test','pre','combined'].includes(identity.environment) ||
+          !/^[a-f0-9]{64}$/.test(identity.source_digest) || !/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.url || '') ||
+          !Array.isArray(source.case_ids) || !source.case_ids.length || source.case_ids.some(id=>!text(id,100)) ||
+          new Set(source.case_ids).size !== source.case_ids.length || !Array.isArray(source.eligible_case_ids) ||
+          new Set(source.eligible_case_ids).size !== source.eligible_case_ids.length || !plain(source.original_results) ||
+          !/^[a-f0-9]{64}$/.test(source.evidence_digest || '')) throw Error('复核来源身份或证据绑定无效。');
+      const sourceCases = new Set(source.case_ids);
+      for (const id of source.eligible_case_ids) {
+        const original = source.original_results[id];
+        if (!ids.has(id) || !sourceCases.has(id) || !plain(original) || !Object.hasOwn(labels,original.status) ||
+            !text(original.reason,100000,true) || !Array.isArray(original.failure_categories) ||
+            !original.failure_categories.every(category=>text(category,1000)) ||
+            !(original.task_completion_rate === null || Number.isFinite(original.task_completion_rate) && original.task_completion_rate >= 0 && original.task_completion_rate <= 100))
+          throw Error('复核来源的用例范围或原始结果无效。');
+      }
+      if(source.deferred_case_ids!==undefined){
+        if(!Array.isArray(source.deferred_case_ids)||new Set(source.deferred_case_ids).size!==source.deferred_case_ids.length||!plain(source.deferred_original_results))throw Error('延期复核来源配置无效。');
+        for(const id of source.deferred_case_ids){
+          const original=source.deferred_original_results[id];
+          if(!ids.has(id)||!sourceCases.has(id)||!plain(original)||!Object.hasOwn(labels,original.status)||!text(original.reason,100000,true)||!Array.isArray(original.failure_categories)||!original.failure_categories.every(category=>text(category,1000))||!(original.task_completion_rate===null||Number.isFinite(original.task_completion_rate)&&original.task_completion_rate>=0&&original.task_completion_rate<=100))throw Error('延期复核的用例绑定无效。');
+        }
+      }
+      if(source.resolved_reviews!==undefined){
+        if(!plain(source.resolved_reviews))throw Error('来源复核的补证记录无效。');
+        for(const [id,resolution] of Object.entries(source.resolved_reviews)){
+          if(!sourceCases.has(id)||!plain(resolution)||!integer(resolution.case_version)||resolution.case_version===0||!validOverride(resolution.override)||resolution.override===null||!text(resolution.updated_by,128)||!resolution.updated_by||!text(resolution.updated_at,100)||!Number.isFinite(Date.parse(resolution.updated_at)))throw Error('来源复核的补证版本无效。');
+        }
+      }
+      if(source.workflow_case_ids!==undefined){
+        if(!Array.isArray(source.workflow_case_ids)||new Set(source.workflow_case_ids).size!==source.workflow_case_ids.length||!plain(source.workflow_original_results))throw Error('人工复核流程的来源配置无效。');
+        for(const id of source.workflow_case_ids){
+          const original=source.workflow_original_results[id];
+          if(!ids.has(id)||!sourceCases.has(id)||!plain(original)||!Object.hasOwn(labels,original.status)||!text(original.reason,100000,true)||!Array.isArray(original.failure_categories)||!original.failure_categories.every(category=>text(category,1000))||!(original.task_completion_rate===null||Number.isFinite(original.task_completion_rate)&&original.task_completion_rate>=0&&original.task_completion_rate<=100))throw Error('人工复核流程的业务请求绑定无效。');
+        }
+      }
+      sourceIds.add(identity.report_id);
+    }
     return value;
   }
   function validateConfig(value) {
@@ -64,10 +109,10 @@
     if (!allowed) throw Error('只允许 Publishable Key 或 role=anon 的旧版公开密钥。禁止放入 secret / service_role 管理员密钥。');
     return {...value,project_url:value.project_url.replace(/\/$/,'')};
   }
-  function validateSnapshot(value) {
-    if (!plain(value) || value.schema !== schema || !identityEqual(value.identity) || !integer(value.revision) || !Array.isArray(value.cases) || !Array.isArray(value.history)) throw Error('云端快照身份或格式不匹配；未应用任何更改。');
+  function validateSnapshot(value, identity = base.identity, caseIds = base.rows.map(row=>row.case_id)) {
+    if (!plain(value) || value.schema !== schema || !identityEqual(value.identity,identity) || !integer(value.revision) || !Array.isArray(value.cases) || !Array.isArray(value.history)) throw Error('云端快照身份或格式不匹配；未应用任何更改。');
     if (!plain(value.current_actor) || !session || value.current_actor.id !== session.userId || !text(value.current_actor.name,254) || !['reviewer','viewer'].includes(value.current_actor.role)) throw Error('云端返回的账号身份或权限无效；已拒绝操作。');
-    const ids = new Set(base.rows.map(row => row.case_id)), seen = new Set();
+    const ids = new Set(caseIds), seen = new Set();
     for (const row of value.cases) {
       if (!plain(row) || !ids.has(row.case_id) || seen.has(row.case_id) || !integer(row.version) || row.version > value.revision || !validOverride(row.override) || !(row.updated_by === null || text(row.updated_by,128)) || !(row.updated_at === null || (text(row.updated_at,100) && Number.isFinite(Date.parse(row.updated_at))))) throw Error('云端用例数据不完整或无效；未应用任何更改。');
       seen.add(row.case_id);
@@ -89,7 +134,7 @@
     // Keep only the documented public review fields; unexpected response fields
     // must never leak into a downloaded snapshot.
     return {
-      schema:value.schema,identity:{report_id:base.identity.report_id,run_id:base.identity.run_id,environment:base.identity.environment,source_digest:base.identity.source_digest},revision:value.revision,
+      schema:value.schema,identity:{report_id:identity.report_id,run_id:identity.run_id,environment:identity.environment,source_digest:identity.source_digest},revision:value.revision,
       current_actor:{id:value.current_actor.id,name:value.current_actor.name,role:value.current_actor.role},
       cases:value.cases.map(row=>({case_id:row.case_id,version:row.version,override:row.override,updated_by:row.updated_by,updated_at:row.updated_at})),
       history:value.history.map(item=>({revision:item.revision,case_id:item.case_id,actor:item.actor,actor_name:item.actor_name,at:item.at,before:item.before,after:item.after}))
@@ -98,10 +143,32 @@
   function effectiveRows() {
     if (!base) return [];
     const byId = new Map((state?.cases || []).map(row => [row.case_id,row]));
+    const inherited = new Map();
+    sourceStates.forEach((snapshot,index)=>{
+      const source=base.review_sources[index], eligible=new Set(source.eligible_case_ids),deferred=new Set(source.deferred_case_ids||[]),workflow=new Set(source.workflow_case_ids||[]);
+      const names=new Map(snapshot.history.map(item=>[item.actor,item.actor_name]));
+      for(const row of snapshot.cases)if((eligible.has(row.case_id)||deferred.has(row.case_id)||workflow.has(row.case_id))&&row.version>0){
+        const resolved=source.resolved_reviews?.[row.case_id];
+        if(resolved&&row.version===resolved.case_version&&sameOverride(row.override,resolved.override)&&row.updated_by===resolved.updated_by&&row.updated_at===resolved.updated_at)continue;
+        inherited.set(row.case_id,{row,source,snapshot,workflowOnly:!eligible.has(row.case_id),sameRequest:workflow.has(row.case_id),sameCase:deferred.has(row.case_id),name:names.get(row.updated_by)||'已授权复核员'});
+      }
+    });
     return base.rows.map(original => {
       const remote = byId.get(original.case_id), override = remote?.override;
       const status = override?.business_status || original.status;
-      return {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
+      const row = {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
+      const prior=inherited.get(original.case_id);
+      // A saved current-batch review or reset takes precedence over the prior batch.
+      if(prior&&(!remote||remote.version===0)){
+        const saved=prior.row.override, queue=prior.sameRequest&&['skip','pending_qa','pending_fix'].includes(saved?.business_status),deferred=prior.sameCase&&saved?.business_status==='deferred';
+        const released=prior.workflowOnly&&!queue&&!deferred;
+        const result=released?(prior.sameRequest?prior.source.workflow_original_results[original.case_id]:prior.source.deferred_original_results[original.case_id]):saved?{status:saved.business_status,reason:saved.business_reason,failure_categories:saved.failure_categories,task_completion_rate:saved.business_status==='pass'?100:isFailure(saved.business_status)?0:null}:prior.source.original_results[original.case_id];
+        Object.assign(row,result,{updated_by:prior.row.updated_by,updated_at:prior.row.updated_at,inherited_override:released?null:saved,
+          review_reuse:{mode:'live_source',source_report_id:prior.source.identity.report_id,source_url:prior.source.url,
+            revision:prior.snapshot.revision,case_version:prior.row.version,actor:prior.row.updated_by,actor_name:prior.name,
+            reviewed_at:prior.row.updated_at,source_reset:saved===null,source_deferral_released:released&&!prior.sameRequest,source_workflow_released:released&&prior.sameRequest,source_same_request_workflow:prior.workflowOnly&&queue,inheritance_chain:original.review_reuse||null}});
+      }
+      return row;
     });
   }
   const canWrite = () => connected && !stale && session && state?.current_actor.role === 'reviewer' && document.body.dataset.reviewMode !== 'read';
@@ -130,7 +197,7 @@
   }
   function expire() {
     preserveDraft();
-    session = null; state = null; connected = false;
+    session = null; state = null; sourceStates = []; connected = false;
     if ($('edit-dialog').open) $('edit-dialog').close();
     currentEdit = null;
     render();
@@ -170,15 +237,24 @@
     finally { busy = false; controls(); }
   }
   function accept(value) {
-    let validated;
-    try { validated = validateSnapshot(value); }
+    let validated, sources;
+    try {
+      const configuredSources=base.review_sources||[];
+      validated = validateSnapshot(configuredSources.length?value.current:value);
+      sources=configuredSources.map((source,index)=>validateSnapshot(value.sources[index],source.identity,source.case_ids));
+      if(sources.some((source,index)=>sourceStates[index]&&source.revision<sourceStates[index].revision))throw Error('复核来源返回旧版本，已拒绝回退。');
+    }
     catch(error) { if(auth)auth.clear('云端快照校验失败，已停止连接。');else expire(); throw error; }
     if (state && validated.revision < state.revision) throw Error('云端返回旧版本快照，已拒绝回退；请联系管理员核对。');
-    const changed = !connected || stale || JSON.stringify(state) !== JSON.stringify(validated);
-    state = validated; connected = true; stale = false; lastSynced = new Date().toISOString();
+    const changed = !connected || stale || JSON.stringify(state) !== JSON.stringify(validated) || JSON.stringify(sourceStates) !== JSON.stringify(sources);
+    state = validated; sourceStates = sources; connected = true; stale = false; lastSynced = new Date().toISOString();
     if (changed) render(); else controls();
   }
-  const snapshot = () => request('/rest/v1/rpc/ai_review_snapshot',{p_report_id:base.identity.report_id,p_source_digest:base.identity.source_digest});
+  const snapshot = async () => {
+    const sources=base.review_sources||[];
+    const values=await Promise.all([base.identity,...sources.map(source=>source.identity)].map(identity=>request('/rest/v1/rpc/ai_review_snapshot',{p_report_id:identity.report_id,p_source_digest:identity.source_digest})));
+    return sources.length?{current:values[0],sources:values.slice(1)}:values[0];
+  };
   const fmtNumber = (value, digits=1) => value === null || value === undefined || !Number.isFinite(Number(value)) ? '—' : Number(value).toLocaleString('zh-CN',{maximumFractionDigits:digits,minimumFractionDigits:digits});
   const rateText = metric => metric && Number(metric.total)>0 ? `${(100*Number(metric.pass)/Number(metric.total)).toFixed(1)}%` : '—';
   const rateCard = (name, metric) => `<div class="metric"><span>${esc(name)}</span><b>${esc(rateText(metric))}</b><small>${metric&&Number(metric.total)>0?`${esc(metric.pass)}/${esc(metric.total)}`:'未覆盖'}</small></div>`;
@@ -239,6 +315,23 @@
       <section class="panel"><h2>GPT 执行稳定性与资源效率复评（${esc(op.environment||'未执行')}）</h2><div class="metrics">${metricCard('稳定性通过',`${ratings.pass||0}/${robustScored}`,'原始稳定性复评')}${metricCard('效率优秀/良好',`${efficiencyGood}/${efficiencyScored}`,'原始效率复评')}${metricCard('稳定性平均分',fmtNumber(op.summary?.robustness?.average_score),`${op.summary?.robustness?.scored_cases||0} 条有分`)}${metricCard('效率平均分',fmtNumber(op.summary?.efficiency?.average_score),`${op.summary?.efficiency?.scored_cases||0} 条有分`)}${metricCard('证据不足',`${ratings.insufficient||0}/${effRatings.insufficient||0}`,'稳定性 / 效率')}</div><p style="margin-top:12px"><b>综合评估：</b>${esc(op.assessment||'未取得 GPT 复评结论')}</p><div class="table-wrap"><table><thead><tr><th>优先级</th><th>领域</th><th>建议</th><th>验收方式</th></tr></thead><tbody>${recommendations}</tbody></table></div><p class="muted" style="margin-top:10px">连续完成只认多次独立运行证据；Token 未采集保持证据不足，不补 0。其中 ${unavailableOps} 条因裁判服务错误未完成，按未评测排除。</p></section>
       <p class="muted">报告生成时间：${esc(s.generated_at||'未记录')}。Trace、计划、稳定性和效率是本批次原始执行指标；人工改判即时更新业务状态、任务成功率、失败索引和成功样本成本。</p>`;
   }
+  function renderAudit() {
+    if(!state){
+      $('audit-count').textContent='';
+      $('audit-list').innerHTML='<li>登录并获得报告访问授权后，可读取云端修改记录。</li>';
+      return;
+    }
+    const batches=[{snapshot:state,identity:base.identity,url:null},...sourceStates.map((snapshot,index)=>({snapshot,identity:base.review_sources[index].identity,url:base.review_sources[index].url}))];
+    const events=batches.flatMap(batch=>batch.snapshot.history.map(item=>({item,batch})));
+    events.sort((left,right)=>Date.parse(right.item.at)-Date.parse(left.item.at)||right.item.revision-left.item.revision||left.batch.identity.report_id.localeCompare(right.batch.identity.report_id));
+    const prior=events.length-state.history.length;
+    $('audit-count').textContent=sourceStates.length?`${events.length} 条修订记录（本批次 ${state.history.length} 条，原批次 ${prior} 条）`:`${state.history.length} 条记录`;
+    $('audit-list').innerHTML=events.length?events.map(({item,batch})=>{
+      const row=base.rows.find(row=>row.case_id===item.case_id),target=row?`#${full?full.anchor(row):row.case_id}`:`${batch.url||''}#failure-${batch.identity.environment}-${item.case_id}`;
+      const origin=batch.url?`<a href="${esc(batch.url)}" target="_blank" rel="noopener">${esc(batch.identity.run_id)}</a>`:'当前批次';
+      return `<li data-audit-report="${esc(batch.identity.report_id)}" data-audit-revision="${item.revision}" data-audit-case="${esc(item.case_id)}"><strong>${esc(item.actor_name)}</strong> · <a href="${esc(target)}">${esc(item.case_id)}</a> · ${esc(labels[item.before?.business_status]||'原始裁判')} → ${esc(labels[item.after?.business_status]||'恢复原判')} <time datetime="${esc(item.at)}">${esc(time(item.at))}</time><small>${origin} · r${item.revision} · ${esc(item.after?.business_reason||'移除人工覆盖；原始判定恢复，历史记录保留。')}</small></li>`;
+    }).join(''):'<li>尚无人工复核修改。</li>';
+  }
   function render() {
     if (!base) { controls(); return; }
     const rows = effectiveRows();
@@ -247,8 +340,12 @@
     $('results-source').textContent = state ? connected && !stale ? `已读取云端 r${state.revision}。总结基于已保存改判实时重算；未提交草稿不计入汇总。` : `以下含上次读取的云端 r${state.revision}，不是当前最新结果。请重新登录或拉取云端结果。` : '以下为报告原始结果，尚未读取云端复核。';
     $('run-label').textContent = `${base.identity.run_id} · ${base.identity.report_id}`;
     $('actor-label').textContent = state ? `${state.current_actor.name} · ${state.current_actor.role==='reviewer'?document.body.dataset.reviewMode==='read'?'复核员（在复核页修改）':'复核员（可修改）':'只读账号'}` : '';
-    $('audit-count').textContent = state ? `${state.history.length} 条记录` : '';
-    $('audit-list').innerHTML = !state ? '<li>登录并获得报告访问授权后，可读取云端修改记录。</li>' : state.history.length ? [...state.history].reverse().map(item=>{const row=base.rows.find(r=>r.case_id===item.case_id);return `<li><strong>${esc(item.actor_name)}</strong> · <a href="#${full?full.anchor(row):esc(item.case_id)}">${esc(item.case_id)}</a> · ${esc(labels[item.before?.business_status] || '原始裁判')} → ${esc(labels[item.after?.business_status] || '恢复原判')} <time>${esc(time(item.at))}</time><small>云端 r${item.revision} · ${esc(item.after?.business_reason || '移除人工覆盖；原始裁判恢复，历史记录保留。')}</small></li>`;}).join('') : '<li>尚无人工复核修改。</li>';
+    renderAudit();
+    if(sourceStates.length){
+      const revisions=sourceStates.map(source=>`r${source.revision}`).join('、');
+      $('cloud-version').textContent+=` · 来源 ${revisions}`;
+      $('results-source').textContent+=` 同时读取来源报告 ${revisions}；本批次已保存的改判或恢复原判优先。业务证据未变时沿用来源结论，同一用例的已保存延期保留为工作流状态。`;
+    }
     renderCases(); controls();
   }
   function renderCases() {
@@ -302,7 +399,7 @@
     const email = $('login-email').value.trim(), password = $('login-password').value;
     $('login-password').value = '';
     operation(async()=>{
-      session = null; state = null; connected = false; render();
+      session = null; state = null; sourceStates = []; connected = false; render();
       try {
         if (auth) {
           await auth.login(email,password); session=auth;
@@ -328,7 +425,7 @@
     if (auth) { await auth.logout(); expire(); broadcast(); notice('已退出登录，云端结果已从页面移除，恢复原始快照。'); return; }
     let revoked = false;
     try { await request('/auth/v1/logout',{}); revoked = true; } catch { /* Always clear the in-memory session even if server logout is unavailable. */ }
-    session = null; state = null; connected = false; currentEdit = null;
+    session = null; state = null; sourceStates = []; connected = false; currentEdit = null;
     $('login-password').value = ''; render();
     notice(revoked?'已退出登录，页面内的登录凭据已清除。未提交草稿仅保留在此页面内存中。':'已清除本页面登录凭据。云端退出未确认，其他已登录窗口可能仍有效。');
   });
@@ -342,7 +439,7 @@
     operation(async()=>{
       try {
         const result = await request('/rest/v1/rpc/ai_review_save',{p_report_id:base.identity.report_id,p_source_digest:base.identity.source_digest,p_case_id:edit.case_id,p_base_version:edit.base_version,p_override:override});
-        accept(result);
+        accept(base.review_sources?.length?{current:result,sources:sourceStates}:result);
         drafts.delete(`${edit.actor_id}:${edit.case_id}`);
         $('edit-dialog').close(); currentEdit = null;
         broadcast();
@@ -419,7 +516,7 @@
       stale=true;render();notice(`同步未完成：${error.message} 当前显示上次确认的数据，不保证最新。`,true);
     } finally {syncing=false;controls();}
   }
-  if(channel)channel.onmessage=event=>{if(event.data?.report_id===base?.identity.report_id)synchronize();};
+  if(channel)channel.onmessage=event=>{if([base?.identity.report_id,...(base?.review_sources||[]).map(source=>source.identity.report_id)].includes(event.data?.report_id))synchronize();};
   window.setInterval(synchronize,5000);
   window.addEventListener('focus',synchronize);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)synchronize();});
