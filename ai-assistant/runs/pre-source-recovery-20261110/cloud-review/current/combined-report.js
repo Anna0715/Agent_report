@@ -135,7 +135,7 @@
   function matchingCaseIds(){
     const terms=($('case-id-search')?.value||'').trim().toLowerCase().split(/[\s,，;；]+/).filter(Boolean);
     return [...new Set(rows.map(row=>row.case_id))].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}))
-      .filter(id=>!terms.length||terms.some(term=>id.toLowerCase().includes(term)));
+      .filter(id=>!terms.length||terms.some(term=>[id,...(rows.find(row=>row.case_id===id)?.merged_case_ids||[])].join(' ').toLowerCase().includes(term)));
   }
   function renderCaseIdOptions(){
     if(!$('case-id-filter'))return;
@@ -175,7 +175,7 @@
   function filtered(){
     const env=$('filter-environment').value,s=$('filter-status').value,m=$('filter-module').value,p=$('filter-priority').value,c=$('category').value;
     const terms=$('search').value.toLowerCase().split(/[;；]/).map(term=>term.trim()).filter(Boolean);
-    return rows.filter(r=>(!selectedCaseIds.size||selectedCaseIds.has(r.case_id))&&(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!terms.length||terms.some(term=>[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(term))));
+    return rows.filter(r=>(!selectedCaseIds.size||selectedCaseIds.has(r.case_id))&&(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!terms.length||terms.some(term=>[r.case_id,...(r.merged_case_ids||[]),r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(term))));
   }
   function renderCases(current,source,snapshot,canWrite){
     rows=current;base=source;state=snapshot;writable=canWrite;
@@ -199,7 +199,7 @@
     renderCaseIdOptions();
     renderTable();
   }
-  function showTarget(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const card=$(id);if(card?.classList.contains('failure-card')){card.hidden=false;card.scrollIntoView({block:'start'});}}
+  function showTarget(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const merged=rows.find(row=>(row.merged_case_ids||[]).some(alias=>id===`failure-${row.source_environment}-${alias}`||id===`failure-${alias}`));const card=$(merged?anchor(merged):id);if(card?.classList.contains('failure-card')){card.hidden=false;if(merged){const details=card.querySelector('.case-consolidation');if(details)details.open=true;}card.scrollIntoView({block:'start'});}}
   function renderTable(){
     const visible=filtered(),pages=Math.max(1,Math.ceil(visible.length/20));page=Math.max(1,Math.min(page,pages));
     const names=new Map((state?.history||[]).map(h=>[h.actor,h.actor_name]));
