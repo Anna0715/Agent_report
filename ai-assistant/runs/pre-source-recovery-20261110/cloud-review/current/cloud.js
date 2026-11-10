@@ -350,7 +350,7 @@
   }
   function renderCases() {
     if (full) { full.renderCases(effectiveRows(),base,state,canWrite()); return; }
-    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, environment=$('filter-environment').value, module=$('filter-module').value, priority=$('filter-priority').value, all = effectiveRows();
+    const terms = $('search').value.toLowerCase().split(/[;；]/).map(term=>term.trim()).filter(Boolean), status = $('filter-status').value, environment=$('filter-environment').value, module=$('filter-module').value, priority=$('filter-priority').value, all = effectiveRows();
     const moduleSelect=$('filter-module'), selectedModule=moduleSelect.value;
     while(moduleSelect.options.length>1) moduleSelect.remove(1);
     for(const value of [...new Set(all.map(row=>row.module||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) moduleSelect.add(new Option(value,value));
@@ -359,7 +359,7 @@
     while(prioritySelect.options.length>1) prioritySelect.remove(1);
     for(const value of [...new Set(all.map(row=>row.priority||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) prioritySelect.add(new Option(value,value));
     prioritySelect.value=previous; if(prioritySelect.selectedIndex<0) prioritySelect.selectedIndex=0;
-    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!module||(row.module||'未标注')===module) && (!priority||(row.priority||'未标注')===priority) && (!q || [row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(q)));
+    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!module||(row.module||'未标注')===module) && (!priority||(row.priority||'未标注')===priority) && (!terms.length || terms.some(term=>[row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(term))));
     const names = new Map((state?.history || []).map(item=>[item.actor,item.actor_name]));
     $('result-count').textContent = `显示 ${rows.length} / ${all.length} 条`;
     const statusText=row=>row.status==='skip'?(row.kind==='not_executed'?'未执行':'待复核'):labels[row.status];
