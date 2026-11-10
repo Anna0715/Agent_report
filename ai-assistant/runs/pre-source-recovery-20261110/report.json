@@ -2,11 +2,11 @@
   "contract": "ai_assistant.combined_report.v1",
   "report_date": "2026-11-10",
   "report_environment": "pre",
-  "report_title": "AI助手 PRE 11月10日报告（指定19条附件用例已重跑）",
-  "review_run_id": "AI助手-2026-11-10-pre-selected-attachments-2053",
-  "generated_at": "2026-11-10T12:42:31.974732+00:00",
+  "report_title": "AI助手 PRE 11月10日报告（附件与自动化用例已更新）",
+  "review_run_id": "AI助手-2026-11-10-pre-automation-rerun-2238",
+  "generated_at": "2026-11-10T13:41:17.038260+00:00",
   "pre_case_count": 329,
-  "execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。",
+  "execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。 本轮仅更新 AA-AUTO-002：首轮巡检未可靠完成，后两阶段未执行。其余用例沿用原报告；总资源指标仍为原批次口径。",
   "rows": [
     {
       "asker": "智本测试_安柔",
@@ -90702,97 +90702,86 @@
       "scenario": "空间内出现逾期任务时提醒",
       "gate_class": "core",
       "priority": "P0",
-      "status": "pending_qa",
-      "kind": "manual_review_retained",
-      "reason": "未开始、计划截止时间已过 的任务纳入逾期了",
-      "review_reuse": {
-        "mode": "retained_same_execution",
-        "identity": {
-          "run_id": "AI助手-2026-11-10-pre-selected-messages-1954",
-          "report_id": "review-882a119d3664d82b235ba557",
-          "environment": "pre",
-          "source_digest": "cd81d87feec0bca494c12dfe276615ccabc407fb98f80070602f9ffef9eccb91"
-        },
-        "revision": 10,
-        "case_version": 1,
-        "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
-        "actor_name": "浩澜",
-        "reviewed_at": "2026-11-10T12:02:21.715892+00:00",
-        "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/cloud-review/runs/2026-11-10-review-882a119d3664d82b235ba557/"
-      },
+      "status": "fail",
+      "kind": "business_review",
+      "reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+      "review_reuse": null,
       "review_observation": {
-        "basis": "be11aafdbd313cba74d265d8d7949c27bd98bad141f6db95f3d8344bc0a36d5b",
-        "result": "633ae9818b0e2bfbcc7ac40536c0f94b695b00504141056f3bac05a5495992a3",
+        "basis": "626d5b3b98cb599723312c04efdbc5be1e254aecce1b5ded4739826cc79f4d67",
+        "result": "e055b505f23021a4ecb2f1ce477a0b73d40eedd04cf5ea5672db8bcb3dd90014",
         "requests": [
-          "aur_3602e66b0c8b4ef0bd07ce396d3b6d00"
+          "aur_3970a0e2437840d5994f09998c9cbb25"
         ]
       },
-      "failure_categories": [],
+      "failure_categories": [
+        "首轮巡检未完成"
+      ],
       "confidence": "high",
-      "latency_ms": null,
+      "latency_ms": 352615,
       "model": "openai/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.23.3",
       "automatic_status": "fail",
-      "automatic_reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
+      "automatic_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
       "categories": [
-        "回答不完整"
+        "首轮巡检未完成"
       ],
       "title": "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
       "ability": "空间监控/追问设置/multi_run_controlled",
-      "task_completion_rate": null,
+      "task_completion_rate": 0,
       "operational_review": {},
       "planning_review": {},
-      "trace_status": "内部工具链已采集；权限/引用仍未观测",
-      "trace_runs": 2,
+      "trace_status": "创建及首轮巡检 Trace 已核验；后两阶段未执行",
+      "trace_runs": 3,
       "questions": [
         "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
         "每天东京时间上午10点帮我检查这个空间，只有发现新的逾期任务时才提醒我，告诉我所属项目和逾期依据。"
       ],
-      "answer": "已创建「空间新增逾期任务监控」，每天 **10:00（东京时间）**检查该空间。\n\n首次检查会建立基线，之后仅发现新增逾期任务时提醒，并说明所属项目、截止时间、任务状态和逾期判断依据。本次只完成了创建，尚未执行首次检查。",
-      "execution_completed": true,
-      "execution_completion_rate": 100,
-      "business_reason": "未开始、计划截止时间已过 的任务纳入逾期了",
-      "tool_chain_summary": "Skill：automation、output_presentation、structured_query、task_space；工具链：activate_skills(completed) → entity_resolve(completed) → task_query(completed) → task_ask(completed) → activate_skills(completed) → automation_create(completed)；自动断言：已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
+      "answer": "已创建「验收空间新增逾期任务监控」。\n\n- **检查时间**：每天上午 10:00（东京时间）。\n- **范围**：该空间内可见的项目和任务，包括之后新增的项目。\n- **提醒条件**：仅发现新增的、已过截止时间且未完成的任务时提醒；会说明所属项目、截止时间和逾期依据。上次查到的 3 项作为已知基线，不按首次新增提醒。\n\n本次只完成了监控设置，尚未执行新一轮检查。",
+      "execution_completed": false,
+      "execution_completion_rate": 33,
+      "business_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+      "tool_chain_summary": "已核验自动化创建、首轮触发及运行结果；子任务覆盖未确认。",
       "turns": [
         {
           "step": 2,
           "op": "ask",
           "status": "completed",
           "actor_ref": "智本测试_安柔",
-          "question": "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
-          "answer": "截至 **2026 年 11 月 10 日 16:56（东京时间）**，该空间有 **3 项任务已过截止时间但尚未完成**，均属于同一个项目；这 3 项也都被系统标记为逾期。\n\n## 自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n- **历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1]**：进行中；截止日期为 2026 年 10 月 5 日。`widget:task:task_vxmjxkvtcmpe:T1120J0W9`\n- **支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1]**：进行中；截止日期为 2026 年 10 月 8 日。`widget:task:task_vxmjwulfrtsf:T1120J0W9`\n- **正常推进对照 [AEFIX:AUTO-PRE-NORMAL:v1]**：进行中；截止日期为 2026 年 10 月 8 日。`widget:task:task_vxmjyb9o1xnf:T1120J0W9`\n\n## 任务明细\n\n### 自动化交付验收项目 \\[AEFIX:AUTO-PRE-PROJECT:v1\\] (7)\n- 支付联调阻塞 \\[AEFIX:AUTO-PRE-RISK:v1\\] `widget:task:task_vxmjwulfrtsf:T1120J0W9`\n- 验收完成对照 \\[AEFIX:AUTO-PRE-DONE:v1\\] `widget:task:task_vxmjxkhcpomp:T1120J0W9`\n- 历史交付待完成 \\[AEFIX:AUTO-PRE-OVERDUE:v1\\] `widget:task:task_vxmjxkvtcmpe:T1120J0W9`\n- 准备验收对照 \\[AEFIX:AUTO-PRE-READY:v1\\] `widget:task:task_vxmjyaw2nnyu:T1120J0W9`\n- 正常推进对照 \\[AEFIX:AUTO-PRE-NORMAL:v1\\] `widget:task:task_vxmjyb9o1xnf:T1120J0W9`\n- 远期任务对照 \\[AEFIX:AUTO-PRE-FAR:v1\\] `widget:task:task_vxmjz09pl3ds:T1120J0W9`\n- 无截止时间对照 \\[AEFIX:AUTO-PRE-NODATE:v1\\] `widget:task:task_vxmjzp8drrvi:T1120J0W9`",
-          "session_id": "cs_0ae6768d-3dd9-4f30-bd31-d81dd704925d",
-          "request_id": "e873d475-aed7-405b-bef1-99ed6104af54",
-          "message_id": "cm_b72d11a6-3923-4673-909a-1fc483b712ce",
-          "http_status": null,
-          "error": "",
           "asker": "智本测试_安柔",
-          "review_reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-          "asked_at_jst": "2026-11-10 16:56:27",
-          "gold_checked_at_jst": "2026-11-10 16:56:27"
+          "question": "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
+          "answer": "截至 **2026 年 11 月 10 日 22:22（东京时间）**，该空间中有 **3 项任务已过截止时间且尚未完成**，均属于同一个项目。`widget:space:2821290532:T1120J0W9`\n\n## 自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n| 任务 | 当前状态 | 截止时间 |\n|---|---|---|\n| 支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1] | 进行中 | 2026-10-08 13:38 `widget:task:task_vxmjwulfrtsf:T1120J0W9` |\n| 历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1] | 进行中 | 2026-10-05 19:38 `widget:task:task_vxmjxkvtcmpe:T1120J0W9` |\n| 正常推进对照 [AEFIX:AUTO-PRE-NORMAL:v1] | 进行中 | 2026-10-08 13:38 `widget:task:task_vxmjyb9o1xnf:T1120J0W9` |\n\n三项任务的执行人均为智本测试_安柔；系统也均标记为逾期。\n\n## 任务明细\n\n### 自动化交付验收项目 \\[AEFIX:AUTO-PRE-PROJECT:v1\\] (7)\n- 支付联调阻塞 \\[AEFIX:AUTO-PRE-RISK:v1\\] `widget:task:task_vxmjwulfrtsf:T1120J0W9`\n- 验收完成对照 \\[AEFIX:AUTO-PRE-DONE:v1\\] `widget:task:task_vxmjxkhcpomp:T1120J0W9`\n- 历史交付待完成 \\[AEFIX:AUTO-PRE-OVERDUE:v1\\] `widget:task:task_vxmjxkvtcmpe:T1120J0W9`\n- 准备验收对照 \\[AEFIX:AUTO-PRE-READY:v1\\] `widget:task:task_vxmjyaw2nnyu:T1120J0W9`\n- 正常推进对照 \\[AEFIX:AUTO-PRE-NORMAL:v1\\] `widget:task:task_vxmjyb9o1xnf:T1120J0W9`\n- 远期任务对照 \\[AEFIX:AUTO-PRE-FAR:v1\\] `widget:task:task_vxmjz09pl3ds:T1120J0W9`\n- 无截止时间对照 \\[AEFIX:AUTO-PRE-NODATE:v1\\] `widget:task:task_vxmjzp8drrvi:T1120J0W9`",
+          "session_id": "cs_db52e56f-a98c-4d47-8b07-3bbabfacbd6b",
+          "request_id": "e53922db-9063-4e0f-aaaf-7fc568b8b93b",
+          "message_id": "cm_17e7b8eb-9a8c-4084-8765-a4d6a5fea4a0"
         },
         {
           "step": 3,
           "op": "continue",
           "status": "completed",
           "actor_ref": "智本测试_安柔",
-          "question": "每天东京时间上午10点帮我检查这个空间，只有发现新的逾期任务时才提醒我，告诉我所属项目和逾期依据。",
-          "answer": "已创建「空间新增逾期任务监控」，每天 **10:00（东京时间）**检查该空间。\n\n首次检查会建立基线，之后仅发现新增逾期任务时提醒，并说明所属项目、截止时间、任务状态和逾期判断依据。本次只完成了创建，尚未执行首次检查。",
-          "session_id": "cs_0ae6768d-3dd9-4f30-bd31-d81dd704925d",
-          "request_id": "22aaf04b-ca05-4c60-99c7-da48f69d9ddb",
-          "message_id": "cm_0c68d9de-a52c-4a33-a929-7d0a84b72ef8",
-          "http_status": null,
-          "error": "",
           "asker": "智本测试_安柔",
-          "review_reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-          "asked_at_jst": "2026-11-10 16:57:04",
-          "gold_checked_at_jst": "2026-11-10 16:57:04"
+          "question": "每天东京时间上午10点帮我检查这个空间，只有发现新的逾期任务时才提醒我，告诉我所属项目和逾期依据。",
+          "answer": "已创建「验收空间新增逾期任务监控」。\n\n- **检查时间**：每天上午 10:00（东京时间）。\n- **范围**：该空间内可见的项目和任务，包括之后新增的项目。\n- **提醒条件**：仅发现新增的、已过截止时间且未完成的任务时提醒；会说明所属项目、截止时间和逾期依据。上次查到的 3 项作为已知基线，不按首次新增提醒。\n\n本次只完成了监控设置，尚未执行新一轮检查。",
+          "session_id": "cs_db52e56f-a98c-4d47-8b07-3bbabfacbd6b",
+          "request_id": "a5a97208-405b-445e-98be-28c62a9a6df7",
+          "message_id": "cm_edadfa08-efbf-42e5-ba38-ed696c54ce1d"
+        },
+        {
+          "step": 4,
+          "op": "自动化首轮巡检",
+          "status": "succeeded",
+          "actor_ref": "智本测试_安柔",
+          "asker": "智本测试_安柔",
+          "question": "已创建监控的受控首轮巡检（Run aur_3970a0e2437840d5994f09998c9cbb25）",
+          "answer": "{\"evaluation\":{\"reason\":\"项目任务清单未提供子任务数量或层级覆盖证明，尚不能确认已完整巡检各级子任务；因此不能可靠判断空间内是否存在新增逾期任务，也不更新巡检基线。\",\"status\":\"unknown\"}}",
+          "session_id": "automation-run:aur_3970a0e2437840d5994f09998c9cbb25",
+          "review_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。"
         }
       ],
       "trace_tools": [
         {
-          "run_id": "bar_8472d2ebbfb74c9bb09193e2699282ac",
-          "step": 2,
+          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "step": 1,
           "seq": 19,
           "name": "activate_skills",
           "arguments_summary": "skills=structured_query,task_space",
@@ -90800,8 +90789,8 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_8472d2ebbfb74c9bb09193e2699282ac",
-          "step": 2,
+          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "step": 1,
           "seq": 29,
           "name": "entity_resolve",
           "arguments_summary": "requests=1",
@@ -90809,8 +90798,8 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_8472d2ebbfb74c9bb09193e2699282ac",
-          "step": 2,
+          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "step": 1,
           "seq": 34,
           "name": "task_query",
           "arguments_summary": "type=project scope=visible role=all",
@@ -90818,8 +90807,8 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_8472d2ebbfb74c9bb09193e2699282ac",
-          "step": 2,
+          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "step": 1,
           "seq": 39,
           "name": "task_ask",
           "arguments_summary": "queries=1 group_by=project,status,actual_overdue,is_overdue format=stats detail=false comments=false mode=rows children=false instruction_runes=0",
@@ -90827,8 +90816,8 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_a5a44ab55529465b948b4107996633ac",
-          "step": 3,
+          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "step": 2,
           "seq": 18,
           "name": "activate_skills",
           "arguments_summary": "skills=automation,structured_query",
@@ -90836,19 +90825,91 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_a5a44ab55529465b948b4107996633ac",
-          "step": 3,
+          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "step": 2,
           "seq": 26,
           "name": "automation_create",
           "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 12,
+          "name": "activate_skills",
+          "arguments_summary": "skills=task_space",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 20,
+          "name": "project_query",
+          "arguments_summary": "invalid arguments",
+          "status": "failed",
+          "attempts": 0
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 25,
+          "name": "project_query",
+          "arguments_summary": "page=1 page_size=30",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 30,
+          "name": "task_query",
+          "arguments_summary": "type=project scope=visible role=all",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 35,
+          "name": "task_query",
+          "arguments_summary": "invalid arguments",
+          "status": "failed",
+          "attempts": 0
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 40,
+          "name": "task_query",
+          "arguments_summary": "type=project scope=visible role=all",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 45,
+          "name": "task_query",
+          "arguments_summary": "type=project scope=visible role=all",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "seq": 50,
+          "name": "task_query",
+          "arguments_summary": "type=project scope=visible role=all",
           "status": "completed",
           "attempts": 1
         }
       ],
       "trace_run_summaries": [
         {
-          "run_id": "bar_8472d2ebbfb74c9bb09193e2699282ac",
-          "step": 2,
+          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "step": 1,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
           "status": "succeeded",
@@ -90857,11 +90918,11 @@
           "prompt": "assistant_chat_agent@0.23.3",
           "event_count": 57,
           "tool_count": 4,
-          "tokens": 221853
+          "tokens": 222050
         },
         {
-          "run_id": "bar_a5a44ab55529465b948b4107996633ac",
-          "step": 3,
+          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "step": 2,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
           "status": "succeeded",
@@ -90870,18 +90931,43 @@
           "prompt": "assistant_chat_agent@0.23.3",
           "event_count": 39,
           "tool_count": 2,
-          "tokens": 139474
+          "tokens": 139983
+        },
+        {
+          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "step": 1,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "status": "succeeded",
+          "skills": "task_space、output_presentation",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.3",
+          "event_count": 61,
+          "tool_count": 8,
+          "tokens": 216828
         }
       ],
-      "failed_checks": [],
+      "failed_checks": [
+        {
+          "dimension": "首轮巡检",
+          "status": "fail",
+          "reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。"
+        },
+        {
+          "dimension": "不变与新增逾期阶段",
+          "status": "skip",
+          "reason": "首轮未可靠完成，未触发后两阶段。"
+        }
+      ],
       "generation_retry": {
         "attempts": []
       },
       "harness": "assistant-chat-live+trace",
       "detail_anchor": "failure-pre-AA-AUTO-002",
       "judge_configuration": {
-        "reasoning_effort": "max",
-        "model": "gpt-6.1-sol"
+        "model": "gpt-6.1-sol",
+        "prompt_version": "ai-assistant-automation-prompt-result-v4-current-display-contract",
+        "reasoning_effort": "max"
       },
       "execution_reasoning": {
         "requested": "max",
@@ -90889,148 +90975,74 @@
         "limitation": "业务接口未提供推理档位控制；本轮请求在配置更改前发出，不能追溯标为max。"
       },
       "source_evidence": {
-        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/report/pre/live_evidence.json",
+        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
         "case_id": "AA-AUTO-002",
-        "source_files": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/automation/cases/AA-AUTO-002/sources",
-        "turns": [
-          {
-            "step": 2,
-            "asked_at": "2026-11-10T07:56:27.863000+00:00",
-            "source_checked_at": "2026-11-10T07:56:27.856007+00:00",
-            "source_scope": null
-          },
-          {
-            "step": 3,
-            "asked_at": "2026-11-10T07:57:04.353000+00:00",
-            "source_checked_at": "2026-11-10T07:57:04.344424+00:00",
-            "source_scope": null
-          }
-        ]
+        "run_id": "aur_3970a0e2437840d5994f09998c9cbb25",
+        "runtime_gold_checked_at": "2026-11-10T13:23:05.554492+00:00",
+        "automation_cleanup_audit": "outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.cleanup-f80bb63f864e4288a8f9b869349247de.json"
       },
-      "evaluation_detail_reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-      "reason_style": "plain_zh_with_original_detail",
+      "evaluation_detail_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+      "reason_style": "plain_zh_with_raw_judge",
       "turn_verdicts": [],
-      "execution_source": "2026-11-10 PRE 空间项目任务全量重跑 16:23批次",
+      "execution_source": "2026-11-10 PRE 自动化受控重跑",
       "execution_stage": "automation",
-      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/report/pre/live_evidence.json",
+      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
       "automation_review": {
-        "case_id": "AA-AUTO-002",
-        "environment": "pre",
         "status": "fail",
         "business_status": "fail",
-        "kind": "business_review",
-        "reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-        "new_question_sent": true,
-        "execution_completed": true,
-        "business_reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-        "review_observation": {
-          "basis": "be11aafdbd313cba74d265d8d7949c27bd98bad141f6db95f3d8344bc0a36d5b",
-          "result": "633ae9818b0e2bfbcc7ac40536c0f94b695b00504141056f3bac05a5495992a3",
-          "requests": [
-            "aur_3602e66b0c8b4ef0bd07ce396d3b6d00"
-          ]
-        },
-        "task_success": false,
-        "prompt_quality": {
-          "status": "fail",
-          "reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。",
-          "evidence_refs": [
-            "evidence.turns[0].question",
-            "evidence.turns[1].question",
-            "evidence.automation.prompt",
-            "evidence.automation.schedule.icalendar",
-            "evidence.actual_prompt.text"
-          ]
-        },
-        "result_quality": {
-          "status": "fail",
-          "reason": "本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
-          "evidence_refs": [
-            "evidence.run",
-            "evidence.actual_result.json",
-            "evidence.runtime_phase",
-            "evidence.runtime_gold.business.tasks",
-            "evidence.metadata.runtime_trace_runs[0].tools",
-            "evidence.actual_prompt.text",
-            "evidence.phase_runs"
-          ]
-        },
-        "categories": [
-          "回答不完整"
-        ],
-        "judge_model": "gpt-6.1-sol",
-        "judge_prompt_version": "ai-assistant-automation-prompt-result-v4-current-display-contract",
-        "judged_at": "2026-11-10T08:35:24.830667+00:00",
-        "assessment_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/automation/automation-assessments/AA-AUTO-002.json",
-        "assessment_sha256": "20824fceefb3c67b805a2000fefbb6efa606ffbb05059f5e1703d0eb5e6521bf",
-        "assessment_detail": {
+        "business_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+        "judge_raw": {
           "case_id": "AA-AUTO-002",
           "status": "fail",
           "task_success": false,
           "prompt_quality": {
             "status": "fail",
-            "reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。",
+            "reason": "空间ID、未完成筛选（含暂停）、实际截止时间判定均已继承；DTSTART的东京时间10:00配合FREQ=DAILY满足用户日程，无须机械补写BYHOUR。核心问题是首轮基线处理：保存的业务prompt及实测runtime prompt均将对话查到的3项任务设为“不作为首次新增提醒”的基线，但实测Runtime的前轮matched keys为[]、历史state为{}，没有相应基线初始化证据。本阶段明确要求现有逾期任务首次命中，这种仅在业务prompt中排除首次提醒的做法改变了首轮语义，也未解决与Runtime统一决定通知的协议衔接。display.content及unknown协议本身正确，不是扣分原因。",
             "evidence_refs": [
               "evidence.turns[0].question",
               "evidence.turns[1].question",
               "evidence.automation.prompt",
               "evidence.automation.schedule.icalendar",
-              "evidence.actual_prompt.text"
+              "evidence.actual_prompt.text",
+              "evidence.runtime_phase"
             ]
           },
           "result_quality": {
             "status": "fail",
-            "reason": "本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
+            "reason": "精确关联本次trigger的aur_3970a0e2437840d5994f09998c9cbb25仅返回unknown，未完成baseline阶段的首次命中评估。按本阶段完整runtime_gold及实际运行时刻1794316985990，支付联调阻塞、历史交付待完成的有效截止时间均已严格早于运行时刻，且均未完成，共2项符合条件；NORMAL已被改为未来截止时间，不能沿用创建前的3项数量，DONE因额外的未完成条件应排除，READY未设截止时间也不计入。结果因子任务覆盖未确认而结束，没有形成完整评估及所属项目、逾期依据。unknown结构合规且没有伪装成无风险，但它不是正确的无命中静默，run.status=succeeded也不能证明业务成功。phase_runs为空，跨次去重、新增风险、准时调度和最终投递仍证据不足；这些后阶段要求未被用作本轮失败依据。",
             "evidence_refs": [
               "evidence.run",
-              "evidence.actual_result.json",
-              "evidence.runtime_phase",
+              "evidence.actual_result",
+              "evidence.runtime_gold.business.complete",
               "evidence.runtime_gold.business.tasks",
-              "evidence.metadata.runtime_trace_runs[0].tools",
-              "evidence.actual_prompt.text",
-              "evidence.phase_runs"
+              "evidence.runtime_gold.business.phase_mutations",
+              "evidence.runtime_phase",
+              "evidence.phase_runs",
+              "evidence.metadata.runtime_trace_runs[0].tools"
             ]
           },
-          "reason": "已正确继承空间2821290532及动态覆盖空间内项目的范围；日程语义为每天东京时间10:00，符合用户指定频率。认证的runtime prompt也正确使用display.content、稳定key/marker及unknown协议。但保存的业务prompt和实际runtime prompt均将“尚未完成（包括待启动、进行中、暂停）”作为逾期状态条件，明确扩大了业务逾期范围。正确条件必须是基础状态为进行中，且有效结束时间严格早于本轮实际运行时刻；未开始和暂停不能计入逾期。；本结果已精确关联本次trigger run，当前仅评价baseline阶段。按完整runtime_gold及run_at_ms=1794297461998，支付联调阻塞、历史交付待完成两项的有效status均为2且截止时间已过，应形成首次命中结果；正常推进对照已被调整为未来到期，不能沿用历史回答中的3项逾期。本次仅返回unknown，明确承认尚有1项未读详情、子任务覆盖未核实，未提供任何命中对象、所属项目和逾期依据，也未完成有效基线。unknown结构符合查询不完整时的兜底协议，不能因此视作无风险或任务成功；Trace已显示取得上述两项的状态和截止时间。后续不变重跑、新增逾期、调度准时性及最终投递均缺证，相关能力仍属insufficient，不作为本轮失败依据。",
+          "reason": "空间ID、未完成筛选（含暂停）、实际截止时间判定均已继承；DTSTART的东京时间10:00配合FREQ=DAILY满足用户日程，无须机械补写BYHOUR。核心问题是首轮基线处理：保存的业务prompt及实测runtime prompt均将对话查到的3项任务设为“不作为首次新增提醒”的基线，但实测Runtime的前轮matched keys为[]、历史state为{}，没有相应基线初始化证据。本阶段明确要求现有逾期任务首次命中，这种仅在业务prompt中排除首次提醒的做法改变了首轮语义，也未解决与Runtime统一决定通知的协议衔接。display.content及unknown协议本身正确，不是扣分原因。；精确关联本次trigger的aur_3970a0e2437840d5994f09998c9cbb25仅返回unknown，未完成baseline阶段的首次命中评估。按本阶段完整runtime_gold及实际运行时刻1794316985990，支付联调阻塞、历史交付待完成的有效截止时间均已严格早于运行时刻，且均未完成，共2项符合条件；NORMAL已被改为未来截止时间，不能沿用创建前的3项数量，DONE因额外的未完成条件应排除，READY未设截止时间也不计入。结果因子任务覆盖未确认而结束，没有形成完整评估及所属项目、逾期依据。unknown结构合规且没有伪装成无风险，但它不是正确的无命中静默，run.status=succeeded也不能证明业务成功。phase_runs为空，跨次去重、新增风险、准时调度和最终投递仍证据不足；这些后阶段要求未被用作本轮失败依据。",
           "suggestions": [
-            "将业务prompt的逾期条件改为“基础状态为进行中且有效结束时间严格早于实际运行时刻”；taskStatus=0时读取有效status或补查基础状态，排除未开始、暂停、已完成以及截止时间未设置、为0或尚未到期的任务。",
-            "补查尚未读取的task_vxmjzp8drrvi，并完成空间内各项目任务及子任务的覆盖、分页核验；关键数据确实无法取得时继续返回unknown且不推进基线，但应先完成可用的补查。",
-            "完整评估后，将本轮两项真实逾期分别按稳定task key返回matched、稳定业务marker及display.content，正文包含所属项目、状态、截止时间和检查依据；后轮仍命中的对象也须显式返回，由Runtime决定是否通知，不由Agent吞掉首轮命中或自行发送消息。",
-            "基线完成后再采集数据不变、新增真实逾期两个阶段的独立run及状态证据，验证仅新增对象触发提醒；另外采集东京时间10:00的调度触发和实际投递记录，不能用本次手动trigger替代这些验证。"
+            "分离当前条件匹配与通知去重：首轮完整评估应如实返回当前符合条件的subjects，由Runtime处理通知。若要将对话已知项初始化为静默基线，应通过可验证的Runtime基线机制实现，不能只在业务prompt中要求跳过首次提醒。",
+            "按已解析的空间ID动态枚举项目，再按项目ID完整查询任务、分页及子任务层级。先核对工具schema并修正无效参数，补齐覆盖证明；确实无法完成时继续返回unknown且不推进基线，但不要将该轮记为业务验收成功。",
+            "每次使用当轮有效截止时间与实际运行时刻严格比较，并独立应用未完成条件。完整命中时使用稳定任务key和稳定业务marker，在display.content中提供所属项目、截止时间、检查时间及真实来源；不要以isOverdue、任务名称或旧快照代替判断。",
+            "完成本轮后补采数据不变再次运行、真实新增逾期后的运行及对应状态证据，分别验证不重复提醒和仅新增命中；另采东京时间10:00的真实调度与投递回执，不能以一次手动trigger替代这些证明。"
           ],
           "judge_model": "gpt-6.1-sol",
           "judge_prompt_version": "ai-assistant-automation-prompt-result-v4-current-display-contract",
-          "judge_reasoning_effort": "max",
-          "review_observation": {
-            "basis": "be11aafdbd313cba74d265d8d7949c27bd98bad141f6db95f3d8344bc0a36d5b",
-            "result": "633ae9818b0e2bfbcc7ac40536c0f94b695b00504141056f3bac05a5495992a3",
-            "requests": [
-              "aur_3602e66b0c8b4ef0bd07ce396d3b6d00"
-            ]
-          },
-          "original_evidence_sha256": "f84a9eb2fb61e6944b95057e514ce45f39b479c8b6b19f405f6fafdacc3175a2",
-          "judge_input_sha256": "23c8343409a96535e005edcd80e4a9469242a412c8647d23fa9fbc8dbb8aa757",
-          "judged_at": "2026-11-10T08:35:24.830667+00:00",
-          "reasoning_effort": "max",
-          "input_policy": "complete saved automation evidence; no business request resends"
+          "judge_reasoning_effort": "max"
         },
-        "evidence_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/automation/evidence/AA-AUTO-002.json",
-        "session_id": "cs_0ae6768d-3dd9-4f30-bd31-d81dd704925d",
-        "cleanup_status": "paused",
-        "baseline": {
-          "contract": "ai_assistant.review_baseline.v1",
-          "environment": "pre",
-          "identity": {
-            "report_id": "review-b4d0a64b0b7165344972ef42",
-            "run_id": "AI助手-2026-11-10-pre-source-recovery-messages-1440",
-            "environment": "pre",
-            "source_digest": "84946722d6cf35936d9ea37fce41a0b2a77317ead2d1452f5d0b8d7bb66fc3e0"
-          },
-          "revision": 4,
-          "fetched_at": "2026-11-10T07:41:43.424206+00:00",
-          "source_url": "https://anna0715.github.io/Agent_report/ai-assistant/runs/pre-source-recovery-20261110/"
+        "run_id": "aur_3970a0e2437840d5994f09998c9cbb25",
+        "phase_count": 1,
+        "planned_phase_count": 3,
+        "runtime_output": {
+          "evaluation": {
+            "reason": "项目任务清单未提供子任务数量或层级覆盖证明，尚不能确认已完整巡检各级子任务；因此不能可靠判断空间内是否存在新增逾期任务，也不更新巡检基线。",
+            "status": "unknown"
+          }
         },
-        "confidence": "high"
+        "phase_stop_reason": "Baseline is unknown or a judged phase failed; no later fixture mutations/triggers were issued.",
+        "cleanup_status": "deleted"
       },
       "original_ai_review": {
         "business_status": "fail",
@@ -91043,34 +91055,49 @@
           "source_digest": "cd81d87feec0bca494c12dfe276615ccabc407fb98f80070602f9ffef9eccb91"
         }
       },
-      "saved_review_source": {
-        "saved_case": {
-          "case_id": "AA-AUTO-002",
-          "version": 1,
-          "override": {
-            "business_reason": "未开始、计划截止时间已过 的任务纳入逾期了",
-            "business_status": "pending_qa",
-            "failure_categories": []
+      "saved_review_source": null,
+      "execution_history": [
+        {
+          "source": "本轮前已发布结果",
+          "status": "pending_qa",
+          "reason": "未开始、计划截止时间已过 的任务纳入逾期了",
+          "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/report/pre/live_evidence.json",
+          "report_identity": {
+            "report_id": "review-d83426c490b7c72487f4cfd6",
+            "run_id": "AI助手-2026-11-10-pre-selected-attachments-2053",
+            "environment": "pre",
+            "source_digest": "1911c10e99b95183ae577d8268c619e27f189576478f37102aeba69f0bf91993"
           },
-          "updated_at": "2026-11-10T12:02:21.715892+00:00",
-          "updated_by": "61ea364d-6e06-49fa-a889-ba0f416263ab"
-        },
-        "manual_history": [
-          {
-            "at": "2026-11-10T12:02:21.715892+00:00",
-            "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
-            "after": {
-              "business_reason": "未开始、计划截止时间已过 的任务纳入逾期了",
-              "business_status": "pending_qa",
-              "failure_categories": []
+          "saved_review_source": {
+            "saved_case": {
+              "case_id": "AA-AUTO-002",
+              "version": 1,
+              "override": {
+                "business_reason": "未开始、计划截止时间已过 的任务纳入逾期了",
+                "business_status": "pending_qa",
+                "failure_categories": []
+              },
+              "updated_at": "2026-11-10T12:02:21.715892+00:00",
+              "updated_by": "61ea364d-6e06-49fa-a889-ba0f416263ab"
             },
-            "before": null,
-            "case_id": "AA-AUTO-002",
-            "revision": 5,
-            "actor_name": "浩澜"
+            "manual_history": [
+              {
+                "at": "2026-11-10T12:02:21.715892+00:00",
+                "actor": "61ea364d-6e06-49fa-a889-ba0f416263ab",
+                "after": {
+                  "business_reason": "未开始、计划截止时间已过 的任务纳入逾期了",
+                  "business_status": "pending_qa",
+                  "failure_categories": []
+                },
+                "before": null,
+                "case_id": "AA-AUTO-002",
+                "revision": 5,
+                "actor_name": "浩澜"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     },
     {
       "asker": "智本测试_安柔",
@@ -101716,13 +101743,13 @@
     "business": {
       "skip": 36,
       "pass": 241,
-      "fail": 47,
+      "fail": 48,
       "deferred": 2,
-      "pending_qa": 3
+      "pending_qa": 2
     },
     "not_executed": 12,
     "deferred": 2,
-    "pending": 27
+    "pending": 26
   },
   "test_scope": {
     "active_total": 0,
@@ -101748,13 +101775,13 @@
       },
       "pre": {
         "pass": 241,
-        "attempted": 288,
-        "rate": 0.8368055555555556
+        "attempted": 289,
+        "rate": 0.8339100346020761
       },
       "combined": {
         "pass": 241,
-        "attempted": 288,
-        "rate": 0.8368055555555556
+        "attempted": 289,
+        "rate": 0.8339100346020761
       }
     },
     "tool_accuracy": {
@@ -102479,7 +102506,14 @@
       "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-agg/live_evidence.json",
       "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/followup-fu/run/live_evidence.json",
       "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/followup-oplog/run/live_evidence.json"
-    ]
+    ],
+    "automation_rerun": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
+    "automation_rerun_baseline": {
+      "report_id": "review-d83426c490b7c72487f4cfd6",
+      "run_id": "AI助手-2026-11-10-pre-selected-attachments-2053",
+      "environment": "pre",
+      "source_digest": "1911c10e99b95183ae577d8268c619e27f189576478f37102aeba69f0bf91993"
+    }
   },
   "execution_policy": {
     "max_case_concurrency": 20,
