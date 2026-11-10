@@ -350,12 +350,16 @@
   }
   function renderCases() {
     if (full) { full.renderCases(effectiveRows(),base,state,canWrite()); return; }
-    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, environment=$('filter-environment').value, priority=$('filter-priority').value, all = effectiveRows();
+    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, environment=$('filter-environment').value, module=$('filter-module').value, priority=$('filter-priority').value, all = effectiveRows();
+    const moduleSelect=$('filter-module'), selectedModule=moduleSelect.value;
+    while(moduleSelect.options.length>1) moduleSelect.remove(1);
+    for(const value of [...new Set(all.map(row=>row.module||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) moduleSelect.add(new Option(value,value));
+    moduleSelect.value=selectedModule; if(moduleSelect.selectedIndex<0) moduleSelect.selectedIndex=0;
     const prioritySelect=$('filter-priority'), previous=prioritySelect.value;
     while(prioritySelect.options.length>1) prioritySelect.remove(1);
     for(const value of [...new Set(all.map(row=>row.priority||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) prioritySelect.add(new Option(value,value));
     prioritySelect.value=previous; if(prioritySelect.selectedIndex<0) prioritySelect.selectedIndex=0;
-    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!priority||(row.priority||'未标注')===priority) && (!q || [row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(q)));
+    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!module||(row.module||'未标注')===module) && (!priority||(row.priority||'未标注')===priority) && (!q || [row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(q)));
     const names = new Map((state?.history || []).map(item=>[item.actor,item.actor_name]));
     $('result-count').textContent = `显示 ${rows.length} / ${all.length} 条`;
     const statusText=row=>row.status==='skip'?(row.kind==='not_executed'?'未执行':'待复核'):labels[row.status];
@@ -475,10 +479,10 @@
     select.value=row.status;
     openEdit(row.case_id,selected);
   });
-  $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
+  $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-module').value='';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
   const filterChanged=()=>{full?.resetPage();renderCases();};
-  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
-  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
+  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-module').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
+  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-module').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
   $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}，并更新本页报告总结。`);});
   $('export-snapshot').onclick = () => operation(async()=>{
     accept(await snapshot());

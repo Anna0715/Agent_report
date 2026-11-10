@@ -130,7 +130,7 @@
     for(const item of next)select.add(new Option(item,item));
     select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;
   }
-  function filtered(){const env=$('filter-environment').value,s=$('filter-status').value,p=$('filter-priority').value,c=$('category').value,q=$('search').value.trim().toLowerCase();return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!q||[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(q)));}
+  function filtered(){const env=$('filter-environment').value,s=$('filter-status').value,m=$('filter-module').value,p=$('filter-priority').value,c=$('category').value,q=$('search').value.trim().toLowerCase();return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!q||[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(q)));}
   function renderCases(current,source,snapshot,canWrite){
     rows=current;base=source;state=snapshot;writable=canWrite;
     if(!initialized){
@@ -141,11 +141,12 @@
       // Apply option-list changes after the native popup has finished its change/blur events.
       document.addEventListener('focusout',event=>{
         const select=event.target;
-        if(!select.matches('[data-case-status-select],#filter-priority,#category'))return;
+        if(!select.matches('[data-case-status-select],#filter-module,#filter-priority,#category'))return;
         requestAnimationFrame(()=>{if(document.activeElement!==select)renderCases(rows,base,state,writable);});
       });
       initialized=true;
     }
+    options('filter-module',rows.map(r=>r.module||'未标注'));
     options('filter-priority',rows.map(r=>r.priority||'未标注'));
     options('category',rows.flatMap(r=>r.failure_categories));
     renderTable();
