@@ -482,7 +482,7 @@
   $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-module').value='';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
   const filterChanged=()=>{full?.resetPage();renderCases();};
   $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-module').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
-  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-module').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
+  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-module').value='';$('filter-priority').value='';if($('category'))$('category').value='';full?.resetCaseIds();filterChanged();};
   $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}，并更新本页报告总结。`);});
   $('export-snapshot').onclick = () => operation(async()=>{
     accept(await snapshot());

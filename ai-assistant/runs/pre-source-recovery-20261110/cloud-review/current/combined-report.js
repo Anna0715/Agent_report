@@ -45,6 +45,8 @@
     return `<details class="original-ai-review"><summary>原报告 AI 裁判（历史）：${esc(label[review.business_status]||'未记录')}</summary><p class="original-ai-reason">${esc(review.business_reason)}</p><small>裁判模型：${esc(review.judge_model||'未记录')} · ${source}</small></details>`;
   };
   let rows=[],base=null,state=null,writable=false,page=1,initialized=false;
+  const selectedCaseIds = new Set();
+  let caseIdOptionsKey='';
   const originalEvidence = new Map();
   function summary(current, source, snapshot) {
     rows=current; base=source; state=snapshot;
@@ -130,14 +132,55 @@
     for(const item of next)select.add(new Option(item,item));
     select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;
   }
+  function matchingCaseIds(){
+    const terms=($('case-id-search')?.value||'').trim().toLowerCase().split(/[\s,，;；]+/).filter(Boolean);
+    return [...new Set(rows.map(row=>row.case_id))].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}))
+      .filter(id=>!terms.length||terms.some(term=>id.toLowerCase().includes(term)));
+  }
+  function renderCaseIdOptions(){
+    if(!$('case-id-filter'))return;
+    const matches=matchingCaseIds(),key=JSON.stringify(matches);
+    if(key!==caseIdOptionsKey){
+      $('case-id-options').innerHTML=matches.length?matches.map(id=>`<label class="case-id-option"><input type="checkbox" data-case-id-option value="${esc(id)}"${selectedCaseIds.has(id)?' checked':''}><span>${esc(id)}</span></label>`).join(''):'<p class="muted">没有匹配的用例 ID</p>';
+      caseIdOptionsKey=key;
+    }
+    for(const option of $('case-id-options').querySelectorAll('[data-case-id-option]'))option.checked=selectedCaseIds.has(option.value);
+    $('case-id-filter-label').textContent=selectedCaseIds.size===0?'用例 ID：全部':selectedCaseIds.size===1?`用例 ID：${[...selectedCaseIds][0]}`:`用例 ID：已选 ${selectedCaseIds.size} 项`;
+    $('case-id-filter-toggle').title=selectedCaseIds.size?[...selectedCaseIds].join('、'):'筛选用例 ID，可搜索和多选';
+    $('case-id-filter-count').textContent=`匹配 ${matches.length} / ${new Set(rows.map(row=>row.case_id)).size} 项 · 已选 ${selectedCaseIds.size} 项`;
+    $('case-id-select-matches').disabled=!matches.length||matches.every(id=>selectedCaseIds.has(id));
+    $('case-id-clear').disabled=!selectedCaseIds.size;
+  }
+  function resetCaseIds(){
+    selectedCaseIds.clear();
+    if($('case-id-search'))$('case-id-search').value='';
+    if($('case-id-filter'))$('case-id-filter').open=false;
+    renderCaseIdOptions();
+  }
+  function initializeCaseIdFilter(){
+    const dropdown=$('case-id-filter');if(!dropdown)return;
+    const apply=()=>{renderCaseIdOptions();page=1;renderTable();};
+    $('case-id-search').addEventListener('input',renderCaseIdOptions);
+    $('case-id-options').addEventListener('change',event=>{
+      const option=event.target;if(!option.matches('[data-case-id-option]'))return;
+      if(option.checked)selectedCaseIds.add(option.value);else selectedCaseIds.delete(option.value);
+      apply();
+    });
+    $('case-id-select-matches').addEventListener('click',()=>{for(const id of matchingCaseIds())selectedCaseIds.add(id);apply();});
+    $('case-id-clear').addEventListener('click',()=>{selectedCaseIds.clear();apply();});
+    dropdown.addEventListener('toggle',()=>{if(dropdown.open)$('case-id-search').focus({preventScroll:true});});
+    dropdown.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dropdown.open=false;$('case-id-filter-toggle').focus({preventScroll:true});}});
+    document.addEventListener('click',event=>{if(dropdown.open&&!dropdown.contains(event.target))dropdown.open=false;});
+  }
   function filtered(){
     const env=$('filter-environment').value,s=$('filter-status').value,m=$('filter-module').value,p=$('filter-priority').value,c=$('category').value;
     const terms=$('search').value.toLowerCase().split(/[;；]/).map(term=>term.trim()).filter(Boolean);
-    return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!terms.length||terms.some(term=>[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(term))));
+    return rows.filter(r=>(!selectedCaseIds.size||selectedCaseIds.has(r.case_id))&&(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!terms.length||terms.some(term=>[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(term))));
   }
   function renderCases(current,source,snapshot,canWrite){
     rows=current;base=source;state=snapshot;writable=canWrite;
     if(!initialized){
+      initializeCaseIdFilter();
       for(const card of document.querySelectorAll('.failure-card'))originalEvidence.set(card.id,card.querySelector('.business-review').innerHTML);
       $('prev').onclick=()=>{page--;renderTable();};$('next').onclick=()=>{page++;renderTable();};
       $('category').onchange=()=>{page=1;renderTable();};
@@ -153,6 +196,7 @@
     options('filter-module',rows.map(r=>r.module||'未标注'));
     options('filter-priority',rows.map(r=>r.priority||'未标注'));
     options('category',rows.flatMap(r=>r.failure_categories));
+    renderCaseIdOptions();
     renderTable();
   }
   function showTarget(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const card=$(id);if(card?.classList.contains('failure-card')){card.hidden=false;card.scrollIntoView({block:'start'});}}
@@ -189,5 +233,5 @@
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
   }
-  window.AICombinedReport={summary,renderCases,anchor,resultStatus,resetPage:()=>{page=1;},showTarget};
+  window.AICombinedReport={summary,renderCases,anchor,resultStatus,resetPage:()=>{page=1;},resetCaseIds,showTarget};
 })();
