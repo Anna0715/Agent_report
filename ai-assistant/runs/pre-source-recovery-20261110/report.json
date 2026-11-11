@@ -1,12 +1,12 @@
 {
   "contract": "ai_assistant.combined_report.v1",
-  "report_date": "2026-11-10",
+  "report_date": "2026-11-11",
   "report_environment": "pre",
-  "report_title": "AI助手 PRE 11月10日报告（附件与自动化用例已更新）",
-  "review_run_id": "AI助手-2026-11-10-pre-automation-rerun-2238",
-  "generated_at": "2026-11-10T13:41:17.038260+00:00",
+  "report_title": "AI助手 PRE 11月11日复核报告（全群60天检索已更新）",
+  "review_run_id": "AI助手-2026-11-11-pre-group60d-rerun-1132",
+  "generated_at": "2026-11-11T02:33:38.141369+00:00",
   "pre_case_count": 329,
-  "execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。 本轮仅更新 AA-AUTO-002：首轮巡检未可靠完成，后两阶段未执行。其余用例沿用原报告；总资源指标仍为原批次口径。",
+  "execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。 本轮仅更新 AA-AUTO-002：首轮巡检未可靠完成，后两阶段未执行。其余用例沿用原报告；总资源指标仍为原批次口径。 本轮仅更新 AA-AUTO-002：首轮把已有逾期任务称为“相对于基线新增”，没有先建立基线；后两阶段未执行。其余用例沿用上一版；总资源指标仍为原批次口径。 本轮只替换所列 PRE 用例的真实执行和评测结果；其他用例沿用原报告。",
   "rows": [
     {
       "asker": "智本测试_安柔",
@@ -48077,28 +48077,30 @@
       "priority": "P0",
       "status": "fail",
       "kind": "business_review",
-      "reason": "只总结了部分近期讨论，漏掉增量同步、历史数据补齐和向量处理方案，数据链路没有讲完整。",
+      "reason": "失败，实际只检索了30天而非已保存的60天，且漏掉窗口内蜂巢群的敏感数据过滤要求。",
       "review_reuse": null,
       "review_observation": {
-        "basis": "664fe2a21d64035e43f3913124f140e2e8753a7c313c8229d3eef2ec75b17c73",
-        "result": "9f56e3b8d97985240c37e43372e29452dfa46629478d3faabed99d47d4117865",
+        "basis": "4881e18fe7cc4e2db2263a119b2a6544963ef83b916c74865843f06543034d6a",
+        "result": "c88631da300a490430960e4f83d817099f76f5b204b8b90d1877d0d810ae61f4",
         "requests": [
-          "508c6c5a-bf99-42a9-ba23-29e5f0441dca"
+          "69977961-c715-4738-8ddc-708afb9919c7"
         ]
       },
       "failure_categories": [
-        "重要漏答",
-        "检索范围收窄"
+        "已保存偏好未生效",
+        "检索范围不足",
+        "主要风险漏答"
       ],
       "confidence": "high",
-      "latency_ms": 300393,
+      "latency_ms": 308243,
       "model": "openai/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.23.3",
-      "automatic_status": "fail",
-      "automatic_reason": "missing required tools: ['hive.im.search', 'citation.resolve']",
+      "automatic_status": "skip",
+      "automatic_reason": "",
       "categories": [
-        "重要漏答",
-        "检索范围收窄"
+        "已保存偏好未生效",
+        "检索范围不足",
+        "主要风险漏答"
       ],
       "title": "综合Agent小分队、AI助手一期研发群和蜂巢AI助手三个群，总结里程碑、数据链路和主要风险，并保留各群来源。",
       "ability": "完成跨群里程碑总结",
@@ -48110,11 +48112,11 @@
       "questions": [
         "综合Agent小分队、AI助手一期研发群和蜂巢AI助手三个群，总结里程碑、数据链路和主要风险，并保留各群来源。"
       ],
-      "answer": "综合来看，AI 助手一期已进入回归和发版准备阶段，但**最终回归结果尚未确认**：11 月 10 日仍在重跑向量检索、空间和消息相关用例，评审改至次日下午；群内称发版日为 11 月 19 日。`widget:refs:msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n\n范围：**Agent 小分队**和**AI助手·一期 研发群**读取了 2026 年 11 月 3 日至 11 月 10 日 19:57（东京时间）的消息；**蜂巢AI助手**因近 7 天无消息，扩展读取了近 30 天。以下不是全部历史里程碑。\n\n## 里程碑\n\n- **11 月 3—4 日：全量回归及问题归类。**群内汇报 11 月 3 日实际执行 382 项、通过 268 项，通过率 70%；主要待处理项包括子任务、向量检索、长期记忆检索天数、模型推理和消息引用／转发，并计划补充用例、重跑失败项。早先 test、pre 环境分别报出 63.5% 和 52.1%，但测试方说明当时环境尚不稳定，报告参考性有限。这些数字不能直接视为最终质量结论。来源：研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2316:T112053RE|msg:sg_3981594831:2317:T112053RE|msg:sg_3981594831:2321:T112053RE|msg:sg_2122635335:1634:T112053RE`\n- **11 月 5 日：明确日程接入一期范围。**会议决定先做“创建日程”，日程问答、Cron、修改和删除暂不纳入；计划先发 PRE 试用，对客时间待验收后确定。11 月 10 日 Agent 小分队仍称预计周四提测，尚不能确认实际提测或发布完成。来源：研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2380:T112053RE|msg:sg_2122635335:1681:T112053RE`\n- **11 月 7—10 日：修复与回归持续，评审延期。**11 月 7 日群内统计任务空间全量未完成 36 项，其中 20 项需在下周一前解决；11 月 9 日有人称 PRE 已全部发布。11 月 10 日仍因检索调整和修复后重跑而推迟评审，未见最终回归报告。来源：研发群。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2425:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n\n## 数据链路\n\n- **聊天数据到个性化能力：**群内介绍已有“聊天记录 → 异步分析 → 用户画像／个人习惯 → 沉淀 skill”的机制，但仍在完善；偏好画像已有实现，尚未在前端展示。为用户生成独立 skill 并自动使用仍是讨论方向，不能视为已交付。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1621:T112053RE|msg:sg_2122635335:1623:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE|msg:sg_2122635335:1661:T112053RE|msg:sg_2122635335:1664:T112053RE|msg:sg_2122635335:1665:T112053RE`\n- **历史消息与长期记忆检索：**群消息及历史记录进入助手检索，讨论中的问题包括向量召回超时、转发消息识别，以及长期记忆按对象和时间范围检索。11 月 10 日研发群还称，多方面时间窗口限制使不少群聊检索只能覆盖 30 天；群内另称现有代码对用户要求的查询范围设有 180 天上限。两者分别是当时的实际覆盖问题和代码上限，不应混为一谈。来源：Agent 小分队、研发群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_2122635335:1638:T112053RE|msg:sg_3981594831:2341:T112053RE|msg:sg_3981594831:2439:T112053RE`\n\n## 主要风险\n\n1. **检索完整性和性能：**30 天实际覆盖限制仍在排查；向量检索虽在 11 月 7 日进展中列为“解决”，11 月 10 日仍有调整及对应案例重跑，最终验证结果尚未看到。来源：研发群。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2439:T112053RE`\n2. **回归与交付节奏：**早期通过率受环境稳定性影响，后续修复仍需多轮重跑；现有消息不足以确认最终通过率或 11 月 19 日能否按计划发版。来源：研发群。`widget:refs:msg:sg_3981594831:2315:T112053RE|msg:sg_3981594831:2317:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n3. **生成稳定性：**11 月 6 日 Agent 小分队反馈线上 generate 失败近乎每天发生 1—2 次。群内将原因指向单轮执行时间限制，并回复已调整；但没有看到后续数据验证，不能确认彻底解决。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1669:T112053RE|msg:sg_2122635335:1670:T112053RE|msg:sg_2122635335:1674:T112053RE|msg:sg_2122635335:1678:T112053RE|msg:sg_2122635335:1679:T112053RE|msg:sg_2122635335:1680:T112053RE`\n4. **蜂巢AI助手群的信息缺口：**近 30 天仅看到 10 月 13 日一段“搜不到”的讨论；搜索对象、核实结果及与 AI 助手的关系均不清楚，不能据此认定是产品缺陷，也不能认定问题已排除。该范围内没有足够信息补充里程碑或数据链路。来源：蜂巢AI助手。`widget:refs:msg:sg_2658892958:85:T112053RE|msg:sg_2658892958:86:T112053RE|msg:sg_2658892958:87:T112053RE|msg:sg_2658892958:88:T112053RE`\n\n要不要我帮你长期关注“Agent 小分队”“AI助手·一期 研发群”和“蜂巢AI助手”？",
+      "answer": "截至 11 月 11 日，AI 助手已进入**预发验证和回归阶段**；11 月 10 日群内提到的发版日为 **11 月 19 日**，但当时仍需多轮重跑，不能据此认定已具备发布条件。主要风险集中在检索覆盖、回归质量及数据权限口径。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2437:T112053RE|msg:sg_3981594831:2439:T112053RE`\n\n以下综合了三个群 **2026 年 10 月 12 日至 11 月 11 日**的可见讨论；较早历史未纳入，不能视为完整项目史。蜂巢AI助手群在这段时间的有效讨论较少，能提供的链路和里程碑信息有限。\n\n## 里程碑\n\n- **10 月 19—29 日：写入能力从范围明确推进到预发体验。**研发群明确二期写入范围包括创建项目、任务和添加评论；Agent 小分队随后反馈写入功能 test 冒烟通过、可发 PRE 体验。研发群也反馈创建项目和任务基本可用，但这些消息不足以证明全面验收或正式上线。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:1781:T112053RE|msg:sg_3981594831:1847:T112053RE|msg:sg_2122635335:1364:T112053RE|msg:sg_2122635335:1369:T112053RE|msg:sg_3981594831:2206:T112053RE`\n- **11 月 3—4 日：全量回归暴露质量缺口。**两群记录的 11 月 3 日回归为执行 382 项、通过 268 项，通过率约 **70%**；待处理项包括子任务、向量检索超时、长期记忆检索及转发识别等。计划修复后重跑失败项并再次全量回归。来源：Agent 小分队、AI助手·一期 研发群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_3981594831:2321:T112053RE`\n- **11 月 5—10 日：收敛日程范围，继续预发验证。**日程先做创建，问答、周期任务、修改和删除暂不做；对客时间根据验收效果再定。11 月 9 日群内反馈预发已发布，11 月 10 日向量检索调整后的用例仍在重跑；目前材料未给出最终完整回归结论。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2380:T112053RE|msg:sg_3981594831:2425:T112053RE|msg:sg_3981594831:2427:T112053RE`\n- **11 月 5—10 日：Agent 能力继续规划。**群内列出 11 个 Skill，部分拟合并；聊天记录异步分析、用户画像与习惯沉淀仍在完善。总结后提示风险、建议创建项目或任务属于提出并计划增加的能力，尚不能说已落地。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1646:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE|msg:sg_2122635335:1682:T112053RE|msg:sg_2122635335:1686:T112053RE`\n\n## 数据链路\n\n以下是群内能确认的**分段链路**，不是完整架构图：\n\n1. **业务数据检索 → 组织参数 → 查询与回答。**已有按项目查任务及关联群聊的流程，是否调用受提示词影响；日报摘要通过汇报摘要工具按范围、类别和时间查询。一个排查案例中，Agent 先查询人员，再依据人员属性组装接口参数；遗漏租户参数曾导致数据查不到，该个案修复后有正向反馈。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:1632:T112053RE|msg:sg_2122635335:1332:T112053RE|msg:sg_2122635335:1333:T112053RE|msg:sg_2122635335:1513:T112053RE|msg:sg_2122635335:1516:T112053RE|msg:sg_2122635335:1519:T112053RE`\n2. **群聊与记忆 → 个性化回答。**讨论中的群聊检索方案会逐步扩大时间范围；聊天记录另有异步分析和记忆沉淀机制，目前主要涉及用户画像与习惯，仍在完善。检索扩窗方案当时尚未开发，不能等同于已上线实现。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2339:T112053RE|msg:sg_3981594831:2341:T112053RE|msg:sg_3981594831:2346:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE`\n3. **文件或图片 → 解析 → 模型上下文。**文件既可能由用户主动上传，也可能从周报、空间等业务场景带入；部分格式直接处理，其他格式由多模态服务解析。10 月 30 日反馈称，检索到的聊天图片当时可能只给 Agent 一个链接，没有图片内容，改进完成情况未确认。来源：Agent 小分队、AI助手·一期 研发群。`widget:refs:msg:sg_2122635335:1117:T112053RE|msg:sg_2122635335:1118:T112053RE|msg:sg_2122635335:1120:T112053RE|msg:sg_2122635335:1561:T112053RE|msg:sg_3981594831:2376:T112053RE|msg:sg_3981594831:2378:T112053RE`\n4. **测试数据同步。**PRE 有 JIRA 与 iHive 数据同步的测试项目，可供真实数据测试；当时 AI 助手尚不支持读取和筛选自定义字段，同步质量也未在消息中得到验证。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2186:T112053RE|msg:sg_3981594831:2193:T112053RE`\n\n## 主要风险\n\n- **发布质量尚待验证。**70% 是 11 月 3 日的回归结果，不代表当前通过率；11 月 10 日仍在重跑向量检索用例，且需要再跑几轮。当前缺少最终完整报告，因此不能判断发布验收是否通过。来源：两研发讨论群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2437:T112053RE`\n- **检索可能不全或不准确。**11 月 10 日仍在排查群聊时间窗口，群内指出不少检索只能查到 30 天；此前也有向量检索超时、日报重复计数或日期判断问题。各问题的最终修复及复测情况不能一概而论。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2439:T112053RE|msg:sg_2122635335:1290:T112053RE|msg:sg_2122635335:1332:T112053RE|msg:sg_2122635335:1333:T112053RE`\n- **权限和数据口径需分开核验。**研发群曾讨论查询中的跨租户结果和数量口径；新写操作限制跨租户已部署测试，但旧查询的最终过滤规则及改造状态未完全确认。不能把测试环境的写入限制视为所有查询场景均已解决。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:1991:T112053RE|msg:sg_3981594831:2004:T112053RE|msg:sg_3981594831:2156:T112053RE|msg:sg_3981594831:2176:T112053RE`\n- **长链路稳定性和多模态理解仍有缺口。**线上生成曾被反馈几乎每天失败 1—2 次；研发称放宽单轮执行时间后“应该不会再出现”，但未提供独立量化复测。聊天图片只返回链接的问题则是另一项独立风险，不能用该回复证明其已修复。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1669:T112053RE|msg:sg_2122635335:1670:T112053RE|msg:sg_2122635335:1679:T112053RE|msg:sg_2122635335:1680:T112053RE|msg:sg_2122635335:1561:T112053RE`\n- **蜂巢AI助手群的补充线索有限。**10 月 13 日该群讨论过项目任务“搜不到”，有人猜测输入有误，随后受到质疑；原因没有确认，也不足以将它认定为已修复的 AI 助手缺陷或归入上述检索故障。`widget:refs:msg:sg_2658892958:85:T112053RE|msg:sg_2658892958:86:T112053RE|msg:sg_2658892958:87:T112053RE|msg:sg_2658892958:88:T112053RE`\n\n要不要我帮你长期关注“Agent 小分队”“AI助手·一期 研发群”和“蜂巢AI助手”？",
       "execution_completed": true,
       "execution_completion_rate": 100,
-      "business_reason": "三群均有检索和来源引用，11月的回归进展、日程范围及检索风险总结基本准确。但用户未限定近期，回答自行收窄到近7天／30天，遗漏了明确相关的增量同步、历史补全和向量化主链路，数据链路部分存在重要漏答。",
-      "tool_chain_summary": "Skill：group_summary、output_presentation；工具链：activate_skills(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_scope(completed) → material_ask(completed) → scratchpad_read(completed) → scratchpad_read(completed) → group_scope(completed) → material_ask(completed) → scratchpad_read(completed) → group_message_lookup(completed) → memory_settle(completed)；自动断言：missing required tools: ['hive.im.search', 'citation.resolve']",
+      "business_reason": "失败，实际只检索了30天而非已保存的60天，且漏掉窗口内蜂巢群的敏感数据过滤要求。",
+      "tool_chain_summary": "Skill：group_summary、output_presentation；工具链：activate_skills(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_search(completed) → group_message_search(completed) → material_ask(completed) → scratchpad_read(completed) → scratchpad_read(completed) → group_scope(completed) → group_message_search(completed) → group_scope(completed) → material_ask(completed) → scratchpad_read(completed) → scratchpad_read(completed) → scratchpad_read(completed) → memory_settle(completed)",
       "turns": [
         {
           "step": 2,
@@ -48122,30 +48124,27 @@
           "status": "completed",
           "actor_ref": "安柔",
           "question": "综合Agent小分队、AI助手一期研发群和蜂巢AI助手三个群，总结里程碑、数据链路和主要风险，并保留各群来源。",
-          "answer": "综合来看，AI 助手一期已进入回归和发版准备阶段，但**最终回归结果尚未确认**：11 月 10 日仍在重跑向量检索、空间和消息相关用例，评审改至次日下午；群内称发版日为 11 月 19 日。`widget:refs:msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n\n范围：**Agent 小分队**和**AI助手·一期 研发群**读取了 2026 年 11 月 3 日至 11 月 10 日 19:57（东京时间）的消息；**蜂巢AI助手**因近 7 天无消息，扩展读取了近 30 天。以下不是全部历史里程碑。\n\n## 里程碑\n\n- **11 月 3—4 日：全量回归及问题归类。**群内汇报 11 月 3 日实际执行 382 项、通过 268 项，通过率 70%；主要待处理项包括子任务、向量检索、长期记忆检索天数、模型推理和消息引用／转发，并计划补充用例、重跑失败项。早先 test、pre 环境分别报出 63.5% 和 52.1%，但测试方说明当时环境尚不稳定，报告参考性有限。这些数字不能直接视为最终质量结论。来源：研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2316:T112053RE|msg:sg_3981594831:2317:T112053RE|msg:sg_3981594831:2321:T112053RE|msg:sg_2122635335:1634:T112053RE`\n- **11 月 5 日：明确日程接入一期范围。**会议决定先做“创建日程”，日程问答、Cron、修改和删除暂不纳入；计划先发 PRE 试用，对客时间待验收后确定。11 月 10 日 Agent 小分队仍称预计周四提测，尚不能确认实际提测或发布完成。来源：研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2380:T112053RE|msg:sg_2122635335:1681:T112053RE`\n- **11 月 7—10 日：修复与回归持续，评审延期。**11 月 7 日群内统计任务空间全量未完成 36 项，其中 20 项需在下周一前解决；11 月 9 日有人称 PRE 已全部发布。11 月 10 日仍因检索调整和修复后重跑而推迟评审，未见最终回归报告。来源：研发群。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2425:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n\n## 数据链路\n\n- **聊天数据到个性化能力：**群内介绍已有“聊天记录 → 异步分析 → 用户画像／个人习惯 → 沉淀 skill”的机制，但仍在完善；偏好画像已有实现，尚未在前端展示。为用户生成独立 skill 并自动使用仍是讨论方向，不能视为已交付。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1621:T112053RE|msg:sg_2122635335:1623:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE|msg:sg_2122635335:1661:T112053RE|msg:sg_2122635335:1664:T112053RE|msg:sg_2122635335:1665:T112053RE`\n- **历史消息与长期记忆检索：**群消息及历史记录进入助手检索，讨论中的问题包括向量召回超时、转发消息识别，以及长期记忆按对象和时间范围检索。11 月 10 日研发群还称，多方面时间窗口限制使不少群聊检索只能覆盖 30 天；群内另称现有代码对用户要求的查询范围设有 180 天上限。两者分别是当时的实际覆盖问题和代码上限，不应混为一谈。来源：Agent 小分队、研发群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_2122635335:1638:T112053RE|msg:sg_3981594831:2341:T112053RE|msg:sg_3981594831:2439:T112053RE`\n\n## 主要风险\n\n1. **检索完整性和性能：**30 天实际覆盖限制仍在排查；向量检索虽在 11 月 7 日进展中列为“解决”，11 月 10 日仍有调整及对应案例重跑，最终验证结果尚未看到。来源：研发群。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2439:T112053RE`\n2. **回归与交付节奏：**早期通过率受环境稳定性影响，后续修复仍需多轮重跑；现有消息不足以确认最终通过率或 11 月 19 日能否按计划发版。来源：研发群。`widget:refs:msg:sg_3981594831:2315:T112053RE|msg:sg_3981594831:2317:T112053RE|msg:sg_3981594831:2435:T112053RE|msg:sg_3981594831:2437:T112053RE`\n3. **生成稳定性：**11 月 6 日 Agent 小分队反馈线上 generate 失败近乎每天发生 1—2 次。群内将原因指向单轮执行时间限制，并回复已调整；但没有看到后续数据验证，不能确认彻底解决。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1669:T112053RE|msg:sg_2122635335:1670:T112053RE|msg:sg_2122635335:1674:T112053RE|msg:sg_2122635335:1678:T112053RE|msg:sg_2122635335:1679:T112053RE|msg:sg_2122635335:1680:T112053RE`\n4. **蜂巢AI助手群的信息缺口：**近 30 天仅看到 10 月 13 日一段“搜不到”的讨论；搜索对象、核实结果及与 AI 助手的关系均不清楚，不能据此认定是产品缺陷，也不能认定问题已排除。该范围内没有足够信息补充里程碑或数据链路。来源：蜂巢AI助手。`widget:refs:msg:sg_2658892958:85:T112053RE|msg:sg_2658892958:86:T112053RE|msg:sg_2658892958:87:T112053RE|msg:sg_2658892958:88:T112053RE`\n\n要不要我帮你长期关注“Agent 小分队”“AI助手·一期 研发群”和“蜂巢AI助手”？",
-          "session_id": "cs_84e2a305-a3a6-45b9-88cd-102149dd70d4",
-          "request_id": "508c6c5a-bf99-42a9-ba23-29e5f0441dca",
-          "message_id": "cm_a91400cd-3ca9-4463-88ab-dcaefb4fbfb9",
+          "answer": "截至 11 月 11 日，AI 助手已进入**预发验证和回归阶段**；11 月 10 日群内提到的发版日为 **11 月 19 日**，但当时仍需多轮重跑，不能据此认定已具备发布条件。主要风险集中在检索覆盖、回归质量及数据权限口径。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2437:T112053RE|msg:sg_3981594831:2439:T112053RE`\n\n以下综合了三个群 **2026 年 10 月 12 日至 11 月 11 日**的可见讨论；较早历史未纳入，不能视为完整项目史。蜂巢AI助手群在这段时间的有效讨论较少，能提供的链路和里程碑信息有限。\n\n## 里程碑\n\n- **10 月 19—29 日：写入能力从范围明确推进到预发体验。**研发群明确二期写入范围包括创建项目、任务和添加评论；Agent 小分队随后反馈写入功能 test 冒烟通过、可发 PRE 体验。研发群也反馈创建项目和任务基本可用，但这些消息不足以证明全面验收或正式上线。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:1781:T112053RE|msg:sg_3981594831:1847:T112053RE|msg:sg_2122635335:1364:T112053RE|msg:sg_2122635335:1369:T112053RE|msg:sg_3981594831:2206:T112053RE`\n- **11 月 3—4 日：全量回归暴露质量缺口。**两群记录的 11 月 3 日回归为执行 382 项、通过 268 项，通过率约 **70%**；待处理项包括子任务、向量检索超时、长期记忆检索及转发识别等。计划修复后重跑失败项并再次全量回归。来源：Agent 小分队、AI助手·一期 研发群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_3981594831:2321:T112053RE`\n- **11 月 5—10 日：收敛日程范围，继续预发验证。**日程先做创建，问答、周期任务、修改和删除暂不做；对客时间根据验收效果再定。11 月 9 日群内反馈预发已发布，11 月 10 日向量检索调整后的用例仍在重跑；目前材料未给出最终完整回归结论。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2380:T112053RE|msg:sg_3981594831:2425:T112053RE|msg:sg_3981594831:2427:T112053RE`\n- **11 月 5—10 日：Agent 能力继续规划。**群内列出 11 个 Skill，部分拟合并；聊天记录异步分析、用户画像与习惯沉淀仍在完善。总结后提示风险、建议创建项目或任务属于提出并计划增加的能力，尚不能说已落地。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1646:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE|msg:sg_2122635335:1682:T112053RE|msg:sg_2122635335:1686:T112053RE`\n\n## 数据链路\n\n以下是群内能确认的**分段链路**，不是完整架构图：\n\n1. **业务数据检索 → 组织参数 → 查询与回答。**已有按项目查任务及关联群聊的流程，是否调用受提示词影响；日报摘要通过汇报摘要工具按范围、类别和时间查询。一个排查案例中，Agent 先查询人员，再依据人员属性组装接口参数；遗漏租户参数曾导致数据查不到，该个案修复后有正向反馈。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:1632:T112053RE|msg:sg_2122635335:1332:T112053RE|msg:sg_2122635335:1333:T112053RE|msg:sg_2122635335:1513:T112053RE|msg:sg_2122635335:1516:T112053RE|msg:sg_2122635335:1519:T112053RE`\n2. **群聊与记忆 → 个性化回答。**讨论中的群聊检索方案会逐步扩大时间范围；聊天记录另有异步分析和记忆沉淀机制，目前主要涉及用户画像与习惯，仍在完善。检索扩窗方案当时尚未开发，不能等同于已上线实现。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2339:T112053RE|msg:sg_3981594831:2341:T112053RE|msg:sg_3981594831:2346:T112053RE|msg:sg_2122635335:1651:T112053RE|msg:sg_2122635335:1652:T112053RE`\n3. **文件或图片 → 解析 → 模型上下文。**文件既可能由用户主动上传，也可能从周报、空间等业务场景带入；部分格式直接处理，其他格式由多模态服务解析。10 月 30 日反馈称，检索到的聊天图片当时可能只给 Agent 一个链接，没有图片内容，改进完成情况未确认。来源：Agent 小分队、AI助手·一期 研发群。`widget:refs:msg:sg_2122635335:1117:T112053RE|msg:sg_2122635335:1118:T112053RE|msg:sg_2122635335:1120:T112053RE|msg:sg_2122635335:1561:T112053RE|msg:sg_3981594831:2376:T112053RE|msg:sg_3981594831:2378:T112053RE`\n4. **测试数据同步。**PRE 有 JIRA 与 iHive 数据同步的测试项目，可供真实数据测试；当时 AI 助手尚不支持读取和筛选自定义字段，同步质量也未在消息中得到验证。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:2186:T112053RE|msg:sg_3981594831:2193:T112053RE`\n\n## 主要风险\n\n- **发布质量尚待验证。**70% 是 11 月 3 日的回归结果，不代表当前通过率；11 月 10 日仍在重跑向量检索用例，且需要再跑几轮。当前缺少最终完整报告，因此不能判断发布验收是否通过。来源：两研发讨论群。`widget:refs:msg:sg_2122635335:1634:T112053RE|msg:sg_3981594831:2427:T112053RE|msg:sg_3981594831:2437:T112053RE`\n- **检索可能不全或不准确。**11 月 10 日仍在排查群聊时间窗口，群内指出不少检索只能查到 30 天；此前也有向量检索超时、日报重复计数或日期判断问题。各问题的最终修复及复测情况不能一概而论。来源：AI助手·一期 研发群、Agent 小分队。`widget:refs:msg:sg_3981594831:2422:T112053RE|msg:sg_3981594831:2439:T112053RE|msg:sg_2122635335:1290:T112053RE|msg:sg_2122635335:1332:T112053RE|msg:sg_2122635335:1333:T112053RE`\n- **权限和数据口径需分开核验。**研发群曾讨论查询中的跨租户结果和数量口径；新写操作限制跨租户已部署测试，但旧查询的最终过滤规则及改造状态未完全确认。不能把测试环境的写入限制视为所有查询场景均已解决。来源：AI助手·一期 研发群。`widget:refs:msg:sg_3981594831:1991:T112053RE|msg:sg_3981594831:2004:T112053RE|msg:sg_3981594831:2156:T112053RE|msg:sg_3981594831:2176:T112053RE`\n- **长链路稳定性和多模态理解仍有缺口。**线上生成曾被反馈几乎每天失败 1—2 次；研发称放宽单轮执行时间后“应该不会再出现”，但未提供独立量化复测。聊天图片只返回链接的问题则是另一项独立风险，不能用该回复证明其已修复。来源：Agent 小分队。`widget:refs:msg:sg_2122635335:1669:T112053RE|msg:sg_2122635335:1670:T112053RE|msg:sg_2122635335:1679:T112053RE|msg:sg_2122635335:1680:T112053RE|msg:sg_2122635335:1561:T112053RE`\n- **蜂巢AI助手群的补充线索有限。**10 月 13 日该群讨论过项目任务“搜不到”，有人猜测输入有误，随后受到质疑；原因没有确认，也不足以将它认定为已修复的 AI 助手缺陷或归入上述检索故障。`widget:refs:msg:sg_2658892958:85:T112053RE|msg:sg_2658892958:86:T112053RE|msg:sg_2658892958:87:T112053RE|msg:sg_2658892958:88:T112053RE`\n\n要不要我帮你长期关注“Agent 小分队”“AI助手·一期 研发群”和“蜂巢AI助手”？",
+          "session_id": "cs_445bd119-c703-462e-8330-5cca27ca33c7",
+          "request_id": "69977961-c715-4738-8ddc-708afb9919c7",
+          "message_id": "cm_44bf14cd-1b50-4612-9876-50943aa85e8c",
           "http_status": 200,
           "error": "",
-          "asker": "安柔",
-          "review_reason": "本轮正确保留三群来源，并区分了近期修复、待验证结果和发布计划。但仅用聊天画像／skill及检索窗口介绍数据链路，未交代原文明确的数据接入与向量同步方案；蜂巢群也只列近30天的信息缺口，未综合其已有的相关历史说明。",
-          "asked_at": "2026-11-10T10:57:56.790184+00:00",
-          "source_checked_at": "2026-11-10T10:57:47.551511+00:00"
+          "asker": "安柔"
         }
       ],
       "trace_tools": [
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
-          "seq": 19,
+          "seq": 21,
           "name": "activate_skills",
           "arguments_summary": "skills=group_summary",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 29,
           "name": "group_search",
@@ -48154,7 +48153,7 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 34,
           "name": "group_search",
@@ -48163,7 +48162,7 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 39,
           "name": "group_search",
@@ -48172,7 +48171,7 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 44,
           "name": "group_search",
@@ -48181,7 +48180,7 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 49,
           "name": "group_search",
@@ -48190,43 +48189,43 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 54,
-          "name": "group_scope",
-          "arguments_summary": "unknown tool",
+          "name": "group_message_search",
+          "arguments_summary": "keywords=5 group_ids=3 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=false",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 59,
           "name": "material_ask",
-          "arguments_summary": "ranges=3 message=3 report=0 format=text instruction_runes=50",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=35",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 73,
           "name": "scratchpad_read",
-          "arguments_summary": "path=answers/sg_2122635335_20261103T105757Z-20261110T105757Z-ba4ec729 offset=0",
+          "arguments_summary": "path=answers/sg_2122635335_20261104T021522Z-20261111T021522Z-731b5b19 offset=0",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 78,
           "name": "scratchpad_read",
-          "arguments_summary": "path=answers/sg_3981594831_20261103T105757Z-20261110T105757Z-d8b0380a offset=0",
+          "arguments_summary": "path=answers/sg_3981594831_20261104T021522Z-20261111T021522Z-04a3417b offset=0",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 83,
           "name": "group_scope",
@@ -48235,36 +48234,63 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "seq": 88,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=5 group_ids=3 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
+          "step": 2,
+          "seq": 93,
+          "name": "group_scope",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
+          "step": 2,
+          "seq": 98,
           "name": "material_ask",
-          "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=33",
+          "arguments_summary": "ranges=3 message=3 report=0 format=text instruction_runes=40",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
-          "seq": 96,
+          "seq": 138,
           "name": "scratchpad_read",
-          "arguments_summary": "path=answers/sg_2658892958_20261011T105757Z-20261110T105757Z-ce751bb1 offset=0",
+          "arguments_summary": "path=answers/sg_2658892958_20261012T021522Z-20261104T021522Z-b6c6ae51 offset=0",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
-          "seq": 101,
-          "name": "group_message_lookup",
-          "arguments_summary": "conversations=1 messages=16 include_content=true",
+          "seq": 143,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_20261012T021522Z-20261104T021522Z-384a7873 offset=0",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
-          "seq": 106,
+          "seq": 148,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_2122635335_20261012T021522Z-20261104T021522Z-ad0c7d1d offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
+          "step": 2,
+          "seq": 153,
           "name": "memory_settle",
           "arguments_summary": "hint_present=false",
           "status": "completed",
@@ -48273,7 +48299,7 @@
       ],
       "trace_run_summaries": [
         {
-          "run_id": "bar_100dfdc1063e4536a85ed50da7256432",
+          "run_id": "bar_fb3d013df63b442aa4c3dd81ad23fae6",
           "step": 2,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
@@ -48281,9 +48307,9 @@
           "skills": "group_summary、output_presentation",
           "model": "openai/gpt-6.1-terra",
           "prompt": "assistant_chat_agent@0.23.3",
-          "event_count": 119,
-          "tool_count": 15,
-          "tokens": 419402
+          "event_count": 166,
+          "tool_count": 18,
+          "tokens": 867216
         }
       ],
       "failed_checks": [
@@ -48308,19 +48334,9 @@
           "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
         },
         {
-          "dimension": "tool.required",
-          "status": "fail",
-          "reason": "missing required tools: ['hive.im.search', 'citation.resolve']"
-        },
-        {
           "dimension": "tool.duplicate",
           "status": "skip",
           "reason": "same-run duplicate calls are an efficiency diagnostic: ['group_search(unknown tool)×5', 'group_scope(unknown tool)×2']"
-        },
-        {
-          "dimension": "policy.checked",
-          "status": "skip",
-          "reason": "policy decision unavailable in Assistant SSE"
         },
         {
           "dimension": "privacy.protected_surfaces",
@@ -48338,11 +48354,6 @@
           "reason": "write side effects unavailable in Assistant SSE"
         },
         {
-          "dimension": "assertion.policy.checked",
-          "status": "skip",
-          "reason": "policy assertion unavailable in Assistant SSE"
-        },
-        {
           "dimension": "semantic.quality",
           "status": "skip",
           "reason": "semantic judge evidence unavailable"
@@ -48354,44 +48365,44 @@
         "performed_retries": 0,
         "selected_attempt": 1,
         "eligible": false,
-        "status": "not_needed",
+        "status": "recovered_original_request",
+        "reason": "原请求已完成，回读恢复；未重发。",
         "attempts": []
       },
       "harness": "assistant-chat-live+trace",
       "detail_anchor": "failure-pre-AA-AGENT-EVAL-002",
-      "evaluation_detail_reason": "三群均有检索和来源引用，11月的回归进展、日程范围及检索风险总结基本准确。但用户未限定近期，回答自行收窄到近7天／30天，遗漏了明确相关的增量同步、历史补全和向量化主链路，数据链路部分存在重要漏答。",
+      "evaluation_detail_reason": "失败，实际只检索了30天而非已保存的60天，且漏掉窗口内蜂巢群的敏感数据过滤要求。",
       "reason_style": "plain_zh_with_original_detail",
       "turn_verdicts": [
         {
           "step": 2,
           "status": "fail",
-          "reason": "本轮正确保留三群来源，并区分了近期修复、待验证结果和发布计划。但仅用聊天画像／skill及检索窗口介绍数据链路，未交代原文明确的数据接入与向量同步方案；蜂巢群也只列近30天的信息缺口，未综合其已有的相关历史说明。",
+          "reason": "回答按里程碑、数据链路和风险组织内容，并保留了三群可定位来源，但实际读取窗口只有7天加23天，未执行60天偏好；蜂巢群仅总结10月13日的检索线索，漏掉9月14日的数据安全要求。",
           "evidence_refs": [
-            "sg_2122635335:1651",
-            "sg_3981594831:50",
-            "sg_2658892958:61",
-            "sg_3981594831:2380",
-            "sg_3981594831:2437",
-            "sg_3981594831:2439"
+            "turn_time_basis:step=2",
+            "trace:bar_fb3d013df63b442aa4c3dd81ad23fae6:59",
+            "trace:bar_fb3d013df63b442aa4c3dd81ad23fae6:98",
+            "trace:bar_fb3d013df63b442aa4c3dd81ad23fae6:138",
+            "group_window_verification.observed_read_windows",
+            "turns:step=2:answer",
+            "sg_2658892958:63",
+            "sg_2658892958:66",
+            "sg_2658892958:67",
+            "sg_2658892958:68",
+            "sg_2658892958:69"
           ],
           "comparison": {
-            "expected": "综合三个群的里程碑、数据链路和主要风险并保留来源。数据链路应涵盖明确相关的接入、同步与向量化方案；历史方案和数据范围可标明日期，不必当作当前仍有效的状态。",
-            "actual": "两群仅总结近7天、蜂巢群仅总结近30天；数据链路主要写聊天记录异步形成画像／skill、长期记忆检索及30天／180天窗口，蜂巢群仅列信息不足。",
-            "difference": "遗漏研发群9月8日讨论的binlog增量同步、历史全量补齐、解密后向量化及权限复核方案，也未综合蜂巢群9月11日关于群聊增量写入、指定群历史数据与任务空间历史范围的说明。近期应用机制和检索问题不能替代所问的核心数据链路。"
+            "expected": "按安柔已保存的全群60天偏好，检索实际提问时最近60天（2026年9月12日至11月11日）的三个群，综合里程碑、数据链路和主要风险并保留各群来源；应涵盖蜂巢群9月14日提出的数据库敏感字段过滤要求，并区分脱敏方案的讨论与实际落地。",
+            "actual": "答复明确只覆盖2026年10月12日至11月11日；Trace记录读取7天后再补23天。蜂巢群内容只涉及10月13日项目任务搜不到的讨论，未提及敏感字段不得发送GPT及前置脱敏方案。",
+            "difference": "默认检索范围从60天缩成了累计30天，少查约前30天，导致遗漏窗口内直接相关的数据安全要求；如实披露只查30天不能替代执行已保存的60天偏好。"
           }
         }
       ],
       "judge_configuration": {
         "model": "gpt-6.1-sol",
         "reasoning_effort": "max",
-        "stream": true,
-        "max_output_tokens": 32768,
-        "attempts": 1,
-        "stats": {
-          "calls": 1,
-          "cache_hits": 0,
-          "errors": 0
-        }
+        "prompt_version": "ai-assistant-business-review-v9-clear-conclusion",
+        "attempts": 1
       },
       "execution_source": "2026-11-10 PRE 指定15条消息用例重跑 19:54批次",
       "execution_reasoning": {
@@ -48400,10 +48411,10 @@
         "limitation": "远端业务接口未提供推理档位控制；实际档位仅以本次认证Trace为准。"
       },
       "source_evidence": {
+        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/run/recovered_evidence.json",
         "case_id": "AA-AGENT-EVAL-002",
-        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_selected_messages_20261110_1954/assessment/live_evidence.json",
-        "source_files": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_selected_messages_20261110_1954/run/cases/AA-AGENT-EVAL-002/sources",
-        "judge_material": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_selected_messages_20261110_1954/assessment/cases/AA-AGENT-EVAL-002/judge-input.json"
+        "checked_at": null,
+        "full_source": null
       },
       "execution_history": [
         {
@@ -48432,6 +48443,12 @@
             "updated_by": null
           },
           "manual_history": []
+        },
+        {
+          "source": "本轮前已发布结果",
+          "status": "fail",
+          "reason": "只总结了部分近期讨论，漏掉增量同步、历史数据补齐和向量处理方案，数据链路没有讲完整。",
+          "evidence_ref": null
         }
       ],
       "original_ai_review": {
@@ -48444,7 +48461,67 @@
           "environment": "pre",
           "source_digest": "767bff95455f279c7325a0f2d38459ba6711c40a33e76dff8fbdf7c44aa7af14"
         }
-      }
+      },
+      "gold": {
+        "type": "summary",
+        "gold_refs": [
+          "PRE-G-AGENT-SQUAD",
+          "PRE-G-AI-RD",
+          "PRE-G-AI-HUB"
+        ],
+        "must_include": [
+          "里程碑",
+          "数据",
+          "风险"
+        ],
+        "must_exclude": [
+          "只检索了一个群"
+        ],
+        "qualitative_requirements": [
+          "三个群都要按安柔当前全群60天偏好实际检索，按群保留可定位来源；同一事实可以去重。",
+          "只以本轮60天内可证实的群消息判断完整性；不能强制要求回答8月或9月11日的旧纪要。若相关群在窗口内确无材料，应如实说明，不编造结论。",
+          "安柔在 PRE 保存的全群默认检索范围为最近60天：未指定时间时按实际提问时间先查60天，明确日期或范围优先；需要更早历史时说明扩检范围。须用本轮认证 Trace 核对实际群检索窗口，不能把窗口外旧消息作为默认必答事实。"
+        ],
+        "fixed_fact_truth": "以提问时最近60天内三群可见的真实消息为准，分别概括里程碑、数据链路和风险；窗口外旧纪要不是默认必答项。",
+        "required_fields": [
+          "任务结论",
+          "依据"
+        ],
+        "citation_refs": [],
+        "scope": "actor_visible",
+        "match_policy": "minimum",
+        "gold_entities": [],
+        "forbidden_entities": [],
+        "turn_expectations": [
+          {
+            "step": 2,
+            "message": "综合Agent小分队、AI助手一期研发群和蜂巢AI助手三个群，总结里程碑、数据链路和主要风险，并保留各群来源。",
+            "must_include": [
+              "里程碑",
+              "数据",
+              "风险"
+            ],
+            "must_exclude": [
+              "只检索了一个群"
+            ]
+          }
+        ],
+        "group_search_preference": {
+          "contract": "ai_assistant.group_query_window.v1",
+          "environment": "pre",
+          "tenant_id": "T112053RE",
+          "owner_user_id": "ouv4qlvxa3mbkp",
+          "setting_path": "workflow.query_window",
+          "object_type": "group",
+          "scope": "all_authorized_groups",
+          "default_lookback_days": 60,
+          "applies_when": "question_has_no_explicit_time_range",
+          "explicit_time_range_takes_precedence": true,
+          "allow_disclosed_history_expansion": true,
+          "verification": "authenticated current-request Trace must show the effective group read window; if profile or Trace is unavailable, mark pending evidence"
+        }
+      },
+      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/run/recovered_evidence.json"
     },
     {
       "asker": "智本测试_安柔",
@@ -90704,26 +90781,26 @@
       "priority": "P0",
       "status": "fail",
       "kind": "business_review",
-      "reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+      "reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。",
       "review_reuse": null,
       "review_observation": {
-        "basis": "626d5b3b98cb599723312c04efdbc5be1e254aecce1b5ded4739826cc79f4d67",
-        "result": "e055b505f23021a4ecb2f1ce477a0b73d40eedd04cf5ea5672db8bcb3dd90014",
+        "basis": "bcd1ea21272b2ed8f879e9e5e1ca252d05d54afb1b3959754260f9ea8638dac7",
+        "result": "b91e754318e0f0abd87340adf18ec050e9d711ce665333f213601de6a0d52bcb",
         "requests": [
-          "aur_3970a0e2437840d5994f09998c9cbb25"
+          "aur_2bf71d096be347d0946a541e9737655b"
         ]
       },
       "failure_categories": [
-        "首轮巡检未完成"
+        "首轮误报新增风险"
       ],
       "confidence": "high",
-      "latency_ms": 352615,
+      "latency_ms": 380955,
       "model": "openai/gpt-6.1-terra",
       "prompt_version": "assistant_chat_agent@0.23.3",
       "automatic_status": "fail",
-      "automatic_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+      "automatic_reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。",
       "categories": [
-        "首轮巡检未完成"
+        "首轮误报新增风险"
       ],
       "title": "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
       "ability": "空间监控/追问设置/multi_run_controlled",
@@ -90736,11 +90813,11 @@
         "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
         "每天东京时间上午10点帮我检查这个空间，只有发现新的逾期任务时才提醒我，告诉我所属项目和逾期依据。"
       ],
-      "answer": "已创建「验收空间新增逾期任务监控」。\n\n- **检查时间**：每天上午 10:00（东京时间）。\n- **范围**：该空间内可见的项目和任务，包括之后新增的项目。\n- **提醒条件**：仅发现新增的、已过截止时间且未完成的任务时提醒；会说明所属项目、截止时间和逾期依据。上次查到的 3 项作为已知基线，不按首次新增提醒。\n\n本次只完成了监控设置，尚未执行新一轮检查。",
+      "answer": "已创建自动化「验收空间新增逾期任务监控」。\n\n每天 **10:00（东京时间）**检查该空间；首次检查建立基线，之后仅发现新增逾期任务时提醒，并按项目列出任务状态、截止时间和逾期依据。\n\n本次仅完成创建，尚未执行检查。",
       "execution_completed": false,
       "execution_completion_rate": 33,
-      "business_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
-      "tool_chain_summary": "已核验自动化创建、首轮触发及运行结果；子任务覆盖未确认。",
+      "business_reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。",
+      "tool_chain_summary": "自动化已创建并完成第一次检查，但把两项已有逾期任务写成了新增逾期。",
       "turns": [
         {
           "step": 2,
@@ -90749,10 +90826,10 @@
           "actor_ref": "智本测试_安柔",
           "asker": "智本测试_安柔",
           "question": "「自动化监控验收空间 [AEFIX:AUTO-PRE-SPACE:v1]」空间里有哪些任务已经过了截止时间但还没完成？帮我按项目整理。",
-          "answer": "截至 **2026 年 11 月 10 日 22:22（东京时间）**，该空间中有 **3 项任务已过截止时间且尚未完成**，均属于同一个项目。`widget:space:2821290532:T1120J0W9`\n\n## 自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n| 任务 | 当前状态 | 截止时间 |\n|---|---|---|\n| 支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1] | 进行中 | 2026-10-08 13:38 `widget:task:task_vxmjwulfrtsf:T1120J0W9` |\n| 历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1] | 进行中 | 2026-10-05 19:38 `widget:task:task_vxmjxkvtcmpe:T1120J0W9` |\n| 正常推进对照 [AEFIX:AUTO-PRE-NORMAL:v1] | 进行中 | 2026-10-08 13:38 `widget:task:task_vxmjyb9o1xnf:T1120J0W9` |\n\n三项任务的执行人均为智本测试_安柔；系统也均标记为逾期。\n\n## 任务明细\n\n### 自动化交付验收项目 \\[AEFIX:AUTO-PRE-PROJECT:v1\\] (7)\n- 支付联调阻塞 \\[AEFIX:AUTO-PRE-RISK:v1\\] `widget:task:task_vxmjwulfrtsf:T1120J0W9`\n- 验收完成对照 \\[AEFIX:AUTO-PRE-DONE:v1\\] `widget:task:task_vxmjxkhcpomp:T1120J0W9`\n- 历史交付待完成 \\[AEFIX:AUTO-PRE-OVERDUE:v1\\] `widget:task:task_vxmjxkvtcmpe:T1120J0W9`\n- 准备验收对照 \\[AEFIX:AUTO-PRE-READY:v1\\] `widget:task:task_vxmjyaw2nnyu:T1120J0W9`\n- 正常推进对照 \\[AEFIX:AUTO-PRE-NORMAL:v1\\] `widget:task:task_vxmjyb9o1xnf:T1120J0W9`\n- 远期任务对照 \\[AEFIX:AUTO-PRE-FAR:v1\\] `widget:task:task_vxmjz09pl3ds:T1120J0W9`\n- 无截止时间对照 \\[AEFIX:AUTO-PRE-NODATE:v1\\] `widget:task:task_vxmjzp8drrvi:T1120J0W9`",
-          "session_id": "cs_db52e56f-a98c-4d47-8b07-3bbabfacbd6b",
-          "request_id": "e53922db-9063-4e0f-aaaf-7fc568b8b93b",
-          "message_id": "cm_17e7b8eb-9a8c-4084-8765-a4d6a5fea4a0"
+          "answer": "截至 **2026 年 11 月 11 日 09:54（东京时间）**，该空间内查到 **3 项已过截止时间且未完成的任务**，均属于同一个项目。`widget:space:2821290532:T1120J0W9`\n\n## 自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n三项任务当前均为**进行中**，且系统均标记为逾期：\n\n- **历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1]**：截止时间为 2026 年 10 月 5 日 19:38。`widget:task:task_vxmjxkvtcmpe:T1120J0W9`\n- **支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1]**：截止时间为 2026 年 10 月 8 日 13:38。`widget:task:task_vxmjwulfrtsf:T1120J0W9`\n- **正常推进对照 [AEFIX:AUTO-PRE-NORMAL:v1]**：截止时间为 2026 年 10 月 8 日 13:38。`widget:task:task_vxmjyb9o1xnf:T1120J0W9`",
+          "session_id": "cs_20d1b415-6658-4bc6-850d-86e214767140",
+          "request_id": "63c09db9-1cb4-4670-a8eb-7a96da00f02d",
+          "message_id": "cm_85e13d6e-58ef-43d2-bf14-792e20076493"
         },
         {
           "step": 3,
@@ -90761,10 +90838,10 @@
           "actor_ref": "智本测试_安柔",
           "asker": "智本测试_安柔",
           "question": "每天东京时间上午10点帮我检查这个空间，只有发现新的逾期任务时才提醒我，告诉我所属项目和逾期依据。",
-          "answer": "已创建「验收空间新增逾期任务监控」。\n\n- **检查时间**：每天上午 10:00（东京时间）。\n- **范围**：该空间内可见的项目和任务，包括之后新增的项目。\n- **提醒条件**：仅发现新增的、已过截止时间且未完成的任务时提醒；会说明所属项目、截止时间和逾期依据。上次查到的 3 项作为已知基线，不按首次新增提醒。\n\n本次只完成了监控设置，尚未执行新一轮检查。",
-          "session_id": "cs_db52e56f-a98c-4d47-8b07-3bbabfacbd6b",
-          "request_id": "a5a97208-405b-445e-98be-28c62a9a6df7",
-          "message_id": "cm_edadfa08-efbf-42e5-ba38-ed696c54ce1d"
+          "answer": "已创建自动化「验收空间新增逾期任务监控」。\n\n每天 **10:00（东京时间）**检查该空间；首次检查建立基线，之后仅发现新增逾期任务时提醒，并按项目列出任务状态、截止时间和逾期依据。\n\n本次仅完成创建，尚未执行检查。",
+          "session_id": "cs_20d1b415-6658-4bc6-850d-86e214767140",
+          "request_id": "72e51b59-7cec-43a3-8f5d-abc520550903",
+          "message_id": "cm_a9095b94-ee91-469a-8fd3-50c07c04e481"
         },
         {
           "step": 4,
@@ -90772,24 +90849,24 @@
           "status": "succeeded",
           "actor_ref": "智本测试_安柔",
           "asker": "智本测试_安柔",
-          "question": "已创建监控的受控首轮巡检（Run aur_3970a0e2437840d5994f09998c9cbb25）",
-          "answer": "{\"evaluation\":{\"reason\":\"项目任务清单未提供子任务数量或层级覆盖证明，尚不能确认已完整巡检各级子任务；因此不能可靠判断空间内是否存在新增逾期任务，也不更新巡检基线。\",\"status\":\"unknown\"}}",
-          "session_id": "automation-run:aur_3970a0e2437840d5994f09998c9cbb25",
-          "review_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。"
+          "question": "已创建监控的受控首轮巡检（Run aur_2bf71d096be347d0946a541e9737655b）",
+          "answer": "{\"evaluation\":{\"status\":\"complete\",\"subjects\":[{\"display\":{\"content\":\"发现相对于基线新增的实际逾期任务。\\n\\n所属项目：自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\\n\\n- **历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1]**：进行中；执行人：智本测试_安柔；截止时间：2026-10-05 19:38:42（日本时间）；检查时刻：2026-11-11 09:55:10（日本时间）。截止时间早于检查时刻且任务未完成，因此实际逾期；系统逾期标记：是。`widget:task:task_vxmjxkvtcmpe:T1120J0W9`\"},\"key\":\"task:task_vxmjxkvtcmpe\",\"marker\":{\"task_id\":\"task_vxmjxkvtcmpe\"},\"status\":\"matched\"},{\"display\":{\"content\":\"发现相对于基线新增的实际逾期任务。\\n\\n所属项目：自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\\n\\n- **支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1]**：进行中；执行人：智本测试_安柔；截止时间：2026-10-08 13:38:40（日本时间）；检查时刻：2026-11-11 09:55:10（日本时间）。截止时间早于检查时刻且任务未完成，因此实际逾期；系统逾期标记：是。`widget:task:task_vxmjwulfrtsf:T1120J0W9`\"},\"key\":\"task:task_vxmjwulfrtsf\",\"marker\":{\"task_id\":\"task_vxmjwulfrtsf\"},\"status\":\"matched\"},{\"key\":\"task:task_vxmjyb9o1xnf\",\"status\":\"not_matched\"},{\"key\":\"task:task_vxmjzp8drrvi\",\"status\":\"not_matched\"},{\"key\":\"task:task_vxmjz09pl3ds\",\"status\":\"not_matched\"},{\"key\":\"task:task_vxmjyaw2nnyu\",\"status\":\"not_matched\"},{\"key\":\"task:task_vxmjxkhcpomp\",\"status\":\"not_matched\"}]}}",
+          "session_id": "automation-run:aur_2bf71d096be347d0946a541e9737655b",
+          "review_reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。"
         }
       ],
       "trace_tools": [
         {
-          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "run_id": "bar_2ece45976c244c399146375c7dcd7e01",
           "step": 1,
-          "seq": 19,
+          "seq": 21,
           "name": "activate_skills",
           "arguments_summary": "skills=structured_query,task_space",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "run_id": "bar_2ece45976c244c399146375c7dcd7e01",
           "step": 1,
           "seq": 29,
           "name": "entity_resolve",
@@ -90798,34 +90875,25 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "run_id": "bar_2ece45976c244c399146375c7dcd7e01",
           "step": 1,
           "seq": 34,
-          "name": "task_query",
-          "arguments_summary": "type=project scope=visible role=all",
-          "status": "completed",
-          "attempts": 1
-        },
-        {
-          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
-          "step": 1,
-          "seq": 39,
           "name": "task_ask",
-          "arguments_summary": "queries=1 group_by=project,status,actual_overdue,is_overdue format=stats detail=false comments=false mode=rows children=false instruction_runes=0",
+          "arguments_summary": "queries=1 group_by=project,deadline_state format=stats detail=false comments=false mode=rows children=false instruction_runes=0",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "run_id": "bar_3888f99c980e4e1cbcecd2a3fe231d08",
           "step": 2,
           "seq": 18,
           "name": "activate_skills",
-          "arguments_summary": "skills=automation,structured_query",
+          "arguments_summary": "skills=automation",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "run_id": "bar_3888f99c980e4e1cbcecd2a3fe231d08",
           "step": 2,
           "seq": 26,
           "name": "automation_create",
@@ -90834,7 +90902,7 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 12,
           "name": "activate_skills",
@@ -90843,72 +90911,144 @@
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 20,
-          "name": "project_query",
-          "arguments_summary": "invalid arguments",
-          "status": "failed",
-          "attempts": 0
+          "name": "task_query",
+          "arguments_summary": "type=project scope=visible role=all",
+          "status": "completed",
+          "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 25,
-          "name": "project_query",
-          "arguments_summary": "page=1 page_size=30",
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjyb9o1xnf",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 30,
-          "name": "task_query",
-          "arguments_summary": "type=project scope=visible role=all",
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjzp8drrvi",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 35,
-          "name": "task_query",
-          "arguments_summary": "invalid arguments",
-          "status": "failed",
-          "attempts": 0
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjz09pl3ds",
+          "status": "completed",
+          "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 40,
-          "name": "task_query",
-          "arguments_summary": "type=project scope=visible role=all",
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjyaw2nnyu",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 45,
-          "name": "task_query",
-          "arguments_summary": "type=project scope=visible role=all",
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjxkhcpomp",
           "status": "completed",
           "attempts": 1
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "seq": 50,
-          "name": "task_query",
-          "arguments_summary": "type=project scope=visible role=all",
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjxkvtcmpe",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 55,
+          "name": "task_detail",
+          "arguments_summary": "task_id=task_vxmjwulfrtsf",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 60,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjyb9o1xnf page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 65,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjzp8drrvi page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 70,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjz09pl3ds page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 75,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjyaw2nnyu page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 80,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjxkhcpomp page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 85,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjxkvtcmpe page=1",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
+          "step": 1,
+          "seq": 90,
+          "name": "task_children",
+          "arguments_summary": "parent_task_id=task_vxmjwulfrtsf page=1",
           "status": "completed",
           "attempts": 1
         }
       ],
       "trace_run_summaries": [
         {
-          "run_id": "bar_d291e1277f5340809e8bb3b589d891ed",
+          "run_id": "bar_2ece45976c244c399146375c7dcd7e01",
           "step": 1,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
@@ -90916,25 +91056,25 @@
           "skills": "structured_query、task_space、output_presentation",
           "model": "openai/gpt-6.1-terra",
           "prompt": "assistant_chat_agent@0.23.3",
-          "event_count": 57,
-          "tool_count": 4,
-          "tokens": 222050
+          "event_count": 48,
+          "tool_count": 3,
+          "tokens": 133702
         },
         {
-          "run_id": "bar_7a7df2a5d0a64b159be8ce42b6dae61c",
+          "run_id": "bar_3888f99c980e4e1cbcecd2a3fe231d08",
           "step": 2,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
           "status": "succeeded",
-          "skills": "automation、structured_query",
+          "skills": "automation",
           "model": "openai/gpt-6.1-terra",
           "prompt": "assistant_chat_agent@0.23.3",
           "event_count": 39,
           "tool_count": 2,
-          "tokens": 139983
+          "tokens": 136151
         },
         {
-          "run_id": "bar_10b0b55d2f6d41dc8d2741dc577695bb",
+          "run_id": "bar_d97838682b15450cbbe318f1dd2328f9",
           "step": 1,
           "workflow": "weekly_report.recipient_summary",
           "scenario": "assistant_chat",
@@ -90942,21 +91082,21 @@
           "skills": "task_space、output_presentation",
           "model": "openai/gpt-6.1-terra",
           "prompt": "assistant_chat_agent@0.23.3",
-          "event_count": 61,
-          "tool_count": 8,
-          "tokens": 216828
+          "event_count": 101,
+          "tool_count": 16,
+          "tokens": 436320
         }
       ],
       "failed_checks": [
         {
           "dimension": "首轮巡检",
           "status": "fail",
-          "reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。"
+          "reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。"
         },
         {
           "dimension": "不变与新增逾期阶段",
           "status": "skip",
-          "reason": "首轮未可靠完成，未触发后两阶段。"
+          "reason": "首轮未通过，未触发后两阶段。"
         }
       ],
       "generation_retry": {
@@ -90975,74 +91115,118 @@
         "limitation": "业务接口未提供推理档位控制；本轮请求在配置更改前发出，不能追溯标为max。"
       },
       "source_evidence": {
-        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
+        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_auto_002_rerun_20261111/live/AA-AUTO-002.json",
         "case_id": "AA-AUTO-002",
-        "run_id": "aur_3970a0e2437840d5994f09998c9cbb25",
-        "runtime_gold_checked_at": "2026-11-10T13:23:05.554492+00:00",
-        "automation_cleanup_audit": "outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.cleanup-f80bb63f864e4288a8f9b869349247de.json"
+        "run_id": "aur_2bf71d096be347d0946a541e9737655b",
+        "runtime_gold_checked_at": "2026-11-11T00:55:10.216073+00:00",
+        "automation_retention": "paused",
+        "automation_cleanup_audit": null
       },
-      "evaluation_detail_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
-      "reason_style": "plain_zh_with_raw_judge",
+      "evaluation_detail_reason": "第一次检查应先记下已有的逾期任务，实际却把两项旧任务说成了“新增逾期”，所以未通过。后两轮没跑，是否会重复提醒、能否识别后来新增的逾期任务还没验证；是否实际发出提醒也未确认。",
+      "reason_style": "plain_zh_with_preserved_raw_judge",
       "turn_verdicts": [],
-      "execution_source": "2026-11-10 PRE 自动化受控重跑",
+      "execution_source": "2026-11-11 PRE 自动化受控重跑",
       "execution_stage": "automation",
-      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
+      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_auto_002_rerun_20261111/live/AA-AUTO-002.json",
       "automation_review": {
         "status": "fail",
         "business_status": "fail",
-        "business_reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+        "business_reason": "第一次检查把两项早已逾期的任务说成了“新增逾期”，因此未通过。后两轮没跑，重复提醒和新增逾期识别还没验证。",
         "judge_raw": {
           "case_id": "AA-AUTO-002",
           "status": "fail",
           "task_success": false,
           "prompt_quality": {
             "status": "fail",
-            "reason": "空间ID、未完成筛选（含暂停）、实际截止时间判定均已继承；DTSTART的东京时间10:00配合FREQ=DAILY满足用户日程，无须机械补写BYHOUR。核心问题是首轮基线处理：保存的业务prompt及实测runtime prompt均将对话查到的3项任务设为“不作为首次新增提醒”的基线，但实测Runtime的前轮matched keys为[]、历史state为{}，没有相应基线初始化证据。本阶段明确要求现有逾期任务首次命中，这种仅在业务prompt中排除首次提醒的做法改变了首轮语义，也未解决与Runtime统一决定通知的协议衔接。display.content及unknown协议本身正确，不是扣分原因。",
+            "reason": "保存的 watch 提示继承了已解析的空间 2821290532，要求按项目汇总、首次建立基线、之后仅对新增项提醒。日历用东京时区的 10:00 DTSTART 配合 FREQ=DAILY 表达每日 10:00，无须另写 BYHOUR。实测 runtime 提示另行注入本轮执行时刻和输出协议；结构化范围为空时仍由业务提示中的空间 ID 确定查询范围。问题在于保存并注入的业务规则把「截止时间已过且状态未完成」一并写成逾期依据，将未完成混入了逾期定义。应先仅按有效截止时间是否严格早于实际运行时刻判定逾期，再单独筛选未完成任务。",
             "evidence_refs": [
               "evidence.turns[0].question",
               "evidence.turns[1].question",
+              "case.expected.prompt_rubric[0]",
+              "evidence.metadata.trace_runs[0].tools[1]",
+              "evidence.automation.mode",
               "evidence.automation.prompt",
               "evidence.automation.schedule.icalendar",
-              "evidence.actual_prompt.text",
-              "evidence.runtime_phase"
+              "evidence.actual_prompt.text"
             ]
           },
           "result_quality": {
             "status": "fail",
-            "reason": "精确关联本次trigger的aur_3970a0e2437840d5994f09998c9cbb25仅返回unknown，未完成baseline阶段的首次命中评估。按本阶段完整runtime_gold及实际运行时刻1794316985990，支付联调阻塞、历史交付待完成的有效截止时间均已严格早于运行时刻，且均未完成，共2项符合条件；NORMAL已被改为未来截止时间，不能沿用创建前的3项数量，DONE因额外的未完成条件应排除，READY未设截止时间也不计入。结果因子任务覆盖未确认而结束，没有形成完整评估及所属项目、逾期依据。unknown结构合规且没有伪装成无风险，但它不是正确的无命中静默，run.status=succeeded也不能证明业务成功。phase_runs为空，跨次去重、新增风险、准时调度和最终投递仍证据不足；这些后阶段要求未被用作本轮失败依据。",
+            "reason": "结果与本次 trigger 的 run ID 精确关联。本轮是首次基线：按东京时间 09:55:10 的实际运行时刻和本阶段完整快照，只有「历史交付待完成」和「支付联调阻塞」应作为已有逾期且未完成的对象进入基线。「正常推进对照」在运行前已改为未来截止；已完成对照虽过截止时间，但因未完成筛选而不命中。机器结果的 complete、命中集合、稳定 marker 和 display.content 结构正确，但两条正文均把已有逾期写成「相对于基线新增」，与本轮事实及基线期望冲突。该错误不证明已发送通知；基线持久化、跨次去重和增量判断、准点调度及最终投递仍证据不足。",
             "evidence_refs": [
-              "evidence.run",
-              "evidence.actual_result",
-              "evidence.runtime_gold.business.complete",
-              "evidence.runtime_gold.business.tasks",
-              "evidence.runtime_gold.business.phase_mutations",
+              "evidence.run.trigger_run_id",
+              "evidence.run.run_at_ms",
+              "evidence.actual_result.run_id",
               "evidence.runtime_phase",
               "evidence.phase_runs",
-              "evidence.metadata.runtime_trace_runs[0].tools"
+              "evidence.runtime_gold.business.tasks",
+              "evidence.runtime_gold.business.phase_mutations[0]",
+              "evidence.metadata.runtime_trace_runs[0].tools",
+              "evidence.actual_result.json.evaluation"
             ]
           },
-          "reason": "空间ID、未完成筛选（含暂停）、实际截止时间判定均已继承；DTSTART的东京时间10:00配合FREQ=DAILY满足用户日程，无须机械补写BYHOUR。核心问题是首轮基线处理：保存的业务prompt及实测runtime prompt均将对话查到的3项任务设为“不作为首次新增提醒”的基线，但实测Runtime的前轮matched keys为[]、历史state为{}，没有相应基线初始化证据。本阶段明确要求现有逾期任务首次命中，这种仅在业务prompt中排除首次提醒的做法改变了首轮语义，也未解决与Runtime统一决定通知的协议衔接。display.content及unknown协议本身正确，不是扣分原因。；精确关联本次trigger的aur_3970a0e2437840d5994f09998c9cbb25仅返回unknown，未完成baseline阶段的首次命中评估。按本阶段完整runtime_gold及实际运行时刻1794316985990，支付联调阻塞、历史交付待完成的有效截止时间均已严格早于运行时刻，且均未完成，共2项符合条件；NORMAL已被改为未来截止时间，不能沿用创建前的3项数量，DONE因额外的未完成条件应排除，READY未设截止时间也不计入。结果因子任务覆盖未确认而结束，没有形成完整评估及所属项目、逾期依据。unknown结构合规且没有伪装成无风险，但它不是正确的无命中静默，run.status=succeeded也不能证明业务成功。phase_runs为空，跨次去重、新增风险、准时调度和最终投递仍证据不足；这些后阶段要求未被用作本轮失败依据。",
+          "reason": "保存的 watch 提示继承了已解析的空间 2821290532，要求按项目汇总、首次建立基线、之后仅对新增项提醒。日历用东京时区的 10:00 DTSTART 配合 FREQ=DAILY 表达每日 10:00，无须另写 BYHOUR。实测 runtime 提示另行注入本轮执行时刻和输出协议；结构化范围为空时仍由业务提示中的空间 ID 确定查询范围。问题在于保存并注入的业务规则把「截止时间已过且状态未完成」一并写成逾期依据，将未完成混入了逾期定义。应先仅按有效截止时间是否严格早于实际运行时刻判定逾期，再单独筛选未完成任务。；结果与本次 trigger 的 run ID 精确关联。本轮是首次基线：按东京时间 09:55:10 的实际运行时刻和本阶段完整快照，只有「历史交付待完成」和「支付联调阻塞」应作为已有逾期且未完成的对象进入基线。「正常推进对照」在运行前已改为未来截止；已完成对照虽过截止时间，但因未完成筛选而不命中。机器结果的 complete、命中集合、稳定 marker 和 display.content 结构正确，但两条正文均把已有逾期写成「相对于基线新增」，与本轮事实及基线期望冲突。该错误不证明已发送通知；基线持久化、跨次去重和增量判断、准点调度及最终投递仍证据不足。",
           "suggestions": [
-            "分离当前条件匹配与通知去重：首轮完整评估应如实返回当前符合条件的subjects，由Runtime处理通知。若要将对话已知项初始化为静默基线，应通过可验证的Runtime基线机制实现，不能只在业务prompt中要求跳过首次提醒。",
-            "按已解析的空间ID动态枚举项目，再按项目ID完整查询任务、分页及子任务层级。先核对工具schema并修正无效参数，补齐覆盖证明；确实无法完成时继续返回unknown且不推进基线，但不要将该轮记为业务验收成功。",
-            "每次使用当轮有效截止时间与实际运行时刻严格比较，并独立应用未完成条件。完整命中时使用稳定任务key和稳定业务marker，在display.content中提供所属项目、截止时间、检查时间及真实来源；不要以isOverdue、任务名称或旧快照代替判断。",
-            "完成本轮后补采数据不变再次运行、真实新增逾期后的运行及对应状态证据，分别验证不重复提醒和仅新增命中；另采东京时间10:00的真实调度与投递回执，不能以一次手动trigger替代这些证明。"
+            "将逾期定义与监控筛选分开写：有效截止时间严格早于实际运行时刻才逾期，未完成仅用于筛选监控对象；未设、为 0、等于或晚于运行时刻均不计逾期，时间无效先补证，仍无法核实时返回 unknown。",
+            "基线轮对已有逾期保留 matched、稳定 key 和 marker，正文只陈述所属项目、截止时间与判定依据，不称新增；由 Runtime 建立基线并决定静默，Agent 不自行发送。",
+            "补采基线写入和触发决策日志，再分别运行数据不变、仅一项未完成任务新转逾期的两轮，按各自 run ID 核对实时快照与通知记录；另用真实东京时间 10:00 的调度日志和投递回执验证端到端行为。"
           ],
           "judge_model": "gpt-6.1-sol",
           "judge_prompt_version": "ai-assistant-automation-prompt-result-v4-current-display-contract",
           "judge_reasoning_effort": "max"
         },
-        "run_id": "aur_3970a0e2437840d5994f09998c9cbb25",
+        "run_id": "aur_2bf71d096be347d0946a541e9737655b",
         "phase_count": 1,
         "planned_phase_count": 3,
         "runtime_output": {
           "evaluation": {
-            "reason": "项目任务清单未提供子任务数量或层级覆盖证明，尚不能确认已完整巡检各级子任务；因此不能可靠判断空间内是否存在新增逾期任务，也不更新巡检基线。",
-            "status": "unknown"
+            "status": "complete",
+            "subjects": [
+              {
+                "display": {
+                  "content": "发现相对于基线新增的实际逾期任务。\n\n所属项目：自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n- **历史交付待完成 [AEFIX:AUTO-PRE-OVERDUE:v1]**：进行中；执行人：智本测试_安柔；截止时间：2026-10-05 19:38:42（日本时间）；检查时刻：2026-11-11 09:55:10（日本时间）。截止时间早于检查时刻且任务未完成，因此实际逾期；系统逾期标记：是。`widget:task:task_vxmjxkvtcmpe:T1120J0W9`"
+                },
+                "key": "task:task_vxmjxkvtcmpe",
+                "marker": {
+                  "task_id": "task_vxmjxkvtcmpe"
+                },
+                "status": "matched"
+              },
+              {
+                "display": {
+                  "content": "发现相对于基线新增的实际逾期任务。\n\n所属项目：自动化交付验收项目 [AEFIX:AUTO-PRE-PROJECT:v1]\n\n- **支付联调阻塞 [AEFIX:AUTO-PRE-RISK:v1]**：进行中；执行人：智本测试_安柔；截止时间：2026-10-08 13:38:40（日本时间）；检查时刻：2026-11-11 09:55:10（日本时间）。截止时间早于检查时刻且任务未完成，因此实际逾期；系统逾期标记：是。`widget:task:task_vxmjwulfrtsf:T1120J0W9`"
+                },
+                "key": "task:task_vxmjwulfrtsf",
+                "marker": {
+                  "task_id": "task_vxmjwulfrtsf"
+                },
+                "status": "matched"
+              },
+              {
+                "key": "task:task_vxmjyb9o1xnf",
+                "status": "not_matched"
+              },
+              {
+                "key": "task:task_vxmjzp8drrvi",
+                "status": "not_matched"
+              },
+              {
+                "key": "task:task_vxmjz09pl3ds",
+                "status": "not_matched"
+              },
+              {
+                "key": "task:task_vxmjyaw2nnyu",
+                "status": "not_matched"
+              },
+              {
+                "key": "task:task_vxmjxkhcpomp",
+                "status": "not_matched"
+              }
+            ]
           }
         },
         "phase_stop_reason": "Baseline is unknown or a judged phase failed; no later fixture mutations/triggers were issued.",
-        "cleanup_status": "deleted"
+        "cleanup_status": "paused"
       },
       "original_ai_review": {
         "business_status": "fail",
@@ -91096,8 +91280,31 @@
               }
             ]
           }
+        },
+        {
+          "source": "本轮前已发布结果",
+          "status": "fail",
+          "reason": "首轮巡检未能确认子任务已全部覆盖，返回“无法可靠判断”，没有完成逾期任务评估。后两阶段未执行。",
+          "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
+          "report_identity": {
+            "report_id": "review-950c7b9650e416ba7f6e9fce",
+            "run_id": "AI助手-2026-11-10-pre-automation-rerun-2238",
+            "environment": "pre",
+            "source_digest": "1858530e8afd29f5358ffbda4239d548c38346381f817ae2598bc7806ee6eba8"
+          },
+          "saved_review_source": null
         }
-      ]
+      ],
+      "conclusion_wording_revision": {
+        "kind": "presentation_only",
+        "changed_at": "2026-11-11T01:38:35.058880+00:00",
+        "new_judge_calls": 0,
+        "new_business_requests": 0,
+        "new_manual_audit_events": 0,
+        "previous_reason": "首轮把已有逾期任务称为“相对于基线新增”，没有先建立基线；后两阶段未执行。",
+        "previous_detail_reason": "保存的 watch 提示继承了已解析的空间 2821290532，要求按项目汇总、首次建立基线、之后仅对新增项提醒。日历用东京时区的 10:00 DTSTART 配合 FREQ=DAILY 表达每日 10:00，无须另写 BYHOUR。实测 runtime 提示另行注入本轮执行时刻和输出协议；结构化范围为空时仍由业务提示中的空间 ID 确定查询范围。问题在于保存并注入的业务规则把「截止时间已过且状态未完成」一并写成逾期依据，将未完成混入了逾期定义。应先仅按有效截止时间是否严格早于实际运行时刻判定逾期，再单独筛选未完成任务。；结果与本次 trigger 的 run ID 精确关联。本轮是首次基线：按东京时间 09:55:10 的实际运行时刻和本阶段完整快照，只有「历史交付待完成」和「支付联调阻塞」应作为已有逾期且未完成的对象进入基线。「正常推进对照」在运行前已改为未来截止；已完成对照虽过截止时间，但因未完成筛选而不命中。机器结果的 complete、命中集合、稳定 marker 和 display.content 结构正确，但两条正文均把已有逾期写成「相对于基线新增」，与本轮事实及基线期望冲突。该错误不证明已发送通知；基线持久化、跨次去重和增量判断、准点调度及最终投递仍证据不足。",
+        "note": "仅简化结论表述；原始裁判、执行证据和历史复核保留。"
+      }
     },
     {
       "asker": "智本测试_安柔",
@@ -101749,7 +101956,7 @@
     },
     "not_executed": 12,
     "deferred": 2,
-    "pending": 26
+    "pending": 24
   },
   "test_scope": {
     "active_total": 0,
@@ -102499,20 +102706,17 @@
       "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/review-baseline-stage3.json"
     ],
     "message_reassessment_findings": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_message_reassessment_20261110/findings.json",
-    "selected_rerun_baseline": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_selected_attachments_20261110_2053/review-baseline-published.json",
+    "selected_rerun_baseline": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/review-baseline.json",
     "consolidation_manifest": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_case_consolidation_20261110/consolidation-audit.json",
     "selected_reruns": [
-      "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-real/live_evidence.json",
-      "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-agg/live_evidence.json",
-      "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/followup-fu/run/live_evidence.json",
-      "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/followup-oplog/run/live_evidence.json"
+      "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/run/recovered_evidence.json"
     ],
-    "automation_rerun": "/Users/barry/Desktop/Agent-Evaluation/outputs/overdue_deadline_only_20261110/rerun-auto-latest/AA-AUTO-002.json",
+    "automation_rerun": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_auto_002_rerun_20261111/live/AA-AUTO-002.json",
     "automation_rerun_baseline": {
-      "report_id": "review-d83426c490b7c72487f4cfd6",
-      "run_id": "AI助手-2026-11-10-pre-selected-attachments-2053",
+      "report_id": "review-950c7b9650e416ba7f6e9fce",
+      "run_id": "AI助手-2026-11-10-pre-automation-rerun-2238",
       "environment": "pre",
-      "source_digest": "1911c10e99b95183ae577d8268c619e27f189576478f37102aeba69f0bf91993"
+      "source_digest": "1858530e8afd29f5358ffbda4239d548c38346381f817ae2598bc7806ee6eba8"
     }
   },
   "execution_policy": {
