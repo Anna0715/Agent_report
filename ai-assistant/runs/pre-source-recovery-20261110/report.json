@@ -2,11 +2,11 @@
   "contract": "ai_assistant.combined_report.v1",
   "report_date": "2026-11-11",
   "report_environment": "pre",
-  "report_title": "AI助手 PRE 11月11日复核报告（全群60天检索已更新）",
-  "review_run_id": "AI助手-2026-11-11-pre-group60d-rerun-1132",
-  "generated_at": "2026-11-11T02:33:38.141369+00:00",
+  "report_title": "AI助手 PRE 11月11日复核报告（已有群检索偏好回归）",
+  "review_run_id": "AI助手-2026-11-11-pre-existing-group-preference-rerun-1305",
+  "generated_at": "2026-11-11T04:07:52.479763+00:00",
   "pre_case_count": 329,
-  "execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。 本轮仅更新 AA-AUTO-002：首轮巡检未可靠完成，后两阶段未执行。其余用例沿用原报告；总资源指标仍为原批次口径。 本轮仅更新 AA-AUTO-002：首轮把已有逾期任务称为“相对于基线新增”，没有先建立基线；后两阶段未执行。其余用例沿用上一版；总资源指标仍为原批次口径。 本轮只替换所列 PRE 用例的真实执行和评测结果；其他用例沿用原报告。",
+  "execution_notice": "本次只更新 AA-LMEM-032：在新会话验证已设置的全群60天检索偏好，实际检索为7→30→90天，判未通过。其他用例沿用此前已发布结果；本轮业务模型推理档位未能从认证Trace确认。",
   "rows": [
     {
       "asker": "智本测试_安柔",
@@ -89905,54 +89905,438 @@
     {
       "asker": "安柔",
       "asker_company": "Zelto",
-      "asker_source": "case_config",
+      "asker_source": "execution_turn",
       "askers": [
         {
-          "step": null,
+          "step": 2,
           "name": "安柔",
           "company": "Zelto",
-          "actor_ref": "",
-          "source": "case_config"
+          "actor_ref": "安柔",
+          "source": "execution_turn"
         }
       ],
-      "asker_turns": [],
+      "asker_turns": [
+        {
+          "step": 2,
+          "name": "安柔",
+          "company": "Zelto",
+          "actor_ref": "安柔",
+          "source": "execution_turn"
+        }
+      ],
       "environment": "pre",
       "case_id": "AA-LMEM-032",
       "suite": "assistant_agent_followup",
       "module": "长期记忆与群消息检索",
-      "scenario": "所有群60天偏好与群别偏好隔离",
+      "scenario": "已保存的所有群60天偏好在新会话生效",
       "gate_class": "quality",
       "priority": "P1",
-      "status": "skip",
-      "kind": "not_executed",
-      "reason": "缺少能独立校验并恢复长期记忆设置的操作驱动，本轮未发问。",
+      "status": "fail",
+      "kind": "business_review",
+      "reason": "失败，两群既有的默认60天检索偏好未生效，本轮实际按7、30、90天自动扩展，最终回溯至8月13日。",
       "review_reuse": null,
-      "review_observation": null,
-      "failure_categories": [],
+      "review_observation": {
+        "basis": "c443f9516ab1f15fa44bda0a0c0dccd0c3d2b3bdb3c07e8d892906da6f530fab",
+        "result": "7a450be6629c4f9753d07417a02a13d4b126dab61b3fb39e735d5845368c53a5",
+        "requests": [
+          "e88c5419-e9ce-4e56-91c2-e9865003552e"
+        ]
+      },
+      "failure_categories": [
+        "默认检索偏好未生效",
+        "检索时间范围不符"
+      ],
       "confidence": "high",
-      "latency_ms": null,
-      "model": "未观测",
-      "prompt_version": "未观测",
+      "latency_ms": 182372,
+      "model": "openai/gpt-6.1-terra",
+      "prompt_version": "assistant_chat_agent@0.23.3",
       "automatic_status": "skip",
-      "automatic_reason": "缺少已验证的受控数据/权限/记忆操作驱动，本轮没有发送问题。",
-      "categories": [],
+      "automatic_reason": "",
+      "categories": [
+        "默认检索偏好未生效",
+        "检索时间范围不符"
+      ],
       "title": "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
       "ability": "群别时间范围与跨会话偏好",
-      "task_completion_rate": null,
+      "task_completion_rate": 0,
       "operational_review": {},
       "planning_review": {},
-      "trace_status": "未观测",
-      "trace_runs": 0,
-      "evaluation_detail_reason": "缺少能独立校验并恢复长期记忆设置的操作驱动，本轮未发问。",
+      "trace_status": "内部工具链已采集；权限/引用仍未观测",
+      "trace_runs": 1,
+      "evaluation_detail_reason": "失败，两群既有的默认60天检索偏好未生效，本轮实际按7、30、90天自动扩展，最终回溯至8月13日。",
       "reason_style": "plain_zh_with_original_detail",
-      "business_reason": "缺少能独立校验并恢复长期记忆设置的操作驱动，本轮未发问。",
-      "turn_verdicts": [],
-      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_messages_rerun_20261110_1440/report/pre/live_evidence.json",
+      "business_reason": "失败，两群既有的默认60天检索偏好未生效，本轮实际按7、30、90天自动扩展，最终回溯至8月13日。",
+      "turn_verdicts": [
+        {
+          "step": 2,
+          "status": "fail",
+          "reason": "本轮问题没有显式时间范围，应沿用已有的默认60天设置；但实际检索从7天开始，经30天扩至90天，未体现60天默认窗口生效。回答对历史事项注明“未找到结论不等于至今未评审”，这一状态限定是合理的，但不能抵消检索偏好未生效的问题。",
+          "evidence_refs": [
+            "gold.group_search_preference：default_lookback_days=60，适用于未指定时间范围的问题",
+            "turns[0].session_verification：verified=true，empty_history=true",
+            "turn_time_basis[0]：asked_at=2026-11-11T03:45:18.674898+00:00",
+            "current_source_evidence.case_specific_gold：expected_default_days=60，observed_automatic_windows_days=[7,30,90]",
+            "current_source_evidence.case_specific_gold.searches[2]：verified_conversations=2，90天窗口为2026-08-13至2026-11-11",
+            "trace.runs[0].tools，seq=74：skill_state:query_window.read，90@sg_2658892958",
+            "turns[1].answer"
+          ],
+          "comparison": {
+            "expected": "在新会话中沿用安柔已设置的两群默认最近60天检索，以本轮提问时间为基准，约从2026年9月12日起核查相关消息，并区分历史讨论和当时仍待评审的状态；无需重新设置偏好。",
+            "actual": "两群关键词检索实际使用7、30、90天自动窗口，最终从8月13日起检索；蜂巢AI助手的材料查询也读取了90天窗口，回答引用了8月31日和9月7日的复杂问答讨论。",
+            "difference": "90天窗口虽然包含最近60天，但实际执行的是7/30/90天自动扩展策略，而非既有的60天默认检索设置，因此未满足本轮对现有偏好生效情况的验证要求。"
+          }
+        }
+      ],
+      "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_existing_group_preference_20261111/review-evidence.json",
       "execution_source": "2026-11-10 PRE 全量消息重跑 14:40批次",
       "detail_anchor": "failure-pre-AA-LMEM-032",
       "questions": [
         "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？"
-      ]
+      ],
+      "answer": "截至 **2026 年 11 月 11 日**，两群记录中有三项值得继续确认：复杂问答的一期门槛、用户限额 PRD 的评审结果，以及创建日程时会议创建失败的处理。前两项较早提出，**群内未找到完整后续结论，不等于确认至今尚未评审**。\n\n## 待确认的评审事项\n\n1. **复杂问答：哪些 Case 是一期上线门槛？**  \n   8 月 31 日的项目纪要提出，由产品与 Bud、士衡过《IM&任务空间 问答 Case》清单，圈出一期必须达到最优效果的范围；其他复杂场景不作为一期上线门槛，后续持续调优。9 月 7 日有一条个性化强、检索链路长的 Case 被建议移除并获同意，但群内未见完整的最终门槛清单或整轮评审结论。`widget:refs:msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:55:T112053RE|msg:sg_2658892958:59:T112053RE|msg:sg_2658892958:60:T112053RE`\n\n2. **用户限额 PRD：评审及后台方案是否已定？**  \n   10 月 19 日分享了[用户限额 PRD](https://pcnpuds47gj5.feishu.cn/wiki/Uuh8wmA34iJkkhk5ZFEcjATGnMc?create_from=copy_within_wiki)，并说另约时间评审，涉及前台、后台和设计。10 月 22 日追问后台部分是否已与陈理仕约时间澄清，回复当时尚未约；之后在已查群消息中未找到明确的评审结论。`widget:refs:msg:sg_3981594831:1822:T112053RE|msg:sg_3981594831:1919:T112053RE|msg:sg_3981594831:1922:T112053RE`\n\n3. **创建日程 PRD：会议创建失败是否阻断日程？**  \n   11 月 7 日提出：同时创建会议和日程时，如果会议创建失败，是否还应继续创建日程。后续说按上次会议逻辑另行沟通，但已读消息中未见最终结论。另一个“日程冲突”问题已有答复：**不阻断创建，但要先告知用户**；不应把它继续列为未决问题。`widget:refs:msg:sg_3981594831:2409:T112053RE|msg:sg_3981594831:2410:T112053RE|msg:sg_3981594831:2411:T112053RE|msg:sg_3981594831:2412:T112053RE`\n\n**已澄清的背景：**一期原始 PRD 在 8 月 29 日的群消息中被确认为 8 月 19 日澄清后的定稿版本；这不代表上述后续需求和 Case 门槛都已完成评审。`widget:refs:msg:sg_2658892958:49:T112053RE|msg:sg_2658892958:51:T112053RE`\n\n以上依据两群截至本轮的相关讨论；未读取 PRD 或 Case 文档正文，也不能排除评审结论记录在群外。\n\n要不要我帮你长期关注“AI助手·一期 研发群”和“蜂巢AI助手”？",
+      "execution_completed": true,
+      "execution_completion_rate": 100,
+      "tool_chain_summary": "Skill：group_summary、output_presentation、structured_query、task_space；工具链：activate_skills(completed) → scratchpad_write(completed) → group_search(completed) → group_search(completed) → group_message_search(completed) → material_ask(completed) → scratchpad_read(completed) → group_message_search(completed) → group_message_search(completed) → material_ask(completed) → scratchpad_read(completed) → scratchpad_read(completed) → scratchpad_read(completed) → scratchpad_read(completed) → group_message_search(completed) → group_message_search(completed) → memory_settle(completed)",
+      "turns": [
+        {
+          "step": 2,
+          "op": "ask",
+          "status": "completed",
+          "actor_ref": "安柔",
+          "question": "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
+          "answer": "截至 **2026 年 11 月 11 日**，两群记录中有三项值得继续确认：复杂问答的一期门槛、用户限额 PRD 的评审结果，以及创建日程时会议创建失败的处理。前两项较早提出，**群内未找到完整后续结论，不等于确认至今尚未评审**。\n\n## 待确认的评审事项\n\n1. **复杂问答：哪些 Case 是一期上线门槛？**  \n   8 月 31 日的项目纪要提出，由产品与 Bud、士衡过《IM&任务空间 问答 Case》清单，圈出一期必须达到最优效果的范围；其他复杂场景不作为一期上线门槛，后续持续调优。9 月 7 日有一条个性化强、检索链路长的 Case 被建议移除并获同意，但群内未见完整的最终门槛清单或整轮评审结论。`widget:refs:msg:sg_2658892958:53:T112053RE|msg:sg_2658892958:55:T112053RE|msg:sg_2658892958:59:T112053RE|msg:sg_2658892958:60:T112053RE`\n\n2. **用户限额 PRD：评审及后台方案是否已定？**  \n   10 月 19 日分享了[用户限额 PRD](https://pcnpuds47gj5.feishu.cn/wiki/Uuh8wmA34iJkkhk5ZFEcjATGnMc?create_from=copy_within_wiki)，并说另约时间评审，涉及前台、后台和设计。10 月 22 日追问后台部分是否已与陈理仕约时间澄清，回复当时尚未约；之后在已查群消息中未找到明确的评审结论。`widget:refs:msg:sg_3981594831:1822:T112053RE|msg:sg_3981594831:1919:T112053RE|msg:sg_3981594831:1922:T112053RE`\n\n3. **创建日程 PRD：会议创建失败是否阻断日程？**  \n   11 月 7 日提出：同时创建会议和日程时，如果会议创建失败，是否还应继续创建日程。后续说按上次会议逻辑另行沟通，但已读消息中未见最终结论。另一个“日程冲突”问题已有答复：**不阻断创建，但要先告知用户**；不应把它继续列为未决问题。`widget:refs:msg:sg_3981594831:2409:T112053RE|msg:sg_3981594831:2410:T112053RE|msg:sg_3981594831:2411:T112053RE|msg:sg_3981594831:2412:T112053RE`\n\n**已澄清的背景：**一期原始 PRD 在 8 月 29 日的群消息中被确认为 8 月 19 日澄清后的定稿版本；这不代表上述后续需求和 Case 门槛都已完成评审。`widget:refs:msg:sg_2658892958:49:T112053RE|msg:sg_2658892958:51:T112053RE`\n\n以上依据两群截至本轮的相关讨论；未读取 PRD 或 Case 文档正文，也不能排除评审结论记录在群外。\n\n要不要我帮你长期关注“AI助手·一期 研发群”和“蜂巢AI助手”？",
+          "session_id": "cs_dcbc35e6-b7cd-4e9d-94b9-0fc4a4db58d4",
+          "request_id": "e88c5419-e9ce-4e56-91c2-e9865003552e",
+          "message_id": "cm_b4d359c8-3a28-4795-abb0-631d9c0db3a0",
+          "http_status": 200,
+          "error": "",
+          "asker": "安柔"
+        }
+      ],
+      "trace_tools": [
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 19,
+          "name": "activate_skills",
+          "arguments_summary": "skills=group_summary,structured_query,task_space",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 29,
+          "name": "scratchpad_write",
+          "arguments_summary": "path=review_plan expected_revision=0 bytes=237",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 34,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 39,
+          "name": "group_search",
+          "arguments_summary": "unknown tool",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 44,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 49,
+          "name": "material_ask",
+          "arguments_summary": "ranges=1 message=1 report=0 format=text instruction_runes=68",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 59,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_2295-2470-f726f4e0 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 64,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 69,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 74,
+          "name": "material_ask",
+          "arguments_summary": "ranges=2 message=2 report=0 format=text instruction_runes=78",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 98,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_2658892958_20260813T034534Z-20260910T034534Z-c6def38b offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 103,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_3981594831_1750-2000-0e2ce965 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 108,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_2658892958_20260910T034534Z-20261011T034534Z-361f9410 offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 113,
+          "name": "scratchpad_read",
+          "arguments_summary": "path=answers/sg_2658892958_20261011T034534Z-20261111T034534Z-a3ccf95c offset=0",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 118,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=4 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=50 time_mode=automatic continuation=false",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 123,
+          "name": "group_message_search",
+          "arguments_summary": "keywords=4 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=50 time_mode=automatic continuation=true",
+          "status": "completed",
+          "attempts": 1
+        },
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "seq": 128,
+          "name": "memory_settle",
+          "arguments_summary": "hint_present=false",
+          "status": "completed",
+          "attempts": 1
+        }
+      ],
+      "trace_run_summaries": [
+        {
+          "run_id": "bar_53fed6d12deb406f8f9063218c3f566f",
+          "step": 2,
+          "workflow": "weekly_report.recipient_summary",
+          "scenario": "assistant_chat",
+          "status": "succeeded",
+          "skills": "group_summary、structured_query、task_space、output_presentation",
+          "model": "openai/gpt-6.1-terra",
+          "prompt": "assistant_chat_agent@0.23.3",
+          "event_count": 141,
+          "tool_count": 17,
+          "tokens": 1098388
+        }
+      ],
+      "failed_checks": [
+        {
+          "dimension": "answer.must_include",
+          "status": "skip",
+          "reason": "must_include has no literal oracle; semantic review required"
+        },
+        {
+          "dimension": "answer.must_exclude",
+          "status": "skip",
+          "reason": "must_exclude has no literal oracle; semantic review required"
+        },
+        {
+          "dimension": "answer.turn.2.semantic",
+          "status": "skip",
+          "reason": "turn has no literal oracle; semantic review required"
+        },
+        {
+          "dimension": "version.provenance",
+          "status": "skip",
+          "reason": "version fields are not fully observable in Assistant live evidence: ['model_provider', 'model_policy', 'policy', 'index', 'data']"
+        },
+        {
+          "dimension": "resource.capture",
+          "status": "skip",
+          "reason": "resource fields are not fully observable in Assistant live evidence: ['ttft_ms', 'tool_latency_ms', 'queue_ms', 'network_bytes_in', 'network_bytes_out']"
+        },
+        {
+          "dimension": "trace.completeness",
+          "status": "skip",
+          "reason": "Assistant SSE does not expose full internal Trace; missing=['policy.check']"
+        },
+        {
+          "dimension": "tool.duplicate",
+          "status": "skip",
+          "reason": "same-run duplicate calls are an efficiency diagnostic: ['group_search(unknown tool)×2', 'group_message_search(keywords=3 group_ids=2 conversation_ids=0 sender_ids=0 from_time=false to_time=false limit=20 time_mode=automatic continuation=true)×2']"
+        },
+        {
+          "dimension": "privacy.protected_surfaces",
+          "status": "skip",
+          "reason": "retrieval/model/citation protected surfaces unavailable in Assistant SSE"
+        },
+        {
+          "dimension": "citation.validity",
+          "status": "skip",
+          "reason": "citation validity internals unavailable in Assistant SSE"
+        },
+        {
+          "dimension": "side_effect.write_safety",
+          "status": "skip",
+          "reason": "write side effects unavailable in Assistant SSE"
+        },
+        {
+          "dimension": "semantic.quality",
+          "status": "skip",
+          "reason": "semantic judge evidence unavailable"
+        }
+      ],
+      "generation_retry": {
+        "policy": "ai_assistant.confirmed_service_retry.v2",
+        "max_retries": 1,
+        "performed_retries": 0,
+        "selected_attempt": 1,
+        "eligible": false,
+        "status": "not_needed",
+        "attempts": []
+      },
+      "harness": "assistant-chat-live+trace",
+      "gold": {
+        "type": "memory",
+        "gold_refs": [
+          "PRE-G-AI-RD",
+          "PRE-G-AI-HUB"
+        ],
+        "must_include": [],
+        "must_exclude": [],
+        "qualitative_requirements": [
+          "安柔已设置所有群默认检索60天。本轮只读验证：新会话中两群的实际检索均覆盖提问时刻前60天，回答与当前可见消息一致；未明确要求时不修改偏好。只证明现有设置的检索效果，不把本轮当作偏好写入验证。"
+        ],
+        "source_policy": {
+          "contract": "ai_assistant.group_memory_source.v1",
+          "environment": "pre",
+          "group_ids": [
+            "3981594831",
+            "2658892958"
+          ],
+          "lookback_days": 90,
+          "default_keyword_windows_days": [
+            60
+          ],
+          "explicit_followup_days": 60,
+          "scoped_preference_days": 80,
+          "timezone": "Asia/Tokyo",
+          "fresh_sdk_snapshot_per_batch": true,
+          "fresh_gold_per_turn": true,
+          "readiness_max_age_seconds": 300,
+          "exclude_test_design_messages_from_business_gold": true
+        },
+        "turn_expectations": [
+          {
+            "step": 2,
+            "message": "跨「AI助手·一期 研发群」和「蜂巢AI助手」，PRD 和复杂问答还有哪些待评审？",
+            "session_ref": "A",
+            "qualitative_requirements": [
+              "新空会话不重复设置偏好；按提问时刻核对两群实际检索均覆盖默认最近60天，结合独立群消息回答，区分历史讨论与当前待评审状态。"
+            ]
+          }
+        ],
+        "verification": {
+          "all_turns": true,
+          "fresh_session_ids": true,
+          "actual_search_windows_from_trace": true,
+          "current_sdk_gold": true,
+          "independent_storage_readback": false,
+          "cleanup_required": false
+        },
+        "group_search_preference": {
+          "contract": "ai_assistant.group_query_window.v1",
+          "environment": "pre",
+          "tenant_id": "T112053RE",
+          "owner_user_id": "ouv4qlvxa3mbkp",
+          "setting_path": "workflow.query_window",
+          "object_type": "group",
+          "scope": "all_authorized_groups",
+          "default_lookback_days": 60,
+          "applies_when": "question_has_no_explicit_time_range",
+          "explicit_time_range_takes_precedence": true,
+          "verification": "current-request authenticated Trace must show effective coverage for both groups; no profile write is required"
+        }
+      },
+      "source_evidence": {
+        "path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_existing_group_preference_20261111/review-evidence.json",
+        "case_id": "AA-LMEM-032",
+        "checked_at": "2026-11-11T03:44:02.731000+00:00",
+        "full_source": null
+      },
+      "judge_configuration": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "max",
+        "prompt_version": "ai-assistant-business-review-v9-clear-conclusion",
+        "attempts": 1
+      },
+      "execution_history": [
+        {
+          "source": "本轮前已发布结果",
+          "status": "skip",
+          "reason": "缺少能独立校验并恢复长期记忆设置的操作驱动，本轮未发问。",
+          "evidence_ref": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_messages_rerun_20261110_1440/report/pre/live_evidence.json"
+        }
+      ],
+      "original_ai_review": {
+        "business_status": "skip",
+        "business_reason": "缺少能独立校验并恢复长期记忆设置的操作驱动，本轮未发问。",
+        "historical": true
+      }
     },
     {
       "asker": "anna390",
@@ -101946,15 +102330,15 @@
   ],
   "pre_scope": {
     "active_total": 329,
-    "executed": 316,
+    "executed": 317,
     "business": {
-      "skip": 36,
+      "skip": 35,
       "pass": 241,
-      "fail": 48,
+      "fail": 49,
       "deferred": 2,
       "pending_qa": 2
     },
-    "not_executed": 12,
+    "not_executed": 11,
     "deferred": 2,
     "pending": 24
   },
@@ -101968,8 +102352,8 @@
   },
   "trace_gate": {
     "required": true,
-    "executed": 316,
-    "captured": 316,
+    "executed": 317,
+    "captured": 317,
     "complete": true,
     "missing": {}
   },
@@ -101982,13 +102366,13 @@
       },
       "pre": {
         "pass": 241,
-        "attempted": 289,
-        "rate": 0.8339100346020761
+        "attempted": 290,
+        "rate": 0.8310344827586207
       },
       "combined": {
         "pass": 241,
-        "attempted": 289,
-        "rate": 0.8339100346020761
+        "attempted": 290,
+        "rate": 0.8310344827586207
       }
     },
     "tool_accuracy": {
@@ -102706,10 +103090,10 @@
       "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_space_tasks_rerun_20261110_1623/review-baseline-stage3.json"
     ],
     "message_reassessment_findings": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_message_reassessment_20261110/findings.json",
-    "selected_rerun_baseline": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/review-baseline.json",
+    "selected_rerun_baseline": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_existing_group_preference_20261111/publication-baseline.json",
     "consolidation_manifest": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_case_consolidation_20261110/consolidation-audit.json",
     "selected_reruns": [
-      "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_group_60d_20261111_1114/run/recovered_evidence.json"
+      "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_existing_group_preference_20261111/review-evidence.json"
     ],
     "automation_rerun": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_auto_002_rerun_20261111/live/AA-AUTO-002.json",
     "automation_rerun_baseline": {
@@ -109026,5 +109410,7 @@
         "附件哈希、上传绑定、完整问答、逐请求Trace和独立原件内容已核验。"
       ]
     }
-  ]
+  ],
+  "review_baseline_path": "/Users/barry/Desktop/Agent-Evaluation/outputs/pre_existing_group_preference_20261111/publication-baseline.json",
+  "previous_execution_notice": "本批19条附件用例已全部发问，19并发执行和裁判；共22个经核验的新建空会话、25轮问答。按原附件固定历史快照和独立原文件内容逐轮评测，并核实附件进入对应模型请求。裁判使用max；业务端推理档位未能验证。3条PDF在补齐独立页面依据后补评，未重新发送业务问题。其余用例保留最新报告业务证据与已保存复核。 本轮仅更新 AA-AUTO-002：首轮巡检未可靠完成，后两阶段未执行。其余用例沿用原报告；总资源指标仍为原批次口径。 本轮仅更新 AA-AUTO-002：首轮把已有逾期任务称为“相对于基线新增”，没有先建立基线；后两阶段未执行。其余用例沿用上一版；总资源指标仍为原批次口径。 本轮只替换所列 PRE 用例的真实执行和评测结果；其他用例沿用原报告。 本轮只替换所列 PRE 用例的真实执行和评测结果；其他用例沿用原报告。"
 }
