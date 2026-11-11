@@ -58,7 +58,7 @@
       if (!plain(source) || source.schema !== 'ai_assistant.review_source.v1' || !plain(identity) ||
           !/^review-[a-f0-9]{24}$/.test(identity.report_id) || identity.report_id === i.report_id || sourceIds.has(identity.report_id) ||
           !text(identity.run_id,200) || !identity.run_id || !['test','pre','combined'].includes(identity.environment) ||
-          !/^[a-f0-9]{64}$/.test(identity.source_digest) || !/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.url || '') ||
+          !/^[a-f0-9]{64}$/.test(identity.source_digest) || !/^https:\/\/anna0715\.github\.io\/Agent_report(?:_pre)?\//.test(source.url || '') ||
           !Array.isArray(source.case_ids) || !source.case_ids.length || source.case_ids.some(id=>!text(id,100)) ||
           new Set(source.case_ids).size !== source.case_ids.length || !Array.isArray(source.eligible_case_ids) ||
           new Set(source.eligible_case_ids).size !== source.eligible_case_ids.length || !plain(source.original_results) ||

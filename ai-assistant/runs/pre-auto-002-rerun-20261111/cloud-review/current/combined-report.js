@@ -41,7 +41,7 @@
   const originalAIReviewDetails = r => {
     const review=r.original_ai_review;
     if (!review?.business_reason) return '';
-    const source=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(review.source_url||'')?`<a href="${esc(review.source_url)}">查看来源报告</a>`:'';
+    const source=/^https:\/\/anna0715\.github\.io\/Agent_report(?:_pre)?\//.test(review.source_url||'')?`<a href="${esc(review.source_url)}">查看来源报告</a>`:'';
     return `<details class="original-ai-review"><summary>原报告 AI 裁判（历史）：${esc(label[review.business_status]||'未记录')}</summary><p class="original-ai-reason">${esc(review.business_reason)}</p><small>裁判模型：${esc(review.judge_model||'未记录')} · ${source}</small></details>`;
   };
   let rows=[],base=null,state=null,writable=false,page=1,initialized=false;
