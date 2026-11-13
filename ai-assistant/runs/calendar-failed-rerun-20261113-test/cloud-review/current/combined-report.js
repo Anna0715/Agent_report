@@ -247,9 +247,13 @@
     $('failure-count').textContent=visible.length;
     $('failure-index').querySelector('tbody').innerHTML=visible.map(r=>`<tr data-index-case="${esc(r.case_id)}" data-result-status="${esc(resultStatus(r))}"><td>${r.source_environment}</td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.asker||'未记录')}${r.asker_source==='case_config'?'<br><small>用例配置</small>':''}</td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.ability||r.title)}</td><td>${esc(status(r))}</td><td>${esc(r.failure_categories.join('、')||'—')}</td><td>${duration(r.latency_ms)}</td><td>${taskRate(r)}</td></tr>`).join('');
     const visibleCases=new Set(visible.map(anchor));
+    let visibleFailures=0;
     for(const r of rows){
       const card=$(anchor(r));if(!card)continue;
+      const section=$(isFailure(r.status)?'failure-details':'case-evidence');
+      if(card.parentElement!==section)section.appendChild(card);
       card.hidden=!visibleCases.has(card.id)&&location.hash!==`#${card.id}`;
+      if(isFailure(r.status)&&!card.hidden)visibleFailures++;
       let select=card.querySelector('[data-case-status-select]');
       if(!select){
         select=document.createElement('select');
@@ -270,6 +274,7 @@
       card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.review_reuse?.source_workflow_released?'来源复核流程已解除，显示本轮评测':r.review_reuse?.source_deferral_released?'来源延期已解除，显示本轮评测':r.review_reuse?.mode==='live_source'?'来源报告已保存复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
+    $('failure-details-empty').hidden=visibleFailures>0;
   }
   window.AICombinedReport={summary,renderCases,anchor,resultStatus,resetPage:()=>{page=1;},resetCaseIds,showTarget,
     normalizeCategories,projectRow,failureSummary};

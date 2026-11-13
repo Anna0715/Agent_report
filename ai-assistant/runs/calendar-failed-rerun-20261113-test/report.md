@@ -1,11 +1,11 @@
 # AI助手 test + pre 综合评测报告
 
 - 报告日期：2026-11-13
-- test：有效范围 56 条；线上已发起 55 条，其中有效判定 48 条、待复测 0 条；Task Success Rate 83.3%（40/48）
+- test：有效范围 55 条；线上已发起 54 条，其中有效判定 47 条、待复测 0 条；Task Success Rate 85.1%（40/47）
 - test 未执行：1 条（不进入线上通过率）
 - pre：数据集 0 条；本轮实跑 0 条、未执行 0 条；Task Success Rate -（0/0）；
 - 本地 fixture：0/0 通过（固定证据回放，单列且不混入线上通过率）
-- 综合 Task Success Rate：83.3%（40/48）
+- 综合 Task Success Rate：85.1%（40/47）
 - 失败用例展示：同一 Case ID 的 test 失败若 pre 有对应结果，仅展示 pre；本轮隐藏 0 条 test 明细。环境指标仍按全部实际执行分别统计。
 - pre 回答完成率：-
 - pre 证据断言状态：通过 0、失败 0、人工复核 0、执行错误 0（九维分缺失时不伪造 68/75 总分）
@@ -42,7 +42,6 @@
 | test | AA-CAL-TEST-016 | 智本_Anna |
 | test | AA-CAL-TEST-017 | 智本_Anna |
 | test | AA-CAL-TEST-018 | 智本_Anna |
-| test | AA-CAL-TEST-019 | 智本_Anna |
 | test | AA-CAL-TEST-020 | 智本_Anna |
 | test | AA-CAL-TEST-021 | 智本_Anna |
 | test | AA-CAL-TEST-022 | 智本_Anna |
