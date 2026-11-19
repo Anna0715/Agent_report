@@ -2,7 +2,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const labels = {pass:'通过',fail:'失败',skip:'待复核',pending_qa:'待 QA 复核',deferred:'延期',pending_fix:'待修复'};
-  const resultLabel = (row, value = row.status) => value==='skip'?({not_executed:'未执行',local_fixture_pass:'本地回放通过'}[row.kind]||labels.skip):labels[value];
+  const resultLabel = (row, value = row.status) => value==='skip'?({not_executed:'未执行',local_fixture_pass:'本地回放通过',timeout:'超时'}[row.kind]||labels.skip):labels[value];
   const isFailure = status => ['fail','pending_fix'].includes(status);
   const schema = 'ai_assistant.cloud_review.v1';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -58,7 +58,7 @@
       if (!plain(source) || source.schema !== 'ai_assistant.review_source.v1' || !plain(identity) ||
           !/^review-[a-f0-9]{24}$/.test(identity.report_id) || identity.report_id === i.report_id || sourceIds.has(identity.report_id) ||
           !text(identity.run_id,200) || !identity.run_id || !['test','pre','combined'].includes(identity.environment) ||
-          !/^[a-f0-9]{64}$/.test(identity.source_digest) || !/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(source.url || '') ||
+          !/^[a-f0-9]{64}$/.test(identity.source_digest) || !/^https:\/\/anna0715\.github\.io\/Agent_report(?:_pre)?\//.test(source.url || '') ||
           !Array.isArray(source.case_ids) || !source.case_ids.length || source.case_ids.some(id=>!text(id,100)) ||
           new Set(source.case_ids).size !== source.case_ids.length || !Array.isArray(source.eligible_case_ids) ||
           new Set(source.eligible_case_ids).size !== source.eligible_case_ids.length || !plain(source.original_results) ||
@@ -156,7 +156,7 @@
     return base.rows.map(original => {
       const remote = byId.get(original.case_id), override = remote?.override;
       const status = override?.business_status || original.status;
-      const row = {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || original.display_failure_categories || original.failure_categories,task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
+      const row = {...original,original_status:original.status,original_reason:original.reason,status,reason:override?.business_reason || original.reason,failure_categories:override?.failure_categories || (base.failure_taxonomy?original.failure_categories:original.display_failure_categories || original.failure_categories),task_completion_rate:override?(status==='pass'?100:isFailure(status)?0:null):original.task_completion_rate,version:remote?.version ?? 0,updated_by:remote?.updated_by || null,updated_at:remote?.updated_at || null,override:override || null};
       const prior=inherited.get(original.case_id);
       // A saved current-batch review or reset takes precedence over the prior batch.
       if(prior&&(!remote||remote.version===0)){
@@ -168,7 +168,7 @@
             revision:prior.snapshot.revision,case_version:prior.row.version,actor:prior.row.updated_by,actor_name:prior.name,
             reviewed_at:prior.row.updated_at,source_reset:saved===null,source_deferral_released:released&&!prior.sameRequest,source_workflow_released:released&&prior.sameRequest,source_same_request_workflow:prior.workflowOnly&&queue,inheritance_chain:original.review_reuse||null}});
       }
-      return row;
+      return full?.projectRow?full.projectRow(row,base):row;
     });
   }
   const canWrite = () => connected && !stale && session && state?.current_actor.role === 'reviewer' && document.body.dataset.reviewMode !== 'read';
@@ -350,15 +350,19 @@
   }
   function renderCases() {
     if (full) { full.renderCases(effectiveRows(),base,state,canWrite()); return; }
-    const q = $('search').value.trim().toLowerCase(), status = $('filter-status').value, environment=$('filter-environment').value, priority=$('filter-priority').value, all = effectiveRows();
+    const terms = $('search').value.toLowerCase().split(/[;；]/).map(term=>term.trim()).filter(Boolean), status = $('filter-status').value, environment=$('filter-environment').value, module=$('filter-module').value, priority=$('filter-priority').value, all = effectiveRows();
+    const moduleSelect=$('filter-module'), selectedModule=moduleSelect.value;
+    while(moduleSelect.options.length>1) moduleSelect.remove(1);
+    for(const value of [...new Set(all.map(row=>row.module||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) moduleSelect.add(new Option(value,value));
+    moduleSelect.value=selectedModule; if(moduleSelect.selectedIndex<0) moduleSelect.selectedIndex=0;
     const prioritySelect=$('filter-priority'), previous=prioritySelect.value;
     while(prioritySelect.options.length>1) prioritySelect.remove(1);
     for(const value of [...new Set(all.map(row=>row.priority||'未标注'))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}))) prioritySelect.add(new Option(value,value));
     prioritySelect.value=previous; if(prioritySelect.selectedIndex<0) prioritySelect.selectedIndex=0;
-    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!priority||(row.priority||'未标注')===priority) && (!q || [row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(q)));
+    const rows = all.filter(row=>(!status || row.status===status) && (!environment||row.source_environment===environment) && (!module||(row.module||'未标注')===module) && (!priority||(row.priority||'未标注')===priority) && (!terms.length || terms.some(term=>[row.case_id,row.title,row.ability,row.module,row.scenario,row.suite,row.gate_class,row.reason].join(' ').toLowerCase().includes(term))));
     const names = new Map((state?.history || []).map(item=>[item.actor,item.actor_name]));
     $('result-count').textContent = `显示 ${rows.length} / ${all.length} 条`;
-    const statusText=row=>row.status==='skip'?(row.kind==='not_executed'?'未执行':'待复核'):labels[row.status];
+    const statusText=row=>resultLabel(row);
     $('case-table').querySelector('tbody').innerHTML = rows.map(row=>`<tr id="${esc(row.case_id)}" data-case-id="${esc(row.case_id)}"><td><span class="badge ${esc(row.source_environment)}">${esc(row.source_environment)}</span></td><td><b>${esc(row.case_id)}</b></td><td>${esc(row.priority||'未标注')}</td><td>${esc(row.module)}</td><td>${esc(row.scenario)}</td><td>${esc(row.suite||'—')}</td><td>${esc(row.gate_class||'—')}</td><td><span data-case-status class="status ${esc(row.status)}">${esc(statusText(row))}</span><br><small>${row.override?'云端人工复核':row.kind==='not_executed'?'未执行':row.updated_by?'已恢复原判':'原始裁判'}</small>${row.failure_categories.length?`<br><small>${esc(row.failure_categories.join('、'))}</small>`:''}</td><td>${row.task_completion_rate==null?'—':`${esc(row.task_completion_rate)}%`}</td><td>${row.trace_runs?`${esc(row.trace_runs)} Run<br>`:''}<small>${esc(row.trace_status||'未观测')}</small></td><td>${esc(row.model||'未观测')}<br><small>${esc(row.prompt_version||'未观测')}</small></td><td>${row.latency_ms===null?'—':`${(row.latency_ms/1000).toFixed(1)}s`}</td><td><p>${esc(row.title)}</p><p class="case-reason">${esc(row.reason)}</p>${row.override||row.original_status!==row.status?`<details><summary>原始判定：${esc(labels[row.original_status])}</summary><p>${esc(row.original_reason)}</p></details>`:''}</td><td>${esc(names.get(row.updated_by) || (row.updated_by?'已授权复核员':'—'))}<small>${esc(time(row.updated_at))}</small><small>${state?'用例版本 v'+row.version:'未读取云端版本'}</small></td><td><button data-edit-case="${esc(row.case_id)}" ${busy||!canWrite()?'disabled':''}>修改结果</button></td></tr>`).join('');
     const failures=all.filter(row=>isFailure(row.status));
     $('failure-count').textContent=String(failures.length);
@@ -381,7 +385,7 @@
     currentEdit = {case_id:id,base_version:row.version,actor_id:session.userId};
     $('edit-title').textContent = id+' · 人工复核'; $('edit-question').textContent = row.title;
     $('edit-status').querySelector('option[value="skip"]').textContent = resultLabel(row,'skip');
-    $('edit-status').value = row.status; $('edit-reason').value = ''; $('edit-categories').value = row.failure_categories.join('，');
+    $('edit-status').value = row.status; $('edit-reason').value = ''; $('edit-categories').value = row.failure_categories.filter(value=>value!=='不稳定').join('，');
     $('edit-feedback').textContent = ''; $('edit-refresh').hidden = true;
     const draft = drafts.get(`${session.userId}:${id}`);
     if (draft) {
@@ -433,6 +437,12 @@
     event.preventDefault(); if (!currentEdit || busy || !canWrite()) return;
     const status = $('edit-status').value, reason = $('edit-reason').value.trim();
     const override = status==='reset'?null:{business_status:status,business_reason:reason,failure_categories:isFailure(status)?[...new Set($('edit-categories').value.split(/[,，、\n]/).map(x=>x.trim()).filter(Boolean))]:[]};
+    if(override&&base.failure_taxonomy&&full?.normalizeCategories){
+      override.failure_categories=full.normalizeCategories(override.failure_categories,base);
+      if(override.failure_categories.includes('未分类')){
+        $('edit-feedback').textContent='失败分类请使用：防御性回答、数据缺失、表达错误、执行失败、事实不符；不稳定由两轮实测自动标记。';return;
+      }
+    }
     if (!validOverride(override)) { $('edit-feedback').textContent = '请填写有效理由（最多 6000 字）；失败分类最多 20 项，每项不超过 100 字。'; return; }
     preserveDraft();
     const edit = {...currentEdit};
@@ -475,10 +485,10 @@
     select.value=row.status;
     openEdit(row.case_id,selected);
   });
-  $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
+  $('failure-index').onclick = event => {const link=event.target.closest('[data-failure-jump]');if(!link)return;event.preventDefault();const row=effectiveRows().find(item=>item.case_id===link.dataset.failureJump);if(!row)return;$('filter-environment').value=row.source_environment;$('filter-status').value='fail';$('filter-module').value='';$('filter-priority').value='';$('search').value=row.case_id;renderCases();document.getElementById(row.case_id)?.scrollIntoView({behavior:'smooth',block:'center'});};
   const filterChanged=()=>{full?.resetPage();renderCases();};
-  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
-  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-priority').value='';if($('category'))$('category').value='';filterChanged();};
+  $('search').oninput = filterChanged; $('filter-status').onchange = filterChanged; $('filter-environment').onchange=filterChanged; $('filter-module').onchange=filterChanged; $('filter-priority').onchange=filterChanged;
+  $('reset-filters').onclick=()=>{$('search').value='';$('filter-status').value='';$('filter-environment').value='';$('filter-module').value='';$('filter-priority').value='';if($('category'))$('category').value='';full?.resetCaseIds();filterChanged();};
   $('refresh').onclick = () => operation(async()=>{accept(await snapshot());notice(`已读取真实云端最新版本 r${state.revision}，并更新本页报告总结。`);});
   $('export-snapshot').onclick = () => operation(async()=>{
     accept(await snapshot());

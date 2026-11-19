@@ -26,8 +26,8 @@
   const pct = (n,d) => d ? `${(100*n/d).toFixed(1)}%` : '—';
   const duration = n => Number.isFinite(n)?`${(n/1000).toFixed(1)}s`:'未采集';
   const anchor = r => `failure-${r.source_environment}-${r.case_id}`;
-  const resultStatus = r => r.status==='skip'&&['not_executed','local_fixture_pass'].includes(r.kind)?r.kind:r.status;
-  const status = r => ({not_executed:'未执行',local_fixture_pass:'本地回放通过'})[resultStatus(r)]||label[r.status];
+  const resultStatus = r => r.status==='skip'&&['not_executed','local_fixture_pass','timeout'].includes(r.kind)?r.kind:r.status;
+  const status = r => ({not_executed:'未执行',local_fixture_pass:'本地回放通过',timeout:'超时'})[resultStatus(r)]||label[r.status];
   const taskRate = r => r.task_completion_rate==null?'—':`${r.kind==='local_fixture_pass'&&r.task_completion_rate===1?100:r.task_completion_rate}%`;
   // This is an immutable comparison of two source executions, not a comparison
   // of the mutable cloud-review status with the prior report's displayed row.
@@ -41,13 +41,53 @@
   const originalAIReviewDetails = r => {
     const review=r.original_ai_review;
     if (!review?.business_reason) return '';
-    const source=/^https:\/\/anna0715\.github\.io\/Agent_report\//.test(review.source_url||'')?`<a href="${esc(review.source_url)}">查看来源报告</a>`:'';
+    const source=/^https:\/\/anna0715\.github\.io\/Agent_report(?:_pre)?\//.test(review.source_url||'')?`<a href="${esc(review.source_url)}">查看来源报告</a>`:'';
     return `<details class="original-ai-review"><summary>原报告 AI 裁判（历史）：${esc(label[review.business_status]||'未记录')}</summary><p class="original-ai-reason">${esc(review.business_reason)}</p><small>裁判模型：${esc(review.judge_model||'未记录')} · ${source}</small></details>`;
   };
   let rows=[],base=null,state=null,writable=false,page=1,initialized=false;
+  const selectedCaseIds = new Set();
+  let caseIdOptionsKey='';
   const originalEvidence = new Map();
+  function normalizeCategories(values, source) {
+    const taxonomy=source?.failure_taxonomy;
+    if(!taxonomy)return values||[];
+    const result=[];
+    for(const value of values||[]){
+      const key=String(value).replace(/\s+/g,'');
+      if(!key||key==='不稳定')continue;
+      const category=taxonomy.aliases[key]||taxonomy.rules.find(([pattern])=>new RegExp(pattern).test(key))?.[1]||'未分类';
+      if(!result.includes(category))result.push(category);
+    }
+    return result;
+  }
+  function projectRow(row, source) {
+    const taxonomy=source?.failure_taxonomy;
+    if(!taxonomy)return row;
+    const comparison=row.execution_comparison||{},failed=isFailure(row.status);
+    const categories=failed?normalizeCategories(row.failure_categories,source):[];
+    const unstable=failed&&comparison.eligible===true&&comparison.verdict==='regressed'&&comparison.previous_status==='pass'&&comparison.latest_status==='fail';
+    return {...row,source_failure_categories:[...(row.failure_categories||[])],
+      primary_failure_category:failed?(taxonomy.primary_order.find(value=>categories.includes(value))||'未分类'):null,
+      failure_categories:[...categories,...(unstable?['不稳定']:[])],unstable};
+  }
+  function failureSummary(current, source) {
+    const executed=current.filter(row=>online(row)&&row.status!=='deferred'),failed=executed.filter(row=>isFailure(row.status));
+    const reasons={},data_missing={'消息':0,'项目/任务':0,'其他':0};
+    for(const row of failed){
+      const cause=row.primary_failure_category||'未分类';reasons[cause]=(reasons[cause]||0)+1;
+      if(cause==='数据缺失')data_missing[row.failure_data_domain||'其他']++;
+    }
+    return {executed:executed.length,failed:failed.length,reasons,data_missing,unstable:failed.filter(row=>row.unstable).length};
+  }
+  function renderFailureSummary(current, source) {
+    const target=$('failure-summary-content');if(!target||!source.failure_taxonomy)return;
+    const counts=failureSummary(current,source),domains=counts.data_missing;
+    const reasons=source.failure_taxonomy.primary_order.filter(label=>counts.reasons[label]).map(label=>`${esc(label)}-${counts.reasons[label]}条`).join('，')||'无';
+    target.innerHTML=`执行${counts.executed}条，不通过${counts.failed}条。不通过原因：${reasons}<br>其中数据缺失：消息类${domains['消息']}条，项目/任务${domains['项目/任务']}条，其他${domains['其他']}条<br>其中不稳定：${counts.unstable}条（上一轮通过、本轮失败）`;
+  }
   function summary(current, source, snapshot) {
     rows=current; base=source; state=snapshot;
+    renderFailureSummary(current,source);
     const counts = Object.fromEntries(['test','pre'].map(env=>{
       const environmentRows=rows.filter(r=>r.source_environment===env),group=environmentRows.filter(online);
       return [env,{attempted:group.length,pass:group.filter(r=>r.status==='pass').length,fail:group.filter(r=>isFailure(r.status)).length,pending:group.filter(r=>r.status==='skip').length,pendingQa:group.filter(r=>r.status==='pending_qa').length,deferred:environmentRows.filter(r=>r.status==='deferred').length,pendingFix:group.filter(r=>r.status==='pending_fix').length}];
@@ -130,10 +170,55 @@
     for(const item of next)select.add(new Option(item,item));
     select.value=value;if(select.selectedIndex<0)select.selectedIndex=0;
   }
-  function filtered(){const env=$('filter-environment').value,s=$('filter-status').value,p=$('filter-priority').value,c=$('category').value,q=$('search').value.trim().toLowerCase();return rows.filter(r=>(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!q||[r.case_id,r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(q)));}
+  function matchingCaseIds(){
+    const terms=($('case-id-search')?.value||'').trim().toLowerCase().split(/[\s,，;；]+/).filter(Boolean);
+    return [...new Set(rows.map(row=>row.case_id))].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}))
+      .filter(id=>!terms.length||terms.some(term=>[id,...(rows.find(row=>row.case_id===id)?.merged_case_ids||[])].join(' ').toLowerCase().includes(term)));
+  }
+  function renderCaseIdOptions(){
+    if(!$('case-id-filter'))return;
+    const matches=matchingCaseIds(),key=JSON.stringify(matches);
+    if(key!==caseIdOptionsKey){
+      $('case-id-options').innerHTML=matches.length?matches.map(id=>`<label class="case-id-option"><input type="checkbox" data-case-id-option value="${esc(id)}"${selectedCaseIds.has(id)?' checked':''}><span>${esc(id)}</span></label>`).join(''):'<p class="muted">没有匹配的用例 ID</p>';
+      caseIdOptionsKey=key;
+    }
+    for(const option of $('case-id-options').querySelectorAll('[data-case-id-option]'))option.checked=selectedCaseIds.has(option.value);
+    $('case-id-filter-label').textContent=selectedCaseIds.size===0?'用例 ID：全部':selectedCaseIds.size===1?`用例 ID：${[...selectedCaseIds][0]}`:`用例 ID：已选 ${selectedCaseIds.size} 项`;
+    $('case-id-filter-toggle').title=selectedCaseIds.size?[...selectedCaseIds].join('、'):'筛选用例 ID，可搜索和多选';
+    $('case-id-filter-count').textContent=`匹配 ${matches.length} / ${new Set(rows.map(row=>row.case_id)).size} 项 · 已选 ${selectedCaseIds.size} 项`;
+    $('case-id-select-matches').disabled=!matches.length||matches.every(id=>selectedCaseIds.has(id));
+    $('case-id-clear').disabled=!selectedCaseIds.size;
+  }
+  function resetCaseIds(){
+    selectedCaseIds.clear();
+    if($('case-id-search'))$('case-id-search').value='';
+    if($('case-id-filter'))$('case-id-filter').open=false;
+    renderCaseIdOptions();
+  }
+  function initializeCaseIdFilter(){
+    const dropdown=$('case-id-filter');if(!dropdown)return;
+    const apply=()=>{renderCaseIdOptions();page=1;renderTable();};
+    $('case-id-search').addEventListener('input',renderCaseIdOptions);
+    $('case-id-options').addEventListener('change',event=>{
+      const option=event.target;if(!option.matches('[data-case-id-option]'))return;
+      if(option.checked)selectedCaseIds.add(option.value);else selectedCaseIds.delete(option.value);
+      apply();
+    });
+    $('case-id-select-matches').addEventListener('click',()=>{for(const id of matchingCaseIds())selectedCaseIds.add(id);apply();});
+    $('case-id-clear').addEventListener('click',()=>{selectedCaseIds.clear();apply();});
+    dropdown.addEventListener('toggle',()=>{if(dropdown.open)$('case-id-search').focus({preventScroll:true});});
+    dropdown.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dropdown.open=false;$('case-id-filter-toggle').focus({preventScroll:true});}});
+    document.addEventListener('click',event=>{if(dropdown.open&&!dropdown.contains(event.target))dropdown.open=false;});
+  }
+  function filtered(){
+    const env=$('filter-environment').value,s=$('filter-status').value,m=$('filter-module').value,p=$('filter-priority').value,c=$('category').value;
+    const terms=$('search').value.toLowerCase().split(/[;；]/).map(term=>term.trim()).filter(Boolean);
+    return rows.filter(r=>(!selectedCaseIds.size||selectedCaseIds.has(r.case_id))&&(!env||r.source_environment===env)&&(!s||resultStatus(r)===s)&&(!m||(r.module||'未标注')===m)&&(!p||r.priority===p)&&(!c||r.failure_categories.includes(c))&&(!terms.length||terms.some(term=>[r.case_id,...(r.merged_case_ids||[]),r.asker,r.title,r.module,r.scenario,r.reason,...r.failure_categories].join(' ').toLowerCase().includes(term))));
+  }
   function renderCases(current,source,snapshot,canWrite){
     rows=current;base=source;state=snapshot;writable=canWrite;
     if(!initialized){
+      initializeCaseIdFilter();
       for(const card of document.querySelectorAll('.failure-card'))originalEvidence.set(card.id,card.querySelector('.business-review').innerHTML);
       $('prev').onclick=()=>{page--;renderTable();};$('next').onclick=()=>{page++;renderTable();};
       $('category').onchange=()=>{page=1;renderTable();};
@@ -141,16 +226,18 @@
       // Apply option-list changes after the native popup has finished its change/blur events.
       document.addEventListener('focusout',event=>{
         const select=event.target;
-        if(!select.matches('[data-case-status-select],#filter-priority,#category'))return;
+        if(!select.matches('[data-case-status-select],#filter-module,#filter-priority,#category'))return;
         requestAnimationFrame(()=>{if(document.activeElement!==select)renderCases(rows,base,state,writable);});
       });
       initialized=true;
     }
+    options('filter-module',rows.map(r=>r.module||'未标注'));
     options('filter-priority',rows.map(r=>r.priority||'未标注'));
     options('category',rows.flatMap(r=>r.failure_categories));
+    renderCaseIdOptions();
     renderTable();
   }
-  function showTarget(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const card=$(id);if(card?.classList.contains('failure-card')){card.hidden=false;card.scrollIntoView({block:'start'});}}
+  function showTarget(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const merged=rows.find(row=>(row.merged_case_ids||[]).some(alias=>id===`failure-${row.source_environment}-${alias}`||id===`failure-${alias}`));const card=$(merged?anchor(merged):id);if(card?.classList.contains('failure-card')){card.hidden=false;if(merged){const details=card.querySelector('.case-consolidation');if(details)details.open=true;}card.scrollIntoView({block:'start'});}}
   function renderTable(){
     const visible=filtered(),pages=Math.max(1,Math.ceil(visible.length/20));page=Math.max(1,Math.min(page,pages));
     const names=new Map((state?.history||[]).map(h=>[h.actor,h.actor_name]));
@@ -160,9 +247,13 @@
     $('failure-count').textContent=visible.length;
     $('failure-index').querySelector('tbody').innerHTML=visible.map(r=>`<tr data-index-case="${esc(r.case_id)}" data-result-status="${esc(resultStatus(r))}"><td>${r.source_environment}</td><td><a href="#${anchor(r)}">${esc(r.case_id)}</a></td><td>${esc(r.asker||'未记录')}${r.asker_source==='case_config'?'<br><small>用例配置</small>':''}</td><td>${esc(r.priority)}</td><td>${esc(r.module)}</td><td>${esc(r.scenario)}</td><td>${esc(r.ability||r.title)}</td><td>${esc(status(r))}</td><td>${esc(r.failure_categories.join('、')||'—')}</td><td>${duration(r.latency_ms)}</td><td>${taskRate(r)}</td></tr>`).join('');
     const visibleCases=new Set(visible.map(anchor));
+    let visibleFailures=0;
     for(const r of rows){
       const card=$(anchor(r));if(!card)continue;
+      const section=$(isFailure(r.status)?'failure-details':'case-evidence');
+      if(card.parentElement!==section)section.appendChild(card);
       card.hidden=!visibleCases.has(card.id)&&location.hash!==`#${card.id}`;
+      if(isFailure(r.status)&&!card.hidden)visibleFailures++;
       let select=card.querySelector('[data-case-status-select]');
       if(!select){
         select=document.createElement('select');
@@ -173,7 +264,7 @@
         card.querySelector('.failure-head > .status').replaceWith(select);
       }
       select.className=`status case-status-select ${r.status}`;
-      const skipOption=select.querySelector('option[value="skip"]'),skipText=r.kind==='not_executed'?'未执行':r.kind==='local_fixture_pass'?'本地回放通过':label.skip;
+      const skipOption=select.querySelector('option[value="skip"]'),skipText=r.kind==='not_executed'?'未执行':r.kind==='local_fixture_pass'?'本地回放通过':r.kind==='timeout'?'超时':label.skip;
       if(skipOption.textContent!==skipText)skipOption.textContent=skipText;
       if(document.activeElement!==select&&select.value!==r.status)select.value=r.status;
       if(select.disabled!==!writable)select.disabled=!writable;
@@ -183,6 +274,8 @@
       card.querySelector('.business-review').innerHTML=`<b>当前业务判定（${r.override?'云端人工复核':r.review_reuse?.source_workflow_released?'来源复核流程已解除，显示本轮评测':r.review_reuse?.source_deferral_released?'来源延期已解除，显示本轮评测':r.review_reuse?.mode==='live_source'?'来源报告已保存复核':'原始裁判'}）：</b>${esc(r.reason)}${r.override?`<details><summary>查看原始业务判定</summary>${originalEvidence.get(card.id)}</details>`:''}`;
       let edit=card.querySelector('.case-review-action');if(!edit){edit=document.createElement('div');edit.className='case-review-action';card.querySelector('.failure-head').after(edit);}edit.innerHTML=action(r);
     }
+    $('failure-details-empty').hidden=visibleFailures>0;
   }
-  window.AICombinedReport={summary,renderCases,anchor,resultStatus,resetPage:()=>{page=1;},showTarget};
+  window.AICombinedReport={summary,renderCases,anchor,resultStatus,resetPage:()=>{page=1;},resetCaseIds,showTarget,
+    normalizeCategories,projectRow,failureSummary};
 })();

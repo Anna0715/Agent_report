@@ -13,9 +13,11 @@
   const title = document.createElement('h2');
   title.textContent = '报告目录';
   const list = document.createElement('ol');
-  headings.forEach((heading, index) => {
+  let originalIndex = 0;
+  headings.forEach(heading => {
+    if (heading.dataset.reportNavNew !== 'true') originalIndex++;
     if (!heading.id) {
-      let id = `report-section-${index + 1}`;
+      let id = `report-section-${originalIndex}`;
       while (document.getElementById(id)) id += '-heading';
       heading.id = id;
     }
@@ -30,7 +32,7 @@
     list.append(item);
   });
   nav.append(title, list);
-  header.after(nav);
+  (document.getElementById('stability-overview') || header).after(nav);
   const style = document.createElement('style');
   style.textContent = `
     #report-toc ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px;padding-left:24px;margin:16px 0 0}

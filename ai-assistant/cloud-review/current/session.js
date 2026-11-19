@@ -4,7 +4,9 @@
 (() => {
   'use strict';
   const TTL = 48 * 60 * 60 * 1000;
-  const PATH = '/Agent_report/ai-assistant/';
+  const PRE = location.pathname.startsWith('/Agent_report_pre/pre/');
+  const PATH = PRE ? '/Agent_report_pre/pre/' : '/Agent_report/ai-assistant/';
+  const scope = PRE ? ':pre' : '';
   const uuid = value => typeof value === 'string' && /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
   const token = value => typeof value === 'string' && value.length > 0 && value.length < 20000 && !/[\x00-\x20\x7f]/.test(value);
   const problem = (message, status = 0, code = '') => Object.assign(new Error(message), {status, code});
@@ -21,10 +23,10 @@
       if (!publicKey) throw problem('只允许使用公开连接密钥。');
       this.config = {project_url:config.project_url,publishable_key:key};
       this.ref = url.hostname.split('.')[0];
-      this.storageKey = 'ai-review-session:v1:' + this.ref;
+      this.storageKey = 'ai-review-session:v1:' + this.ref + scope;
       this.generationKey = this.storageKey + ':generation';
-      this.cookieName = '__Secure-ai-review-remember-' + this.ref;
-      this.lockName = 'ai-review-session:' + this.ref;
+      this.cookieName = '__Secure-ai-review-remember-' + this.ref + (PRE ? '-pre' : '');
+      this.lockName = 'ai-review-session:' + this.ref + scope;
       this.onInvalidated = onInvalidated;
       this._session = null; this._verified = false; this._persistent = false;
       this._epoch = 0; this._attemptId = null; this._timer = null; this._refreshing = null;
